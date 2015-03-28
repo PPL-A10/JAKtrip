@@ -417,7 +417,7 @@
 					echo "<table class='table'>";
 					foreach ($query->result() as $row) {
 						# code...
-						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->Nama."<br>".$row->Budget."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->Nama."\" onclick=\"fui(".$row->Budget.",'".$row->Nama."')\"".$row->Nama."\">".$row->Budget."</button></td></tr>";
+						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"fui(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button></td></tr>";
 					}
 					echo "</table>";
 				?>

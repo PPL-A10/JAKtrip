@@ -5,7 +5,7 @@
 		function getDatabase()
 		{
 			$this->load->database();
-			$query = $this->db->get('testabel');
+			$query = $this->db->select("*")->from('tourist_attraction')->order_by("weekday_price", "desc")->get();
 			return $query;                            
 		}
 		
