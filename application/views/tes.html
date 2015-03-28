@@ -1,0 +1,99 @@
+ <div style="width:100%;"> 
+
+<div class="kiri"; style="float:left; width:50%;">
+Left  Column
+ 
+
+<!DOCTYPE html>
+<html>
+<style>
+.kiri {
+  top: 0;
+  height: 100%; 
+  overflow:scroll;
+}
+body{
+overflow-y:hidden;
+}
+</style>
+<body>
+<p>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<input type="text" name="budget">
+<input type="text" name="tanggal">
+</p>  
+
+<p>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<input type="text" name="tanggal"> <button type="button" onclick="alert('Hello world!')">Search!</button>
+</p>  
+<p>
+&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="range" id="myRange" value="90">
+</p>
+<p>
+<img src="ancol.jpg" alt="Mountain View" style="width:150px;height:160px"> <textarea cols="50" rows="8">
+This is where the user can enter text. If there's too much text, the textbox can develop scrollbars to accommodate the extra text...
+</textarea>
+</p>
+<p>
+<img src="ancol.jpg" alt="Mountain View" style="width:150px;height:160px"> <textarea cols="50" rows="8">
+This is where the user can enter text. If there's too much text, the textbox can develop scrollbars to accommodate the extra text...
+</textarea>
+</p>
+<p>
+<img src="ancol.jpg" alt="Mountain View" style="width:150px;height:160px"> <textarea cols="50" rows="8">
+This is where the user can enter text. If there's too much text, the textbox can develop scrollbars to accommodate the extra text...
+</textarea>
+</p>
+
+</body>
+</html>
+ 
+
+</div>
+<div style="float:right; width:50%; ">
+Right Column
+ <head> 
+ <style>
+      #map-canvas {
+        width: 500px;
+        height: 700px;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+          center: new google.maps.LatLng(44.5403, -78.5463),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+ </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+ 
+</div>
+ 
+</div>
