@@ -19,12 +19,14 @@
 
 		<br>
         <?php echo form_label('Title'); ?> <?php echo form_error('title'); ?><br />
-        <?php echo form_input(array('id' => 'title', 'name' => 'title')); ?><br />
+        <input type="text" name="title">
 		
+		<br>
         <?php echo form_label('Review'); ?> <?php echo form_error('review'); ?><br />
-        <?php echo form_input(array('id' => 'review', 'name' => 'review')); ?><br />
+        <textarea name="review" rows="5" cols="40"></textarea>
 
-        <?php echo form_submit(array('id' => 'submit', 'value' => 'submit'));?>
+		<br>
+        <input type="submit" value="Submit">
         
         <?php echo form_close(); ?><br/>
 		<!--belum ada notifikasi submitted-->

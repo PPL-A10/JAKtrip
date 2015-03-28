@@ -43,7 +43,7 @@ class FeedbackCtr extends CI_Controller {
                         'message' => $this->input->post('message')
                     );
 					//Transfering data to Model
-                    $this->FeedbackManager->insert_feedback($data);
+                    $this->feedbackManager->insert_feedback($data);
                     //Loading View
 					$this->load->view('formFeedbackUI');
                    }
