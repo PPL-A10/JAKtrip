@@ -1,0 +1,234 @@
+body{
+  font-family: Lato;
+}
+
+.odd{
+	background-color: #e0e0e0;
+	height: 500px;
+	padding-left: -100px;
+}
+
+.even{
+	background-color: #ffffff;
+	height: 500px;
+	width: 100%;
+}
+
+.box{
+	background-color: rgba(17,17,17,.75);
+	text-align: center;
+	top: 50%;
+	padding: 15px 0px;
+}
+
+footer{
+	background-color: #1C1C1C;
+}
+
+.big {
+  font-size: 1.2em;
+}
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+.custom-dropdown select {
+  background-color: #fff;
+  color: #4c4c4c;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 5px;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  content: "\25BC";
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 3em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.custom-dropdown select[disabled] {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown select[disabled]::after {
+  color: rgba(0,0,0,.1);
+}
+
+.custom-dropdown::before {
+  background-color: #db2719;
+}
+
+.custom-dropdown::after {
+  color: rgba(0,0,0,.4);
+}
+
+.field{
+  height: 40px;
+  line-height: normal;
+  border-style: hidden;
+  font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+   color: #858585;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #858585;  
+   opacity: 1;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #858585;  
+   opacity: 1;
+}
+
+:-ms-input-placeholder {  
+   color: #858585;  
+}
+
+img {
+  margin: 15px;
+}
+
+a {
+  color: #e0e0e0;
+}
+
+.intro{
+  text-align: center;
+  padding-top: 150px;
+  margin-bottom: -200px;
+}
+
+.tuffyh1{
+  font-family: TuffyBold;
+  text-transform: uppercase;
+  font-size: 66px;
+  color: #fff;
+  margin-bottom: -.2em;
+}
+
+.tuffyh1a{
+  font-family: TuffyBold;
+  font-size: 50px;
+  color: #fff;
+  margin-bottom: -.2em;
+}
+
+
+.tuffyh2{
+  font-family: TuffyBold;
+  font-size: 28px;
+  color: #fff;
+}
+
+.tuffyh3{
+  font-family: TuffyBold;
+  font-size: 18px;
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+.headersmall {
+  height: 220px;
+}
+
+.title{
+  text-align: left;
+  padding-top: 110px;
+  margin-bottom: -200px;
+  margin-left: 4em;
+}
+
+.submenu{
+  font-family: TuffyBold;
+  font-size: 18px;
+  color: #1c1c1c;
+  border-bottom: solid 1px #c4c4c4 !important;
+  width: 100%;
+}
+
+.submenu a{
+  color: #1c1c1c;
+}
+
+.submenu a:hover{
+  color: #db2719 !important;
+  border-bottom: solid 5px;
+  border-color: #db2719;
+  padding-bottom: 15px;
+}
+
+.subtitle{  
+  margin-left: 80px;
+  margin-right: 80px;
+  font-family: TuffyBold;
+  font-size: 18px;
+  color: #1c1c1c;
+}
+
+.subtitle p{
+  line-height: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 200px;
+  padding-left: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  border-bottom: solid 1px #c4c4c4 !important;
+}
+
+.contact{
+  padding: 22px 50px;
+}
+
+.contactus .btn{
+  font-size: 14px;
+  float: right;
+  margin: 30px 100px;
+}
+
+.collection{
+	background: url('img/image.png');
+	float: left;
+}
+
+.txtimg .tuffyh2{
+	position: absolute;
+	top: 30%;
+	left: 8%;
+	text-align: center;
+	font-size: 36px !important;
+}
