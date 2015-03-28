@@ -29,10 +29,11 @@ class TourAttrCtr extends CI_Controller {
 		{
 			//Setting values for tabel columns
 			$data = array(
-						//'username' => username yang lagi login,
+						'username' => 'memberNo1',
+						'place_name' => 'Kebun Binatang Ragunan',
                         'rate' => $this->input->post('rate'),
                         'title' => $this->input->post('title'),
-                        'review' => $this->input->post('review'),
+                        'review' => $this->input->post('review')
 //						'is_nudity' => $this->input->false,
 //						'is_spam' => $this->input->false,
 //						'is_FalseStatement' => $this->input->false,
@@ -40,7 +41,7 @@ class TourAttrCtr extends CI_Controller {
 //						'is_profanity' => $this->input->false;
             );
 					//Transfering data to Model
-                    $this->RatingManager->insert_rating($data);
+                    $this->ratingManager->insert_rating($data);
                     //Loading View
 					$this->load->view('formRatingUI');
                    }
