@@ -15,11 +15,15 @@
 </head>
 <body>
 <?php
+	echo "<table border='1'>";
 	foreach($query as $row)
 	{
-		echo $row->username;
+		echo "<tr>";
+		echo "<td>".$row->username."</td>";
+		echo "<td>".$row->email	."</td>";
+		echo "</tr>";
 	}
-
+	echo "</table>";
 	
 ?>
 </body>
