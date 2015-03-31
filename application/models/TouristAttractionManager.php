@@ -42,8 +42,8 @@ function __construct(){
 		//$query = $this->db->query($quer);
 		$query = $this->db->get_where('tourist_attraction', array('place_name'=>$place_name));
 		//$query = $this->db->from($this->'tourist_attraction')->where(array(('place_name')=>$place_name))->get();
-		//return $query->row_array();
-		return $query->result();
+		return $query->row_array();
+		//return $query->result();
 	}
 
 	function delete($place_name){
