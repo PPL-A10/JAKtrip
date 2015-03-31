@@ -5,7 +5,7 @@
 		function getDatabase()
 		{
 			$this->load->database();
-			$query = $this->db->select("*")->from('tourist_attraction')->order_by("weekday_price", "desc")->get();
+			$query = $this->db->select("*")->from('tourist_attraction')->get();
 			return $query;                            
 		}
 		
@@ -13,7 +13,7 @@
 		{
 			$budgetInt = intval($budget);
 			$this->load->database();
-			$query = $this->db->get_where('testabel', array('Budget <=' => $budgetInt));		
+			$query = $this->db->get_where('tourist_attraction', array('weekday_price <=' => $budgetInt));		
 			return $query->result();
 		}
 	}

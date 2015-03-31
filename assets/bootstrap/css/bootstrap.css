@@ -14,6 +14,20 @@
   transition: all 1s ease-in-out;
 }
 
+a.removeTrip{
+  color:#ccd6dd;
+}
+
+a.removeTrip:hover{
+    color: #F34242;
+    cursor: pointer;  
+}
+
+a.editTrip:hover{
+    color: #20C539;
+    cursor: pointer;  
+}
+
 .btn.sharp{
   border-radius: 0px;
 }
