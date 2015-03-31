@@ -53,12 +53,21 @@ function __construct(){
 		$this->db->delete('tourist_attraction', array('place_name' => $place_name));
 	}
 
-	function edit($place_name){
+	function edit($place_name, $data){
 		$this->load->database();
+		
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
-		$quer = "update komentar set approve = 1 where place_name = $place_name;";
-		$this->db->query($quer);
+		$this->db->where($place_name,$this->input->post($place_name));
+		$this->db->update('tourist_attraction',$data);  
+		//$quer = "update komentar set approve = 1 where place_name = $place_name;";
+		//$this->db->query($quer);
+		
+		if ($this->db->affected_rows() == '1')
+		{
+			return TRUE;
+		}
+		return FALSE;
 	}
 
 	function general(){
@@ -76,6 +85,18 @@ function __construct(){
 	
 	function getCategory(){
 		return $this->db->get('tour_category');
+	}
+	
+	function tourAttr_getCat($place_name){
+		//return $this->db->get_where('tour_category');
+		$query = $this->db->get_where('tour_category', array('place_name'=>$place_name));
+		return $query->row_array();
+	}
+	
+	function tourAttr_getPic($place_name){
+		//return $this->db->get_where('tour_category');
+		$query = $this->db->get_where('photo', array('place_name'=>$place_name));
+		return $query->row_array();
 	}
 }
 ?>
