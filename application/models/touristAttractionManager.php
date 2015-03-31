@@ -1,16 +1,12 @@
 <?php
 
-class RatingManager extends CI_Model{
-    function __construct() {
-        parent::__construct();
-    }
+class touristAttractionManager extends CI_Model{
     
-	function getPosts(){
-		$this->db->select("*"); 
-		$this->db->from('tourist_attraction');
-		$query = $this->db->get();
-		return $query->result();
-	}
+	function getAllTourAttr() {
+        $this->db->select('*');
+        $this->db->from('tourist_attraction');
+        $query = $this->db->get();
+        return $result = $query->result();
+    }
 }
-
 ?>
