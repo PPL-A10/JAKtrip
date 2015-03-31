@@ -18,47 +18,74 @@
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script>
 			var cars1 = [];
+			var cars2 = "";
+			var arrayTripChoosen = [];
+			var arrayTripPriceChoosen =[];
+			var tripCost = 0;
+			var isEdit = false;
 			function fui(x,y){
-					alert(x);
-					
+					//alert(x);
+					//alert(y);
 					var budget = parseInt(x);
+					tripCost = tripCost + budget;
+					budget = parseInt($('input#inputBudgetDinamic').val()) - parseInt(x);
+					$('input#inputBudgetDinamic').val(budget);
+					alert(budget);	
 				//	window.location.href = '//localhost/codeigniter/index.php/tesController/chooseTouristAttr/' + budget;
 					jQuery.ajax({
-                        type: "POST",
-                        url: "http://localhost/codeigniter/index.php/tesController/chooseTouristAttr/"+x,
-                        success: function(res) {
-                            if (res)
-                            {
-                            	var obj = jQuery.parseJSON(res);
-                         		var hasilPemilihan = "";
-                         		hasilPemilihan = "<table class='table'>";
-                            	for(var i = 0; i<obj.query.length; i++)
-                            	{
-                           		//	alert(obj.query[i].Nama);
-                         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
-                         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].Nama+"<br>"+obj.query[i].Budget+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></td></tr>";
+				        type: "POST",
+				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budget,
+				        success: function(res) {
+				            if (res)
+				            {
+				            	var obj = jQuery.parseJSON(res);
+				         		var hasilPemilihan = "";
+				         		hasilPemilihan = "<table class='table'>";
+				         		
+				            	for(var i = 0; i<obj.query.length; i++)
+				            	{
+				           		//	alert(obj.query[i].Nama);
+				         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
+				         				var sudahDipilih = false;
+				         				for(var j = 0; j<arrayTripChoosen.length; j++)
+				         				{
+				         					
+				         					if(obj.query[i].place_name == arrayTripChoosen[j] && arrayTripChoosen[i] != "terhapus")
+				         					{
+				         						sudahDipilih = true;
+				         					}
+				         				}
+				         				if(!sudahDipilih)
+				         				{
+				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+				         				}
+				         				
 
-                           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
-                            	}
-                            	hasilPemilihan = hasilPemilihan + "</table>";
-                            	$("#blogMain").html(hasilPemilihan);
-                            }
+				           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
+				            	}
+				            	hasilPemilihan = hasilPemilihan + "</table>";
+				            	$("#blogMain").html(hasilPemilihan);
+				            }
                         }
                     });
 					var ditambahkan = y ;
 					//alert(ditambahkan);
-					cars1.push(ditambahkan);
-					alert(ditambahkan);
+				//	cars1.push(ditambahkan);
+				//	alert(ditambahkan);
+					arrayTripChoosen.push(ditambahkan);
+					arrayTripPriceChoosen.push(parseInt(x));
 
 					var yangDipilih = "";
 					yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
-			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table'>";
-			    	for(var i = 0; i<cars1.length; i++)
+			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+			    	for(var i = 0; i<arrayTripChoosen.length; i++)
 			    	{
-			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>"+cars1[i]+"</td><td><button type='button' class='btn btn-danger btn-sm sharp'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></button></td>	</tr>";
+			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>"+arrayTripChoosen[i]+"<br>"+arrayTripPriceChoosen[i]+"</td><td><a class ='removeTrip' onclick='return removeTrip(\""+arrayTripChoosen[i]+"\",\""+arrayTripPriceChoosen[i]+"\")' ><span class='glyphicon glyphicon-trash' area-hidden='true' ></span></a></td>	</tr>";
 			    	}
 			    	yangDipilih = yangDipilih + "</table></div>";
-			    	
+			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Your Trip Cost</th><th>Rp "+tripCost+"</th></tr></table>"
+
+
 			    	alert(yangDipilih);
 			    	$(".buttonAtasToggle").popover({
 			        html : true,
@@ -78,51 +105,198 @@
 					});
 			}
 			
-			$(function(){
-    
-			    // Enabling Popover Example 1 - HTML (content and title from html tags of element)
-		//	    $("[data-toggle=popover]").popover();
+			function tetot()
+			{
+				alert("tetot");
+			}
 
-			    // Enabling Popover Example 2 - JS (hidden content and title capturing)
-			    $("#popoverExampleTwo").popover({
-			        html : true, 
-			        content: function() {
-			          return $('#popoverExampleTwoHiddenContent').html();
-			        },
-			        title: function() {
-			          return $('#popoverExampleTwoHiddenTitle').html();
-			        }
-			    });
+			function removeTrip(trip, budgetRemove)
+			{
+				var indexToRemove = -1;
+				for(var i=0; i< arrayTripChoosen.length; i++)
+				{
+					if(arrayTripChoosen[i] == trip)
+					{
+						indexToRemove = i;
+						i=arrayTripChoosen.length;
+					}
+				}
 
-			    var yangDipilih = "";
-			    if(cars1.length == 0)
-			    {
-			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
-			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table'>";
-			    	for(var i = 0; i<4; i++)
+				arrayTripChoosen[indexToRemove] = "terhapus";
+				arrayTripPriceChoosen[indexToRemove] = -1;
+
+				var budgetAfterRemove = parseInt($('#inputBudgetDinamic').val()) + parseInt(budgetRemove);
+				$('#inputBudgetDinamic').val(budgetAfterRemove);
+				tripCost = tripCost - parseInt(budgetRemove);
+
+				jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budgetAfterRemove,
+				        success: function(res) {
+				            if (res)
+				            {
+				            	var obj = jQuery.parseJSON(res);
+				         		var hasilPemilihan = "";
+				         		hasilPemilihan = "<table class='table'>";
+				         		
+				            	for(var i = 0; i<obj.query.length; i++)
+				            	{
+				           		//	alert(obj.query[i].Nama);
+				         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
+				         				var sudahDipilih = false;
+				         				for(var j = 0; j<arrayTripChoosen.length; j++)
+				         				{
+				         					
+				         					if(obj.query[i].place_name == arrayTripChoosen[j] && arrayTripChoosen[i] != "terhapus")
+				         					{
+				         						sudahDipilih = true;
+				         					}
+				         				}
+				         				if(!sudahDipilih)
+				         				{
+				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+				         				}
+				         				
+
+				           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
+				            	}
+				            	hasilPemilihan = hasilPemilihan + "</table>";
+				            	$("#blogMain").html(hasilPemilihan);
+				            }
+                        }
+                    });
+					var yangDipilih = "";
+					yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
+			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+			    	for(var i = 0; i<arrayTripChoosen.length; i++)
 			    	{
-			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><button type='button' class='btn btn-danger btn-sm sharp'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></button></td>	</tr>";
+			    		if(arrayTripChoosen[i] != "terhapus")
+			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>"+arrayTripChoosen[i]+"<br>"+arrayTripPriceChoosen[i]+"</td><td><a class ='removeTrip' onclick='return removeTrip(\""+arrayTripChoosen[i]+"\",\""+arrayTripPriceChoosen[i]+"\")' ><span class='glyphicon glyphicon-trash' area-hidden='true' ></span></a></td>	</tr>";
 			    	}
 			    	yangDipilih = yangDipilih + "</table></div>";
-			    }
-			     for(var i=0; i<cars1.length; i++)
-			     {
-			     	yangDipilih = yangDipilih + "<div style=\"display: none\"><div><b>Popover Example</b> 2 - Content</div></div>";
-			     }
+			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Your Trip Cost</th><th>Rp "+tripCost+"</th></tr></table>"
 
-			   //  alert(yangDipilih);
-			     $(".buttonAtasToggle").popover({
+
+			    	alert(yangDipilih);
+			    	$(".buttonAtasToggle").popover({
 			        html : true,
    					content: function(){
    						return yangDipilih;	
    					}
-			    });
+			    	});
+			    	$('.buttonAtasToggle').attr('data-content', yangDipilih);
+			    	var popover = $('.buttonAtasToggle').data('popover');
+			    	popover.setContent();
+			    	popover.$tip.addClass(popover.options.placement);
 
-			     //alert($('#popoverExampleTwo').data('popover'));
+			}
+
+			    
+			// var popover = $('#testpopover').data('popover');
+
+			// setTimeout(function() {
+			//     $('#testpopover').attr('data-content', 'hello');
+			//     var popover = $('#testpopover').data('popover');
+			//     popover.setContent();
+			//     popover.$tip.addClass(popover.options.placement);
+			// },5000);
+
+			function setTripList(setEdit)
+			{ 
+
+				isEdit = setEdit;
+				
+				
+		//		alert(cars2);
+				var yangDipilih = "";
+				if(arrayTripChoosen.length == 0)
+		    	{
+			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
+			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+			    	for(var i = 0; i<0; i++)
+			    	{
+			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><a class ='removeTrip'><span class='glyphicon glyphicon-trash' area-hidden='true' ></span></a></td>	</tr>";
+			    	}
+			    	yangDipilih = yangDipilih + "</table></div>";
+			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Your Budget</th><th>Rp "+tripCost+"</th></tr></table>"
+		    	}
+		    	else
+		    	{
+		    		yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th><th><a class='editTrip' onclick=' return setTripList(false)'>done</a></th></tr></table>";
+			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+			    	for(var i = 0; i<4; i++)
+			    	{
+			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><a class ='removeTrip'><span class='glyphicon glyphicon-trash' area-hidden='true' ></span></a></td>	</tr>";
+			    	}
+			    	yangDipilih = yangDipilih + "</table></div>";
+		    	}
+
+		    	$(".buttonAtasToggle").popover({
+			        html : true
+   					// content: function(){
+   					// 	return yangDipilih;	
+   					// }
+			    });
+		//    	alert(yangDipilih);
+			    $('.buttonAtasToggle').attr('data-content', yangDipilih);
+		    	 // var popover = $('.buttonAtasToggle').data('popover');
+			   	 // popover.setContent();
+		    	 // popover.$tip.addClass(popover.options.placement);
+		  	//	popover.options.content = "asa";
+		  		
+	  	// 	    if ($(".buttonAtasToggle").next('div.popover:visible').length){
+				// 	popover.show();
+				// }
+			}
+
+
+		// 	$(function(){
+    
+		// 	    // Enabling Popover Example 1 - HTML (content and title from html tags of element)
+		// //	    $("[data-toggle=popover]").popover();
+
+		// 	    // Enabling Popover Example 2 - JS (hidden content and title capturing)
+		// 	    // $("#popoverExampleTwo").popover({
+		// 	    //     html : true, 
+		// 	    //     content: function() {
+		// 	    //       return $('#popoverExampleTwoHiddenContent').html();
+		// 	    //     },
+		// 	    //     title: function() {
+		// 	    //       return $('#popoverExampleTwoHiddenTitle').html();
+		// 	    //     }
+		// 	    // });
+
+		// 	    var yangDipilih = "";
+		// 	    if(cars1.length == 0)
+		// 	    {
+		// 	    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th><th><a class='editTrip'>edit</a></th></tr></table>";
+		// 	    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+		// 	    	for(var i = 0; i<4; i++)
+		// 	    	{
+		// 	    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><a class ='removeTrip'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></a></td>	</tr>";
+		// 	    	}
+		// 	    	yangDipilih = yangDipilih + "</table></div>";
+		// 	    }
+		// 	     for(var i=0; i<cars1.length; i++)
+		// 	     {
+		// 	     	yangDipilih = yangDipilih + "<div style=\"display: none\"><div><b>Popover Example</b> 2 - Content</div></div>";
+		// 	     }
+
+		// 	   //  alert(yangDipilih);
+		// 	     $(".buttonAtasToggle").popover({
+		// 	        html : true,
+  //  					content: function(){
+  //  						return yangDipilih;	
+  //  					}
+		// 	    });
+
+		// 	     //alert($('#popoverExampleTwo').data('popover'));
 			     
 	          	
 
-			});
+		// 	});
+
+
 			// $(function(){ 
 			// 	var yangDipilih = "";
 			// 	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
@@ -140,14 +314,80 @@
 			//     }); 
 			// });
 
+			$('#right').popover({
+			    html : true,
+			    title: 'When finished loading, will reposition correctly',
+			    content: "<button class='btn btn-primary' onclick='tetot()'>click me</button>"
+			});
 
 
+			setTimeout(function() {
+			    $('#right').attr('data-content', "<button class='btn btn-danger'>hellow</button>");
+			    var popover = $('#right').data('popover');
+			    popover.setContent();
+			    popover.$tip.addClass(popover.options.placement);
+			    // if popover is visible before content has loaded
+			    if ($("#right").next('div.popover:visible').length){
+			        popover.show();
+			    }
+			},6000);
 
+
+			$('#justapopover').popover({
+		  		html:true,
+		        placement : 'top'
+		    });
+			function changeButton() {
+			    $('#justapopover').attr('data-content', "<button class='btn btn-danger'>hellow</button>");
+			    var popover = $('#justapopover').data('popover');
+			    popover.setContent();
+			    popover.$tip.addClass(popover.options.placement);
+			    // if popover is visible before content has loaded
+			    if ($("#justapopover").next('div.popover:visible').length){
+			      //  $(this).popover('hide');
+			        popover.show();
+			    }
+			}
+			
 			$(document).ready(function()
 			{
 				
-				 
+				 setTripList(false);
+				 $("#myModal").modal('show');
 
+				 $('#saveInputBudget').click(function(){
+					var budget = $("input#inputBudget").val();
+					$('input#inputBudgetDinamic').val(budget);
+					 $("#myModal").modal('hide');
+
+					 jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budget,
+				        success: function(res) {
+				            if (res)
+				            {
+				            	var obj = jQuery.parseJSON(res);
+				         		var hasilPemilihan = "";
+				         		hasilPemilihan = "<table class='table'>";
+				            	for(var i = 0; i<obj.query.length; i++)
+				            	{
+				           		//	alert(obj.query[i].Nama);
+				         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
+				         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+
+				           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
+				            	}
+				            	hasilPemilihan = hasilPemilihan + "</table>";
+				            	$("#blogMain").html(hasilPemilihan);
+				            }
+                        }
+                    });
+				});
+
+
+				
+				// alert("yes it is");
+				  
 			// 	$("#somebutton1").click(function(){
 			//         $("#somebutton2").remove();
 			//     });
@@ -340,7 +580,7 @@
 
 	      <form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
+	          <input id="inputBudgetDinamic" type="text" class="form-control" placeholder="Your budget">
 	        </div>
 	        <button type="submit" class="btn btn-default">Submit</button>
 	      </form>
@@ -365,6 +605,23 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+	<div id="myModal" class="modal fade">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	                <h4 class="modal-title">How many budget do you have?</h4>
+	            </div>
+	            <div class="modal-body">
+	                <input id="inputBudget"type="text" class="form-control" placeholder="Text input">
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <button id="saveInputBudget"type="button" class="btn btn-primary">Save changes</button>
+	            </div>
+	        </div>
+	    </div>
+	</div>
 		<!--button id="somebutton" type="button" class="btn btn-danger haha">Action</button>
 		<button id="somebutton1" type="button" class="btn btn-danger haha">Action</button>
 		<button id="somebutton2" type="button" class="btn btn-danger haha">Test</button>
@@ -377,6 +634,7 @@
 			// 	echo "<button id=\"somebutton\" type=\"button\" class=\"btn btn-danger\">".$value."</button>";
 			// }
 		?>
+		<!--button class="btn btn-inverse" id="testpopover" data-placement="right" data-toggle="popover">John Doe</button-->
 		<div class=container>
 			<div class="row" id="row1">
 				
@@ -409,12 +667,17 @@
 		?>
 		
 		<div id="valuess"></div>
-		
+		<!--button class="btn btn-inverse" onclick="tetot()">try to click me</button>
+
+		<br><br>
+		<button id="right" class="btn btn-primary" data-placement="bottom" data-toggle="popover">Click me before 6 seconds</button>
+		<br><br-->
+		<div class="bs-example">
 		<div class="container-fluid">
 			<div class="row">
 				<div id="blogMain" class="col-md-6 canScrollMain" >
 				<?php
-					echo "<table class='table'>";
+					echo "<table class='table table-hover'>";
 					foreach ($query->result() as $row) {
 						# code...
 						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"fui(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button></td></tr>";
