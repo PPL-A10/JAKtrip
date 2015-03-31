@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
@@ -138,9 +138,9 @@
 		</div>
 	</footer>
 
-	<script src="js/jquery-1.11.0.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jaktrip.js"></script>
+	<script src="../assets/js/jquery-1.11.0.min.js"></script>
+	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/jaktrip.js"></script>
     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
