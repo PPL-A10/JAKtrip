@@ -1,6 +1,6 @@
 <?php
 
-class FeedbackManager extends CI_Model{
+class feedbackManager extends CI_Model{
     function __construct() {
         parent::__construct();
     }
