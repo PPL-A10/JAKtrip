@@ -9,6 +9,12 @@
 			return $query;                            
 		}
 		
+		function getAllDatabase()
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->get();
+			return $query->result(); 
+		}
 		function getDatabaseWithinBudget($budget)
 		{
 			$budgetInt = intval($budget);

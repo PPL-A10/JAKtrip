@@ -12,10 +12,11 @@
 		{
 			$this->load->model('tesModel');
 
-			$data['query']= $this->tesModel->getDatabase();
+			$data['query']= $this->tesModel->getAllDatabase();
 		//	$data['peta']= $this->load->view('peta', '', true);
 
-			$this->load->view('tesViews',$data);
+			echo json_encode($data);
+
 		}
 
 		public function chooseTouristAttr($budgetString)

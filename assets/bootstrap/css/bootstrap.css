@@ -17,7 +17,9 @@
 a.removeTrip{
   color:#ccd6dd;
 }
-
+a.toZoom:hover{
+  cursor:pointer;
+}
 a.removeTrip:hover{
     color: #F34242;
     cursor: pointer;  

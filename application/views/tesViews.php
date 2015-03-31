@@ -23,6 +23,9 @@
 			var arrayTripPriceChoosen =[];
 			var tripCost = 0;
 			var isEdit = false;
+			var AllTourAttr = [];
+			var AllLongitude = [];
+			var AllLattitude = [];
 			function fui(x,y){
 					//alert(x);
 					//alert(y);
@@ -65,6 +68,7 @@
 				            	}
 				            	hasilPemilihan = hasilPemilihan + "</table>";
 				            	$("#blogMain").html(hasilPemilihan);
+
 				            }
                         }
                     });
@@ -154,7 +158,7 @@
 				         				}
 				         				if(!sudahDipilih)
 				         				{
-				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
 				         				}
 				         				
 
@@ -177,7 +181,7 @@
 			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Your Trip Cost</th><th>Rp "+tripCost+"</th></tr></table>"
 
 
-			    	alert(yangDipilih);
+			    //	alert(yangDipilih);
 			    	$(".buttonAtasToggle").popover({
 			        html : true,
    					content: function(){
@@ -186,9 +190,8 @@
 			    	});
 			    	$('.buttonAtasToggle').attr('data-content', yangDipilih);
 			    	var popover = $('.buttonAtasToggle').data('popover');
-			    	popover.setContent();
-			    	popover.$tip.addClass(popover.options.placement);
-
+			    	$('[data-toggle="popover"]').popover('hide');
+			    	//alert("hoam");
 			}
 
 			    
@@ -349,6 +352,31 @@
 			    }
 			}
 			
+			function searchIndexListTourAttr(tourAttr)
+			{
+				
+				alert(AllTourAttr);
+				for(var i = 0; i< AllTourAttr.length-1; i++)
+				{
+
+					if(AllTourAttr[i]==tourAttr)
+					{
+						
+						return i;
+					}	
+				}
+				
+			}
+
+			function setMapLocationZoom(tourAttr)
+			{
+				var indexToZoom = searchIndexListTourAttr(tourAttr);
+				var longitudeToZoom = parseFloat(AllLongitude[indexToZoom]);
+				var lattitudeToZoom = parseFloat(AllLattitude[indexToZoom]);
+			//	alert(indexToZoom + "," + longitudeToZoom+","+lattitudeToZoom);
+				map.setCenter(new google.maps.LatLng(longitudeToZoom, lattitudeToZoom));
+			    map.setZoom(15);
+			}
 			$(document).ready(function()
 			{
 				
@@ -373,7 +401,7 @@
 				            	{
 				           		//	alert(obj.query[i].Nama);
 				         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
-				         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+				         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
 
 				           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
 				            	}
@@ -506,6 +534,7 @@
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
 			var map;
+			var markers = [];
 			function initialize() {
 			  var mapProp = {
 			    center:new google.maps.LatLng(-6.195456, 106.822229),
@@ -513,7 +542,48 @@
 			    mapTypeId:google.maps.MapTypeId.ROADMAP
 			  };
 			  map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			  jQuery.ajax({
+			        type: "POST",
+			        url: "http://localhost/Jaktrip/index.php/tesController/getAll",
+			        success: function(res) {
+			            if (res)
+			            {	
+			            	var obj = jQuery.parseJSON(res);
+			         		var hasilPemilihan = "";
+			         	//	hasilPemilihan = "<table class='table'>";
+			            	for(var i = 0; i<obj.query.length; i++)
+			            	{
+			           		//	alert(obj.query[i].Nama);
+			         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
+			         			//	hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"fui("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button></td></tr>";
+			         			var tempplace_name = obj.query[i].place_name;
+			         			var templongitude = obj.query[i].longitude;
+			         			var templattitude = obj.query[i].lattitude;
+			         			
+			         			AllTourAttr.push(tempplace_name);
+			         			AllLongitude.push(templongitude);
+			         			AllLattitude.push(templattitude);
+			         			var location = new google.maps.LatLng(parseFloat(templongitude),parseFloat(templattitude));
+			         			// if(i == obj.query.length-1)
+			         			// {
+			         			// 	map.setCenter(new google.maps.LatLng(parseFloat(obj.query[i].longitude), parseFloat(obj.query[i].lattitude)));
+			         			// 	map.setZoom(13);
+			         			// }
+			           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
+			           			var marker = new google.maps.Marker({
+								    position: location
+								  });
+			           			marker.setMap(map);
+
+			            	}
+			            	//hasilPemilihan = hasilPemilihan + "</table>";
+			            //	$("#blogMain").html(hasilPemilihan);
+			            }
+	                }
+	            });
+				
 			}
+			
 			google.maps.event.addDomListener(window, 'load', initialize);
 
 			google.maps.event.addListener(map, 'click', function(event) {
@@ -522,7 +592,7 @@
 
 			function placeMarker(location) {
 			    var marker = new google.maps.Marker({
-			        position: location, 
+			        position: new google.maps.LatLng(-6.195456, 106.822229), 
 			        map: map
 			    });
 			}
@@ -680,7 +750,7 @@
 					echo "<table class='table table-hover'>";
 					foreach ($query->result() as $row) {
 						# code...
-						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"fui(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button></td></tr>";
+						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"fui(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
 					}
 					echo "</table>";
 				?>
