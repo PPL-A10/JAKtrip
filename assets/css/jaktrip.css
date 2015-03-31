@@ -241,7 +241,7 @@ a {
 }
 
 .collection{
-	background: url('img/image.png');
+	background: url('../assets/img/image.png');
 	float: left;
 }
 

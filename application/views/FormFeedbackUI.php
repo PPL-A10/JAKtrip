@@ -9,28 +9,28 @@
 
 	<style>
 		header{
-			background-image: url('img/header.png');
+			background-image: url('../assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('fonts/Tuffy.otf');
+			src: url('../assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('fonts/Tuffy_Bold.otf');
+			src: url('../assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('fonts/lato-regular.ttf');
+			src: url('../assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('fonts/lato-black.ttf');
+			src: url('../assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -45,7 +45,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -82,7 +82,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Name</label>
 						<?php echo form_error('name'); ?>
-  						<input class="form-control" type="text" required>
+  						<input class="form-control" type="text" name="name" required>
 				      </div>
 				    </div>
 					<br>
@@ -90,7 +90,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Email</label>
 						<?php echo form_error('email'); ?>
-  						<input class="form-control" type="email" required>
+  						<input class="form-control" type="email" name="email" required>
 				      </div>
 				    </div>
 				    <br>
@@ -98,7 +98,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Subject</label>
 						 <?php echo form_error('dname'); ?>
-  						<input class="form-control" type="text">
+  						<input class="form-control" type="text" name="subject">
 				      </div>
 				    </div>
 				    <br>
@@ -106,7 +106,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Message</label>
 						<?php echo form_error('message'); ?>
-  						<textarea class="form-control" rows="3" id="textArea"></textarea>
+  						<textarea class="form-control" rows="3" id="textArea" name="message"></textarea>
 				      </div>
 				    </div>
 				    <br>
@@ -121,7 +121,7 @@
 	<footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
