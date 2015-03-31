@@ -66,6 +66,16 @@
 				</div>
 				
 			</header>
+
+			<?php if($this->form_validation->run() == TRUE){
+				echo '<div class="col-lg-3"></div>';
+				echo '<div class="alert alert-dismissible alert-success col-lg-6" style="text-align: center; margin: 15px;">';
+				echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+				echo '<strong>Thank you!</strong> You successfully sent your message. </div>';
+				echo '<div class="col-lg-3"></div>';
+			}
+						
+			?>
 			
 			<ul class="subtitle nav navbar-nav">
 				<li><p>Send Us a Message</p></li>

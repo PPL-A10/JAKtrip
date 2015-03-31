@@ -4947,7 +4947,7 @@ a.thumbnail.active {
   color: inherit;
 }
 .alert-success {
-  background-color: #f8f5f0;
+  background-color: #93c54b;
   border-color: transparent;
   color: #ffffff;
 }
@@ -5053,7 +5053,7 @@ a.thumbnail.active {
   animation: progress-bar-stripes 2s linear infinite;
 }
 .progress-bar-success {
-  background-color: #f8f5f0;
+  background-color: #93c54b;
 }
 .progress-striped .progress-bar-success {
   background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
@@ -5204,26 +5204,26 @@ a.list-group-item:focus {
   color: #3e3f3a;
 }
 .list-group-item-success {
-  color: #f8f5f0;
+  color: #93c54b;
   background-color: #dff0d8;
 }
 a.list-group-item-success {
-  color: #f8f5f0;
+  color: #93c54b;
 }
 a.list-group-item-success .list-group-item-heading {
   color: inherit;
 }
 a.list-group-item-success:hover,
 a.list-group-item-success:focus {
-  color: #f8f5f0;
+  color: #93c54b;
   background-color: #d0e9c6;
 }
 a.list-group-item-success.active,
 a.list-group-item-success.active:hover,
 a.list-group-item-success.active:focus {
   color: #fff;
-  background-color: #f8f5f0;
-  border-color: #f8f5f0;
+  background-color: #93c54b;
+  border-color: #93c54b;
 }
 .list-group-item-info {
   color: #29abe0;
