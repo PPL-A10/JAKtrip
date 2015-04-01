@@ -1,5 +1,5 @@
 <?php
-class TouristAttractionManager extends CI_Model{
+class TouristAttrManager extends CI_Model{
 
 function __construct(){
   		parent::__construct();
