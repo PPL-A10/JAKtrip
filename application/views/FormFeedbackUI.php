@@ -122,7 +122,7 @@
 				      </div>
 				    </div>
 				    <br>
-				    <button class="btn btn-warning" type="submit">SUBMIT</button>
+				    <button class="btn btn-warning" type="submit">SEND</button>
 				    <?php echo form_close(); ?>
 				
 			</div>
