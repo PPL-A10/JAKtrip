@@ -1,6 +1,5 @@
 <?php
 
-class FeedbackCtr extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -15,19 +14,11 @@ class FeedbackCtr extends CI_Controller {
                 
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		
-		//kayanya ini set_rules('id dari view', 'nama coloumn di db', 'keterangan tambahan')
+		//Validating Rating Field
+		$this->form_validation->set_rules('rate', 'rate', 'required');
 		
-		//Validating Name Field
-		$this->form_validation->set_rules('name', 'name', 'required');
-		
-		//Validating Email Field
-		$this->form_validation->set_rules('email', 'email', 'required|valid_email');
-		
-		//Validating Subject Field
-		$this->form_validation->set_rules('subject', 'subject');
-		
-		//Validating Address Field
-		$this->form_validation->set_rules('message', 'message', 'required');
+		//Validating Review Field
+		$this->form_validation->set_rules('review', 'review');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -37,18 +28,22 @@ class FeedbackCtr extends CI_Controller {
 		{
 			//Setting values for tabel columns
 			$data = array(
-                        'name' => $this->input->post('name'),
-                        'email' => $this->input->post('email'),
-                        'subject' => $this->input->post('subject'),
-                        'message' => $this->input->post('message')
-                    );
-			
-
+						'username' => 'memberNo1',
+						'place_name' => 'Kebun Binatang Ragunan',
+                        'rate' => $this->input->post('rate'),
+                        'title' => $this->input->post('title'),
+                        'review' => $this->input->post('review')
+//						'is_nudity' => $this->input->false,
+//						'is_spam' => $this->input->false,
+//						'is_FalseStatement' => $this->input->false,
+//						'is_unrelatedStatement' => $this->input->false,
+//						'is_profanity' => $this->input->false;
+            );
 					//Transfering data to Model
-                   $this->feedbackManager->insert_feedback($data);
+                    $this->ratingManager->insert_rating($data);
                     //Loading View
 					$this->load->view('formRatingUI');
-          }
+                   }
 	}
 }
 

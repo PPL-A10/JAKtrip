@@ -169,7 +169,8 @@ a {
   font-family: TuffyBold;
   font-size: 18px;
   color: #fff;
-  margin-top: 20px;
+  margin-top: 15px;
+  padding-top: 3px;
   margin-bottom: -10px;
 }
 
@@ -279,9 +280,24 @@ a {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: #fff;  
+  margin-top: 70px;
+  min-height: 600px;
 }
 
 .redbar{
   background-color: #db2719;
   height: 50px;
+  padding-top: 10px;
+}
+
+.formrating{
+  margin-top: 20px;
+  margin-left: 10px;
+  padding-bottom: 30px;
+}
+
+.rating .btn{
+  font-size: 14px;
+  float: right;
+  margin: 30px 170px;
 }

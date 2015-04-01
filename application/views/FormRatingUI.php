@@ -58,16 +58,44 @@
 	  </div>
 	</nav>
 
-	<div class="container-fluid">
+	
 		<div class="col-lg-6"></div>
 
 		<div class="col-lg-6 rating">
 			<div class="row">
-				<div class="col-lg-12 redbar"></div>
+				<div class="col-lg-12 redbar">
+					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
+				</div>
+
+				<form class="col-lg-12">
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Rating</label>
+  						<input class="form-control" type="text" id="ratingstar" name="ratingstar" required>
+				      </div>
+				    </div>
+					<br>
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Title</label>
+  						<input class="form-control" type="text" id="titlerev" name="titlerev">
+				      </div>
+				    </div>
+					<br>
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Review</label>
+  						<textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
+				      </div>
+				    </div>
+					<br>
+					<button class="btn btn-warning" type="submit">SUBMIT</button>
+				</form>
 			</div>
 
 		</div>
-	</div>
+
 	
 	<footer>
 		<div class="container-fluid">
