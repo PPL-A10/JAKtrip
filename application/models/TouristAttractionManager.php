@@ -6,7 +6,7 @@ function __construct(){
   		$this->load->helper('url');				
  	}
  	
-	function SaveForm($form_data)
+	function SaveForm($form_data, $form_photo, $form_cat)
 	{
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
@@ -53,17 +53,21 @@ function __construct(){
 		$this->db->delete('tourist_attraction', array('place_name' => $place_name));
 	}
 
-	function edit($place_name, $data){
+	function edit($place_name, $form_data, $form_photo, $form_cat){
 		$this->load->database();
 		
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
-		$this->db->where($place_name,$this->input->post($place_name));
-		$this->db->update('tourist_attraction',$data);  
+		//$this->db->where($place_name,$this->input->post($place_name));
+		$this->db->where('place_name',$place_name);
+		$this->db->update('tourist_attraction',$form_data);
+		$this->db->update('photo',$form_photo);	
+		$this->db->update('tour_category',$form_cat);		
 		//$quer = "update komentar set approve = 1 where place_name = $place_name;";
 		//$this->db->query($quer);
 		
-		if ($this->db->affected_rows() == '1')
+
+		if ($this->db->affected_rows() == '0')
 		{
 			return TRUE;
 		}
@@ -76,10 +80,7 @@ function __construct(){
 		//$data['base'] = $this->config->item('base_url');
 		//$data['css'] = $this->config->item('css');
   		//$data['menu'] 		= $menu->show_menu();
-  		//$data['webtitle']	= 'Halo Tangsel!';
-  		//$data['websubtitle']= 'Tangsel - Depok. Situs Paguyuban Tangsel di Depok';
-  		//$data['webfooter']	= 'Copyright © Fakhirah Dianah Ghaisani 120677520 PPW-A';
-		
+
 		return $data;					  		
  	}
 	

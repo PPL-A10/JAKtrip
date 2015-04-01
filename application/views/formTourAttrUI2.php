@@ -15,7 +15,7 @@
 				<?php
 				
 				$attributes = array('class' => '', 'id' => '');
-				echo form_open('tourAttrCtr/myform', $attributes); 
+				echo form_open('manageTourAttrCtr/myform', $attributes); 
 				$place_name = $place_name['value'];
 				$description = $description['value'];
 				$place_info = $place_info['value'];
