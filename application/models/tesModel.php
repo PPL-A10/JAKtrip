@@ -22,5 +22,20 @@
 			$query = $this->db->get_where('tourist_attraction', array('weekday_price <=' => $budgetInt));		
 			return $query->result();
 		}
+		function validasiLogin($data)
+		{
+			$this->load->database();
+			$condition = "(username = '".$data['nameORemail']."' OR email = '".$data['nameORemail']."') AND password= '".$data['password']."'";
+			$query = $this->db->select("*")->from('member')->where($condition)->get();
+
+			if($query->num_rows() == 1)
+			{
+				return $query->result();
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 ?>

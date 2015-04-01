@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -22,7 +23,7 @@
 			var tripCost = 0;
 			var AllTourAttr = [];
 			var gmarkers = [];
-			
+			var indexMarkerChoosen = -1;
 			function addTrip(x,y){
 					
 					var budget = parseInt(x);
@@ -182,14 +183,36 @@
 			{
 				var indexToZoom = searchIndexListTourAttr(tourAttr);
 				map.setCenter(gmarkers[indexToZoom].position);
+				if(indexMarkerChoosen != -1)
+				{
+					gmarkers[indexMarkerChoosen].setAnimation(null);
+				}
+				gmarkers[indexToZoom].setAnimation(google.maps.Animation.BOUNCE);
+				indexMarkerChoosen = indexToZoom;
 			    map.setZoom(15);
 			}
+
+			function resetMaps()
+			{
+				var myCenter = new google.maps.LatLng(-6.195456, 106.822229);
+				map.setCenter(myCenter);
+			//	alert(indexMarkerChoosen);
+				if(indexMarkerChoosen != -1)
+				{
+					gmarkers[indexMarkerChoosen].setAnimation(null);
+				}
+				indexMarkerChoosen = -1;
+
+				map.setZoom(11);
+			}
+
 			$(document).ready(function()
 			{
 				
 				 showTheItinerary();
 				 $("#myModal").modal('show');
 
+			//	 resetMaps();
 				 $('#saveInputBudget').click(function(){
 					var budget = $("input#inputBudget").val();
 					$('input#inputBudgetDinamic').val(budget);
@@ -285,55 +308,7 @@
 	</head>
 	<body>
 	
-	<nav class="navbar navbar-inverse">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      
-	      <a class="navbar-brand" href="#">JAKtrip</a>
-	    </div>
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	      </ul>
-
-	      <form class="navbar-form navbar-left" role="search">
-	        <div class="form-group">
-	          <input id="inputBudgetDinamic" type="text" class="form-control" placeholder="Your budget">
-	        </div>
-	      </form>
-	      <ul class="nav navbar-nav navbar-right">
-	       	<li id="popoverEdit1">
-			        <a  type="button" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"		
-			        data-toggle="popover">Trip</a>
-	        </li>
-	  		<li>
-	  				<a  type="button" class="btn">Login</a>
-	  		</li>>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
-	
-		<div class="container-fluid">
-			<div class="row">
-				<div id="blogMain" class="col-md-6 canScrollMain" >
-				<?php
-					echo "<table class='table table-hover'>";
-					foreach ($query->result() as $row) {
-						# code...
-						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
-					}
-					echo "</table>";
-				?>
-				</div>
-				<div class="col-md-6" id="googleMap" style="height:550px;">
-	 		 		
-	 		 	</div>
-			</div>
-		</div>
-		<div id="myModal" class="modal fade"  data-backdrop="static">
+		<div id="myModal" class="modal fade" role="dialog"  aria-labelledby="basicModal" aria-hidden="true" data-backdrop="static">
 		    <div class="modal-dialog">
 		        <div class="modal-content">
 		        		<div class="modal-header">
@@ -400,7 +375,76 @@
 			            </div>
 		        </div>
 		    </div>
-		</div>	
+		</div>
+		<div id="loginFormModal" class="modal fade" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+			                <div class="alert alert-success">
+						        <strong>Success to remove from itinerary</strong>
+						    </div>
+			            </div>
+			            <div class="modal-body">
+			                <p id="showSuccessRemove"></p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" id="confirmSuccessRemove" data-dismiss="modal" class="btn btn-success">ok</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      
+	      <a class="navbar-brand" href="#">JAKtrip</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	      </ul>
+
+	      <form class="navbar-form navbar-left" role="search">
+	        <div class="form-group">
+	          <input id="inputBudgetDinamic" type="text" class="form-control" placeholder="Your budget">
+	        </div>
+	      </form>
+	      <ul class="nav navbar-nav navbar-right">
+	      	<li>
+	      		<a type="button" class="btn" onclick="return resetMaps()" >Reset Map Zoom</a>
+	      	</li>
+	       	<li id="popoverEdit1">
+			        <a  type="button" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"		
+			        data-toggle="popover">Trip</a>
+	        </li>
+	  		<li>
+	  				<a  type="button" class="btn">Login</a>
+	  		</li>>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+	
+		<div class="container-fluid">
+			<div class="row">
+				<div id="blogMain" class="col-md-6 canScrollMain" >
+				<?php
+					echo "<table class='table table-hover'>";
+					foreach ($query->result() as $row) {
+						# code...
+						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+					}
+					echo "</table>";
+				?>
+				</div>
+				<div class="col-md-6" id="googleMap" style="height:550px;">
+	 		 		
+	 		 	</div>
+			</div>
+		</div>
+				
 	</body>
 
 </html>

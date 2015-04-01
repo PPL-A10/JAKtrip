@@ -1,4 +1,5 @@
 <?php 
+
 	class tesController extends CI_Controller
 	{
 		public function index()
@@ -65,6 +66,26 @@
 			$this->load->view('welcome_message');
 		}
 
+
+		public function checkLogin()
+		{
+			$this->load->model('tesModel');
+
+			$data = array(
+				'nameORemail' => $this->input->post('username'),
+				'password' => $this->input->post('password')
+			);
+			
+			$hasil['query'] = $this->tesModel->validasiLogin($data);
+			echo json_encode($hasil);
+		}
+
+		public function login()
+		{
+			$this->load->model('tesModel');
+			$this->load->view('loginUI');
+
+		}
 	}
 
 	
