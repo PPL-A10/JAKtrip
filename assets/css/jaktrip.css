@@ -165,6 +165,13 @@ a {
   color: #fff;
 }
 
+.tuffyh2a{
+  font-family: TuffyBold;
+  font-size: 28px;
+  color: #111;
+  margin: 15px 0px;
+}
+
 .tuffyh3{
   font-family: TuffyBold;
   font-size: 18px;
@@ -271,9 +278,6 @@ a {
   overflow-x: hidden; 
 }
 
-.listContainer{
-  margin: 15px;
-}
 
 .rating{
   overflow-y: scroll;
@@ -343,4 +347,69 @@ a {
 .result{
   margin-top: 20px; 
   margin-left: 30px;
+}
+
+
+
+.login{
+  font-size: 14px;
+  text-align: center;
+  width: 310px;
+}
+
+.iconsocial{
+  font-size: 36px;
+  text-align: center;
+}
+
+.openModal {
+  position: fixed;
+  font-family: Arial, Helvetica, sans-serif;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.openModal:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.openModal > div {
+  width: 350px;
+  height: 460px;
+  position: relative;
+  margin: 7% auto;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 14px;
+}
+
+.close {
+  color: #FFFFFF;
+  line-height: 25px;
+  position: absolute;
+  right: -12px;
+  text-align: center;
+  top: -10px;
+  text-decoration: none;
+}
+
+.close:hover { color: #db2719; }
+
+#openLogin a{
+  color: #db2719;
+}
+
+#openLogin a:hover{
+  color: #a51811;
 }
