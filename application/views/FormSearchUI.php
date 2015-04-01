@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet"/>
@@ -81,11 +82,11 @@
 
 						<span class="input-group col-lg-3">
 						    <span class="fieldsml input-group-addon">Rp</span>
-						    <input class="fieldsml form-control" type="text" placeholder="Budget">
+						    <input class="fieldsml form-control" type="text" style="width: 93%;" placeholder="Budget">
 					    </span>
 
 					    <span class="input-group col-lg-3">
-					 		<input class="fieldsml small datepicker" type="text" placeholder="Date">
+					 		<input class="fieldsml small datepicker" type="text" placeholder="Date" style="margin-left: 2px;">
 					    </span>
 				    </div>
 
@@ -93,7 +94,7 @@
 						<label class="col-lg-2 control-label">Filter by </label>
 						<span class="fieldsml custom-dropdown ">
 						    <select class="fieldsml form-control" title="All Categories">    
-						        <option value="" selected disabled>Nearest bus stop?</option>
+						        <option value="" selected disabled>All Categories</option>
 						        <option value="">Sarinah</option>  
 						        <option value="">Gelora Bung Karno</option>
 						        <option value="">Atrium</option>
@@ -102,8 +103,8 @@
 						</span>
 
 						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" title="All Location">    
-						        <option value="" selected disabled>Nearest bus stop?</option>
+						    <select class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
+						        <option value="" selected disabled>All Location</option>
 						        <option value="">Sarinah</option>  
 						        <option value="">Gelora Bung Karno</option>
 						        <option value="">Atrium</option>
@@ -112,16 +113,16 @@
 						</span>
 
 					    <span class="input-group col-lg-3">
-						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword...">
+						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword..." style="width:162%;">
 						    <span class="input-group-btn">
-						      <button class="fieldsml btn btn-default" type="button"><span class="fa fa-search"></span></button>
+						      <button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 						    </span>
 					    </span>
 				    </div>
 
-				    <div class="form-inline">
+				    <div class="form-inline" style="margin-top: 10px;">
 						<label class="col-lg-2 control-label">Price range </label>
-						<div style="position: relative; padding-right: 30px; padding-left: 120px;">
+						<div style="position: relative; padding-right: 27px; padding-left: 122px;">
 							<input type="text" class="col-lg-9 range" name="range" value="" />
 							<div class="col-lg-3"></div>
 						</div>
@@ -131,22 +132,23 @@
 
 			<div class="searchres">
 				<div class="row">
-					<div class="col-lg-6">Show all places in Jakarta</div>
-					<div class="col-lg-6">
-						<form class="form-inline">
-							<label class="control-label">Price range </label>
-							<span class="fieldsml custom-dropdown ">
-							    <select class="fieldsml form-control" title="Popularity">    
-							        <option value="" selected>Popularity</option>  
-							        <option value="">Highest Rating</option>
-							        <option value="">Name: A-Z</option>
-							        <option value="">Name: Z-A</option>
-							        <option value="">Price: Low to High</option>
-							        <option value="">Price: High to Low</option>
-							    </select>
-							</span>
-						</form>
+					<div class="col-lg-5 result">Show all places in Jakarta</div>
+					<div class="col-lg-2"></div>
+				
+					<div class="col-lg-5 form-inline" style="margin-right: -150px;">
+						<label class="control-label">Sort by </label>
+						<span class="fieldsml custom-dropdown bordered">
+						    <select class="fieldsml form-control" title="Popularity">    
+						        <option value="" selected>Popularity</option>  
+						        <option value="">Highest Rating</option>
+						        <option value="">Name: A-Z</option>
+						        <option value="">Name: Z-A</option>
+						        <option value="">Price: Low to High</option>
+						        <option value="">Price: High to Low</option>
+						    </select>
+						</span>
 					</div>
+					
 
 
 				</div>
@@ -155,7 +157,7 @@
 
 	</div>
 
-	<div class="col-lg-6">
+	<div class="col-lg-6" id="mapcanvas">
 	</div>
 	
 	<footer>
@@ -183,6 +185,7 @@
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/js/jaktrip.js"></script>
 	<script src="../assets/js/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/gmaps.js"></script>
     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
@@ -209,6 +212,19 @@
 	        });
 
 	    });
+    </script>
+
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('mapcanvas');
+        var mapOptions = {
+          center: new google.maps.LatLng(-6.190035, 106.838075),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
     </script>
   
 </body>

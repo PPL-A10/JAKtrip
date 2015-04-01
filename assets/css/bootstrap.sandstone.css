@@ -2926,6 +2926,7 @@ select[multiple].form-group-lg .form-control {
   .form-inline .control-label {
     margin-bottom: 0;
     vertical-align: middle;
+    margin-top: 5px;
   }
   .form-inline .radio,
   .form-inline .checkbox {
