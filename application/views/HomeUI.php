@@ -54,7 +54,7 @@
 	        <li><a href="#openLogin">Log In</a></li>
 		        <div id="openLogin" class="openModal">
 		        	<div>
-						<a href="#close" title="Close" class="close"><span class="fa fa-times-circle"></span></a>
+						<a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a>
 						<center><div class="tuffyh2a">Log In to JAKtrip</div></center><br>
 
 						<form role="form" class="form-group">

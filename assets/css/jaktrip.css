@@ -219,6 +219,13 @@ a {
   padding-bottom: 15px;
 }
 
+.submenu a:active{
+  color: #a51811 !important;
+  border-bottom: solid 5px;
+  border-color: #a51811;
+  padding-bottom: 15px;
+}
+
 .subtitle{  
   margin-left: 80px;
   margin-right: 80px;
@@ -364,7 +371,6 @@ a {
 
 .openModal {
   position: fixed;
-  font-family: Arial, Helvetica, sans-serif;
   top: 0;
   right: 0;
   bottom: 0;
@@ -395,16 +401,21 @@ a {
 }
 
 .close {
-  color: #FFFFFF;
+  color: #9c9c9c !important;
+  opacity: 1;
   line-height: 25px;
   position: absolute;
-  right: -12px;
+  right: 5px;
   text-align: center;
-  top: -10px;
+  top: 0px;
   text-decoration: none;
+  font-size: 18px;
 }
 
-.close:hover { color: #db2719; }
+.close:hover { 
+  color: #db2719 !important; 
+  opacity: 1;
+}
 
 #openLogin a{
   color: #db2719;
