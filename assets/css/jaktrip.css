@@ -200,13 +200,7 @@ a {
   margin-left: 4em;
 }
 
-.submenu{
-  font-family: TuffyBold;
-  font-size: 18px;
-  color: #1c1c1c;
-  border-bottom: solid 1px #c4c4c4 !important;
-  width: 100%;
-}
+
 
 .submenu a{
   color: #1c1c1c;
@@ -224,6 +218,12 @@ a {
   border-bottom: solid 5px;
   border-color: #a51811;
   padding-bottom: 15px;
+}
+
+.subsubmenu * {
+  border-bottom: none !important;
+  font-family: Lato !important;
+  font-size: 14px !important;
 }
 
 .subtitle{  

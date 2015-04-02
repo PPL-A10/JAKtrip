@@ -6,6 +6,8 @@
 	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
@@ -60,17 +62,31 @@
 
 	<div class="container-fluid">
 		<div class="row menuhover">			
-			<ul class="submenu nav navbar-nav" style="padding-top: 70px;">
+			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 70px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a class="submenua" href="#">Posts</a>
+				<li><a class="submenupost" href="#">Posts</a>
+					<ul class="subsubmenu">
+						<li><a class="smp" href="#">All Posts</a></li>
+						<li><a class="smp" href="TourAttrCtr">Add New Post</a></li>
+						<li><a class="smp" href="#">Categories</a></li>
+					</ul>
 				</li>
 				<li><a class="submenua" href="#">Members</a></li>
-		        <li><a class="submenua" href="#">Suggestions</a>
-				</li>
+		        <li><a class="submenusugg" href="#">Suggestions</a>
+		        	<ul class="subsubmenu">
+						<li><a class="sms" href="#">Tourist Attractions</a></li>
+						<li><a class="sms" href="#">Photos</a></li>
+					</ul>
+		        </li>
 		        <li><a class="submenua" href="#">Feedback</a></li>
 		        <li><a class="submenua" href="#">Spam</a></li>
-		        <li><a class="submenua" href="#">Statistics</a>
-				</li>
+		        <li><a class="submenustat" href="#">Statistics</a>
+		        	<ul class="subsubmenu">
+						<li><a class="smst" href="#">By Visitor</a></li>
+						<li><a class="smst" href="#">By Rating</a></li>
+						<li><a class="smst" href="#">By Budget</a></li>
+					</ul>
+		        </li>
 			</ul>
 
 			<div class="col-lg-12">
@@ -218,19 +234,13 @@
 	<script src="../assets/js/jquery-1.11.0.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/js/jaktrip.js"></script>
-    <script>
-    $(document).ready(function () {
-            
-            $('.submenua').click(function(e){
-			    $('.submenua').css("color", "#1c1c1c");
-			    $('.submenua').css("padding-bottom", "");
-			    $('.submenua').css("border-bottom", "");
-			    $(this).css("color", "#db2719");  
-			    $(this).css("padding-bottom", "15px");
-			    $(this).css("border-bottom", "solid 5px #db2719");
+    <script src="../assets/js/jquery.smartmenus.min.js"></script>
+	<script src="../assets/js/menuselector.js"></script>
+
+	<script>
+		  $(function() {
+			  $('#main-menu').smartmenus();
 			});
-        });
-    	
-    </script>
+	</script>
 </body>
 </html>
