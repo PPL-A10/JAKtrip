@@ -4,23 +4,7 @@
   </head>
   <title>JAKtrip</title>
   <body>
-   
-	<form id="your_form1" action="listTourAttrCtr/sortAtoZ" method="post">
-		<input type="submit" name="sortAtoZ" value="sort A to Z" />
-	</form>
-	
-	<form id="your_form2" action="listTourAttrCtr/sortZtoA" method="post">
-		<input type="submit" name="sortZtoA" value="sort Z to A" />
-	</form>
-	
-	<form id="your_form3" action="listTourAttrCtr/HighToLow" method="post">
-		<input type="submit" name="HighToLow" value="high to low" />
-	</form>
-	
-	<form id="your_form4" action="listTourAttrCtr/LowToHigh" method="post">
-		<input type="submit" name="LowToHigh" value="low to high" />
-	</form>
-	
+
     <h4>Display Records From Database Using Codeigniter</h4>
     <table>
 		<tr>
