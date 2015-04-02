@@ -65,7 +65,7 @@ class listTourAttrCtr extends CI_Controller {
 	
 	function LowToHigh()
     {
-		if(isset($_POST["HighToLow"])){
+		if(isset($_POST["LowToHigh"])){
 			$data   = array();
 			$this->load->model('touristAttractionManager');
 			$this->load->helper('url');

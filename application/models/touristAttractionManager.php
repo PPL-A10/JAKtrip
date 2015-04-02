@@ -20,12 +20,12 @@ class touristAttractionManager extends CI_Model{
     }
 	
 	function getAllTourAttrSortHighToLow() {
-        $query = $this->db->query('select * from tourist_attraction order by weekday_price ASC');
+        $query = $this->db->query('select * from tourist_attraction order by weekday_price DESC');
         return $result = $query->result();
     }
 	
 	function getAllTourAttrSortLowToHigh() {
-        $query = $this->db->query('select * from tourist_attraction order by weekday_price DESC');
+        $query = $this->db->query('select * from tourist_attraction order by weekday_price ASC');
         return $result = $query->result();
     }
 	
