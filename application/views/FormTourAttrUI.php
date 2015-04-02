@@ -66,7 +66,7 @@
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a class="submenupost" href="#">Posts</a>
 					<ul class="subsubmenu">
-						<li><a class="smp" href="#">All Posts</a></li>
+						<li><a class="smp" href="manageTourAttrCtr">All Posts</a></li>
 						<li><a class="smp" href="TourAttrCtr">Add New Post</a></li>
 						<li><a class="smp" href="#">Categories</a></li>
 					</ul>

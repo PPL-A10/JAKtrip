@@ -61,12 +61,12 @@
 	</nav>
 
 	<div class="container-fluid">
-		<div class="row">			
+		<div class="row menuhover">			
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 70px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a class="submenupost" href="#">Posts</a>
 					<ul class="subsubmenu">
-						<li><a class="smp" href="ManageTourAttrCtr">All Posts</a></li>
+						<li><a class="smp" href="manageTourAttrCtr">All Posts</a></li>
 						<li><a class="smp" href="TourAttrCtr">Add New Post</a></li>
 						<li><a class="smp" href="#">Categories</a></li>
 					</ul>
@@ -89,13 +89,56 @@
 		        </li>
 			</ul>
 
-			<div class="col-lg-12 even">
+
+			<div class="col-lg-8">
+				<div class="tuffyh2a admintitle">All Posts</div>
+				
+				<span id="openLogin" class="newpost"><a href=""><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href=""><span class="fa fa-eye"></span>&nbsp;&nbsp;View</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></span><br><br>
+				<table id="tab1" class="newpost table table-striped table-hover">
+				  <thead >
+				    <tr style="text-align: center;">
+				      <th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th>
+				      <th>Title</th>
+				      <th>Author</th>
+				      <th>Categories</th>
+				      <th>Last Modified</th>
+				      <th>Visitors</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr class="active">
+				      <td><input type="checkbox" value=""/></td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				    </tr>
+				    <tr>
+				      <td><input type="checkbox" value=""/></td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				      <td>Column content</td>
+				    </tr>
+				  </tbody>
+				</table><br>
+
+				<ul class="pager">
+				  <li><a href="#">Previous</a></li>
+				  <li><a href="#">Next</a></li>
+				</ul><br>
 			</div>
+
+
 			
 		</div>
 	</div>
-	
-	<footer>
+
+<footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
 					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
@@ -118,9 +161,22 @@
 	<script src="../assets/js/jquery-1.11.0.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/js/jaktrip.js"></script>
-	<script src="../assets/js/jquery.smartmenus.min.js"></script>
+    <script src="../assets/js/jquery.smartmenus.min.js"></script>
 	<script src="../assets/js/menuselector.js"></script>
+	<script>
+		$("#tab1 #checkAll").click(function () {
+	        if ($("#tab1 #checkAll").is(':checked')) {
+	            $("#tab1 input[type=checkbox]").each(function () {
+	                $(this).prop("checked", true);
+	            });
 
+	        } else {
+	            $("#tab1 input[type=checkbox]").each(function () {
+	                $(this).prop("checked", false);
+	            });
+	        }
+	    });
+	</script>
 	<script>
 		  $(function() {
 			  $('#main-menu').smartmenus();
