@@ -10,6 +10,7 @@ function __construct(){
 	{
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
+		$this->load->database();
 		$this->db->insert('tourist_attraction', $form_data);
 		
 

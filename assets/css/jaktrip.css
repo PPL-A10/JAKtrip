@@ -167,7 +167,7 @@ a {
 
 .tuffyh2a{
   font-family: TuffyBold;
-  font-size: 28px;
+  font-size: 24px;
   color: #111;
   margin: 15px 0px;
 }
@@ -423,4 +423,24 @@ a {
 
 #openLogin a:hover{
   color: #a51811;
+}
+
+.admintitle {
+  margin: 30px 150px;
+  border-bottom: solid 1px #c4c4c4 !important;
+  width: 70%; 
+  padding-left: 20px;
+}
+
+.newpost{
+  margin-left: 150px;
+}
+
+.newpost .btn{
+  font-size: 14px;
+  margin-bottom: 120px;
+  margin-top: 30px;
+  float: right;
+  margin-left: -60px;
+  margin-right: 80px;
 }
