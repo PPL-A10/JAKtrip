@@ -8,13 +8,13 @@
 			$this->load->view('reviewVi',$data);
 		}
 		
-		public function del($id)
+		public function del($name)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('reviewMod');
-			if((int)$id > 0){
-			$this->reviewMod->delete($id);
+			if((int)$name != ""){
+			$this->reviewMod->delete($name);
 			}
 			$data = $this->reviewMod->general();
 			$data['query'] = $this->reviewMod->index();

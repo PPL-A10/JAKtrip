@@ -9,9 +9,9 @@
 			return $query->result();
 		}
 		
-		function delete($id){
+		function delete($name){
 			$this ->load->database();
-			$this->db->delete('feedback', array('id' => $id));
+			$this->db->delete('feedback', array('name' => $name));
 		}
 	}
 ?>

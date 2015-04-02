@@ -9,7 +9,8 @@
 	{
 		echo "<tr>";
 		echo "<td>".$row->name."</td>" ;
-		echo "<td>".$row->message."</td>" ;echo "<button type="button">Click Me!</button>;";
+		echo "<td>".$row->message."</td>" ;
+		echo "<td>". anchor('reviewCont/del/' .$row->name, 'Delete') ."</td>";
 		echo "</tr>";
 	}
 	echo "</table>";
