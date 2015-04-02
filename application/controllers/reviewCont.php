@@ -13,11 +13,10 @@
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('reviewMod');
-			if((int)$name != ""){
+			if((string)$name != ""){
 			$this->reviewMod->delete($name);
 			}
-			$data = $this->reviewMod->general();
-			$data['query'] = $this->reviewMod->index();
+			$data['query'] = $this->reviewMod->showallreview();
 			$this->load->view('reviewVi',$data);    
 		}
 
