@@ -36,6 +36,9 @@
 			src: url('../assets/fonts/lato-black.ttf');
 		}
 	</style>
+	<title>
+	JAKtrip
+	</title>
 </head>
 
 
@@ -140,7 +143,8 @@
 						<span class="fieldsml custom-dropdown bordered">
 						<form method="post" action="<?php echo base_url('index.php/SearchCtr/sorting');?>">
 							<select class="fieldsml form-control" title="Popularity" name="sortBy" onchange="this.form.submit()">
-						        <option value="popular" name="popular" selected>Popularity</option>
+								<option value="" selected></option>
+						        <option value="popular" name="popular">Popularity</option>
 						        <option value="highestRate" name="highestRate">Highest Rating</option>
 						        <option value="sortAtoZ" name="sortAtoZ">Name: A-Z</option>
 						        <option value="sortZtoA" name="sortZtoA">Name: Z-A</option>

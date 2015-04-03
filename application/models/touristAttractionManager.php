@@ -4,8 +4,6 @@ class touristAttractionManager extends CI_Model{
 	
 	function getAllTourAttr() {
         $query = $this->db->query('select * from tourist_attraction');
-        //$this->db->from('tourist_attraction');
-        //$query = $this->db->get();
         return $result = $query->result();
     }
 	
