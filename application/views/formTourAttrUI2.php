@@ -68,11 +68,16 @@
 
 				<?php echo "Category ", form_dropdown('category_name',$cat_name, $category_name); ?>
 				
+				<!--
 				<p>
 						<label for="city">Location <span class="required">*</span></label>
-						<?php echo form_error('city'); ?>
-						<br /><input id="city" type="text" name="city"  value="<?php echo $city; ?>"  />
-				</p>
+						<?php //echo form_error('city'); ?>
+						<br /><input id="city" type="text" name="city"  value="<?php //echo $city; ?>"  />
+				</p> -->
+				
+				<?php $loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
+					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
+					echo "Location ", form_dropdown('city',$loc, $city); ?>
 				
 				<p>
 						<label for="pic">Photos <span class=""></span></label>
@@ -119,12 +124,16 @@
 						<?php echo form_error('transport_price'); ?>
 						<br /><input id="transport_price" type="text" name="transport_price"  value="<?php echo $transport_price; ?>"  />
 				</p>
-
+				<!--
 				<p>
 						<label for="author">Author <span class="required">*</span></label>
-						<?php echo form_error('author'); ?>
-						<br /><input id="author" type="text" name="author"  value="<?php echo $author; ?>"  />
-				</p>
+						<?php //echo form_error('author'); ?>
+						<br /><input id="author" type="text" name="author"  value="<?php //echo $author; ?>"  />
+				</p> -->
+				
+				<?php $auth = array('ahmadibrahim' => 'ahmadibrahim', 'fakhirahdg' => 'fakhirahdg', 'khusnanadia' => 'khusnanadia', 
+					'syifakha' => 'syifakha', 'mswildan' => 'mswildan'); 
+				echo "Author ", form_dropdown('author',$auth, $author); ?>
 				
 				<p>
 						<?php //echo form_submit( 'publish', 'Publish'); ?>

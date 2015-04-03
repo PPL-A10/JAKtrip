@@ -65,14 +65,13 @@ function __construct(){
 		//$this->db->query($myQueryString);
 		//$this->db->where($place_name,$this->input->post($place_name));
 		echo $place_name;
-		$where = "'place_name'=$place_name";
+		$where = $this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data, $where);
 		//$this->db->where('place_name',$place_name);
 		$this->db->update('photo',$form_photo, $where);	
 		//$this->db->where('place_name',$place_name);
 		$this->db->update('tour_category',$form_cat, $where);		
-		//$quer = "update komentar set approve = 1 where place_name = $place_name;";
-		//$this->db->query($quer);
+
 		
 
 		//sif ($this->db->affected_rows() == '0')
