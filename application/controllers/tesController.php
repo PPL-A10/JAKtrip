@@ -99,6 +99,11 @@
 			$this->load->view('loginUI');
 
 		}
+
+		public function listTourAttr()
+		{
+			$this->load->view('FormSearchUI');
+		}
 	}
 
 	
