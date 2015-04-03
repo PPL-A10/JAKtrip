@@ -447,6 +447,7 @@ a {
   margin-left: 150px;
 }
 
+
 .newpost .btn{
   font-size: 14px;
   margin-bottom: 120px;
@@ -525,4 +526,26 @@ a {
   margin-left: 40px;
   margin-bottom: 35px;
   margin-top: -50px;
+}
+
+.letters{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  margin-left: 150px;
+}
+
+.letters a{
+  color: #1c1c1c;
+}
+
+.letters a:hover{
+  color: #db2719;
+  text-decoration: none;
+}
+
+.searchmember ul li{
+  display: inline;
+  margin: 3px;
 }
