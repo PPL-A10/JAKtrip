@@ -215,6 +215,11 @@ a {
   color: #1c1c1c;
 }
 
+.submenu:after {
+        clear: both;
+      }
+
+
 .submenu a:hover{
   color: #db2719 !important;
   border-bottom: solid 5px;
@@ -312,7 +317,7 @@ a {
 .formrating{
   margin-top: 20px;
   margin-left: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
 }
 
 .rating .btn{
@@ -460,6 +465,28 @@ a {
   margin: 0px -15px;
 }
 
-.textdetail{
-  margin: 20px;
+.textdetail { 
+  margin: 35px;
+  margin-top: 370px;
+  height: 400px;
+}
+
+.tabcontent .active{
+  display: block;
+}
+
+.tabcontent.hide{
+  display: none;
+}
+
+.small{
+  width: 50%;
+  height: auto;
+  margin-top: -10px;
+}
+
+.icondetail{
+  font-size: 22px;
+  color: #b3b3b3;
+  margin: 20px 3px;
 }

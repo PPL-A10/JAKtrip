@@ -72,19 +72,59 @@
 				<div class="col-lg-12 headerdetail"><img src="../assets/img/hd.gif"/>
 				</div>
 
-				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px;">
+				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a class="submenua" href="#">Information</a></li>
-		        <li><a class="submenua" href="#">Photos</a></li>
-		        <li><a class="submenua" href="#">Reviews</a></li>
+				<li><a class="submenua" href="#info">Information</a></li>
+		        <li><a class="submenua" href="#photos">Photos</a></li>
+		        <li><a class="submenua" href="#reviews">Reviews</a></li>
+		        <li><div class="formrating form-group">
+					  <div class="col-lg-3">
+  						 <span class="starRating small">
+					        <input id="rating5" type="radio" name="rate" value="5">
+					        <label for="rating5">5</label>
+					        <input id="rating4" type="radio" name="rate" value="4">
+					        <label for="rating4">4</label>
+					        <input id="rating3" type="radio" name="rate" value="3" checked>
+					        <label for="rating3">3</label>
+					        <input id="rating2" type="radio" name="rate" value="2">
+					        <label for="rating2">2</label>
+					        <input id="rating1" type="radio" name="rate" value="1">
+					        <label for="rating1">1</label>
+					     </span>
+				      </div>
+				    </div></li>
+				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
+				   <li><span class="fa fa-twitter-square icondetail"></span></li>
+				   <li><span class="fa fa-facebook-square icondetail"></span></li>
+				   <li>&nbsp;&nbsp;</li>
+				   <li><span class="fa fa-check-circle icondetail"></span></li>
+				   <li>&nbsp;&nbsp;</li>
+				   <li><span class="fa fa-heart icondetail"></span></li>
 				</ul>
-
-				<div class="textdetail">
+				<section class="textdetail" id="info">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum<br><br>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
 					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
 					proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-				</div>
+				</section>
+				<section class="textdetail tabcontent hide" id="photos">
+					Gallery photos
+				</section>
+				<section class="textdetail tabcontent hide" id="reviews">
+					Reviews
+				</section>
 			</div>
 
 		</div>
@@ -129,5 +169,31 @@
         
         });
     </script>
+    <script>
+			$(document).ready(function() {
+				$('#mainmenu > li > a').click(function(event){
+					event.preventDefault();//stop browser to take action for clicked anchor
+					
+					//get displaying tab content jQuery selector
+					var active_tab_selector = $('#mainmenu > li.active > a').attr('href');					
+					
+					//find actived navigation and remove 'active' css
+					var actived_nav = $('#mainmenu > li.active');
+					actived_nav.removeClass('active');
+					
+					//add 'active' css into clicked navigation
+					$(this).parents('li').addClass('active');
+					
+					//hide displaying tab content
+					$(active_tab_selector).removeClass('active');
+					$(active_tab_selector).addClass('hide');
+					
+					//show target tab content
+					var target_tab_selector = $(this).attr('href');
+					$(target_tab_selector).removeClass('hide');
+					$(target_tab_selector).addClass('active');
+				});
+			});
+		</script>
 </body>
 </html>
