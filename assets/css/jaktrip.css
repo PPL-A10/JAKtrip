@@ -488,5 +488,28 @@ a {
 .icondetail{
   font-size: 22px;
   color: #b3b3b3;
-  margin: 20px 3px;
+  margin: 17px 3px;
 }
+
+.formlogin{
+  width: 400px;
+  text-align: center;
+  padding-top: 100px;
+  margin-bottom: 80px;
+}
+
+.formlogin a{
+  color: #db2719;
+}
+
+.formlogin a:hover{
+  color: #a51811;
+}
+
+.formlogin .btn{
+  width: 370px;
+}
+
+
+
+
