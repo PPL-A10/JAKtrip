@@ -70,13 +70,13 @@
 				<form class="form-horizontal">
 					<div class="form-inline">
 						<label class="col-lg-2 control-label">Going from </label>
-						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" title="Nearest bus stop?">    
+						<span class="fieldsml custom-dropdown" id="ddcontainer">
+						    <select class="fieldsml form-control" id="ddbus" title="Nearest bus stop?">    
 						        <option value="" selected disabled>Nearest bus stop?</option>
 						        <option value="">Sarinah</option>  
 						        <option value="">Gelora Bung Karno</option>
 						        <option value="">Atrium</option>
-						        <option value="">Bank Indonesia</option>
+						        <option value="">Bank Indonesia xsdokokask fdiwodk vsow9i</option>
 						    </select>
 						</span>
 

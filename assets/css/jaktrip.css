@@ -34,11 +34,19 @@ footer{
 }
 
 /* Custom dropdown */
-.custom-dropdown {
+.custom-dropdown{
   position: relative;
   display: inline-block;
   vertical-align: middle;
   margin: 10px; /* demo only */
+}
+
+span#ddcontainer{
+  width: 160px;
+}
+
+select#ddbus{
+  width: 160px;
 }
 
 .custom-dropdown select {
@@ -51,7 +59,7 @@ footer{
   margin: 0;
   border-radius: 5px;
   text-indent: 0.01px;
-  text-overflow: '';
+  width: auto;
   -webkit-appearance: button; /* hide default arrow in chrome OSX */
 }
 
@@ -60,6 +68,7 @@ footer{
   content: "";
   position: absolute;
   pointer-events: none;
+  width: auto;
 }
 
 .custom-dropdown::after { /*  Custom dropdown arrow */
@@ -443,4 +452,14 @@ a {
   float: right;
   margin-left: -60px;
   margin-right: 80px;
+}
+
+.headerdetail img{
+  height: 250px;
+  width: auto;
+  margin: 0px -15px;
+}
+
+.textdetail{
+  margin: 20px;
 }
