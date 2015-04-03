@@ -2,38 +2,38 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/ion.rangeSlider.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet"/>
+	<link href="../../assets/css/ion.rangeSlider.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('../../assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('../../assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('../../assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('../../assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('../../assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -163,7 +163,7 @@
 	<footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="../../assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
@@ -180,12 +180,12 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-1.11.0.min.js"></script>
-	<script src="../assets/js/ion.rangeSlider.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jaktrip.js"></script>
-	<script src="../assets/js/bootstrap-datepicker.min.js"></script>
-	<script src="../assets/js/gmaps.js"></script>
+	<script src="../../assets/js/jquery-1.11.0.min.js"></script>
+	<script src="../../assets/js/ion.rangeSlider.min.js"></script>
+	<script src="../../assets/js/bootstrap.min.js"></script>
+	<script src="../../assets/js/jaktrip.js"></script>
+	<script src="../../assets/js/bootstrap-datepicker.min.js"></script>
+	<script src="../../assets/js/gmaps.js"></script>
     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
