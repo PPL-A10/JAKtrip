@@ -1,3 +1,10 @@
+<?php
+	if(isset($_COOKIE["username"]))
+	{
+		echo "<p> selamat datang ".$_COOKIE["username"]."</p>";
+	}
+?>
+
 <html>
 <head>
 	<title>Login Form</title>
@@ -21,6 +28,8 @@
 	<input type="password" name="password">
 	<br><br>
 	<input type="submit" value="Submit">
-	</form> 
+	</form>
+	<br>
+	<a href="http://localhost/Jaktrip/index.php/tesController/logout">logout</a> 
 </body>
 </html>

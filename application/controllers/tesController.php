@@ -1,5 +1,6 @@
 <?php 
 
+	session_start();
 	class tesController extends CI_Controller
 	{
 		public function index()
@@ -77,7 +78,19 @@
 			);
 			
 			$hasil['query'] = $this->tesModel->validasiLogin($data);
-			echo json_encode($hasil);
+			//echo $hasil['query']['username'];	
+			//echo json_encode($hasil);
+			setcookie("username",$hasil['query']['username'],time()+3600);
+			header("Location:http://localhost/Jaktrip/index.php/tesController/login");
+		}
+		public function logout()
+		{
+			if(isset($_COOKIE["username"]))
+			{
+				setcookie("username",null,time()+3600);
+				$this->load->view('loginUI');
+				header("Location:http://localhost/Jaktrip/index.php/tesController/login");
+			}			
 		}
 
 		public function login()

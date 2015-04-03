@@ -30,7 +30,7 @@
 
 			if($query->num_rows() == 1)
 			{
-				return $query->result();
+				return $query->row_array();
 			}
 			else
 			{
