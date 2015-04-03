@@ -68,7 +68,7 @@
 
 			<div class="searchbox">
 				<form class="form-horizontal">
-					<div class="form-inline">
+					<form class="form-inline">
 						<label class="col-lg-2 control-label">Going from </label>
 						<span class="fieldsml custom-dropdown" id="ddcontainer">
 						    <select class="fieldsml form-control" id="ddbus" title="Nearest bus stop?">    
@@ -79,7 +79,7 @@
 						        <option value="">Bank Indonesia xsdokokask fdiwodk vsow9i</option>
 						    </select>
 						</span>
-
+					</form>
 						<span class="input-group col-lg-3">
 						    <span class="fieldsml input-group-addon">Rp</span>
 						    <input class="fieldsml form-control" type="text" style="width: 93%;" placeholder="Budget">
