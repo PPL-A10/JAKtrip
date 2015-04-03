@@ -53,7 +53,8 @@
 				
 				<?php echo "Category ", form_dropdown('category_name',$category_name, set_value('category_name')); ?>
 				
-				<?php $loc = array('Jakarta Barat', 'Jakarta Pusat', 'Jakarta Selatan', 'Jakarta Timur', 'Jakarta Utara'); 
+				<?php $loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
+					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
 				echo "Location ", form_dropdown('city',$loc, set_value('city')); ?>
 				
 				<p>
@@ -96,7 +97,8 @@
 				</p>
 				
 
-				<?php $author = array('ahmadibrahim', 'fakhirahdg', 'khusnanadia', 'syifakha', 'mswildan'); 
+				<?php $author = array('ahmadibrahim' => 'ahmadibrahim', 'fakhirahdg' => 'fakhirahdg', 'khusnanadia' => 'khusnanadia', 
+					'syifakha' => 'syifakha', 'mswildan' => 'mswildan'); 
 				echo "Author ", form_dropdown('author',$author, set_value('author')); ?>
 				
 				<p>
