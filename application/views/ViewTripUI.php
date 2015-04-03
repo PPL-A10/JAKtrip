@@ -95,17 +95,18 @@
 					</tr>
 				</table>
 			</div>
+
+			<div class="total">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total : Rp 25000<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Balance : Rp 20000
+			</div>
+			
+			<button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button>
 		</div>
 
 		
-		<div class="total">
-			&nbsp;&nbsp;&nbsp; Total : Rp 25000<br>
-			&nbsp;&nbsp;&nbsp; Balance : Rp 20000
-		</div>
 		
-		<div class="col-lg-4"></div>
-		<button class="btn btn-warning col-lg-4" type="submit" style="font-size: 14px; ">SAVE TO MY TRIPS</button>
-		<div class="col-lg-4"></div>
+		
 
 	<div class="col-lg-6"></div>
 </div>
