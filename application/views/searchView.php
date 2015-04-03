@@ -10,6 +10,7 @@
 	<link href="../assets/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/ion.rangeSlider.css" type="text/css" rel="stylesheet"/>
 
+	
 	<style>
 		header{
 			background-image: url('../assets/img/header.png');
@@ -70,19 +71,21 @@
 				<form class="form-horizontal">
 					<div class="form-inline">
 						<label class="col-lg-2 control-label">Going from </label>
-						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" title="Nearest bus stop?">    
+						<span class="fieldsml custom-dropdown " id="ddcontainer">
+						    <select class="fieldsml form-control" id="ddbus" title="Nearest bus stop?">    
 						        <option value="" selected disabled>Nearest bus stop?</option>
-						        <option value="">Sarinah</option>  
-						        <option value="">Gelora Bung Karno</option>
-						        <option value="">Atrium</option>
-						        <option value="">Bank Indonesia</option>
+								<?php
+									foreach($query3 as $row)
+									{
+										echo "<option value='".halte_name."'>".$row->halte_name."</option>";
+									}
+								?>
 						    </select>
 						</span>
 
 						<span class="input-group col-lg-3">
 						    <span class="fieldsml input-group-addon">Rp</span>
-						    <input class="fieldsml form-control" type="text" style="width: 93%;" placeholder="Budget">
+						    <input class="fieldsml form-control" type="text" style="width: 83%;" placeholder="Budget">
 					    </span>
 
 					    <span class="input-group col-lg-3">
@@ -93,27 +96,34 @@
 				    <div class="form-inline">
 						<label class="col-lg-2 control-label">Filter by </label>
 						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" title="All Categories">    
+						    <select class="fieldsml form-control" onchange="filterFunction()" title="All Categories" id="category_select">    
 						        <option value="" selected disabled>All Categories</option>
-						        <option value="">Sarinah</option>  
+								<?php
+									foreach($query1 as $row)
+									{
+										echo "<option value='".$row->category_name."'>".$row->category_name."</option>";
+									}
+								?><!--option value="">Sarinah</option>  
 						        <option value="">Gelora Bung Karno</option>
 						        <option value="">Atrium</option>
-						        <option value="">Bank Indonesia</option>
+						        <option value="">Bank Indonesia</option-->
 						    </select>
 						</span>
 
 						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
+						    <select class="fieldsml form-control" onchange="filterFunction()" title="All Location" id="location_select" style="margin-left: -10px;">    
 						        <option value="" selected disabled>All Location</option>
-						        <option value="">Sarinah</option>  
-						        <option value="">Gelora Bung Karno</option>
-						        <option value="">Atrium</option>
-						        <option value="">Bank Indonesia</option>
+						        <?php
+									foreach($query2 as $row)
+									{
+										echo "<option value='".$row->city."'>".$row->city."</option>";
+									}
+								?>
 						    </select>
 						</span>
 
 					    <span class="input-group col-lg-3">
-						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword..." style="width:162%;">
+						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword..." id="name_select" style="width:162%;">
 						    <span class="input-group-btn">
 						      <button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 						    </span>
@@ -132,16 +142,19 @@
 
 			<div class="searchres">
 				<div class="row">
-					<div class="col-lg-5 result">						
+					<div class="col-lg-5 result" id="output_field">		
+					
 					<?php
+							
 							echo "<table border='1'>";
 							foreach($query as $row)
 							{
 								echo "<tr>";
-								echo "<td>".$row->id_pic."</td>" ;
+							//	echo "<td>".$row->category_name."</td>" ;
 								echo "<td>".$row->place_name."</td>" ;
-								echo "<td>".$row->category_name."</td>" ;
+								echo "<td>".$row->description."</td>" ;
 								echo "</tr>";
+								
 							}
 							echo "</table>";
 	
@@ -239,6 +252,47 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
+  
+  <script>
+function myFunction() {
+    var x = document.getElementById("mySelect").value;
+    document.getElementById("output_field").innerHTML = "You selected: " + x;
+}
+</script>
+  
+	<script type="text/javascript" >
+	function filterFunction(){
+		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
+		
+		var x = document.getElementById("category_select").value;
+		var y = document.getElementById("location_select").value;
+		var z = document.getElementById("name_select").value;
+		
+		<!--
+window.location = "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x;
+		//-->
+		
+		/*jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x+"/"+y+"/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var resultQuery = "";
+								var obj = jQuery.parseJSON(res);
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery + "<p>"+obj.query[i].place_name+"</p><br>";
+								}
+								
+								$('#output_field').html(resultQuery);
+				            }
+							
+				            }
+                        }
+                    );*/
+	}
+	</script>
   
 </body>
 </html>

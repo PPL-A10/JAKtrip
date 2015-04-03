@@ -424,3 +424,8 @@ a {
 #openLogin a:hover{
   color: #a51811;
 }
+span#ddcontainer{
+width : 160px;}
+
+select#ddbus{
+width : 160px;}
