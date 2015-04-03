@@ -61,7 +61,7 @@
 							<input class="form-control form-group" type="email" placeholder="E-mail" required>
 							<input class="form-control form-group" type="password" placeholder="Password" required>
 							<span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
-							<span class="col-lg-6"><a href="#">Forgot password?</a></span><br><br>
+							<span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
 							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
 							<center>Or login with your account below<center><br>
 							<div class="iconsocial">
@@ -118,15 +118,39 @@
 			</header>
 			
 			<div class="col-lg-12 even">
-				<div class="collection txtimg">
-					<div class="tuffyh2">ECO CRUISE</div>
+				<div class="tuffyh1b">MOST POPULAR</div>	
+				<div class="col-lg-1"></div>
+				<div class="col-lg-10">
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="../assets/img/image.png"/></div>	
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="../assets/img/image.png"/></div>
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="../assets/img/image.png"/></div>
 				</div>
-				
-				<img class=".img-responsive img-rounded" src="../assets/img/image.png"/>
+				<div class="col-lg-1"></div>
 			</div>
 			
 			<div class="col-lg-12 odd">
-			
+				<div class="tuffyh1b">BROWSE CATEGORIES</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="col-lg-1"></div>
+						<div class="col-lg-10">
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>	
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="col-lg-1"></div>
+						<div class="col-lg-10">
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>	
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="../assets/img/image2.png"/></div>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

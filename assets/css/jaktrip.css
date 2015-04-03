@@ -12,7 +12,7 @@ body{
 
 .even{
   background-color: #ffffff;
-  height: 500px;
+  height: 550px;
   width: 100%;
 }
 
@@ -167,6 +167,14 @@ a {
   margin-bottom: -.2em;
 }
 
+.tuffyh1b{
+  font-family: TuffyBold;
+  font-size: 42px;
+  color: #1c1c1c;
+  margin: 20px 0px;
+  text-align: center;
+}
+
 
 .tuffyh2{
   font-family: TuffyBold;
@@ -269,18 +277,7 @@ a {
   margin: 30px 100px;
 }
 
-.collection{
-  background: url('img/image.png');
-  float: left;
-}
 
-.txtimg .tuffyh2{
-  position: absolute;
-  top: 30%;
-  left: 8%;
-  text-align: center;
-  font-size: 36px !important;
-}
 
 #mapcanvas{
   height: 780px;
@@ -510,6 +507,8 @@ a {
   width: 370px;
 }
 
-
+.homeimg img:hover{
+  margin-top: -10px;
+}
 
 
