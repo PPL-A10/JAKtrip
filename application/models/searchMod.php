@@ -79,11 +79,12 @@
             $this->db->from('tourist_attraction'); 
 			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
             $this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
 			if((string)$category_name != ""){
 				$this->db->where('category_name', $category_name);
 			} 			
 			$query = $this->db->get(); 
-            return $query->result_array(); 
+            return $query->result(); 
 		}
 	}
 ?>

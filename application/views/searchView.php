@@ -152,7 +152,7 @@
 								echo "<tr>";
 							//	echo "<td>".$row->category_name."</td>" ;
 								echo "<td>".$row->place_name."</td>" ;
-								echo "<td>".$row->description."</td>" ;
+								//echo "<td>".$row->description."</td>" ;
 								echo "</tr>";
 								
 							}
@@ -260,7 +260,7 @@ function myFunction() {
 }
 </script>
   
-	<script type="text/javascript" >
+	<script>
 	function filterFunction(){
 		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
@@ -269,28 +269,25 @@ function myFunction() {
 		var y = document.getElementById("location_select").value;
 		var z = document.getElementById("name_select").value;
 		
-		<!--
-window.location = "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x;
-		//-->
 		
-		/*jQuery.ajax({
+		jQuery.ajax({
 				        type: "POST",
-				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x+"/"+y+"/"+z,
+				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x,
 				        success: function(res) {
 				            if (res)
 				            {
-								var resultQuery = "";
 								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
 									resultQuery = resultQuery + "<p>"+obj.query[i].place_name+"</p><br>";
 								}
 								
-								$('#output_field').html(resultQuery);
+								$("#output_field").html(resultQuery);
 				            }
 							
 				            }
                         }
-                    );*/
+                    );
 	}
 	</script>
   
