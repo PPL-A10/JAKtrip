@@ -3,6 +3,9 @@
 class TourAttrCtr extends CI_Controller {
 	
 	function index(){
+		$this->load->helper('date');
+			echo "NOW";
+		echo unix_to_human(now());
 		$this->load->model('TouristAttractionManager');
 		//$this->load->model('guest_model');
 		//$data = $this->TouristAttractionManager->general();
@@ -79,6 +82,7 @@ function myform()
 		//$this->load->database();
 		$this->load->helper('form');
 		$this->load->helper('url');
+		$this->load->helper('date');
 		$this->load->model('TouristAttractionManager');
 		//$data = $this->TouristAttractionManager->general();
 		$this->form_validation->set_rules('place_name', 'place_name', 'required|trim|callback_check');			
@@ -99,6 +103,11 @@ function myform()
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
+
+		$place_info = set_value('place_info');
+		if($place_info == ''){
+			$place_info = NULL;
+		}
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
 			$this->load->view('formTourAttrUI');
@@ -106,6 +115,7 @@ function myform()
 		else // passed validation proceed to post success logic
 		{
 		 	// build array for the model
+			
 			
 			$form_data = array(
 					       	'place_name' => set_value('place_name'),
@@ -116,11 +126,13 @@ function myform()
 							'city' => set_value('city'),
 							'rate_avg' => 0,
 							'description' => set_value('description'),
-							'place_info' => set_value('place_info'),
+							'place_info' => $place_info,
 							'halte_code' => set_value('halte_code'),
 							'transport_info' => set_value('transport_info'),
 							'transport_price' => set_value('transport_price'),	
-							'author' => set_value('author')								
+							'author' => set_value('author'),
+							'hits' => 0,
+							'last_modified' => now()
 						);
 
 			$form_photo = array(
