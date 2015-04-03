@@ -28,15 +28,16 @@
 											
 						<?php echo form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => set_value('description') ) )?>
 				</p>
-				
+				<!--
 				<p>
 						<label for="place_info">Place Info <span class=""></span></label>
-						<?php echo form_error('place_info'); ?>
-						<br /><input id="place_info" type="text" name="place_info"  value="<?php echo set_value('place_info'); ?>"  />
+						<?php //echo form_error('place_info'); ?>
+						<br /><input id="place_info" type="text" name="place_info"  value="<?php //echo set_value('place_info'); ?>"  />
 				</p>
+				-->
 				
-				<?php //$place_info2 = array("", $place_info);
-				//echo form_dropdown('place_info',$place_info2); ?>
+				<?php //array_push($place_info, '');
+				echo "Place Info ", form_dropdown('place_info',$place_info, set_value('place_info')); ?>
 				
 				<p>
 						<label for="weekday_price">Weekday Price <span class="required">*</span></label>

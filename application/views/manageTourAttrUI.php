@@ -30,8 +30,8 @@
 							echo "<td>". $row->place_name ."</td>";
 							echo "<td>". $row->author ."</td>";
 							echo "<td>". $row->category_name ."</td>";
-							echo "<td> ? </td>";
-							echo "<td> ? </td>";
+							echo "<td>". $row->last_modified ."</td>";
+							echo "<td>". $row->hits ."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, 'Delete') ."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, 'Edit') ."</td>";
 							echo "</tr>";

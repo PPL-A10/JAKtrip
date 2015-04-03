@@ -4,8 +4,7 @@ class TourAttrCtr extends CI_Controller {
 	
 	function index(){
 		$this->load->helper('date');
-			echo "NOW";
-		echo unix_to_human(now());
+
 		$this->load->model('TouristAttractionManager');
 		//$this->load->model('guest_model');
 		//$data = $this->TouristAttractionManager->general();
@@ -20,14 +19,14 @@ class TourAttrCtr extends CI_Controller {
 		}
 		$data['category_name']=$dd_cat;
 		//dropdown list place_info
-		/*
+		
 		$dd_place = array();
 		$result2 = $this->TouristAttractionManager->getTouristAttraction();
 		foreach($result2->result_array() as $place){
-			$dd_place[$place['place_name']] = $cat['place_info'];
+			$dd_place[$place['place_name']] = $place['place_name'];
 		}
 		$data['place_info']=$dd_place;
-		*/
+		
 		//dropdown list halte
 		$dd_halte = array();
 		$result3 = $this->TouristAttractionManager->getHalte();
@@ -132,7 +131,7 @@ function myform()
 							'transport_price' => set_value('transport_price'),	
 							'author' => set_value('author'),
 							'hits' => 0,
-							'last_modified' => now()
+							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
 						);
 
 			$form_photo = array(
@@ -178,6 +177,7 @@ function myform()
 		redirect('manageTourAttrCtr');	
 	}
 
+	/*
 	function cekinput(){
 		//$emailErr = $commentErr = "";
 			//$vemail = $comment = "";
@@ -209,6 +209,7 @@ function myform()
 				
 		echo $place_name;
 	}
+	*/
 
 
 }
