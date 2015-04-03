@@ -11,6 +11,7 @@
 	<link href="../assets/css/ion.rangeSlider.css" type="text/css" rel="stylesheet"/>
 
 	
+
 	<style>
 		header{
 			background-image: url('../assets/img/header.png');
@@ -96,8 +97,8 @@
 				    <div class="form-inline">
 						<label class="col-lg-2 control-label">Filter by </label>
 						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" onchange="filterFunction()" title="All Categories" id="category_select">    
-						        <option value="" selected disabled>All Categories</option>
+						    <select class="fieldsml form-control" onchange="filterFunctionFinal()" title="All Categories" id="category_select">    
+						        <option value='All' >All Categories</option>
 								<?php
 									foreach($query1 as $row)
 									{
@@ -111,8 +112,8 @@
 						</span>
 
 						<span class="fieldsml custom-dropdown ">
-						    <select class="fieldsml form-control" onchange="filterFunction()" title="All Location" id="location_select" style="margin-left: -10px;">    
-						        <option value="" selected disabled>All Location</option>
+						    <select class="fieldsml form-control" onchange="filterFunctionFinal()" title="All Location" id="location_select" style="margin-left: -10px;">    
+						        <option value="All" >All Location</option>
 						        <?php
 									foreach($query2 as $row)
 									{
@@ -125,7 +126,7 @@
 					    <span class="input-group col-lg-3">
 						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword..." id="name_select" style="width:162%;">
 						    <span class="input-group-btn">
-						      <button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
+						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 						    </span>
 					    </span>
 				    </div>
@@ -150,8 +151,8 @@
 							foreach($query as $row)
 							{
 								echo "<tr>";
-							//	echo "<td>".$row->category_name."</td>" ;
-								echo "<td>".$row->place_name."</td>" ;
+								echo "<td>".$row->place_name."</td>" ;								
+								echo "<td>".$row->category_name."</td>" ;
 								//echo "<td>".$row->description."</td>" ;
 								echo "</tr>";
 								
@@ -259,9 +260,15 @@ function myFunction() {
     document.getElementById("output_field").innerHTML = "You selected: " + x;
 }
 </script>
-  
+
 	<script>
-	function filterFunction(){
+function myFunction() {
+    document.getElementById("output_field").innerHTML = "Hello Worldrthrthrthrthrthrthrth";
+}
+</script>
+  
+ 	<script>
+	function filterFunction3(){
 		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
 		
@@ -272,24 +279,59 @@ function myFunction() {
 		
 		jQuery.ajax({
 				        type: "POST",
-				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCat/"+x,
+				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataKey/"+z,
 				        success: function(res) {
 				            if (res)
 				            {
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery + "<p>"+obj.query[i].place_name+"</p><br>";
+									resultQuery = resultQuery +obj.query[i].place_name+"<br>";
 								}
 								
-								$("#output_field").html(resultQuery);
-				            }
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
 							
 				            }
                         }
                     );
 	}
 	</script>
+	
+				<script>
+	function filterFunctionFinal(){
+		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
+		
+		var x = document.getElementById("category_select").value;
+		var y = document.getElementById("location_select").value;
+		var z = document.getElementById("name_select").value;
+		
+		
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCatLocKey/"+x+"/"+y+"/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+	
+
   
 </body>
 </html>

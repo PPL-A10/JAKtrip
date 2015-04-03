@@ -11,22 +11,42 @@
 			$this->load->view('searchView',$data);
 		}
 
-		/*public function searchwisataCat($category_name, $city_name, $place_name)
+		public function searchwisataCatLocKey($category_name=NULL, $city=NULL, $place_name=NULL)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('searchMod');
-			$data['query'] = $this->searchMod->filterMod($category_name, $city_name, $place_name);
+			$data['query'] = $this->searchMod->filterModFinal($category_name, $city, $place_name);
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
-		}*/
+		}
 		
-				public function searchwisataCat($category_name)
+			public function searchwisataCat($category_name=NULL)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('searchMod');
 			$data['query'] = $this->searchMod->filterMod($category_name);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
+		
+			public function searchwisataLoc($city=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterMod2($city);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
+		
+			public function searchwisataKey($place_name=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterMod3($place_name);
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
 		}
