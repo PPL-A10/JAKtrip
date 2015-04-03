@@ -1,11 +1,21 @@
 <?php
 
 class touristAttractionManager extends CI_Model{
-    
+	
 	function getAllTourAttr() {
         $query = $this->db->query('select * from tourist_attraction');
         //$this->db->from('tourist_attraction');
         //$query = $this->db->get();
+        return $result = $query->result();
+    }
+	
+	function getAllTourAttrPopular() {
+        $query = $this->db->query('select * from tourist_attraction order by hits ASC');
+        return $result = $query->result();
+    }
+	
+	function getAllTourAttrHighestRate() {
+        $query = $this->db->query('select * from tourist_attraction order by rate_avg DESC');
         return $result = $query->result();
     }
 	

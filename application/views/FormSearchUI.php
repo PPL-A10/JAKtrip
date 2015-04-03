@@ -135,20 +135,61 @@
 					<div class="col-lg-5 result">Show all places in Jakarta</div>
 					<div class="col-lg-2"></div>
 				
-					<div class="col-lg-5 form-inline" style="margin-right: -150px;">
+					<div id="sort" class="col-lg-5 form-inline" style="margin-right: -150px;">
 						<label class="control-label">Sort by </label>
 						<span class="fieldsml custom-dropdown bordered">
-						    <select class="fieldsml form-control" title="Popularity">    
-						        <option value="" selected>Popularity</option>  
-						        <option value="">Highest Rating</option>
-						        <option value="">Name: A-Z</option>
-						        <option value="">Name: Z-A</option>
-						        <option value="">Price: Low to High</option>
-						        <option value="">Price: High to Low</option>
+						<form method="post" action="<?php echo base_url('index.php/SearchCtr/sorting');?>">
+							<select class="fieldsml form-control" title="Popularity" name="sortBy" onchange="this.form.submit()">
+						        <option value="popular" name="popular" selected>Popularity</option>
+						        <option value="highestRate" name="highestRate">Highest Rating</option>
+						        <option value="sortAtoZ" name="sortAtoZ">Name: A-Z</option>
+						        <option value="sortZtoA" name="sortZtoA">Name: Z-A</option>
+						        <option value="LowToHigh" name="LowToHigh">Price: Low to High</option>
+						        <option value="HighToLow" name="HighToLow">Price: High to Low</option>
 						    </select>
+							</form>
 						</span>
 					</div>
-					
+					<p id="hasilSort" name="hasilSort">
+					<table>
+						<tr>
+							<th>Place Name</th>
+							<th>Weekday Price</th>
+							<th>Weekend Price</th>
+							<th>Longitude</th>
+							<th>Lattitude</th>
+							<th>City</th>
+							<th>Rate Average</th>
+							<th>Description</th>
+							<th>Place Info</th>
+							<th>Halte Code</th>
+							<th>Transport Info</th>
+							<th>Transport Price</th>
+							<th>Author</th>
+						</tr>
+						<?php if(!isset($result)) $result=array();?>
+						<?php 
+						if(isset($result))
+							foreach($result  as $r): ?>
+						<tr>
+							<?php echo 
+							"<td>".$r->place_name."</td>".
+							"<td>".$r->weekday_price."</td>".
+							"<td>".$r->weekend_price."</td>".
+							"<td>".$r->longitude."</td>".
+							"<td>".$r->lattitude."</td>".
+							"<td>".$r->city."</td>".
+							"<td>".$r->rate_avg."</td>".
+							"<td>".$r->description."</td>".
+							"<td>".$r->place_info."</td>".
+							"<td>".$r->halte_code."</td>".
+							"<td>".$r->transport_info."</td>".
+							"<td>".$r->transport_price."</td>".
+							"<td>".$r->author."</td>"
+							; ?>
+						</tr>
+						<?php endforeach; ?>
+					</p>
 
 
 				</div>
@@ -226,6 +267,12 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-  
+	
+	<script>
+		function sortBy(val){
+			return val
+		}
+	</script>
+	
 </body>
 </html>
