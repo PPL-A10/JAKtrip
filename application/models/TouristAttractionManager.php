@@ -28,7 +28,12 @@ function __construct(){
 		$this->load->database();
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
-		$query = $this->db->get('tourist_attraction');
+		$query =$this->db->select('*')
+                 ->from('tourist_attraction ta')
+                 ->join('tour_category tc','ta.place_name = tc.place_name')
+                 ->get();
+
+		//$query = $this->db->get('tourist_attraction');
 		//$query2 = $this->db->get('tour_category');
 		return $query->result();
 	}	
@@ -59,19 +64,22 @@ function __construct(){
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
 		//$this->db->where($place_name,$this->input->post($place_name));
-		$this->db->where('place_name',$place_name);
-		$this->db->update('tourist_attraction',$form_data);
-		$this->db->update('photo',$form_photo);	
-		$this->db->update('tour_category',$form_cat);		
+		echo $place_name;
+		$where = "'place_name'=$place_name";
+		$this->db->update('tourist_attraction',$form_data, $where);
+		//$this->db->where('place_name',$place_name);
+		$this->db->update('photo',$form_photo, $where);	
+		//$this->db->where('place_name',$place_name);
+		$this->db->update('tour_category',$form_cat, $where);		
 		//$quer = "update komentar set approve = 1 where place_name = $place_name;";
 		//$this->db->query($quer);
 		
 
-		if ($this->db->affected_rows() == '0')
-		{
+		//sif ($this->db->affected_rows() == '0')
+		//{
 			return TRUE;
-		}
-		return FALSE;
+		//}
+		//return FALSE;
 	}
 
 	function general(){
@@ -85,7 +93,13 @@ function __construct(){
  	}
 	
 	function getCategory(){
-		return $this->db->get('tour_category');
+		return $this->db->get('category');
+	}
+	function getTouristAttraction(){
+		return $this->db->get('tourist_attraction');
+	}
+	function getHalte(){
+		return $this->db->get('halte');
 	}
 	
 	function tourAttr_getCat($place_name){
@@ -99,5 +113,17 @@ function __construct(){
 		$query = $this->db->get_where('photo', array('place_name'=>$place_name));
 		return $query->row_array();
 	}
+	function tourAttr_getHalte($place_name){
+		//return $this->db->get_where('tour_category');
+		$code = $this->db->get_where('tourist_attraction', array('place_name'=>$place_name))->row_array();
+		$halte = $this->db->get_where('halte', array('halte_code'=>$code['halte_code']));
+		return $halte->row_array();
+	}
+	function getHalteCode($halte_name){
+		//return $this->db->get_where('tour_category');
+		$halte = $this->db->get_where('halte', array('halte_name'=>$halte_name));
+		return $halte->row_array();
+	}
+	
 }
 ?>

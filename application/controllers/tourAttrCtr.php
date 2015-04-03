@@ -8,9 +8,34 @@ class TourAttrCtr extends CI_Controller {
 		//$data = $this->TouristAttractionManager->general();
 		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
 		$this->load->helper('form');
-		$this->load->view('formTourAttrUI');
-
+		
+		 //dropdown list category
+		$dd_cat = array();
+		$result = $this->TouristAttractionManager->getCategory();
+		foreach($result->result_array() as $cat){
+			$dd_cat[$cat['category_name']] = $cat['category_name'];
+		}
+		$data['category_name']=$dd_cat;
+		//dropdown list place_info
+		/*
+		$dd_place = array();
+		$result2 = $this->TouristAttractionManager->getTouristAttraction();
+		foreach($result2->result_array() as $place){
+			$dd_place[$place['place_name']] = $cat['place_info'];
+		}
+		$data['place_info']=$dd_place;
+		*/
+		//dropdown list halte
+		$dd_halte = array();
+		$result3 = $this->TouristAttractionManager->getHalte();
+		foreach($result3->result_array() as $halte){
+			$dd_halte[$halte['halte_code']] = $halte['halte_name'];
+		}
+		$data['halte_name']=$dd_halte;
+		
+		$this->load->view('formTourAttrUI',$data);
 	}
+	
 	/*
  	function main(){
 		$this->load->library('table');
@@ -70,6 +95,7 @@ function myform()
 		$this->form_validation->set_rules('category_name', 'category_name', 'required|trim');
 		$this->form_validation->set_rules('pic', 'pic', 'trim');
 		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
+		$this->form_validation->set_rules('author', 'author', 'trim');
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
@@ -93,7 +119,8 @@ function myform()
 							'place_info' => set_value('place_info'),
 							'halte_code' => set_value('halte_code'),
 							'transport_info' => set_value('transport_info'),
-							'transport_price' => set_value('transport_price')						
+							'transport_price' => set_value('transport_price'),	
+							'author' => set_value('author')								
 						);
 
 			$form_photo = array(
@@ -136,7 +163,7 @@ function myform()
 	}
 	function success()
 	{
-		redirect('tourAttrCtr/myform');	
+		redirect('manageTourAttrCtr');	
 	}
 
 	function cekinput(){
@@ -166,6 +193,7 @@ function myform()
 				$category_name = test_input($_POST["category_name"]);
 				$pic = test_input($_POST["pic"]);
 				$pic_info = test_input($_POST["pic_info"]);
+				$pic_info = test_input($_POST["author"]);
 				
 		echo $place_name;
 	}

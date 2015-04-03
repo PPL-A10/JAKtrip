@@ -35,6 +35,9 @@
 						<br /><input id="place_info" type="text" name="place_info"  value="<?php echo set_value('place_info'); ?>"  />
 				</p>
 				
+				<?php //$place_info2 = array("", $place_info);
+				//echo form_dropdown('place_info',$place_info2); ?>
+				
 				<p>
 						<label for="weekday_price">Weekday Price <span class="required">*</span></label>
 						<?php echo form_error('weekday_price'); ?>
@@ -47,17 +50,11 @@
 						<br /><input id="weekend_price" type="text" name="weekend_price"  value="<?php echo set_value('weekend_price'); ?>"  />
 				</p>
 				
-				<p>
-						<label for="category_name">Category <span class="required">*</span></label>
-						<?php echo form_error('category_name'); ?>
-						<br /><input id="category_name" type="text" name="category_name"  value="<?php echo set_value('category_name'); ?>"  />
-				</p>
 				
-				<p>
-						<label for="city">Location <span class="required">*</span></label>
-						<?php echo form_error('city'); ?>
-						<br /><input id="city" type="text" name="city"  value="<?php echo set_value('city'); ?>"  />
-				</p>
+				<?php echo "Category ", form_dropdown('category_name',$category_name, set_value('category_name')); ?>
+				
+				<?php $loc = array('Jakarta Barat', 'Jakarta Pusat', 'Jakarta Selatan', 'Jakarta Timur', 'Jakarta Utara'); 
+				echo "Location ", form_dropdown('city',$loc, set_value('city')); ?>
 				
 				<p>
 						<label for="pic">Photos <span class=""></span></label>
@@ -83,11 +80,8 @@
 						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php echo set_value('lattitude'); ?>"  />
 				</p>
 				
-				<p>
-						<label for="halte_code">Halte <span class="required">*</span></label>
-						<?php echo form_error('halte_code'); ?>
-						<br /><input id="halte_code" type="text" name="halte_code"  value="<?php echo set_value('halte_code'); ?>"  />
-				</p>
+
+				<?php echo "Halte ", form_dropdown('halte_code',$halte_name, set_value('halte_code')); ?>
 				
 				<p>
 						<label for="transport_info">Transport Info <span class="required">*</span></label>
@@ -100,6 +94,10 @@
 						<?php echo form_error('transport_price'); ?>
 						<br /><input id="transport_price" type="text" name="transport_price"  value="<?php echo set_value('transport_price'); ?>"  />
 				</p>
+				
+
+				<?php $author = array('ahmadibrahim', 'fakhirahdg', 'khusnanadia', 'syifakha', 'mswildan'); 
+				echo "Author ", form_dropdown('author',$author, set_value('author')); ?>
 				
 				<p>
 						<?php echo form_submit( 'publish', 'Publish'); ?>

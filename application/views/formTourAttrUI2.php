@@ -27,9 +27,10 @@
 				$pic_info = $pic_info['value'];
 				$longitude = $longitude['value'];
 				$lattitude = $lattitude['value'];
-				$halte_code = $halte_code['value'];
+				$halte_name = $halte_name['value'];
 				$transport_info = $transport_info['value'];
 				$transport_price = $transport_price['value'];
+				$author = $author['value'];
 				?>
 
 				<p>
@@ -64,11 +65,8 @@
 						<br /><input id="weekend_price" type="text" name="weekend_price"  value="<?php echo $weekend_price; ?>"  />
 				</p>
 				
-				<p>
-						<label for="category_name">Category <span class="required">*</span></label>
-						<?php echo form_error('category_name'); ?>
-						<br /><input id="category_name" type="text" name="category_name"  value="<?php echo $category_name; ?>"  />
-				</p>
+
+				<?php echo "Category ", form_dropdown('category_name',$cat_name, $category_name); ?>
 				
 				<p>
 						<label for="city">Location <span class="required">*</span></label>
@@ -100,11 +98,15 @@
 						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php echo $lattitude; ?>"  />
 				</p>
 				
+				<!--
 				<p>
 						<label for="halte_code">Halte <span class="required">*</span></label>
-						<?php echo form_error('halte_code'); ?>
-						<br /><input id="halte_code" type="text" name="halte_code"  value="<?php echo $halte_code; ?>"  />
+						<?php //echo form_error('halte_code'); ?>
+						<br /><input id="halte_code" type="text" name="halte_code"  value="<?php// echo $halte_code; ?>"  />
 				</p>
+				-->
+				
+				<?php echo "Halte ", form_dropdown('halte_name',$hlt_name, $halte_name); ?>
 				
 				<p>
 						<label for="transport_info">Transport Info <span class="required">*</span></label>
@@ -116,6 +118,12 @@
 						<label for="transport_price">Transport Price <span class="required">*</span></label>
 						<?php echo form_error('transport_price'); ?>
 						<br /><input id="transport_price" type="text" name="transport_price"  value="<?php echo $transport_price; ?>"  />
+				</p>
+
+				<p>
+						<label for="author">Author <span class="required">*</span></label>
+						<?php echo form_error('author'); ?>
+						<br /><input id="author" type="text" name="author"  value="<?php echo $author; ?>"  />
 				</p>
 				
 				<p>
