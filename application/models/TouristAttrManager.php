@@ -2,7 +2,12 @@
 
 class touristAttrManager extends CI_Model{
 
-	
+	public function __construct() 
+    {
+        parent::__construct(); 
+        $this->load->database();
+    }
+	 
 	function getAllTourAttr() {
 		
         $query = $this->db->query('select * from tourist_attraction');
