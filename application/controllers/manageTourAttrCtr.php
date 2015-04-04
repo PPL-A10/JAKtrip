@@ -66,12 +66,12 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['author']['value'] = $query['author'];			
 		
 		//dropdown list category
-		$dd_cat = array();
+		//$dd_cat = array();
 		$result = $this->TouristAttractionManager->getCategory();
-		foreach($result->result_array() as $cat){
-			$dd_cat[$cat['category_name']] = $cat['category_name'];
-		}
-		$data['cat_name']=$dd_cat;
+		//foreach($result->result_array() as $cat){
+		//	$dd_cat[$cat['category_name']] = $cat['category_name'];
+		//}
+		$data['cat_name']=$result;
 		
 		//dropdown list place_info
 		

@@ -28,11 +28,12 @@ function __construct(){
 		$this->load->database();
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
-		$query =$this->db->select('*')
-                 ->from('tourist_attraction ta')
-                 ->join('tour_category tc','ta.place_name = tc.place_name')
-                 ->get();
-
+		//$query =$this->db->select('*')
+          //       ->from('tourist_attraction ta')
+            //     ->join('tour_category tc','ta.place_name = tc.place_name')
+              //   ->get();
+		$quer = "select * from tourist_attraction ta left outer join tour_category tc on ta.place_name=tc.place_name";
+		$query = $this->db->query($quer);
 		//$query = $this->db->get('tourist_attraction');
 		//$query2 = $this->db->get('tour_category');
 		return $query->result();
@@ -92,13 +93,13 @@ function __construct(){
  	}
 	
 	function getCategory(){
-		return $this->db->get('category');
+		return $this->db->get('category')->result();
 	}
 	function getTouristAttraction(){
 		return $this->db->get('tourist_attraction');
 	}
 	function getHalte(){
-		return $this->db->get('halte');
+		return $this->db->order_by('halte_name','asc')->get('halte');
 	}
 	
 	function tourAttr_getCat($place_name){

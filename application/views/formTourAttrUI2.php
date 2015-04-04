@@ -40,7 +40,18 @@
 				echo "Place Info ", form_dropdown('place_info', $place_inf, $place_info).br(); 
 				echo "Weekday Price ", form_input('weekday_price', $weekday_price).br(); 
 				echo "Weekend Price ", form_input('weekend_price', $weekend_price).br(); 
-				echo "Category ", form_dropdown('category_name',$cat_name, $category_name).br(); 
+				//echo "Category ", form_input('category_name',$cat_name, $category_name).br(); 
+				foreach ($cat_name as $row){
+					$cat = $row->category_name;
+					if($cat==$category_name){
+						echo form_checkbox('category_list[]',$cat, TRUE).($row->category_name)."<br>"; 
+					}
+					else{
+						echo form_checkbox('category_list[]',$cat, FALSE).($row->category_name)."<br>"; 
+					}
+				}
+				echo form_checkbox('category_list[]','new_cat')."New Category".form_input('category_name',set_value('category_name'))."<br>";
+				
 				
 				$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
