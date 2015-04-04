@@ -36,7 +36,8 @@
 				echo form_hidden('key', $place_name).br(); 
 				echo "Name ", form_input('place_name', $place_name).br(); 										
 				echo "Description ", form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => $description ) ).br();
-				echo "Place Info ", form_input('place_info', $place_info).br(); 
+				//array_push($place_inf, '');
+				echo "Place Info ", form_dropdown('place_info', $place_inf, $place_info).br(); 
 				echo "Weekday Price ", form_input('weekday_price', $weekday_price).br(); 
 				echo "Weekend Price ", form_input('weekend_price', $weekend_price).br(); 
 				echo "Category ", form_dropdown('category_name',$cat_name, $category_name).br(); 

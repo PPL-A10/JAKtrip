@@ -36,8 +36,7 @@
 				</p>
 				-->
 				
-				<?php //array_push($place_info, '');
-				echo "Place Info ", form_dropdown('place_info',$place_info, set_value('place_info')); ?>
+				<?php echo "Place Info ", form_dropdown('place_info',$place_info, set_value('place_info')); ?>
 				
 				<p>
 						<label for="weekday_price">Weekday Price <span class="required">*</span></label>

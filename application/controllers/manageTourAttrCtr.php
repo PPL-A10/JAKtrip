@@ -74,14 +74,17 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['cat_name']=$dd_cat;
 		
 		//dropdown list place_info
-		/*
+		
 		$dd_place = array();
+		array_push($dd_place, NULL);
 		$result2 = $this->TouristAttractionManager->getTouristAttraction();
+		
 		foreach($result2->result_array() as $place){
-			$dd_place[$place['place_name']] = $cat['place_info'];
+			$dd_place[$place['place_name']] = $place['place_name'];
 		}
-		$data['place_info']=$dd_place;
-		*/
+		
+		$data['place_inf']=$dd_place;
+		
 		
 		//dropdown list halte
 		$dd_halte = array();
@@ -144,7 +147,8 @@ class ManageTourAttrCtr extends CI_Controller {
 		$halte_name = $this->input->post('halte_name');
 		$halte_code = $this->touristattractionmanager->getHalteCode($halte_name);
 		$place_info = $this->input->post('place_info');
-		if($place_info == ''){
+		
+		if($place_info == '0'){
 			$place_info = NULL;
 		}	
 		 
@@ -168,7 +172,7 @@ class ManageTourAttrCtr extends CI_Controller {
 							'city' => $city,
 							//'rate_avg' => 0,
 							'description' => $description,
-							//'place_info' => $this->input->post('place_info'),
+							'place_info' => $place_info,
 							'halte_code' => $halte_code['halte_code'],
 							'transport_info' => $transport_info,
 							'transport_price' => $transport_price,
