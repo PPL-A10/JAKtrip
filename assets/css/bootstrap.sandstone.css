@@ -3087,7 +3087,7 @@ fieldset[disabled] .btn-default.active {
 }
 .btn-primary {
   color: #ffffff;
-  background-color: #325d88;
+  background-color: #b3b3b3;
   border-color: transparent;
 }
 .btn-primary:hover,
@@ -3097,7 +3097,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #244363;
+  background-color: #999999;
   border-color: rgba(0, 0, 0, 0);
 }
 .btn-primary:active,
@@ -4706,6 +4706,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   margin: 20px 0;
   list-style: none;
   text-align: center;
+  margin-left: 250px;
 }
 .pager li {
   display: inline;
