@@ -108,6 +108,7 @@ class ManageTourAttrCtr extends CI_Controller {
 			
 		
 //myform		
+
 		$this->load->library('form_validation');
 		//$this->load->database();
 		$this->load->helper('form');
@@ -115,7 +116,8 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->helper('date');
 		$this->load->model('TouristAttractionManager');
 		//$data = $this->TouristAttractionManager->general();
-		$this->form_validation->set_rules('place_name', 'place_name', 'required|callback_check|trim');			
+
+		$this->form_validation->set_rules('place_name', 'place_name', 'required|callback_check|trim');	
 		$this->form_validation->set_rules('weekday_price', 'weekday_price', 'required');			
 		$this->form_validation->set_rules('weekend_price', 'weekend_price', 'required');
 		$this->form_validation->set_rules('longitude', 'longitude', 'required');
@@ -133,10 +135,10 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		//get halte_code from halte_name
 		
-		$halte_name = set_value('halte_name');
+		$halte_name = $this->input->post('halte_name');
 		echo $halte_name;
 		$halte_code = $this->touristattractionmanager->getHalteCode($halte_name);
-		$place_info = set_value('place_info');
+		$place_info = $this->input->post('place_info');
 		if($place_info == ''){
 			$place_info = NULL;
 		}	
@@ -144,49 +146,51 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
 	
-		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
-		{
-			$this->load->view('formTourAttrUI2');
-		}
-		else // passed validation proceed to post success logic
-		{
+		//if ($this->form_validation->run() == FALSE) // validation hasn't been passed
+		//{
+			//$this->load->view('formTourAttrUI2');
+	//	}
+		//else // passed validation proceed to post success logic
+		//{
 		 	// build array for the model
-			
+			if($this->input->post('save')){
 			$form_data = array(
-					       'place_name' => set_value('place_name'),
-					       	'weekday_price' => set_value('weekday_price'),
-					       	'weekend_price' => set_value('weekend_price'),
-							'longitude' => set_value('longitude'),
-							'lattitude' => set_value('lattitude'),
-							'city' => set_value('city'),
+					       'place_name' => $this->input->post('place_name'),
+					       	'weekday_price' => $this->input->post('weekday_price'),
+					       	'weekend_price' => $this->input->post('weekend_price'),
+							'longitude' => $this->input->post('longitude'),
+							'lattitude' => $this->input->post('lattitude'),
+							'city' => $this->input->post('city'),
 							//'rate_avg' => 0,
-							'description' => set_value('description'),
-							'place_info' => set_value('place_info'),
+							'description' => $this->input->post('description'),
+							//'place_info' => $this->input->post('place_info'),
 							'halte_code' => $halte_code['halte_code'],
-							'transport_info' => set_value('transport_info'),
-							'transport_price' => set_value('transport_price'),
-							'author' => set_value('author'),
+							'transport_info' => $this->input->post('transport_info'),
+							'transport_price' => $this->input->post('transport_price'),
+							'author' => $this->input->post('author'),
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())							
 						);
 
 			$form_photo = array(
-							'place_name' => set_value('place_name'),
-							'pic' => set_value('pic'),
-							'pic_info' => set_value('pic_info')
+							'place_name' => $this->input->post('place_name'),
+							'pic' => $this->input->post('pic'),
+							'pic_info' =>$this->input->post('pic_info')
 						);		
 							
 			$form_cat = array(
-							'place_name' => set_value('place_name'),
-							'category_name' => set_value('category_name')
+							'place_name' => $this->input->post('place_name'),
+							'category_name' => $this->input->post('category_name')
 						);							
 									
 			// run insert model to write data to db
-			$place_name = $_POST["place_name"];
+			
 		
-		if($this->input->post('save')){
 		
+		
+			$place_name = $this->input->post('place_name');
 			if ($this->TouristAttractionManager->edit($place_name, $form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
 				{
+
 					redirect('manageTourAttrCtr/success');   // or whatever logic needs to occur
 				}
 				else
@@ -195,7 +199,7 @@ class ManageTourAttrCtr extends CI_Controller {
 				 //Or whatever error handling is necessary
 				}
 			}
-		}
+		//}
 	}
 	
 	

@@ -51,6 +51,11 @@
 						<br /><input id="weekend_price" type="text" name="weekend_price"  value="<?php echo set_value('weekend_price'); ?>"  />
 				</p>
 				
+				<p>
+						<label for="category_name">Category <span class="required">*</span></label>
+						<?php echo form_error('category_name'); ?>
+						<br /><input id="category_name" type="text" name="category_name"  value="<?php echo set_value('category_name'); ?>"  />
+				</p>
 				
 				<?php echo "Category ", form_dropdown('category_name',$category_name, set_value('category_name')); ?>
 				

@@ -32,39 +32,49 @@
 				$transport_price = $transport_price['value'];
 				$author = $author['value'];
 				?>
-
+				<!--
 				<p>
 						<label for="place_name">Name <span class="required">*</span></label>
-						<?php echo form_error('place_name'); ?>
-						<br /><input id="place_name" type="text" name="place_name" value="<?php echo $place_name; ?>" />
-				</p>
-
-				<p>
+						<?php //echo form_error('place_name'); ?>
+						<br /><input id="place_name" type="text" name="place_name" value="<?php //echo $place_name; ?>" />
+				</p> -->
+				
+				<?php echo "Name ", form_input('place_name', $place_name); ?>				
+				
+				<!--<p>
 						<label for="description">Description <span class="required">*</span></label>
-						<?php echo form_error('description'); ?>
+						<?php //echo form_error('description'); ?>
 						<br />
 											
-						<?php echo form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => $description ) )?>
-				</p>
+						<?php echo "Description ", form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => $description ) )?>
+				</p>-->
 				
+				<!--
 				<p>
 						<label for="place_info">Place Info <span class=""></span></label>
-						<?php echo form_error('place_info'); ?>
-						<br /><input id="place_info" type="text" name="place_info"  value="<?php echo $place_info; ?>"  />
+						<?php //echo form_error('place_info'); ?>
+						<br /><input id="place_info" type="text" name="place_info"  value="<?php //echo $place_info; ?>"  />
 				</p>
+				-->
 				
+					<?php echo "Place Info ", form_input('place_info', $place_info); ?>
+				
+				<!--
 				<p>
 						<label for="weekday_price">Weekday Price <span class="required">*</span></label>
-						<?php echo form_error('weekday_price'); ?>
-						<br /><input id="weekday_price" type="text" name="weekday_price"  value="<?php echo $weekday_price; ?>"  />
-				</p>
+						<?php //echo form_error('weekday_price'); ?>
+						<br /><input id="weekday_price" type="text" name="weekday_price"  value="<?php //echo $weekday_price; ?>"  />
+				</p> -->
 
+								<?php echo "Weekday Price ", form_input('weekday_price', $weekday_price); ?>
+				<!--
 				<p>
 						<label for="weekend_price">Weekend Price <span class="required">*</span></label>
-						<?php echo form_error('weekend_price'); ?>
-						<br /><input id="weekend_price" type="text" name="weekend_price"  value="<?php echo $weekend_price; ?>"  />
-				</p>
+						<?php //echo form_error('weekend_price'); ?>
+						<br /><input id="weekend_price" type="text" name="weekend_price"  value="<?php //echo $weekend_price; ?>"  />
+				</p> -->
 				
+								<?php echo "Weekend Price ", form_input('weekend_price', $weekend_price); ?>
 
 				<?php echo "Category ", form_dropdown('category_name',$cat_name, $category_name); ?>
 				
@@ -79,30 +89,38 @@
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
 					echo "Location ", form_dropdown('city',$loc, $city); ?>
 				
+				<!--
 				<p>
 						<label for="pic">Photos <span class=""></span></label>
-						<?php echo form_error('pic'); ?>
-						<br /><input id="pic" type="text" name="pic"  value="<?php echo $pic; ?>"  />
+						<?php //echo form_error('pic'); ?>
+						<br /><input id="pic" type="text" name="pic"  value="<?php //echo $pic; ?>"  />
 				</p>
 				
 				<p>
 						<label for="pic_info">Photos Info <span class=""></span></label>
-						<?php echo form_error('pic_info'); ?>
-						<br /><input id="pic_info" type="text" name="pic_info"  value="<?php echo $pic_info; ?>"  />
+						<?php //echo form_error('pic_info'); ?>
+						<br /><input id="pic_info" type="text" name="pic_info"  value="<?php //echo $pic_info; ?>"  />
 				</p>
 				
 				<p>
 						<label for="longitude">Longitude <span class="required">*</span></label>
-						<?php echo form_error('longitude'); ?>
-						<br /><input id="longitude" type="text" name="longitude"  value="<?php echo $longitude; ?>"  />
+						<?php //echo form_error('longitude'); ?>
+						<br /><input id="longitude" type="text" name="longitude"  value="<?php// echo $longitude; ?>"  />
 				</p>
 				
 				<p>
 						<label for="lattitude">Lattitude <span class="required">*</span></label>
-						<?php echo form_error('lattitude'); ?>
-						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php echo $lattitude; ?>"  />
+						<?php// echo form_error('lattitude'); ?>
+						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php //echo $lattitude; ?>"  />
 				</p>
+				-->
 				
+								<?php echo "Photos ", form_input('pic', $pic); ?>
+						<?php echo "Photos Info ", form_input('pic_info', $pic_info); ?>
+						<?php echo "Longitude ", form_input('longitude', $longitude); ?>
+						<?php echo "Lattitude ", form_input('lattitude', $lattitude); ?>
+						<?php echo "Transport Info ", form_input('transport_info', $transport_info); ?>
+						<?php echo "Transport Price ", form_input('transport_price', $transport_price); ?>
 				<!--
 				<p>
 						<label for="halte_code">Halte <span class="required">*</span></label>
@@ -112,18 +130,19 @@
 				-->
 				
 				<?php echo "Halte ", form_dropdown('halte_name',$hlt_name, $halte_name); ?>
-				
+				<!--
 				<p>
 						<label for="transport_info">Transport Info <span class="required">*</span></label>
-						<?php echo form_error('transport_info'); ?>
-						<br /><input id="transport_info" type="text" name="transport_info"  value="<?php echo $transport_info; ?>"  />
+						<?php //echo form_error('transport_info'); ?>
+						<br /><input id="transport_info" type="text" name="transport_info"  value="<?php// echo $transport_info; ?>"  />
 				</p>
 				
 				<p>
 						<label for="transport_price">Transport Price <span class="required">*</span></label>
-						<?php echo form_error('transport_price'); ?>
-						<br /><input id="transport_price" type="text" name="transport_price"  value="<?php echo $transport_price; ?>"  />
+						<?php //echo form_error('transport_price'); ?>
+						<br /><input id="transport_price" type="text" name="transport_price"  value="<?php //echo $transport_price; ?>"  />
 				</p>
+				-->
 				<!--
 				<p>
 						<label for="author">Author <span class="required">*</span></label>
