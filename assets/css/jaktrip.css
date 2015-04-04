@@ -298,7 +298,6 @@ a {
 
 
 .rating{
-  overflow-y: scroll;
   overflow-x: hidden;
   background-color: #fff;  
   margin-top: 70px;
@@ -548,4 +547,26 @@ a {
 .searchmember ul li{
   display: inline;
   margin: 3px;
+}
+
+.reviewkiri{
+  text-align: center;
+  margin-left: -35px;
+}
+
+.reviewmember{
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.reviewmember .btn{
+  margin-right: 60px;
+  margin-top: -5px;
+}
+
+.deleterev{
+  float: right;
+  right: 0;
+  margin-top: 5px;
 }
