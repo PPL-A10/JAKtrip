@@ -13,11 +13,11 @@ class TourAttrCtr extends CI_Controller {
 		
 		 //dropdown list category
 		$dd_cat = array();
-		$result = $this->TouristAttractionManager->getCategory();
-		foreach($result->result_array() as $cat){
-			$dd_cat[$cat['category_name']] = $cat['category_name'];
-		}
-		$data['category_name']=$dd_cat;
+		$data['cat_name'] = $this->TouristAttractionManager->getCategory();
+		//foreach($result->result_array() as $cat){
+			//$dd_cat[$cat['category_name']] = $cat['category_name'];
+		//}
+		
 		//dropdown list place_info
 		
 		$dd_place = array();

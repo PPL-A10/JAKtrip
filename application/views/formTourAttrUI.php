@@ -56,7 +56,14 @@
 						<br /><input id="category_name" type="text" name="category_name"  value="<?php echo set_value('category_name'); ?>"  />
 				</p>
 				
-				<?php echo "Category ", form_dropdown('category_name',$category_name, set_value('category_name')); ?>
+				<?php //echo "Category ", form_input('category_name',set_value('category_name')); ?>
+				
+				<?php foreach($cat_name as $row){
+						echo "<input type='checkbox' name=".$row->category_name." value=".$row->category_name.">".$row->category_name."<br>";
+				}
+				echo "<label><input type='checkbox' name='new_cat' value='new_cat'>New Category ".form_input('category_name',set_value('category_name'))."</label><br>";
+				?>
+				
 				
 				<?php $loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
