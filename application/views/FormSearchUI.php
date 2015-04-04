@@ -200,9 +200,29 @@
 					<div class="col-lg-11">
 						<?php
 							echo "<table class='table table-hover'>";
+
 							foreach ($query as $row) {
 								# code...
-								echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+								if($isWeekend==true)
+								{
+									$priceDet = $row->weekend_price." (weekend price)";
+									$price = $row->weekend_price;
+								}
+								else
+								{
+									$priceDet = $row->weekday_price." (weekday price)";
+									$price = $row->weekday_price;
+								}
+
+								if($row->halte_code == $halte_code)
+								{
+									echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br><p>halte ".$row->halte_name."</p><p>".$priceDet."</p><p>rating = ".$row->rate_avg."/5</p><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$price.",'".$row->place_name."' , '".$row->halte_name."')\"".$row->place_name."\">".$price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+								}
+								else
+								{
+									echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br><p>halte ".$row->halte_name."</p><p>".$priceDet." + 3000 (busway) = ".(intval($price) + 3500 )."</p><p>rating = ".$row->rate_avg."/5</p><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$price.",'".$row->place_name."')\"".$row->place_name."\">".$price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+								}
+							//	echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
 							}
 							echo "</table>";
 						?>
@@ -245,48 +265,7 @@
 	<script src="http://localhost/Jaktrip/assets/js/jaktrip.js"></script>
 	<script src="http://localhost/Jaktrip/assets/js/bootstrap-datepicker.min.js"></script>
 	<script src="http://localhost/Jaktrip/assets/js/gmaps.js"></script>
-    <script type="text/javascript">
-    	function showTheSuggestionList(budget)
-			{
-				jQuery.ajax({
-				        type: "POST",
-				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budget,
-				        success: function(res) {
-				            if (res)
-				            {
-				            	var obj = jQuery.parseJSON(res);
-				         		var hasilPemilihan = "";
-				         		hasilPemilihan = "<table class='table'>";
-				         		
-				            	for(var i = 0; i<obj.query.length; i++)
-				            	{
-				         				var sudahDipilih = false;
-				         				for(var j = 0; j<arrayTripChoosen.length; j++)
-				         				{
-				         					if(obj.query[i].place_name == arrayTripChoosen[j])
-				         					{
-				         						sudahDipilih = true;
-				         					}
-				         				}
-				         				if(!sudahDipilih)
-				         				{
-				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"addTrip("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
-				         				}
-				            	}
-				            	hasilPemilihan = hasilPemilihan + "</table>";
-				     
-
-				            }
-                        }
-                    });
-			}
-			function getTheDate(){
-				var datechoosen = $("#datepicker").datepicker('getDate')
-				var n =datechoosen.getUTCDay();
-
-
-			}
-    </script>
+   
     
     <script type="text/javascript">
         // When the document is ready
@@ -329,6 +308,65 @@
         var map = new google.maps.Map(mapCanvas, mapOptions)
       }
       google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    <script>
+    	function addTrip(x,y){		
+			var budget = parseInt(x);
+			tripCost = tripCost + budget;
+			budget = parseInt($('input#inputBudgetDinamic').val()) - parseInt(x);
+			$('input#inputBudgetDinamic').val(budget);
+			showTheSuggestionList(budget);
+			
+			var tempmarker = gmarkers[searchIndexListTourAttr(y)];
+			tempmarker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+			var ditambahkan = y ;
+			arrayTripChoosen.push(ditambahkan);
+			arrayTripPriceChoosen.push(parseInt(x));
+
+			showTheItinerary();
+			$("#showSuccess").html("you success adding " + y +" to your itinerary");
+			$("#alertAddItinerary").modal('show');
+			$("#confirmSuccessAddItinerary").unbind().click(function(){
+				var popover = $('.buttonAtasToggle').data('popover');
+	  			$('[data-toggle="popover"]').popover('show');
+			});
+		}
+
+		function showTheSuggestionList(budget, halte)
+			{
+				jQuery.ajax({
+			        type: "POST",
+			        url: "http://localhost/Jaktrip/index.php/tesController/setVariable/"+budget + "/" +halte,
+			        success: function(res) {
+			            if (res)
+			            {
+			            	var obj = jQuery.parseJSON(res);
+			         		var hasilPemilihan = "";
+			         		hasilPemilihan = "<table class='table'>";
+			         		
+			            	for(var i = 0; i<obj.query.length; i++)
+			            	{
+			         				var sudahDipilih = false;
+			         				for(var j = 0; j<arrayTripChoosen.length; j++)
+			         				{
+			         					if(obj.query[i].place_name == arrayTripChoosen[j])
+			         					{
+			         						sudahDipilih = true;
+			         					}
+			         				}
+			         				if(!sudahDipilih)
+			         				{
+			         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"addTrip("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
+			         				}
+			            	}
+			            	hasilPemilihan = hasilPemilihan + "</table>";
+			            	$("#blogMain").html(hasilPemilihan);
+
+			            }
+	                }
+	            });
+			}
     </script>
   
 </body>

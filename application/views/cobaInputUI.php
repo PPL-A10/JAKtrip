@@ -71,7 +71,7 @@
 		<div class="row">
 
 			<div class="searchbox">
-				<form class="form-horizontal" action="http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1/" method="post">
+				<form class="form-horizontal" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable/" method="post">
 					
 					<input type="text" name="budget" placeholder="budget">
 					<br>
@@ -80,7 +80,25 @@
 				 		<input class="fieldsml small datepicker" name="datepicker" id="datepicker" type="text" placeholder="Date" style="margin-left: 2px;">
 				    </span>
 			    	<br>
+			    	<span class="fieldsml custom-dropdown bordered">
+						    <select class="fieldsml form-control" title="Popularity" name="halte">    
+						        <?php
+						        foreach ($query as $row) {
+						        	echo "<option value='".$row->halte_code."'>".$row->halte_name."</option>";
+						        }	
+
+						        ?>
+						        <!--option value="" selected>Popularity</option>  
+						        <option value="">Highest Rating</option>
+						        <option value="">Name: A-Z</option>
+						        <option value="">Name: Z-A</option>
+						        <option value="">Price: Low to High</option>
+						        <option value="">Price: High to Low</option-->
+						    </select>
+						</span>
+					<br>
 			    	<input type="submit" value="Submit">
+
 
 				   
 				</form>

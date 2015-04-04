@@ -37,5 +37,12 @@
 				return false;
 			}
 		}
+
+		function getAllHalte()
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('halte')->get();
+			return $query->result();
+		}
 	}
 ?>
