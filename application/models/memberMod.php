@@ -1,6 +1,6 @@
 <?php
 
-	class tes123 extends CI_Model {
+	class memberMod extends CI_Model {
 
 		function showallmember()
 		{

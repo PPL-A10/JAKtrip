@@ -146,13 +146,16 @@
 					<div class="col-lg-5 result" id="output_field">		
 					
 					<?php
-							
+
 							echo "<table border='1'>";
 							foreach($query as $row)
 							{
 								echo "<tr>";
+								echo "<td><img src='".$row->pic_info."' alt='Mountain View' style='width:304px;height:228px'> </td>";
+								//header("Content-Type: image/jpeg");
+								//echo "<td>".$row->pic."</td>" ;	
 								echo "<td>".$row->place_name."</td>" ;								
-								echo "<td>".$row->category_name."</td>" ;
+								//echo "<td>".$row->category_name."</td>" ;
 								//echo "<td>".$row->description."</td>" ;
 								echo "</tr>";
 								

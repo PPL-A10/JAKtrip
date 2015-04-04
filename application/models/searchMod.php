@@ -2,7 +2,7 @@
 
 	class searchMod extends CI_Model {
 
-		function showallwisata()
+		/*function showallwisata()
 		{
 			$this->load->database();
 			$this->db->select('*');
@@ -10,18 +10,19 @@
 			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
 			$query = $this->db->get(); 
 			return $query->result();
-		}
+		}*/
 		
-		/*function showallwisata()
+		function showallwisata()
 		{
 			$this->load->database();
 			
 			$this->db->select('*');
 			$this->db->from('tourist_attraction');
-			//$this->db->join('photo', 'photo.place_name = tourist_attraction.place_name');
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+			$this->db->join('photo', 'photo.place_name = tour_category.place_name');
 			$query = $this->db->get();
 			return $query->result();	
-		}*/
+		}
 		
 		function showallcategory()
 		{
