@@ -40,7 +40,7 @@
 				echo "Place Info ", form_dropdown('place_info', $place_inf, $place_info).br(); 
 				echo "Weekday Price ", form_input('weekday_price', $weekday_price).br(); 
 				echo "Weekend Price ", form_input('weekend_price', $weekend_price).br(); 
-				echo "Category ", form_input('category_name', $category_name).br(); 
+				echo "Category ", form_dropdown('category_name',$cat_name, $category_name).br(); 
 				
 				$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
