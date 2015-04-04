@@ -4,8 +4,8 @@
 		public function index()
 		{
 		//	$this->load->helper('form');
-			$this->load->model('tes123');
-			$data['query']= $this->tes123->showallmember();
+			$this->load->model('memberMod');
+			$data['query']= $this->memberMod->showallmember();
 			
 			$this->load->view('memberView',$data);
 		}
