@@ -64,7 +64,7 @@ function __construct(){
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
 		//$this->db->where($place_name,$this->input->post($place_name));
-		echo $place_name;
+		//echo $place_name;
 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data);
 		$this->db->where('place_name',$place_name);
