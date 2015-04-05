@@ -18,7 +18,15 @@
 		
 		function delete($name){
 			$this ->load->database();
-			$this->db->delete('feedback', array('name' => $name));
+			//$this->db->delete('feedback', array('name' => $name));
+			
+											if(!empty($_POST['check_list']))
+								{
+									foreach($_POST['check_list'] as $selected)
+									{
+										$this->db->delete('feedback', array('rating' => $selected));
+									}
+								}
 		}
 	}
 ?>

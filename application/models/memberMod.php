@@ -7,7 +7,7 @@
 			$this->load->database();
 			$this->db->select('*');
             $this->db->from('member'); 
-			$this->db->join('rating', 'member.username = rating.username');
+			//$this->db->join('rating', 'member.username = rating.username');
 			$query = $this->db->get();
 			return $query->result();
 		}

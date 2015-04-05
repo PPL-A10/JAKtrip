@@ -109,7 +109,7 @@
 				  </thead>
 				  <tbody>
 				    <tr class="active">
-					<form action="myFunction()" method="post">
+					<form action="SpamCtr/del" method="post">
 				  	<?php
 							//echo "<table border='1'>";
 							foreach($query as $row)
@@ -117,54 +117,37 @@
 							//echo "<tr>";
 							echo"<td><input type='checkbox' id='check_list[]' value='".$row->username."'></td>";
 							echo "<td>".$row->username."</td>";
-							echo "<td>".$row->place_name	."</td>";
-							
+							echo "<td>".$row->review	."</td>";
+							if ($row->is_nudity == 1)
+							{echo "<td> Content mengandung nudity </td>";}
+							if ($row->is_spam == 1)
+							{echo "<td> Content berisi spam </td>";}	
+							if ($row->is_falsestatement == 1)
+							{echo "<td> Content berisi pernyataan tidak valid </td>";}
+							if ($row->is_unrelatedcontent == 1)
+							{echo "<td> Content tidak berhubungan dengan konteks </td>";}
+							if ($row->is_profanity == 1)
+							{echo "<td> Content berisi kata-kata tidak pantas </td>";}							
 							echo "</tr>";
 							}
 							//echo "</table>";
 							
-							//echo "<td>". anchor('checklist/check_list', 'Delete') ."</td>";
-							
-	/*						function Redirect2($url, $permanent = false)
-							{
-								header('Location: ' . $url, true, $permanent ? 301 : 302);
-								exit();
-							}
-														
-							if(!empty($_POST['check_list'])) 
-							{
-								foreach($_POST['check_list'] as $check)
-								{
-								echo $check; 
-								}
-							}*/
-							
+							//echo "<td>". anchor('SpamCtr/del/' .$row->name, 'Delete') ."</td>";
+							//if(isset($_POST['submit']))
+							//{
+							//	if(!empty($_POST['check_list']))
+							//	{
+							//		foreach($_POST['check_list'] as $selected)
+							//		{
+							//			echo $selected."</br>";
+							//		}
+							//	}
+							//}
 						?>
-<input type="submit" />
+<input type="submit" >
 </form>
-<?php
-if(!empty($_POST['check_list'])) {
-    foreach($_POST['check_list'] as $check) {
-            echo $check; //echoes the value set in the HTML form for each checked checkbox.
-                         //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-                         //in your case, it would echo whatever $row['Report ID'] is equivalent to.
-    }
-}
-?>
-<script>
-function myFunction(){
-<?php
-if(isset($_POST['submit'])){//to run PHP script on submit
-if(!empty($_POST['check_list'])){
-// Loop to store and display values of individual checked checkbox.
-foreach($_POST['check_list'] as $selected){
-echo $selected."</br>";
-}
-}
-}
-?>
-}
-</script>
+
+
 				  </tbody>
 				</table><br>
 
