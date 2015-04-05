@@ -1,8 +1,8 @@
 <?php
 
-	class ReviewMod extends CI_Model {
+	class SpamMod extends CI_Model {
 
-		function showreview()
+		function showspamreview()
 		{
 			$this->load->database();
 			$this->db->select('*');
