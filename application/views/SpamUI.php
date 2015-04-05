@@ -130,6 +130,7 @@
 							{echo "<td> Content berisi kata-kata tidak pantas </td>";}							
 							echo "</tr>";
 							}
+							
 							//echo "</table>";
 							
 							//echo "<td>". anchor('SpamCtr/del/' .$row->name, 'Delete') ."</td>";

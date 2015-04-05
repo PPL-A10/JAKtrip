@@ -46,5 +46,7 @@ $route['controllername/(:any)/(:any)/(:any)'] = 'ddd/index/$1/$2/$3';
 //$route['controllername//(:any)/(:any)'] = 'ddd/index/$2/$3';
 $route['controllername/(:any)'] = 'ddd/index/$1';
 
+$route['search/(:any)'] = 'search/index/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

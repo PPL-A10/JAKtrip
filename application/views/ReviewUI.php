@@ -107,65 +107,57 @@
 					Gallery photos
 				</section>
 				<section class="textdetail tabcontent active" id="reviews">
+				<div class='reviewmember col-lg-12'>
+					<button class='btn btn-warning col-lg-11' type='submit'>ADD NEW REVIEW</button><br>
+				</div>
+	
+	<?php
+	foreach($query as $row){
 					
+					
+					echo "<div class='reviewmember col-lg-12'>";				
+						echo "<div class='reviewkiri col-lg-4'>";
+							echo "<div class='ava'><img src='../assets/img/50.jpg'/></div>";
+							echo "<div class='author'><b>".$row->username."</b></div>";
+							echo "<div class='hasreviewed'>Reviewed 7 places</div>";
+						echo "</div>";
+						echo "<div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'>";
+							if ($row->rate == 0)
+						    {echo "<span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span>";}
+							if ($row->rate == 1)
+							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							if ($row->rate == 2)
+							{echo"<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							if ($row->rate == 3)
+							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							if ($row->rate == 4)
+							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
+							if ($row->rate == 5)
+							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
+						    echo	"<span class='deleterev close fa fa-trash-o'><a href=''></a></span>";
+						    echo	"<br>";
+						    echo	"<span class='judulreview tuffyh3a'>"	;						
+								
+							
+							
+								echo "<p>".$row->title."</p>" ;																
+								
+							
 
-					<div class="reviewmember col-lg-12">
-						<button class="btn btn-warning col-lg-11" type="submit">ADD NEW REVIEW</button><br>
-						<div class="reviewkiri col-lg-4">
-							<div class="ava"><img src="../assets/img/50.jpg"/></div>
-							<div class="author"><b>Ahmad Ibrahim</b></div>
-							<div class="hasreviewed">Reviewed 7 places</div>
-						</div>
-						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
-		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
-						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
-						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span>
-						    	<br>
-						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
-						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						    		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
-						    		ullamco.
-						    	</span>
-						</div>
-					</div>
-
-					<div class="reviewmember col-lg-12">
-						<div class="reviewkiri col-lg-4">
-							<div class="ava"><img src="../assets/img/50.jpg"/></div>
-							<div class="author"><b>Ahmad Ibrahim</b></div>
-							<div class="hasreviewed">Reviewed 7 places</div>
-						</div>
-						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
-		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
-						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
-						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
-						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
-						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						    		incididunt ut labore et dolore magna aliqua. 
-						    	</span>
-						</div>
-					</div>
-
-					<div class="reviewmember col-lg-12">
-						<div class="reviewkiri col-lg-4">
-							<div class="ava"><img src="../assets/img/50.jpg"/></div>
-							<div class="author"><b>Ahmad Ibrahim</b></div>
-							<div class="hasreviewed">Reviewed 7 places</div>
-						</div>
-						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
-		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
-						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
-						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
-						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
-						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-						    		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
-						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-						    	</span>
-						</div>
-					</div>
-
+							echo	"</span><br>";
+						    echo	"<span class='isireview'>";
+						
+							
+								
+								echo "<p>".$row->review."</p>" ;		
+							
+							
+						    echo	"</span>";
+					echo	"</div>";
+				echo	"</div>";
+					
+	}
+	?>
 
 				</section>
 			</div>
