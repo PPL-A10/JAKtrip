@@ -22,20 +22,21 @@ class ReviewCtr extends CI_Controller {
 		$this->load->view('ReviewUI', $data);
 	}
 	
-		public function del()
+		public function del($id)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('ReviewModel');
-			if((string)$name != ""){
-			$this->ReviewModel->delete();
+			if((int)$id != ""){
+			$this->ReviewModel->delete($id);
 			}
 			$data['query'] = $this->ReviewModel->showreviewtempat('Museum Indonesia');
-			$this->load->view('ReviewUI',$data);    
+			//$this->load->view('ReviewUI',$data);    
+			echo json_encode($data);
 		}
 
 	
-	function _remap($method)
+	/*function _remap($method)
 	{
 		if (method_exists($this, $method))
 		{
@@ -45,7 +46,7 @@ class ReviewCtr extends CI_Controller {
 		{
 		$this->index($method);
 		}
-	}
+	}*/
 }
 
 ?>

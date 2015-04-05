@@ -16,17 +16,10 @@
 			return $query->result();
 		}
 		
-		function delete($name){
+		function delete($id){
 			$this ->load->database();
-			//$this->db->delete('feedback', array('name' => $name));
-			
-											if(!empty($_POST['check_list']))
-								{
-									foreach($_POST['check_list'] as $selected)
-									{
-										$this->db->delete('feedback', array('rating' => $selected));
-									}
-								}
+			$this->db->delete('feedback', array('id_rate' => $id));
 		}
+		
 	}
 ?>

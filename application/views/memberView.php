@@ -21,7 +21,9 @@
 		echo "<tr>";
 		echo "<td>".$row->username."</td>";
 		echo "<td>".$row->email	."</td>";
+		echo "<td>".anchor('memberCont/del/' .$row->username, 'Delete')."</td>";
 		echo "</tr>";
+		
 	}
 	echo "</table>";
 	

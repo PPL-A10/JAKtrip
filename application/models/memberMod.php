@@ -11,5 +11,11 @@
 			$query = $this->db->get();
 			return $query->result();
 		}
+		
+				function delete($name){
+			$this ->load->database();
+			$this->db->delete('member', array('username' => $name));
+
+		}
 	}
 ?>

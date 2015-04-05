@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('/JAKtrip/assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -47,7 +47,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url('/JAKtrip/assets/img/logo.png')"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -94,7 +94,7 @@
 				<div class="tuffyh2a admintitle">Review Spam</div>
 				
 				<span id="openLogin" class="newpost">
-				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Remove Spam</a></span><br><br>
+				<a href=""><span class="fa fa-trash-o"></span><?php echo anchor('SpamCtr/coba/', '&nbsp;&nbsp;Remove Spam');?></a></span><br><br>
 
 				<table id="tab1" class="newpost table table-striped table-hover">
 				  <thead >
@@ -107,15 +107,16 @@
 				      <th>Last Reported</th>
 				    </tr>
 				  </thead>
-				  <tbody>
+				  <tbody id="tes123">
 				    <tr class="active">
-					<form action="SpamCtr/del" method="post">
+					<form action="javascript:myFunction()" method="post">
 				  	<?php
+					
 							//echo "<table border='1'>";
 							foreach($query as $row)
 							{
 							//echo "<tr>";
-							echo"<td><input type='checkbox' id='check_list[]' value='".$row->username."'></td>";
+							echo"<td><input type='checkbox' id='check_list[]' value='".$row->id_rate."'></td>";
 							echo "<td>".$row->username."</td>";
 							echo "<td>".$row->review	."</td>";
 							if ($row->is_nudity == 1)
@@ -132,22 +133,29 @@
 							}
 							
 							//echo "</table>";
-							
-							//echo "<td>". anchor('SpamCtr/del/' .$row->name, 'Delete') ."</td>";
-							//if(isset($_POST['submit']))
-							//{
-							//	if(!empty($_POST['check_list']))
-							//	{
-							//		foreach($_POST['check_list'] as $selected)
-							//		{
-							//			echo $selected."</br>";
-							//		}
-							//	}
-							//}
-						?>
-<input type="submit" >
-</form>
 
+
+						?>
+<input type="submit">
+</form>
+<script>
+function myFunction()
+{
+	document.getElementById("tes123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
+	document.getElementById("check_list").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
+<?php
+echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";							
+$data1 = $this->input->post('check_list');			
+			foreach ((array)$data1 as $key => $value)
+			{
+			 echo "<td>Index {$key}'s value is {$value}.</td>";
+			   echo "<td>".$value.' '."</br>";
+				
+			}
+
+?>			
+}
+</script>
 
 				  </tbody>
 				</table><br>
@@ -166,7 +174,7 @@
 <footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="/JAKtrip/assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
@@ -183,11 +191,11 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-1.11.0.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jaktrip.js"></script>
-    <script src="../assets/js/jquery.smartmenus.min.js"></script>
-	<script src="../assets/js/menuselector.js"></script>
+	<script src="/JAKtrip/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="/JAKtrip/assets/js/bootstrap.min.js"></script>
+	<script src="/JAKtrip/assets/js/jaktrip.js"></script>
+    <script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
+	<script src="/JAKtrip/assets/js/menuselector.js"></script>
 	<script>
 		$("#tab1 #checkAll").click(function () {
 	        if ($("#tab1 #checkAll").is(':checked')) {

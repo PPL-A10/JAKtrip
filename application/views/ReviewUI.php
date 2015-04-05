@@ -115,10 +115,10 @@
 	foreach($query as $row){
 					
 					
-					echo "<div class='reviewmember col-lg-12'>";				
+					echo "<div class='reviewmember id='isi_field' col-lg-12'>";				
 						echo "<div class='reviewkiri col-lg-4'>";
 							echo "<div class='ava'><img src='../assets/img/50.jpg'/></div>";
-							echo "<div class='author'><b>".$row->username."</b></div>";
+							echo "<div class='author' id='namapengguna'><b>".$row->username."</b></div>";
 							echo "<div class='hasreviewed'>Reviewed 7 places</div>";
 						echo "</div>";
 						echo "<div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'>";
@@ -134,24 +134,14 @@
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 							if ($row->rate == 5)
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-						    echo	"<span class='deleterev close fa fa-trash-o'><a href=''></a></span>";
+						    echo	"<a href='javascript:delFunction()'><span class='deleterev close fa fa-trash-o' id='nilaiid' value='".$row->id_rate."'></span></a>";	
+							//echo	"<span class='deleterev close fa fa-trash-o'>".anchor('ReviewCtr/del/' .$row->id_rate, 'Delete')."</span>";
 						    echo	"<br>";
-						    echo	"<span class='judulreview tuffyh3a'>"	;						
-								
-							
-							
-								echo "<p>".$row->title."</p>" ;																
-								
-							
-
+						    echo	"<span class='judulreview tuffyh3a' id='judul'>"	;													
+							echo 	"<p>".$row->title."</p>" ;																
 							echo	"</span><br>";
-						    echo	"<span class='isireview'>";
-						
-							
-								
-								echo "<p>".$row->review."</p>" ;		
-							
-							
+						    echo	"<span class='isireview' id='isireview'>";
+							echo 	"<p>".$row->review."</p>" ;		
 						    echo	"</span>";
 					echo	"</div>";
 				echo	"</div>";
@@ -191,6 +181,58 @@
 	<script src="../assets/js/jquery.smartmenus.min.js"></script>
 	<script src="../assets/js/menuselector.js"></script>
 
+	
+					<script>
+	function delFunction(){
+		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
+		var x = document.getElementById("nilaiid").value;
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ReviewCtr/del/"+x,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = [];
+								var resultQueryname = [];
+								var resultQuerytitle = [];
+								var resultQueryreview = [];
+								var resultQueryid = [];
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery.push("<div class='reviewkiri col-lg-4'><div class='ava'><img src='../assets/img/50.jpg'/></div><div class='author' id='namapengguna'><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><a href='javascript:delFunction()'><span class='deleterev close fa fa-trash-o' id='nilaiid' value='"+obj.query[i].id_rate+"'></span></a><br><span class='judulreview tuffyh3a' id='judul'><p>"+obj.query[i].title+"</p></span><br><span class='isireview' id='isireview'><p>"+obj.query[i].review+"</p>	</span></div>");
+								}
+								/*for (var i=0 ; i<obj.query.length; i++){
+									resultQueryname.push(obj.query[i].username);
+								}
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuerytitle.push(obj.query[i].title);
+								}
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQueryreview.push(obj.query[i].review);
+								}
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQueryid.push(obj.query[i].id_rate);
+								}*/
+								
+								for (var i=0 ; i<resultQuery.length; i++){
+									$("#isi_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");;
+								}
+								
+								//$("#output_field").html(resultQuery);
+								//for (var i=0 ; i<resultQueryname.length; i++)
+								//{$("#namapengguna").html(resultQueryname[i]);}
+								//$("#judul").html(resultQuerytitle);
+								//$("#isireview").html(resultQueryreview);
+							}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+	
+	
 	<script>
 		  $(function() {
 			  $('#main-menu').smartmenus();
