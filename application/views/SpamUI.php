@@ -109,37 +109,62 @@
 				  </thead>
 				  <tbody>
 				    <tr class="active">
-					
+					<form action="myFunction()" method="post">
 				  	<?php
 							//echo "<table border='1'>";
 							foreach($query as $row)
 							{
 							//echo "<tr>";
-							echo"<td><input type='checkbox' id='spam_select' value='".$row->username."'></td>";
+							echo"<td><input type='checkbox' id='check_list[]' value='".$row->username."'></td>";
 							echo "<td>".$row->username."</td>";
 							echo "<td>".$row->place_name	."</td>";
-							echo "<td>". anchor('reviewCont/del/' .$row->username, 'Delete') ."</td>";
+							
 							echo "</tr>";
 							}
 							//echo "</table>";
-	
+							
+							//echo "<td>". anchor('checklist/check_list', 'Delete') ."</td>";
+							
+	/*						function Redirect2($url, $permanent = false)
+							{
+								header('Location: ' . $url, true, $permanent ? 301 : 302);
+								exit();
+							}
+														
+							if(!empty($_POST['check_list'])) 
+							{
+								foreach($_POST['check_list'] as $check)
+								{
+								echo $check; 
+								}
+							}*/
+							
 						?>
-
-				      <!--td><input type="checkbox" value=""/></td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr>
-				    <tr>
-				      <td><input type="checkbox" value=""/></td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr-->
+<input type="submit" />
+</form>
+<?php
+if(!empty($_POST['check_list'])) {
+    foreach($_POST['check_list'] as $check) {
+            echo $check; //echoes the value set in the HTML form for each checked checkbox.
+                         //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
+                         //in your case, it would echo whatever $row['Report ID'] is equivalent to.
+    }
+}
+?>
+<script>
+function myFunction(){
+<?php
+if(isset($_POST['submit'])){//to run PHP script on submit
+if(!empty($_POST['check_list'])){
+// Loop to store and display values of individual checked checkbox.
+foreach($_POST['check_list'] as $selected){
+echo $selected."</br>";
+}
+}
+}
+?>
+}
+</script>
 				  </tbody>
 				</table><br>
 
@@ -198,5 +223,7 @@
 			  $('#main-menu').smartmenus();
 			});
 	</script>
+
+
 </body>
 </html>
