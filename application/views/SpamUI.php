@@ -109,7 +109,6 @@
 				  </thead>
 				  <tbody id="tes123">
 				    <tr class="active">
-					<form action="javascript:myFunction()" method="post">
 				  	<?php
 					
 							//echo "<table border='1'>";
@@ -128,7 +127,8 @@
 							if ($row->is_unrelatedcontent == 1)
 							{echo "<td> Content tidak berhubungan dengan konteks </td>";}
 							if ($row->is_profanity == 1)
-							{echo "<td> Content berisi kata-kata tidak pantas </td>";}							
+							{echo "<td> Content berisi kata-kata tidak pantas </td>";}
+							echo "<td>". anchor('SpamCtr/del/'.$row->id_rate, 'Delete') ."</td>";						
 							echo "</tr>";
 							}
 							
@@ -136,14 +136,14 @@
 
 
 						?>
-<input type="submit">
-</form>
-<script>
+
+
+<!--script>
 function myFunction()
 {
 	document.getElementById("tes123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
 	document.getElementById("check_list").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
-<?php
+<!--?php
 echo "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";							
 $data1 = $this->input->post('check_list');			
 			foreach ((array)$data1 as $key => $value)
@@ -155,7 +155,7 @@ $data1 = $this->input->post('check_list');
 
 ?>			
 }
-</script>
+</script-->
 
 				  </tbody>
 				</table><br>

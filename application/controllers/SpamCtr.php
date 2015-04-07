@@ -8,13 +8,13 @@ class SpamCtr extends CI_Controller 	{
 			$this->load->view('SpamUI',$data);
 		}
 		
-		public function del()
+		public function del($id)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('SpamMod');
-			if((string)$name != ""){
-			$this->SpamMod->delete();
+			if((int)$id != null){
+			$this->SpamMod->delete($id);
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
 			$this->load->view('SpamUI',$data);    

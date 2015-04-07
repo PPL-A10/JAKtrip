@@ -18,7 +18,7 @@
 		
 		function delete($id){
 			$this ->load->database();
-			$this->db->delete('feedback', array('id_rate' => $id));
+			$this->db->delete('rating', array('id_rate' => $id));
 		}
 		
 	}
