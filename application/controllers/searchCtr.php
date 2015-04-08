@@ -6,6 +6,7 @@
 		{
 		//	echo "haha";
 			// $this->load->helper('form');
+			$this->load->helper('form');
 			 $this->load->model('touristAttrManager');
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
@@ -21,6 +22,7 @@
 			 $this->load->model('touristAttrManager');
 			 $this->load->model('HalteManager');
 			 $this->load->helper('cookie');
+			 $this->load->helper('form');
 		//	echo "hahaha";
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
@@ -73,7 +75,7 @@
 		{
 		//	echo "haha";
 			// $this->load->helper('form');
-			$this->load->helper('form');
+			;
 			$this->load->model('touristAttrManager');
 			$this->load->model('HalteManager');
 			$this->load->helper('cookie');

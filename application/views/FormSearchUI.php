@@ -609,12 +609,12 @@
 					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
 				</div>
 				<?php $CI =& get_instance(); ?>
-				<?php if($this->form_validation->run() == TRUE){
+				<!--?php if($this->form_validation->run() == TRUE){
 					echo '<div class="alert alert-dismissible alert-success col-lg-11" style="text-align: center; margin: 15px;">';
 					echo '<button type="button" class="close" data-dismiss="alert">×</button>';
 					echo '<strong>Thank you!</strong> You successfully submitted your review. </div>';
 				}
-				?>
+				?-->
 
 				<?php 
 				$attributes = array('class' => 'col-lg-12');
@@ -679,7 +679,17 @@
 		</div>
 	</footer>
 
+<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
+    Horizontal Collapsible
+</button>
 
+<div id="container" style="width:200px;height:70px;">
+    <div id="demo" class="collapse in width" style="background-color:yellow;">
+        <div style="padding: 20px; overflow:hidden; width:200px;">
+            Here is my content
+        </div>
+    </div>
+</div>
   
 </body>
 
