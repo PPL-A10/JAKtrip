@@ -333,9 +333,9 @@
 			function configureTrip(indexToRemove)
 			{
 				alert("indexToRemove : " + indexToRemove + " , indexCurrentHalte : " + indexCurrentHalte);
+				
 				if(indexToRemove == indexCurrentHalte)
-				{
-					
+				{	
 					indexCurrentHalte = indexCurrentHalte -1;
 				}
 				else
@@ -354,6 +354,7 @@
 						arrayTripPriceChoosen[indexToRemove +1] = parseInt(arrayTripPriceChoosen[indexToRemove +1]) - parseInt(arrayAngkotBefore[indexToRemove]) + parseInt(arrayAngkotBefore[indexToRemove-1]);
 					}
 				}
+
 
 			}
     </script>
@@ -601,9 +602,62 @@
 		</div>
 
 	</div>
+<div class="col-lg-6 rating">
+			<div class="row">
+				<div class="col-lg-12 redbar">
+					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
+				</div>
+				<?php $CI =& get_instance(); ?>
+				<?php if($this->form_validation->run() == TRUE){
+					echo '<div class="alert alert-dismissible alert-success col-lg-11" style="text-align: center; margin: 15px;">';
+					echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+					echo '<strong>Thank you!</strong> You successfully submitted your review. </div>';
+				}
+				?>
 
-	<div class="col-lg-6" id="mapcanvas">
-	</div>
+				<?php 
+				$attributes = array('class' => 'col-lg-12');
+				echo form_open('ratingCtr', $attributes); ?>
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Rating</label><br>
+  						 <span class="starRating">
+					        <input id="rating5" type="radio" name="rate" value="5">
+					        <label for="rating5">5</label>
+					        <input id="rating4" type="radio" name="rate" value="4">
+					        <label for="rating4">4</label>
+					        <input id="rating3" type="radio" name="rate" value="3" checked>
+					        <label for="rating3">3</label>
+					        <input id="rating2" type="radio" name="rate" value="2">
+					        <label for="rating2">2</label>
+					        <input id="rating1" type="radio" name="rate" value="1">
+					        <label for="rating1">1</label>
+					     </span>
+				      </div>
+				    </div>
+					<br>
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Title</label>
+  						<input class="form-control" type="text" id="title" name="title">
+				      </div>
+				    </div>
+					<br>
+					<div class="formrating form-group">
+					  <div class="col-lg-9">
+						<label class="control-label">Review</label>
+  						<textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
+				      </div>
+				    </div>
+					<br>
+					<button class="btn btn-warning" type="submit">SUBMIT</button>
+				<?php echo form_close(); ?>
+			</div>
+
+		</div>
+	<!--div class="col-lg-6" id="mapcanvas">
+	</div-->
 	
 	<footer>
 		<div class="container-fluid">

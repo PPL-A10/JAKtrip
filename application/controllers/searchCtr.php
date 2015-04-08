@@ -11,6 +11,7 @@
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
 			$this->load->view('FormSearchUI');
+			$this->load->helper('form');
 		}
 
 		public function searchWithinBudget($budget)
@@ -72,6 +73,7 @@
 		{
 		//	echo "haha";
 			// $this->load->helper('form');
+			$this->load->helper('form');
 			$this->load->model('touristAttrManager');
 			$this->load->model('HalteManager');
 			$this->load->helper('cookie');
