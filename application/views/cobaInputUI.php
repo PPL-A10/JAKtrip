@@ -83,19 +83,25 @@
 			    	<span class="fieldsml custom-dropdown bordered">
 						    <select class="fieldsml form-control" title="Popularity" name="halte">    
 						        <?php
-						        foreach ($query as $row) {
-						        	echo "<option value='".$row->halte_code."'>".$row->halte_name."</option>";
-						        }	
+						        // foreach ($query as $row) {
+						        // 	echo "<option value='".$row->halte_code."'>".$row->halte_name."</option>";
+						        // }	
 
 						        ?>
-						        <!--option value="" selected>Popularity</option>  
+						        <option value="" selected>Popularity</option>  
 						        <option value="">Highest Rating</option>
 						        <option value="">Name: A-Z</option>
 						        <option value="">Name: Z-A</option>
 						        <option value="">Price: Low to High</option>
-						        <option value="">Price: High to Low</option-->
+						        <option value="">Price: High to Low</option>
 						    </select>
 						</span>
+
+					<br>
+					<select name="pos" id="pos_select" class="form_input">
+					    <option value="0">about_history_title</option>
+					    <option vlaue="1">about_history</option>
+					</select>
 					<br>
 			    	<input type="submit" value="Submit">
 

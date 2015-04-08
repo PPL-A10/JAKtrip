@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="http://localhost/Jaktrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="http://localhost/Jaktrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="http://localhost/Jaktrip/assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
+	<link href="http://localhost/Jaktrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="http://localhost/Jaktrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('http://localhost/Jaktrip/assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('http://localhost/Jaktrip/assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('http://localhost/Jaktrip/assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('http://localhost/Jaktrip/assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('http://localhost/Jaktrip/assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -45,7 +45,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url('http://localhost/Jaktrip/assets/img/logo.png')"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -61,7 +61,7 @@
 							<input class="form-control form-group" type="email" placeholder="E-mail" required>
 							<input class="form-control form-group" type="password" placeholder="Password" required>
 							<span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
-							<span class="col-lg-6"><a href="#">Forgot password?</a></span><br><br>
+							<span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
 							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
 							<center>Or login with your account below<center><br>
 							<div class="iconsocial">
@@ -89,24 +89,31 @@
 				</div>
 				<div class="col-lg-2"></div>
 				<div class="col-lg-8 box img-rounded ">
-					<form class="form-inline">
+					<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable/" method="post">
 					<span class="field custom-dropdown ">
-					    <select class="field form-control" title="Nearest bus stop?">    
+					    <select class="field form-control" title="Nearest bus stop?" type="dropdown" name="mydropdown">    
 					        <option value="" selected disabled>Nearest bus stop?</option>
-					        <option value="">Sarinah</option>  
+					        <?php
+					        	foreach ($query as $row) {
+					        		# code...
+					        		echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";	
+					        	}
+					        	
+					        ?>
+					        <!--option value="">Sarinah</option>  
 					        <option value="">Gelora Bung Karno</option>
 					        <option value="">Atrium</option>
-					        <option value="">Bank Indonesia</option>
+					        <option value="">Bank Indonesia</option-->
 					    </select>
 					</span>
 					
 				  <span class="input-group col-lg-3">
 				    <span class="field input-group-addon">Rp</span>
-				    <input class="field form-control" type="text" placeholder="Budget">
+				    <input class="field form-control" type="text" placeholder="Budget" name="budget">
 				  </span>
 
 				  <span class="input-group col-lg-3">
-				 	 <input class="field datepicker" type="text" placeholder="Date">
+				 	 <input class="field datepicker" type="text" placeholder="Date" name="datepicker">
 				  </span>
 
 				  <button class="field btn btn-warning" type="submit">SEARCH</button>
@@ -118,15 +125,39 @@
 			</header>
 			
 			<div class="col-lg-12 even">
-				<div class="collection txtimg">
-					<div class="tuffyh2">ECO CRUISE</div>
+				<div class="tuffyh1b">MOST POPULAR</div>	
+				<div class="col-lg-1"></div>
+				<div class="col-lg-10">
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>	
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>
+					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>
 				</div>
-				
-				<img class=".img-responsive img-rounded" src="../assets/img/image.png"/>
+				<div class="col-lg-1"></div>
 			</div>
 			
 			<div class="col-lg-12 odd">
-			
+				<div class="tuffyh1b">BROWSE CATEGORIES</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="col-lg-1"></div>
+						<div class="col-lg-10">
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>	
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+
+					<div class="col-lg-12">
+						<div class="col-lg-1"></div>
+						<div class="col-lg-10">
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>	
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -134,7 +165,7 @@
 	<footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="http://localhost/Jaktrip/assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
@@ -151,16 +182,16 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-1.11.0.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jaktrip.js"></script>
-	<script src="../assets/js/bootstrap-datepicker.min.js"></script>
+	<script src="http://localhost/Jaktrip/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="http://localhost/Jaktrip/assets/js/bootstrap.min.js"></script>
+	<script src="http://localhost/Jaktrip/assets/js/jaktrip.js"></script>
+	<script src="http://localhost/Jaktrip/assets/js/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
             
             $('.datepicker').datepicker({
-                format: "dd/mm/yyyy"
+                format: "dd-mm-yyyy"
             });  
         
         });

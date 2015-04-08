@@ -21,9 +21,15 @@
 			// $condition = "(halte_code = '".$kodehalte."' AND weekday_price <=  ".$budgetInt.") OR weekday_price <=".($budgetInt+3500)."";
 			// $query = $this->db->select("*")->from('tourist_attraction')->where($condition)->get();
 			// return $query->result();
-			
-			
 		}
+
+		function getAllHalte()
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('halte')->get();
+			return $query->result();
+		}
+
 		
 	}
 ?>
