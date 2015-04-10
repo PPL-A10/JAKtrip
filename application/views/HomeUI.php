@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<link rel="shortcut icon" type="image/x-icon" 
+	href="../assets/img/logo2.png" />
 	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
