@@ -16,8 +16,11 @@ Apakah pada saat membuat rangkaian perjalanan, harga yang dihitung oleh sistem b
 Ya, harga yang disimpan pada sistem JAKtrip terdiri dari dua jenis, yaitu harga pada hari kerja dan harga pada hari libur. Jadi, harga yang dihitung pada saat membuat rangkaian perjalanan atau saat meminta rekomendasi perjalanan berdasarkan hari yang dipilih oleh user, apakah hari kerja atau hari libur.
 
 ACCOUNT AND PROFILE======================================================
-Bagaimana cara saya melihat tempat wisata yang sudah pernah dikunjungi?
-Jika pada detail informasi tempat wisata member sudah mench
+Bagaimana cara saya melihat tempat wisata yang sudah pernah dikunjungi dan tempat wisata yang ingin dikunjungi(wishlist)?
+Member dapat melihat tempat wisata yang telah dikunjungi dengan cara:
+1. Arahkan mouse pada nama Anda di sebelah kanan atas pada ppl-a10.cs.ui.ac.id
+2. Pilih collection
+Akan ditampilkan daftar tempat wisata yang sudah dikunjungi dan tempat wisata yang ingin dikunjungi.
 
 TOURIST ATTRACTION=======================================================
 Apakah ada harga tiket masuk khusus untuk anak-anak?
@@ -37,4 +40,4 @@ Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?
 Member atau user yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata baru kepada JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
 
 Pertanyaan lain?
-Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan ke form FEEDBACK ini <link>. 
+Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan ke form FEEDBACK <ini>. 
