@@ -43,7 +43,7 @@
         // When the document is ready
         $(document).ready(function () {
         	 showTheItinerary();
-           
+    //      	 $(".collapse").collapse()
             $('.datepicker').datepicker({
                 format: "dd/mm/yyyy"
             });  
@@ -178,7 +178,11 @@
 	  // 			$('[data-toggle="popover"]').popover('show');
 			// });
 		}
-
+		function collapseMap()
+		{
+			$("#mapcanvas").hide();
+	//		alert("ya");
+		}
 		function showTheSuggestionList(budget, halte)
 			{
 
@@ -427,7 +431,7 @@
 </div>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top " id="TestForm">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
 		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -468,7 +472,7 @@
 		<div class="row">
 
 			<div class="searchbox">
-				<form class="form-horizontal">
+				<form class="form-horizontal " >
 					<div class="form-inline">
 						<label class="col-lg-2 control-label">Going from </label>
 						<span class="fieldsml custom-dropdown ">
@@ -529,6 +533,9 @@
 						</div>
 					</div>
 				</form>
+				<button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" data-target="#rating" onclick="collapseMap()">
+    Horizontal Collapsible
+</button>
 			</div>
 
 			<div class="searchres">
@@ -602,10 +609,13 @@
 		</div>
 
 	</div>
-<div class="col-lg-6 rating">
+
+	
+
+	<div class="col-lg-6 rating collapse width" id="rating">
 			<div class="row">
 				<div class="col-lg-12 redbar">
-					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+					<a class="text-danger" href="#"  data-toggle="collapse" data-target="#rating"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
 					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
 				</div>
 				<?php $CI =& get_instance(); ?>
@@ -656,8 +666,11 @@
 			</div>
 
 		</div>
-	<!--div class="col-lg-6" id="mapcanvas">
-	</div-->
+		<div class="col-lg-6 collapse in width"  id="mapcanvas">
+	</div>
+
+
+	
 	
 	<footer>
 		<div class="container-fluid">
@@ -679,17 +692,15 @@
 		</div>
 	</footer>
 
-<button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">
-    Horizontal Collapsible
-</button>
 
-<div id="container" style="width:200px;height:70px;">
+
+<!--div id="container" style="width:200px;height:70px;">
     <div id="demo" class="collapse in width" style="background-color:yellow;">
         <div style="padding: 20px; overflow:hidden; width:200px;">
             Here is my content
         </div>
     </div>
-</div>
+</div-->
   
 </body>
 
