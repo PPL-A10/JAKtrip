@@ -1,33 +1,40 @@
+GETTING STARTED==========================================================
 Apa yang dimaksud dengan JAKtrip?
 JAKtrip adalah sistem rekomendasi tempat wisata di Jakarta berdasarkan budget atau anggaran yang dimiliki oleh pengguna.
-
-Adakah tempat wisata yang memiliki promo tertentu?
-Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka sistem JAKtrip akan menampilkan promo tersebut pada detail informasi tempat wisata.
 
 Apakah kami dapat mengatur itinerary perjalanan sendiri?
 Ya, untuk dapat membuat suatu rangkaian perjalanan yang dibuat sendiri, pengguna dapat menyusun rangkaian perjalanan di <link ini>.
 
-Apakah user dapat mengupload foto tempat wisata?
-Yang dapat mengupload foto tempat wisata adalah member atau user yang mempunyai akun JAKtrip. Upload foto yang dimaksud adalah member mengupload foto pada suatu tempat wisata untuk kemudian disetujui oleh admin agar dapat ditampilkan pada detail suatu tempat wisata. Nantinya foto tersebut dapat dilihat oleh seluruh user yang membuka detail tempat wisata tersebut.
-
 Bagaimana cara menyesuaikan harga tempat wisata dengan budget kami?
 Untuk dapat melihat tempat-tempat wisata yang sesuai dengan budget user, JAKtrip menyediakan fitur melihat rekomendasi tempat wisata. 
 banyak
-
-Apakah ada harga tiket masuk khusus untuk anak-anak?
-Secara default harga yang JAKtrip tampilkan adalah harga umum. Akan tetapi, user dapat melihat harga tiket masuk secara lebih detail pada detail informasi tempat wisata.
-
-Tempat wisata mana yang menjadi tujuan wisata terpopuler di Jakarta?
-Untuk mengetahui tempat wisata terpopuler di Jakarta, dapat melihat link ini.
-
-Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?
-Member atau user yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata baru kepada JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
 
 Bagaimana dengan ketetapan harga tiket masuk ke suatu tempat wisata dan harga transportasi yang tercantum pada website?
 Harga tiket masuk tempat iwsata dan harga transportasi yang tercantum pada website JAKtrip merupakan estimasi yang mendekati dan tetap akan ditinjau kembali sesuai dengan perubahan harga tempat wisata di website resminya.
 
 Apakah pada saat membuat rangkaian perjalanan, harga yang dihitung oleh sistem bergantung pada hari yang dipilih?
 Ya, harga yang disimpan pada sistem JAKtrip terdiri dari dua jenis, yaitu harga pada hari kerja dan harga pada hari libur. Jadi, harga yang dihitung pada saat membuat rangkaian perjalanan atau saat meminta rekomendasi perjalanan berdasarkan hari yang dipilih oleh user, apakah hari kerja atau hari libur.
+
+ACCOUNT AND PROFILE======================================================
+Bagaimana cara saya melihat tempat wisata yang sudah pernah dikunjungi?
+Jika pada detail informasi tempat wisata member sudah mench
+
+TOURIST ATTRACTION=======================================================
+Apakah ada harga tiket masuk khusus untuk anak-anak?
+Secara default harga yang JAKtrip tampilkan adalah harga umum. Akan tetapi, user dapat melihat harga tiket masuk secara lebih detail pada detail informasi tempat wisata.
+
+Tempat wisata mana yang menjadi tujuan wisata terpopuler di Jakarta?
+Untuk mengetahui tempat wisata terpopuler di Jakarta, dapat melihat link ini.
+
+Adakah tempat wisata yang memiliki promo tertentu?
+Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka sistem JAKtrip akan menampilkan promo tersebut pada detail informasi tempat wisata.
+
+Apakah user dapat mengupload foto tempat wisata?
+Yang dapat mengupload foto tempat wisata adalah member atau user yang mempunyai akun JAKtrip. Upload foto yang dimaksud adalah member mengupload foto pada suatu tempat wisata untuk kemudian disetujui oleh admin agar dapat ditampilkan pada detail suatu tempat wisata. Nantinya foto tersebut dapat dilihat oleh seluruh user yang membuka detail tempat wisata tersebut.
+
+OTHERS===================================================================
+Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?
+Member atau user yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata baru kepada JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
 
 Pertanyaan lain?
 Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan ke form FEEDBACK ini <link>. 
