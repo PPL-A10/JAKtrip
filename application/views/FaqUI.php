@@ -69,13 +69,42 @@
 			
 			<ul class="submenufaq nav navbar-nav">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a href="#">Getting Started</a></li>
-				<li><a href="#">Account and Profile</a></li>
-		        <li><a href="#">Reviews</a></li>
-		        <li><a href="#">Others</a></li>
+				<li><a href="#getting-started" class="submenua">Getting Started</a></li>
+				<li><a href="#account-and-profile" class="submenua">Account and Profile</a></li>
+		        <li><a href="#reviews" class="submenua">Reviews</a></li>
+		        <li><a href="#others" class="submenua">Others</a></li>
 			</ul>
 
 			<div class="col-lg-12 even">
+				<section id="getting-started" class="tab-content active">
+					<div class="faq">
+						<dl id="faqs">
+						  <dt>Question 1</dt>
+						  <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit orem ipsum dolor sit amet, consectetuer adipiscing elit</dd>
+						 
+						  <dt>Question 2</dt>
+						  <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit orem ipsum dolor sit amet, consectetuer adipiscing elit</dd>
+						 
+						  <dt>Question 3</dt>
+						  <dd>Lorem ipsum dolor sit amet, consectetuer adipiscing elit orem ipsum dolor sit amet, consectetuer adipiscing elit</dd>
+						</dl>
+					</div>
+				</section>
+				<section id="account-and-profile" class="tab-content hide">
+					<div class="faq">
+						Content in tab 2
+					</div>
+				</section>
+				<section id="reviews" class="tab-content hide">
+					<div class="faq">
+						Content in tab 3
+					</div>
+				</section>
+				<section id="others" class="tab-content hide">
+					<div class="faq">
+						Content in tab 3
+					</div>
+				</section>
 			</div>
 			
 		</div>
@@ -103,7 +132,40 @@
 
 	<script src="../assets/js/jquery-1.11.0.min.js"></script>
 	<script src="../assets/js/bootstrap.min.js"></script>
+	<script src="../assets/js/menuselector.js"></script>
 	<script src="../assets/js/jaktrip.js"></script>
-    
+    	<script>
+			$(document).ready(function() {
+				$('.navbar-nav > li > a').click(function(event){
+					event.preventDefault();//stop browser to take action for clicked anchor
+					
+					//get displaying tab content jQuery selector
+					var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
+					
+					//find actived navigation and remove 'active' css
+					var actived_nav = $('.navbar-nav > li.active');
+					actived_nav.removeClass('active');
+					
+					//add 'active' css into clicked navigation
+					$(this).parents('li').addClass('active');
+					
+					//hide displaying tab content
+					$(active_tab_selector).removeClass('active');
+					$(active_tab_selector).addClass('hide');
+					
+					//show target tab content
+					var target_tab_selector = $(this).attr('href');
+					$(target_tab_selector).removeClass('hide');
+					$(target_tab_selector).addClass('active');
+				});
+			});
+		</script>
+		<script type="text/javascript">
+		    $("#faqs dd").hide();
+		    $("#faqs dt").click(function () {
+		        $(this).next("#faqs dd").slideToggle(500);
+		        $(this).toggleClass("expanded");
+		    });
+		</script>
 </body>
 </html>
