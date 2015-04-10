@@ -6,6 +6,8 @@
 	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
 	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
+	<link href="../assets/css/sm-clean2.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
@@ -55,7 +57,7 @@
         	<li><a href="#">PROMO</a></li>
           </ul>
 
-	      <ul class="nav navbar-nav navbar-right">
+	      <ul class="sm sm-clean2 nav navbar-nav navbar-right" id="main-menu">
 	        <li><a href="#">Sign Up</a></li>
 	        <li><a href="#openLogin">Log In</a></li>
 		        <div id="openLogin" class="openModal">
@@ -81,6 +83,15 @@
 					</div>
 		        </div>
 	        <li><a href="#">Trip (0)  <span class="fa fa-bus"></span></a></li>
+	        <li><a href="#">Michelle <img src="../assets/img/25.png" class="ava-rounded"></a>
+	        	<ul>
+	        		<li><a  href="#">Edit Profile</a></li>
+	        		<li><a  href="#">My Trips</a></li>
+	        		<li><a  href="#">Collection</a></li>
+	        		<li><a  href="#">Reviews</a></li>
+	        		<li><a  href="#">Logout</a></li>
+	        	</ul>
+	        </li>
 	      </ul>
 	    </div>
 	  </div>
@@ -199,6 +210,7 @@
 	<script src="../assets/js/bootstrap.min.js"></script>
 	<script src="../assets/js/jaktrip.js"></script>
 	<script src="../assets/js/bootstrap-datepicker.min.js"></script>
+	<script src="../assets/js/jquery.smartmenus.min.js"></script>
     <script type="text/javascript">
         // When the document is ready
         $(document).ready(function () {
@@ -209,5 +221,11 @@
         
         });
     </script>
+
+    <script>
+		  $(function() {
+			  $('#main-menu').smartmenus();
+			});
+	</script>
 </body>
 </html>

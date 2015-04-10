@@ -67,7 +67,7 @@
 				
 			</header>
 			
-			<ul class="submenu nav navbar-nav">
+			<ul class="submenufaq nav navbar-nav">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a href="#">Getting Started</a></li>
 				<li><a href="#">Account and Profile</a></li>
