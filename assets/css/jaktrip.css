@@ -683,10 +683,18 @@ a {
   color: #db2719;
 }
 
-#faq a{
-  color: #db2719;
+.faq dd a{
+  color: #db2719 !important;
 }
 
-#faq a:hover{
-  color: #a51811;
+.faq dd a:hover{
+  color: #a51811 !important;
+}
+
+.detail li:nth-child(5){
+  margin-top: 5px;
+}
+
+.detail li:nth-child(6){
+  margin-top: 5px;
 }
