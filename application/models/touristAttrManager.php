@@ -67,5 +67,16 @@
 			$query = $this->db->get();
 			return $query->result();
 		}
+
+		function getDetail($data)
+		{
+			$this->load->database();
+			$tourAttrChoosen = $data['tourAttr'];
+
+			$condition = "place_name = '".$tourAttrChoosen."'";
+			$query = $this->db->select("*")->from('tourist_attraction')->where($condition);
+			$query = $this->db->get();
+			return $query->result();
+		}
 	}
 ?>

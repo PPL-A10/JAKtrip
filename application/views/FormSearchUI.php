@@ -359,8 +359,36 @@
 					}
 				}
 
+				
 
 			}
+
+			function getDetail(place_name)
+				{
+					//alert(place_name);
+					jQuery.ajax({
+			        type: "POST",
+			        data:place_name,
+			        url: "http://localhost/Jaktrip/index.php/Detailctr/detail/"+place_name+ "/",
+			        success: function(res) {
+			            if (res)
+			            {
+			       
+			            	var obj = jQuery.parseJSON(res);
+			            //	alert("countTrip : " + countTrip);
+			         		var hasilPemilihan = "";
+			         		hasilPemilihan = "<table class='table'>";
+			         		var detailResult = "";
+			         		detailResult = detailResult  + obj.query[0].description;	
+			            	$("#info").html(detailResult);
+			            	$("#detailtitle").html("&nbsp; "+ obj.query[0].place_name);
+			            	$("#mapcanvas").hide();
+			            	$("#detail").show();
+			            //	alert(obj.query[0].place_name);
+			            }
+	                }
+	            	});
+				}
     </script>
 
 	<style>
@@ -586,7 +614,7 @@
 											<p>".$priceDet."".$stringAdditionalAngkot." = ".(intval($price) + $row->transport_price)."</p>
 											<p>rating = ".$row->rate_avg."/5</p>
 											<button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$result_price.",".$row->transport_price.",'".$row->place_name."' , '".$row->halte_name."','".$row->transport_info."','".$row->place_info."')\">Add to trip</button>
-											<br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+											<br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map</a><br><a href=\"javascript: getDetail('".$row->place_name."')\">see detail</a></td></tr>";
 								}
 								else
 								{
@@ -594,7 +622,7 @@
 									echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br><p>halte ".$row->halte_name."</p><p>".$priceDet." + 3500 (busway) ".$stringAdditionalAngkot." = ".(intval($price) + 3500 + $row->transport_price)."</p>
 										<p>rating = ".$row->rate_avg."/5</p>
 										<button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$result_price.",".$row->transport_price.",'".$row->place_name."' , '".$row->halte_name."','".$row->transport_info."','".$row->place_info."')\">Add to trip</button>
-										<br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
+										<br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map</a><br><a href=\"javascript:getDetail('".$row->place_name."')\">see detail</a></td></tr>";
 								}
 							//	echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
 							}
@@ -668,7 +696,71 @@
 		</div>
 		<div class="col-lg-6 collapse in width"  id="mapcanvas">
 	</div>
+	<div class="col-lg-6 rating" id="detail" hidden>
+			<div class="row">
+				<div class="col-lg-12 redbar">
+					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+					<span class="tuffyh3" style="vertical-align:middle;" id="detailtitle">&nbsp; Eco Cruise</span></a>
+				</div>
+				<div class="col-lg-12 headerdetail"><img src="http://localhost/Jaktrip/assets/img/hd.gif"/>
+				</div>
 
+				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<li><a class="submenua" href="#info">Information</a></li>
+		        <li><a class="submenua" href="#photos">Photos</a></li>
+		        <li><a class="submenua" href="#reviews">Reviews</a></li>
+		        <li><div class="formrating form-group">
+					  <div class="col-lg-3">
+  						 <span class="starRating small">
+					        <input id="rating5" type="radio" name="rate" value="5">
+					        <label for="rating5">5</label>
+					        <input id="rating4" type="radio" name="rate" value="4">
+					        <label for="rating4">4</label>
+					        <input id="rating3" type="radio" name="rate" value="3" checked>
+					        <label for="rating3">3</label>
+					        <input id="rating2" type="radio" name="rate" value="2">
+					        <label for="rating2">2</label>
+					        <input id="rating1" type="radio" name="rate" value="1">
+					        <label for="rating1">1</label>
+					     </span>
+				      </div>
+				    </div></li>
+				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
+				   <li><span class="fa fa-twitter-square icondetail"></span></li>
+				   <li><span class="fa fa-facebook-square icondetail"></span></li>
+				   <li>&nbsp;&nbsp;</li>
+				   <li><span class="fa fa-check-circle icondetail"></span></li>
+				   <li>&nbsp;&nbsp;</li>
+				   <li><span class="fa fa-heart icondetail"></span></li>
+				</ul>
+				<section class="textdetail" id="info">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum<br><br>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+				</section>
+				<section class="textdetail tabcontent hide" id="photos">
+					Gallery photos
+				</section>
+				<section class="textdetail tabcontent hide" id="reviews">
+					Reviews
+				</section>
+			</div>
+
+		</div>
 
 	
 	
