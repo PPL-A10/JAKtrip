@@ -9,30 +9,34 @@ class ReviewCtr extends CI_Controller {
 
     function index($nama=null)
 	{   
-		$this->load->helper('url');
+		//$this->load->helper( array('url', 'html') );
+		$this->load->helper('html');
 		$this->load->model('ReviewModel');
-		$data['query']= $this->ReviewModel->showreviewtempat('Museum Indonesia');
+		$data['query']= $this->ReviewModel->showreviewtempat($nama);
+		$data['query2']= $this->ReviewModel->showjudul($nama);
 		$this->load->view('ReviewUI', $data);
 	}
 	
 	    function detailRev($nama=null)
 	{   
+		$this->load->helper('url');
 		$this->load->model('ReviewModel');
 		$data['query']= $this->ReviewModel->showreviewtempat($nama);
 		$this->load->view('ReviewUI', $data);
 	}
 	
-		public function del($id)
+		public function del($nama, $id)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('ReviewModel');
-			if((int)$id != ""){
+			if((int)$id != null){
 			$this->ReviewModel->delete($id);
 			}
-			$data['query'] = $this->ReviewModel->showreviewtempat('Museum Indonesia');
-			//$this->load->view('ReviewUI',$data);    
-			echo json_encode($data);
+			$data['query'] = $this->ReviewModel->showreviewtempat($nama);
+			$data['query2']= $this->ReviewModel->showjudul($nama);
+			$this->load->view('ReviewUI',$data);    
+			//echo json_encode($data);
 		}
 
 	

@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('/JAKtrip/assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -47,7 +47,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url('/JAKtrip/assets/img/logo.png')"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -96,7 +96,7 @@
 				
 				
 				<span class="input-group col-lg-7" style="margin-left: 150px;">
-				    <input class="fieldsml form-control" type="text" placeholder="Member search...">
+				    <input class="fieldsml form-control" type="text" placeholder="Member search/JAKtrip.">
 				    <span class="input-group-btn">
 				      <button class="fieldsml btn btn-default" type="button" style="width:40%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 				    </span>
@@ -163,6 +163,7 @@
 							echo "<td>".$row->email	."</td>";
 							echo "<td>".$row->email	."</td>";
 							echo "<td>".$row->email	."</td>";
+							echo "<td>". anchor('reviewCont/del/' .$row->name, 'Delete') ."</td>";
 							echo "</tr>";
 							}
 							//echo "</table>";
@@ -201,7 +202,7 @@
 <footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="/JAKtrip/assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
@@ -218,11 +219,11 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-1.11.0.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jaktrip.js"></script>
-    <script src="../assets/js/jquery.smartmenus.min.js"></script>
-	<script src="../assets/js/menuselector.js"></script>
+	<script src="/JAKtrip/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="/JAKtrip/assets/js/bootstrap.min.js"></script>
+	<script src="/JAKtrip/assets/js/jaktrip.js"></script>
+    <script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
+	<script src="/JAKtrip/assets/js/menuselector.js"></script>
 	<script>
 		$("#tab1 #checkAll").click(function () {
 	        if ($("#tab1 #checkAll").is(':checked')) {

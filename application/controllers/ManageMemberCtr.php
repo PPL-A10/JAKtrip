@@ -17,4 +17,16 @@ class ManageMemberCtr extends CI_Controller {
 
 	}
 
+	public function del($name)
+	{
+		$this->load->library('table');
+		$this->load->helper('html'); 
+		$this->load->model('memberMod');
+		if((string)$name != ""){
+		$this->memberMod->delete($name);
+		}
+		$data['query'] = $this->memberMod->showallmember();
+		$this->load->view('ReviewUI',$data);    
+		//echo json_encode($data);
+	}
 }

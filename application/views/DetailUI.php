@@ -2,37 +2,37 @@
 <html lang="en">
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
+	<link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('/JAKtrip/assets/img/header.png');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy.otf');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('/JAKtrip/assets/fonts/Tuffy_Bold.otf');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-regular.ttf');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('/JAKtrip/assets/fonts/lato-black.ttf');
 		}
 	</style>
 </head>
@@ -47,7 +47,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url('/JAKtrip/assets/img/logo.png')"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -67,9 +67,9 @@
 			<div class="row">
 				<div class="col-lg-12 redbar">
 					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Eco Cruise</span></a>
+					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; <?php foreach($query as $row){echo $row->place_name;} ?></span></a>
 				</div>
-				<div class="col-lg-12 headerdetail"><img src="../assets/img/hd.gif"/>
+				<div class="col-lg-12 headerdetail"><img src="/JAKtrip/assets/img/hd.gif"/>
 				</div>
 
 				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
@@ -95,29 +95,26 @@
 				    </div></li>
 				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
 				   <li><span class="fa fa-twitter-square icondetail"></span></li>
-				   <li><span class="fa fa-facebook-square icondetail"></span></li>
+				   <?php foreach($query as $row){
+				   echo "<li><span><a href='http://www.facebook.com/sharer.php?u=localhost/JAKtrip/DetailCtr/".$row->place_name."' target='_blank'><img src='/JAKtrip/assets/img/facebook.png' alt='Facebook' height='16' width='16' /></a></span></li>";
+				   } ?>
 				   <li>&nbsp;&nbsp;</li>
 				   <li><span class="fa fa-check-circle icondetail"></span></li>
 				   <li>&nbsp;&nbsp;</li>
 				   <li><span class="fa fa-heart icondetail"></span></li>
 				</ul>
 				<section class="textdetail" id="info">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+					<?php
+					foreach($query as $row)
+					{
+						echo "Lokasi : ".$row->city. "<br>";
+						echo "Harga Tiket <br>";
+						echo "&nbsp&nbsp&nbsp Senin - Jumat : ".$row->weekday_price."<br>";
+						echo "&nbsp&nbsp&nbsp Sabtu - Minggu : ".$row->weekend_price."<br>";
+						echo "<p>".$row->description."</p>";
+						
+					}
+					?>
 				</section>
 				<section class="textdetail tabcontent hide" id="photos">
 					Gallery photos
@@ -133,7 +130,7 @@
 	<footer>
 		<div class="container-fluid">
 			<div class="col-lg-12">
-					<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+					<div class="col-md-1"><img src="/JAKtrip/assets/img/logo2.png" class="img-responsive" /></div>
 					<div class="row">
 						<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 						<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
@@ -150,11 +147,11 @@
 		</div>
 	</footer>
 
-	<script src="../assets/js/jquery-1.11.0.min.js"></script>
-	<script src="../assets/js/bootstrap.min.js"></script>
-	<script src="../assets/js/jaktrip.js"></script>
-	<script src="../assets/js/jquery.smartmenus.min.js"></script>
-	<script src="../assets/js/menuselector.js"></script>
+	<script src="/JAKtrip/assets/js/jquery-1.11.0.min.js"></script>
+	<script src="/JAKtrip/assets/js/bootstrap.min.js"></script>
+	<script src="/JAKtrip/assets/js/jaktrip.js"></script>
+	<script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
+	<script src="/JAKtrip/assets/js/menuselector.js"></script>
 
 	<script>
 		  $(function() {
