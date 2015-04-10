@@ -661,6 +661,7 @@ a {
 
 .faq{
   margin-top: 30px;
+  width: 1000px;
 }
 
 #faqs dt, #faqs dd { padding: 0px 0 0 100px }
@@ -669,7 +670,7 @@ a {
   color: #1c1c1c;
   cursor: pointer;
   line-height: 36px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #faqs dd { 
@@ -680,4 +681,12 @@ a {
 
 #faqs .expanded{
   color: #db2719;
+}
+
+#faq a{
+  color: #db2719;
+}
+
+#faq a:hover{
+  color: #a51811;
 }
