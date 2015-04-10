@@ -2,7 +2,7 @@ Apa yang dimaksud dengan JAKtrip?
 JAKtrip adalah sistem rekomendasi tempat wisata di Jakarta berdasarkan budget atau anggaran yang dimiliki oleh pengguna.
 
 Adakah tempat wisata yang memiliki promo tertentu?
-Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka sistem JAKtrip akan menampilkan promo tersebut.
+Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka sistem JAKtrip akan menampilkan promo tersebut pada detail informasi tempat wisata.
 
 Apakah kami dapat mengatur itinerary perjalanan sendiri?
 Ya, untuk dapat membuat suatu rangkaian perjalanan yang dibuat sendiri, pengguna dapat menyusun rangkaian perjalanan di <link ini>.
@@ -25,6 +25,9 @@ Member atau user yang mempunyai akun dapat memberikan kontribusi dengan cara men
 
 Bagaimana dengan ketetapan harga tiket masuk ke suatu tempat wisata dan harga transportasi yang tercantum pada website?
 Harga tiket masuk tempat iwsata dan harga transportasi yang tercantum pada website JAKtrip merupakan estimasi yang mendekati dan tetap akan ditinjau kembali sesuai dengan perubahan harga tempat wisata di website resminya.
+
+Apakah pada saat membuat rangkaian perjalanan, harga yang dihitung oleh sistem bergantung pada hari yang dipilih?
+Ya, harga yang disimpan pada sistem JAKtrip terdiri dari dua jenis, yaitu harga pada hari kerja dan harga pada hari libur. Jadi, harga yang dihitung pada saat membuat rangkaian perjalanan atau saat meminta rekomendasi perjalanan berdasarkan hari yang dipilih oleh user, apakah hari kerja atau hari libur.
 
 Pertanyaan lain?
 Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan ke form FEEDBACK ini <link>. 
