@@ -10,6 +10,35 @@ $(function() {
 		  $('#main-menu').smartmenus();
 		});
 
+	
+				$('.navbar-nav > li > a').click(function(event){
+					event.preventDefault();//stop browser to take action for clicked anchor
+					
+					//get displaying tab content jQuery selector
+					var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
+					
+					//find actived navigation and remove 'active' css
+					var actived_nav = $('.navbar-nav > li.active');
+					actived_nav.removeClass('active');
+
+					//add 'active' css into clicked navigation
+					$(this).parents('li').addClass('active');
+					
+					//hide displaying tab content
+					$(active_tab_selector).removeClass('active');
+					$(active_tab_selector).addClass('hide');
+					
+					//show target tab content
+					var target_tab_selector = $(this).attr('href');
+					$(target_tab_selector).removeClass('hide');
+					$(target_tab_selector).addClass('active');
+				});
+		   $("#faqs dd").hide();
+		    $("#faqs dt").click(function () {
+		        $(this).next("#faqs dd").slideToggle(500);
+		        $(this).toggleClass("expanded");
+		    });
+
 	$("#tab1 #checkAll").click(function () {
 	        if ($("#tab1 #checkAll").is(':checked')) {
 	            $("#tab1 input[type=checkbox]").each(function () {

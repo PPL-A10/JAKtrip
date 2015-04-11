@@ -11,6 +11,9 @@
 	<link href="<?php echo base_url('assets/css/jaktrip.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/ion.rangeSlider.skinFlat.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/ion.rangeSlider.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/sm-core-css.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/sm-clean.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
 
 	<title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
@@ -58,11 +61,11 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
         	<li>&nbsp;&nbsp;&nbsp;</li>
-        	<li><a href="<?php echo base_url('allPlacesUI');?>">PLACES</a></li>
+        	<li><a href="<?php echo base_url('index.php/allPlacesCtr');?>">PLACES</a></li>
         	<li><a href="#">PROMO</a></li>
           </ul>
 
-	      <ul class="nav navbar-nav navbar-right">
+	      <ul id="main-menu" class="nav navbar-nav navbar-right sm sm-clean2">
 	        <li><a href="#">Sign Up</a></li>
 	        <!--<?php
 				//if(isset($_COOKIE["username"]))
@@ -99,6 +102,15 @@
 					</div>
 		        </div>
 	        <li><a href="#">Trip (0)  <span class="fa fa-bus"></span></a></li>
+	        <!-- if udah login <li><a href="#">Michelle <img src="../assets/img/25.png" class="ava-rounded" style="position: relative;"/></a>
+	        	<ul>
+	        		<li><a  href="#">Edit Profile</a></li>
+	        		<li><a  href="#">My Trips</a></li>
+	        		<li><a  href="#">Collection</a></li>
+	        		<li><a  href="#">Reviews</a></li>
+	        		<li><a  href="#">Logout</a></li>
+	        	</ul>
+	        </li> -->
 	      </ul>
 	    </div>
 	  </div>

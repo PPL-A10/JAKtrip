@@ -6,8 +6,8 @@
 					<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 					<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
 						<li><a class="linkfooter" href="about.html">About</a></li>
-						<li><a href="#">Contact Us</a></li>
-						<li><a href="#">F.A.Q</a></li>
+						<li><a href="<?php echo base_url('index.php/FeedbackCtr');?>">Contact Us</a></li>
+						<li><a href="<?php echo base_url('index.php/FaqCtr');?>">F.A.Q</a></li>
 						<li><a href="#">Terms</a></li>
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Site Map</a></li>
