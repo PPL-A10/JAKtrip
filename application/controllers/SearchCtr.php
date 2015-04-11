@@ -49,7 +49,7 @@ class SearchCtr extends CI_Controller {
 		$this->load->model('touristAttrManager');
 		$this->load->helper('url');
 		$data1['result'] = $this->touristAttrManager->getAllTourAttrHighestRate();
-		$this->load->view('FormSearchUI', $data1);
+		$this->load->view('SearchUI', $data1);
 	}
 	
 	function sortAtoZ()

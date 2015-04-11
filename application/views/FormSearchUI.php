@@ -174,6 +174,7 @@
 						</tr>
 						<?php endforeach; ?>
 					</p>
+					</table>
 				</div>
 			</div>
 		</div>
