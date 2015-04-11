@@ -24,14 +24,14 @@ $(function() {
 	    });
 
     $(function () {
-
+    	var budgetmax = $("#input_price").val();
         $(".range").ionRangeSlider({
             hide_min_max: true,
             keyboard: true,
             min: 0,
             max: 500000,
-            from: 10000,
-            to: 75000,
+            from: 0,
+            to: budgetmax,
             type: 'double',
             step: 500,
             prefix: "Rp ",

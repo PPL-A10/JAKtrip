@@ -7,14 +7,24 @@
 		//	echo "haha";
 			// $this->load->helper('form');
 			$this->load->helper('form');
-			 $this->load->model('touristAttrManager');
+			$this->load->model('touristAttrManager');
+
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+			
+			$this->load->model('HalteManager');
+			$data['query'] = $this->HalteManager->getAllHalte();
+			$this->load->model('searchMod');
+			$data['query4']= $this->searchMod->showallwisata();
+			$data['query1']= $this->searchMod->showallcategory();
+			$data['query2']= $this->searchMod->showalllocation();
+			$data['query3']= $this->searchMod->showallhalte();
+
 			$this->load->view('header');
-			$this->load->view('FormSearchUI');
+			$this->load->view('FormSearchUI', $data);
 			$this->load->view('footer');
-			$this->load->helper('form');
+		
 		}
 
 		public function searchWithinBudget($budget)
@@ -132,7 +142,17 @@
 		//	$budget = (int) $this->input->post('budget');
 		//	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
 		
-			$this->load->view('FormSearchUI',$data);
+			$this->load->model('HalteManager');
+			$data['query'] = $this->HalteManager->getAllHalte();
+			$this->load->model('searchMod');
+			$data['query4']= $this->searchMod->showallwisata();
+			$data['query1']= $this->searchMod->showallcategory();
+			$data['query2']= $this->searchMod->showalllocation();
+			$data['query3']= $this->searchMod->showallhalte();
+
+			$this->load->view('header');
+			$this->load->view('FormSearchUI', $data);
+			$this->load->view('footer');
 		}
 		public function setInitialVariable()
 		{
@@ -174,6 +194,46 @@
 				
 			}
 			header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1/");
+		}
+
+		public function searchwisataCatLocKey($category_name=NULL, $city=NULL, $place_name=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterModFinal($category_name, $city, $place_name);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
+		
+			public function searchwisataCat($category_name=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterMod($category_name);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
+		
+			public function searchwisataLoc($city=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterMod2($city);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
+		
+			public function searchwisataKey($place_name=NULL)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterMod3($place_name);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
 		}
 	}	
 ?>

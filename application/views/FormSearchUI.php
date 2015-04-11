@@ -477,36 +477,40 @@
    				 	</span>
 
    				 	<span class="input-group col-lg-3">
-   				     	 <input class="fieldsml small datepicker" id="datepicker" type="text" placeholder="Date" style="margin-left: 2px;">
-   				 	</span>
+              <input class="fieldsml datepicker" type="text" placeholder="Date" style="margin-left: 2px;">
+              </span>
    			 	</div>
 
    			 	<div class="form-inline">
    					 <label class="col-lg-2 control-label">Filter by </label>
-   					 <span class="fieldsml custom-dropdown ">
-   					 	<select class="fieldsml form-control" title="All Categories">    
+   					 <span id="ddcontainer" class="fieldsml custom-dropdown ">
+   					 	<select  id="ddbus" class="fieldsml form-control" title="All Categories">    
    					     	<option value="" selected disabled>All Categories</option>
-   					     	<option value="">Sarinah</option>  
-   					     	<option value="">Gelora Bung Karno</option>
-   					     	<option value="">Atrium</option>
-   					     	<option value="">Bank Indonesia</option>
+   					     	<?php
+                  foreach($query1 as $row)
+                  {
+                    echo "<option value='".$row->category_name."'>".$row->category_name."</option>";
+                  }
+                ?>
    					 	</select>
    					 </span>
 
-   					 <span class="fieldsml custom-dropdown ">
-   					 	<select class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
+   					 <span id="ddcontainer" class="fieldsml custom-dropdown ">
+   					 	<select  id="ddbus" class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
    					     	<option value="" selected disabled>All Location</option>
-   					     	<option value="">Sarinah</option>  
-   					     	<option value="">Gelora Bung Karno</option>
-   					     	<option value="">Atrium</option>
-   					     	<option value="">Bank Indonesia</option>
+   					     	<?php
+                  foreach($query2 as $row)
+                  {
+                    echo "<option value='".$row->city."'>".$row->city."</option>";
+                  }
+                ?>
    					 	</select>
    					 </span>
 
    				 	<span class="input-group col-lg-3">
-   					 	<input class="fieldsml form-control" type="text" placeholder="Enter keyword..." style="width:162%;">
+   					 	<input class="fieldsml form-control" type="text" placeholder="Enter keyword..." style="width:134%;">
    					 	<span class="input-group-btn">
-   					   	<button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
+   					   	<button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 45%; margin-right: 5px; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
    					 	</span>
    				 	</span>
    			 	</div>

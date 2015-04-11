@@ -91,12 +91,23 @@ select#ddbus{
   width: 160px;
 }
 
+<<<<<<< HEAD
+span#ddcontainerh > select{
+  width: 200px;
+}
+
+select#ddbush{
+  width: 200px;
+}
+
+=======
+>>>>>>> origin/Bagian_Wildan
 .custom-dropdown select {
   background-color: #fff;
   color: #4c4c4c;
   font-size: inherit;
   padding: .5em;
-  padding-right: 2.5em; 
+  padding-right: 2.5em;
   border: 0;
   margin: 0;
   border-radius: 5px;
@@ -302,7 +313,7 @@ a {
   font-family: TuffyBold !important;
   font-size: 18px;
   color: #1c1c1c;
-  
+ 
 }
 
 .submenufaq:after {
@@ -375,7 +386,7 @@ a {
   background-color: #fff;
   height: 500px;
   overflow-y: scroll;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 
@@ -444,7 +455,7 @@ a {
 
 
 .result{
-  margin-top: 20px; 
+  margin-top: 20px;
   margin-left: 30px;
 }
 
@@ -504,8 +515,8 @@ a {
   font-size: 18px;
 }
 
-.close:hover { 
-  color: #db2719 !important; 
+.close:hover {
+  color: #db2719 !important;
   opacity: 1;
 }
 
@@ -520,7 +531,7 @@ a {
 .admintitle {
   margin: 30px 150px;
   border-bottom: solid 1px #c4c4c4 !important;
-  width: 70%; 
+  width: 70%;
   padding-left: 20px;
 }
 
@@ -544,7 +555,7 @@ a {
   margin: 0px -15px;
 }
 
-.textdetail { 
+.textdetail {
   margin: 35px;
   margin-top: 370px;
   height: 400px;
@@ -694,9 +705,57 @@ a {
 }
 
 .ava-rounded{
-  border-radius: 13px; 
+  border-radius: 13px;
 }
 
 .navbar-right img{
   margin: -10px -10px 0px 10px;
+<<<<<<< HEAD
 }
+
+.faq{
+  margin-top: 30px;
+  width: 1000px;
+}
+
+#faqs dt, #faqs dd { padding: 0px 0 0 100px }
+#faqs dt {
+  font-family: TuffyBold;
+  color: #1c1c1c;
+  cursor: pointer;
+  line-height: 36px;
+  font-size: 16px;
+}
+
+#faqs dd {
+  font-family: Lato;
+  font-size: 14px;
+  margin: 0 0 20px 25px
+}
+
+#faqs .expanded{
+  color: #db2719;
+}
+
+.faq dd a{
+  color: #db2719 !important;
+}
+
+.faq dd a:hover{
+  color: #a51811 !important;
+}
+
+.detail li:nth-child(5){
+  margin-top: 5px;
+}
+
+.detail li:nth-child(6){
+  margin-top: 5px;
+}
+
+=======
+}
+>>>>>>> origin/Bagian_Wildan
+
+
+

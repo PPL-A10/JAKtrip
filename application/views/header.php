@@ -16,28 +16,28 @@
 
 	<style>
 		header{
-			background-image: url('../assets/img/header.png');
+			background-image: url('<?php echo base_url("assets/img/header.png");?>');
 			height: 530px;
 		}
 
 		@font-face { 
 			font-family: Tuffy; 
-			src: url('../assets/fonts/Tuffy.otf');
+			src: url('<?php echo base_url("assets/fonts/Tuffy.otf");?>');
 		}
 
 		@font-face { 
 			font-family: TuffyBold; 
-			src: url('../assets/fonts/Tuffy_Bold.otf');
+			src: url('<?php echo base_url("assets/fonts/Tuffy_Bold.otf");?>');
 		}
 
 		@font-face { 
 			font-family: Lato; 
-			src: url('../assets/fonts/lato-regular.ttf');
+			src: url('<?php echo base_url("assets/fonts/lato-regular.ttf");?>');
 		}
 
 		@font-face { 
 			font-family: LatoBlack; 
-			src: url('../assets/fonts/lato-black.ttf');
+			src: url('<?php echo base_url("assets/fonts/lato-black.ttf");?>');
 		}
 	</style>
 </head>
@@ -52,13 +52,13 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url('../assets/img/logo.png')"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
         	<li>&nbsp;&nbsp;&nbsp;</li>
-        	<li><a href="#">PLACES</a></li>
+        	<li><a href="<?php echo base_url('allPlacesUI');?>">PLACES</a></li>
         	<li><a href="#">PROMO</a></li>
           </ul>
 
@@ -89,9 +89,9 @@
 							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
 							<center>Or login with your account below<center><br>
 							<div class="iconsocial">
-								<span class="fa fa-google-plus-square" style="color: #E03F3F;"></span>
-								<span class="fa fa-facebook-square" style="color: #43468C;"></span>
-								<span class="fa fa-twitter-square" style="color: #2EA0F2;"></span>
+								<a href=""><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
+								<a href=""><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
+								<a href=""><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
 							</div>
 							<br>
 							<center>Don't have an account? <a href="">Sign Up.</a><center>

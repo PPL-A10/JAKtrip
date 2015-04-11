@@ -25,7 +25,7 @@
 					
 				  <span class="input-group col-lg-3">
 				    <span class="field input-group-addon">Rp</span>
-				    <input class="field form-control" id="budget" type="text" placeholder="Budget" name="budget">
+				    <input class="field form-control" type="text" placeholder="Budget" name="budget">
 				  </span>
 
 				  <span class="input-group col-lg-3">

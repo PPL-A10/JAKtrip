@@ -12,7 +12,7 @@
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
 			$this->load->view('header');
-			$this->load->view('homeUI1',$data);
+			$this->load->view('homeUI',$data);
 			$this->load->view('footer');
 		}
 	}	
