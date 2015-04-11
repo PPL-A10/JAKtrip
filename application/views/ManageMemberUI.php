@@ -163,7 +163,7 @@
 							echo "<td>".$row->email	."</td>";
 							echo "<td>".$row->email	."</td>";
 							echo "<td>".$row->email	."</td>";
-							echo "<td>". anchor('reviewCont/del/' .$row->name, 'Delete') ."</td>";
+							echo "<td>". anchor('reviewCont/del/' .$row->username, 'Delete') ."</td>";
 							echo "</tr>";
 							}
 							//echo "</table>";
