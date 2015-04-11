@@ -36,7 +36,7 @@
 		}
 	</style>
 </head>
-
+<title>JAKtrip</title>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
 	  <div class="container-fluid">
