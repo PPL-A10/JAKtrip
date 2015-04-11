@@ -11,7 +11,9 @@
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+			$this->load->view('header');
 			$this->load->view('FormSearchUI');
+			$this->load->view('footer');
 			$this->load->helper('form');
 		}
 
