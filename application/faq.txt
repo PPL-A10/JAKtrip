@@ -39,5 +39,5 @@ OTHERS===================================================================
 Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?
 Member atau user yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata baru kepada JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
 
-Pertanyaan lain?
+Pertanyaan lain?-
 Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan ke form FEEDBACK <ini>. 
