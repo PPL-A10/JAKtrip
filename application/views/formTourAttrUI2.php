@@ -21,7 +21,8 @@
 				$place_info = $place_info['value'];
 				$weekday_price = $weekday_price['value'];
 				$weekend_price = $weekend_price['value'];
-				$category_name = $category_name['value'];
+				$cat_name = $cat_name['value'];
+				$cat_checked = $cat_checked['value'];
 				$city = $city['value'];
 				$pic = $pic['value'];
 				$pic_info = $pic_info['value'];
@@ -34,6 +35,8 @@
 				
 				
 				echo form_hidden('key', $place_name).br(); 
+				echo form_hidden('rate_avg', $rate_avg).br(); 
+				echo form_hidden('hits', $hits).br(); 
 				echo "Name ", form_input('place_name', $place_name).br(); 										
 				echo "Description ", form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => $description ) ).br();
 				//array_push($place_inf, '');
@@ -41,17 +44,14 @@
 				echo "Weekday Price ", form_input('weekday_price', $weekday_price).br(); 
 				echo "Weekend Price ", form_input('weekend_price', $weekend_price).br(); 
 				//echo "Category ", form_input('category_name',$cat_name, $category_name).br(); 
+				
+				$i=0;
 				foreach ($cat_name as $row){
 					$cat = $row->category_name;
-					if($cat==$category_name){
-						echo form_checkbox('category_list[]',$cat, TRUE).($row->category_name)."<br>"; 
-					}
-					else{
-						echo form_checkbox('category_list[]',$cat, FALSE).($row->category_name)."<br>"; 
-					}
+					echo form_checkbox('category_list[]',$cat, $cat_checked[$i]).($row->category_name)."<br>"; 
+					$i++;
 				}
-				echo form_checkbox('category_list[]','new_cat')."New Category".form_input('category_name',set_value('category_name'))."<br>";
-				
+				echo form_checkbox('category_list[]','')."New Category".form_input('category_name',set_value('category_name'))."<br>";
 				
 				$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 

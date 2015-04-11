@@ -1,7 +1,56 @@
 <html>
 	<head>
+	<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var gmarkers = [];
+var counter = 0;
+var map;
+var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:11,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+  google.maps.event.addListener(map, 'click', function(event) {
+   // map.setMap(null);
+    if(counter!=0)
+       gmarkers[counter-1].setMap(null);
+    counter++;
+    placeMarker(event.latLng);
+  });
+}
+
+function placeMarker(location) {
+   
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  gmarkers.push(marker);
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lat()+', '+location.lng()+')">Add Location</button>'
+  });
+  infowindow.open(map,marker);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function addLocation(lat,lng){
+ //code....
+}
+</script>
 	</head>
 	<body>
+	
 		<div id="container">
 			<div id="header">
 				
@@ -62,7 +111,7 @@
 				<?php foreach ($cat_name as $row){
 					echo form_checkbox('category_list[]',$row->category_name).($row->category_name)."<br>"; 
 				}
-				echo form_checkbox('category_list[]','new_cat')."New Category".form_input('category_name',set_value('category_name'))."<br>";
+				echo form_checkbox('category_list[]','')."New Category".form_input('category_new',set_value('category_new'))."<br>";
 				?>
 			
 				
@@ -94,6 +143,7 @@
 						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php echo set_value('lattitude'); ?>"  />
 				</p>
 				
+				<div id="googleMap" style="width:500px;height:380px;"></div>
 
 				<?php echo "Halte ", form_dropdown('halte_code',$halte_name, set_value('halte_code')); ?>
 				
@@ -121,7 +171,9 @@
 				<p>
 						<?php //echo form_submit( 'save', 'Save'); ?>
 				</p>
-
+				
+				
+				
 				<?php echo form_close(); ?>
 
 				<br><br><br>

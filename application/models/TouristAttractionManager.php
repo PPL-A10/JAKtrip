@@ -10,12 +10,26 @@ function __construct(){
 	{
 		//$myQueryString = "set search_path to '1206277520'";
 		//$this->db->query($myQueryString);
-		$this->db->insert('tourist_attraction', $form_data);
 		
-
+		$place_name=$form_cat['place_name'];
+		$category_new=$form_cat['category_new'];
+		
+		$this->db->insert('tourist_attraction', $form_data);
 		$this->db->insert('photo', $form_photo);
+		
+		foreach($form_cat['category_list'] as $selected){
+			if($selected != ''){
+				$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+			}
+			else{
+				if($category_new != ''){
+					$this->db->insert('category', array('category_name'=>$category_new));		
+					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$category_new));
+				}	
+			}
 
-		$this->db->insert('tour_category', $form_cat);
+		}
+		//$this->db->insert('tour_category', $form_cat);
 		
 		if ($this->db->affected_rows() == '1')
 		{
@@ -32,9 +46,9 @@ function __construct(){
           //       ->from('tourist_attraction ta')
             //     ->join('tour_category tc','ta.place_name = tc.place_name')
               //   ->get();
-		$quer = "select * from tourist_attraction ta left outer join tour_category tc on ta.place_name=tc.place_name";
-		$query = $this->db->query($quer);
-		//$query = $this->db->get('tourist_attraction');
+		//$quer = "select * from tourist_attraction ta left outer join tour_category tc on ta.place_name=tc.place_name";
+		//$query = $this->db->query($quer);
+		$query = $this->db->get('tourist_attraction');
 		//$query2 = $this->db->get('tour_category');
 		return $query->result();
 	}	
@@ -105,7 +119,8 @@ function __construct(){
 	function tourAttr_getCat($place_name){
 		//return $this->db->get_where('tour_category');
 		$query = $this->db->get_where('tour_category', array('place_name'=>$place_name));
-		return $query->row_array();
+		//return $query->row_array();
+		return $query->result();
 	}
 	
 	function tourAttr_getPic($place_name){

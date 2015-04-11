@@ -25,19 +25,27 @@
 						</tr>
 						<?php
 						//$quer = array_combine($query, $query2);
-						foreach($query as $row){
+						
+						for($i=0; $i<count($tourattr); $i++){
+							$row = $tourattr[$i];
 							echo "<tr>";
 							echo "<td>". $row->place_name ."</td>";
 							echo "<td>". $row->author ."</td>";
-							echo "<td>". $row->category_name ."</td>";
+							echo "<td>". $cat[$i]."</td>";
 							echo "<td>". $row->last_modified ."</td>";
 							echo "<td>". $row->hits ."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, 'Delete') ."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, 'Edit') ."</td>";
 							echo "</tr>";
 						}
+						
+						
 						?>
 					</table>
+					
+					<?php
+
+					?>
 					
 					
 					<br><br><br>

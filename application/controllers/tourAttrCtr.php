@@ -96,7 +96,7 @@ function myform()
 		$this->form_validation->set_rules('halte_code', 'halte_code', 'required|trim');
 		$this->form_validation->set_rules('transport_info', 'transport_info', 'required|trim');
 		$this->form_validation->set_rules('transport_price', 'transport_price', 'required|trim');
-		$this->form_validation->set_rules('category_name', 'category_name', 'required|trim');
+		//$this->form_validation->set_rules('category_name', 'category_name', 'required|trim');
 		$this->form_validation->set_rules('pic', 'pic', 'trim');
 		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
 		$this->form_validation->set_rules('author', 'author', 'trim');
@@ -110,7 +110,7 @@ function myform()
 		}
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
-			$this->load->view('formTourAttrUI');
+			redirect ('tourAttrCtr');
 		}
 		else // passed validation proceed to post success logic
 		{
@@ -143,7 +143,8 @@ function myform()
 							
 			$form_cat = array(
 							'place_name' => set_value('place_name'),
-							'category_name' => set_value('category_name')
+							'category_list' => $this->input->post('category_list'),
+							'category_new' => $this->input->post('category_new')
 						);							
 									
 			// run insert model to write data to db

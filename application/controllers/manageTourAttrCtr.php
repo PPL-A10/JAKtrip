@@ -5,7 +5,37 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->library('table');
 		$this->load->helper('html');
 		//$this->load->model('TouristAttractionManager');
-		$data['query'] = $this->touristattractionmanager->tourAttr_getall();
+		$query = $this->touristattractionmanager->tourAttr_getall();
+		//$place_name = $query->place_name;
+
+		//$data['place_name'] = $place_name;
+		//$data['author'] = $query->author;
+		//$data['last_modified'] = $query->last_modified;
+		//$data['hits'] = $query->hits;
+		//$data['category'] = '';
+		$category_list = array();
+		
+		foreach($query as $place){
+			$place_name = $place->place_name;
+			$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
+			$category='';
+			foreach($query2 as $row){
+				if($category==''){
+					$category=$category.$row->category_name;
+				}
+				else{
+					$category=$category.', '.$row->category_name;				
+				}
+
+			}
+			array_push($category_list, $category);
+		}
+		
+		$data['cat'] = $category_list;
+		$data['tourattr'] = $query;
+		
+		
+		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
 		//$data['query2'] = $this->touristattractionmanager->getCategory();
 		$this->load->view('manageTourAttrUI', $data);
 	}
@@ -39,7 +69,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$place_name = str_replace("%20", " ", $place_name);
 		
 		$query = $this->touristattractionmanager->tourAttr_get($place_name);	
-		$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
+		//$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
 		$query3 = $this->touristattractionmanager->tourAttr_getPic($place_name);
 		$query4 = $this->touristattractionmanager->tourAttr_getHalte($place_name);		
 		
@@ -48,7 +78,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['place_info']['value'] = $query['place_info'];
 		$data['weekday_price']['value'] = $query['weekday_price'];	
 		$data['weekend_price']['value'] = $query['weekend_price'];	
-		$data['category_name']['value'] = $query2['category_name'];	
+		//$data['cat_name']['value'] = $query2['category_name'];	
 		$data['city']['value'] = $query['city'];
 		if($query3 != NULL){
 			$data['pic']['value'] = $query3['pic'];
@@ -63,15 +93,39 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['halte_name']['value'] = $query4['halte_name'];	
 		$data['transport_info']['value'] = $query['transport_info'];	
 		$data['transport_price']['value'] = $query['transport_price'];	
-		$data['author']['value'] = $query['author'];			
+		$data['author']['value'] = $query['author'];
+		$data['rate_avg']['value'] = $query['rate_avg'];
+		$data['hits']['value'] = $query['hits'];		
 		
 		//dropdown list category
 		//$dd_cat = array();
 		$result = $this->TouristAttractionManager->getCategory();
+		$result4 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
 		//foreach($result->result_array() as $cat){
 		//	$dd_cat[$cat['category_name']] = $cat['category_name'];
 		//}
-		$data['cat_name']=$result;
+		$data['cat_name']['value']=$result;
+		
+		$cat_checked=array();
+		if($result4==NULL){
+			for($i=0; $i<count($result); $i++){
+				array_push($cat_checked, FALSE);
+			}
+		}
+		else{
+			for($i=0; $i<count($result); $i++){
+				$is_checked = FALSE;
+				foreach($result4 as $row){
+					if($row->category_name==$result[$i]->category_name){
+						$is_checked = TRUE;
+					}
+				}
+				array_push($cat_checked, $is_checked);
+			}
+		}
+		
+
+		$data['cat_checked']['value']=$cat_checked;
 		
 		//dropdown list place_info
 		
