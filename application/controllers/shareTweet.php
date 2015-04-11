@@ -6,7 +6,7 @@
 		public function index()
 		{
 			
-			$this->load->view('inputLocation');
+			$this->load->view('tweet');
 		}
 		
 

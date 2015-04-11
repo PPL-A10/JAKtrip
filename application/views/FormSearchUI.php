@@ -23,21 +23,6 @@
 	<script src="http://localhost/Jaktrip/assets/js/jaktrip.js"></script>
 	<script src="http://localhost/Jaktrip/assets/js/bootstrap-datepicker.min.js"></script>
 	<script src="http://localhost/Jaktrip/assets/js/gmaps.js"></script>
-   <!--script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/jquery-1.11.2.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap1.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script-->
-	<!--link rel="stylesheet" href="http://localhost/Jaktrip/assets/bootstrap/css/bootstrap.css"/>
-	<link href="http://localhost/Jaktrip/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-	<link href="http://localhost/Jaktrip/assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
-	<link href="http://localhost/Jaktrip/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen"/>
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/jquery-1.11.2.js"></script>
-	<script src="http://localhost/Jaktrip/assets/bootstrap/js/bootstrap1.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script-->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         // When the document is ready
@@ -379,12 +364,15 @@
 			         		var hasilPemilihan = "";
 			         		hasilPemilihan = "<table class='table'>";
 			         		var detailResult = "";
-			         		detailResult = detailResult  + "<br><br>"+obj.query[0].description;	
+			         		detailResult = detailResult +"Lokasi : "+obj.query[0].city+"<br>Harga tiket<br>   Senin-Jumat: "+obj.query[0].weekday_price+"<br>   Sabtu-Minggu: " +obj.query[0].weekend_price+"<br>"+obj.query[0].description;	
+			         		var detailShareTwitter = "";
+			         		var detailShareTwitter= "<a href=\"https://twitter.com/share\"  data-text=\"tes Tweet\">Tweet</a>";			         
+			         		$("#shareDetailTwitter").html(detailShareTwitter);
 			            	$("#info").html(detailResult);
 			            	$("#detailtitle").html("&nbsp; "+ obj.query[0].place_name);
 			            	$("#mapcanvas").hide();
 			            	$("#detail").show();
-			            //	alert(obj.query[0].place_name);
+			            
 			            }
 	                }
 	            	});
@@ -696,13 +684,13 @@
 		</div>
 		<div class="col-lg-6 collapse in width"  id="mapcanvas">
 	</div>
-	<div class="col-lg-6 rating">
+	<div class="col-lg-6 rating" id="detail" hidden>
 			<div class="row">
 				<div class="col-lg-12 redbar">
 					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Eco Cruise</span></a>
+					<span class="tuffyh3" style="vertical-align:middle;" id="detailtitle">&nbsp; Eco Cruise</span></a>
 				</div>
-				<div class="col-lg-12 headerdetail"><img src="../assets/img/hd.gif"/>
+				<div class="col-lg-12 headerdetail"><img src="http://localhost/Jaktrip/assets/img/hd.gif"/>
 				</div>
 
 				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
@@ -727,8 +715,10 @@
 				      </div>
 				    </div></li>
 				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
-				   <li><span class="fa fa-twitter-square icondetail"></span></li>
-				   <li><span class="fa fa-facebook-square icondetail"></span></li>
+				   <li><span class="fa fa-twitter-square icondetail" id="shareDetailTwitter"></span><script>
+window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
+</script></li>
+				   <li><span class="fa fa-facebook-square icondetail" id="shareDetailFacebook"></span></li>
 				   <li>&nbsp;&nbsp;</li>
 				   <li><span class="fa fa-check-circle icondetail"></span></li>
 				   <li>&nbsp;&nbsp;</li>
