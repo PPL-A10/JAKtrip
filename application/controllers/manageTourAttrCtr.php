@@ -57,7 +57,29 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->view('manageTourAttrUI', $data);
 	}
 
-
+	function isCategory($place_name){
+		$result = $this->TouristAttractionManager->getCategory();
+		$result1 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+		
+		$cat_checked=array();
+		if($result1==NULL){
+			for($i=0; $i<count($result); $i++){
+				array_push($cat_checked, FALSE);
+			}
+		}
+		else{
+			for($i=0; $i<count($result); $i++){
+				$is_checked = FALSE;
+				foreach($result1 as $row){
+					if($row->category_name==$result[$i]->category_name){
+						$is_checked = TRUE;
+					}
+				}
+				array_push($cat_checked, $is_checked);
+			}
+		}
+		return $cat_checked;
+	}
 	
 	
 	function edit($place_name){
@@ -100,31 +122,16 @@ class ManageTourAttrCtr extends CI_Controller {
 		//dropdown list category
 		//$dd_cat = array();
 		$result = $this->TouristAttractionManager->getCategory();
-		$result4 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+		//$result4 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
 		//foreach($result->result_array() as $cat){
 		//	$dd_cat[$cat['category_name']] = $cat['category_name'];
 		//}
+		
+		
+		$cat_checked=$this->isCategory($place_name);
+		
+		
 		$data['cat_name']['value']=$result;
-		
-		$cat_checked=array();
-		if($result4==NULL){
-			for($i=0; $i<count($result); $i++){
-				array_push($cat_checked, FALSE);
-			}
-		}
-		else{
-			for($i=0; $i<count($result); $i++){
-				$is_checked = FALSE;
-				foreach($result4 as $row){
-					if($row->category_name==$result[$i]->category_name){
-						$is_checked = TRUE;
-					}
-				}
-				array_push($cat_checked, $is_checked);
-			}
-		}
-		
-
 		$data['cat_checked']['value']=$cat_checked;
 		
 		//dropdown list place_info
@@ -191,16 +198,14 @@ class ManageTourAttrCtr extends CI_Controller {
 		//'place_info' => $this->input->post('place_info'),
 		$transport_info = $this->input->post('transport_info');
 		$transport_price = $this->input->post('transport_price');
-			
-		if($place_name=='' || $weekday_price=='' || $weekend_price=='' || $longitude=='' || $lattitude=='' || 
-			$city=='' || $description=='' || $transport_info=='' || $transport_price==''){
-				redirect ('manageTourAttrCtr/edit/'.$key);	
-		}
-		
-		//get halte_code from halte_name
+		$category_list = $this->input->post('category_list');
+		$category_new = $this->input->post('category_new');
 		$halte_name = $this->input->post('halte_name');
 		$halte_code = $this->touristattractionmanager->getHalteCode($halte_name);
 		$place_info = $this->input->post('place_info');
+		
+		
+		
 		
 		if($place_info == '0'){
 			$place_info = NULL;
@@ -235,21 +240,29 @@ class ManageTourAttrCtr extends CI_Controller {
 						);
 
 			$form_photo = array(
-							'place_name' => $this->input->post('place_name'),
+							'place_name' => $place_name,
 							'pic' => $this->input->post('pic'),
 							'pic_info' =>$this->input->post('pic_info')
 						);		
-							
+			
+			$old_cat = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+			
 			$form_cat = array(
-							'place_name' => $this->input->post('place_name'),
-							'category_name' => $this->input->post('category_name')
+							'place_name' => $place_name,
+							'category_list' => $category_list,
+							'category_new' => $category_new,
+							'category_old' => $old_cat
 						);							
-									
+								
+			//$dat['category_list']=$category_list;
+			
 			// run insert model to write data to db
+			
+			//echo "TEST ".$category_new;
 			
 			if ($this->TouristAttractionManager->edit($key, $form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
 				{
-
+					//$this->load->view('formTourAttrUI', $dat);
 					redirect('manageTourAttrCtr/success');   // or whatever logic needs to occur
 				}
 				else
@@ -258,6 +271,7 @@ class ManageTourAttrCtr extends CI_Controller {
 				 //Or whatever error handling is necessary
 				}
 			}
+			
 		}
 	}
 	

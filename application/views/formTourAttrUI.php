@@ -37,15 +37,17 @@ function placeMarker(location) {
   });
   gmarkers.push(marker);
   var infowindow = new google.maps.InfoWindow({
-    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lat()+', '+location.lng()+')">Add Location</button>'
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
   });
   infowindow.open(map,marker);
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
 
-function addLocation(lat,lng){
+function addLocation(lng,lat){
  //code....
+	$("#longitude").val(lng);
+	$("#lattitude").val(lat);
 }
 </script>
 	</head>
@@ -59,6 +61,7 @@ function addLocation(lat,lng){
 				
 			</div>
 			<div id="content">
+			
 			<h1>Add New Post</h1>
 				<?php
 				$attributes = array('class' => '', 'id' => '');
@@ -111,7 +114,7 @@ function addLocation(lat,lng){
 				<?php foreach ($cat_name as $row){
 					echo form_checkbox('category_list[]',$row->category_name).($row->category_name)."<br>"; 
 				}
-				echo form_checkbox('category_list[]','')."New Category".form_input('category_new',set_value('category_new'))."<br>";
+				echo form_checkbox('category_list[]','')."Other ".form_input('category_new',set_value('category_new'))."<br>";
 				?>
 			
 				

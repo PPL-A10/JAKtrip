@@ -51,7 +51,7 @@
 					echo form_checkbox('category_list[]',$cat, $cat_checked[$i]).($row->category_name)."<br>"; 
 					$i++;
 				}
-				echo form_checkbox('category_list[]','')."New Category".form_input('category_name',set_value('category_name'))."<br>";
+				echo form_checkbox('category_list[]','')."Other ".form_input('category_new',set_value('category_new'))."<br>";
 				
 				$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 

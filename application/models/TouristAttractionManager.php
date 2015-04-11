@@ -80,13 +80,56 @@ function __construct(){
 		//$this->db->query($myQueryString);
 		//$this->db->where($place_name,$this->input->post($place_name));
 		//echo $place_name;
+
 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data);
 		$this->db->where('place_name',$place_name);
 		$this->db->update('photo',$form_photo);	
-		$this->db->where('place_name',$place_name);
-		$this->db->update('tour_category',$form_cat);		
+		//$this->db->where('place_name',$place_name);
+		//$this->db->update('tour_category',$x);
+		
+		
+		//foreach($form_cat['category_list'] as $selected){
+			//	echo $selected;
+			//}
+		//$old_cat = $this->tourAttr_getCat($place_name);
+		$old_cat = $form_cat['category_old'];
+		foreach($old_cat as $old){
+			$is_exists=FALSE;
+			foreach($form_cat['category_list'] as $selected){
+				if($old->category_name==$selected){
+					$is_exists=TRUE;
+				}
+			}
+			if($is_exists==FALSE){
+				$this->db->delete('tour_category', array('place_name'=>$place_name, 'category_name'=>$old->category_name));
+			}
+		}
+		
+		$category_new = $form_cat['category_new'];
+		//$place_name=$form_cat['place_name'];
+		foreach($form_cat['category_list'] as $selected){
+			if($selected != ''){
+				$quer = $this->db->get_where('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+				//echo $quer;
+				//if not exists
+				if($quer->num_rows==0){
+					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+				}
+				//$query="insert into TOUR_CATEGORY' where not exists (select * from TOUR_CATEGORY where place_name==$place_name"
+				
+				//$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+			}
+			else{
+				if($category_new != ''){
+					$this->db->insert('category', array('category_name'=>$category_new));		
+					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$category_new));
+				}	
+			}
 
+		}
+		
+		
 		
 
 		//sif ($this->db->affected_rows() == '0')
@@ -95,7 +138,10 @@ function __construct(){
 		//}
 		//return FALSE;
 	}
-
+	
+	
+	
+	
 	function general(){
   		//$this->load->library('WebMenu');
   		//$menu = new WebMenu;
