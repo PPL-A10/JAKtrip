@@ -379,7 +379,7 @@
 			         		var hasilPemilihan = "";
 			         		hasilPemilihan = "<table class='table'>";
 			         		var detailResult = "";
-			         		detailResult = detailResult  + obj.query[0].description;	
+			         		detailResult = detailResult  + "<br><br>"+obj.query[0].description;	
 			            	$("#info").html(detailResult);
 			            	$("#detailtitle").html("&nbsp; "+ obj.query[0].place_name);
 			            	$("#mapcanvas").hide();
@@ -696,13 +696,13 @@
 		</div>
 		<div class="col-lg-6 collapse in width"  id="mapcanvas">
 	</div>
-	<div class="col-lg-6 rating" id="detail" hidden>
+	<div class="col-lg-6 rating">
 			<div class="row">
 				<div class="col-lg-12 redbar">
 					<a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-					<span class="tuffyh3" style="vertical-align:middle;" id="detailtitle">&nbsp; Eco Cruise</span></a>
+					<span class="tuffyh3" style="vertical-align:middle;">&nbsp; Eco Cruise</span></a>
 				</div>
-				<div class="col-lg-12 headerdetail"><img src="http://localhost/Jaktrip/assets/img/hd.gif"/>
+				<div class="col-lg-12 headerdetail"><img src="../assets/img/hd.gif"/>
 				</div>
 
 				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
