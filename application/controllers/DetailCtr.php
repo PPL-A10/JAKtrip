@@ -11,17 +11,6 @@ class DetailCtr extends CI_Controller {
 	{   
 		$this->load->view('detailUI');
 	}
-
-	function detail($TouristAttr)
-	{
-		$this->load->model('TouristAttrManager');
-		
-		$data = array(
-				'tourAttr' => urldecode($TouristAttr),
-		);
-		$data['query'] = $this->TouristAttrManager->getDetail($data);
-		echo json_encode($data);
-	}
 }
 
 ?>

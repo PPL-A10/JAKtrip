@@ -72,11 +72,11 @@
 				<div class="col-lg-12 headerdetail"><img src="../assets/img/hd.gif"/>
 				</div>
 
-				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
+				<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="margin: -7px 0px; ">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a class="submenua" href="#info">Information</a></li>
-		        <li><a class="submenua" href="#photos">Photos</a></li>
-		        <li><a class="submenua" href="#reviews">Reviews</a></li>
+				<li><a href="#info" class="submenua" >Information</a></li>
+		        <li><a href="#photos" class="submenua" >Photos</a></li>
+		        <li><a href="#reviews" class="submenua" >Reviews</a></li>
 		        <li><div class="formrating form-group">
 					  <div class="col-lg-3">
   						 <span class="starRating small">
@@ -93,15 +93,14 @@
 					     </span>
 				      </div>
 				    </div></li>
-				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
-				   <li><span class="fa fa-twitter-square icondetail"></span></li>
-				   <li><span class="fa fa-facebook-square icondetail"></span></li>
-				   <li>&nbsp;&nbsp;</li>
-				   <li><span class="fa fa-check-circle icondetail"></span></li>
-				   <li>&nbsp;&nbsp;</li>
-				   <li><span class="fa fa-heart icondetail"></span></li>
+				   <li><span class="fa fa-google-plus-square icondetail"></span>
+				   <span class="fa fa-twitter-square icondetail"></span>
+				   <span class="fa fa-facebook-square icondetail"></span>
+				   <span class="fa fa-check-circle icondetail"></span>
+				   <span class="fa fa-heart icondetail"></span></li>
 				</ul>
-				<section class="textdetail" id="info">
+				<section id="info" class="textdetail" >
+					<div>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
 					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
@@ -109,21 +108,72 @@
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
 					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum<br><br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-					Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-					dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-					proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+					</div>
 				</section>
-				<section class="textdetail tabcontent hide" id="photos">
+				<section id="photos" class="textdetail tabcontent hide">
+					<div>
 					Gallery photos
+					</div>
 				</section>
-				<section class="textdetail tabcontent hide" id="reviews">
-					Reviews
+				<section id="reviews" class="textdetail tabcontent hide" >
+					<div class="reviewmember col-lg-12">
+						<button class="btn btn-warning col-lg-11" type="submit">ADD NEW REVIEW</button><br>
+						<div class="reviewkiri col-lg-4">
+							<div class="ava"><img src="../assets/img/50.jpg"/></div>
+							<div class="author"><b>Ahmad Ibrahim</b></div>
+							<div class="hasreviewed">Reviewed 7 places</div>
+						</div>
+						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span>
+						    	<br>
+						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
+						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						    		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
+						    		ullamco.
+						    	</span>
+						</div>
+					</div>
+
+					<div class="reviewmember col-lg-12">
+						<div class="reviewkiri col-lg-4">
+							<div class="ava"><img src="../assets/img/50.jpg"/></div>
+							<div class="author"><b>Ahmad Ibrahim</b></div>
+							<div class="hasreviewed">Reviewed 7 places</div>
+						</div>
+						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
+						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
+						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						    		incididunt ut labore et dolore magna aliqua. 
+						    	</span>
+						</div>
+					</div>
+
+					<div class="reviewmember col-lg-12">
+						<div class="reviewkiri col-lg-4">
+							<div class="ava"><img src="../assets/img/50.jpg"/></div>
+							<div class="author"><b>Ahmad Ibrahim</b></div>
+							<div class="hasreviewed">Reviewed 7 places</div>
+						</div>
+						<div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+		  						<span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+						    	<span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+						    	<span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
+						    	<span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
+						    	<span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+						    		incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
+						    		ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+						    	</span>
+						</div>
+					</div>
+
 				</section>
 			</div>
 
@@ -161,26 +211,19 @@
 			  $('#main-menu').smartmenus();
 			});
 	</script>
-    <script type="text/javascript">
-        // When the document is ready
-        $(document).ready(function () {
-            
-            $('.contactus').validator();
-        
-        });
-    </script>
-    <script>
+
+   <script>
 			$(document).ready(function() {
-				$('#mainmenu > li > a').click(function(event){
+				$('.navbar-nav > li > a').click(function(event){
 					event.preventDefault();//stop browser to take action for clicked anchor
 					
 					//get displaying tab content jQuery selector
-					var active_tab_selector = $('#mainmenu > li.active > a').attr('href');					
+					var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
 					
 					//find actived navigation and remove 'active' css
-					var actived_nav = $('#mainmenu > li.active');
+					var actived_nav = $('.navbar-nav > li.active');
 					actived_nav.removeClass('active');
-					
+
 					//add 'active' css into clicked navigation
 					$(this).parents('li').addClass('active');
 					
