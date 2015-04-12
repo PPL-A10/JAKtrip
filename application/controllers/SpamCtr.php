@@ -11,8 +11,7 @@ class SpamCtr extends CI_Controller {
     
 	function index(){
 		$this->load->model('SpamMod');
-		$data['query']= $this->SpamMod->showspamreview();
-		$data['spam'] = $query;
+		$data['spam']= $this->SpamMod->showspamreview();
 		$this->load->view('header');
 		$this->load->view('menuadmin');
 		$this->load->view('spamUI');
