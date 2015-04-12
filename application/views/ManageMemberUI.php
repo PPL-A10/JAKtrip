@@ -161,8 +161,10 @@
 							echo"<td><input type='checkbox' value=''></td>";
 							echo "<td>".$row->username."</td>";
 							echo "<td>".$row->email	."</td>";
-							echo "<td>".$row->email	."</td>";
-							echo "<td>".$row->email	."</td>";
+							echo "<td></td>";
+							echo "<td>".$row->join_date."</td>";
+							echo "<td></td>";
+							echo "<td>".$row->last_active."</td>";
 							echo "<td>". anchor('reviewCont/del/' .$row->username, 'Delete') ."</td>";
 							echo "</tr>";
 							}

@@ -104,30 +104,38 @@
 				      <th>Review</th>
 				      <th>Reason</th>
 				      <th>Reports</th>
-				      <th>Last Reported</th>
+				      <th>Remove</th>
 				    </tr>
 				  </thead>
 				  <tbody id="tes123">
 				    <tr class="active">
 				  	<?php
-					
 							//echo "<table border='1'>";
 							foreach($query as $row)
 							{
+							$a = (int)$row->is_nudity;
+							$b = (int)$row->is_spam;
+							$c = (int)$row->is_falsestatement;
+							$d = (int)$row->is_unrelatedcontent;
+							$e = (int)$row->is_profanity;
+							$f = $b +$a +$c+$d+$e ;
 							//echo "<tr>";
 							echo"<td><input type='checkbox' id='check_list[]' value='".$row->id_rate."'></td>";
-							echo "<td>".$row->username."</td>";
+							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->review	."</td>";
-							if ($row->is_nudity == 1)
-							{echo "<td> Content mengandung nudity </td>";}
-							if ($row->is_spam == 1)
-							{echo "<td> Content berisi spam </td>";}	
-							if ($row->is_falsestatement == 1)
-							{echo "<td> Content berisi pernyataan tidak valid </td>";}
-							if ($row->is_unrelatedcontent == 1)
-							{echo "<td> Content tidak berhubungan dengan konteks </td>";}
-							if ($row->is_profanity == 1)
-							{echo "<td> Content berisi kata-kata tidak pantas </td>";}
+							echo "<td>";
+							if ($row->is_nudity > 0)
+							{echo "Content mengandung nudity ";}
+							if ($row->is_spam > 0)
+							{echo "Content berisi spam";}	
+							if ($row->is_falsestatement > 0)
+							{echo "Content berisi pernyataan tidak valid";}
+							if ($row->is_unrelatedcontent > 0)
+							{echo "Content tidak berhubungan dengan konteks";}
+							if ($row->is_profanity > 0)
+							{echo "Content berisi kata-kata tidak pantas";}
+							echo "</td>";
+							echo "<td>".$f."</td>";
 							echo "<td>". anchor('SpamCtr/del/'.$row->id_rate, 'Delete') ."</td>";						
 							echo "</tr>";
 							}

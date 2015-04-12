@@ -126,7 +126,7 @@
 					    <span class="input-group col-lg-3">
 						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword...." id="name_select" style="width:162%;">
 						    <span class="input-group-btn">
-						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search">s</span></button>
+						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 						    </span>
 					    </span>
 				    </div>
@@ -330,16 +330,13 @@ function myFunction() {
 	}
 	</script>
 	
-				<script>
-	function filterFunctionFinal(){
-		
-		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
-		
+	<script>
+	function filterFunctionFinal(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
 		var x = document.getElementById("category_select").value;
 		var y = document.getElementById("location_select").value;
 		var z = document.getElementById("name_select").value;
-		
-		
+				
 		jQuery.ajax({
 				        type: "POST",
 				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCatLocKey/"+x+"/"+y+"/"+z,
@@ -363,7 +360,7 @@ function myFunction() {
 	</script>
 	
 	<script>
-function sliderFunction() {
+	function sliderFunction() {
     var x = document.getElementById("range");
     var defaultVal = x.defaultValue;
     var currentVal = x.value;

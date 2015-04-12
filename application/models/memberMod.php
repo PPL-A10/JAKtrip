@@ -12,7 +12,7 @@
 			return $query->result();
 		}
 		
-				function delete($name){
+		function delete($name){
 			$this ->load->database();
 			$this->db->delete('member', array('username' => $name));
 

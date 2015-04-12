@@ -40,9 +40,9 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
-$route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
-$route['ReviewCtr/(:any)'] = 'ReviewCtr/index/$1';
-$route['DetailCtr/(:any)'] = 'DetailCtr/index/$1';
+//$route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
+//$route['ReviewCtr/(:any)'] = 'ReviewCtr/index/$1';
+//$route['DetailCtr/getdetail/(:any)'] = 'DetailCtr/index/$1';
 //$route['controllername/(:any)/(:any)'] = 'ddd/index/$1/$2';
 //$route['controllername/(:any)//(:any)'] = 'ddd/index/$1/$3';
 //$route['controllername//(:any)/(:any)'] = 'ddd/index/$2/$3';
