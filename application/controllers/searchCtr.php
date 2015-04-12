@@ -7,11 +7,11 @@
 		//	echo "haha";
 			// $this->load->helper('form');
 			$this->load->helper('form');
-			$this->load->model('touristAttrManager');
+			$this->load->model('touristAttractionManager');
 
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
-		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+		// 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
 			
 			$this->load->model('HalteManager');
 			$data['query'] = $this->HalteManager->getAllHalte();
@@ -31,7 +31,7 @@
 		{
 		//	echo "haha";
 			// $this->load->helper('form');
-			 $this->load->model('touristAttrManager');
+			 $this->load->model('touristAttractionManager');
 			 $this->load->model('HalteManager');
 			 $this->load->helper('cookie');
 			 $this->load->helper('form');
@@ -56,12 +56,12 @@
 			// $halte_choosen =  $this->input->post('halte');
 			 if($day == "Saturday" OR $day == "Sunday")
 			 {
-			 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudgetandHalteWeekend2($data);
+			 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend2($data);
 			 	$data['isWeekend'] = true;
 			 }
 			 else
 			 {
-			 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudgetandHalteWeekday2($data);	
+			 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday2($data);	
 			 	$data['isWeekend'] = false;
 			 }
 			 
@@ -79,7 +79,7 @@
 		//	echo $data['query']['halte_name'];
 
 		//	$budget = (int) $this->input->post('budget');
-		//	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+		//	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
 
 			
 		}
@@ -88,7 +88,7 @@
 		//	echo "haha";
 			// $this->load->helper('form');
 			;
-			$this->load->model('touristAttrManager');
+			$this->load->model('touristAttractionManager');
 			$this->load->model('HalteManager');
 			$this->load->helper('cookie');
 			$this->load->helper('form');
@@ -110,12 +110,12 @@
 			 
 			 if($day == "Saturday" OR $day == "Sunday")
 			 {
-			 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudgetandHalteWeekend($data);
+			 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend($data);
 			 	setcookie('isWeekend',"true", time()+3600, '/');
 			 }
 			 else
 			 {
-			 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudgetandHalteWeekday($data);	
+			 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday($data);	
 			 	setcookie('isWeekend',"false", time()+3600, '/');
 			 }
 		//	 echo get_cookie('halte_name');
@@ -140,7 +140,7 @@
 		//	echo $data['query']['halte_name'];
 
 		//	$budget = (int) $this->input->post('budget');
-		//	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+		//	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
 		
 			$this->load->model('HalteManager');
 			$data['query'] = $this->HalteManager->getAllHalte();
