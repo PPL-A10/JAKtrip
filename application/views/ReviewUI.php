@@ -110,7 +110,7 @@
 				<div class='reviewmember col-lg-12'>
 					<button class='btn btn-warning col-lg-11' type='submit'>ADD NEW REVIEW</button><br>
 				</div>
-	
+	<div id="tes">
 	<?php
 	foreach($query as $row){
 					
@@ -134,7 +134,8 @@
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 							if ($row->rate == 5)
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-						    echo	"<a href='javascript:delFunction()'><span class='deleterev close fa fa-trash-o' id='nilaiid' value='".$row->id_rate."'>kjlklkjljkl</span></a>";	
+						    echo	"<a href='javascript:Function(".$row->id_rate.",".$row->place_name.")'><span class='deleterev close fa fa-trash-o' id='nilaiid' value=''>kjlklkjljkl</span></a>";	
+							echo 	"<a href='javascript:myFunction(".$row->id_rate.",'asasasasee')'>asasasasasasas</a>";
 							//echo	anchor('ReviewCtr/del/'.$row->place_name.'/'.$row->id_rate, '<span class="deleterev close fa fa-trash-o"></span>');
 						    echo	"<br>";
 						    echo	"<span class='judulreview tuffyh3a' id='judul'>"	;													
@@ -147,7 +148,7 @@
 				echo	"</div>";
 					
 	}
-	?>
+	?></div>
 
 				</section>
 			</div>
@@ -181,13 +182,21 @@
 	<script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
 	<script src="/JAKtrip/assets/js/menuselector.js"></script>
 
+	<script>
+	function myFunction(x,y){
+		$("#tes").html("asasas "+x+"asas"+y);
+		
+	}
+	
+	</script>
 	
 					<script>
 	function delFunction(){
-		
+		//$("#tes").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");;
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;
-		var x = document.getElementById("nilaiid").value;
-		jQuery.ajax({
+		//var x = document.getElementById("nilaiid").value;
+		$("#tes").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa " + x);
+		/*jQuery.ajax({
 				        type: "POST",
 				        url: "http://localhost/JAKtrip/index.php/ReviewCtr/del/"+x,
 				        success: function(res) {
@@ -202,7 +211,7 @@
 								for (var i=0 ; i<obj.query.length; i++){
 									resultQuery.push("<div class='reviewkiri col-lg-4'><div class='ava'><img src='JAKtrip/assets/img/50.jpg'/></div><div class='author' id='namapengguna'><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><a href='javascript:delFunction()'><span class='deleterev close fa fa-trash-o' id='nilaiid' value='"+obj.query[i].id_rate+"'></span></a><br><span class='judulreview tuffyh3a' id='judul'><p>"+obj.query[i].title+"</p></span><br><span class='isireview' id='isireview'><p>"+obj.query[i].review+"</p>	</span></div>");
 								}
-								/*for (var i=0 ; i<obj.query.length; i++){
+								for (var i=0 ; i<obj.query.length; i++){
 									resultQueryname.push(obj.query[i].username);
 								}
 								for (var i=0 ; i<obj.query.length; i++){
@@ -213,13 +222,13 @@
 								}
 								for (var i=0 ; i<obj.query.length; i++){
 									resultQueryid.push(obj.query[i].id_rate);
-								}*/
-								
-								for (var i=0 ; i<resultQuery.length; i++){
-									$("#isi_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");;
 								}
 								
-								//$("#output_field").html(resultQuery);
+								//for (var i=0 ; i<resultQuery.length; i++){
+								//	$("#isi_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");;
+								//}
+								
+								$("#tes").html(resultQuery);
 								//for (var i=0 ; i<resultQueryname.length; i++)
 								//{$("#namapengguna").html(resultQueryname[i]);}
 								//$("#judul").html(resultQuerytitle);
@@ -228,7 +237,7 @@
 							
 				            }
                         }
-                    );
+                    );*/
 	}
 	</script>
 	
