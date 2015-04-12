@@ -126,7 +126,7 @@
 					    <span class="input-group col-lg-3">
 						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword...." id="name_select" style="width:162%;">
 						    <span class="input-group-btn">
-						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
+						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search">s</span></button>
 						    </span>
 					    </span>
 				    </div>
@@ -134,7 +134,8 @@
 				    <div class="form-inline" style="margin-top: 10px;">
 						<label class="col-lg-2 control-label">Price range </label>
 						<div style="position: relative; padding-right: 27px; padding-left: 122px;">
-							<input type="text" class="col-lg-9 range" name="range" value="" />
+							<input type="text" class="col-lg-9 range" id="range" onchange="myFunction()" value="" />
+							<button type="button" onmouseup="myFunction()">Try it</button>
 							<div class="col-lg-3"></div>
 						</div>
 					</div>
@@ -151,10 +152,10 @@
 							foreach($query as $row)
 							{
 								echo "<tr>";
-								echo "<td><img src='".$row->pic_info."' alt='Mountain View' style='width:304px;height:228px'> </td>";
+								//echo "<td><img src='".$row->pic_info."' alt='Mountain View' style='width:304px;height:228px'> </td>";
 								//header("Content-Type: image/jpeg");
 								 //header('content-type = image/jpeg');
-								echo "<td>".$row->pic."</td>" ;	
+								//echo "<td>".$row->pic."</td>" ;	
 								echo "<td>".$row->place_name."</td>" ;								
 								//echo "<td>".$row->category_name."</td>" ;
 								//echo "<td>".$row->description."</td>" ;
@@ -267,7 +268,33 @@ function myFunction() {
 
 	<script>
 function myFunction() {
-    document.getElementById("output_field").innerHTML = "Hello Worldrthrthrthrthrthrthrth";
+	var x = document.getElementById("range");
+    var defaultVal = x.defaultValue;
+    var currentVal = x.value;
+	var res = currentVal.split(";");
+	var min = res[0];
+	var max = res[1];
+
+	
+			jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataprice/"+min+"/"+max+"/"+$query,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
 }
 </script>
   
@@ -335,6 +362,23 @@ function myFunction() {
 	}
 	</script>
 	
+	<script>
+function sliderFunction() {
+    var x = document.getElementById("range");
+    var defaultVal = x.defaultValue;
+    var currentVal = x.value;
+    
+	document.getElementById("output_field").innerHTML = "Default value and current value is the same: ";
+    
+        document.getElementById("output_field").innerHTML = "Default value and current value is the same: "
+        + x.defaultValue + " and " + x.value
+        + "<br>Slide up or down with the slider control to see the difference!";
+    
+        document.getElementById("output_field").innerHTML = "The default value was: " + defaultVal
+        + "<br>The new, current value is: " + currentVal;
+    
+}
+</script>
 
   
 </body>

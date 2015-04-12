@@ -18,8 +18,8 @@
 			
 			$this->db->select('*');
 			$this->db->from('tourist_attraction');
-			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
-			$this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			//$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+			//$this->db->join('photo', 'photo.place_name = tour_category.place_name');
 			$query = $this->db->get();
 			return $query->result();	
 		}
@@ -105,6 +105,25 @@
 			if((string)$city != ""){
 				$this->db->where('city', $city);
 			} 			
+			$query = $this->db->get(); 
+            return $query->result(); 
+		}
+		
+		function filterSliderMod($min, $max)
+		{
+			
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+	
+			if((int)$min > 0){
+				$this->db->where('weekend_price >',$min);
+			} 
+
+			if((int)$max > 0){
+			$this->db->where('weekend_price <' ,$max);
+			}
+			
 			$query = $this->db->get(); 
             return $query->result(); 
 		}

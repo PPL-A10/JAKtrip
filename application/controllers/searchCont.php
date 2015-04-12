@@ -21,6 +21,15 @@
 			echo json_encode($data);
 		}
 		
+		public function searchwisataprice($min, $max)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('searchMod');
+			$data['query'] = $this->searchMod->filterSliderMod($min, $max);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
 			public function searchwisataCat($category_name=NULL)
 		{
 			$this->load->library('table');
