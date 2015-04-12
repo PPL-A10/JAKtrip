@@ -96,40 +96,40 @@
 				
 				
 				<span class="input-group col-lg-7" style="margin-left: 150px;">
-				    <input class="fieldsml form-control" type="text" placeholder="Member search/JAKtrip.">
-				    <span class="input-group-btn">
+				    <input class="fieldsml form-control" type="text" id="name_select" placeholder="Member search/JAKtrip.">
+				    <span onclick="filterFunctionFinal()" class="input-group-btn">
 				      <button class="fieldsml btn btn-default" type="button" style="width:40%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 				    </span>
 			    </span><br>
 
 			    <div class="searchmember col-lg-12">
 			    	<ul class="letters">
-			    		<li><a href="">A</a></li>
-			    		<li><a href="">B</a></li>
-			    		<li><a href="">C</a></li>
-			    		<li><a href="">D</a></li>
-			    		<li><a href="">E</a></li>
-			    		<li><a href="">F</a></li>
-			    		<li><a href="">G</a></li>
-			    		<li><a href="">H</a></li>
-			    		<li><a href="">I</a></li>
-			    		<li><a href="">J</a></li>
-			    		<li><a href="">K</a></li>
-			    		<li><a href="">L</a></li>
-			    		<li><a href="">M</a></li>
-			    		<li><a href="">N</a></li>
-			    		<li><a href="">O</a></li>
-			    		<li><a href="">P</a></li>
-			    		<li><a href="">Q</a></li>
-			    		<li><a href="">R</a></li>
-			    		<li><a href="">S</a></li>
-			    		<li><a href="">T</a></li>
-			    		<li><a href="">U</a></li>
-			    		<li><a href="">V</a></li>
-			    		<li><a href="">W</a></li>
-			    		<li><a href="">X</a></li>
-			    		<li><a href="">Y</a></li>
-			    		<li><a href="">Z</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('a')">A</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('b')">B</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('c')">C</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('d')">D</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('e')">E</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('f')">F</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('g')">G</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('h')">H</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('i')">I</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('j')">J</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('k')">K</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('l')">L</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('m')">M</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('n')">N</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('o')">O</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('p')">P</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('q')">Q</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('r')">R</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('s')">S</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('t')">T</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('u')">U</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('v')">V</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('w')">W</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('x')">X</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('y')">Y</a></li>
+			    		<li><a href="javascript:filterFunctionFinal2('z')">Z</a></li>
 			    	</ul>			    	
 			    </div>
 			    <br><br>
@@ -151,13 +151,13 @@
 				    </tr>
 				  </thead>
 				  
-				  <tbody>
-				    <tr class="active">
+				  <tbody id="output_field">
+				    <!--tr class="active"-->
 					  	<?php
 							//echo "<table border='1'>";
 							foreach($query as $row)
 							{
-							//echo "<tr>";
+							echo "<tr>";
 							echo"<td><input type='checkbox' value=''></td>";
 							echo "<td>".$row->username."</td>";
 							echo "<td>".$row->email	."</td>";
@@ -165,28 +165,12 @@
 							echo "<td>".$row->join_date."</td>";
 							echo "<td></td>";
 							echo "<td>".$row->last_active."</td>";
-							echo "<td>". anchor('reviewCont/del/' .$row->username, 'Delete') ."</td>";
+							echo "<td>". anchor('ManageMemberCtr/del/' .$row->username, 'Delete') ."</td>";
 							echo "</tr>";
 							}
 							//echo "</table>";
 	
 						?>
-				      <!--td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr>
-				    <tr>
-				      <td><input type="checkbox" value=""/></td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr-->
 				  </tbody>
 				</table><br>
 
@@ -245,5 +229,64 @@
 			  $('#main-menu').smartmenus();
 			});
 	</script>
+	
+	<script>
+	function filterFunctionFinal(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		
+		var z = document.getElementById("name_select").value;
+			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+ z);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageMemberCtr/searchwisataKey/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'>delete</a></td></tr>";
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+	
+		<script>
+	function filterFunctionFinal2(input){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		
+		//var z = document.getElementById("name_select").value;
+			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+inpu);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageMemberCtr/searchwisataKey2/"+input,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'>delete</a></td></tr>";
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+	
 </body>
 </html>

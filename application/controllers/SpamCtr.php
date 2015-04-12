@@ -17,7 +17,8 @@ class SpamCtr extends CI_Controller 	{
 			$this->SpamMod->delete($id);
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
-			$this->load->view('SpamUI',$data);    
+			//$this->load->view('SpamUI',$data);  
+			echo json_encode($data);
 		}
 		
 		public function coba()

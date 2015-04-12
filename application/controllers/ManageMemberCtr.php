@@ -16,6 +16,26 @@ class ManageMemberCtr extends CI_Controller {
 		$this->load->view('ManageMemberUI',$data);
 
 	}
+	
+	public function searchwisataKey($place_name=NULL)
+	{
+		$this->load->library('table');
+		$this->load->helper('html'); 
+		$this->load->model('memberMod');
+		$data['query'] = $this->memberMod->filterMod3($place_name);
+		//$this->load->view('searchView',$data);    
+		echo json_encode($data);
+	}
+	
+		public function searchwisataKey2($place_name=NULL)
+	{
+		$this->load->library('table');
+		$this->load->helper('html'); 
+		$this->load->model('memberMod');
+		$data['query'] = $this->memberMod->filterMod5($place_name);
+		//$this->load->view('searchView',$data);    
+		echo json_encode($data);
+	}
 
 	public function del($name)
 	{
@@ -26,7 +46,7 @@ class ManageMemberCtr extends CI_Controller {
 		$this->memberMod->delete($name);
 		}
 		$data['query'] = $this->memberMod->showallmember();
-		$this->load->view('ReviewUI',$data);    
+		$this->load->view('ManageMemberUI',$data);    
 		//echo json_encode($data);
 	}
 }
