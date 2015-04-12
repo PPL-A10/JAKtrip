@@ -489,7 +489,7 @@
    			 	<div class="form-inline">
    					 <label class="col-lg-2 control-label">Filter by </label>
    					 <span id="ddcontainer" class="fieldsml custom-dropdown ">
-   					 	<select  id="ddbus" class="fieldsml form-control" title="All Categories">    
+   					 	<select  id="ddbus" class="fieldsml form-control" onchange="filterFunctionFinal()" title="All Categories">    
    					     	<option value="" selected disabled>All Categories</option>
    					     	<?php
                   foreach($query1 as $row)
@@ -501,7 +501,7 @@
    					 </span>
 
    					 <span id="ddcontainer" class="fieldsml custom-dropdown ">
-   					 	<select  id="ddbus" class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
+   					 	<select  id="ddbus" onchange="filterFunctionFinal()" class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
    					     	<option value="" selected disabled>All Location</option>
    					     	<?php
                   foreach($query2 as $row)
@@ -562,16 +562,46 @@
               $counter = 0;
               foreach ($query['result'] as $row) {
                 # code...
-                  echo "<tr>
-                    <td style='width:100px;'>
-                      <img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td>
-                    <td>".$row->place_name."<br>halte ".$row->halte_name."<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."
-                      <br><button onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">add to trip</button> 
-                      <br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a>
-                      </td></tr>";
+                  // echo "<tr>
+                  //   <td style='width:100px;'>
+                  //     <img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td>
+                  //   <td>".$row->place_name."<br>halte ".$row->halte_name."<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."
+                  //     <br><button onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">add to trip</button> 
+                  //     <br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a>
+                  //     </td></tr>";
+                 echo "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
+              echo "<tr>";
+               echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
+                echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a></td>";
+              echo "</tr>";
+              // echo "<tr>";
+              //   echo "<td height='20px' class='tuffyh3a'>".$row->place_name."</td>";             
+              // echo "</tr>";
+              // echo "<tr>";
+              //   echo "<td height='20px' style='font-size: 12px;'>Rp 25000 - Indoor Play -";
+              //   echo "<span class='fa fa-star'></span>";
+              //   echo "<span class='fa fa-star'></span>";
+              //   echo "<span class='fa fa-star'></span>";
+              //   echo "<span class='fa fa-star'></span>";
+              //   echo "<span class='fa fa-star'></span>";
+              //   echo "";
+              //   echo "</td>";
+              // echo "</tr>";
+              // echo "<tr>";
+              //   echo "<td valign='top' height='60px' style='font-size: 12px; padding-right: 40px;'>";
+              //   echo "<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."";
+              //   echo "</td>";
+              // echo "</tr>";
+              // echo "<tr>";
+ 
+              //   echo "<td align='left' height='40px' style='margin-top: -10px;''><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button>";
+              //   echo "<br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a></td>";
+              // echo "</tr>";
+              echo "</table>";
                       $counter++;
               }
-              echo "</table>";
+
+             
             ?>
    					 
    				 </div>

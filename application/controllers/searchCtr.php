@@ -216,7 +216,7 @@
 			if(isset($_COOKIE["username"]))
 			{
 				setcookie("username",null,time()+3600, '/');
-				
+			//	header("Location:http://google.com");
 			}
 			header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1/");
 		}
@@ -226,7 +226,14 @@
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('searchMod');
-			$data['query'] = $this->searchMod->filterModFinal($category_name, $city, $place_name);
+			$this->load->model('touristAttractionManager');
+			$data['query'] = $this->touristAttractionManager->getAllTour1($data);
+			$counter = 0;
+			// foreach($data['query'] as $row)
+			// {
+			// 	if($row->category_name == $)
+			// }
+		//	$data['query'] = $this->searchMod->filterModFinal($category_name, $city, $place_name);
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
 		}
@@ -260,5 +267,7 @@
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
 		}
+
+
 	}	
 ?>

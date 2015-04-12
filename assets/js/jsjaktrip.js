@@ -392,31 +392,94 @@ $(function() {
 	            	});
 				}
 
-		function showRating(place_name)
-        {
-          $("#mapcanvas").hide();
-          $("#detailrating").show();
-          jQuery.ajax({
-                type: "POST",
-                url: "http://localhost/JAKtrip/index.php/DetailCtr/getdetail/" + place_name,
-                success: function(res) {
-                    if (res)
-                    {
+				function showRating(place_name)
+		        {
+		        	
+		          $("#mapcanvas").hide();
+		          $("#detailrating").show();
+		          jQuery.ajax({
+		                type: "POST",
+		                url: "http://localhost/JAKtrip/index.php/DetailCtr/getdetail/" + place_name,
+		                success: function(res) {
+		                    if (res)
+		                    {
 
-                var obj = jQuery.parseJSON(res);
-                var resultQuery = "";
-                var resultQuerydetail = "";
-                for (var i=0 ; i<obj.query.length; i++){
-                  //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
-                  resultQueryname = resultQuery +obj.query[i].place_name;
-                  resultQuerydetail = resultQuerydetail +obj.query[i].description;
-                }
-                
-              $("#namatempat").html(resultQueryname);
-              $("#info").html(resultQuerydetail);
-              }             
-            }
-                }
-            );
-        }
+		                var obj = jQuery.parseJSON(res);
+		                var resultQuery = "";
+		                var resultQuerydetail = "";
+		                for (var i=0 ; i<obj.query.length; i++){
+		                  //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+		                  resultQueryname = resultQuery +obj.query[i].place_name;
+		                  resultQuerydetail = resultQuerydetail +obj.query[i].description;
+		                }
+		                
+		              $("#namatempat").html(resultQueryname);
+		              $("#info").html(resultQuerydetail);
+		              }             
+		            }
+		                }
+		            );
+		          getReview(place_name);
+		        }
 
+		         function getReview(place_name){
+		
+		//$("#reviews").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		//var y = document.getElementById("location_select").value;
+				alert(place_name);
+		
+					jQuery.ajax({
+							        type: "POST",
+							        url: "http://localhost/JAKtrip/index.php/ReviewCtr/detailrev/"+ place_name,
+							        success: function(res) {
+							            if (res)
+							            {
+											var obj = jQuery.parseJSON(res);
+											var resultQuery = "";
+											var resultQueryname = "";
+											for (var i=0 ; i<obj.query.length; i++){
+												if(i>0)
+												{
+												resultQuery = resultQuery +"<div class='reviewmember col-lg-12'><br><div class='reviewkiri col-lg-4'><div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div><div class='author' id='namauser'><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><span class='deleterev close fa fa-trash-o'><a href=''></a></span><br><span class='judulreview tuffyh3a' id='temareview'>"+obj.query[i].title+"</span><br><span class='isireview' id='deskripsireview'>"+obj.query[i].review+"</span></div></div>";	
+												}
+												else
+												{
+												resultQuery = resultQuery +"<div class='reviewmember col-lg-12'><button class='btn btn-warning col-lg-11' type='submit'>ADD NEW REVIEW</button><br><div class='reviewkiri col-lg-4'><div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div><div class='author' id='namauser'><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><span class='deleterev close fa fa-trash-o'><a href=''></a></span><br><span class='judulreview tuffyh3a' id='temareview'>"+obj.query[i].title+"</span><br><span class='isireview' id='deskripsireview'>"+obj.query[i].review+"</span></div></div>";
+												resultQueryname = resultQueryname +obj.query[i].place_name;
+												}
+											}
+											$("#namatempat").html(resultQueryname);	
+										$("#reviews").html(resultQuery);
+									
+										}							
+							            }
+			                        }
+			                    );
+				}
+
+				function filterFunctionFinal(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
+					var x = document.getElementById("category_select").value;
+					var y = document.getElementById("location_select").value;
+					var z = document.getElementById("name_select").value;
+							
+					jQuery.ajax({
+							        type: "POST",
+							        url: "http://localhost/JAKtrip/index.php/searchCont/searchwisataCatLocKey/"+x+"/"+y+"/"+z,
+							        success: function(res) {
+							            if (res)
+							            {
+											var obj = jQuery.parseJSON(res);
+											var resultQuery = "";
+											for (var i=0 ; i<obj.query.length; i++){
+												resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+											}
+											
+										$("#output_field").html(resultQuery);
+			//								$("#output_field").html(obj.query[0].place_name;
+				}
+										
+							            }
+			                        }
+			                    );
+				}

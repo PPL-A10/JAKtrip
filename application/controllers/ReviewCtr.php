@@ -14,7 +14,8 @@ class ReviewCtr extends CI_Controller {
 		$this->load->model('ReviewModel');
 		$data['query']= $this->ReviewModel->showreviewtempat($nama);
 		$data['query2']= $this->ReviewModel->showjudul($nama);
-		$this->load->view('ReviewUI', $data);
+		//$this->load->view('ReviewUI', $data);
+		echo json_encode($data);
 	}
 	
 	    function detailRev($nama=null)
@@ -22,7 +23,8 @@ class ReviewCtr extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('ReviewModel');
 		$data['query']= $this->ReviewModel->showreviewtempat($nama);
-		$this->load->view('ReviewUI', $data);
+		//$this->load->view('ReviewUI', $data);
+		echo json_encode($data);
 	}
 	
 		public function del($nama, $id)
@@ -35,8 +37,8 @@ class ReviewCtr extends CI_Controller {
 			}
 			$data['query'] = $this->ReviewModel->showreviewtempat($nama);
 			$data['query2']= $this->ReviewModel->showjudul($nama);
-			$this->load->view('ReviewUI',$data);    
-			//echo json_encode($data);
+			//$this->load->view('ReviewUI',$data);    
+			echo json_encode($data);
 		}
 
 	

@@ -15,7 +15,8 @@
 	<link href="<?php echo base_url('assets/css/sm-clean.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-  <link href="http://localhost/Jaktrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+
+  <!--link href="http://localhost/Jaktrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
   <link href="http://localhost/Jaktrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
   <link href="http://localhost/Jaktrip/assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
   <link href="http://localhost/Jaktrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
@@ -34,15 +35,15 @@
   <script src="/JAKtrip/assets/js/bootstrap.min.js"></script>
   <script src="/JAKtrip/assets/js/jaktrip.js"></script>
   <script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
-  <script src="/JAKtrip/assets/js/menuselector.js"></script>
+  <script src="/JAKtrip/assets/js/menuselector.js"></script-->
 
-  <link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
+  <!--link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
   <link href="/JAKtrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
   <link href="/JAKtrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
   <link href="/JAKtrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
   <link href="/JAKtrip/assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/-->
+    <!--script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
 
 
 		
@@ -106,12 +107,24 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
                     var output = getCookie("placeName").replace(/\+/gi, " ");
                     alert(res);
                    var obj = jQuery.parseJSON(res);
+
              //       alert(obj.query.result[0].place_name);
-                     output = "<table class='table table-hover'>";
+                     output = "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
                     
                      for(var i = 0; i<obj.query.result.length; i++)
                     {
-                        output = output +  "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
+                      //  output = output +  "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
+                        output = output +  "<tr><td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td><td height='20px' class='tuffyh3a'>"+obj.query.result[i].place_name+"<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : "+obj.query.hargaBusway[i]+" (harga Busway) + "+obj.query.result[i].transport_price+" (harga Angkot) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+"<br>";
+                        if(obj.query.sudahDipilih[i] == true)
+                        {
+                        	alert(obj.query.sudahDipilih[i]);
+                        	output = output + "<button class='btn btn-warning disabled' onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\" >ADD TO TRIP</button><br><a href=\"javascript:showRating('"+obj.query.result[i].place_name+"')\">see rating</a></td></tr>";
+                        }
+                        else
+                        {
+                        	output = output + "<button class='btn btn-warning' onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('"+obj.query.result[i].place_name+"')\">see rating</a></td></tr>";
+                        }
+                        
                     }
                     output = output+ "</table>";
                  //   alert(output);
@@ -174,34 +187,39 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
             return "";
         }
 
-        function showRating(place_name)
-        {
-          $("#mapcanvas").hide();
-          $("#detailrating").show();
-          jQuery.ajax({
-                type: "POST",
-                url: "http://localhost/JAKtrip/index.php/DetailCtr/getdetail/" + place_name,
-                success: function(res) {
-                    if (res)
-                    {
+        // function showRating(place_name)
+        // {
+        	
+        //   $("#mapcanvas").hide();
+        //   $("#detailrating").show();
+        //   jQuery.ajax({
+        //         type: "POST",
+        //         url: "http://localhost/JAKtrip/index.php/DetailCtr/getdetail/" + place_name,
+        //         success: function(res) {
+        //             if (res)
+        //             {
 
-                var obj = jQuery.parseJSON(res);
-                var resultQuery = "";
-                var resultQuerydetail = "";
-                for (var i=0 ; i<obj.query.length; i++){
-                  //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
-                  resultQueryname = resultQuery +obj.query[i].place_name;
-                  resultQuerydetail = resultQuerydetail +obj.query[i].description;
-                }
+        //         var obj = jQuery.parseJSON(res);
+        //         var resultQuery = "";
+        //         var resultQuerydetail = "";
+        //         for (var i=0 ; i<obj.query.length; i++){
+        //           //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+        //           resultQueryname = resultQuery +obj.query[i].place_name;
+        //           resultQuerydetail = resultQuerydetail +obj.query[i].description;
+        //         }
                 
-              $("#namatempat").html(resultQueryname);
-              $("#info").html(resultQuerydetail);
-              }             
-            }
-                }
-            );
-        }
+        //       $("#namatempat").html(resultQueryname);
+        //       $("#info").html(resultQuerydetail);
+        //       }             
+        //     }
+        //         }
+        //     );
 
+
+        //   getReview(place_name);
+        // }
+
+       
 		
 </script>
 </head>
@@ -216,7 +234,7 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="<?php echo base_url('index.php/homeCtr')?>" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
+	      <a class="navbar-brand" href="index.html" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -226,8 +244,9 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
         	<li><a href="#">PROMO</a></li>
           </ul>
 
-	      <ul class="nav navbar-nav navbar-right sm sm-clean2">
+	      <ul class="nav navbar-nav navbar-right sm sm-clean2" id="main-menu">
 	        <li><a href="#">Sign Up</a></li>
+          
 	        <!--<?php
 				//if(isset($_COOKIE["username"]))
 				{
@@ -245,9 +264,9 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 						<a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a>
 						<center><div class="tuffyh2a">Log In to JAKtrip</div></center><br>
 
-						<form role="form" class="form-group">
-							<input class="form-control form-group" type="email" placeholder="E-mail" required>
-							<input class="form-control form-group" type="password" placeholder="Password" required>
+						<form role="form" class="form-group" method="POST" action="http://localhost/Jaktrip/index.php/loginCtr/checkLogin/">
+							<input class="form-control form-group" type="email" placeholder="E-mail" name="username" required>
+							<input class="form-control form-group" type="password" placeholder="Password" name="password" required>
 							<span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
 							<span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
 							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
@@ -264,6 +283,16 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 		        </div>
 	        <li id="popoverEdit1"><a type="button" id="theTrip" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"   
               data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
+
+           <?php
+            if(isset($_COOKIE["username"]))
+            {
+              
+          //    echo "<li><a href='http://localhost/Jaktrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
+              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=\"base_url('/assets/img/25.png')\" class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/Jaktrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+            }
+            
+          ?>
 	        <!-- if udah login <li><a href="#">Michelle <img src="../assets/img/25.png" class="ava-rounded" style="position: relative;"/></a>
 	        	<ul>
 	        		<li><a  href="#">Edit Profile</a></li>
