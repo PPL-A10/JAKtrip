@@ -126,6 +126,9 @@ function addLocation(lng,lat){
 						?>
 						<br /><input id='pic' type='file' name='pic' size='20'  />
 				</p>";
+				
+				echo "<img src=".$pic." height='200'>";
+				
 				echo "Photos Info ", form_input('pic_info', $pic_info).br(); 
 				$lng = array(
 						  'name'        => 'longitude',
