@@ -65,7 +65,7 @@ function addLocation(lng,lat){
 			<h1>Add New Post</h1>
 				<?php
 				$attributes = array('class' => '', 'id' => '');
-				echo form_open('tourAttrCtr/myform', $attributes); ?>
+				echo form_open_multipart('tourAttrCtr/myform', $attributes); ?>
 	
 				<p>
 						<label for="place_name">Name <span class="required">*</span></label>
@@ -124,8 +124,10 @@ function addLocation(lng,lat){
 				
 				<p>
 						<label for="pic">Photos <span class=""></span></label>
-						<?php echo form_error('pic'); ?>
-						<br /><input id="pic" type="text" name="pic"  value="<?php echo set_value('pic'); ?>"  />
+						<?php echo form_error('pic'); 
+
+						?>
+						<br /><input id="pic" type="file" name="pic" size="20"  />
 				</p>
 				
 				<p>
@@ -177,7 +179,7 @@ function addLocation(lng,lat){
 				
 				
 				
-				<?php echo form_close(); ?>
+				<?php echo form_close();?>
 
 				<br><br><br>
 			</div>

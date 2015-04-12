@@ -103,6 +103,24 @@ function myform()
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
+		$image_path = realpath(APPPATH . '../assets/');
+		$config['upload_path'] = $image_path;
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']='1000';
+		$config['max_width']='4096';
+		$config['max_height']='4096';
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		//$upload_data=$this->upload->data();
+	
+		if(! $this->upload->do_upload()){
+		
+		}
+		else{
+			$upload_data=$this->upload->data();
+			$file_name = $upload_data['file_name'];
+			echo $file_name;
+		}
 
 		$place_info = set_value('place_info');
 		if($place_info == ''){
@@ -159,6 +177,9 @@ function myform()
 			// Or whatever error handling is necessary
 			}
 		}
+		
+
+		
 	}
 	
 	# callback
