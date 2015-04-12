@@ -549,6 +549,14 @@ a {
   margin-right: 80px;
 }
 
+.newpost a{
+  color: #db2719;
+}
+
+.newpost a:hover{
+  color: #a51811;
+}
+
 .headerdetail img{
   height: 250px;
   width: auto;
@@ -755,3 +763,4 @@ a {
 .req{
   color: #db2719;
 }
+

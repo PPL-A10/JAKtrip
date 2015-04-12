@@ -44,6 +44,7 @@ class TourAttrCtr extends CI_Controller {
 		$data['halte_name']=$dd_halte;
 		
 		$this->load->view('header');
+		$this->load->view('menuadmin');
 		$this->load->view('formTourAttrUI',$data);
 		$this->load->view('footer');
 	}

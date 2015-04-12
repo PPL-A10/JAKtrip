@@ -154,7 +154,9 @@ function __construct(){
  	}
 	
 	function getCategory(){
-		return $this->db->get('category')->result();
+		$this->load->database();
+		$query = $this->db->get('category');
+		return $query->result();
 	}
 	function getTouristAttraction(){
 		$this->load->database();

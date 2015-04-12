@@ -21,12 +21,11 @@
 <script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/ion.rangeSlider.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
-<script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap-datepicker.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/gmaps.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jquery.smartmenus.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/menuselector.js')?>"></script>
-
+<script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
 
 </body>
 </html>

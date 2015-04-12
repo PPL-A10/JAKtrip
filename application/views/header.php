@@ -65,7 +65,7 @@
         	<li><a href="#">PROMO</a></li>
           </ul>
 
-	      <ul id="main-menu" class="nav navbar-nav navbar-right sm sm-clean2">
+	      <ul class="nav navbar-nav navbar-right sm sm-clean2">
 	        <li><a href="#">Sign Up</a></li>
 	        <!--<?php
 				//if(isset($_COOKIE["username"]))
@@ -92,12 +92,12 @@
 							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
 							<center>Or login with your account below<center><br>
 							<div class="iconsocial">
-								<a href=""><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
-								<a href=""><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
-								<a href=""><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
+								<a href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
+								<a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
+								<a href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
 							</div>
 							<br>
-							<center>Don't have an account? <a href="">Sign Up.</a><center>
+							<center>Don't have an account? <a href="#">Sign Up.</a><center>
 						</form>
 					</div>
 		        </div>
@@ -109,8 +109,8 @@
 	        		<li><a  href="#">Collection</a></li>
 	        		<li><a  href="#">Reviews</a></li>
 	        		<li><a  href="#">Logout</a></li>
-	        	</ul>
-	        </li> -->
+	        	</ul>-->
+	        </li> 
 	      </ul>
 	    </div>
 	  </div>

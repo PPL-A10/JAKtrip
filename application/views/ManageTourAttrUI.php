@@ -1,40 +1,11 @@
 
-	<div class="container-fluid">
-		<div class="row menuhover">			
-			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 70px;">
-				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a class="submenupost" href="#">Posts</a>
-					<ul class="subsubmenu">
-						<li><a class="smp" href="manageTourAttrCtr">All Posts</a></li>
-						<li><a class="smp" href="TourAttrCtr">Add New Post</a></li>
-						<li><a class="smp" href="#">Categories</a></li>
-					</ul>
-				</li>
-				<li><a class="submenua" href="#">Members</a></li>
-		        <li><a class="submenusugg" href="#">Suggestions</a>
-		        	<ul class="subsubmenu">
-						<li><a class="sms" href="#">Tourist Attractions</a></li>
-						<li><a class="sms" href="#">Photos</a></li>
-					</ul>
-		        </li>
-		        <li><a class="submenua" href="#">Feedback</a></li>
-		        <li><a class="submenua" href="#">Spam</a></li>
-		        <li><a class="submenustat" href="#">Statistics</a>
-		        	<ul class="subsubmenu">
-						<li><a class="smst" href="#">By Visitor</a></li>
-						<li><a class="smst" href="#">By Rating</a></li>
-						<li><a class="smst" href="#">By Budget</a></li>
-					</ul>
-		        </li>
-			</ul>
-
 
 			<div class="col-lg-8">
 				<div class="tuffyh2a admintitle">All Posts</div>
 				
-				<span id="openLogin" class="newpost"><a href=""><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+				<!-- <span id="openLogin" class="newpost"><a href=""><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
 				<a href=""><span class="fa fa-eye"></span>&nbsp;&nbsp;View</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></span><br><br>
+				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></span><br><br> -->
 				<table id="tab1" class="newpost table table-striped table-hover">
 				  <thead >
 				    <tr style="text-align: center;">
@@ -44,32 +15,31 @@
 				      <th>Categories</th>
 				      <th>Last Modified</th>
 				      <th>Visitors</th>
+				      <th colspan="2">Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <tr class="active">
-				      <td><input type="checkbox" value=""/></td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr>
-				    <tr>
-				      <td><input type="checkbox" value=""/></td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				      <td>Column content</td>
-				    </tr>
+				    <?php for($i=0; $i<count($tourattr); $i++){
+							$row = $tourattr[$i];
+							echo "<tr>";
+							echo "<td><input type='checkbox' value=''/></td>";
+							echo "<td>". $row->place_name ."</td>";
+							echo "<td>". $row->author ."</td>";
+							echo "<td>". $cat[$i]."</td>";
+							echo "<td>". $row->last_modified ."</td>";
+							echo "<td>". $row->hits ."</td>";
+							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, 'Delete') ."</td>";
+							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, 'Edit') ."</td>";
+							echo "</tr>";
+						}
+					?>
 				  </tbody>
 				</table><br>
 
-				<ul class="pager">
+			<!--	<ul class="pager">
 				  <li><a href="#">Previous</a></li>
 				  <li><a href="#">Next</a></li>
-				</ul><br>
+				</ul><br>-->
 			</div>
 
 
