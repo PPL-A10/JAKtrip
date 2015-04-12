@@ -11,10 +11,10 @@ class SpamCtr extends CI_Controller {
     
 	function index(){
 		$this->load->model('SpamMod');
-		$data['spam']= $this->SpamMod->showspamreview();
+		$data['query']= $this->SpamMod->showspamreview();
 		$this->load->view('header');
 		$this->load->view('menuadmin');
-		$this->load->view('spamUI');
+		$this->load->view('spamUI', $data);
 		$this->load->view('footer');
 	}
 
@@ -27,7 +27,10 @@ class SpamCtr extends CI_Controller {
 			$this->SpamMod->delete($id);
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
+			$this->load->view('header');
+			$this->load->view('menuadmin');
 			$this->load->view('SpamUI',$data);    
+			$this->load->view('footer');
 		}
 		
 		public function coba()
@@ -44,7 +47,10 @@ class SpamCtr extends CI_Controller {
 			}
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
+			$this->load->view('header');
+			$this->load->view('menuadmin');
 			$this->load->view('SpamUI',$data);
+			$this->load->view('footer');
 		}
 
 }

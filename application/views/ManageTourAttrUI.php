@@ -28,8 +28,8 @@
 							echo "<td>". $cat[$i]."</td>";
 							echo "<td>". $row->last_modified ."</td>";
 							echo "<td>". $row->hits ."</td>";
-							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, 'Delete') ."</td>";
-							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, 'Edit') ."</td>";
+							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, '<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete') ."</td>";
+							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 							echo "</tr>";
 						}
 					?>

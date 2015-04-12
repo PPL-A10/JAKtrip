@@ -216,7 +216,7 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
+	      <a class="navbar-brand" href="<?php echo base_url('index.php/homeCtr')?>" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

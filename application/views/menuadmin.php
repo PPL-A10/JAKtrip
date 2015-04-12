@@ -5,12 +5,12 @@
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a class="submenupost" href="#">Posts</a>
 					<ul class="subsubmenu">
-						<li><a class="smp" href="ManageTourAttrCtr">All Posts</a></li>
-						<li><a class="smp" href="TourAttrCtr">Add New Post</a></li>
+						<li><a class="smp" href="<?php echo base_url('index.php/ManageTourAttrCtr');?>">All Posts</a></li>
+						<li><a class="smp" href="<?php echo base_url('index.php/TourAttrCtr');?>">Add New Post</a></li>
 						<li><a class="smp" href="#">Categories</a></li>
 					</ul>
 				</li>
-				<li><a class="submenua" href="MemberCtr">Members</a></li>
+				<li><a class="submenua" href="<?php echo base_url('index.php/ManageMemberCtr');?>">Members</a></li>
 		        <li><a class="submenusugg" href="#">Suggestions</a>
 		        	<ul class="subsubmenu">
 						<li><a class="sms" href="#">Tourist Attractions</a></li>
@@ -18,7 +18,7 @@
 					</ul>
 		        </li>
 		        <li><a class="submenua" href="#">Feedback</a></li>
-		        <li><a class="submenua" href="SpamCtr#">Spam</a></li>
+		        <li><a class="submenua" href="<?php echo base_url('index.php/SpamCtr');?>">Spam</a></li>
 		        <li><a class="submenustat" href="#">Statistics</a>
 		        	<ul class="subsubmenu">
 						<li><a class="smst" href="#">By Visitor</a></li>
