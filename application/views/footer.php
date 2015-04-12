@@ -27,5 +27,63 @@
 <script src="<?php echo base_url('assets/js/menuselector.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
 
+<script>
+	function filterFunctionFinal(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		
+		var z = document.getElementById("name_select").value;
+			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+ z);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageMemberCtr/searchwisataKey/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'>delete</a></td></tr>";
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+	
+		<script>
+	function filterFunctionFinal2(input){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		
+		//var z = document.getElementById("name_select").value;
+			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+inpu);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageMemberCtr/searchwisataKey2/"+input,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'>delete</a></td></tr>";
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+
 </body>
 </html>
