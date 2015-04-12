@@ -1,7 +1,7 @@
 <footer>
 	<div class="container-fluid">
 		<div class="col-lg-12">
-				<div class="col-md-1"><img src="../assets/img/logo2.png" class="img-responsive" /></div>
+				<div class="col-md-1"><img src="'<?php echo base_url("assets/img/logo2.png");?>" class="img-responsive" /></div>
 				<div class="row">
 					<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 					<ul class="linkfooter nav navbar-nav navbar-left col-md-6">

@@ -61,8 +61,8 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
         	<li>&nbsp;&nbsp;&nbsp;</li>
-        	<li><a href="<?php echo base_url('index.php/allPlacesCtr');?>">PLACES</a></li>
-        	<li><a href="#">PROMO</a></li>
+        	<li><a href="http://localhost/JAKtrip/index.php/allPlacesCtr">PLACES</a></li>
+        	<li><a href="http://www.google.com">PROMO</a></li>
           </ul>
 
 	      <ul id="main-menu" class="nav navbar-nav navbar-right sm sm-clean2">
