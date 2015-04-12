@@ -451,6 +451,7 @@
 </div>-->
 
 
+  
     <div class="col-lg-6">
    	 
    	 <div class="row">
@@ -526,10 +527,14 @@
    						 <div class="col-lg-3"></div>
    					 </div>
    				 </div>
+
    			 </form>
    			 <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" data-target="#rating" onclick="collapseMap()">
 	Horizontal Collapsible
 </button>
+
+
+
    		 </div>
 
    		 <div class="searchres">
@@ -551,49 +556,23 @@
    					 </span>
    				 </div>
    				 <div class="col-lg-11" id="blogMain">
-   					 <?php
-   						 echo "<table class='table table-hover'>";
-
-   						 foreach ($query as $row) {
-   							 # code...
-   							 if($_COOKIE['isWeekend']=="true")
-   							 {
-   								 $priceDet = $row->weekend_price." (weekend price)";
-   								 $price = $row->weekend_price;
-   							 }
-   							 else
-   							 {
-   								 $priceDet = $row->weekday_price." (weekday price)";
-   								 $price = $row->weekday_price;
-   							 }
-   							 $stringAdditionalAngkot = "";
-   							 $stringAdditionalAngkot = " + ".$row->transport_price." (angkutan umum tambahan) ";
-
-   							 if($row->halte_name == $_COOKIE["halte_name"])
-   							 {
-   								 $result_price = $price + $row->transport_price;
-   								 echo "<tr>
-   									 <td style='width:100px;'>
-   										 <img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td>
-   									 <td>".$row->place_name."
-   										 <br><p>halte ".$row->halte_name."</p>
-   										 <p>".$priceDet."".$stringAdditionalAngkot." = ".(intval($price) + $row->transport_price)."</p>
-   										 <p>rating = ".$row->rate_avg."/5</p>
-   										 <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$result_price.",".$row->transport_price.",'".$row->place_name."' , '".$row->halte_name."','".$row->transport_info."','".$row->place_info."')\">Add to trip</button>
-   										 <br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map</a><br><a href=\"javascript: getDetail('".$row->place_name."')\">see detail</a></td></tr>";
-   							 }
-   							 else
-   							 {
-   								 $result_price = $price + 3500 + $row->transport_price;
-   								 echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br><p>halte ".$row->halte_name."</p><p>".$priceDet." + 3500 (busway) ".$stringAdditionalAngkot." = ".(intval($price) + 3500 + $row->transport_price)."</p>
-   									 <p>rating = ".$row->rate_avg."/5</p>
-   									 <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$result_price.",".$row->transport_price.",'".$row->place_name."' , '".$row->halte_name."','".$row->transport_info."','".$row->place_info."')\">Add to trip</button>
-   									 <br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map</a><br><a href=\"javascript:getDetail('".$row->place_name."')\">see detail</a></td></tr>";
-   							 }
-   						 //    echo "<tr><td style='width:100px;'><img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
-   						 }
-   						 echo "</table>";
-   					 ?>
+   					  <?php
+              echo "<table class='table table-hover'>";
+           //   echo $query['result'];
+              $counter = 0;
+              foreach ($query['result'] as $row) {
+                # code...
+                  echo "<tr>
+                    <td style='width:100px;'>
+                      <img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td>
+                    <td>".$row->place_name."<br>halte ".$row->halte_name."<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."
+                      <br><button onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">add to trip</button> 
+                      <br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a>
+                      </td></tr>";
+                      $counter++;
+              }
+              echo "</table>";
+            ?>
    					 
    				 </div>
 
@@ -604,131 +583,130 @@
 
     </div>
 
+
     
 
-    <div class="col-lg-6 rating collapse width" id="rating">
-   		 <div class="row">
-   			 <div class="col-lg-12 redbar">
-   				 <a class="text-danger" href="#"  data-toggle="collapse" data-target="#rating"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-   				 <span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
-   			 </div>
-   			 <?php $CI =& get_instance(); ?>
-   			 <!--?php if($this->form_validation->run() == TRUE){
-   				 echo '<div class="alert alert-dismissible alert-success col-lg-11" style="text-align: center; margin: 15px;">';
-   				 echo '<button type="button" class="close" data-dismiss="alert">×</button>';
-   				 echo '<strong>Thank you!</strong> You successfully submitted your review. </div>';
-   			 }
-   			 ?-->
-
-   			 <?php
-   			 $attributes = array('class' => 'col-lg-12');
-   			 echo form_open('ratingCtr', $attributes); ?>
-   				 <div class="formrating form-group">
-   				   <div class="col-lg-9">
-   					 <label class="control-label">Rating</label><br>
-     					  <span class="starRating">
-   				     	<input id="rating5" type="radio" name="rate" value="5">
-   				     	<label for="rating5">5</label>
-   				     	<input id="rating4" type="radio" name="rate" value="4">
-   				     	<label for="rating4">4</label>
-   				     	<input id="rating3" type="radio" name="rate" value="3" checked>
-   				     	<label for="rating3">3</label>
-   				     	<input id="rating2" type="radio" name="rate" value="2">
-   				     	<label for="rating2">2</label>
-   				     	<input id="rating1" type="radio" name="rate" value="1">
-   				     	<label for="rating1">1</label>
-   				  	</span>
-   			   	</div>
-   			 	</div>
-   				 <br>
-   				 <div class="formrating form-group">
-   				   <div class="col-lg-9">
-   					 <label class="control-label">Title</label>
-     					 <input class="form-control" type="text" id="title" name="title">
-   			   	</div>
-   			 	</div>
-   				 <br>
-   				 <div class="formrating form-group">
-   				   <div class="col-lg-9">
-   					 <label class="control-label">Review</label>
-     					 <textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
-   			   	</div>
-   			 	</div>
-   				 <br>
-   				 <button class="btn btn-warning" type="submit">SUBMIT</button>
-   			 <?php echo form_close(); ?>
-   		 </div>
-
-   	 </div>
    	 <div class="col-lg-6 collapse in width"  id="mapcanvas">
     </div>
-    <div class="col-lg-6 rating" id="detail" hidden>
-   		 <div class="row">
-   			 <div class="col-lg-12 redbar">
-   				 <a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-   				 <span class="tuffyh3" style="vertical-align:middle;" id="detailtitle">&nbsp; Eco Cruise</span></a>
-   			 </div>
-   			 <div class="col-lg-12 headerdetail"><img src="http://localhost/Jaktrip/assets/img/hd.gif"/>
-   			 </div>
 
-   			 <ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="margin: -7px 0px; ">
-   			 <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
-   			 <li><a class="submenua" href="#info">Information</a></li>
-   	     	<li><a class="submenua" href="#photos">Photos</a></li>
-   	     	<li><a class="submenua" href="#reviews">Reviews</a></li>
-   	     	<li><div class="formrating form-group">
-   				   <div class="col-lg-3">
-     					  <span class="starRating small">
-   				     	<input id="rating5" type="radio" name="rate" value="5">
-   				     	<label for="rating5">5</label>
-   				     	<input id="rating4" type="radio" name="rate" value="4">
-   				     	<label for="rating4">4</label>
-   				     	<input id="rating3" type="radio" name="rate" value="3" checked>
-   				     	<label for="rating3">3</label>
-   				     	<input id="rating2" type="radio" name="rate" value="2">
-   				     	<label for="rating2">2</label>
-   				     	<input id="rating1" type="radio" name="rate" value="1">
-   				     	<label for="rating1">1</label>
-   				  	</span>
-   			   	</div>
-   			 	</div></li>
-   				<li><span class="fa fa-google-plus-square icondetail"></span></li>
-   				<li><span class="fa fa-twitter-square icondetail" id="shareDetailTwitter"></span><script>
-window.twttr=(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);t._e=[];t.ready=function(f){t._e.push(f);};return t;}(document,"script","twitter-wjs"));
-</script></li>
-   				<li><span class="fa fa-facebook-square icondetail" id="shareDetailFacebook"></span></li>
-   				<li>&nbsp;&nbsp;</li>
-   				<li><span class="fa fa-check-circle icondetail"></span></li>
-   				<li>&nbsp;&nbsp;</li>
-   				<li><span class="fa fa-heart icondetail"></span></li>
-   			 </ul>
-   			 <section class="textdetail" id="info">
-   				 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-   				 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-   				 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-   				 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
-   				 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-   				 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-   				 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-   				 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br><br><br>
-   				 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-   				 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-   				 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-   				 proident, sunt in culpa qui officia deserunt mollit anim id est laborum<br><br>
-   				 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-   				 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-   				 dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-   				 proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-   			 </section>
-   			 <section class="textdetail tabcontent hide" id="photos">
-   				 Gallery photos
-   			 </section>
-   			 <section class="textdetail tabcontent hide" id="reviews">
-   				 lol
-   			 </section>
-   		 </div>
+    <div class="col-lg-6 rating" id="detailrating" style="height:710px;" hidden>
+      <div class="row">
+        <div class="col-lg-12 redbar">
+          <a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+          <span class="tuffyh3" id="namatempat" style="vertical-align:middle;">&nbsp; Eco Cruise</span></a>
+        </div>
+        <div class="col-lg-12 headerdetail"><img src="/JAKtrip/assets/img/hd.gif"/>
+        </div>
 
-   	 </div>
+        <ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="margin: -7px 0px; ">
+        <li>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+        <li><a href="#info" class="submenua" >Information</a></li>
+            <li><a href="#photos" class="submenua" >Photos</a></li>
+            <li><a href="#reviews" class="submenua" >Reviews</a></li>
+            <li><div class="formrating form-group">
+            <div class="col-lg-3">
+               <span class="starRating small">
+                  <input id="rating5" type="radio" name="rate" value="5">
+                  <label for="rating5">5</label>
+                  <input id="rating4" type="radio" name="rate" value="4">
+                  <label for="rating4">4</label>
+                  <input id="rating3" type="radio" name="rate" value="3" checked>
+                  <label for="rating3">3</label>
+                  <input id="rating2" type="radio" name="rate" value="2">
+                  <label for="rating2">2</label>
+                  <input id="rating1" type="radio" name="rate" value="1">
+                  <label for="rating1">1</label>
+               </span>
+              </div>
+            </div></li>
+           <li><span class="fa fa-google-plus-square icondetail"></span>
+           <span class="fa fa-twitter-square icondetail"></span>
+           <span class="fa fa-facebook-square icondetail"></span>
+           <span class="fa fa-check-circle icondetail"></span>
+           <span class="fa fa-heart icondetail"></span></li>
+        <button onclick="getReview()">Try it</button>
+        </ul>
+
+        <div id="info" class="textdetail tabcontent active" >
+          <div>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
+          dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br><br>
+          </div>
+        </div>
+        <div id="photos" class="textdetail tabcontent hide">
+          <div>
+          Gallery photos
+          </div>
+        </div>
+        <div id="reviews" class="textdetail tabcontent hide" >
+          <div class="reviewmember col-lg-12">
+            <button class="btn btn-warning col-lg-11" type="submit">ADD NEW REVIEW</button><br>
+            <div class="reviewkiri col-lg-4">
+              <div class="ava"><img src="/JAKtrip/assets/img/50.jpg"/></div>
+              <div class="author" id="namauser"><b>Ahmad Ibrahim</b></div>
+              <div class="hasreviewed">Reviewed 7 places</div>
+            </div>
+            <div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+                  <span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+                  <span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+                  <span class="deleterev close fa fa-trash-o"><a href=""></a></span>
+                  <br>
+                  <span class="judulreview tuffyh3a" id="temareview">Tempatnya super menarik!</span><br>
+                  <span class="isireview" id="deskripsireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
+                    ullamco.
+                  </span>
+            </div>
+          </div>
+
+          <div class="reviewmember col-lg-12">
+            <div class="reviewkiri col-lg-4">
+              <div class="ava"><img src="/JAKtrip/assets/img/50.jpg"/></div>
+              <div class="author"><b>Ahmad Ibrahim</b></div>
+              <div class="hasreviewed">Reviewed 7 places</div>
+            </div>
+            <div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+                  <span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+                  <span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+                  <span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
+                  <span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
+                  <span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. 
+                  </span>
+            </div>
+          </div>
+
+          <div class="reviewmember col-lg-12">
+            <div class="reviewkiri col-lg-4">
+              <div class="ava"><img src="/JAKtrip/assets/img/50.jpg"/></div>
+              <div class="author"><b>Ahmad Ibrahim</b></div>
+              <div class="hasreviewed">Reviewed 7 places</div>
+            </div>
+            <div class="reviewkanan col-lg-8" style="margin-left:-20px; padding-top: 10px;">
+                  <span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span><span class="fa fa-star" style="color: #F7E51E"></span>
+                  <span class="fa fa-star-o" ></span><span class="fa fa-star-o"></span>
+                  <span class="deleterev close fa fa-trash-o"><a href=""></a></span><br>
+                  <span class="judulreview tuffyh3a">Tempatnya super menarik!</span><br>
+                  <span class="isireview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation 
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                  </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+   
 
     
 

@@ -274,5 +274,131 @@ function __construct(){
 			$query = $this->db->get();
 			return $query->result();
 		}
+		function getAllTour1($data)
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+			$query = $this->db->get();
+			$result['result'] = $query->result();
+			$counter = 0;
+			foreach($result['result'] as $row)
+			{
+				$hargaAngkot = $row->transport_price;
+				$hargaTempatWisasta = $row->weekday_price;
+				$hargaBusway = 3500;
+				if($data['nama_halte'] == $row->halte_name)
+				{
+					$hargaBusway = 0; 
+				}
+				$result['harga'][$counter]= $hargaAngkot + $hargaTempatWisasta + $hargaBusway;
+				$result['hargaBusway'][$counter] = $hargaBusway;
+				$counter++;
+			}
+			return $result;
+		}
+
+		function getAllTour2($data)
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+			$query = $this->db->get();
+			$result['result'] = $query->result();
+			$counter = 0;
+			$tempatWisataTerpilih = explode("xx",$data["place_name"]);
+			$dataHalteName = explode("xx",$data["place_name"])[$data['idx_last_trip']];
+			$dataPlaceInfo = explode("xx",$data['place_info'])[$data['idx_last_trip']];
+
+			foreach ($result['result'] as $row) {
+				# code...
+				$hargaAngkotSebelum = intval(explode("xx",$data["angkot_price"])[$data['idx_last_trip']]);
+				$hargaAngkotSetelah = $row->transport_price;
+				$hargaTempatWisasta = $row->weekday_price;
+				$hargaBusway = 3500;
+				
+				if($dataHalteName== $row->halte_name)
+				{
+					
+					$hargaBusway = 0;
+				}
+				if($dataPlaceInfo==$row->place_info && $dataPlaceInfo!="")
+				{
+					// if($row->place_name == "Kota Tua")
+					// {
+					// 	return $row->halte_name;
+					// }
+					$hargaBusway = 0;
+					$hargaAngkotSebelum=0;
+					$hargaAngkotSetelah=0;
+				}
+				$result['hargaAngkotSebelum'][$counter]= $hargaAngkotSebelum;
+				$result['hargaAngkotSetelah'][$counter]= $hargaAngkotSetelah;
+				$result['hargaBusway'][$counter]= $hargaBusway;
+				$result['harga'][$counter]= $hargaAngkotSebelum + $hargaBusway+  $hargaAngkotSetelah + $hargaTempatWisasta;
+				$result['sudahDipilih'][$counter]= false;
+				for($i=0; $i<count($tempatWisataTerpilih); $i++)
+				{
+					if($tempatWisataTerpilih[$i]==$row->place_name)
+					{
+						$result['sudahDipilih'][$counter]= true;
+					}
+				}
+				$counter++;
+				
+			}
+
+			return $result;
+		}
+
+		function showAfterDelete()
+		{
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+			$query = $this->db->get();
+			$result['result'] = $query->result();
+			$counter = 0;
+			$tempatWisataTerpilih = explode("xx",$data["place_name"]);
+			$dataHalteName = explode("xx",$data["place_name"])[$data['idx_last_trip']];
+			$dataPlaceInfo = explode("xx",$data['place_info'])[$data['idx_last_trip']];
+
+			foreach ($result['result'] as $row) {
+				# code...
+				$hargaAngkotSebelum = intval(explode("xx",$data["angkot_price"])[$data['idx_last_trip']]);
+				$hargaAngkotSetelah = $row->transport_price;
+				$hargaTempatWisasta = $row->weekday_price;
+				$hargaBusway = 3500;
+				
+				if($dataHalteName== $row->halte_name)
+				{
+					
+					$hargaBusway = 0;
+				}
+				if($dataPlaceInfo==$row->place_info && $dataPlaceInfo!="")
+				{
+					// if($row->place_name == "Kota Tua")
+					// {
+					// 	return $row->halte_name;
+					// }
+					$hargaBusway = 0;
+					$hargaAngkotSebelum=0;
+					$hargaAngkotSetelah=0;
+				}
+				$result['hargaAngkotSebelum'][$counter]= $hargaAngkotSebelum;
+				$result['hargaAngkotSetelah'][$counter]= $hargaAngkotSetelah;
+				$result['hargaBusway'][$counter]= $hargaBusway;
+				$result['harga'][$counter]= $hargaAngkotSebelum + $hargaBusway+  $hargaAngkotSetelah + $hargaTempatWisasta;
+				$result['sudahDipilih'][$counter]= false;
+				for($i=0; $i<count($tempatWisataTerpilih); $i++)
+				{
+					if($tempatWisataTerpilih[$i]==$row->place_name)
+					{
+						$result['sudahDipilih'][$counter]= true;
+					}
+				}
+				$counter++;
+				
+			}
+
+			return $result;
+		}
 }
 ?>

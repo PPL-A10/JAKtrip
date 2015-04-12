@@ -1,5 +1,6 @@
 $(document).ready(function () {
-        
+        showTheItinerary();
+
         $('.datepicker').datepicker({
             format: "dd/mm/yyyy"
         });  
@@ -273,6 +274,7 @@ $(function() {
 			}
 			function showTheItinerary()
 			{
+
 				var yangDipilih = "";
 					yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
 			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
@@ -294,9 +296,12 @@ $(function() {
    						return yangDipilih;	
    					}
 			    	});
+
 			    	$('.buttonAtasToggle').attr('data-content', yangDipilih);
 			    	var popover = $('.buttonAtasToggle').data('popover');
+
 			    	$('[data-toggle="popover"]').popover('hide');
+
 
 			}
 			function removeTrip(trip, budgetRemove)
@@ -386,3 +391,31 @@ $(function() {
 	                }
 	            	});
 				}
+
+		function showRating(place_name)
+        {
+          $("#mapcanvas").hide();
+          $("#detailrating").show();
+          jQuery.ajax({
+                type: "POST",
+                url: "http://localhost/JAKtrip/index.php/DetailCtr/getdetail/" + place_name,
+                success: function(res) {
+                    if (res)
+                    {
+
+                var obj = jQuery.parseJSON(res);
+                var resultQuery = "";
+                var resultQuerydetail = "";
+                for (var i=0 ; i<obj.query.length; i++){
+                  //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
+                  resultQueryname = resultQuery +obj.query[i].place_name;
+                  resultQuerydetail = resultQuerydetail +obj.query[i].description;
+                }
+                
+              $("#namatempat").html(resultQueryname);
+              $("#info").html(resultQuerydetail);
+              }             
+            }
+                }
+            );
+        }
