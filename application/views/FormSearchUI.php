@@ -149,6 +149,33 @@
 							 </form> 
 						</span>
 					</div>
+					<div style="margin-left: 40px; margin-bottom: 80px;">
+						<table style="margin-bottom: 10px;">
+							<tr>
+								<td rowspan="5"><img src="../assets/img/150.jpg"/></td>
+								<td height="30px" class="tuffyh3a">Ice Age Arctic Adventure</td>
+							</tr>
+							<tr>
+								<td height="30px">Rp 25000 - 15 min - Indoor Play</td>
+							</tr>
+							<tr>
+								<td valign="top" rowspan="3" height="90px">1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>
+							</tr>
+						</table>
+
+						<table style="margin-bottom: 10px;">
+							<tr>
+								<td rowspan="5"><img src="../assets/img/150.jpg"/></td>
+								<td height="30px" class="tuffyh3a">Ice Age Arctic Adventure</td>
+							</tr>
+							<tr>
+								<td height="30px">Rp 25000 - 15 min - Indoor Play</td>
+							</tr>
+							<tr>
+								<td valign="top" rowspan="3" height="90px">1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>
+							</tr>
+						</table>
+					</div>
 					<p id="hasilSort" name="hasilSort">
 					<table>
 						<?php if(!isset($result)) $result=array();?>
