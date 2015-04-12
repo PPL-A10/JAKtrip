@@ -31,7 +31,9 @@ class FeedbackCtr extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
+			$this->load->view('header');
 			$this->load->view('formFeedbackUI');
+			$this->load->view('footer');
 		}
 		else
 		{
@@ -47,7 +49,9 @@ class FeedbackCtr extends CI_Controller {
 					//Transfering data to Model
                    $this->feedbackManager->insert_feedback($data);
                     //Loading View
-					$this->load->view('formFeedbackUI');
+                $this->load->view('header');
+				$this->load->view('formFeedbackUI');
+				$this->load->view('footer');
           }
 	}
 }

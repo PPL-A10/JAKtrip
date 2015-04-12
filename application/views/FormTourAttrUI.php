@@ -2,6 +2,21 @@
 
 
 			<div class="col-lg-12">
+				<!-- if succes
+				<div class="col-lg-2"></div>
+				<div class="alert alert-dismissible alert-success col-lg-7" style="text-align: center; margin: 15px;">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>Thank you!</strong> You successfully published new places. </div>
+				<div class="col-lg-3"></div><br><br><br><br>
+				
+				if failed
+				<div class="col-lg-2"></div>
+				<div class="alert alert-dismissible alert-warning col-lg-7" style="text-align: center; margin: 15px;">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<strong>Ooops!</strong> Something went wrong. Please double check the form. </div>
+				<div class="col-lg-3"></div><br><br><br><br>
+			-->
+
 				<div class="tuffyh2a admintitle">Add New Post</div>
 
 				<?php

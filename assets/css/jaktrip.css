@@ -504,7 +504,7 @@ a {
 }
 
 .close {
-  color: #9c9c9c !important;
+  color: rgba(0,0,0,0.4) !important;
   opacity: 1;
   line-height: 25px;
   position: absolute;
@@ -516,7 +516,7 @@ a {
 }
 
 .close:hover {
-  color: #db2719 !important;
+  color: rgba(0,0,0,0.8) !important;
   opacity: 1;
 }
 
