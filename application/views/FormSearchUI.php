@@ -462,10 +462,14 @@
    					 	<select id="ddbus" class="fieldsml form-control" title="Nearest bus stop?">    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
-   				    		 foreach ($query as $row) {
-   				    			 # code...
-   				    			 echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";    
-   				    		 }
+   				    		foreach ($query as $row) {
+   				    			# code...
+								if(strcmp($_COOKIE['halte_name'], $row->halte_name)==0){
+									echo "<option value=\"".$row->halte_name."\" selected>".$row->halte_name."</option>";
+								}else{
+									echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+								}
+							}
    				    		 
    				   			  ?>
    					 	</select>
@@ -477,7 +481,7 @@
    				 	</span>
 
    				 	<span class="input-group col-lg-3">
-              <input class="fieldsml datepicker" type="text" placeholder="Date" style="margin-left: 2px;">
+              <input class="fieldsml datepicker" type="text" placeholder="Date" style="margin-left: 2px;" value=<?php echo $_COOKIE['datechoosen'] ?> >
               </span>
    			 	</div>
 
