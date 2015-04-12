@@ -149,33 +149,63 @@
 							 </form> 
 						</span>
 					</div>
-					<div style="margin-left: 40px; margin-bottom: 80px;">
-						<table style="margin-bottom: 10px;">
+					
+						<table style="margin-bottom: 20px; margin-left: 20px;">
 							<tr>
 								<td rowspan="5"><img src="../assets/img/150.jpg"/></td>
-								<td height="30px" class="tuffyh3a">Ice Age Arctic Adventure</td>
+								<td height="10px"></td>
 							</tr>
 							<tr>
-								<td height="30px">Rp 25000 - 15 min - Indoor Play</td>
+								<td height="20px" class="tuffyh3a">Ice Age Arctic Adventure</td>								
 							</tr>
 							<tr>
-								<td valign="top" rowspan="3" height="90px">1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>
+								<td height="20px" style="font-size: 12px;">Rp 25000 - Indoor Play -
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" height="60px" style="font-size: 12px; padding-right: 40px;">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								</td>
+							</tr>
+							<tr>
+								<td align="left" height="40px" style="margin-top: -10px;"><button class="btn btn-warning">ADD TO TRIP</button></td>
 							</tr>
 						</table>
 
-						<table style="margin-bottom: 10px;">
+						<table style="margin-bottom: 20px; margin-left: 20px;">
 							<tr>
 								<td rowspan="5"><img src="../assets/img/150.jpg"/></td>
-								<td height="30px" class="tuffyh3a">Ice Age Arctic Adventure</td>
+								<td height="10px"></td>
 							</tr>
 							<tr>
-								<td height="30px">Rp 25000 - 15 min - Indoor Play</td>
+								<td height="20px" class="tuffyh3a">Ice Age Arctic Adventure</td>								
 							</tr>
 							<tr>
-								<td valign="top" rowspan="3" height="90px">1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>
+								<td height="20px" style="font-size: 12px;">Rp 25000 - Indoor Play -
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" height="60px" style="font-size: 12px; padding-right: 40px;">
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+									incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+								</td>
+							</tr>
+							<tr>
+								<td align="left" height="40px" style="margin-top: -10px;"><button class="btn btn-primary disabled">ADDED TO TRIP</button></td>
 							</tr>
 						</table>
-					</div>
+				
 					<p id="hasilSort" name="hasilSort">
 					<table>
 						<?php if(!isset($result)) $result=array();?>

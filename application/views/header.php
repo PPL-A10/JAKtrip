@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<link href="../assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-	<link href="../assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/normalize.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/bootstrap.sandstone.css'); ?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/bootstrap-datepicker3.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/font-awesome.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/jaktrip.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/ion.rangeSlider.skinFlat.css');?>" type="text/css" rel="stylesheet"/>
+	<link href="<?php echo base_url('assets/css/ion.rangeSlider.css');?>" type="text/css" rel="stylesheet"/>
+
 
 	<style>
 		header{
@@ -80,7 +83,9 @@
 						</form>
 					</div>
 		        </div>
-	        <li><a href="#">Trip (0)  <span class="fa fa-bus"></span></a></li>
+		        <li id="popoverEdit1"><a type="button" id="theTrip" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"   
+              data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
+          </li>
 	      </ul>
 	    </div>
 	  </div>

@@ -73,7 +73,7 @@
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<script>
+	<script>
 		$("#tab1 #checkAll").click(function () {
 	        if ($("#tab1 #checkAll").is(':checked')) {
 	            $("#tab1 input[type=checkbox]").each(function () {
@@ -87,6 +87,7 @@
 	        }
 	    });
 	</script>
+
 
 </body>
 </html>
