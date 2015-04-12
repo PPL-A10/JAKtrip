@@ -10,7 +10,6 @@ var gmarkers = [];
 var counter = 0;
 var map;
 var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
-var recent = 1;
 function initialize()
 {
 var mapProp = {
@@ -20,48 +19,32 @@ var mapProp = {
   };
 
   map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-  var recentLng=document.getElementById('longitude').value;
+  
   var recentLat=document.getElementById('lattitude').value;
+  var recentLng=document.getElementById('longitude').value;
   var recentLoc = new google.maps.LatLng(recentLat,recentLng);
   var marker=new google.maps.Marker({
 	position:recentLoc,
 	map:map
   });
-	//marker.setMap(map);
 	gmarkers.push(marker);
-	
-  
-  //placeMarker(recentLoc); 
-	
-	
   google.maps.event.addListener(map, 'click', function(event) {
-   // map.setMap(null);
-   recent = 0;
-	
   counter++;
     gmarkers[counter-1].setMap(null);
-    
-
-
-	placeMarker(event.latLng); 
-
-	//marker.setMap(map);
 	
-	//placeMarker(recentLoc); 
+	placeMarker(event.latLng); 
 	
   });
 }
 
 function placeMarker(location) {
   
-   //marker.setMap(null);
    var marker = new google.maps.Marker({
     position: location,
     map: map,
   });
   gmarkers.push(marker);
-//  marker.setMap(map);
+
   var infowindow = new google.maps.InfoWindow({
     content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button type="button" onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
   });
@@ -134,6 +117,7 @@ function addLocation(lng,lat){
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
 				echo "Location ", form_dropdown('city',$loc, $city).br(); 
 				//echo "Photos ", form_input('pic', $pic).br(); 
+				
 				echo
 				"<p>
 						<label for='pic'>Photos <span class=''></span></label>

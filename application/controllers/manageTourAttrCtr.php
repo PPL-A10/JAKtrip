@@ -187,7 +187,8 @@ class ManageTourAttrCtr extends CI_Controller {
 
 		$key = $this->input->post('key');
 		
-		$image_path = realpath(APPPATH . '../assets/');
+		//$image_path = realpath(APPPATH . '../assets/');
+		$image_path= 'http://localhost/jaktrip/assets/';
 		$config['upload_path'] = $image_path;
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']='1000';
