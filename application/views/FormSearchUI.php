@@ -529,9 +529,9 @@
    				 </div>
 
    			 </form>
-   			 <button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" data-target="#rating" onclick="collapseMap()">
+   			 <!--button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" data-target="#rating" onclick="collapseMap()">
 	Horizontal Collapsible
-</button>
+</button-->
 
 
 
@@ -572,7 +572,7 @@
                  echo "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
               echo "<tr>";
                echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a></td>";
+                echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a>                 see review</a></td>";
               echo "</tr>";
               // echo "<tr>";
               //   echo "<td height='20px' class='tuffyh3a'>".$row->place_name."</td>";             
