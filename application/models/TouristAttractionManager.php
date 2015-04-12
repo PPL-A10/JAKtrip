@@ -159,8 +159,14 @@ function __construct(){
 	function getTouristAttraction(){
 		$this->load->database();
 		$query = $this->db->select("*")->from('tourist_attraction')->get();
+		return $query->result();
+	}
+	function getAdmin(){
+		$this->load->database();
+		$query = $this->db->get_where('member', array('is_admin'=>'1'));
 			return $query->result();
 	}
+
 	function getHalte(){
 		return $this->db->order_by('halte_name','asc')->get('halte');
 	}

@@ -20,6 +20,7 @@ class TourAttrCtr extends CI_Controller {
 		$data['query'] = $this->HalteManager->getAllHalte();
 		$data['query2']= $this->searchMod->showalllocation();
 		$data['place'] = $this->TouristAttractionManager->getTouristAttraction();
+		$data['admin'] = $this->TouristAttractionManager->getAdmin();
 		//foreach($result->result_array() as $cat){
 			//$dd_cat[$cat['category_name']] = $cat['category_name'];
 		//}
@@ -130,7 +131,7 @@ function myform()
 			echo $file_name;
 		}
 
-		$place_info = set_value('place_info');
+		$place_info = $this->input->post('place_info');
 		if($place_info == ''){
 			$place_info = NULL;
 		}
@@ -141,31 +142,31 @@ function myform()
 			
 			
 			$form_data = array(
-					       	'place_name' => set_value('place_name'),
-					       	'weekday_price' => set_value('weekday_price'),
-					       	'weekend_price' => set_value('weekend_price'),
-							'longitude' => set_value('longitude'),
-							'lattitude' => set_value('lattitude'),
-							'city' => set_value('city'),
+					       	'place_name' => $this->input->post('place_name'),
+					       	'weekday_price' => $this->input->post('weekday_price'),
+					       	'weekend_price' => $this->input->post('weekend_price'),
+							'longitude' => $this->input->post('longitude'),
+							'lattitude' => $this->input->post('lattitude'),
+							'city' => $this->input->post('city'),
 							'rate_avg' => 0,
-							'description' => set_value('description'),
+							'description' => $this->input->post('description'),
 							'place_info' => $place_info,
-							'halte_code' => set_value('halte_code'),
-							'transport_info' => set_value('transport_info'),
-							'transport_price' => set_value('transport_price'),	
-							'author' => set_value('author'),
+							'halte_code' => $this->input->post('halte_code'),
+							'transport_info' => $this->input->post('transport_info'),
+							'transport_price' => $this->input->post('transport_price'),	
+							'author' => $this->input->post('author'),
 							'hits' => 0,
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
 						);
 
 			$form_photo = array(
-							'place_name' => set_value('place_name'),
-							'pic' => set_value('pic'),
-							'pic_info' => set_value('pic_info')
+							'place_name' => $this->input->post('place_name'),
+							'pic' => $this->input->post('pic'),
+							'pic_info' => $this->input->post('pic_info')
 						);		
 							
 			$form_cat = array(
-							'place_name' => set_value('place_name'),
+							'place_name' => $this->input->post('place_name'),
 							'category_list' => $this->input->post('category_list'),
 							'category_new' => $this->input->post('category_new')
 						);							
