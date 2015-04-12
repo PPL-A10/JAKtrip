@@ -78,6 +78,9 @@ class TourAttrCtr extends CI_Controller {
 
 function myform()
 	{			
+	if($this->input->post('publish')){
+	
+	
 		$this->load->library('form_validation');
 		//$this->load->database();
 		$this->load->helper('form');
@@ -113,13 +116,13 @@ function myform()
 		$this->upload->initialize($config);
 		//$upload_data=$this->upload->data();
 	
-		if(! $this->upload->do_upload()){
+		if(! $this->upload->do_upload('pic')){
 		
 		}
 		else{
 			$upload_data=$this->upload->data();
 			$file_name = $upload_data['file_name'];
-			echo $file_name;
+			
 		}
 
 		$place_info = set_value('place_info');
@@ -155,7 +158,8 @@ function myform()
 
 			$form_photo = array(
 							'place_name' => set_value('place_name'),
-							'pic' => set_value('pic'),
+							//'pic' => set_value('pic'),
+							'pic' => $image_path.'\\'.$file_name,
 							'pic_info' => set_value('pic_info')
 						);		
 							
@@ -178,7 +182,7 @@ function myform()
 			}
 		}
 		
-
+		}
 		
 	}
 	

@@ -1,5 +1,57 @@
 <html>
 	<head>
+	
+		<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var gmarkers = [];
+var counter = 0;
+var map;
+var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:11,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+  google.maps.event.addListener(map, 'click', function(event) {
+   // map.setMap(null);
+    if(counter!=0)
+       gmarkers[counter-1].setMap(null);
+    counter++;
+    placeMarker(event.latLng);
+  });
+}
+
+function placeMarker(location) {
+   
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  gmarkers.push(marker);
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
+  });
+  infowindow.open(map,marker);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function addLocation(lng,lat){
+ //code....
+	$("#longitude").val(lng);
+	$("#lattitude").val(lat);
+}
+</script>
+
 	</head>
 	<body>
 		<div id="container">
@@ -15,7 +67,7 @@
 			<?php
 				
 				$attributes = array('class' => '', 'id' => '');
-				echo form_open('manageTourAttrCtr/myform', $attributes); 
+				echo form_open_multipart('manageTourAttrCtr/myform', $attributes); 
 				$place_name = $place_name['value'];
 				$description = $description['value'];
 				$place_info = $place_info['value'];
@@ -56,10 +108,21 @@
 				$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 					'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
 				echo "Location ", form_dropdown('city',$loc, $city).br(); 
-				echo "Photos ", form_input('pic', $pic).br(); 
+				//echo "Photos ", form_input('pic', $pic).br(); 
+				echo
+				"<p>
+						<label for='pic'>Photos <span class=''></span></label>
+						<?php echo form_error('pic'); 
+
+						?>
+						<br /><input id='pic' type='file' name='pic' size='20'  />
+				</p>";
 				echo "Photos Info ", form_input('pic_info', $pic_info).br(); 
 				echo "Longitude ", form_input('longitude', $longitude).br(); 
 				echo "Lattitude ", form_input('lattitude', $lattitude).br(); 
+				
+				echo "<div id='googleMap' style='width:500px;height:380px;'></div>";
+				
 				echo "Transport Info ", form_input('transport_info', $transport_info).br(); 
 				echo "Transport Price ", form_input('transport_price', $transport_price).br(); 
 				echo "Halte ", form_dropdown('halte_name',$hlt_name, $halte_name).br(); 

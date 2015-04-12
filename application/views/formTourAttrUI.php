@@ -37,8 +37,9 @@ function placeMarker(location) {
   });
   gmarkers.push(marker);
   var infowindow = new google.maps.InfoWindow({
-    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button type="button" onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
   });
+  
   infowindow.open(map,marker);
 }
 
@@ -46,8 +47,10 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function addLocation(lng,lat){
  //code....
-	$("#longitude").val(lng);
-	$("#lattitude").val(lat);
+	
+	document.getElementById('longitude').value=lng;
+	document.getElementById('lattitude').value=lat;
+
 }
 </script>
 	</head>
@@ -147,8 +150,8 @@ function addLocation(lng,lat){
 						<?php echo form_error('lattitude'); ?>
 						<br /><input id="lattitude" type="text" name="lattitude"  value="<?php echo set_value('lattitude'); ?>"  />
 				</p>
-				
 				<div id="googleMap" style="width:500px;height:380px;"></div>
+				
 
 				<?php echo "Halte ", form_dropdown('halte_code',$halte_name, set_value('halte_code')); ?>
 				

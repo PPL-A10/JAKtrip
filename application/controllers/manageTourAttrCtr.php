@@ -187,6 +187,25 @@ class ManageTourAttrCtr extends CI_Controller {
 
 		$key = $this->input->post('key');
 		
+		$image_path = realpath(APPPATH . '../assets/');
+		$config['upload_path'] = $image_path;
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']='1000';
+		$config['max_width']='4096';
+		$config['max_height']='4096';
+		$this->load->library('upload',$config);
+		$this->upload->initialize($config);
+		//$upload_data=$this->upload->data();
+	
+		if(! $this->upload->do_upload('pic')){
+		
+		}
+		else{
+			$upload_data=$this->upload->data();
+			$file_name = $upload_data['file_name'];
+			
+		}
+		
 	   $place_name = $this->input->post('place_name');
 	   $weekday_price = $this->input->post('weekday_price');
 		$weekend_price = $this->input->post('weekend_price');
@@ -241,7 +260,7 @@ class ManageTourAttrCtr extends CI_Controller {
 
 			$form_photo = array(
 							'place_name' => $place_name,
-							'pic' => $this->input->post('pic'),
+							'pic' => $image_path.'\\'.$file_name,
 							'pic_info' =>$this->input->post('pic_info')
 						);		
 			
