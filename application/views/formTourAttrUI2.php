@@ -10,7 +10,7 @@ var gmarkers = [];
 var counter = 0;
 var map;
 var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
-
+var recent = 1;
 function initialize()
 {
 var mapProp = {
@@ -21,34 +21,59 @@ var mapProp = {
 
   map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
+  var recentLng=document.getElementById('longitude').value;
+  var recentLat=document.getElementById('lattitude').value;
+  var recentLoc = new google.maps.LatLng(recentLat,recentLng);
+  var marker=new google.maps.Marker({
+	position:recentLoc,
+	map:map
+  });
+	//marker.setMap(map);
+	gmarkers.push(marker);
+	
+  
+  //placeMarker(recentLoc); 
+	
+	
   google.maps.event.addListener(map, 'click', function(event) {
    // map.setMap(null);
-    if(counter!=0)
-       gmarkers[counter-1].setMap(null);
-    counter++;
-    placeMarker(event.latLng);
+   recent = 0;
+	
+  counter++;
+    gmarkers[counter-1].setMap(null);
+    
+
+
+	placeMarker(event.latLng); 
+
+	//marker.setMap(map);
+	
+	//placeMarker(recentLoc); 
+	
   });
 }
 
 function placeMarker(location) {
-   
-  var marker = new google.maps.Marker({
+  
+   //marker.setMap(null);
+   var marker = new google.maps.Marker({
     position: location,
     map: map,
   });
   gmarkers.push(marker);
+//  marker.setMap(map);
   var infowindow = new google.maps.InfoWindow({
-    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button type="button" onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
   });
+  
   infowindow.open(map,marker);
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
 
 function addLocation(lng,lat){
  //code....
-	$("#longitude").val(lng);
-	$("#lattitude").val(lat);
+	document.getElementById('longitude').value=lng;
+	document.getElementById('lattitude').value=lat;
 }
 </script>
 
@@ -118,8 +143,19 @@ function addLocation(lng,lat){
 						<br /><input id='pic' type='file' name='pic' size='20'  />
 				</p>";
 				echo "Photos Info ", form_input('pic_info', $pic_info).br(); 
-				echo "Longitude ", form_input('longitude', $longitude).br(); 
-				echo "Lattitude ", form_input('lattitude', $lattitude).br(); 
+				$lng = array(
+						  'name'        => 'longitude',
+						  'id'          => 'longitude',
+						  'value'       => $longitude
+						);
+				$lat = array(
+				  'name'        => 'lattitude',
+				  'id'          => 'lattitude',
+				  'value'       => $lattitude
+				);
+
+				echo "Longitude ", form_input($lng).br(); 
+				echo "Lattitude ", form_input($lat).br(); 
 				
 				echo "<div id='googleMap' style='width:500px;height:380px;'></div>";
 				
