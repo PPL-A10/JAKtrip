@@ -12,7 +12,7 @@ $(function() {
 
 	
 				$('.navbar-nav > li > a').click(function(event){
-					event.preventDefault();//stop browser to take action for clicked anchor
+					//event.preventDefault();//stop browser to take action for clicked anchor
 					
 					//get displaying tab content jQuery selector
 					var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
