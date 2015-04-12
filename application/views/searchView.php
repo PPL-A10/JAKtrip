@@ -153,7 +153,8 @@
 								echo "<tr>";
 								echo "<td><img src='".$row->pic_info."' alt='Mountain View' style='width:304px;height:228px'> </td>";
 								//header("Content-Type: image/jpeg");
-								//echo "<td>".$row->pic."</td>" ;	
+								 //header('content-type = image/jpeg');
+								echo "<td>".$row->pic."</td>" ;	
 								echo "<td>".$row->place_name."</td>" ;								
 								//echo "<td>".$row->category_name."</td>" ;
 								//echo "<td>".$row->description."</td>" ;
