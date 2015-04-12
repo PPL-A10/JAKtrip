@@ -141,21 +141,22 @@ function myform()
 
 		 	// build array for the model
 			
-			
 			$form_data = array(
 					       	'place_name' => $this->input->post('place_name'),
 					       	'weekday_price' => $this->input->post('weekday_price'),
 					       	'weekend_price' => $this->input->post('weekend_price'),
 							'longitude' => $this->input->post('longitude'),
 							'lattitude' => $this->input->post('lattitude'),
-							'city' => $this->input->post('city'),
+							'city' => $this->input->post('select_location'),
 							'rate_avg' => 0,
 							'description' => $this->input->post('description'),
-							'place_info' => $place_info,
-							'halte_code' => $this->input->post('halte_code'),
+							'place_info' => $this->input->post('place_inform'),
+							//'halte_code' => $this->input->post('halte_code'),
+							'halte_code' =>$this->TouristAttractionManager->gethaltekode($this->input->post('select_busstop')),
 							'transport_info' => $this->input->post('transport_info'),
 							'transport_price' => $this->input->post('transport_price'),	
-							'author' => $this->input->post('author'),
+							'author' => $this->input->post('select_author'),
+							//'nearest_bus_stop' => $this->input->post('select_busstop'),
 							'hits' => 0,
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
 						);

@@ -44,7 +44,7 @@
 						<label class="control-label">Place Information</label><br>
 						<?php echo form_error('place_info'); ?>
    					 	<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="Place Information" style="margin-left: -10px;">    
+   					 	<select   class="field form-control" title="Place Information" id="place_inform" name="place_inform" style="margin-left: -10px;">    
    					     	<option value="" selected disabled>Choose place information..</option>
    					     	<?php
 			                  foreach($place as $row)
@@ -91,7 +91,7 @@
 						<label class="control-label">Location <span class="req">*</span></label><br>
 						<?php echo form_error('city'); ?>
   						<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="All Location" style="margin-left: -10px;">    
+   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="margin-left: -10px;">    
    					     	<option value="" selected disabled>All Location</option>
    					     	<?php
 			                  foreach($query2 as $row)
@@ -133,11 +133,11 @@
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" title="Nearest bus stop?" >    
+   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" >    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
    				    		foreach ($query as $row) {
-									echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+									echo "<option value='".$row->halte_name."'>".$row->halte_name."</option>";
 							}  				    		 
    				   			?>
    					 	</select>
@@ -165,11 +165,11 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Author <span class="req">*</span></label>
 						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" title="Nearest bus stop?" >    
-   							 <option value="" selected disabled>Nearest bus stop?</option>
+   					 	<select class="field form-control" id="select_author" name="select_author" title="Nearest bus stop?" >    
+   							 <option value="" selected disabled>Choose author..</option>
    					      	<?php
    				    		foreach ($admin as $row) {
-									echo "<option value=\"".$row->username."\">".$row->username."</option>";
+									echo "<option value='".$row->username."'>".$row->username."</option>";
 							}  				    		 
    				   			?>
 

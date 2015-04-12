@@ -172,6 +172,12 @@ function __construct(){
 	function getHalte(){
 		return $this->db->order_by('halte_name','asc')->get('halte');
 	}
+
+	function gethaltekode($haltename){
+		$this->load->database();
+		$query = $this->db->get_where('halte', array('halte_name' => $haltename));
+		return $query->row('halte_code');
+	}
 	
 	function tourAttr_getCat($place_name){
 		//return $this->db->get_where('tour_category');
