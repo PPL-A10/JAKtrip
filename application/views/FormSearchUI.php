@@ -451,7 +451,14 @@
 </div>-->
 
 
-  
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <div class="col-lg-6">
    	 
    	 <div class="row">
@@ -478,7 +485,7 @@
 
    					 <span class="input-group col-lg-3">
    					 	<span class="fieldsml input-group-addon">Rp</span>
-   					 	<input id="input_price" class="fieldsml form-control" type="text" style="width: 93%;" value=<?php echo $_COOKIE['budget'] ?> placeholder="Budget">
+   					 	<input id="input_price" class="fieldsml form-control" type="text" style="width: 93%;" value="<?php if(isset($_COOKIE['budget'])) {echo $_COOKIE['budget'];} ?>" placeholder="Budget">
    				 	</span>
 
    				 	<span class="input-group col-lg-3">
@@ -557,50 +564,70 @@
    				 </div>
    				 <div class="col-lg-11" id="blogMain">
    					  <?php
-              echo "<table class='table table-hover'>";
-           //   echo $query['result'];
-              $counter = 0;
-              foreach ($query['result'] as $row) {
-                # code...
-                  // echo "<tr>
-                  //   <td style='width:100px;'>
-                  //     <img src='http://localhost/Jaktrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td>
-                  //   <td>".$row->place_name."<br>halte ".$row->halte_name."<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."
-                  //     <br><button onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">add to trip</button> 
-                  //     <br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a>
-                  //     </td></tr>";
-                 echo "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
-              echo "<tr>";
-               echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a>                 see review</a></td>";
-              echo "</tr>";
-              // echo "<tr>";
-              //   echo "<td height='20px' class='tuffyh3a'>".$row->place_name."</td>";             
-              // echo "</tr>";
-              // echo "<tr>";
-              //   echo "<td height='20px' style='font-size: 12px;'>Rp 25000 - Indoor Play -";
-              //   echo "<span class='fa fa-star'></span>";
-              //   echo "<span class='fa fa-star'></span>";
-              //   echo "<span class='fa fa-star'></span>";
-              //   echo "<span class='fa fa-star'></span>";
-              //   echo "<span class='fa fa-star'></span>";
-              //   echo "";
-              //   echo "</td>";
-              // echo "</tr>";
-              // echo "<tr>";
-              //   echo "<td valign='top' height='60px' style='font-size: 12px; padding-right: 40px;'>";
-              //   echo "<br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$row->weekday_price." (harga tiket) = ".$query['harga'][$counter]."";
-              //   echo "</td>";
-              // echo "</tr>";
-              // echo "<tr>";
- 
-              //   echo "<td align='left' height='40px' style='margin-top: -10px;''><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$row->weekday_price."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button>";
-              //   echo "<br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a></td>";
-              // echo "</tr>";
-              echo "</table>";
-                      $counter++;
-              }
 
+             
+               if($isRekomendasi == "true")
+               {
+                     $counter = 0;
+                    $ticketprice = 0;
+                      echo "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
+                  foreach ($query['result'] as $row) {
+                    # code...
+                    
+                    if($isWeekend == "true")
+                    {
+                      $ticketprice = $row->weekend_price;
+                      
+                    }
+                    else
+                    {
+                      $ticketprice = $row->weekday_price;
+                    }
+                    if($budget>=$query['harga'][$counter])
+                    {
+                      echo "<tr>";
+                       echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
+                        echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$ticketprice." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip11('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a href=\"javascript:mengisiReview()\">                 see review</a></td>";
+                      echo "</tr>";  
+                    }
+                      
+                     $counter++;
+                  
+                  }
+                  echo "</table>";
+               }
+               else
+               {
+                   $counter = 0;
+                   $ticketprice = 0;
+                      echo "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
+                    foreach ($query['result'] as $row) {
+                      # code...
+                      
+                      if($isWeekend == "true")
+                      {
+                        $ticketprice = $row->weekend_price;
+                        
+                      }
+                      else
+                      {
+                        $ticketprice = $row->weekday_price;
+                      }
+                   
+
+                       
+                    echo "<tr>";
+                     echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
+                      echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$ticketprice." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a href=\"javascript:mengisiReview()\">                 see review</a></td>";
+                    echo "</tr>";
+                    
+                    
+                            $counter++;
+                    }
+                    echo "</table>";
+               }
+
+               
              
             ?>
    					 
@@ -619,11 +646,67 @@
    	 <div class="col-lg-6 collapse in width"  id="mapcanvas">
     </div>
 
-    <div class="col-lg-6 rating" id="detailrating" style="height:710px;" hidden>
+    <div class="col-lg-6 rating" id="isireview" hidden>
       <div class="row">
         <div class="col-lg-12 redbar">
           <a class="text-danger" href="#"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
-          <span class="tuffyh3" id="namatempat" style="vertical-align:middle;">&nbsp; Eco Cruise</span></a>
+          <span class="tuffyh3" style="vertical-align:middle;">&nbsp; Rate and Review</span></a>
+        </div>
+
+        <?php 
+          // if($this->form_validation->run() == TRUE){
+          // echo '<div class="alert alert-dismissible alert-success col-lg-11" style="text-align: center; margin: 15px;">';
+          // echo '<button type="button" class="close" data-dismiss="alert">×</button>';
+          // echo '<strong>Thank you!</strong> You successfully submitted your review. </div>';
+        // }
+        ?>
+
+        <?php 
+        $attributes = array('class' => 'col-lg-12');
+        echo form_open('ratingCtr', $attributes); ?>
+          <div class="formrating form-group">
+            <div class="col-lg-9">
+            <label class="control-label">Rating</label><br>
+               <span class="starRating">
+                  <input id="rating5" type="radio" name="rate" value="5">
+                  <label for="rating5">5</label>
+                  <input id="rating4" type="radio" name="rate" value="4">
+                  <label for="rating4">4</label>
+                  <input id="rating3" type="radio" name="rate" value="3" checked>
+                  <label for="rating3">3</label>
+                  <input id="rating2" type="radio" name="rate" value="2">
+                  <label for="rating2">2</label>
+                  <input id="rating1" type="radio" name="rate" value="1">
+                  <label for="rating1">1</label>
+               </span>
+              </div>
+            </div>
+          <br>
+          <div class="formrating form-group">
+            <div class="col-lg-9">
+            <label class="control-label">Title</label>
+              <input class="form-control" type="text" id="title" name="title">
+              </div>
+            </div>
+          <br>
+          <div class="formrating form-group">
+            <div class="col-lg-9">
+            <label class="control-label">Review</label>
+              <textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
+              </div>
+            </div>
+          <br>
+          <button class="btn btn-warning" type="submit">SUBMIT</button>
+        <?php echo form_close(); ?>
+      </div>
+
+    </div>
+
+    <div class="col-lg-6 rating" id="detailrating" style="height:710px;" hidden>
+      <div class="row">
+        <div class="col-lg-12 redbar">
+          <a class="text-danger" href="javascript:tutupDetailRating();"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
+          <span class="tuffyh3" id="namatempat" style="vertical-align:middle;" >&nbsp; Eco Cruise</span></a>
         </div>
         <div class="col-lg-12 headerdetail"><img src="/JAKtrip/assets/img/hd.gif"/>
         </div>
@@ -649,9 +732,9 @@
                </span>
               </div>
             </div></li>
-           <li><span class="fa fa-google-plus-square icondetail"></span>
+           <li id="shareDetail"><span class="fa fa-google-plus-square icondetail"></span>
            <span class="fa fa-twitter-square icondetail"></span>
-           <span class="fa fa-facebook-square icondetail"></span>
+           <div id='shareFacebook' class='fb-share-button' data-href='' data-layout='icon'></div>
            <span class="fa fa-check-circle icondetail"></span>
            <span class="fa fa-heart icondetail"></span></li>
         <button onclick="getReview()">Try it</button>
