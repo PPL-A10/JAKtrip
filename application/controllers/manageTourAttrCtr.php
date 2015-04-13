@@ -165,7 +165,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			$dd_halte[$halte['halte_name']] = $halte['halte_name'];
 		}
 		$data['hlt_name']=$dd_halte;
+		//$this->load->view('header');
+		//$this->load->view('menuadmin');
 		$this->load->view('formTourAttrUI2',$data);
+		//$this->load->view('footer');
+		
 	}
 	
 	function success()
@@ -179,7 +183,6 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('TouristAttractionManager');
-
 		$this->form_validation->set_rules('place_name', 'place_name', 'trim|callback_check');			
 		$this->form_validation->set_rules('weekday_price', 'weekday_price', 'trim');			
 		$this->form_validation->set_rules('weekend_price', 'weekend_price', 'trim');
@@ -195,7 +198,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('pic', 'pic');
 		$this->form_validation->set_rules('pic_info', 'pic_info');
 		$this->form_validation->set_rules('author', 'author', 'trim');
-
+		
 		$key = $this->input->post('key');
 		
 		//$image_path = realpath(APPPATH . '../assets/');
@@ -208,7 +211,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->library('upload',$config);
 		$this->upload->initialize($config);
 		//$upload_data=$this->upload->data();
-	
+		
 		if(! $this->upload->do_upload('pic')){
 		
 		}
@@ -247,6 +250,7 @@ class ManageTourAttrCtr extends CI_Controller {
 	
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
+			echo "hai";
 			redirect ('manageTourAttrCtr/edit/'.$key);
 		}
 		else // passed validation proceed to post success logic
@@ -269,7 +273,7 @@ class ManageTourAttrCtr extends CI_Controller {
 							'author' => $this->input->post('author'),
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())							
 						);
-
+			
 			$form_photo = array(
 							'place_name' => $place_name,
 							//'pic' => $image_path.'\\'.$file_name,
@@ -294,6 +298,7 @@ class ManageTourAttrCtr extends CI_Controller {
 			if ($this->TouristAttractionManager->edit($key, $form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
 				{
 					//$this->load->view('formTourAttrUI', $dat);
+					
 					redirect('manageTourAttrCtr/success');   // or whatever logic needs to occur
 				}
 				else

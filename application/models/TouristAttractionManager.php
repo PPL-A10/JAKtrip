@@ -135,7 +135,7 @@ function __construct(){
 				}	
 			}
 		}
-		
+		/*
 		$query = $this->db->get_where('photo', array('place_name'=>$place_name));
 		for($i=0; $i<count($query); $i++){
 			//$this->db->where('place_name',$place_name);
@@ -143,7 +143,7 @@ function __construct(){
 			$quer="update PHOTO set 'pic_info'=>".$form_photo['pic_info']." where 'place_name'=".$place_name.", 'pic'=".$query->$i->pic.";";
 		}
 
-		
+		*/
 		
 		
 
