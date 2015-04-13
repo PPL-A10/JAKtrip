@@ -11,6 +11,8 @@ $(function() {
 		  $('#main-menu').smartmenus();
 		});
 
+    
+
 	
 				$('.navbar-nav > li > a').click(function(event){
 					//event.preventDefault();//stop browser to take action for clicked anchor

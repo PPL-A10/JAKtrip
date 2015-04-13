@@ -138,5 +138,19 @@
 	}
 	</script>
 
+	<script>
+	    $(document).ready(function () {
+		    $("#showRec, #showOwntr").hide();
+		    $("#recomm").click(function () {
+		        $('#showRec').show();
+		        $('#showOwntr').hide();
+		    });
+		    $("#owntr").click(function () {
+		        $('#showOwntr').show();
+		        $('#showRec').hide();
+		    });
+		});
+	</script>
+
 </body>
 </html>
