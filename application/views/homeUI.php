@@ -120,6 +120,14 @@
 						</div>
 						<div class="col-lg-1"></div>
 					</div>
+
+					
+					<div class="col-lg-12" style="margin-top: 20px;">
+						<div class="col-lg-5"></div>
+							<button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button>
+						<div class="col-lg-5"></div>
+					</div>
+					
 				</div>
 			</div>
 		</div>
