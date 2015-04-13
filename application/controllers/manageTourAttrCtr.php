@@ -102,14 +102,25 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['weekend_price']['value'] = $query['weekend_price'];	
 		//$data['cat_name']['value'] = $query2['category_name'];	
 		$data['city']['value'] = $query['city'];
+		
+		$listpic=array();
 		if($query3 != NULL){
-			$data['pic']['value'] = $query3['pic'];
-			$data['pic_info']['value'] = $query3['pic_info'];
+			foreach($query3 as $row){
+				$listpic[$row->pic] = $row->pic;
+				$listpic[$row->pic_info] = $row->pic_info;
+			}
+		}
+		$data['photo']=$query3;
+		
+		/*
+		if($query3 != NULL){
+			$data['pic']['value'] = $query3->pic;
+			$data['pic_info']['value'] = $query3->pic_info;
 		}
 		else{
 			$data['pic']['value'] = NULL;
 			$data['pic_info']['value'] = NULL;
-		}
+		}*/
 		$data['longitude']['value'] = $query['longitude'];
 		$data['lattitude']['value'] = $query['lattitude'];	
 		$data['halte_name']['value'] = $query4['halte_name'];	

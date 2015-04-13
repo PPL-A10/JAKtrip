@@ -84,8 +84,8 @@ function addLocation(lng,lat){
 				$cat_name = $cat_name['value'];
 				$cat_checked = $cat_checked['value'];
 				$city = $city['value'];
-				$pic = $pic['value'];
-				$pic_info = $pic_info['value'];
+				//$pic = $pic['value'];
+				//$pic_info = $pic_info['value'];
 				$longitude = $longitude['value'];
 				$lattitude = $lattitude['value'];
 				$halte_name = $halte_name['value'];
@@ -124,12 +124,26 @@ function addLocation(lng,lat){
 						<?php echo form_error('pic'); 
 
 						?>
-						<br /><input id='pic' type='file' name='pic' size='20'  />
+						<br /><input id='pic' type='file' name='pic[]' size='20'  multiple>
 				</p>";
 				
-				echo "<img src=".$pic." height='200'>";
+				foreach($photo as $apic){
+					echo "<img src=".$apic->pic." height='200'><br>";				
+				}
+
 				
-				echo "Photos Info ", form_input('pic_info', $pic_info).br(); 
+				echo "Photos Info "; 
+				
+				
+				foreach($photo as $apic){
+				$picinfo = array(
+						  'name'        => 'pic_info[]',
+						  'id'          => 'pic_info',
+						  'value'       => $apic->pic_info
+						);
+					echo form_input($picinfo)."<br>";				
+				}
+
 				$lng = array(
 						  'name'        => 'longitude',
 						  'id'          => 'longitude',

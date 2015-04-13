@@ -15,7 +15,15 @@ function __construct(){
 		$category_new=$form_cat['category_new'];
 		
 		$this->db->insert('tourist_attraction', $form_data);
-		$this->db->insert('photo', $form_photo);
+		
+		foreach($form_photo['pic'] as $row){
+			$photo = array(
+							'place_name' => $form_photo['place_name'],
+							'pic' => $row,
+							'pic_info' => $form_photo['pic_info']
+						);
+			$this->db->insert('photo', $photo);
+		}
 		
 		foreach($form_cat['category_list'] as $selected){
 			if($selected != ''){
@@ -172,7 +180,7 @@ function __construct(){
 	function tourAttr_getPic($place_name){
 		//return $this->db->get_where('tour_category');
 		$query = $this->db->get_where('photo', array('place_name'=>$place_name));
-		return $query->row_array();
+		return $query->result();
 	}
 	function tourAttr_getHalte($place_name){
 		//return $this->db->get_where('tour_category');

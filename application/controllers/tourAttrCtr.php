@@ -106,7 +106,66 @@ function myform()
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
-		$image_path = realpath(APPPATH . '../assets/');
+		$number_of_files= sizeof($_FILES['pic']['tmp_name']);
+		
+		$files = $_FILES['pic'];
+		$errors = array();
+ 
+		// first make sure that there is no error in uploading the files
+		for($i=0;$i<$number_of_files;$i++)
+		{
+		  if($_FILES['pic']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['pic']['name'][$i];
+		}
+		if(sizeof($errors)==0)
+		{
+		  // now, taking into account that there can be more than one file, for each file we will have to do the upload
+		  // we first load the upload library
+		  //$this->load->library('upload');
+		  // next we pass the upload path for the images
+		  $image_path = realpath(APPPATH . '../assets/');
+			$config['upload_path'] = $image_path;
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']='1000';
+			$config['max_width']='4096';
+			$config['max_height']='4096';
+			$this->load->library('upload',$config);
+			//$this->upload->initialize($config);
+		  
+			$file_name = array();
+   
+			for ($i = 0; $i < $number_of_files; $i++) {
+				$_FILES['apic']['name'] = $files['name'][$i];
+				$_FILES['apic']['type'] = $files['type'][$i];
+				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
+				$_FILES['apic']['error'] = $files['error'][$i];
+				$_FILES['apic']['size'] = $files['size'][$i];
+				//now we initialize the upload library
+				$this->upload->initialize($config);
+				// we retrieve the number of files that were uploaded
+				if ($this->upload->do_upload('apic'))
+				{
+				  $data['upload_data'][$i] = $this->upload->data();
+				  $name = $data['upload_data'][$i]['file_name'];
+				  array_push($file_name, $name);
+				}
+				else
+				{
+				  //$data['upload_errors'][$i] = $this->upload->display_errors();
+				}
+			}
+		}
+	  
+		$photo = array();
+		foreach($file_name as $name){
+		//echo $name;
+			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
+		}
+		
+		
+		
+		/*
+		
+			$image_path = realpath(APPPATH . '../assets/');
 		$config['upload_path'] = $image_path;
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']='1000';
@@ -124,6 +183,9 @@ function myform()
 			$file_name = $upload_data['file_name'];
 			
 		}
+		
+		*/
+		
 
 		$place_info = set_value('place_info');
 		if($place_info == ''){
@@ -159,7 +221,8 @@ function myform()
 			$form_photo = array(
 							'place_name' => set_value('place_name'),
 							//'pic' => set_value('pic'),
-							'pic' => $image_path.'\\'.$file_name,
+							//'pic' => $image_path.'\\'.$file_name,
+							'pic' => $photo,
 							'pic_info' => set_value('pic_info')
 						);		
 							
@@ -168,7 +231,8 @@ function myform()
 							'category_list' => $this->input->post('category_list'),
 							'category_new' => $this->input->post('category_new')
 						);							
-									
+			
+			
 			// run insert model to write data to db
 		
 			if ($this->TouristAttractionManager->SaveForm($form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
