@@ -134,9 +134,9 @@
                     }
                     if($budget>=$query['harga'][$counter])
                     {
-                      echo "<tr>";
+                      echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
                        echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                        echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : ".$query['hargaBusway'][$counter]." (harga Busway) + ".$row->transport_price." (harga Angkot) + ".$ticketprice." (harga tiket) = ".$query['harga'][$counter]."<br><button class='btn btn-warning' onclick=\"addTrip11('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a href=\"javascript:mengisiReview()\">                 see review</a></td>";
+                        echo "<td height='20px' class='tuffyh3a'>".$row->place_name."<br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip11('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('".$row->place_name."')\">see rating</a><a href=\"javascript:mengisiReview()\">                 see review</a></td>";
                       echo "</tr>";  
                     }
                       
