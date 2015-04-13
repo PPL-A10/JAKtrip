@@ -126,7 +126,7 @@
 					    <span class="input-group col-lg-3">
 						    <input class="fieldsml form-control" type="text" placeholder="Enter keyword...." id="name_select" style="width:162%;">
 						    <span class="input-group-btn">
-						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
+						      <button onclick="filterFunctionFinal()" class="fieldsml btn btn-default" type="button"  style="width:40%; margin-left: 65%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search">aa</span></button>
 						    </span>
 					    </span>
 				    </div>

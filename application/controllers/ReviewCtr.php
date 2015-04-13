@@ -37,7 +37,7 @@ class ReviewCtr extends CI_Controller {
 			}
 			$data['query'] = $this->ReviewModel->showreviewtempat($nama);
 			$data['query2']= $this->ReviewModel->showjudul($nama);
-			//$this->load->view('ReviewUI',$data);    
+			//$this->load->view('DetailUI(backup)',$data);    
 			echo json_encode($data);
 		}
 

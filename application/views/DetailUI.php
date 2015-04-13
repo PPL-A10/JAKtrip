@@ -103,9 +103,7 @@
 				    </div></li>
 				   <li><span class="fa fa-google-plus-square icondetail"></span></li>
 				   <li><span class="fa fa-twitter-square icondetail"></span></li>
-				   <?php foreach($query as $row){
-				   echo "<li><span><a href='http://www.facebook.com/sharer.php?u=localhost/JAKtrip/DetailCtr/".$row->place_name."' target='_blank'><img src='/JAKtrip/assets/img/facebook.png' alt='Facebook' height='16' width='16' /></a></span></li>";
-				   } ?>
+				  <?php foreach($query as $row){ echo "<div class='fb-share-button' data-href='".$row->place_name."' data-layout='icon'></div>";} ?>
 				   <li>&nbsp;&nbsp;</li>
 				   <li><span class="fa fa-check-circle icondetail"></span></li>
 				   <li>&nbsp;&nbsp;</li>
@@ -123,7 +121,8 @@
 						
 					}
 					?>
-					<div class="fb-share-button" data-href="localhost/JAKtrip/DetailCtr/Kebun%20Binatang%20Ragunan" data-layout="icon"></div>
+					<!--?php foreach($query as $row){ echo "<div class='fb-share-button' data-href='".$row->place_name."' data-layout='icon'></div>";} ?>
+					<!--div class="fb-share-button" data-href="localhost/JAKtrip/DetailCtr/Kebun%20Binatang%20Ragunan" data-layout="icon"></div-->
 				</section>
 				<section class="textdetail tabcontent hide" id="photos">
 					Gallery photos

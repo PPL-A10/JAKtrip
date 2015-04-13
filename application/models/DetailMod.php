@@ -11,5 +11,13 @@
 			return $query->result();
 		}
 		
+		function showjudul($nama)
+		{
+			$this->load->database();
+			$nama= str_replace("%20", " ",$nama);
+			$query = $this->db->get_where('rating', array('place_name' => $nama),1);
+			return $query->result();
+		}
+		
 	}
 ?>
