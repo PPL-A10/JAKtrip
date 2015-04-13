@@ -130,7 +130,7 @@ function addLocation(lng,lat){
 						<?php echo form_error('pic'); 
 
 						?>
-						<br /><input id="pic" type="file" name="pic" size="20"  />
+						<br /><input id="pic" type="file" name="pic[]" size="20"  value="<?php echo set_value('pic'); ?>" multiple>
 				</p>
 				
 				<p>
