@@ -29,7 +29,9 @@
 							echo "<td>". $cat[$i]."</td>";
 							echo "<td>". $row->last_modified ."</td>";
 							echo "<td>". $row->hits ."</td>";
-							echo "<td>". anchor('manageTourAttrCtr/del/' .$row->place_name, '<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete') ."</td>";
+							echo "<td>";
+							$onclick = array('onclick'=>"return confirm('Are you sure?')");
+							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 							echo "</tr>";
 						}
