@@ -127,15 +127,21 @@ function addLocation(lng,lat){
 						<label class="control-label">Place Information</label><br>
 						<?php echo form_error('place_info'); ?>
    					 	<span class="field custom-dropdown ">
-						<!--
-   					 	<select   class="field form-control" title="Place Information" style="margin-left: -10px;">    
+						
+   					 	<!--<select   class="field form-control" title="Place Information" style="margin-left: -10px;">    
    					     	
-							<option value="" selected disabled>Choose place information..</option>
+							<!--<option value="" selected disabled>Choose place information..</option>
    					     	<?php
-			                  //foreach($place_info as $row)
-			                  //{
-			                   // echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
-			                  //}
+			                 // foreach($place_info as $row)
+			                 // {
+							//	if($row->place_name==$place_inf){
+							//		echo "<option value='".$row->place_name."' selected>".$row->place_name."</option>";
+							//	}
+							//	else{
+							//		echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
+							//	}
+			                    
+			                 // }
 			                ?>
    					 	</select>-->
 						<?php echo form_dropdown('place_info', $place_inf, $place_info)."<br>"; ?>
