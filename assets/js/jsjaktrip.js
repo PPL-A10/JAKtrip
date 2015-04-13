@@ -2,7 +2,7 @@ $(document).ready(function () {
         showTheItinerary();
 
         $('.datepicker').datepicker({
-            format: "dd/mm/yyyy"
+            format: "mm/dd/yyyy"
         });  
 
     });
@@ -78,7 +78,36 @@ $(function() {
           zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        jQuery.ajax({
+			        type: "POST",
+			        url: "http://localhost/Jaktrip/index.php/tesController/getAll",
+			        success: function(res) {
+			            if (res)
+			            {	
+			            	var obj = jQuery.parseJSON(res);
+			         		var hasilPemilihan = "";
+			         	
+			            	for(var i = 0; i<obj.query.length; i++)
+			            	{
+			           		
+			         			var tempplace_name = obj.query[i].place_name;
+			         			var templongitude = obj.query[i].longitude;
+			         			var templattitude = obj.query[i].lattitude;
+			         			
+			         			AllTourAttr.push(tempplace_name);
+			         			var location = new google.maps.LatLng(parseFloat(templongitude),parseFloat(templattitude));
+			         	
+			           			var marker = new google.maps.Marker({
+								    position: location
+								  });
+			           			gmarkers.push(marker);
+			           			marker.setMap(map);
+
+			            	}
+			            }
+	                }
+	            });
       }
       google.maps.event.addDomListener(window, 'load', initialize);
    
@@ -426,8 +455,8 @@ $(function() {
 		
 		//$("#reviews").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		//var y = document.getElementById("location_select").value;
-				alert(place_name);
-		
+			//	alert(place_name);
+					
 					jQuery.ajax({
 							        type: "POST",
 							        url: "http://localhost/JAKtrip/index.php/ReviewCtr/detailrev/"+ place_name,
@@ -448,9 +477,9 @@ $(function() {
 												resultQueryname = resultQueryname +obj.query[i].place_name;
 												}
 											}
-											$("#namatempat").html(resultQueryname);	
+									//		$("#namatempat").html(resultQueryname);	
 										$("#reviews").html(resultQuery);
-									
+										
 										}							
 							            }
 			                        }
@@ -482,4 +511,17 @@ $(function() {
 							            }
 			                        }
 			                    );
+				}
+
+				function mengisiReview()
+				{
+					$("#isireview").show();
+					$("#mapcanvas").hide();
+				}
+
+				function tutupDetailRating()
+				{
+
+					$("#detailrating").hide(); 
+					$("#mapcanvas").show();
 				}

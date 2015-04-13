@@ -18,7 +18,7 @@
 			setcookie("username",$hasil['query']['username'],time()+3600, '/');
 		//	setcookie("username",null,time()+3600);
 		//	echo $hasil['query']['username'];
-			header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1/");
+			header("Location:http://localhost/Jaktrip/index.php/homeCtr/");
 		}
 	}	
 ?>

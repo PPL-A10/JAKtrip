@@ -145,7 +145,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$dd_place = array();
 		array_push($dd_place, NULL);
 		$result2 = $this->TouristAttractionManager->getTouristAttraction();
-		
+	
 		foreach($result2->result_array() as $place){
 			$dd_place[$place['place_name']] = $place['place_name'];
 		}

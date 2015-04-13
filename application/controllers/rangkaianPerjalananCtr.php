@@ -76,6 +76,22 @@
 			$data['counterTrip'] = intval((get_cookie("counterTrip")));
 			$counterTrip = $data['counterTrip']+1;
 			
+				$datechoosen = get_cookie('datechoosen');		
+		 	 $day = date('l', strtotime($datechoosen));
+		
+			 if($day == "Saturday" OR $day == "Sunday")
+			 {
+			
+			 	setcookie('isWeekend',"true", time()+3600, '/');
+			 	$data['isWeekend'] = "true";
+			 }
+			 else
+			 {
+			
+			 	setcookie('isWeekend',"false", time()+3600, '/');
+			 	$data['isWeekend'] = "false";
+			 }
+
 			if($data['counterTrip'] == 0)
 			{
 				$data['idx_first_trip'] = 0;

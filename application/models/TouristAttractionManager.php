@@ -161,7 +161,7 @@ function __construct(){
 	function getTouristAttraction(){
 		$this->load->database();
 		$query = $this->db->select("*")->from('tourist_attraction')->get();
-		return $query->result();
+		return $query;
 	}
 	function getAdmin(){
 		$this->load->database();
@@ -290,9 +290,17 @@ function __construct(){
 			foreach($result['result'] as $row)
 			{
 				$hargaAngkot = $row->transport_price;
-				$hargaTempatWisasta = $row->weekday_price;
+				if($data['isWeekend']=="true")
+				{
+					$hargaTempatWisasta = $row->weekend_price;
+				}
+				else
+				{
+					$hargaTempatWisasta = $row->weekday_price;
+				}
+				
 				$hargaBusway = 3500;
-				if($data['nama_halte'] == $row->halte_name)
+				if($data['halte_name'] == $row->halte_name)
 				{
 					$hargaBusway = 0; 
 				}
@@ -318,7 +326,15 @@ function __construct(){
 				# code...
 				$hargaAngkotSebelum = intval(explode("xx",$data["angkot_price"])[$data['idx_last_trip']]);
 				$hargaAngkotSetelah = $row->transport_price;
-				$hargaTempatWisasta = $row->weekday_price;
+				if($data['isWeekend']=="true")
+				{
+					$hargaTempatWisasta = $row->weekend_price;
+				}
+				else
+				{
+					$hargaTempatWisasta = $row->weekday_price;
+				}
+
 				$hargaBusway = 3500;
 				
 				if($dataHalteName== $row->halte_name)
@@ -405,6 +421,13 @@ function __construct(){
 			}
 
 			return $result;
+		}
+
+		function insertBudget($budget){
+			$this->load->database();
+			$query="update budget SET input_num = input_num + 1 where lower_nom < '".$budget. "' and upper_nom >= '".$budget."';";
+			$this->db->query($query);
+			return ($this->db->affected_rows() > 0);
 		}
 }
 ?>

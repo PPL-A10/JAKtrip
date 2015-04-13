@@ -97,27 +97,29 @@
 			// $this->load->view('FormSearchUI',$data);
 			// echo $datechoosen;
 			
-		// 		$datechoosen = get_cookie('datechoosen');
-		// 		$data = array(
-		// 		'budget' => get_cookie('budget'),
-		// 		'halte_name' => get_cookie('halte_name')
-		// 		);
+				$datechoosen = get_cookie('datechoosen');
+				$data = array(
+				'budget' => get_cookie('budget'),
+				'halte_name' => get_cookie('halte_name')
+				);
 
 						
-		// 	 $day = date('l', strtotime($datechoosen));
+		 	 $day = date('l', strtotime($datechoosen));
 		// 	//echo $day;
 		// 	// $halte_choosen =  $this->input->post('halte');
 			 
-		// 	 if($day == "Saturday" OR $day == "Sunday")
-		// 	 {
-		// 	 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend($data);
-		// 	 	setcookie('isWeekend',"true", time()+3600, '/');
-		// 	 }
-		// 	 else
-		// 	 {
-		// 	 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday($data);	
-		// 	 	setcookie('isWeekend',"false", time()+3600, '/');
-		// 	 }
+			 if($day == "Saturday" OR $day == "Sunday")
+			 {
+			 //	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend($data);
+			 	setcookie('isWeekend',"true", time()+3600, '/');
+			 	$data['isWeekend'] = "true";
+			 }
+			 else
+			 {
+			// 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday($data);	
+			 	setcookie('isWeekend',"false", time()+3600, '/');
+			 	$data['isWeekend'] = "false";
+			 }
 		// //	 echo get_cookie('halte_name');
 		// 	//echo $this->input->post('halte');
 		// 	// foreach ($data['query'] as $row) {
@@ -141,10 +143,20 @@
 
 		// //	$budget = (int) $this->input->post('budget');
 		// //	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
+			// if(get_cookie('isWeekend') == "true")
+			// {
+			// 	$data['isWeekend'] = "true";
+			// }
+			// else
+			// {
+			// 	$data['isWeekend'] = "false";
+			// }
+		//	$data['isWeekend']=get_cookie('isWeekend');
+			
 			$this->load->model('touristAttractionManager');
 			$this->load->helper('cookie');
 			$data['nama_halte'] = "Taman Mini Garuda";
-			$data['isWeekend'] = "true";
+			
 			$data['query'] = $this->touristAttractionManager->getAllTour1($data);
 	//	print_r($data['query']['result']);
 			// foreach($data['query'] as $row)
@@ -178,23 +190,48 @@
 			$this->load->view('header');
 			$this->load->view('FormSearchUI', $data);
 			$this->load->view('footer');
+
 		}
 		public function setInitialVariable()
 		{
 
 			$this->load->helper('form');
 			$this->load->helper('cookie');
-			setcookie("counttrip",0,time()+3600, '/');
-			setcookie("datechoosen",$this->input->post('datepicker'),time()+3600, '/');
-			setcookie("halte_name",$this->input->post('mydropdown'),time()+3600, '/');
-			setcookie("budget",$this->input->post('budget'),time()+3600, '/');
-			setcookie("harga_angkot",0,time()+3600, '/');
-			setcookie("list_angkot_before","",time()+3600, '/');
-			setcookie("list_halte_before","",time()+3600, '/');
-			setcookie("list_halte_after","",time()+3600, '/');
-			setcookie("list_angkot_after","",time()+3600, '/');
-			setcookie("list_tour_attr","",time()+3600, '/');
-			header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1");
+			$budget=$this->input->post('budget');
+			if(ctype_digit($budget))
+			{
+				echo "benar";$this->load->model('touristAttractionManager');
+				$this->touristAttractionManager->insertBudget($budget);
+				setcookie("counttrip",0,time()+3600, '/');
+				setcookie("datechoosen",$this->input->post('datepicker'),time()+3600, '/');
+				setcookie("halte_name",$this->input->post('mydropdown'),time()+3600, '/');
+				setcookie("budget",$this->input->post('budget'),time()+3600, '/');
+				setcookie("harga_angkot",0,time()+3600, '/');
+				setcookie("list_angkot_before","",time()+3600, '/');
+				setcookie("list_halte_before","",time()+3600, '/');
+				setcookie("list_halte_after","",time()+3600, '/');
+				setcookie("list_angkot_after","",time()+3600, '/');
+				setcookie("list_tour_attr","",time()+3600, '/');
+				header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1");
+			}
+			else
+			{
+				header("Location:http://localhost/Jaktrip/index.php/searchCtr/inputSalah");
+			}
+			
+			
+		}
+
+		public function inputSalah()
+		{
+			$this->load->model('HalteManager');
+			$data['query'] = $this->HalteManager->getAllHalte();
+			// $data['query']= $this->tesModel->getDatabase();
+			// $this->load->view('FormSearchUI',$data);
+		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+			$this->load->view('header');
+			$this->load->view('homeUISalah',$data);
+			$this->load->view('footer');
 		}
 		public function setVariable($halte, $budget)
 		{
