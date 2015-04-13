@@ -85,5 +85,58 @@
 	}
 	</script>
 
+	<script>
+	function filter(city){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" ;		
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataLoc/"+city,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='javascript:filterFunctionFinal("+obj.query[i].city+")'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+		<script>
+	function filterFunctionFinal(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
+		var x = document.getElementById("category_select").value;
+		var y = "Jakarta%20Timur";
+		var z = document.getElementById("name_select").value;
+				
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataCatLocKey/"+x+"/"+y+"/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='DetailCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	</script>
+
 </body>
 </html>
