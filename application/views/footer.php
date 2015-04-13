@@ -27,40 +27,18 @@
 <script src="<?php echo base_url('assets/js/menuselector.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
 
-<script>
-	function filterFunctionFinal(){		
-		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
-		
-		var z = document.getElementById("name_select").value;
-			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+ z);	
-		jQuery.ajax({
-				        type: "POST",
-				        url: "http://localhost/JAKtrip/index.php/ManageMemberCtr/searchwisataKey/"+z,
-				        success: function(res) {
-				            if (res)
-				            {
-								var obj = jQuery.parseJSON(res);
-								var resultQuery = "";
-								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td></tr>";
-									//resultQuery = resultQuery + obj.query[i].username;
-								}
-								
-							$("#output_field").html(resultQuery);
-//								$("#output_field").html(obj.query[0].place_name;
-	}
-							
-				            }
-                        }
-                    );
-	}
-	</script>
 	
 		<script>
-	function filterFunctionFinal2(input){		
+
+		var lokasi = "";
+	
+	function setLokasi(city){
+		lokasi=city;
+	}
+	function filterFunctionFinal2(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
-		
-		//var z = document.getElementById("name_select").value;
+		var y = document.getElementById("category_select").value;
+		var z = document.getElementById("name_select").value;
 			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+inpu);	
 		jQuery.ajax({
 				        type: "POST",
@@ -83,11 +61,10 @@
                         }
                     );
 	}
-	</script>
 
-	<script>
 	function filter(city){		
-		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" ;		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" ;
+		setLokasi(city);
 		jQuery.ajax({
 				        type: "POST",
 				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataLoc/"+city,
@@ -108,17 +85,20 @@
                         }
                     );
 	}
-	</script>
-		<script>
+
 	function filterFunctionFinal(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
-		var x = document.getElementById("category_select").value;
-		var y = "Jakarta%20Timur";
+		//var x = document.getElementById("category_select").value;
+		//var y = "Jakarta%20Timur";
+		//var z = document.getElementById("name_select").value;
+		//$("#output_field").html("asasdslkdnjsdljknsdkjnsdkjnsdkjn");
+		var y = document.getElementById("category_select").value;
 		var z = document.getElementById("name_select").value;
-				
+		
+				//$("#output_field").html("asasdslkdnjsdljknsdkjnsdkjnsdkjn"+y+"dsdsd"+z + "dsds"+lokasi);
 		jQuery.ajax({
 				        type: "POST",
-				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataCatLocKey/"+x+"/"+y+"/"+z,
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataCatLocKey/"+y+"/"+lokasi+"/"+z,
 				        success: function(res) {
 				            if (res)
 				            {
@@ -128,6 +108,33 @@
 									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='DetailCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
 								}
 								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
+	function sortFunction(){
+
+		var x = document.getElementById("sort_select").value;
+		var y = document.getElementById("category_select").value;
+		var z = document.getElementById("name_select").value;
+		//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/"+x+"/"+y+"/"+lokasi+"/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='DetailCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+								}
+								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
 							$("#output_field").html(resultQuery);
 //								$("#output_field").html(obj.query[0].place_name;
 	}

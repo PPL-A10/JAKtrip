@@ -35,18 +35,18 @@
    					 <span class="input-group col-lg-3">
    					 	<input class="fieldsml form-control" type="text" id="name_select" placeholder="Enter keyword..." >
    					 	<span class="input-group-btn">
-   					   	<button class="fieldsml btn btn-default" type="button" onchange="filterFunctionFinal()" style="margin-left: -18px;"><span class="fa fa-search"></span></button>
+   					   	<button class="fieldsml btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -18px;"><span class="fa fa-search"></span></button>
    					 	</span>
    				 	</span>
   	
 					<span class="fieldsml custom-dropdown bordered">
-   					 	<select class="fieldsml form-control" title="Popularity">    
-   					     	<option value="" selected>Popularity</option>  
-   					     	<option value="">Highest Rating</option>
-   					     	<option value="">Name: A-Z</option>
-   					     	<option value="">Name: Z-A</option>
-   					     	<option value="">Price: Low to High</option>
-   					     	<option value="">Price: High to Low</option>
+   					 	<select onchange="sortFunction()" id="sort_select" name="sort_select" class="fieldsml form-control" title="Popularity">    
+   					     	<option value="popular" selected>Popularity</option>  
+   					     	<option value="highestRate">Highest Rating</option>
+   					     	<option value="sortAtoZ">Name: A-Z</option>
+   					     	<option value="sortZtoA">Name: Z-A</option>
+   					     	<option value="LowtoHigh">Price: Low to High</option>
+   					     	<option value="HightoLow">Price: High to Low</option>
    					 	</select>
    					 </span>			 	
    			 	</div>
@@ -63,7 +63,7 @@
 					foreach($query as $row){
 						echo "<div class='col-lg-3 containerimg'>";
 						echo "<a href='DetailCtr/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-						echo "<img class='img-responsive' src='../assets/img/image.png'/></a>";
+						echo "<img class='img-responsive' src='/JAKtrip/assets/img/image.png'/></a>";
 						echo "</div>";
 					}
 					?>

@@ -25,6 +25,25 @@
 			$query = $this->db->get(); 
             return $query->result(); 
 		}
+		
+		function filterMod1($category_name,$place_name)
+		{
+			
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction');
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			} 			
+			if((string)$place_name != ""){
+				$this->db->like('tourist_attraction.place_name', $place_name);
+			}
+			$query = $this->db->get(); 
+            return $query->result(); 
+		}
 
 			function filterModFinal($category_name, $city, $place_name)
 		{
@@ -38,7 +57,7 @@
 			$city= str_replace("%20", " ",$city);
 			$place_name= str_replace("%20", " ",$place_name);
 			if((string)$category_name != "" and $category_name !="All"){
-				$this->db->where('tourist_attraction.category_name', $category_name);
+				$this->db->where('category_name', $category_name);
 			} 
 			if((string)$city != ""and $city !="All"){
 				$this->db->where('city', $city);
@@ -49,5 +68,101 @@
 			$query = $this->db->get(); 
             return $query->result_array(); 
 		}
+		
+		function getAllTourAttr() {
+		
+        $query = $this->db->query('select * from tourist_attraction');
+        return $query->result();
+    }
+	
+	function getAllTourAttrPopular() {
+		$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+            //$this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$city= str_replace("%20", " ",$city);
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			} 
+			if((string)$city != ""and $city !="All"){
+				$this->db->where('city', $city);
+			} 
+			if((string)$place_name != ""){
+				$this->db->like('tourist_attraction.place_name', $place_name);
+			} 			
+			$query = $this->db->get(); 
+            return $query->result_array(); 
+        $query = $this->db->query('select * from tourist_attraction order by hits ASC');
+        return $query->result();
+    }
+	
+	function getAllTourAttrHighestRate() {
+        $query = $this->db->query('select * from tourist_attraction order by rate_avg DESC');
+        return $result = $query->result();
+    }
+	
+	function getAllTourAttrSortAtoZ($category_name, $city, $place_name) {
+		$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+            //$this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$city= str_replace("%20", " ",$city);
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			} 
+			if((string)$city != ""and $city !="All"){
+				$this->db->where('city', $city);
+			} 
+			if((string)$place_name != ""){
+				$this->db->like('tour_category.place_name', $place_name);
+			} 			 
+        $this->db->order_by('tour_category.place_name asc'); 
+		$query = $this->db->get(); 
+        return $query->result();
+    }
+	
+	function getAllTourAttrSortZtoA($category_name, $city, $place_name) {
+		$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+            //$this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$city= str_replace("%20", " ",$city);
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			} 
+			if((string)$city != ""and $city !="All"){
+				$this->db->where('city', $city);
+			} 
+			if((string)$place_name != ""){
+				$this->db->like('tourist_attraction.place_name', $place_name);
+			} 			
+       $query = $this->db->order_by('tour_category.place_name desc'); 
+	   $query = $this->db->get(); 
+        return $query->result();
+    }
+	
+	function getAllTourAttrSortHighToLow() {
+        $query = $this->db->query('select * from tourist_attraction order by weekday_price DESC');
+        return $result = $query->result();
+    }
+	
+	function getAllTourAttrSortLowToHigh() {
+        $query = $this->db->query('select * from tourist_attraction order by weekday_price ASC');
+        return $result = $query->result();
+    }
+	
+	function getAllTourAttrHighetRating() {
+        $query = $this->db->query('select * from tourist_attraction order by rate_avg');
+        return $result = $query->result();
+    }
 	}
 ?>

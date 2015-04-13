@@ -40,6 +40,10 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+$route['AllplacesCtr/popular']= 'AllplacesCtr/popular';
+$route['AllplacesCtr/higestRate']= 'AllplacesCtr/highestRate';
+$route['AllplacesCtr/sortAtoZ/(:any)/(:any)/(:any)']= 'AllplacesCtr/sortAtoZ/$1/$2/$3';
+$route['AllplacesCtr/sortZtoA/(:any)/(:any)/(:any)']= 'AllplacesCtr/sortZtoA/$1/$2/$3';
 
 
 /* End of file routes.php */
