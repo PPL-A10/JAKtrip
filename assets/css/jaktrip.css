@@ -467,9 +467,10 @@ a {
   width: 310px;
 }
 
-.iconsocial{
-  font-size: 36px;
+.iconsocial a{
+  font-size: 36px !important;
   text-align: center;
+  display: inline;
 }
 
 .openModal {
@@ -501,6 +502,11 @@ a {
   border-radius: 5px;
   background: #fff;
   font-size: 14px;
+  color: #1c1c1c;
+}
+
+#openLogin a{
+  font-size: 14px;
 }
 
 .close {
@@ -508,9 +514,9 @@ a {
   opacity: 1;
   line-height: 25px;
   position: absolute;
-  right: 5px;
+  right: -10px;
   text-align: center;
-  top: 0px;
+  top: -5px;
   text-decoration: none;
   font-size: 18px;
 }

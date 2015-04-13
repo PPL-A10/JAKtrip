@@ -286,29 +286,31 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 				//	echo "<li><a href='#openLogin'>Log In</a></li>";
 				}
 			?>-->
-	        <li><a href="#openLogin">Log In</a></li>
-		        <div id="openLogin" class="openModal">
-		        	<div>
-						<a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a>
-						<center><div class="tuffyh2a">Log In to JAKtrip</div></center><br>
+		        <li><a href="#openLogin">Log In</a></li>
+            <div id="openLogin" class="openModal">
+              <div>
+                <a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a>
+                <center><div class="tuffyh2a">Log In to JAKtrip</div></center><br>
 
-						<form role="form" class="form-group" method="POST" action="http://localhost/Jaktrip/index.php/loginCtr/checkLogin/">
-							<input class="form-control form-group" type="email" placeholder="E-mail" name="username" required>
-							<input class="form-control form-group" type="password" placeholder="Password" name="password" required>
-							<span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
-							<span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
-							<button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
-							<center>Or login with your account below<center><br>
-							<div class="iconsocial">
-								<a href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
-								<a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
-								<a href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
-							</div>
-							<br>
-							<center>Don't have an account? <a href="#">Sign Up.</a><center>
-						</form>
-					</div>
-		        </div>
+                <form role="form" class="form-group">
+                  <input class="form-control form-group" type="email" placeholder="E-mail" required>
+                  <input class="form-control form-group" type="password" placeholder="Password" required>
+                  <span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
+                  <span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
+                  <button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
+                  <center>Or login with your account below<center>
+                  <div class="iconsocial col-lg-12">
+                    <div class="col-lg-3"></div>
+                    <a class="col-lg-2" href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
+                    <a class="col-lg-2" href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
+                    <a class="col-lg-2" href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
+                    <div class="col-lg-3"></div>
+                  </div>
+                  <br>
+                  <center><span>Don't have an account? <a href="#">Sign Up.</a></span><center>
+                </form>
+          </div>
+            </div>
 	        <li id="popoverEdit1"><a type="button" id="theTrip" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"   
               data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
 
