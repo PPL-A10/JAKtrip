@@ -19,7 +19,7 @@ class TourAttrCtr extends CI_Controller {
 		$result = $this->TouristAttractionManager->getCategory();
 		$data['query'] = $this->HalteManager->getAllHalte();
 		$data['query2']= $this->searchMod->showalllocation();
-		$data['place'] = $this->TouristAttractionManager->getTouristAttraction();
+		$data['place'] = $this->TouristAttractionManager->getTouristAttraction()->result();
 		$data['admin'] = $this->TouristAttractionManager->getAdmin();
 		//foreach($result->result_array() as $cat){
 			//$dd_cat[$cat['category_name']] = $cat['category_name'];
@@ -113,28 +113,59 @@ function myform()
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
-		$image_path = realpath(APPPATH . '../assets/');
-		$config['upload_path'] = $image_path;
-		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']='1000';
-		$config['max_width']='4096';
-		$config['max_height']='4096';
-		$this->load->library('upload',$config);
-		$this->upload->initialize($config);
-		//$upload_data=$this->upload->data();
-	
-		if(! $this->upload->do_upload()){
+		$number_of_files= sizeof($_FILES['pic']['tmp_name']);
 		
+		$files = $_FILES['pic'];
+		$errors = array();
+ 
+		// first make sure that there is no error in uploading the files
+		for($i=0;$i<$number_of_files;$i++)
+		{
+		  if($_FILES['pic']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['pic']['name'][$i];
 		}
-		else{
-			$upload_data=$this->upload->data();
-			$file_name = $upload_data['file_name'];
-			echo $file_name;
+		if(sizeof($errors)==0)
+		{
+		  // now, taking into account that there can be more than one file, for each file we will have to do the upload
+		  // we first load the upload library
+		  //$this->load->library('upload');
+		  // next we pass the upload path for the images
+		  $image_path = realpath(APPPATH . '../assets/');
+			$config['upload_path'] = $image_path;
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']='1000';
+			$config['max_width']='4096';
+			$config['max_height']='4096';
+			$this->load->library('upload',$config);
+			//$this->upload->initialize($config);
+		  
+			$file_name = array();
+   
+			for ($i = 0; $i < $number_of_files; $i++) {
+				$_FILES['apic']['name'] = $files['name'][$i];
+				$_FILES['apic']['type'] = $files['type'][$i];
+				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
+				$_FILES['apic']['error'] = $files['error'][$i];
+				$_FILES['apic']['size'] = $files['size'][$i];
+				//now we initialize the upload library
+				$this->upload->initialize($config);
+				// we retrieve the number of files that were uploaded
+				if ($this->upload->do_upload('apic'))
+				{
+				  $data['upload_data'][$i] = $this->upload->data();
+				  $name = $data['upload_data'][$i]['file_name'];
+				  array_push($file_name, $name);
+				}
+				else
+				{
+				  //$data['upload_errors'][$i] = $this->upload->display_errors();
+				}
+			}
 		}
-
-		$place_info = $this->input->post('place_info');
-		if($place_info == ''){
-			$place_info = NULL;
+	  
+		$photo = array();
+		foreach($file_name as $name){
+		//echo $name;
+			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
 		}
 		
 	
@@ -162,9 +193,11 @@ function myform()
 						);
 
 			$form_photo = array(
-							'place_name' => $this->input->post('place_name'),
-							'pic' => $this->input->post('pic'),
-							'pic_info' => $this->input->post('pic_info')
+							'place_name' => set_value('place_name'),
+							//'pic' => set_value('pic'),
+							//'pic' => $image_path.'\\'.$file_name,
+							'pic' => $photo,
+							'pic_info' => set_value('pic_info')
 						);		
 							
 			$form_cat = array(

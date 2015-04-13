@@ -135,6 +135,69 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
                 });
         }
 
+        function addTrip11(place_name1, halte_name1, busway_price1, angkot_price1, ticket_price1, total_price1, transport_info1, place_info1)
+        {
+       //   alert("nama tempat : " + place_name1 +"<br>nama halte : "+halte_name1+"<br>busway : "+busway_price1+"<br>angkot : "+angkot_price1 + "<br>tiket : " + ticket_price1+"<br>total :"+total_price1);
+           
+            var place_name =  getCookie("placeName");
+            var halte_name = getCookie("halteName");
+            var busway_price = getCookie("buswayPrice");
+            var angkot_price = getCookie("angkotPrice");
+            var ticket_price = getCookie("ticketPrice");
+            var total_price = getCookie("totalPrice");
+            var transport_info = getCookie("transportInfo");
+            var place_info = getCookie("placeInfo");
+            var budget = getCookie("budget");
+            var idx_last_trip = getCookie("idxLastTrip");
+          //  var tempTotal = total_price.split("xx")[idx_last_trip];
+        //    alert(total_price1);
+            var sisaBudget = parseInt(budget)-parseInt(total_price1);
+            tempdata = place_name1 + "-" +halte_name1+ "-"+busway_price1+ "-"+angkot_price1+ "-"+ticket_price1+ "-"+total_price1+ "-"+transport_info1+ "-"+ place_info1+"-"+sisaBudget;
+      //      alert(getCookie("placeName"));
+          
+           
+             jQuery.ajax({
+              type: "POST",
+              data : {
+                'datanya' :  tempdata},
+              url: "http://localhost/Jaktrip/index.php/rangkaianPerjalananCtr/addingTrip11/",
+              success: function(res) {
+                  if (res)
+                  {
+
+                    var output = getCookie("placeName").replace(/\+/gi, " ");
+                //    alert(res);
+                   var obj = jQuery.parseJSON(res);
+
+             //       alert(obj.query.result[0].place_name);
+                     output = "<table class='table-hover' style='margin-bottom: 20px; margin-left: 20px;'>";
+                    
+                     for(var i = 0; i<obj.query.result.length; i++)
+                    {
+                      
+                        if(obj.query.sudahDipilih[i] != true && sisaBudget >= obj.query.harga[i])
+                        {
+                //          alert(obj.query.harga[i] + " " + sisaBudget);
+
+                        output = output +  "<tr><td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td><td height='20px' class='tuffyh3a'>"+obj.query.result[i].place_name+"<br>Rp 25000 - Indoor Play -<br><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><br>harga : "+obj.query.hargaBusway[i]+" (harga Busway) + "+obj.query.result[i].transport_price+" (harga Angkot) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+"<br>";
+
+                          output = output + "<button class='btn btn-warning ' onclick=\"addTrip11('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\" >ADD TO TRIP</button><br><a href=\"javascript:showRating('"+obj.query.result[i].place_name+"')\">see rating</a></td></tr>";
+                        }
+                        else
+                        {
+                          // output = output + "<button class='btn btn-warning' onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br><a href=\"javascript:showRating('"+obj.query.result[i].place_name+"')\">see rating</a></td></tr>";
+                        }
+                        
+                    }
+                    output = output+ "</table>";
+                 //   alert(output);
+                   $("#blogMain").html(output);
+                   showTheItinerary1();
+                  }
+                  }
+                });
+        }
+
         function showTheItinerary1()
         {
           var itineraryPlace = getCookie("placeName").replace(/\+/gi, " ");

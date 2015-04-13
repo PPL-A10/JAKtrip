@@ -1,6 +1,58 @@
 
 
+			<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
 
+<script>
+var gmarkers = [];
+var counter = 0;
+var map;
+var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:11,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+  google.maps.event.addListener(map, 'click', function(event) {
+   // map.setMap(null);
+    if(counter!=0)
+       gmarkers[counter-1].setMap(null);
+    counter++;
+    placeMarker(event.latLng);
+  });
+}
+
+function placeMarker(location) {
+   
+  var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+  });
+  gmarkers.push(marker);
+  var infowindow = new google.maps.InfoWindow({
+    content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng() + '<br><button type="button" onclick="addLocation('+location.lng()+', '+location.lat()+')">Add Location</button>'
+  });
+  
+  infowindow.open(map,marker);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function addLocation(lng,lat){
+ //code....
+	
+	document.getElementById('longitude').value=lng;
+	document.getElementById('lattitude').value=lat;
+
+}
+</script>
 			<div class="col-lg-12">
 				<!-- if succes
 				<div class="col-lg-2"></div>
@@ -128,6 +180,12 @@
 				      <br></div>
 				    </div>
 				    <br>
+				    <div class="form-group">
+					  <div class="col-lg-11">
+						<div id="googleMap" style="width:500px;height:380px;"></div><br>
+				      </div>
+				    </div>
+				    
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>

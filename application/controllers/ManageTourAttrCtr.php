@@ -56,6 +56,28 @@ class ManageTourAttrCtr extends CI_Controller {
 		}
 		//$data = $this->guest_model->general();
 		//$data['query'] = $this->guest_model->guest_getall();
+
+		$query = $this->TouristAttractionManager->tourAttr_getall();
+		$category_list = array();
+		
+		foreach($query as $place){
+			$place_name = $place->place_name;
+			$query2 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+			$category='';
+			foreach($query2 as $row){
+				if($category==''){
+					$category=$category.$row->category_name;
+				}
+				else{
+					$category=$category.', '.$row->category_name;				
+				}
+
+			}
+			array_push($category_list, $category);
+		}
+		
+		$data['cat'] = $category_list;
+		$data['tourattr'] = $query;
 		$data['query'] = $this->touristAttractionManager->tourAttr_getall();
 		$this->load->view('header');
 		$this->load->view('menuadmin');

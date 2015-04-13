@@ -75,7 +75,7 @@
 
 			$data['counterTrip'] = intval((get_cookie("counterTrip")));
 			$counterTrip = $data['counterTrip']+1;
-			
+
 				$datechoosen = get_cookie('datechoosen');		
 		 	 $day = date('l', strtotime($datechoosen));
 		
@@ -116,6 +116,71 @@
 			setcookie("counterTrip", $counterTrip, time()+3600, '/');
 			setcookie("idxLastTrip", $data['idx_last_trip'], time()+3600, '/');
 
+			$data['query'] = $this->touristAttractionManager->getAllTour2($data);
+
+			echo json_encode($data);
+			
+		}
+
+		public function addingTrip11()
+		{
+			$this->load->helper('cookie');
+			$dataInput = $_POST["datanya"];
+			$this->load->model('touristAttractionManager');
+			$dataInput = str_replace("%20", " ",$dataInput);
+			$arrayData = explode("-", $dataInput);
+			$data['place_name'] = get_cookie("placeName").$arrayData[0]."xx";
+			$data['halte_name'] = get_cookie("halteName").$arrayData[1]."xx";
+			$data['busway_price'] = get_cookie("buswayPrice").$arrayData[2]."xx";
+			$data['angkot_price'] = get_cookie("angkotPrice").$arrayData[3]."xx";
+			$data['ticket_price'] = get_cookie("ticketPrice").$arrayData[4]."xx";
+			$data['total_price'] = get_cookie("totalPrice").$arrayData[5]."xx";
+			$data['transport_info'] = get_cookie("transportInfo").$arrayData[6]."xx";
+			$data['place_info'] = get_cookie("placeInfo").$arrayData[7]."xx";
+			$data['budget'] = get_cookie("placeInfo").$arrayData[8]."xx";
+			$data['counterTrip'] = intval((get_cookie("counterTrip")));
+			$counterTrip = $data['counterTrip']+1;
+			
+				$datechoosen = get_cookie('datechoosen');		
+		 	 $day = date('l', strtotime($datechoosen));
+		
+			 if($day == "Saturday" OR $day == "Sunday")
+			 {
+			
+			 	setcookie('isWeekend',"true", time()+3600, '/');
+			 	$data['isWeekend'] = "true";
+			 }
+			 else
+			 {
+			
+			 	setcookie('isWeekend',"false", time()+3600, '/');
+			 	$data['isWeekend'] = "false";
+			 }
+
+			if($data['counterTrip'] == 0)
+			{
+				$data['idx_first_trip'] = 0;
+				$data['idx_last_trip'] = 0;
+				setcookie("idxFirstTrip", $data['idx_first_trip'], time()+3600, '/');
+		//		echo "halah";
+			}
+			else
+			{
+				$data['idx_last_trip'] = intval(get_cookie("idxLastTrip")) + 1;
+			}
+		//	echo json_encode($data);
+
+			setcookie("placeName", $data['place_name'], time()+3600, '/');
+			setcookie("halteName", $data['halte_name'], time()+3600, '/');
+			setcookie("buswayPrice", $data['busway_price'], time()+3600, '/');
+			setcookie("angkotPrice", $data['angkot_price'], time()+3600, '/');
+			setcookie("ticketPrice", $data['ticket_price'], time()+3600, '/');
+			setcookie("totalPrice", $data['total_price'], time()+3600, '/');
+			setcookie("transportInfo",$data['transport_info'],time()+3600, '/');
+			setcookie("placeInfo", $data['place_info'], time()+3600, '/');
+			setcookie("counterTrip", $counterTrip, time()+3600, '/');
+			setcookie("idxLastTrip", $data['idx_last_trip'], time()+3600, '/');
+			setcookie("budget", $data['budget'], time()+3600, '/');
 			$data['query'] = $this->touristAttractionManager->getAllTour2($data);
 
 			echo json_encode($data);

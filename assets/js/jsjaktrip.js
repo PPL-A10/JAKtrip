@@ -436,14 +436,17 @@ $(function() {
 		                var obj = jQuery.parseJSON(res);
 		                var resultQuery = "";
 		                var resultQuerydetail = "";
+		                var resultQueryShare= "";
 		                for (var i=0 ; i<obj.query.length; i++){
 		                  //resultQuery = resultQuery +obj.query[i].place_name+"<br>";
 		                  resultQueryname = resultQuery +obj.query[i].place_name;
 		                  resultQuerydetail = resultQuerydetail +obj.query[i].description;
+		                  resultQueryShare  = resultQueryShare + obj.query[i].place_name;
 		                }
-		                
+		             $("#shareDetail").html("<span class='fa fa-twitter-square icondetail'></span><div id='shareFacebook' class='fb-share-button' data-href='"+resultQueryShare+"' data-layout='icon'></div><span class='fa fa-check-circle icondetail'></span><span class='fa fa-heart icondetail'></span>");
 		              $("#namatempat").html(resultQueryname);
 		              $("#info").html(resultQuerydetail);
+		              
 		              }             
 		            }
 		                }
