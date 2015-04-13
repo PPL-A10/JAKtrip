@@ -91,8 +91,8 @@ function __construct(){
 
 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data);
-		$this->db->where('place_name',$place_name);
-		$this->db->update('photo',$form_photo);	
+		//$this->db->where('place_name',$place_name);
+		//$this->db->update('photo',$form_photo);	
 		//$this->db->where('place_name',$place_name);
 		//$this->db->update('tour_category',$x);
 		
@@ -134,8 +134,15 @@ function __construct(){
 					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$category_new));
 				}	
 			}
-
 		}
+		
+		$query = $this->db->get_where('photo', array('place_name'=>$place_name));
+		for($i=0; $i<count($query); $i++){
+			//$this->db->where('place_name',$place_name);
+			//$this->db->update('photo',array('pic_info'=>$form_photo['pic_info'][$i]));	
+			$quer="update PHOTO set 'pic_info'=>".$form_photo['pic_info']." where 'place_name'=".$place_name.", 'pic'=".$query->$i->pic.";";
+		}
+
 		
 		
 		

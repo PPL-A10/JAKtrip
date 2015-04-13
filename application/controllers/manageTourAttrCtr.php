@@ -192,8 +192,8 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('transport_info', 'transport_info', 'trim');
 		$this->form_validation->set_rules('transport_price', 'transport_price', 'trim');
 		$this->form_validation->set_rules('category_name', 'category_name', 'trim');
-		$this->form_validation->set_rules('pic', 'pic', 'trim');
-		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
+		$this->form_validation->set_rules('pic', 'pic');
+		$this->form_validation->set_rules('pic_info', 'pic_info');
 		$this->form_validation->set_rules('author', 'author', 'trim');
 
 		$key = $this->input->post('key');
@@ -234,7 +234,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$halte_name = $this->input->post('halte_name');
 		$halte_code = $this->touristattractionmanager->getHalteCode($halte_name);
 		$place_info = $this->input->post('place_info');
-		
+		$pic_info = $this->input->post('pic_info');
 		
 		
 		
@@ -272,8 +272,8 @@ class ManageTourAttrCtr extends CI_Controller {
 
 			$form_photo = array(
 							'place_name' => $place_name,
-							'pic' => $image_path.'\\'.$file_name,
-							'pic_info' =>$this->input->post('pic_info')
+							//'pic' => $image_path.'\\'.$file_name,
+							'pic_info' =>$pic_info
 						);		
 			
 			$old_cat = $this->TouristAttractionManager->tourAttr_getCat($place_name);
