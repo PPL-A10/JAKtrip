@@ -247,16 +247,17 @@ class ManageTourAttrCtr extends CI_Controller {
 		 
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 		
-	
+
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
-			echo "hai";
+			
 			redirect ('manageTourAttrCtr/edit/'.$key);
 		}
 		else // passed validation proceed to post success logic
 		{
 		 	// build array for the model
-			if($this->input->post('save')){
+				echo "hai";
+			//if($this->input->post('save')){
 			$form_data = array(
 					       'place_name' => $place_name,
 					       	'weekday_price' => $weekday_price,
@@ -306,7 +307,7 @@ class ManageTourAttrCtr extends CI_Controller {
 				echo 'An error occurred saving your information. Please try again later';
 				 //Or whatever error handling is necessary
 				}
-			}
+			//}
 			
 		}
 	}
