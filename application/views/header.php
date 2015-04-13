@@ -14,42 +14,7 @@
 	<link href="<?php echo base_url('assets/css/sm-core-css.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/sm-clean.css');?>" type="text/css" rel="stylesheet"/>
 	<link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
-	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
-  <!--link href="http://localhost/Jaktrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/bootstrap-datepicker3.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/ion.rangeSlider.skinFlat.css" type="text/css" rel="stylesheet"/>
-  <link href="http://localhost/Jaktrip/assets/css/ion.rangeSlider.css" type="text/css" rel="stylesheet"/>
-  
-  <script src="http://localhost/Jaktrip/assets/js/jquery-1.11.0.min.js"></script>
-  <script src="http://localhost/Jaktrip/assets/js/ion.rangeSlider.min.js"></script>
-  <script src="http://localhost/Jaktrip/assets/js/bootstrap.min.js"></script>
-  <script src="http://localhost/Jaktrip/assets/js/jaktrip.js"></script>
-  <script src="http://localhost/Jaktrip/assets/js/bootstrap-datepicker.min.js"></script>
-  <script src="http://localhost/Jaktrip/assets/js/gmaps.js"></script>
-
-  <script src="/JAKtrip/assets/js/jquery-1.11.0.min.js"></script>
-  <script src="/JAKtrip/assets/js/bootstrap.min.js"></script>
-  <script src="/JAKtrip/assets/js/jaktrip.js"></script>
-  <script src="/JAKtrip/assets/js/jquery.smartmenus.min.js"></script>
-  <script src="/JAKtrip/assets/js/menuselector.js"></script-->
-
-  <!--link href="/JAKtrip/assets/css/normalize.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/bootstrap.sandstone.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/font-awesome.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/jaktrip.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/sm-core-css.css" type="text/css" rel="stylesheet"/>
-  <link href="/JAKtrip/assets/css/sm-clean.css" type="text/css" rel="stylesheet"/-->
-    <!--script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
-
-
-		
-
-
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	
 	<title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
 	<style>
@@ -297,7 +262,7 @@ function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		  </button>
-	      <a class="navbar-brand" href="index.html" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
+	      <a class="navbar-brand" href="<?php echo base_url('index.php/homeCtr');?>" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>"></a>
 	    </div>
 
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -764,3 +764,6 @@ a {
   color: #db2719;
 }
 
+.textdetail > div{
+  padding-top: 35px;
+}
