@@ -43,7 +43,9 @@
 							{echo "Profanity, ";}
 							echo "</td>";
 							echo "<td>".$f."</td>";
-							echo "<td>". anchor('SpamCtr/del/'.$row->id_rate, '<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete') ."</td>";						
+							echo "<td>";
+							$onclick = array('onclick'=>"return confirm('Are you sure to delete this review?')");
+							echo anchor('SpamCtr/del/'.$row->id_rate,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
 							echo "</tr>";
 							}
 							

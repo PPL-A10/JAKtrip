@@ -77,7 +77,9 @@
 							echo "<td>".$row->join_date."</td>";
 							echo "<td></td>";
 							echo "<td>".$row->last_active."</td>";
-							echo "<td>". anchor('ManageMemberCtr/del/' .$row->username, '<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete') ."</td>";
+							echo "<td>";
+							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->username."?')");
+							echo anchor('manageMemberCtr/del/'.$row->username,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
 							echo "</tr>";
 							}
 							//echo "</table>";

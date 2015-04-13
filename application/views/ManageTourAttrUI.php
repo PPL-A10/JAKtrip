@@ -30,7 +30,7 @@
 							echo "<td>". $row->last_modified ."</td>";
 							echo "<td>". $row->hits ."</td>";
 							echo "<td>";
-							$onclick = array('onclick'=>"return confirm('Are you sure?')");
+							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
 							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 							echo "</tr>";
