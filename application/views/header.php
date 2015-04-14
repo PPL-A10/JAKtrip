@@ -43,6 +43,10 @@
 			src: url('<?php echo base_url("assets/fonts/lato-black.ttf");?>');
 		}
 	</style>
+
+<script src="http://maps.googleapis.com/maps/api/js">
+</script>
+  
 	<script>
 function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket_price1, total_price1, transport_info1, place_info1)
         {

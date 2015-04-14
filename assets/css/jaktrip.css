@@ -786,3 +786,7 @@ a {
 #addrevform{
   margin-bottom: 30px;
 }
+
+html, body{
+  height: 100%;
+}
