@@ -31,14 +31,18 @@ class ReviewCtr extends CI_Controller {
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
+			//$this->load->model('DetailMod');
 			$this->load->model('ReviewModel');
 			if((int)$id != null){
 			$this->ReviewModel->delete($id);
 			}
-			$data['query'] = $this->ReviewModel->showreviewtempat($nama);
-			$data['query2']= $this->ReviewModel->showjudul($nama);
+			//$data['query']= $this->DetailMod->showdetail($nama);
+			$data['query2'] = $this->ReviewModel->showreviewtempat($nama);
 			//$this->load->view('ReviewUI',$data);    
 			echo json_encode($data);
+		//$this->load->view('header');
+		//$this->load->view('PlaceUI',$data);
+		//$this->load->view('footer');
 		}
 
 	
