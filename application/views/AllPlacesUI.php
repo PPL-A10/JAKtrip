@@ -1,6 +1,6 @@
 
 	<div class="container-fluid">
-		<div style="background-color: #e0e0e0; height: 420px; ">
+		<div class="col-lg-12" style="background-color: #e0e0e0; height: 400px;">
 			<div class="intro" style="margin-top:-30px;">
 				<div class="tuffyh1aa">All Places</div>
 			</div>
@@ -37,7 +37,7 @@
    					 <span class="input-group col-lg-3">
    					 	<input class="field form-control" type="text" id="name_select" placeholder="Enter keyword..." >
    					 	<span class="input-group-btn">
-   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -18px;"><span class="fa fa-search"></span></button>
+   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -8px;"><span class="fa fa-search"></span></button>
    					 	</span>
    				 	</span>
   	

@@ -100,8 +100,6 @@ select#ddbush{
   width: 200px;
 }
 
-=======
->>>>>>> origin/Bagian_Wildan
 .custom-dropdown select {
   background-color: #fff;
   color: #4c4c4c;
@@ -420,7 +418,7 @@ a {
   width          : 7.5em;
   height         : 1.5em;
   overflow       : hidden;
-  vertical-align : bottom;
+  vertical-align : middle;
 }
 
 .starRating:not(old) > input{
@@ -564,14 +562,14 @@ a {
 }
 
 .headerdetail img{
-  height: 250px;
-  width: auto;
+  height: auto;
+  max-width: 100%;
   margin: 0px -15px;
 }
 
 .textdetail {
   margin: 35px;
-  margin-top: 370px;
+  margin-top: 500px;
   height: 400px;
 }
 
@@ -662,8 +660,7 @@ a {
 }
 
 .reviewmember{
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 
@@ -772,9 +769,20 @@ a {
 }
 
 .textdetail > div{
-  padding-top: 35px;
+  margin-left: 80px;
+  margin-top: 5px;
+  margin-right: -300px;
+  margin-bottom: 120px;
 }
 
 .table thead tr th{
   text-align: center !important;
+}
+
+.reviewbox{
+  margin-bottom: 30px;
+}
+
+#addrevform{
+  margin-bottom: 30px;
 }

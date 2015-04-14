@@ -40,6 +40,8 @@ $(function() {
 		        $(this).toggleClass("expanded");
 		    });
 
+//-------------------FAQ-------------------
+
 		    $("#gscon").show();
 		    $("#aapcon").hide();
 		    $("#plcon").hide();
@@ -85,6 +87,40 @@ $(function() {
 			    $("#aapcon").hide();
 		    	$("#otcon").show();
 		    });
+//---------------------------------------------------------
+
+//------------------------PLACES-----------------------------
+			$("#infocon").show();
+		    $("#photoscon").hide();
+		    $("#reviewscon").hide();
+
+		    $("#inf").click(function(){
+		    	$("#photoscon").hide();
+		    	$("#reviewscon").hide();
+		    	$("#infocon").show();
+		    });
+
+		    $("#pho").click(function(){
+			    $("#infocon").hide();
+			    $("#reviewscon").hide();
+		    	$("#photoscon").show();
+		    });
+
+		    $("#revi").click(function(){
+			    $("#infocon").hide();
+			    $("#photoscon").hide();
+		    	$("#reviewscon").show();
+		    });
+
+		    $("#addrevform").hide();
+		    $("#addrevbtn").click(function(){
+			    $("#addrevform").toggle();
+			    $(this).text(function(i, text){
+			          return text === "ADD NEW REVIEW" ? "CLOSE FORM" : "ADD NEW REVIEW";
+			      })
+		    });
+
+//--------------------------------------------------------
 
 
 	$("#tab1 #checkAll").click(function () {
