@@ -10,15 +10,16 @@
 			
 			<ul class="submenufaq nav navbar-nav">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li><a href="#getting-started" class="submenua">Getting Started</a></li>
-				<li><a href="#account-and-profile" class="submenua">Account and Profile</a></li>
-				<li><a href="#places" class="submenua">Places</a></li>
-		        <li><a href="#reviews" class="submenua">Reviews</a></li>
-		        <li><a href="#others" class="submenua">Others</a></li>
+				<li id="gs"><a href="#getting-started" class="submenua">Getting Started</a></li>
+				<li id="aap"><a href="#account-and-profile" class="submenua">Account and Profile</a></li>
+				<li id="pl"><a href="#places" class="submenua">Places</a></li>
+		        <li id="rev"><a href="#reviews" class="submenua">Reviews</a></li>
+		        <li id="ot"><a href="#others" class="submenua">Others</a></li>
 			</ul>
 
 			<div class="col-lg-12 even">
-				<section id="getting-started" class="tab-content active">
+				<span id="getting-started" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
+				<section id="gscon">
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Apa itu JAKtrip?</dt>
@@ -36,7 +37,8 @@
 						</dl>
 					</div>
 				</section>
-				<section id="account-and-profile" class="tab-content hide">
+				<span id="account-and-profile"  style="margin-top: -300px; height: 300px; display: block; visibility: hidden;" ></span>
+				<section id="aapcon" >
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Bagaimana cara mengubah profil akun?</dt>
@@ -51,7 +53,8 @@
 						</dl>
 					</div>
 				</section>
-				<section id="places" class="tab-content hide">
+				<span id="places"  style="margin-top: -300px; height: 300px; display: block; visibility: hidden;" ></span>
+				<section id="plcon" >
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Adakah tempat wisata yang memiliki promo tertentu?</dt>
@@ -69,7 +72,8 @@
 						</dl>
 					</div>
 				</section>
-				<section id="reviews" class="tab-content hide">
+				<span id="reviews"  style="margin-top: -300px; height: 300px; display: block; visibility: hidden;" ></span>
+				<section id="revcon" >
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Pertanyaan 1</dt>
@@ -81,7 +85,8 @@
 						</dl>
 					</div>
 				</section>
-				<section id="others" class="tab-content hide">
+				<span id="others"  style="margin-top: -300px; height: 300px; display: block; visibility: hidden;" ></span>
+				<section id="otcon" >
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?</dt>

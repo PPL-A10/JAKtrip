@@ -303,6 +303,7 @@ function addLocation(lng,lat){
 			
 		</div>
 	</div>
+	
 
 
 

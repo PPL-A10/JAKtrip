@@ -11,6 +11,7 @@ $(function() {
 		  $('#main-menu').smartmenus();
 		});
 
+
 				$('.navbar-nav > li > a').click(function(event){
 					//event.preventDefault();//stop browser to take action for clicked anchor	
 					
@@ -38,6 +39,53 @@ $(function() {
 		        $(this).next("#faqs dd").slideToggle(500);
 		        $(this).toggleClass("expanded");
 		    });
+
+		    $("#gscon").show();
+		    $("#aapcon").hide();
+		    $("#plcon").hide();
+		    $("#revcon").hide();
+		    $("#otcon").hide();
+
+		    $("#gs").click(function(){
+		    	$("#aapcon").hide();
+		    	$("#plcon").hide();
+			    $("#revcon").hide();
+			    $("#otcon").hide();
+		    	$("#gscon").show();
+		    });
+
+		    $("#aap").click(function(){
+		    	$("#gscon").hide();
+		    	$("#plcon").hide();
+			    $("#revcon").hide();
+			    $("#otcon").hide();
+		    	$("#aapcon").show();
+		    });
+
+		    $("#pl").click(function(){
+		    	$("#gscon").hide();
+		    	$("#aapcon").hide();
+			    $("#revcon").hide();
+			    $("#otcon").hide();
+		    	$("#plcon").show();
+		    });
+
+		    $("#rev").click(function(){
+		    	$("#gscon").hide();
+		    	$("#plcon").hide();
+			    $("#aapcon").hide();
+			    $("#otcon").hide();
+		    	$("#revcon").show();
+		    });
+
+		    $("#ot").click(function(){
+		    	$("#gscon").hide();
+		    	$("#plcon").hide();
+			    $("#revcon").hide();
+			    $("#aapcon").hide();
+		    	$("#otcon").show();
+		    });
+
 
 	$("#tab1 #checkAll").click(function () {
 	        if ($("#tab1 #checkAll").is(':checked')) {

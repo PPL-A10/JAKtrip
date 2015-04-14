@@ -7,18 +7,20 @@
 
 		<div class="row places" style="padding-top: 200px;">
 			<div class="col-lg-12 location">
+				<div class="btn btn-warning" onclick="window.location.reload()">ALL PLACES</div>
 				<div class="btn btn-warning" onclick="filter('Jakarta%20Timur')">Jakarta Timur</div>
 				<div class="btn btn-warning" onclick="filter('Jakarta%20Barat')">Jakarta Barat</div>
 				<div class="btn btn-warning" onclick="filter('Jakarta%20Pusat')">Jakarta Pusat</div>
 				<div class="btn btn-warning" onclick="filter('Jakarta%20Utara')">Jakarta Utara</div>
 				<div class="btn btn-warning" onclick="filter('Jakarta%20Selatan')">Jakarta Selatan</div>
+				
 			</div>
 
 			<div class="col-lg-12 location" style="margin-top: -20px;">
 				<div class="form-inline">
    					 <label class="control-label">Filter by :  </label>
-   					 <span id="ddcontainer" class="fieldsml custom-dropdown ">
-   					 	 <select class="fieldsml form-control" onchange="filterFunctionFinal()" title="All Categories" id="category_select">    
+   					 <span id="ddcontainer" class="field custom-dropdown ">
+   					 	 <select class="field form-control" onchange="filterFunctionFinal()" title="All Categories" id="category_select">    
 						        <option value='All' >All Categories</option>
 								<?php
 									foreach($query1 as $row)
@@ -33,14 +35,14 @@
    					 </span>
 
    					 <span class="input-group col-lg-3">
-   					 	<input class="fieldsml form-control" type="text" id="name_select" placeholder="Enter keyword..." >
+   					 	<input class="field form-control" type="text" id="name_select" placeholder="Enter keyword..." >
    					 	<span class="input-group-btn">
-   					   	<button class="fieldsml btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -18px;"><span class="fa fa-search"></span></button>
+   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -18px;"><span class="fa fa-search"></span></button>
    					 	</span>
    				 	</span>
   	
-					<span class="fieldsml custom-dropdown bordered">
-   					 	<select onchange="sortFunction()" id="sort_select" name="sort_select" class="fieldsml form-control" title="Popularity">    
+					<span class="field custom-dropdown bordered">
+   					 	<select onchange="sortFunction()" id="sort_select" name="sort_select" class="field form-control" title="Popularity">    
    					     	<option value="popular" selected>Popularity</option>  
    					     	<option value="highestRate">Highest Rating</option>
    					     	<option value="sortAtoZ">Name: A-Z</option>
