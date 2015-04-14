@@ -79,7 +79,7 @@
 							echo "<td>".$row->last_active."</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->username."?')");
-							echo anchor('manageMemberCtr/del/'.$row->username,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
+							echo anchor('manageMemberCtr/del/'.$row->username,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
 							echo "</tr>";
 							}
 							//echo "</table>";

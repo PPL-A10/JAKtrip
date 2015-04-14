@@ -12,7 +12,7 @@
 				      <th>Review</th>
 				      <th>Reasons</th>
 				      <th>Reports</th>
-				      <th>Last Reported</th>
+				      <th>Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -45,7 +45,7 @@
 							echo "<td>".$f."</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete this review?')");
-							echo anchor('SpamCtr/del/'.$row->id_rate,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
+							echo anchor('SpamCtr/del/'.$row->id_rate,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
 							echo "</tr>";
 							}
 							

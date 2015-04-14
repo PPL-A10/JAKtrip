@@ -231,7 +231,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$weekend_price = $this->input->post('weekend_price');
 		$longitude = $this->input->post('longitude');
 		$lattitude = $this->input->post('lattitude');
-		$city = $this->input->post('city');
+		$city = $this->input->post('select_location');
 		//'rate_avg' => 0,
 		$description = $this->input->post('description');
 		//'place_info' => $this->input->post('place_info'),
@@ -239,9 +239,9 @@ class ManageTourAttrCtr extends CI_Controller {
 		$transport_price = $this->input->post('transport_price');
 		$category_list = $this->input->post('category_list');
 		$category_new = $this->input->post('category_new');
-		$halte_name = $this->input->post('halte_name');
-		$halte_code = $this->touristattractionmanager->getHalteCode($halte_name);
-		$place_info = $this->input->post('place_info');
+		$halte_name = $this->input->post('select_busstop');
+		$halte_code = $this->touristAttractionManager->getHalteCode($halte_name);
+		$place_info = $this->input->post('place_inform');
 		
 		
 		
@@ -260,7 +260,6 @@ class ManageTourAttrCtr extends CI_Controller {
 		else // passed validation proceed to post success logic
 		{
 		 	// build array for the model
-			if($this->input->post('save')){
 			$form_data = array(
 					       'place_name' => $place_name,
 					       	'weekday_price' => $weekday_price,
@@ -274,7 +273,7 @@ class ManageTourAttrCtr extends CI_Controller {
 							'halte_code' => $halte_code['halte_code'],
 							'transport_info' => $transport_info,
 							'transport_price' => $transport_price,
-							'author' => $this->input->post('author'),
+							'author' => $this->input->post('select_author'),
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())							
 						);
 
@@ -311,7 +310,7 @@ class ManageTourAttrCtr extends CI_Controller {
 				}
 			}
 			
-		}
+		
 	}
 	
 	
