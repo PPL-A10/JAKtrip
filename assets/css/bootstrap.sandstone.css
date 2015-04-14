@@ -3052,7 +3052,7 @@ fieldset[disabled] .btn {
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
   color: #ffffff;
-  background-color: #242422;
+  background-color: #a51811;
   border-color: rgba(0, 0, 0, 0);
 }
 .btn-default:active,
@@ -4231,6 +4231,15 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   line-height: 20px;
 }
+.navbar-nav {
+  margin: 5px -15px;
+}
+.navbar-nav > li > a {
+  padding-top: 10px;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  line-height: 20px;
+}
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
@@ -4391,6 +4400,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: right !important;
     margin-right: 30px;
   }
+
   .navbar-right ~ .navbar-right {
     margin-right: 0;
   }

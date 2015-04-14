@@ -1,7 +1,4 @@
 $(document).ready(function () {
-
-		//	$('.submenufaq > li:nth-child(2)').css("color", "#db2719");  
-		//	$('.submenufaq > li:nth-child(2)').css("border-bottom", "solid 5px #db2719");
             
             $('.submenua').click(function(e){
 			    $('.submenua').css("color", "#1c1c1c");

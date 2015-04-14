@@ -1,3 +1,45 @@
+
+a.removeTrip{
+  color:#ccd6dd;
+}
+a.toZoom:hover{
+  cursor:pointer;
+}
+a.removeTrip:hover{
+    color: #F34242;
+    cursor: pointer;  
+}
+
+a.editTrip:hover{
+    color: #20C539;
+    cursor: pointer;  
+}
+
+.btn.sharp{
+  border-radius: 0px;
+}
+.canScroll{
+  height : 200px;
+    overflow: auto;
+}
+
+.canScrollMain{
+  height : 550px;
+    overflow: auto;
+}
+#popoverEdit .popover {
+    width: 500px;
+    max-width: none;
+}
+#popoverEdit1 .popover {
+    width: 500px;
+    max-width: none;
+}
+#wrap .popover {
+    width: 500px;
+    max-width: none;
+}
+
 body{
   font-family: Lato;
   width: 100% !important;
@@ -49,12 +91,21 @@ select#ddbus{
   width: 160px;
 }
 
+<<<<<<< HEAD
+span#ddcontainerh > select{
+  width: 200px;
+}
+
+select#ddbush{
+  width: 200px;
+}
+
 .custom-dropdown select {
   background-color: #fff;
   color: #4c4c4c;
   font-size: inherit;
   padding: .5em;
-  padding-right: 2.5em; 
+  padding-right: 2.5em;
   border: 0;
   margin: 0;
   border-radius: 5px;
@@ -260,7 +311,7 @@ a {
   font-family: TuffyBold !important;
   font-size: 18px;
   color: #1c1c1c;
-  
+ 
 }
 
 .submenufaq:after {
@@ -333,7 +384,7 @@ a {
   background-color: #fff;
   height: 500px;
   overflow-y: scroll;
-  overflow-x: hidden; 
+  overflow-x: hidden;
 }
 
 
@@ -367,7 +418,7 @@ a {
   width          : 7.5em;
   height         : 1.5em;
   overflow       : hidden;
-  vertical-align : bottom;
+  vertical-align : middle;
 }
 
 .starRating:not(old) > input{
@@ -402,7 +453,7 @@ a {
 
 
 .result{
-  margin-top: 20px; 
+  margin-top: 20px;
   margin-left: 30px;
 }
 
@@ -414,9 +465,10 @@ a {
   width: 310px;
 }
 
-.iconsocial{
-  font-size: 36px;
+.iconsocial a{
+  font-size: 36px !important;
   text-align: center;
+  display: inline;
 }
 
 .openModal {
@@ -448,22 +500,27 @@ a {
   border-radius: 5px;
   background: #fff;
   font-size: 14px;
+  color: #1c1c1c;
+}
+
+#openLogin a{
+  font-size: 14px;
 }
 
 .close {
-  color: #9c9c9c !important;
+  color: rgba(0,0,0,0.4) !important;
   opacity: 1;
   line-height: 25px;
   position: absolute;
-  right: 5px;
+  right: -10px;
   text-align: center;
-  top: 0px;
+  top: -5px;
   text-decoration: none;
   font-size: 18px;
 }
 
-.close:hover { 
-  color: #db2719 !important; 
+.close:hover {
+  color: rgba(0,0,0,0.8) !important;
   opacity: 1;
 }
 
@@ -478,7 +535,7 @@ a {
 .admintitle {
   margin: 30px 150px;
   border-bottom: solid 1px #c4c4c4 !important;
-  width: 70%; 
+  width: 70%;
   padding-left: 20px;
 }
 
@@ -496,15 +553,23 @@ a {
   margin-right: 80px;
 }
 
+.newpost a{
+  color: #db2719;
+}
+
+.newpost a:hover{
+  color: #a51811;
+}
+
 .headerdetail img{
-  height: 250px;
-  width: auto;
+  height: auto;
+  max-width: 100%;
   margin: 0px -15px;
 }
 
-.textdetail { 
+.textdetail {
   margin: 35px;
-  margin-top: 370px;
+  margin-top: 500px;
   height: 400px;
 }
 
@@ -548,7 +613,7 @@ a {
 }
 
 .homeimg img:hover{
-  margin-top: -10px;
+  margin-top: -5px;
 }
 
 .viewbox{
@@ -595,8 +660,7 @@ a {
 }
 
 .reviewmember{
-  border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   padding-top: 10px;
 }
 
@@ -652,12 +716,13 @@ a {
 }
 
 .ava-rounded{
-  border-radius: 13px; 
+  border-radius: 13px;
 }
 
 .navbar-right img{
   margin: -10px -10px 0px 10px;
 }
+
 
 .faq{
   margin-top: 30px;
@@ -665,7 +730,7 @@ a {
 }
 
 #faqs dt, #faqs dd { padding: 0px 0 0 100px }
-#faqs dt { 
+#faqs dt {
   font-family: TuffyBold;
   color: #1c1c1c;
   cursor: pointer;
@@ -673,9 +738,9 @@ a {
   font-size: 16px;
 }
 
-#faqs dd { 
+#faqs dd {
   font-family: Lato;
-  font-size: 14px; 
+  font-size: 14px;
   margin: 0 0 20px 25px
 }
 
@@ -699,3 +764,25 @@ a {
   margin-top: 5px;
 }
 
+.req{
+  color: #db2719;
+}
+
+.textdetail > div{
+  margin-left: 80px;
+  margin-top: 5px;
+  margin-right: -300px;
+  margin-bottom: 120px;
+}
+
+.table thead tr th{
+  text-align: center !important;
+}
+
+.reviewbox{
+  margin-bottom: 30px;
+}
+
+#addrevform{
+  margin-bottom: 30px;
+}

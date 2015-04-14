@@ -41,6 +41,7 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 $route['DetailCtr/(:any)'] = 'DetailshareCtr/index/$1';
+$route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
 //$route['ReviewCtr/(:any)'] = 'ReviewCtr/index/$1';
 //$route['DetailCtr/getdetail/(:any)'] = 'DetailCtr/index/$1';
