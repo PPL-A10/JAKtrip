@@ -64,7 +64,6 @@ function __construct(){
 	function tourAttr_get($place_name){
 		$this->load->database();
 		
-		echo $place_name;
 		
 		//$quer = "SELECT * FROM tourist_attraction WHERE place_name = $place_name";
 		//$query = $this->db->query($quer);

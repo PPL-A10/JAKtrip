@@ -114,7 +114,7 @@ function myform()
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
 		$number_of_files= sizeof($_FILES['pic']['tmp_name']);
-		
+
 		$files = $_FILES['pic'];
 		$errors = array();
  
