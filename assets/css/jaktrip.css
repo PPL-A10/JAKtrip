@@ -615,7 +615,7 @@ a {
 }
 
 .homeimg img:hover{
-  margin-top: -10px;
+  margin-top: -5px;
 }
 
 .viewbox{
@@ -772,4 +772,8 @@ a {
 
 .textdetail > div{
   padding-top: 35px;
+}
+
+.table thead tr th{
+  text-align: center !important;
 }

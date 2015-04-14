@@ -124,7 +124,9 @@
 					
 					<div class="col-lg-12" style="margin-top: 20px;">
 						<div class="col-lg-5"></div>
-							<button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button>
+							<a href="<?php echo base_url('index.php/allPlacesCtr');?>">
+								<button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button>
+							</a>
 						<div class="col-lg-5"></div>
 					</div>
 					

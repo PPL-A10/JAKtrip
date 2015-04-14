@@ -1,6 +1,4 @@
-<head>
-<script
-src="http://maps.googleapis.com/maps/api/js">
+<script src="http://maps.googleapis.com/maps/api/js">
 </script>
 
 <script>
@@ -57,7 +55,7 @@ function addLocation(lng,lat){
 	document.getElementById('lattitude').value=lat;
 }
 </script>
-</head>
+
 
 
 			<div class="col-lg-12">
@@ -98,9 +96,9 @@ function addLocation(lng,lat){
 					$transport_price = $transport_price['value'];
 					$author = $author['value'];
 					
-					echo form_hidden('key', $place_name).br(); 
-				echo form_hidden('rate_avg', $rate_avg).br(); 
-				echo form_hidden('hits', $hits).br(); 
+					echo form_hidden('key', $place_name); 
+				echo form_hidden('rate_avg', $rate_avg); 
+				echo form_hidden('hits', $hits); 
 				?>
 					
 					<div class="form-group">
@@ -115,36 +113,32 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Description <span class="req">*</span></label>
 						<?php echo form_error('description'); 
-						echo "Description ", form_textarea( array( 'name' => 'description', 'rows' => '5', 'cols' => '80', 'value' => $description ) )."<br>";
-				
+						echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description ) )."<br>";
 						?>
-  						<!--<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php //echo $description; ?>" ></textarea>-->
-				      <br></div>
+  						 <br></div>
 				    </div>
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Place Information</label><br>
 						<?php echo form_error('place_info'); ?>
-   					 	<span class="field custom-dropdown ">
-						
-   					 	<!--<select   class="field form-control" title="Place Information" style="margin-left: -10px;">    
-   					     	
-							<!--<option value="" selected disabled>Choose place information..</option>
+   					 	<span class="field custom-dropdown ">						
+   					 	<select   class="field form-control" title="Place Information" style="margin-left: -10px;">       					     	
+							<option value="" selected disabled>Choose place information..</option>
    					     	<?php
-			                 // foreach($place_info as $row)
-			                 // {
-							//	if($row->place_name==$place_inf){
-							//		echo "<option value='".$row->place_name."' selected>".$row->place_name."</option>";
-							//	}
-							//	else{
-							//		echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
-							//	}
+			                 foreach($lala as $row)
+			                 {
+								if(strcmp($row->place_name,$place_info)==0){
+									echo "<option value='".$place_info."' selected>".$place_info."</option>";
+								}
+								else{
+									echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
+								}
 			                    
-			                 // }
+			                 }
 			                ?>
-   					 	</select>-->
-						<?php echo form_dropdown('place_info', $place_inf, $place_info)."<br>"; ?>
+   					 	</select>
+						<!--<?php //echo form_dropdown('place_info', $place_inf, $place_info)."<br>"; ?>-->
    					 </span><br>
 				      <br></div>
 				    </div>
@@ -184,22 +178,25 @@ function addLocation(lng,lat){
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Location <span class="req">*</span></label><br>
-						<?php echo form_error('city'); 
-						$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
-											'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
-									echo form_dropdown('city',$loc, $city)."<br>"; 
-						?>
-  						<span class="field custom-dropdown "><!--
+						<!--<?php  
+						
+								//	echo form_dropdown('city',$loc, $city)."<br>"; 
+						?>-->
+  						<span class="field custom-dropdown ">
    					 	<select   class="field form-control" title="All Location" style="margin-left: -10px;">    
    					     	<option value="" selected disabled>All Location</option>
-   					     	<?php	
-							
-			                  //foreach($query2 as $row)
-			                  //{
-			                  //  echo "<option value='".$row->city."'>".$row->city."</option>";
-			                 // }
+   					     	<?php echo form_error('city');
+			                  foreach($query2 as $row)
+			                  {
+			                  	if(strcmp($row->city,$city)==0){
+									echo "<option value='".$city."' selected>".$city."</option>";
+								}
+								else{
+									echo "<option value='".$row->city."'>".$row->city."</option>";
+								}
+			                  }
 			                ?>
-   					 	</select> -->
+   					 	</select>
    					 </span><br>
 				      <br></div>
 				    </div>
@@ -212,16 +209,18 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
-					<div class="form-group">
+					 <br>
+				    <div class="form-group">
 					  <div class="col-lg-11">
-						<div id='googleMap' style='width:500px;height:380px;'></div>
-				      <br></div>
+					  	<label class="control-label">Longitude & Lattitude</label>
+						<div id="googleMap" style="width:500px;height:380px;"></div><br>
+				      </div><br>
 				    </div>
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Longitude <span class="req">*</span></label>
 						<?php echo form_error('longitude'); ?>
-  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo $longitude; ?>" >
+  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo $longitude; ?>" disabled>
 				      <br></div>
 				    </div>
 				    <br>
@@ -229,7 +228,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Lattitude <span class="req">*</span></label>
 						<?php echo form_error('lattitude'); ?>
-  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo $lattitude; ?>" >
+  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo $lattitude; ?>" disabled>
 				      <br></div>
 				    </div>
 				    <br>
@@ -238,15 +237,21 @@ function addLocation(lng,lat){
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
-						 <?php echo form_dropdown('halte_name',$hlt_name, $halte_name)."<br>"; ?>
-   					 	<!--<select class="field form-control" title="Nearest bus stop?" >    
+						 <!-- <?php //echo form_dropdown('halte_name',$hlt_name, $halte_name)."<br>"; ?>-->
+   					 	 <select class="field form-control" title="Nearest bus stop?" >    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
-   				    		//foreach ($query as $row) {
-							//		echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
-							//}  				    		 
+   				    		foreach($query as $row)
+			                  {
+			                  	if(strcmp($row->halte_name,$halte_name)==0){
+									echo "<option value='".$halte_name."' selected>".$halte_name."</option>";
+								}
+								else{
+									echo "<option value='".$row->halte_name."'>".$row->halte_name."</option>";
+								}
+			                  }  				    		 
    				   			?>
-   					 	</select>-->
+   					 	</select>
    					 </span>
 				      <br><br></div>
 				    </div>
@@ -269,33 +274,27 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Author <span class="req">*</span></label>
+						<label class="control-label">Author <span class="req">*</span></label><br>
 						 <span class="field custom-dropdown " >
-						 <?php
-						 $auth = array('ahmadibrahim' => 'ahmadibrahim', 'fakhirahdg' => 'fakhirahdg', 'khusnanadia' => 'khusnanadia', 
-										'syifakha' => 'syifakha', 'mswildan' => 'mswildan'); 
-							echo form_dropdown('author',$auth, $author)."<br>"; 
-						 
-						 ?>
-   					 	<!--<select class="field form-control" title="Nearest bus stop?" >    
+						<select class="field form-control" title="Nearest bus stop?" >    
    							 <option value="" selected disabled>Choose Author</option> 
-   					      	<?php
-							
-							
-							
-   				    		//foreach ($admin as $row) {
-							//		echo "<option value=\"".$row->username."\">".$row->username."</option>";
-							//}  				    		 
-   				   			?>
-
-   					 	</select>-->
+   					   		<?php foreach($admin as $row)
+			                  {
+			                  	if(strcmp($row->username,$author)==0){
+									echo "<option value='".$author."' selected>".$author."</option>";
+								}
+								else{
+									echo "<option value='".$row->username."'>".$row->username."</option>";
+								}
+			                  } 
+			                  ?>
+   					 	</select>
    					 </span>
 				      <br></div>
 				    </div>
 				    <br>
 
 				    <button class="btn btn-warning" type="submit">PUBLISH</button>
-				    <button class="btn btn-primary" type="submit">SAVE</button>
 				    
 				<?php echo form_close(); ?>
 			</div>

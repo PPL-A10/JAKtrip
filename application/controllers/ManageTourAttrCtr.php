@@ -8,6 +8,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$query = $this->TouristAttractionManager->tourAttr_getall();
 		//$place_name = $query->place_name;
 
+
 		//$data['place_name'] = $place_name;
 		//$data['author'] = $query->author;
 		//$data['last_modified'] = $query->last_modified;
@@ -122,6 +123,12 @@ class ManageTourAttrCtr extends CI_Controller {
 		//$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
 		$query3 = $this->touristAttractionManager->tourAttr_getPic($place_name);
 		$query4 = $this->touristAttractionManager->tourAttr_getHalte($place_name);		
+		$data['lala'] = $this->TouristAttractionManager->getTouristAttraction()->result();
+		$this->load->model('searchMod');
+		$data['query2']= $this->searchMod->showalllocation();
+		$this->load->model('HalteManager');
+		$data['query'] = $this->HalteManager->getAllHalte();
+		$data['admin'] = $this->TouristAttractionManager->getAdmin();
 		
 		$data['place_name']['value'] = $query['place_name'];
 		$data['description']['value'] = $query['description'];
@@ -182,7 +189,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			$dd_halte[$halte['halte_name']] = $halte['halte_name'];
 		}
 		$data['hlt_name']=$dd_halte;
+
+		$this->load->view('header');
+		$this->load->view('menuadmin');
 		$this->load->view('formTourAttrUI2',$data);
+		$this->load->view('footer');
 	}
 	
 	function success()

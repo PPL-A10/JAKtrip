@@ -8,8 +8,8 @@
 				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></span><br><br> -->
 
 				<table id="tab1" class="newpost table table-striped table-hover">
-				  <thead >
-				    <tr style="text-align: center;">
+				  <thead style="text-align: center !important;">
+				    <tr>
 				      <th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th>
 				      <th>Title</th>
 				      <th>Author</th>
@@ -31,7 +31,7 @@
 							echo "<td>". $row->hits ."</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
-							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o">&nbsp;&nbsp;Delete</span>', $onclick)."</td>";
+							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
 							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 							echo "</tr>";
 						}

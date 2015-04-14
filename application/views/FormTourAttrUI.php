@@ -164,11 +164,18 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
+				     <br>
+				    <div class="form-group">
+					  <div class="col-lg-11">
+					  	<label class="control-label">Longitude & Lattitude</label>
+						<div id="googleMap" style="width:500px;height:380px;"></div><br>
+				      </div><br>
+				    </div>
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Longitude <span class="req">*</span></label>
 						<?php echo form_error('longitude'); ?>
-  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo set_value('longitude'); ?>" >
+  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo set_value('longitude'); ?>" disabled>
 				      <br></div>
 				    </div>
 				    <br>
@@ -176,15 +183,10 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Lattitude <span class="req">*</span></label>
 						<?php echo form_error('lattitude'); ?>
-  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo set_value('lattitude'); ?>" >
+  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo set_value('lattitude'); ?>" disabled>
 				      <br></div>
 				    </div>
-				    <br>
-				    <div class="form-group">
-					  <div class="col-lg-11">
-						<div id="googleMap" style="width:500px;height:380px;"></div><br>
-				      </div>
-				    </div>
+				   
 				    
 				    <div class="form-group">
 					  <div class="col-lg-11">
@@ -221,9 +223,9 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Author <span class="req">*</span></label>
+						<label class="control-label">Author <span class="req">*</span></label><br>
 						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" id="select_author" name="select_author" title="Nearest bus stop?" >    
+   					 	<select class="field form-control" id="select_author" name="select_author" >    
    							 <option value="" selected disabled>Choose author..</option>
    					      	<?php
    				    		foreach ($admin as $row) {
@@ -238,7 +240,6 @@ function addLocation(lng,lat){
 				    <br>
 
 				    <button class="btn btn-warning" type="submit">PUBLISH</button>
-				    <button class="btn btn-primary" type="submit">SAVE</button>
 				    
 				<?php echo form_close(); ?>
 			</div>
