@@ -187,7 +187,7 @@ function addLocation(lng,lat){
 						<?php echo form_error('city'); 
 						$loc = array('Jakarta Barat' => 'Jakarta Barat', 'Jakarta Pusat' => 'Jakarta Pusat', 'Jakarta Selatan' =>'Jakarta Selatan', 
 											'Jakarta Timur' => 'Jakarta Timur', 'Jakarta Utara' =>'Jakarta Utara'); 
-									echo "Location ", form_dropdown('city',$loc, $city)."<br>"; 
+									echo form_dropdown('city',$loc, $city)."<br>"; 
 						?>
   						<span class="field custom-dropdown "><!--
    					 	<select   class="field form-control" title="All Location" style="margin-left: -10px;">    

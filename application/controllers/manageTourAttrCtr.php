@@ -37,8 +37,13 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
 		//$data['query2'] = $this->touristattractionmanager->getCategory();
+		
+		$this->load->view('header');
+		$this->load->view('menuadmin');
 		$this->load->view('manageTourAttrUI', $data);
+		$this->load->view('footer');
 	}
+	
 
 	function del($place_name){
 		$this->load->library('table');
@@ -54,7 +59,11 @@ class ManageTourAttrCtr extends CI_Controller {
 		//$data = $this->guest_model->general();
 		//$data['query'] = $this->guest_model->guest_getall();
 		$data['query'] = $this->touristattractionmanager->tourAttr_getall();
+		
+		$this->load->view('header');
+		$this->load->view('menuadmin');
 		$this->load->view('manageTourAttrUI', $data);
+		$this->load->view('footer');
 	}
 
 	function isCategory($place_name){
@@ -165,10 +174,10 @@ class ManageTourAttrCtr extends CI_Controller {
 			$dd_halte[$halte['halte_name']] = $halte['halte_name'];
 		}
 		$data['hlt_name']=$dd_halte;
-		//$this->load->view('header');
-		//$this->load->view('menuadmin');
+		$this->load->view('header');
+		$this->load->view('menuadmin');
 		$this->load->view('formTourAttrUI2',$data);
-		//$this->load->view('footer');
+		$this->load->view('footer');
 		
 	}
 	
