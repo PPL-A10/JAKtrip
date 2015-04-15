@@ -184,11 +184,12 @@ window.location.reload();
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query2.length; i++){
-									//resultQuery = resultQuery + "<div class='reviewmember col-lg-12'><div class='reviewkiri col-lg-4'><div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div><div class='author' ><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><br><span class='judulreview tuffyh3a' id='judul'><p>"+obj.query[i].title+"</p></span><br><span class='isireview' id='isireview'><p>"+obj.query[i].reiew+"</p></span></div></div>";
-									resultQuery= resultQuery + obj.query[i].place_name;
+									//resultQuery = resultQuery + "<div class='reviewmember col-lg-12'><div class='reviewkiri col-lg-4'><div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div><div class='author' ><b>"+obj.query2[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><br><span class='judulreview tuffyh3a' id='judul'><p>"+obj.query2[i].title+"</p></span><br><span class='isireview' id='isireview'><p>"+obj.query2[i].review+"</p></span></div></div>";
+									//resultQuery= resultQuery + obj.query[i].place_name;
 								}
 								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
 							$("#isi_field").html(resultQuery);
+							//$("#isi_field").html("gdfgdfg");
 //								$("#output_field").html(obj.query[0].place_name;
 //$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
 							//location.reload();
