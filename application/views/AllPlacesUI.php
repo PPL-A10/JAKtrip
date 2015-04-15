@@ -1,7 +1,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12" style="background-color: #e0e0e0; height: 400px; ">
+			<div class="col-lg-12" style="background-color: #e0e0e0; height: 450px; ">
 				<div class="intro" style="margin-top:-30px;">
 					<div class="tuffyh1aa">All Places</div>
 				</div>
@@ -51,7 +51,14 @@
 	   					     	<option value="LowtoHigh">Price: Low to High</option>
 	   					     	<option value="HightoLow">Price: High to Low</option>
 	   					 	</select>
-	   					 </span>			 	
+	   					 </span>	
+	   					 <br>
+	   					 <div class="form-inline" style="margin-top: 10px; padding-left: 340px; padding-right: 270px;">
+		   					 <div style="position: relative;">
+		   						 <input type="text" class="col-lg-9 range" name="range" value="" />
+		   						 <div class="col-lg-3"></div>
+		   					 </div>
+		   				 </div>		 	
 	   			 	</div>
 	   			</div>
 	   		</div>
