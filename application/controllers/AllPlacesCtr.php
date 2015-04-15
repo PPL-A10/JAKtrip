@@ -62,22 +62,22 @@ class AllPlacesCtr extends CI_Controller {
 			echo json_encode($data);
 		}
 		
-			function popular()
+			function popular($category_name=NULL, $city=NULL, $place_name=NULL)
     {
 		$data   = array();
 		$this->load->model('AllPlacesMod');
 		$this->load->helper('url');
-		$data1['query'] = $this->AllPlacesMod->getAllTourAttrPopular();
+		$data1['query'] = $this->AllPlacesMod->getAllTourAttrPopular($category_name, $city, $place_name);
 		//$this->load->view('FormSearchUI', $data1);
 		echo json_encode($data1);
 	}
 	
-	function highestRate()
+	function highestRate($category_name=NULL, $city=NULL, $place_name=NULL)
     {
 		$data   = array();
 		$this->load->model('AllPlacesMod');
 		$this->load->helper('url');
-		$data1['query'] = $this->AllPlacesMod->getAllTourAttrHighestRate();
+		$data1['query'] = $this->AllPlacesMod->getAllTourAttrHighestRate($category_name, $city, $place_name);
 		//$this->load->view('SearchUI', $data1);
 		echo json_encode($data1);
 	}
@@ -102,25 +102,35 @@ class AllPlacesCtr extends CI_Controller {
 		echo json_encode($data2);
     }
 	
-	function LowToHigh()
+	function LowToHigh($category_name=NULL, $city=NULL, $place_name=NULL)
     {
 		$data   = array();
 		$this->load->model('AllPlacesMod');
 		$this->load->helper('url');
-		$data3['query'] = $this->AllPlacesMod->getAllTourAttrSortLowToHigh();
+		$data3['query'] = $this->AllPlacesMod->getAllTourAttrSortLowToHigh($category_name, $city, $place_name);
 		//$this->load->view('FormSearchUI', $data3);
 		echo json_encode($data3);
     }
 	
-	function HighToLow()
+	function HighToLow($category_name=NULL, $city=NULL, $place_name=NULL)
     {
 		$data   = array();
 		$this->load->model('AllPlacesMod');
 		$this->load->helper('url');
-		$data4['query'] = $this->AllPlacesMod->getAllTourAttrSortHighToLow();
+		$data4['query'] = $this->AllPlacesMod->getAllTourAttrSortHighToLow($category_name, $city, $place_name);
 		//$this->load->view('FormSearchUI', $data4);
 		echo json_encode($data4);
     }
+	
+	public function searchwisataprice($min, $max)
+		{
+			$this->load->library('table');
+			$this->load->helper('html'); 
+			$this->load->model('AllPlacesMod');
+			$data['query'] = $this->AllPlacesMod->filterSliderMod($min, $max);
+			//$this->load->view('searchView',$data);    
+			echo json_encode($data);
+		}
 }
 
 ?>

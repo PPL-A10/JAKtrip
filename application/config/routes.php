@@ -44,6 +44,7 @@ $route['DetailCtr/(:any)'] = 'DetailshareCtr/index/$1';
 $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
 $route['PlaceCtr/rating/(:any)'] = 'PlaceCtr/rating/$1';
+$route['AllPlacesCtr/searchwisataCatLocKey/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
 //$route['ReviewCtr/(:any)'] = 'ReviewCtr/index/$1';
 //$route['DetailCtr/getdetail/(:any)'] = 'DetailCtr/index/$1';
 //$route['controllername/(:any)/(:any)'] = 'ddd/index/$1/$2';

@@ -55,7 +55,7 @@
 	   					 <br>
 	   					 <div class="form-inline" style="margin-top: 10px; padding-left: 340px; padding-right: 270px;">
 		   					 <div style="position: relative;">
-		   						 <input type="text" class="col-lg-9 range" name="range" value="" />
+		   						 <input type="text" class="col-lg-9 range" id="range" name="range" onchange="myFunction()" value="" />
 		   						 <div class="col-lg-3"></div>
 		   					 </div>
 		   				 </div>		 	

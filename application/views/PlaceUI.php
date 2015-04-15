@@ -137,7 +137,7 @@
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 							if ($row->rate == 5)
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-						   echo	"<a href='javascript:deleteFunction(".'"'.$row->id_rate.'","'.$row->place_name.'"'.")'><span class='deleterev close fa fa-trash-o' id='nilaiid' value=''>kjlklkjljkl</span></a>";	
+						   echo	"<a href='javascript:deleteFunction(".'"'.$row->id_rate.'","'.$row->place_name.'"'.")'><span class='deleterev close fa fa-trash-o' id='nilaiid' value=''></span></a>";	
 							//echo 	"<a href='localhost/JAKtrip/ReviewCtr/del/".$row->place_name."/".$row->id_rate."'>tes delete</a>";
 							//echo "<a href='javascript:myFunction(".$row->id_rate.",'asasasasee')'>asasasasasasas</a>"
 							//echo	anchor('ReviewCtr/del/'.$row->place_name.'/'.$row->id_rate, '<span class="deleterev close fa fa-trash-o"></span>');

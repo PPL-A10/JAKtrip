@@ -30,12 +30,12 @@
 
 		<script>
 
-		var lokasi = "";
+		var lokasi = "All";
 	
 	function setLokasi(city){
 		lokasi=city;
 	}
-	function filterFunctionFinal2(){		
+	/*function filterFunctionFinal2(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		var y = document.getElementById("category_select").value;
 		var z = document.getElementById("name_select").value;
@@ -60,10 +60,11 @@
 				            }
                         }
                     );
-	}
+	}*/
 
 	function filter(city){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" ;
+		//$("#output_field").html("sdfjsdfosdfghnofgnjhodfighjndfoghdfg");
 		setLokasi(city);
 		jQuery.ajax({
 				        type: "POST",
@@ -169,29 +170,67 @@
 				            }
                         }
                     );
-	}	function deleteFunction(id,tempat){
+	}	
+	function deleteFunction(id,tempat){
 //$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
+window.location.reload();
 		jQuery.ajax({
 				        type: "POST",
 				        url: "http://localhost/JAKtrip/index.php/ReviewCtr/del/"+tempat+"/"+id,
 				        success: function(res) {
-				            if (res)
+				           /* if (res)
 				            {
-								$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
-								//var obj = jQuery.parseJSON(res);
-								//var resultQuery = "";
-								//for (var i=0 ; i<obj.query2.length; i++){
+								//$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query2.length; i++){
 									//resultQuery = resultQuery + "<div class='reviewmember col-lg-12'><div class='reviewkiri col-lg-4'><div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div><div class='author' ><b>"+obj.query[i].username+"</b></div><div class='hasreviewed'>Reviewed 7 places</div></div><div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span><br><span class='judulreview tuffyh3a' id='judul'><p>"+obj.query[i].title+"</p></span><br><span class='isireview' id='isireview'><p>"+obj.query[i].reiew+"</p></span></div></div>";
+									resultQuery= resultQuery + obj.query[i].place_name;
 								}
 								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
-							//$("#isi_field").html(resultQuery);
+							$("#isi_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+//$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
+							//location.reload();
+							}*/
+							window.location.reload();
+				            }
+                        }
+                    );
+					//location.reload();
+					//window.location.reload();
+	}
+	
+	function myFunction() {
+		
+	var x = document.getElementById("range");
+    var defaultVal = x.defaultValue;
+    var currentVal = x.value;
+	var res = currentVal.split(";");
+	var min = res[0];
+	var max = res[1];
+//$("#output_field").html(min+ "   fsdfsdfmsdkplfmsdfmsdokf  "+max);
+	
+			jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataprice/"+min+"/"+max,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
 //								$("#output_field").html(obj.query[0].place_name;
 	}
 							
 				            }
                         }
                     );
-	}
+}
 	
 (function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
