@@ -1,3 +1,4 @@
+
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -17,49 +18,88 @@
 
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 		<script>
-			var cars1 = [];
-			function fui(x,y){
-					alert(x);
+			var arrayTripChoosen = [];
+			var arrayTripPriceChoosen =[];
+			var tripCost = 0;
+			var AllTourAttr = [];
+			var gmarkers = [];
+			var indexMarkerChoosen = -1;
+			function addTrip(x,y){
 					
 					var budget = parseInt(x);
-				//	window.location.href = '//localhost/codeigniter/index.php/tesController/chooseTouristAttr/' + budget;
-					jQuery.ajax({
-                        type: "POST",
-                        url: "http://localhost/codeigniter/index.php/tesController/chooseTouristAttr/"+x,
-                        success: function(res) {
-                            if (res)
-                            {
-                            	var obj = jQuery.parseJSON(res);
-                         		var hasilPemilihan = "";
-                         		hasilPemilihan = "<table class='table'>";
-                            	for(var i = 0; i<obj.query.length; i++)
-                            	{
-                           		//	alert(obj.query[i].Nama);
-                         //  			hasilPemilihan = hasilPemilihan + "<div class=\"blog-post well\"><p>"+obj.query[i].Nama+" <button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>";
-                         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].Nama+"<br>"+obj.query[i].Budget+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].Nama+"\" onclick=\"fui("+obj.query[i].Budget+",'"+obj.query[i].Nama+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></td></tr>";
+					tripCost = tripCost + budget;
+					budget = parseInt($('input#inputBudgetDinamic').val()) - parseInt(x);
+					$('input#inputBudgetDinamic').val(budget);
+					showTheSuggestionList(budget);
+					
+					var tempmarker = gmarkers[searchIndexListTourAttr(y)];
+					tempmarker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+					var ditambahkan = y ;
+					arrayTripChoosen.push(ditambahkan);
+					arrayTripPriceChoosen.push(parseInt(x));
 
-                           	//		$("#blogMain").html("<div class=\"blog-post well\"><p>"+obj.query[i].Nama+"<button type=\"button\" class=\"btn btn-xs btn-success\" id=\""+obj.query[i].Nama+"\" onclick=\"fui('"+obj.query[i].Budget+"')\""+obj.query[i].Nama+"\">"+obj.query[i].Budget+"</button></p></div>");
-                            	}
-                            	hasilPemilihan = hasilPemilihan + "</table>";
-                            	$("#blogMain").html(hasilPemilihan);
-                            }
+					showTheItinerary();
+					$("#showSuccess").html("you success adding " + y +" to your itinerary");
+					$("#alertAddItinerary").modal('show');
+					$("#confirmSuccessAddItinerary").unbind().click(function(){
+						var popover = $('.buttonAtasToggle').data('popover');
+			  			$('[data-toggle="popover"]').popover('show');
+					});
+			}
+			
+			
+			function showTheSuggestionList(budget)
+			{
+				jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budget,
+				        success: function(res) {
+				            if (res)
+				            {
+				            	var obj = jQuery.parseJSON(res);
+				         		var hasilPemilihan = "";
+				         		hasilPemilihan = "<table class='table'>";
+				         		
+				            	for(var i = 0; i<obj.query.length; i++)
+				            	{
+				         				var sudahDipilih = false;
+				         				for(var j = 0; j<arrayTripChoosen.length; j++)
+				         				{
+				         					if(obj.query[i].place_name == arrayTripChoosen[j])
+				         					{
+				         						sudahDipilih = true;
+				         					}
+				         				}
+				         				if(!sudahDipilih)
+				         				{
+				         					hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"addTrip("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
+				         				}
+				            	}
+				            	hasilPemilihan = hasilPemilihan + "</table>";
+				            	$("#blogMain").html(hasilPemilihan);
+
+				            }
                         }
                     });
-					var ditambahkan = y ;
-					//alert(ditambahkan);
-					cars1.push(ditambahkan);
-					alert(ditambahkan);
+			}
 
-					var yangDipilih = "";
+			function showTheItinerary()
+			{
+				var yangDipilih = "";
 					yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
-			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table'>";
-			    	for(var i = 0; i<cars1.length; i++)
+			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
+			    	for(var i = 0; i<arrayTripChoosen.length; i++)
 			    	{
-			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>"+cars1[i]+"</td><td><button type='button' class='btn btn-danger btn-sm sharp'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></button></td>	</tr>";
+			    		if(arrayTripChoosen[i]!='terhapus')
+			    		{
+			    			yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>"+arrayTripChoosen[i]+"<br>"+arrayTripPriceChoosen[i]+"<br> <a class='toZoom' onclick='return setMapLocationZoom(\""+arrayTripChoosen[i]+"\")'>see location in map<a></td><td><a class ='removeTrip' onclick='return confirmDelete(\""+arrayTripChoosen[i]+"\",\""+arrayTripPriceChoosen[i]+"\")' ><span class='glyphicon glyphicon-trash' area-hidden='true' ></span></a></td></tr>";
+			    		}
+			    		
 			    	}
 			    	yangDipilih = yangDipilih + "</table></div>";
-			    	
-			    	alert(yangDipilih);
+			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Your Trip Cost</th><th>Rp "+tripCost+"</th></tr></table>"
+
+			    
 			    	$(".buttonAtasToggle").popover({
 			        html : true,
    					content: function(){
@@ -68,204 +108,151 @@
 			    	});
 			    	$('.buttonAtasToggle').attr('data-content', yangDipilih);
 			    	var popover = $('.buttonAtasToggle').data('popover');
-			    	popover.setContent();
-			    	popover.$tip.addClass(popover.options.placement);
+			    	$('[data-toggle="popover"]').popover('hide');
 
-					$("#listItinirary").html('');
-					jQuery.each(cars1, function(index, item){
-					//	alert(item);
-						$("#listItinirary").append('<li><a href="#"><p>'+item+'</p><div class="col-xs-1"><button type="button" class="btn btn-danger btn-xs">Action</button></div></a></li>');
-					});
 			}
+
+			function confirmDelete(trip, budgetRemove)
+			{
+				$('#showWarning').html("do you want to remove " + trip + " from your itinerary");
+				var popover = $('.buttonAtasToggle').data('popover');
+			    $('[data-toggle="popover"]').popover('hide');
+				$("#alertRemoveItinerary").modal('show');
+
+				$('#confirmDeletefromItinerary').unbind().click(function(){
+					
+					$('#showSuccessRemove').html("success removing " + trip + " from your itinerary");
+					removeTrip(trip, budgetRemove);
+					$('#alertSuccessRemovefromItinerary').modal('show');
+					
+					$('#confirmSuccessRemove').unbind().click(function(){
+						$('[data-toggle="popover"]').popover('show');
+					});
+				});	
+				
+				$('.cancelDelete').unbind().click(function(){
+					var popover = $('.buttonAtasToggle').data('popover');
+			  		$('[data-toggle="popover"]').popover('show');
+				});		
+				
+			}
+			function removeTrip(trip, budgetRemove)
+			{
+				var indexToRemove = -1;
+				for(var i=0; i< arrayTripChoosen.length; i++)
+				{
+					if(arrayTripChoosen[i] == trip)
+					{
+						indexToRemove = i;
+						i=arrayTripChoosen.length;
+					}
+				}
+
+				arrayTripChoosen[indexToRemove] = "terhapus";
+				arrayTripPriceChoosen[indexToRemove] = -1;
+				
+				var budgetAfterRemove = parseInt($('#inputBudgetDinamic').val()) + parseInt(budgetRemove);
+				$('#inputBudgetDinamic').val(budgetAfterRemove);
+				tripCost = tripCost - parseInt(budgetRemove);
+
+				showTheSuggestionList(budgetAfterRemove);
+				showTheItinerary();
+		    	var tempmarker = gmarkers[searchIndexListTourAttr(trip)];
+				tempmarker.setIcon(null);
 			
-			$(function(){
-    
-			    // Enabling Popover Example 1 - HTML (content and title from html tags of element)
-		//	    $("[data-toggle=popover]").popover();
 
-			    // Enabling Popover Example 2 - JS (hidden content and title capturing)
-			    $("#popoverExampleTwo").popover({
-			        html : true, 
-			        content: function() {
-			          return $('#popoverExampleTwoHiddenContent').html();
-			        },
-			        title: function() {
-			          return $('#popoverExampleTwoHiddenTitle').html();
-			        }
-			    });
+			}
 
-			    var yangDipilih = "";
-			    if(cars1.length == 0)
-			    {
-			    	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
-			    	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table'>";
-			    	for(var i = 0; i<4; i++)
-			    	{
-			    		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><button type='button' class='btn btn-danger btn-sm sharp'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></button></td>	</tr>";
-			    	}
-			    	yangDipilih = yangDipilih + "</table></div>";
-			    }
-			     for(var i=0; i<cars1.length; i++)
-			     {
-			     	yangDipilih = yangDipilih + "<div style=\"display: none\"><div><b>Popover Example</b> 2 - Content</div></div>";
-			     }
+			function searchIndexListTourAttr(tourAttr)
+			{
+				
+				
+				for(var i = 0; i< AllTourAttr.length; i++)
+				{
+					
+					if(AllTourAttr[i]==tourAttr)
+					{
+						
+						return i;
+					}	
+				}
+				
+			}
 
-			   //  alert(yangDipilih);
-			     $(".buttonAtasToggle").popover({
-			        html : true,
-   					content: function(){
-   						return yangDipilih;	
-   					}
-			    });
+			function setMapLocationZoom(tourAttr)
+			{
+				var indexToZoom = searchIndexListTourAttr(tourAttr);
+				map.setCenter(gmarkers[indexToZoom].position);
+				if(indexMarkerChoosen != -1)
+				{
+					gmarkers[indexMarkerChoosen].setAnimation(null);
+				}
+				gmarkers[indexToZoom].setAnimation(google.maps.Animation.BOUNCE);
+				indexMarkerChoosen = indexToZoom;
+			    map.setZoom(15);
+			}
 
-			     //alert($('#popoverExampleTwo').data('popover'));
-			     
-	          	
+			function resetMaps()
+			{
+				var myCenter = new google.maps.LatLng(-6.195456, 106.822229);
+				map.setCenter(myCenter);
+			//	alert(indexMarkerChoosen);
+				if(indexMarkerChoosen != -1)
+				{
+					gmarkers[indexMarkerChoosen].setAnimation(null);
+				}
+				indexMarkerChoosen = -1;
 
-			});
-			// $(function(){ 
-			// 	var yangDipilih = "";
-			// 	yangDipilih = yangDipilih + "<table class='table'><tr><th>Daftar tempat wisata</th></tr></table>";
-			//     	yangDipilih = yangDipilih + "<div class='canScroll'><table class='table'>";
-			//     	for(var i = 0; i<4; i++)
-			//     	{
-			//     		yangDipilih  = yangDipilih + "<tr><td><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='50' height='50'></td><td>Ini tempat wisata yang ada di jakarta</td><td><button type='button' class='btn btn-danger btn-sm sharp'><span class='glyphicon glyphicon-remove' area-hidden='true'></span></button></td>	</tr>";
-			//     	}
-			//     	yangDipilih = yangDipilih + "</table></div>";
-			// 	$('#popoverBtn').popover({
-			//         html : true,
-   // 					content: function(){
-   // 						return yangDipilih;	
-   // 					}
-			//     }); 
-			// });
-
-
-
+				map.setZoom(11);
+			}
 
 			$(document).ready(function()
 			{
 				
-				 
+				 showTheItinerary();
+				 $("#myModal").modal('show');
 
-			// 	$("#somebutton1").click(function(){
-			//         $("#somebutton2").remove();
-			//     });
+			//	 resetMaps();
+				 $('#saveInputBudget').click(function(){
+					var budget = $("input#inputBudget").val();
+					$('input#inputBudgetDinamic').val(budget);
+					 $("#myModal").modal('hide');
 
 
-   //  			$("#somebutton").click(function () {
-			// 	  $("#row1").append('<div class="col-md-3" id="apa"><button type="button" class="btn btn-primary">Action</button></div>');
-			// 	});
+					 jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/Jaktrip/index.php/tesController/chooseTouristAttr/"+budget,
+				        success: function(res) {
+				            if (res)
+				            {
+				            	var obj = jQuery.parseJSON(res);
+				         		var hasilPemilihan = "";
+				         		hasilPemilihan = "<table class='table'>";
+				            	for(var i = 0; i<obj.query.length; i++)
+				            	{
+				           		
+				         				hasilPemilihan = hasilPemilihan + "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query[i].place_name+"<br>"+obj.query[i].weekday_price+"<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\""+obj.query[i].place_name+"\" onclick=\"addTrip("+obj.query[i].weekday_price+",'"+obj.query[i].place_name+"')\""+obj.query[i].place_name+"\">"+obj.query[i].weekday_price+"</button><br><a class='toZoom' onclick='return setMapLocationZoom(\""+obj.query[i].place_name+"\")'>see location in map<a></td></tr>";
 
-			// 	jQuery.each(cars1, function(index, item){
-			// 		$("#row1").append('<div class="col-md-3"><button type="button" class="btn btn-primary pil-row pil-row1">'+item+'</button></div>');
-			// 	});
+				           	
+				            	}
+				            	hasilPemilihan = hasilPemilihan + "</table>";
+				            	$("#blogMain").html(hasilPemilihan);
+				            }
+                        }
+                    });
+				});
 
-			// 	jQuery.each(cars1, function(index, item){
-			// 		$("#listItinirary").append('<li><a href="#">'+item+'</a></li>');
-			// 	});
 
 				
 				
-			// 	$(".mobil").click(function(){
-			// 		var ditambahkan = $(this).html();
-			// 		cars1.push(ditambahkan);
-			// 		$("#row1").append('<div class="col-md-3"><button type="button" class="btn btn-primary pil-row pil-row1">'+ditambahkan+'</button></div>');
-
-			// 		$("#row3").html('<div class="col-md-3">'+cars1+'</div>');
-					
-
-			// 		$("#listItinirary").html('');
-			// 		jQuery.each(cars1, function(index, item){
-			// 		$("#listItinirary").append('<li><a href="#">'+item+'</a></li>');
-			// 		});
-					
-			// 		$(".pil-row1").click(function(){
-			// 			var itemToRemove = $(this).text();
-			// 			cars1 = jQuery.grep(cars1, function(value){
-			// 				return value != itemToRemove;
-			// 			});
-			// 			$(this).parent().remove();
-
-			// 			$(".pil-row1").click(function () {
-	  //     				$(this).parent().remove();
-	  //   				});
-
-			// 			$("#row3").html('<div class="col-md-3">'+cars1+'</div>');
-						
-			// 			//location.reload();
-			// 		});
-			// 	});
-				
-			// 	$(".submit1").click(function(event) {
-			// 		jQuery.ajax({
-   //                      type: "POST",
-   //                      url: "http://localhost/codeigniter/index.php/chooseTouristAttr/",
-   //                    	datatype : "json",
-   //                      data: jsonObj[0],
-   //                      success: function(res) {
-   //                          if (res)
-   //                          {
-   //                              // Show Entered Value
-   //                             // jQuery("div#test").show();
-   //                             // jQuery("div#value").html(res.username);
-   //                         //     jQuery("div#value_pwd").html(res.pwd);
-   //                         		alert(res.username);
-   //                          }
-   //                      }
-   //                  });
-			// 	});
-				
-
-			// 	$(".submit").click(function(event) {
-   //                  event.preventDefault();
-   //                  //var user_name = $("input#name").val();
-   //                  //var password = $("input#pwd").val();
-   //                  var tempjson = "{ akb:";
-
-   //                  for (i = 0; i < cars1.length; i++)
-   //                  {
-                    	
-   //                  	if(i==cars1.length-1)
-   //                  		tempjson = tempjson +  cars1[i] + "}";
-   //                  	else	
-   //                  		tempjson = tempjson +  cars1[i] + ",";
-   //                  }
-   //                 //	var tempjson1 = "[" + tempjson + "]";
-   //                //  var myjson = JSON.parse(tempjson1);
-   //               // 	var tempjson1 = {akb: + tempjson + };
-   //                  var str = '[{"id":1,"name":"Test1"},{"id":2,"name":"Test2"}]';
-			// 		var jsonObj = JSON.parse('[' + tempjson + ']');
-   //                 //	alert(tempjson);
-   //                 	var mama = JSON.parse(str);
-   //              //    alert(tempjson1); 
-   //                   alert(jsonObj[0]);
-   //                  jQuery.ajax({
-   //                      type: "POST",
-   //                      url: "http://localhost/codeigniter/index.php/tesController/userDataSubmit",
-   //                    	datatype : "json",
-   //                      data: jsonObj[0],
-   //                      success: function(res) {
-   //                          if (res)
-   //                          {
-   //                              // Show Entered Value
-   //                             // jQuery("div#test").show();
-   //                             // jQuery("div#value").html(res.username);
-   //                         //     jQuery("div#value_pwd").html(res.pwd);
-   //                         		alert(res.username);
-   //                          }
-   //                      }
-   //                  });
-   //              });
 			});
 			
 		</script>
-		<?php
-			$cars = array("Volvo", "BMW", "Toyota");
-		?>
+		
 		<script src="http://maps.googleapis.com/maps/api/js"></script>
 		<script>
 			var map;
+			var markers = [];
 			function initialize() {
 			  var mapProp = {
 			    center:new google.maps.LatLng(-6.195456, 106.822229),
@@ -273,7 +260,38 @@
 			    mapTypeId:google.maps.MapTypeId.ROADMAP
 			  };
 			  map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			  jQuery.ajax({
+			        type: "POST",
+			        url: "http://localhost/Jaktrip/index.php/tesController/getAll",
+			        success: function(res) {
+			            if (res)
+			            {	
+			            	var obj = jQuery.parseJSON(res);
+			         		var hasilPemilihan = "";
+			         	
+			            	for(var i = 0; i<obj.query.length; i++)
+			            	{
+			           		
+			         			var tempplace_name = obj.query[i].place_name;
+			         			var templongitude = obj.query[i].longitude;
+			         			var templattitude = obj.query[i].lattitude;
+			         			
+			         			AllTourAttr.push(tempplace_name);
+			         			var location = new google.maps.LatLng(parseFloat(templongitude),parseFloat(templattitude));
+			         	
+			           			var marker = new google.maps.Marker({
+								    position: location
+								  });
+			           			gmarkers.push(marker);
+			           			marker.setMap(map);
+
+			            	}
+			            }
+	                }
+	            });
+				
 			}
+			
 			google.maps.event.addDomListener(window, 'load', initialize);
 
 			google.maps.event.addListener(map, 'click', function(event) {
@@ -282,142 +300,141 @@
 
 			function placeMarker(location) {
 			    var marker = new google.maps.Marker({
-			        position: location, 
+			        position: new google.maps.LatLng(-6.195456, 106.822229), 
 			        map: map
 			    });
 			}
 		</script>
 	</head>
 	<body>
-	<!--div id="popoverEdit">
-		<button  id="buttonAtasToggle" type="button" class="btn btn-lg btn-danger buttonAtasToggle " data-container="#popoverEdit" data-placement="bottom"		
-	        data-toggle="popover" >
-	  	Click to toggle popover
-		</button>
-	</div-->
-	<!--div id="wrap">
-		<button id="popoverBtn" type="button" class="btn btn-default" data-container="#wrap" data-toggle="popover" html="true" data-placement="bottom" >
-		  Popover on right</button>
-	</div-->
-	<!--button type="button" class="btn btn-lg btn-danger" 
-        data-toggle="popover" title="Popover title" 
-        data-content="And here's some amazing content. It's very engaging. Right?">
-  	Click to toggle popover
-	</button-->
+	
+		<div id="myModal" class="modal fade" role="dialog"  aria-labelledby="basicModal" aria-hidden="true" data-backdrop="static">
+		    <div class="modal-dialog">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+			                <h4 class="modal-title">How many budget do you have?</h4>
+			            </div>
+			            <div class="modal-body">
+			                <input id="inputBudget"type="text" class="form-control" placeholder="Your budget" onkeydown="if (event.keyCode == 13) document.getElementById('saveInputBudget').click()">
+			            </div>
+			            <div class="modal-footer">
+			                <button id="saveInputBudget" type="button" class="btn btn-primary">Save changes</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
+		<div id="alertAddItinerary" class="modal fade" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+			                <div class="alert alert-success">
+						        <strong>Success add to itinerary</strong>
+						    </div>
+			            </div>
+			            <div class="modal-body">
+			                <p id="showSuccess"></p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" id="confirmSuccessAddItinerary" data-dismiss="modal" class="btn btn-success">ok</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
+		<div id="alertRemoveItinerary" class="modal fade" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+		        			 <div class="alert alert-warning">
+			                	<button type="button" class="close cancelDelete" data-dismiss="modal" aria-hidden="true">&times;</button>
+						        <strong>Warning</strong>
+						    </div>
+			            </div>
+			            <div class="modal-body">
+			                <p id="showWarning"></p>
+			            </div>
+			            <div class="modal-footer">
+			            	<button type="button" data-dismiss="modal" class="btn btn-default cancelDelete">cancel</button>
+			                <button id="confirmDeletefromItinerary" type="button" data-dismiss="modal" class="btn btn-danger">remove</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
+		<div id="alertSuccessRemovefromItinerary" class="modal fade" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+			                <div class="alert alert-success">
+						        <strong>Success to remove from itinerary</strong>
+						    </div>
+			            </div>
+			            <div class="modal-body">
+			                <p id="showSuccessRemove"></p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" id="confirmSuccessRemove" data-dismiss="modal" class="btn btn-success">ok</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
+		<div id="loginFormModal" class="modal fade" data-backdrop="static">
+		    <div class="modal-dialog modal-sm">
+		        <div class="modal-content">
+		        		<div class="modal-header">
+			                <div class="alert alert-success">
+						        <strong>Success to remove from itinerary</strong>
+						    </div>
+			            </div>
+			            <div class="modal-body">
+			                <p id="showSuccessRemove"></p>
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" id="confirmSuccessRemove" data-dismiss="modal" class="btn btn-success">ok</button>
+			            </div>
+		        </div>
+		    </div>
+		</div>
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="#">Brand</a>
+	      
+	      <a class="navbar-brand" href="#">JAKtrip</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu" id="listItinirary">
-	            <li><a href="#">Action</a></li>
-	            <ul class="dropdown-menu" role="menu">
-	            	<li><a href="#">Another action</a></li>
-	            </ul>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
-	          </ul>
-	        </li>
 	      </ul>
 
 	      <form class="navbar-form navbar-left" role="search">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
+	          <input id="inputBudgetDinamic" type="text" class="form-control" placeholder="Your budget">
 	        </div>
-	        <button type="submit" class="btn btn-default">Submit</button>
 	      </form>
 	      <ul class="nav navbar-nav navbar-right">
+	      	<li>
+	      		<a type="button" class="btn" onclick="return resetMaps()" >Reset Map Zoom</a>
+	      	</li>
 	       	<li id="popoverEdit1">
-		        
 			        <a  type="button" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"		
 			        data-toggle="popover">Trip</a>
-		     
 	        </li>
-	        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	          </ul>
-	        </li>
+	  		<li>
+	  				<a  type="button" class="btn">Login</a>
+	  		</li>>
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-		<!--button id="somebutton" type="button" class="btn btn-danger haha">Action</button>
-		<button id="somebutton1" type="button" class="btn btn-danger haha">Action</button>
-		<button id="somebutton2" type="button" class="btn btn-danger haha">Test</button>
-		<button type="button" id="popOverOnBottom" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom">
-  Popover on bottom
-	</button-->
-		<?php
-			// foreach($cars as $key => $value)
-			// {
-			// 	echo "<button id=\"somebutton\" type=\"button\" class=\"btn btn-danger\">".$value."</button>";
-			// }
-		?>
-		<div class=container>
-			<div class="row" id="row1">
-				
-			</div>
-			<!--div class="dropdown">
-			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-			    Dropdown
-			    <span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-			  	<?php
-			  // 		foreach ($query->result() as $row) 
-			  // 		{
-					// 	echo "<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"#\">".$row->A."</a></li>";
-					// }
-			  	?>
-			  </ul>
-			</div-->
-		</div>
-		<div class="row" id="row2">
-			<?php
-					// foreach ($cars as $key => $value) {
-					// 	echo "<div class=\"col-md-3\"><button type=\"button\" class=\"btn btn-primary mobil\">".$value."</button></div>";
-					// }
-			?>
-		</div>
-		<div class="row" id="row3"></div>
-		<?php
-
-		?>
-		
-		<div id="valuess"></div>
-		
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div id="blogMain" class="col-md-6 canScrollMain" >
 				<?php
-					echo "<table class='table'>";
+					echo "<table class='table table-hover'>";
 					foreach ($query->result() as $row) {
 						# code...
-						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->Nama."<br>".$row->Budget."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->Nama."\" onclick=\"fui(".$row->Budget.",'".$row->Nama."')\"".$row->Nama."\">".$row->Budget."</button></td></tr>";
+						echo "<tr><td style='width:100px;'><img src='../assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>".$row->place_name."<br>".$row->weekday_price."<br><button type=\"button\" class=\"btn btn-xs btn-success tempatWisata\" id=\"".$row->place_name."\" onclick=\"addTrip(".$row->weekday_price.",'".$row->place_name."')\"".$row->place_name."\">".$row->weekday_price."</button><br><a class='toZoom' onclick='return setMapLocationZoom(\"".$row->place_name."\")'>see location in map<a></td></tr>";
 					}
 					echo "</table>";
 				?>
@@ -427,6 +444,7 @@
 	 		 	</div>
 			</div>
 		</div>
-		
+				
 	</body>
+
 </html>
