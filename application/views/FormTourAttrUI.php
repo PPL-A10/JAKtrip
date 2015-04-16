@@ -96,7 +96,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Inside Of</label><br>
 						<?php echo form_error('place_info'); ?>
    					 	<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="Inside Of" id="place_inform" name="place_inform" style="margin-left: -10px;">    
+   					 	<select   class="field form-control" title="Inside Of" id="place_inform" name="place_inform" style="margin-left: -10px; background-color: #f0f0f0 !important;">    
    					     	<option value="" selected disabled>Choose a place..</option>
    					     	<?php
 			                  foreach($place as $row)
@@ -193,7 +193,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" required>    
+   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" style="background-color: #f0f0f0 !important;" required>    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
    				    		foreach ($query as $row) {
@@ -221,25 +221,8 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
-				    <div class="form-group">
-					  <div class="col-lg-11">
-						<label class="control-label">Author <span class="req">*</span></label><br>
-						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" id="select_author" name="select_author" required>    
-   							 <option value="" selected disabled>Choose author..</option>
-   					      	<?php
-   				//     		foreach ($admin as $row) {
-							// 		echo "<option value='".$row->username."'>".$row->username."</option>";
-									
-							// } 
-							echo "<option value='".$_COOKIE["username"]."'>".$_COOKIE["username"]."</option>"; 				    		 
-   				   			?>
-
-   					 	</select>
-   					 </span>
-				      <br></div>
-				    </div>
-				    <br>
+				    
+				    <br><br>
 
 				    <button class="btn btn-warning" type="submit">PUBLISH</button>
 				    

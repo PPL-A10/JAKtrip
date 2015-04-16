@@ -93,8 +93,8 @@
          
            <div class="col-lg-5 form-inline" style="margin-right: -150px;">
              <label class="control-label">Sort by </label>
-             <span class="fieldsml custom-dropdown bordered">
-              <select class="fieldsml form-control" title="Popularity">    
+             <span class="fieldsml custom-dropdown">
+              <select class="fieldsml form-control" title="Popularity" style="background-color: #f0f0f0 !important;">    
                   <option value="" selected>Popularity</option>  
                   <option value="">Highest Rating</option>
                   <option value="">Name: A-Z</option>

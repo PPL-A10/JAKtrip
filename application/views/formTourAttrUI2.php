@@ -122,7 +122,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Inside Of</label><br>
 						<?php echo form_error('place_info'); ?>
    					 	<span class="field custom-dropdown ">						
-   					 	<select   class="field form-control" title="Inside Of" id="place_inform" name="place_inform" style="margin-left: -10px;">       					     	
+   					 	<select   class="field form-control" title="Inside Of" id="place_inform" name="place_inform" style="margin-left: -10px; background-color: #f0f0f0 !important;">       					     	
 							<option value="" selected disabled>Choose place</option>
    					     	<?php
 			                 foreach($lala as $row)
@@ -182,7 +182,7 @@ function addLocation(lng,lat){
 								//	echo form_dropdown('city',$loc, $city)."<br>"; 
 						?>-->
   						<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="margin-left: -10px;" required>    
+   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="margin-left: -10px; background-color: #f0f0f0 !important;" required>    
    					     	<option value="" selected disabled>All Location</option>
    					     	<?php echo form_error('city');
 			                  foreach($query2 as $row)
@@ -239,7 +239,7 @@ function addLocation(lng,lat){
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
 						 <!-- <?php //echo form_dropdown('halte_name',$hlt_name, $halte_name)."<br>"; ?>-->
-   					 	 <select class="field form-control" id="select_busstop" name="select_busstop" title="Nearest bus stop?" required>    
+   					 	 <select class="field form-control" id="select_busstop" name="select_busstop" title="Nearest bus stop?" style="background-color: #f0f0f0 !important;" required>    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
    				    		foreach($query as $row)
@@ -273,27 +273,8 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
-				    <div class="form-group">
-					  <div class="col-lg-11">
-						<label class="control-label">Author <span class="req">*</span></label><br>
-						 <span class="field custom-dropdown " >
-						<select class="field form-control" title="Nearest bus stop?" id="select_author" name="select_author" required>    
-   							 <option value="" selected disabled>Choose Author</option> 
-   					   		<?php foreach($admin as $row)
-			                  {
-			                  	if(strcmp($row->username,$author)==0){
-									echo "<option value='".$author."' selected>".$author."</option>";
-								}
-								else{
-									echo "<option value='".$row->username."'>".$row->username."</option>";
-								}
-			                  } 
-			                  ?>
-   					 	</select>
-   					 </span>
-				      <br></div>
-				    </div>
-				    <br>
+				  
+				    <br><br>
 
 				    <button class="btn btn-warning" type="submit">PUBLISH</button>
 				    
