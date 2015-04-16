@@ -239,11 +239,11 @@ function sortFunction(){
 	    $(document).ready(function () {
 		    $("#showRec, #showOwntr").hide();
 		    $("#recomm").click(function () {
-		        $('#showRec').show();
+		        $('#showRec').toggle();
 		        $('#showOwntr').hide();
 		    });
 		    $("#owntr").click(function () {
-		        $('#showOwntr').show();
+		        $('#showOwntr').toggle();
 		        $('#showRec').hide();
 		    });
 		});

@@ -27,11 +27,11 @@
 
              <span class="input-group col-lg-3">
               <span class="fieldsml input-group-addon">Rp</span>
-              <input id="input_price" class="fieldsml form-control" type="text" style="width: 93%;" value="<?php if(isset($_COOKIE['budget'])) {echo $_COOKIE['budget'];} ?>" placeholder="Budget">
+              <input id="input_price" class="fieldsml form-control" type="text" style="width: 93%;" value="<?php if(isset($_COOKIE['budget'])) {echo $_COOKIE['budget'];} ?>" placeholder="Budget" readonly>
             </span>
 
             <span class="input-group col-lg-3">
-              <input class="fieldsml datepicker" type="text" placeholder="Date" id="sisaBudget" style="margin-left: 2px;" value=<?php echo $_COOKIE['datechoosen'] ?> >
+              <input class="fieldsml datepicker" type="text" placeholder="Date" id="sisaBudget" style="margin-left: 2px;" value=<?php echo $_COOKIE['datechoosen'] ?> readonly>
               </span>
           </div>
 

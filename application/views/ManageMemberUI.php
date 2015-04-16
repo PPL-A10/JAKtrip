@@ -7,7 +7,7 @@
 				
 				
 				<span class="input-group col-lg-7" style="margin-left: 150px;">
-				    <input id="name_select" class="fieldsml form-control" type="text" placeholder="Member search">
+				    <input id="name_select" class="fieldsml form-control" type="text" placeholder="Member search" style="background-color: #e8e8e8 !important;">
 				    <span onclick="filterFunctionFinalMember()" class="input-group-btn">
 				      <button class="fieldsml btn btn-default" type="button" style="width:40%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 				    </span>
@@ -43,11 +43,7 @@
 			    		<li><a href="javascript:filterFunctionFinal2('z')">Z</a></li>
 			    	</ul>			    	
 			    </div>
-			    <br><br>
-			    <span id="openLogin" class="newpost"><br>
-				
-				
-				
+			    <br><br><br>
 
 				<table id="tab1" class="newpost table table-striped table-hover">
 				  <thead >

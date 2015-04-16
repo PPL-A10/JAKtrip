@@ -25,8 +25,8 @@
 							<div class="col-lg-8 box img-rounded ">
 								<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable11/" method="post">
 								<span class="field custom-dropdown " id="ddcontainerh">
-								    <select id="ddbush" class="field form-control" title="Nearest bus stop?" type="dropdown" name="mydropdown" required>    
-								        <option value="" selected disabled>Nearest bus stop?</option>
+								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
+								        <option value="" selected disabled>Your starting point?</option>
 								        <?php
 								        	foreach ($query as $row) {
 								        		# code...
@@ -60,8 +60,8 @@
 						<div class="col-lg-6 box img-rounded ">
 							<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable1/" method="post">
 								<span class="field custom-dropdown " id="ddcontainerh">
-								    <select id="ddbush" class="field form-control" title="Nearest bus stop?" type="dropdown" name="mydropdown" required>    
-								        <option value="" selected disabled>Nearest bus stop?</option>
+								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
+								        <option value="" selected disabled>Your starting point?</option>
 								        <?php
 								        	foreach ($query as $row) {
 								        		# code...

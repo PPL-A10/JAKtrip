@@ -56,7 +56,7 @@
 			<span id="info" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 			<section id="infocon" class="textdetail" >
 				<div class="col-lg-9">
-				<?php foreach($query as $row){echo "<br>Harga<br>&nbsp&nbsp&nbsp&nbspWeekend: ".$row->weekend_price."<br>&nbsp&nbsp&nbsp&nbspWeekday : ".$row->weekday_price."<br><br> <p>".$row->description; } ?>
+				<?php foreach($query as $row){echo "<br>Harga<br>&nbsp&nbsp&nbsp&nbspWeekend: Rp ".$row->weekend_price."<br>&nbsp&nbsp&nbsp&nbspWeekday : Rp ".$row->weekday_price."<br><br> <p>".$row->description; } ?>
 				
 				</div>
 			</section>
@@ -84,7 +84,7 @@
 							        <label for="rating5">5</label>
 							        <input id="rating4" type="radio" name="rate" value="4">
 							        <label for="rating4">4</label>
-							        <input id="rating3" type="radio" name="rate" value="3" checked>
+							        <input id="rating3" type="radio" name="rate" value="3">
 							        <label for="rating3">3</label>
 							        <input id="rating2" type="radio" name="rate" value="2">
 							        <label for="rating2">2</label>

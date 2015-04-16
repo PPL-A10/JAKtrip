@@ -4,13 +4,13 @@
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 70px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a class="submenupost" href="<?php echo base_url('index.php/ManageTourAttrCtr');?>">Places</a>
-				<li><a class="submenupost" href="<?php echo base_url('index.php/TourAttrCtr');?>">Add New Place</a>
+				<!-- li><a class="submenupost" href="<?php //echo base_url('index.php/TourAttrCtr');?>">Add New Place</a>
 					<ul class="subsubmenu">
-						<li><a class="smp" href="<?php echo base_url('index.php/ManageTourAttrCtr');?>">All Posts</a></li>
-						<li><a class="smp" href="<?php echo base_url('index.php/TourAttrCtr');?>">Add New Post</a></li>
+						<li><a class="smp" href="<?php //echo base_url('index.php/ManageTourAttrCtr');?>">All Posts</a></li>
+						<li><a class="smp" href="<?php //echo base_url('index.php/TourAttrCtr');?>">Add New Post</a></li>
 						<li><a class="smp" href="#">Categories</a></li>
 					</ul>
-				</li>
+				</li-->
 				<li><a class="submenua" href="<?php echo base_url('index.php/ManageMemberCtr');?>">Members</a></li>
 		        <li><a class="submenusugg" href="#">Suggestions</a>
 		        	<ul class="subsubmenu">
