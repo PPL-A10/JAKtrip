@@ -40,6 +40,18 @@
 
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
+
+$route['home'] = 'homeCtr';
+$route['trip'] = 'SearchCtr';
+$route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
+$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
+$route['allplaces'] = 'allPlacesCtr';
+//$route['allplaces/search/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
+
+
+
+
+
 $route['DetailCtr/(:any)'] = 'DetailshareCtr/index/$1';
 $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
@@ -53,6 +65,8 @@ $route['AllPlacesCtr/searchwisataCatLocKey/(:any)/(:any)/(:any)'] = 'AllPlacesCt
 //$route['controllername/(:any)'] = 'ddd/index/$1';
 
 //$route['search/(:any)'] = 'search/index/$1';
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

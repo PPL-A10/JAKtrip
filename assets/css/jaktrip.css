@@ -91,7 +91,6 @@ select#ddbus{
   width: 160px;
 }
 
-<<<<<<< HEAD
 span#ddcontainerh > select{
   width: 200px;
 }
@@ -564,7 +563,7 @@ a {
 .headerdetail img{
   height: auto;
   max-width: 100%;
-  margin: 0px -15px;
+  margin-left:-15px;
 }
 
 .textdetail {
@@ -692,6 +691,7 @@ a {
   margin: 10px 0px;
 }
 
+
 .containerimg img{
   width: 100%;
 }
@@ -708,10 +708,11 @@ a {
   position: absolute;
   color: #fff;
   text-align: center;
-  width: 100%;
+  width: 85%;
   height: 20%;
   text-transform: uppercase;
-  top: 40%;
+  top: 30%;
+  margin-left: 2px;
 }
 
 .ava-rounded{

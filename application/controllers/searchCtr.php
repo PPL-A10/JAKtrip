@@ -288,7 +288,7 @@
 				setcookie("halteAwal",$this->input->post('mydropdown'),time()+3600, '/');
 			//	echo get_cookie("halteAwal");
 			//	echo get_cookie("datechoosen");
-				header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget1");
+				header("Location:".base_url()."trip/owntrip");
 				
 			//	kalau input salah
 			//	header("Location:http://localhost/Jaktrip/index.php/searchCtr/inputSalah");
@@ -319,12 +319,12 @@
 				setcookie("list_angkot_after","",time()+3600, '/');
 				setcookie("list_tour_attr","",time()+3600, '/');
 				setcookie("halteAwal",$this->input->post('mydropdown'),time()+3600, '/');
-				header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget11");
+				header("Location:".base_url()."trip/recommendation");
 			}
 			else
 			{
 				//  kalau input salah
-					header("Location:http://localhost/Jaktrip/index.php/searchCtr/inputSalah");
+					header("Location:".base_url()."searchCtr/inputSalah");
 			
 			}
 			
@@ -349,7 +349,7 @@
 		//	setcookie("datechoosen",$this->input->post('datepicker'),time()+3600, '/');
 			setcookie("halte_code",$halte,time()+3600, '/');
 			setcookie("budget",$budget,time()+3600, '/');
-			header("Location:http://localhost/Jaktrip/index.php/searchCtr/searchWithinBudget");
+			header("Location:".base_url()."searchCtr/searchWithinBudget");
 		}
 		public function cobaInput()
 		{
@@ -377,7 +377,7 @@
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
 			}
-			header("Location:http://localhost/Jaktrip/index.php/homeCtr/");
+			header("Location:".base_url()."homeCtr");
 		}
 
 		public function searchwisataCatLocKey($category_name=NULL, $city=NULL, $place_name=NULL)

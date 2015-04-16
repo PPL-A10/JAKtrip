@@ -38,7 +38,7 @@
 	   					 <span class="input-group col-lg-3">
 	   					 	<input class="field form-control" type="text" id="name_select" placeholder="Enter keyword..." >
 	   					 	<span class="input-group-btn">
-	   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -8px;"><span class="fa fa-search"></span></button>
+	   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
 	   					 	</span>
 	   				 	</span>
 	  	
