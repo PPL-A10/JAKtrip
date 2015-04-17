@@ -251,8 +251,14 @@
           }
      //       alert(getCookie("idxFirstTrip") + " " + getCookie("idxLastTrip"));
             yangDipilih = yangDipilih + "</table></div>";
-            yangDipilih = yangDipilih + "<table class='table' style='color: #1c1c1c !important;'><tr><th style='font-size:16px;'>Your Trip Cost</th><th style='font-size:16px;'>Rp "+tripCost+"</th><th><a href='http://localhost/Jaktrip/index.php/viewTripCtr'><button class='btn btn-warning pull-right' style='margin-top: -10px;'>View Trip</button></a></th></tr></table>"
-            $("#theTrip").html("Trip ("+LastCounterTrip+")  <span class='fa fa-bus'></span>")
+            yangDipilih = yangDipilih + "<table class='table' style='color: #1c1c1c !important;'><tr><th style='font-size:16px;'>Your Trip Cost</th><th style='font-size:16px;'>Rp "+tripCost+"</th><th><a href='http://localhost/Jaktrip/index.php/viewTripCtr'><button class='btn btn-warning pull-right' style='margin-top: -10px;'>View Trip</button></a></th></tr></table>";
+            if(isNaN(LastCounterTrip)){
+               $("#theTrip").html("Trip (0)  <span class='fa fa-bus'></span>");
+            }
+            else{
+              $("#theTrip").html("Trip ("+LastCounterTrip+")  <span class='fa fa-bus'></span>");
+            }
+            
    //       alert(getCookie("placeName").replace(/\+/gi, " "));
      //     alert(tripCost);
             $(".buttonAtasToggle").popover({
@@ -415,6 +421,7 @@
         {
 
           var countTrip = parseInt(getCookie("counterTrip"));
+
           if(countTrip==1)
           {
 
@@ -645,10 +652,12 @@
                 <form role="form" class="form-group" method="POST" action="http://localhost/Jaktrip/index.php/loginCtr/checkLogin/">
                   <input class="form-control form-group" type="text" placeholder="E-mail/username" name="username" required>
                   <input class="form-control form-group" type="password" placeholder="Password" name="password" required>
-                  <span class="col-lg-6"><input type="checkbox" name="remember"> Remember me</span>
-                  <span class="col-lg-6" style="text-align: right;"><a href="#">Forgot password?</a></span><br><br>
+                  <div class="col-lg-12">
+                    <span class="col-lg-6 pull-left" style="margin-left: -25px;"><input type="checkbox" name="remember">&nbsp; Remember me</span>
+                    <span class="col-lg-6" style="text-align: right;"><a href="#" style="margin-right: -60px; margin-top: -9px; text-align: right;">Forgot password?</a></span><br><br>
+                  </div>
                   <button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
-                  <center>Or login with your account below<center>
+                  <center>Or login with your account below
                   <div class="iconsocial col-lg-12">
                     <div class="col-lg-3"></div>
                     <a class="col-lg-2" href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
@@ -657,8 +666,8 @@
                     <div class="col-lg-3"></div>
                   </div>
                   <br>
-                  <center><span>Don't have an account? <a href="#">Sign Up.</a></span><center>
-                </form>
+                  <span class="col-lg-12">Don't have an account? <a href="" style="float:right; margin-top: -13px; margin-right: 25px; margin-left: -45px;">Sign Up.</a></span>
+                </center></form>
           </div>
             </div>
           <li id="popoverEdit1"><a type="button" id="theTrip" class="btn buttonAtasToggle" data-container="#popoverEdit1" data-placement="bottom"   

@@ -34,13 +34,15 @@
 			}?>
 			<!--/span-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<span style="font-size: 24px;">
-			 <a href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>&nbsp;
+			 <!--a href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a-->&nbsp;
 			 <?php foreach($query as $row){ 
-			 	echo "<div class='fb-share-button' data-href='".$row->place_name."' data-layout='icon' data-width:'24'></div>";
+			 	//echo "<div class='fb-share-button' data-href='".$row->place_name."' data-layout='icon' data-width:'24'></div>";
 			 	//echo "<a href='https://www.facebook.com/sharer/sharer.php?app_id=309437425817038&sdk=joey&u=".base_url()."PlaceCtr%2F".$row->place_name."&display=popup&ref=plugin&src=share_button'><span class='fa fa-facebook-square' style='color: #43468C;''></span></a>&nbsp;";
+			 	echo "<a href='https://plus.google.com/share?url=".base_url()."PlaceCtr%2F".$row->place_name."'><span class='fa fa-google-plus-square' style='color: #E03F3F;'></span></a>&nbsp;&nbsp;";
+			 	echo "<a href='https://www.facebook.com/share.php?u=".base_url()."PlaceCtr%2F".$row->place_name."&title=JAKtrip%3A ".$row->place_name."'><span class='fa fa-facebook-square' style='color: #43468C;'></span></a>&nbsp;&nbsp;";
+			 	echo "<a href='https://twitter.com/intent/tweet?status=JAKtrip%3A ".$row->place_name."+".base_url()."PlaceCtr%2F".$row->place_name."'><span class='fa fa-twitter-square' style='color: #2EA0F2;'></span></a>&nbsp;&nbsp;&nbsp;&nbsp;";
 			 } ?>
              <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
-             <a href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
 		    <a href="#"><span class="fa fa-check-circle icondetail"></span></a>
 		   <a href="#"> <span class="fa fa-heart icondetail"></span></a>

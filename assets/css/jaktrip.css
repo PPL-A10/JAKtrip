@@ -506,18 +506,14 @@ a {
   color: #1c1c1c;
 }
 
-#openLogin a{
-  font-size: 14px;
-}
-
 .close {
   color: rgba(0,0,0,0.4) !important;
   opacity: 1;
   line-height: 25px;
   position: absolute;
-  right: -10px;
+  right: -5px;
   text-align: center;
-  top: -5px;
+  top: 0px;
   text-decoration: none;
   font-size: 18px;
 }
@@ -528,6 +524,7 @@ a {
 }
 
 #openLogin a{
+  font-size: inherit;
   color: #db2719;
 }
 
@@ -716,7 +713,7 @@ a {
   height: 20%;
   text-transform: uppercase;
   top: 30%;
-  margin-left: 2px;
+  margin-left: 20px;
 }
 
 .ava-rounded{
@@ -793,4 +790,8 @@ a {
 
 html, body{
   height: 100%;
+}
+
+#theTrip{
+  text-transform: capitalize !important;
 }
