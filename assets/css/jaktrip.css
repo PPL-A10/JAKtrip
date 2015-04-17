@@ -40,6 +40,10 @@ a.editTrip:hover{
     max-width: none;
 }
 
+td a:hover{
+  color: #db2719 !important;
+}
+
 body{
   font-family: Lato;
   width: 100% !important;

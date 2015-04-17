@@ -47,9 +47,13 @@ $route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
 $route['allplaces'] = 'allPlacesCtr';
 //$route['allplaces/search/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
-
-
-
+$route['faq'] = 'faqCtr';
+$route['contactus'] = 'feedbackCtr'; 
+$route['admin/members'] = 'manageMemberCtr';
+$route['admin/places'] = 'manageTourAttrCtr';
+$route['admin/addnewplace'] = 'tourAttrCtr';
+$route['admin/spam'] = 'spamCtr';
+$route['trip/view'] = 'viewTripCtr'; 
 
 
 $route['DetailCtr/(:any)'] = 'DetailshareCtr/index/$1';

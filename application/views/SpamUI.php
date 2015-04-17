@@ -7,12 +7,12 @@
 				<table id="tab1" class="newpost table table-striped table-hover">
 				  <thead >
 				    <tr style="text-align: center;">
-				      <th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th>
+				      <!-- th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th -->
 				      <th>Tourist Attraction</th>
 				      <th>Review</th>
 				      <th>Reasons</th>
 				      <th>Reports</th>
-				      <th>Last Reported</th>
+				      <th>Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -27,7 +27,7 @@
 							$e = (int)$row->is_profanity;
 							$f = $b +$a +$c+$d+$e ;
 							//echo "<tr>";
-							echo"<td><input type='checkbox' id='check_list[]' value='".$row->id_rate."'></td>";
+							//echo"<td><input type='checkbox' id='check_list[]' value='".$row->id_rate."'></td>";
 							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->review	."</td>";
 							echo "<td>";

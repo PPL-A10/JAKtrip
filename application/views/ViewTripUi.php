@@ -73,7 +73,7 @@
 				$indexpertamaKali = -1;
 				for($k=0; $k<count($place_name)-1; $k++)
 				{
-					if((strcmp($place_name[$k], "terhapus")  != 0))
+					if((strcmp($place_name[$k], "terhapus.")  != 0))
 					{
 						$indexpertamaKali = $k;
 						$k = $k<count($place_name)-1;
@@ -81,7 +81,7 @@
 				}
 				if($indexpertamaKali == -1)
 				{
-					echo "<p>anda tidak memiliki trip</p>";
+					echo "<p>Anda belum menambahkan trip.</p>";
 				}
 				else
 				{
@@ -92,11 +92,11 @@
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td>";
 					echo "</tr>";
 					echo "<tr>";
-					echo "<td height='30px'>Rp".$total_price[$indexpertamaKali]."</td>";
+					echo "<td height='30px'>Rp ".$total_price[$indexpertamaKali]."</td>";
 					echo "</tr>";
 					echo "<tr> <td>";
 					echo "<br>";
-					echo "<br>1 Dimulai dari halte ".$halte_awal[0].",";
+					echo "<br>1. Dimulai dari halte ".$halte_awal[0].",";
 					if((strcmp($halte_awal[0], $halte_name[$indexpertamaKali])  == 0))
 					{
 						echo $transport_info[$indexpertamaKali]." menuju ".$place_name[$indexpertamaKali];
@@ -144,7 +144,7 @@
 
 							if( (strcmp($place_info[$i], $place_info[($indexSebelum)])  == 0) && $indexSebelum != (-1))
 							{
-								echo "<br>1 jalan kaki saja menuju ".$place_name[$i];
+								echo "<br>1. Jalan kaki saja menuju ".$place_name[$i];
 							}
 							// if((strcmp($place_info[$i], $place_info[($indexSebelum)])  == 0) && $indexSebelum != (-1))
 							// {
@@ -152,14 +152,14 @@
 							// }
 							else if((strcmp($halte_name[$i], $halte_name[($indexSebelum)])  == 0) && $indexSebelum != -1)
 							{
-								echo "<br>1 ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
-								echo "<br>2 ".$transport_info[$i]." menuju".$place_name[$i];	
+								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
+								echo "<br>2. ".$transport_info[$i]." menuju".$place_name[$i];	
 							}
 							else if($indexSebelum != -1)
 							{
-								echo "<br>1 ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
-								echo "<br>2 naik busway dari ".$halte_name[($indexSebelum)]." menuju ".$halte_name[$i];
-								echo "<br>3 ".$transport_info[$i]." menuju ".$place_name[$i];	
+								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
+								echo "<br>2. Naik busway dari ".$halte_name[($indexSebelum)]." menuju ".$halte_name[$i];
+								echo "<br>3. ".$transport_info[$i]." menuju ".$place_name[$i];	
 							}
 							
 						//	echo "<td valign='top' rowspan='3' height='90px'>1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>";
