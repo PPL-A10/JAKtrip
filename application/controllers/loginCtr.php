@@ -40,7 +40,7 @@
 		//	echo $hasil['query']['username'];
 		//	header("Location:http://google.com");
 		//	echo get_cookie("username");
-				header("Location:http://localhost/Jaktrip/index.php/homeCtr/");
+				header("Location:".base_url('home')."");
 			}
 			
 		}

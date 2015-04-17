@@ -46,7 +46,7 @@ $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
 $route['allplaces'] = 'allPlacesCtr';
-//$route['allplaces/search/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
+
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
 $route['admin/members'] = 'manageMemberCtr';
@@ -54,13 +54,13 @@ $route['admin/places'] = 'manageTourAttrCtr';
 $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['trip/view'] = 'viewTripCtr'; 
-
+$route['login'] = 'loginCtr/checkLogin'; 
 
 $route['DetailCtr/(:any)'] = 'DetailshareCtr/index/$1';
 $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
 $route['PlaceCtr/rating/(:any)'] = 'PlaceCtr/rating/$1';
-$route['AllPlacesCtr/searchwisataCatLocKey/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
+// $route['AllPlacesCtr/searchwisataCatLocKey/(:any)/(:any)/(:any)'] = 'AllPlacesCtr/searchwisataCatLocKey/$1/$2/$3';
 //$route['ReviewCtr/(:any)'] = 'ReviewCtr/index/$1';
 //$route['DetailCtr/getdetail/(:any)'] = 'DetailCtr/index/$1';
 //$route['controllername/(:any)/(:any)'] = 'ddd/index/$1/$2';

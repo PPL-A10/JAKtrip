@@ -251,7 +251,7 @@
           }
      //       alert(getCookie("idxFirstTrip") + " " + getCookie("idxLastTrip"));
             yangDipilih = yangDipilih + "</table></div>";
-            yangDipilih = yangDipilih + "<table class='table' style='color: #1c1c1c !important;'><tr><th style='font-size:16px;'>Your Trip Cost</th><th style='font-size:16px;'>Rp "+tripCost+"</th><th><a href='http://localhost/Jaktrip/index.php/viewTripCtr'><button class='btn btn-warning pull-right' style='margin-top: -10px;'>View Trip</button></a></th></tr></table>";
+            yangDipilih = yangDipilih + "<table class='table' style='color: #1c1c1c !important;'><tr><th style='font-size:16px;'>Your Trip Cost</th><th style='font-size:16px;'>Rp "+tripCost+"</th><th><a href='<?php echo base_url('trip/view');?>'><button class='btn btn-warning pull-right' style='margin-top: -10px;'>View Trip</button></a></th></tr></table>";
             if(isNaN(LastCounterTrip)){
                $("#theTrip").html("Trip (0)  <span class='fa fa-bus'></span>");
             }
@@ -537,7 +537,7 @@
 
                             output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                             output = output + "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                            output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/Jaktrip/index.php/PlaceCtr/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+ticketPrice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip11('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br></td>";
+                            output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/Jaktrip/index.php/PlaceCtr/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip11('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br></td>";
                             output = output + "</tr>";
                             
                             }
@@ -605,13 +605,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-        <a class="navbar-brand" href="<?php echo base_url('index.php/homeCtr');?>" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>) !important;"></a>
+        <a class="navbar-brand" href="<?php echo base_url('home');?>" style="background-image: url(<?php echo base_url('assets/img/logo.png');?>) !important;"></a>
       </div>
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li>&nbsp;&nbsp;&nbsp;</li>
-          <li><a href="<?php echo base_url('index.php/allPlacesCtr');?>">PLACES</a></li>
+          <li><a href="<?php echo base_url('allplaces');?>">PLACES</a></li>
           <li><a href="#">PROMO</a></li>
           </ul>
 
@@ -649,7 +649,7 @@
                 <a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a>
                 <center><div class="tuffyh2a">Log In to JAKtrip</div></center><br>
 
-                <form role="form" class="form-group" method="POST" action="http://localhost/Jaktrip/index.php/loginCtr/checkLogin/">
+                <form role="form" class="form-group" method="POST" action="<?php echo base_url('login');?>">
                   <input class="form-control form-group" type="text" placeholder="E-mail/username" name="username" required>
                   <input class="form-control form-group" type="password" placeholder="Password" name="password" required>
                   <div class="col-lg-12">
@@ -666,7 +666,7 @@
                     <div class="col-lg-3"></div>
                   </div>
                   <br>
-                  <span class="col-lg-12">Don't have an account? <a href="" style="float:right; margin-top: -13px; margin-right: 25px; margin-left: -45px;">Sign Up.</a></span>
+                  <span class="col-lg-12">Don't have an account? <a href="" style="float:right; margin-top: -13px; margin-right: 30px; margin-left: -50px;">Sign Up.</a></span>
                 </center></form>
           </div>
             </div>
@@ -678,7 +678,7 @@
             {
               
           //    echo "<li><a href='http://localhost/Jaktrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
-              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=\"base_url('/assets/img/25.png')\" class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/Jaktrip/index.php/ManageTourAttrCtr\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/Jaktrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=".base_url('assets/img/25.png')." class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/Jaktrip/index.php/ManageTourAttrCtr\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/Jaktrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
             }
             
           ?>

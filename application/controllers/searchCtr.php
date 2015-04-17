@@ -377,7 +377,7 @@
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
 			}
-			header("Location:".base_url()."homeCtr");
+			header("Location:".base_url()."home");
 		}
 
 		public function searchwisataCatLocKey($category_name=NULL, $city=NULL, $place_name=NULL)

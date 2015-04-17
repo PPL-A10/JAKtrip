@@ -6,8 +6,8 @@
 					<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 					<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
 						<li><a class="linkfooter" href="about.html">About</a></li>
-						<li><a href="<?php echo base_url('index.php/FeedbackCtr');?>">Contact Us</a></li>
-						<li><a href="<?php echo base_url('index.php/FaqCtr');?>">F.A.Q</a></li>
+						<li><a href="<?php echo base_url('contactus');?>">Contact Us</a></li>
+						<li><a href="<?php echo base_url('faq');?>">F.A.Q</a></li>
 						<li><a href="#">Terms</a></li>
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Site Map</a></li>
@@ -128,7 +128,7 @@
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
 								}
 								
 							$("#output_field").html(resultQuery);
@@ -155,7 +155,7 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
 								}
 								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
 							$("#output_field").html(resultQuery);
@@ -179,7 +179,7 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='javascript:filterFunctionFinal("+obj.query[i].city+")'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='javascript:filterFunctionFinal("+obj.query[i].city+")'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
 								}
 								
 							$("#output_field").html(resultQuery);
@@ -210,7 +210,7 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='../assets/img/image.png'/></a></div>";
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
 								}
 								
 							$("#output_field").html(resultQuery);

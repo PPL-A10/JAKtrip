@@ -73,7 +73,7 @@
 				$indexpertamaKali = -1;
 				for($k=0; $k<count($place_name)-1; $k++)
 				{
-					if((strcmp($place_name[$k], "terhapus.")  != 0))
+					if((strcmp($place_name[$k], "terhapus")  != 0))
 					{
 						$indexpertamaKali = $k;
 						$k = $k<count($place_name)-1;
@@ -87,7 +87,7 @@
 				{
 					echo "<table style='margin-bottom: 10px;'>";
 					echo "<tr>";
-					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'><b>1</b></td>";
+					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
 					echo "<td rowspan='5'><img src='../assets/img/150.jpg'/></td>";
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td>";
 					echo "</tr>";
@@ -116,9 +116,10 @@
 						
 						if($place_name[$i] != "terhapus" && $i>0)
 						{
+							
 							echo "<table style='margin-bottom: 10px;'>";
 							echo "<tr>";
-							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'><b>1</b></td>";
+							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
 							echo "<td rowspan='5'><img src='../assets/img/150.jpg'/></td>";
 							echo "<td height='30px' class='tuffyh3a'>".$place_name[$i]."</td>";
 							echo "</tr>";
@@ -135,6 +136,7 @@
 								{
 									$indexSebelum = $j;
 									$j = -1;
+
 								}
 				//				echo $indexSebelum;
 				//				echo $i;
@@ -152,12 +154,12 @@
 							// }
 							else if((strcmp($halte_name[$i], $halte_name[($indexSebelum)])  == 0) && $indexSebelum != -1)
 							{
-								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
-								echo "<br>2. ".$transport_info[$i]." menuju".$place_name[$i];	
+								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte ".$halte_name[($indexSebelum)];
+								echo "<br>2. ".$transport_info[$i]." menuju ".$place_name[$i];	
 							}
 							else if($indexSebelum != -1)
 							{
-								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte".$halte_name[($indexSebelum)];
+								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte ".$halte_name[($indexSebelum)];
 								echo "<br>2. Naik busway dari ".$halte_name[($indexSebelum)]." menuju ".$halte_name[$i];
 								echo "<br>3. ".$transport_info[$i]." menuju ".$place_name[$i];	
 							}
