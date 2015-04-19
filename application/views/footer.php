@@ -179,7 +179,7 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='javascript:filterFunctionFinal("+obj.query[i].city+")'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='PlaceCtr/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
 								}
 								
 							$("#output_field").html(resultQuery);
