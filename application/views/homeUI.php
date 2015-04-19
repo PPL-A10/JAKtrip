@@ -27,12 +27,131 @@
 								<span class="field custom-dropdown " id="ddcontainerh">
 								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
 								        <option value="" selected disabled>Your starting point?</option>
-								        <?php
-								        	foreach ($query as $row) {
-								        		# code...
-								        		echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";	
-								        	}
-								        	
+								        <?php							        	
+							        		# code...
+								        	$label="1";
+							        		foreach ($query as $row) {
+					        					if ((strcmp(substr($row->halte_code, 0, 3), "K1.")==0) && ($label=="1")){
+						        					echo "<optgroup label='Koridor 1'>";	
+						        					foreach ($query as $row) {
+						        						if (strcmp(substr($row->halte_code, 0, 3), "K1.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="2";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K2.")==0) && ($label=="2")){
+						        					echo "<optgroup label='Koridor 2'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K2.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="3";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K3.")==0) && ($label=="3")){
+						        					echo "<optgroup label='Koridor 3'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K3.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="4";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K4.")==0) && ($label=="4")){
+						        					echo "<optgroup label='Koridor 4'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K4.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="5";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K5.")==0) && ($label=="5")){
+						        					echo "<optgroup label='Koridor 5'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K5.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="6";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K6.")==0) && ($label=="6")){
+						        					echo "<optgroup label='Koridor 6'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K6.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="7";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K7.")==0) && ($label=="7")){
+						        					echo "<optgroup label='Koridor 7'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K7.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="8";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K8.")==0) && ($label=="8")){
+						        					echo "<optgroup label='Koridor 8'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K8.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="9";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K9.")==0) && ($label=="9")){
+						        					echo "<optgroup label='Koridor 9'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K9.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="10";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K10")==0) && ($label=="10")){
+						        					echo "<optgroup label='Koridor 10'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K10")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="11";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K11")==0) && ($label=="11")){
+						        					echo "<optgroup label='Koridor 11'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K11")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="12";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K12")==0) && ($label=="12")){
+						        					echo "<optgroup label='Koridor 12'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K12")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="13";
+						        				}
+						        			}        		
 								        ?>
 								    </select>
 								</span>
@@ -62,12 +181,131 @@
 								<span class="field custom-dropdown " id="ddcontainerh">
 								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
 								        <option value="" selected disabled>Your starting point?</option>
-								        <?php
-								        	foreach ($query as $row) {
-								        		# code...
-								        		echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";	
-								        	}
-								        	
+								        <?php							        	
+							        		# code...
+								        	$label="1";
+							        		foreach ($query as $row) {
+					        					if ((strcmp(substr($row->halte_code, 0, 3), "K1.")==0) && ($label=="1")){
+						        					echo "<optgroup label='Koridor 1'>";	
+						        					foreach ($query as $row) {
+						        						if (strcmp(substr($row->halte_code, 0, 3), "K1.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="2";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K2.")==0) && ($label=="2")){
+						        					echo "<optgroup label='Koridor 2'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K2.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="3";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K3.")==0) && ($label=="3")){
+						        					echo "<optgroup label='Koridor 3'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K3.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="4";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K4.")==0) && ($label=="4")){
+						        					echo "<optgroup label='Koridor 4'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K4.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="5";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K5.")==0) && ($label=="5")){
+						        					echo "<optgroup label='Koridor 5'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K5.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="6";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K6.")==0) && ($label=="6")){
+						        					echo "<optgroup label='Koridor 6'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K6.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="7";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K7.")==0) && ($label=="7")){
+						        					echo "<optgroup label='Koridor 7'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K7.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="8";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K8.")==0) && ($label=="8")){
+						        					echo "<optgroup label='Koridor 8'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K8.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="9";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K9.")==0) && ($label=="9")){
+						        					echo "<optgroup label='Koridor 9'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K9.")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="10";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K10")==0) && ($label=="10")){
+						        					echo "<optgroup label='Koridor 10'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K10")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="11";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K11")==0) && ($label=="11")){
+						        					echo "<optgroup label='Koridor 11'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K11")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="12";
+						        				}
+						        				else if ((strcmp(substr($row->halte_code, 0, 3), "K12")==0) && ($label=="12")){
+						        					echo "<optgroup label='Koridor 12'>";	
+						        					foreach ($query as $row) {
+							        					if (strcmp(substr($row->halte_code, 0, 3), "K12")==0){
+							        					echo "<option value=\"".$row->halte_name."\">".$row->halte_name."</option>";
+							        					}
+							        				}
+						        					echo "</optgroup>";
+						        					$label="13";
+						        				}
+						        			}        		
 								        ?>
 								    </select>
 								</span>

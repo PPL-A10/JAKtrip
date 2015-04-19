@@ -30,6 +30,22 @@
 			return $query->result();
 		}
 
+
+		public function sorthalte(){
+			$this->load->database();
+			$this->db->select('*');
+			$this->db->select('SUBSTRING(halte_code, 1, 3) as koridor', FALSE);
+            $this->db->from('halte'); 
+            $this->db->order_by('koridor, halte_name asc');
+			$query = $this->db->get(); 
+        	return $query->result();
+		}
+
+		public function haltecode(){
+            $kodekoridor = $this->db->select('SUBSTRING(halte_code, 1, 3) as koridor', FALSE)->from('halte')->get();
+        	return $kodekoridor->result();
+		}
+
 		
 	}
 ?>

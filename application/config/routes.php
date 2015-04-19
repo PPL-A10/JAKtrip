@@ -46,6 +46,7 @@ $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
 $route['allplaces'] = 'allPlacesCtr';
+$route['place/(:any)'] = 'PlaceCtr';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
