@@ -3997,8 +3997,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-  color: #98978b;
-  background-color: #f8f5f0;
+  color: #fff;
+  background-color: #db2719;
 }
 .nav-stacked > li {
   float: none;
@@ -4853,7 +4853,7 @@ a.badge:focus {
 .list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #ffffff;
-  background-color: #f8f5f0;
+  background-color: #db2719;
 }
 .list-group-item > .badge {
   float: right;
@@ -6648,14 +6648,14 @@ input:focus,
   background-color: #f8f5f0;
 }
 .nav-pills a {
-  color: #98978b;
+  color: #1c1c1c;
 }
 .nav-pills li > a {
   border: 1px solid transparent;
 }
 .nav-pills li.active > a,
 .nav-pills li > a:hover {
-  border-color: #dfd7ca;
+  border-color: #db2719;
 }
 .nav-pills li.disabled > a {
   border-color: transparent;

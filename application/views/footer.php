@@ -237,6 +237,9 @@ function sortFunction(){
 
 	<script>
 	    $(document).ready(function () {
+
+ // --------------------- HOME -----------------------------------
+
 		    $("#showRec, #showOwntr").hide();
 		    $("#recomm").click(function () {
 		        $('#showRec').toggle();
@@ -246,7 +249,82 @@ function sortFunction(){
 		        $('#showOwntr').toggle();
 		        $('#showRec').hide();
 		    });
+
+ // --------------------- ADMIN/STATISTICS ------------------------------------
+
+		    $("#livis > a").css("color", "#fff");
+			$("#livis > a").css("background-color", "#db2719"); 
+			$("#rating").hide();
+		   	$("#budget").hide();
+			$("#visitors").show();
+
+			$('.fak > li > a').click(function(e){
+		    	e.preventDefault();
+			    $('.fak > li > a').css("background-color", "");
+			    $('.fak > li > a').css("color", "");
+			    $(this).css("color", "#fff");
+			    $(this).css("background-color", "#db2719");  
+			});
+
+			$("#livis").click(function(){
+		    	$("#rating").hide();
+		    	$("#budget").hide();
+			    $("#visitors").show();
+			});
+			$("#lirat").click(function(){
+		    	$("#visitors").hide();
+		    	$("#budget").hide();
+			    $("#rating").show();
+			});
+			$("#libud").click(function(){
+		    	$("#rating").hide();
+		    	$("#visitors").hide();
+			    $("#budget").show();
+			});
+
+ // --------------------- MENU ADMIN ------------------------------------
+
+ 			$("#lipla > a").css("color", "#db2719");
+			$("#lipla > a").css("border-bottom", "solid 5px #db2719"); 
+			$("#lipla > a").css("padding-bottom", "15px");
+
+			$('.submenu > li > a').click(function(e){
+		    	e.preventDefault();
+			    $('.submenu > li > a').css("border-bottom", "");
+			    $('.submenu > li > a').css("color", "");
+			    $('.submenu > li > a').css("padding-bottom", "");
+			    $(this).css("color", "#db2719");
+				$(this).css("border-bottom", "solid 5px #db2719"); 
+				$(this).css("padding-bottom", "15px");
+			});
+
 		});
+
+ // --------------------- ADMIN/SUGGESTIONS ------------------------------------
+
+		    $("#liplac > a").css("color", "#fff");
+			$("#liplac > a").css("background-color", "#db2719"); 
+			$("#places").show();
+
+			$('.fak > li > a').click(function(e){
+		    	e.preventDefault();
+			    $('.fak > li > a').css("background-color", "");
+			    $('.fak > li > a').css("color", "");
+			    $(this).css("color", "#fff");
+			    $(this).css("background-color", "#db2719");  
+			});
+
+			$("#liplac").click(function(){
+		    	$("#photos").hide();
+			    $("#places").show();
+			});
+			$("#liphot").click(function(){
+		    	$("#places").hide();
+			    $("#photos").show();
+			});
+
+
+
 	</script>
 
 	<script>

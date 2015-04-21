@@ -794,3 +794,62 @@ html, body{
 #theTrip{
   text-transform: capitalize !important;
 }
+
+ul.nav.nav-pills.fak > li{
+  margin-left: -70px;
+}
+
+ul.nav.nav-pills.fak > li + li{
+  margin: 0px 5px;
+}
+
+ul.nav.nav-pills.fak > li > a{
+  font-size: 14px !important;
+}
+
+ul.nav.nav-pills.fak > li > a:hover{
+  color: #db2719;
+}
+
+.statcontent{
+  margin-left: -70px;
+  height: 400px;
+  background-color: #f0f0f0;
+  margin-bottom: 80px;
+}
+
+.flagcontent{
+  margin-left: 20px;
+}
+
+.openModal2 {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+
+.openModal2:target {
+  opacity:1;
+  pointer-events: auto;
+}
+
+.openModal2 > div {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  margin: 7% auto;
+  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 14px;
+  color: #1c1c1c;
+}

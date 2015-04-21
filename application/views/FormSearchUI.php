@@ -128,8 +128,8 @@
                     if($budget>=$query['harga'][$counter])
                     {
                       echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
-                       echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/Jaktrip/index.php/PlaceCtr/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip11('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br></td>";
+                       echo "<td><img src=".base_url('assets/img/150.jpg')."></td>";
+                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip11('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br></td>";
                       echo "</tr>";  
                     }
                       
@@ -157,8 +157,8 @@
                       }
                    
                    echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
-                       echo "<td><img src='http://localhost/Jaktrip/assets/img/150.jpg'/></td>";
-                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/Jaktrip/index.php/PlaceCtr/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br></td>";
+                       echo "<td><img src=".base_url('assets/img/150.jpg')."></td>";
+                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip1('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br></td>";
                       echo "</tr>"; 
                        
                     // echo "<tr>";
@@ -190,7 +190,7 @@
 
      <div class="col-lg-6 collapse in width"  id="mapcanvas">
     </div>
-
+<!-- 
     <div class="col-lg-6 rating" id="isireview" hidden>
       <div class="row">
         <div class="col-lg-12 redbar">
@@ -253,7 +253,7 @@
           <a class="text-danger" href="javascript:tutupDetailRating();"><span class="fa fa-angle-left" style="font-size: 28px; vertical-align:middle;"></span>
           <span class="tuffyh3" id="namatempat" style="vertical-align:middle;" >&nbsp; Eco Cruise</span></a>
         </div>
-        <div class="col-lg-12 headerdetail"><img src="/JAKtrip/assets/img/hd.gif"/>
+        <div class="col-lg-12 headerdetail"><img src="<?php echo base_url('assets/img/hd.gif'); ?>"/>
         </div>
 
         <ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="margin: -7px 0px; ">
@@ -368,4 +368,4 @@
 
     
 
-
+ -->
