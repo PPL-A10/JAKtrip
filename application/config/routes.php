@@ -66,6 +66,7 @@ $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
 
 $route['login'] = 'loginCtr/checkLogin'; 
+$route['login/forgotpassword'] = 'forgotPassCtr'; 
 
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 // $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
