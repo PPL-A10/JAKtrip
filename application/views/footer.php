@@ -284,27 +284,50 @@ function sortFunction(){
 
  // --------------------- MENU ADMIN ------------------------------------
 
- 			$("#lipla > a").css("color", "#db2719");
-			$("#lipla > a").css("border-bottom", "solid 5px #db2719"); 
-			$("#lipla > a").css("padding-bottom", "15px");
+			if(window.location.pathname == '/JAKtrip/admin/places'){
+	            $("#sm-pla").css("color", "#db2719");
+				$("#sm-pla").css("padding-bottom", "15px"); 
+				$("#sm-pla").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/promo'){
+	            $("#sm-pro").css("color", "#db2719");
+				$("#sm-pro").css("padding-bottom", "15px"); 
+				$("#sm-pro").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/members'){
+	            $("#sm-mem").css("color", "#db2719");
+				$("#sm-mem").css("padding-bottom", "15px"); 
+				$("#sm-mem").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/suggestions'){
+	            $("#sm-sug").css("color", "#db2719");
+				$("#sm-sug").css("padding-bottom", "15px"); 
+				$("#sm-sug").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/feedback'){
+	            $("#sm-fee").css("color", "#db2719");
+				$("#sm-fee").css("padding-bottom", "15px"); 
+				$("#sm-fee").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/spam'){
+	            $("#sm-spa").css("color", "#db2719");
+				$("#sm-spa").css("padding-bottom", "15px"); 
+				$("#sm-spa").css("border-bottom", "solid 5px #db2719"); 
+            }
+            else if(window.location.pathname == '/JAKtrip/admin/statistics'){
+	            $("#sm-sta").css("color", "#db2719");
+				$("#sm-sta").css("padding-bottom", "15px"); 
+				$("#sm-sta").css("border-bottom", "solid 5px #db2719"); 
+            }
 
-			$('.submenu > li > a').click(function(e){
-		    	e.preventDefault();
-			    $('.submenu > li > a').css("border-bottom", "");
-			    $('.submenu > li > a').css("color", "");
-			    $('.submenu > li > a').css("padding-bottom", "");
-			    $(this).css("color", "#db2719");
-				$(this).css("border-bottom", "solid 5px #db2719"); 
-				$(this).css("padding-bottom", "15px");
-			});
-
-		});
+		
 
  // --------------------- ADMIN/SUGGESTIONS ------------------------------------
 
 		    $("#liplac > a").css("color", "#fff");
 			$("#liplac > a").css("background-color", "#db2719"); 
 			$("#places").show();
+			$("#photos").hide();
 
 			$('.fak > li > a').click(function(e){
 		    	e.preventDefault();
@@ -323,6 +346,17 @@ function sortFunction(){
 			    $("#photos").show();
 			});
 
+ // --------------------- PLACE -----------------------------------
+
+			$("#addphoform").hide();
+		    $("#addphobtn").click(function(){
+			    $("#addphoform").toggle();
+			    $(this).text(function(i, text){
+			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
+			      })
+		    });
+
+});
 
 
 	</script>

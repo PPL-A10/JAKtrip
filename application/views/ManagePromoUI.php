@@ -1,10 +1,10 @@
 
 			<div class="col-lg-9">
 					
-				<div class="tuffyh2a admintitle">All Places</div>
+				<div class="tuffyh2a admintitle">All Promo</div>
 
 				<span class="input-group col-lg-7" style="margin-left: 150px;">
-				    <input id="name_select" class="fieldsml form-control" type="text" placeholder="Place search" style="background-color: #f0f0f0 !important;">
+				    <input id="name_select" class="fieldsml form-control" type="text" placeholder="Promo search" style="background-color: #f0f0f0 !important;">
 				    <span onclick="" class="input-group-btn">
 				      <button class="fieldsml btn btn-default" type="button" style="width:40%; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
 				    </span>
@@ -51,32 +51,32 @@
 				  <thead style="text-align: center !important;">
 				    <tr>
 				      <!-- th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th -->
-				      <th>Title</th>
+				      <th>Place Name</th>
+				      <th>Promo Title</th>
+				      <th>Type</th>
 				      <th>Author</th>
-				      <th>Categories</th>
-				      <th>Last Modified</th>
-				      <th>Visitors</th>
 				      <th colspan="3">Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				    <?php for($i=0; $i<count($tourattr); $i++){
-							$row = $tourattr[$i];
-							echo "<tr>";
-							//echo "<td><input type='checkbox' value=''/></td>";
-							echo "<td>". $row->place_name ."</td>";
-							echo "<td>". $row->author ."</td>";
-							echo "<td>". $cat[$i]."</td>";
-							echo "<td>". $row->last_modified ."</td>";
-							echo "<td>". $row->hits ."</td>";
-							echo "<td>";
-							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
-							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
-							echo "<td><a href='http://localhost/Jaktrip/index.php/PlaceCtr/".$row->place_name."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
-							echo "</tr>";
-						}
-					?>
+				   	<tr>
+				   		<td>Snowbay</td>
+				   		<td>Discount 35% for Students</td>
+				   		<td>discount</td>
+				   		<td>amadibra</td>
+				   		<td width="80px"><a href="#"><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></td>
+						<td width="60px"><a href="#"><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a></td>
+						<td width="80px"><a href="#"><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>	
+				   	</tr>
+				   	<tr>
+				   		<td>Kebun Binatang Ragunan</td>
+				   		<td>Buy 3 Tickets Get 1 Free</td>
+				   		<td>freebie</td>
+				   		<td>amadibra</td>
+				   		<td width="80px"><a href="#"><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></td>
+						<td width="60px"><a href="#"><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a></td>
+						<td width="80px"><a href="#"><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>	
+				   	</tr>
 				  </tbody>
 				</table><br>
 
@@ -88,7 +88,7 @@
 
 			<div class="col-lg-3">
 				<div style="margin-top: 20px; margin-left: -50px">
-				<input type="button" class="btn btn-warning" onclick="location.href='<?php echo base_url('admin/addnewplace');?>'" value="Add New Place">
+				<input type="button" class="btn btn-warning" onclick="location.href='<?php echo base_url('admin/addnewpromo');?>'" value="Add New Promo">
 				</div>
 			</div>
 			

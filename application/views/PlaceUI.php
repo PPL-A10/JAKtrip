@@ -8,31 +8,6 @@
 			<div class="col-lg-10" style="margin-top: -15px; margin-left: 8px;">
 				<span class="tuffyh2a" style="margin-top: 5px;"><?php foreach($query as $row){echo $row->place_name;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 				<span><?php foreach($query as $row){echo $row->city;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<!--span class="starRating" style="margin-bottom: 10px;"-->
-			        <!--input id="rating5" type="radio" name="rate" value="5">
-			        <label for="rating5">5</label>
-			        <input id="rating4" type="radio" name="rate" value="4">
-			        <label for="rating4">4</label>
-			        <input id="rating3" type="radio" name="rate" value="3" checked>
-			        <label for="rating3">3</label>
-			        <input id="rating2" type="radio" name="rate" value="2">
-			        <label for="rating2">2</label>
-			        <input id="rating1" type="radio" name="rate" value="1">
-			        <label for="rating1">1</label-->
-				<!--?php foreach($query as $row){
-					if ($row->rate_avg == 0)
-						{echo "<span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 1)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 2)
-						{echo"<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 3)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 4)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 5)
-					{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-				}?-->
 				<?php 	$avgrate = 0; 
 						$total = 0;
 						foreach($query2 as $row)
@@ -92,7 +67,18 @@
 				<span id="photos" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 				<section id="photoscon" class="textdetail">
 					<div class="col-lg-9"><br>
-					Gallery photos
+						<button id="addphobtn" class="field btn btn-warning col-lg-11" type="button">ADD NEW PHOTO(S)</button>
+						<form id="addphoform">
+							<div class="form-group">
+							  <div class="col-lg-9"><br><br>
+							  	<label class="control-label">Photos</label>
+								<input type="file" multiple>
+						      </div>
+						    </div>
+						    <div class="col-lg-12"><br><br>
+							<button class="field btn btn-warning" type="submit">SUBMIT</button>
+							</div>
+						</form>
 					</div>
 				</section>
 				<span id="reviews" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>

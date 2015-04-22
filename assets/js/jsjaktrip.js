@@ -618,4 +618,6 @@ $("#gscon").show();
 			          return text === "ADD NEW REVIEW" ? "CLOSE FORM" : "ADD NEW REVIEW";
 			      })
 		    });
+
+		   
 //---------------

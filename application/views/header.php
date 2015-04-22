@@ -44,6 +44,11 @@
       src: url('<?php echo base_url("assets/fonts/lato-black.ttf");?>');
     }
   </style>
+
+
+
+
+
   <script>
 
 
@@ -613,7 +618,7 @@
         <ul class="nav navbar-nav">
           <li>&nbsp;&nbsp;&nbsp;</li>
           <li><a href="<?php echo base_url('allplaces');?>">PLACES</a></li>
-          <li><a href="#">PROMO</a></li>
+          <li><a href="<?php echo base_url('allpromo');?>">PROMO</a></li>
           </ul>
 
         <ul class="nav navbar-nav navbar-right sm sm-clean2" id="main-menu">

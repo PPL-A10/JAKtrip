@@ -45,11 +45,13 @@ $route['home'] = 'homeCtr';
 $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
+$route['trip/view'] = 'viewTripCtr'; 
 $route['allplaces'] = 'allPlacesCtr';
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
+$route['allpromo'] = 'allPromosCtr';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
@@ -59,7 +61,10 @@ $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['admin/statistics'] = 'statisticCtr';
 $route['admin/suggestions'] = 'suggestionCtr';
-$route['trip/view'] = 'viewTripCtr'; 
+$route['admin/feedback'] = 'FeedbackAdmCtr';
+$route['admin/promo'] = 'ManagePromoCtr';
+$route['admin/addnewpromo'] = 'addPromoCtr';
+
 $route['login'] = 'loginCtr/checkLogin'; 
 
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';

@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-lg-12" style="background-color: #e0e0e0; height: 450px; ">
 				<div class="intro" style="margin-top:-30px;">
-					<div class="tuffyh1aa">All Places</div>
+					<div class="tuffyh1aa">All Promo</div>
 				</div>
 
 			<div class="row places" style="padding-top: 200px;">
@@ -22,7 +22,7 @@
 	   					 <label class="control-label">Filter by :  </label>
 	   					 <span class="field custom-dropdown ">
 	   					 	 <select class="field form-control" onchange="filterFunctionFinal()" title="All Categories" id="category_select">    
-							        <option value='All' >All Categories</option>
+							        <option value='All' >All Types</option>
 									<?php
 										foreach($query1 as $row)
 										{
@@ -41,27 +41,7 @@
 	   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
 	   					 	</span>
 	   				 	</span>
-	  	
-						<span class="field custom-dropdown bordered">
-	   					 	<select onchange="sortFunction()" id="sort_select" name="sort_select" class="field form-control" title="Popularity">    
-	   					     	<option value="popular" selected>Popularity</option>  
-	   					     	<option value="highestRate">Highest Rating</option>
-	   					     	<option value="sortAtoZ">Name: A-Z</option>
-	   					     	<option value="sortZtoA">Name: Z-A</option>
-	   					     	<option value="LowtoHigh">Price: Low to High</option>
-	   					     	<option value="HightoLow">Price: High to Low</option>
-	   					 	</select>
-	   					 </span>	
-	   					 <br>
-
-	   					 <div class="form-inline" style="margin-top: 10px; padding-left: 340px; padding-right: 270px;">
-		   					  
-		   					 <div style="position: relative;"><!-- 
-		   					 	<label class="control-label">Price range :  </label> -->
-		   						 <input type="text" class="col-lg-9 range" id="range" name="range" onchange="myFunction()" value="" />
-		   						 <div class="col-lg-3"></div>
-		   					 </div>
-		   				 </div>		 	
+	  		 	
 	   			 	</div>
 	   			</div>
 	   		</div>
