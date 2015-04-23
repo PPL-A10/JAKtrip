@@ -53,14 +53,16 @@
 				<div class="col-lg-12">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px;">
-					<?php
-					foreach($query as $row){
-						echo "<div class='col-lg-3 containerimg'>";
-						echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-						echo "<img class='img-responsive' src='".base_url('assets/img/image.png')."'></a>";
-						echo "</div>";
-					}
-					?>
+						<div class="col-lg-3 containerimg">
+							<a href='#'><div class='txtonimg'>Discount 35% for Students</div>
+							<img class='img-responsive' src='<?php echo base_url("assets/img/image.png");?>'></a>
+						</div>
+
+						<div class="col-lg-3 containerimg">
+							<a href='#'><div class='txtonimg'>Buy 3 Get 1 Free</div>
+							<img class='img-responsive' src='<?php echo base_url("assets/img/image.png");?>'></a>
+						</div>
+					
 					</div>
 					<div class="col-lg-1"></div>
 				</div>
