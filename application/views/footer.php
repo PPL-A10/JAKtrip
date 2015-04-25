@@ -356,6 +356,54 @@ function sortFunction(){
 			      })
 		    });
 
+ // --------------------- USER -----------------------------------
+
+ 			$("#wishlist").hide();
+	    	$("#achievement").hide();
+	    	$("#reviews").hide();
+		    $("#trips").show();
+
+		    $("#litrip > a").css("color", "#fff");
+			$("#litrip > a").css("background-color", "#db2719"); 
+
+		    $('.navprofile > li > a').click(function(e){
+		    	e.preventDefault();
+			    $('.navprofile > li > a').css("background-color", "");
+			    $('.navprofile > li > a').css("color", "");
+			    $(this).css("color", "#fff");
+			    $(this).css("background-color", "#db2719");  
+			});
+
+ 			$("#litrip").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").hide();
+		    	$("#reviews").hide();
+			    $("#trips").show();
+			});
+
+			$("#liwish").click(function(){
+		    	$("#wishlist").show();
+		    	$("#achievement").hide();
+		    	$("#reviews").hide();
+			    $("#trips").hide();
+			});
+
+			$("#liachi").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").show();
+		    	$("#reviews").hide();
+			    $("#trips").hide();
+			});
+
+			$("#lirevi").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").hide();
+		    	$("#reviews").show();
+			    $("#trips").hide();
+			});
+
+
+
 });
 
 

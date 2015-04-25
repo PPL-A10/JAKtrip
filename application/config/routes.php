@@ -65,6 +65,8 @@ $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
 
+$route['user'] = 'UsersCtr';
+
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr'; 
 
