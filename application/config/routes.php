@@ -55,8 +55,10 @@ $route['allpromo'] = 'allPromosCtr';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
+
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
+$route['admin/places/edit/(:any)'] = 'manageTourAttrCtr/edit/$1';
 $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['admin/statistics'] = 'statisticCtr';
@@ -66,7 +68,9 @@ $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
 
 $route['user'] = 'UsersCtr';
+$route['user/edit'] = 'UsersCtr/edit';
 
+$route['register'] = 'registerCtr'; 
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr'; 
 

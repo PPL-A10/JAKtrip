@@ -11,15 +11,15 @@
 			</ul>			
 			<br><br>
 			<div class="statcontent" id="visitors">
-				Ini bagian visitor
+				<img src="<?php echo base_url('assets/img/statdummy.jpg');?>">
 			</div>
 
 			<div class="statcontent" id="rating">
-				Ini bagian rating
+				<img src="<?php echo base_url('assets/img/statdummy2.png');?>" style="height: 230px; width: auto;">
 			</div>
 
 			<div class="statcontent" id="budget">
-				Ini bagian budget
+				<img src="<?php echo base_url('assets/img/statdummy3.png');?>" style="height: 230px; width: auto;">
 		</div>
 		</div>
 

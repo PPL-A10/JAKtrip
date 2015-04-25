@@ -264,7 +264,7 @@ a {
   font-size: 18px;
   color: #000;
   margin-top: 20px;
-  margin-bottom: -10px;
+  margin-bottom: -5px;
 }
 
 .headersmall {
@@ -814,7 +814,7 @@ ul.nav.nav-pills.fak > li > a:hover{
 .statcontent{
   margin-left: -70px;
   height: 400px;
-  background-color: #f0f0f0;
+  /*background-color: #f0f0f0;*/
   margin-bottom: 80px;
 }
 
@@ -882,4 +882,18 @@ ul.nav.nav-pills.fak > li > a:hover{
 
 a, a:active, a:focus, a:hover{
   outline: none;
+}
+
+.wish{
+  padding-bottom: 7px;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.iconcol{
+  font-size: 24px;
+  margin-top: 25px;
+}
+
+.w{
+  color: #F58EB9;
 }

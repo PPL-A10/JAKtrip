@@ -13,4 +13,10 @@ class UsersCtr extends CI_Controller {
 		$this->load->view('UserProfileUI');
 		$this->load->view('footer');
 	}
+
+	function edit(){
+		$this->load->view('header');
+		$this->load->view('EditProfileUI');
+		$this->load->view('footer');
+	}
 }

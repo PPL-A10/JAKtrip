@@ -631,7 +631,7 @@
             }
             else
             {
-              echo "<li><a href='#'>Sign Up</a></li>";
+              echo "<li><a href=".base_url('register').">Sign Up</a></li>";
               echo "<li><a href='#openLogin'>Log In</a></li>";
             }
             
@@ -672,7 +672,7 @@
                     <div class="col-lg-3"></div>
                   </div>
                   <br>
-                  <span class="col-lg-12">Don't have an account? <a href="" style="float:right; margin-top: -13px; margin-right: 30px; margin-left: -50px;">Sign Up.</a></span>
+                  <span class="col-lg-12">Don't have an account? <a href="<?php echo base_url('register');?>" style="float:right; margin-top: -13px; margin-right: 30px; margin-left: -50px;">Sign Up.</a></span>
                 </center></form>
           </div>
             </div>
