@@ -264,7 +264,7 @@ a {
   font-size: 18px;
   color: #000;
   margin-top: 20px;
-  margin-bottom: -5px;
+  /*margin-bottom: -5px;*/
 }
 
 .headersmall {
@@ -587,7 +587,6 @@ a {
 
 .icondetail{
   font-size: 22px;
-  color: #b3b3b3;
   margin: 17px 3px;
 }
 
@@ -884,7 +883,7 @@ a, a:active, a:focus, a:hover{
   outline: none;
 }
 
-.wish{
+.coll, .collrev{
   padding-bottom: 7px;
   border-bottom: 1px solid #c4c4c4;
 }
@@ -892,8 +891,33 @@ a, a:active, a:focus, a:hover{
 .iconcol{
   font-size: 24px;
   margin-top: 25px;
+  cursor: pointer;
 }
 
 .w{
   color: #F58EB9;
+}
+
+.w-none{
+  color: #c4c4c4;
+}
+
+.a{
+  color: #47CF21;
+}
+
+.a-none{
+  color: #c4c4c4;
+}
+
+.coll > a{
+  color: #999 !important;
+}
+
+.coll > a:hover{
+  color: #1C1C1C !important;
+}
+
+.collrev > a, .collrev > a:hover{
+  color: #999 !important;
 }

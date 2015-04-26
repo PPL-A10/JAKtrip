@@ -24,8 +24,11 @@
 <script src="<?php echo base_url('assets/js/bootstrap-datepicker.min.js')?>"></script>
 <!--script src="<?php //echo base_url('assets/js/gmaps.js')?>"></script-->
 <script src="<?php echo base_url('assets/js/jquery.smartmenus.min.js')?>"></script>
-<script src="<?php echo base_url('assets/js/menuselector.js')?>"></script>
+<script src="<?php echo base_url('assets/js/notifjaktrip.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
+<script src="<?php echo base_url('assets/js/classie.js')?>"></script>
+<script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
+<script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
 
 	
 		<script>
@@ -402,6 +405,44 @@ function sortFunction(){
 			    $("#trips").hide();
 			});
 
+ // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+ 			
+ 			$("span.iconcol").click(function(){
+ 				if($(this).hasClass("w-none")){
+ 					$(this).removeClass("w-none");
+ 					$(this).addClass("w");
+ 					notifAddWishlist();
+ 				}
+ 				else if($(this).hasClass("w")){
+ 					var c = confirm("Are you sure you want to remove this from your wishlist?");
+	 				if(c==true){
+	 					$(this).removeClass("w");
+	 					$(this).addClass("w-none");
+	 					notifDelWishlist();
+	 				}
+ 				}
+ 				else if($(this).hasClass("a-none")){
+ 					$(this).removeClass("a-none");
+ 					$(this).addClass("a");
+ 					notifAddAchievement();
+ 				}
+ 				else{
+ 					var c = confirm("Are you sure you want to remove this from your achievement?");
+	 				if(c==true){
+	 					$(this).removeClass("a");
+	 					$(this).addClass("a-none");
+	 					notifDelAchievement();
+	 				}
+ 				}
+ 				
+ 			});
+ 			// $("span.iconcol.w").click(function(){
+ 			// 	var c = confirm("Are you sure you want to remove this from your wishlist?");
+ 			// 	if(c==true){
+ 			// 		$(this).removeClass("w");
+ 			// 		$(this).addClass("w-none");
+ 			// 	}
+ 			// });
 
 
 });
