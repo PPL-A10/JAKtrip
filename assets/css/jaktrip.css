@@ -882,6 +882,9 @@ ul.nav.nav-pills.fak > li > a:hover{
 a, a:active, a:focus, a:hover{
   outline: none;
 }
+button, button:active, button:focus, button:hover{
+  outline: none !important;
+}
 
 .coll, .collrev{
   padding-bottom: 7px;

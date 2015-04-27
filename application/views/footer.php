@@ -436,13 +436,21 @@ function sortFunction(){
  				}
  				
  			});
- 			// $("span.iconcol.w").click(function(){
- 			// 	var c = confirm("Are you sure you want to remove this from your wishlist?");
- 			// 	if(c==true){
- 			// 		$(this).removeClass("w");
- 			// 		$(this).addClass("w-none");
- 			// 	}
- 			// });
+ 			
+ // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+
+ 			$("#formfeedback").show();
+		    $("#formsuggestion").hide();
+
+		  	$("input[name=jenis]:radio").on('change',function() {
+				if(this.value=='suggestion') {
+			            $("#formsuggestion").show();
+			            $("#formfeedback").hide();
+				} else {
+			            $('#formsuggestion').hide();
+			            $("#formfeedback").show();
+			    } 
+			}); 
 
 
 });
