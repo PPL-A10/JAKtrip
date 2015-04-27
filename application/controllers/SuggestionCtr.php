@@ -9,9 +9,15 @@ class SuggestionCtr extends CI_Controller {
     }
     
 	function index(){
+		$this->load->model('suggestionManager');
+		$data['query'] = $this->suggestionManager->showAllSuggestion();
+
 		$this->load->view('header');
 		$this->load->view('menuadmin');
-		$this->load->view('SuggestionUI');
+		$this->load->view('SuggestionUI', $data);
 		$this->load->view('footer');
+
 	}
+
+
 }

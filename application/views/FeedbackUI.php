@@ -28,8 +28,6 @@
 							echo "<td>".$row->message."</td>";
 							echo "</tr>";
 							}
-							//echo "</table>";
-	
 						?>
 				  		
 				  </tbody>

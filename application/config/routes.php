@@ -56,10 +56,12 @@ $route['allpromo'] = 'allPromosCtr';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
+$route['contactus/send'] = 'feedbackCtr/sendSuggestion'; 
 
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
 $route['admin/places/edit/(:any)'] = 'manageTourAttrCtr/edit/$1';
+$route['admin/places/delete/(:any)'] = 'manageTourAttrCtr/del/$1';
 $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['admin/statistics'] = 'statisticCtr';

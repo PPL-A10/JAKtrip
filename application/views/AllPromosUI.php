@@ -9,11 +9,11 @@
 			<div class="row places" style="padding-top: 200px;">
 				<div class="col-lg-12 location">
 					<div class="btn btn-warning" onclick="window.location.reload()">ALL PLACES</div>
-					<div class="btn btn-warning" onclick="filter('Jakarta%20Timur')">Jakarta Timur</div>
-					<div class="btn btn-warning" onclick="filter('Jakarta%20Barat')">Jakarta Barat</div>
-					<div class="btn btn-warning" onclick="filter('Jakarta%20Pusat')">Jakarta Pusat</div>
-					<div class="btn btn-warning" onclick="filter('Jakarta%20Utara')">Jakarta Utara</div>
-					<div class="btn btn-warning" onclick="filter('Jakarta%20Selatan')">Jakarta Selatan</div>
+					<div class="btn btn-warning" >Jakarta Timur</div>
+					<div class="btn btn-warning" >Jakarta Barat</div>
+					<div class="btn btn-warning" >Jakarta Pusat</div>
+					<div class="btn btn-warning" >Jakarta Utara</div>
+					<div class="btn btn-warning" >Jakarta Selatan</div>
 					
 				</div>
 
@@ -21,12 +21,12 @@
 					<div class="form-inline">
 	   					 <label class="control-label">Filter by :  </label>
 	   					 <span class="field custom-dropdown ">
-	   					 	 <select class="field form-control" onchange="filterFunctionFinal()" title="All Categories" id="category_select">    
+	   					 	 <select class="field form-control" onchange="" title="All Categories" id="category_select">    
 							        <option value='All' >All Types</option>
 									<?php
 										foreach($query1 as $row)
 										{
-											echo "<option value='".$row->category_name."'>".$row->category_name."</option>";
+											echo "<option value='".$row->type."'>".$row->type."</option>";
 										}
 									?><!--option value="">Sarinah</option>  
 							        <option value="">Gelora Bung Karno</option>
@@ -38,7 +38,7 @@
 	   					 <span class="input-group col-lg-3">
 	   					 	<input class="field form-control" type="text" id="name_select" placeholder="Enter keyword..." >
 	   					 	<span class="input-group-btn">
-	   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionFinal()" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
+	   					   	<button class="field btn btn-default" type="button" onclick="" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
 	   					 	</span>
 	   				 	</span>
 	  		 	
@@ -53,15 +53,14 @@
 				<div class="col-lg-12">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px;">
-						<div class="col-lg-3 containerimg">
-							<a href='#'><div class='txtonimg'>Discount 35% for Students</div>
-							<img class='img-responsive' src='<?php echo base_url("assets/img/image.png");?>'></a>
-						</div>
-
-						<div class="col-lg-3 containerimg">
-							<a href='#'><div class='txtonimg'>Buy 3 Get 1 Free</div>
-							<img class='img-responsive' src='<?php echo base_url("assets/img/image.png");?>'></a>
-						</div>
+						<?php
+						foreach($query as $row){
+							echo "<div class='col-lg-3 containerimg'>";
+							echo "<a href='place/".$row->title."'><div class='txtonimg'>".$row->title."</div>";
+							echo "<img class='img-responsive' src='".base_url('assets/img/image.png')."'></a>";
+							echo "</div>";
+						}
+						?>
 					
 					</div>
 					<div class="col-lg-1"></div>

@@ -8,17 +8,9 @@ class AllPromosCtr extends CI_Controller {
 
     function index()
 	{   
-			$this->load->helper('form');
-			$this->load->model('AllPlacesMod');
-			$data['query']= $this->AllPlacesMod->showallplaces();
-			$this->load->helper('form');
-			$this->load->model('touristAttractionManager');
-			
-			$this->load->model('searchMod');
-			$data['query4']= $this->searchMod->showallwisata();
-			$data['query1']= $this->searchMod->showallcategory();
-			$data['query2']= $this->searchMod->showalllocation();
-			$data['query3']= $this->searchMod->showallhalte();
+			$this->load->model('PromoManager');
+			$data['query']= $this->PromoManager->showAllPromo();
+			$data['query1']= $this->PromoManager->showType();
 			$this->load->view('header');
 			$this->load->view('allPromosUI',$data);
 			$this->load->view('footer');

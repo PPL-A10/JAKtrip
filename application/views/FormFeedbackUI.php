@@ -9,15 +9,7 @@
 				
 			</header>
 
-			<?php if($this->form_validation->run() == TRUE){
-				echo '<div class="col-lg-3"></div>';
-				echo '<div class="alert alert-dismissible alert-success col-lg-6" style="text-align: center; margin: 15px;">';
-				echo '<button type="button" class="close" data-dismiss="alert">×</button>';
-				echo '<strong>Thank you!</strong> You successfully sent your message. </div>';
-				echo '<div class="col-lg-3"></div>';
-			}
-						
-			?>
+			
 			
 			<ul class="subtitle nav navbar-nav">
 				<li><p>Send Us a Message</p></li>
@@ -29,7 +21,7 @@
 				<div class="col-lg-1"></div>
 				<div class="contactus col-lg-5">
 					<div style="margin-left: 70px;">
-						<input type="radio" value="feedback" name="jenis">&nbsp;&nbsp;Feedback Form
+						<input checked type="radio" value="feedback" name="jenis">&nbsp;&nbsp;Feedback Form
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="radio" value="suggestion" name="jenis">&nbsp;&nbsp;Place Suggestion Form
 					</div>
@@ -72,24 +64,26 @@
 				    <button class="btn btn-warning" type="submit">SEND</button>
 				    <?php echo form_close(); ?>
 					
-					<form id="formsuggestion">
+					<?php 
+					$attributes = array('id' => 'formsuggestion');
+					echo form_open('contactus/send', $attributes); ?>
 						<!-- if member -->
 						<div class="contact form-group">
 						  <div class="col-lg-11">
 							<label class="control-label">Place Name <span class="req">*</span></label>
-	  						<input class="form-control" type="text" id="placename" name="placename" required>
+	  						<input class="form-control" type="text" id="place_name" name="place_name" required>
 					      </div>
 					    </div>
 					    <br>
 					    <div class="contact form-group">
 						  <div class="col-lg-11">
-							<label class="control-label">Description <span class="req">*</span></label>
-	  						<textarea class="form-control" rows="3" id="textArea" id="shortdesc" name="shortdesc" required></textarea>
+							<label class="control-label">Short Description <span class="req">*</span></label>
+	  						<textarea class="form-control" rows="3" id="textArea" id="description" name="description" required></textarea>
 					      </div>
 					    </div>
 					    <br>
 					    <button class="btn btn-warning" type="submit">SEND</button>
-					</form>
+					<?php echo form_close(); ?>
 				</div>
 			</div>
 			
