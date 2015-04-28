@@ -24,8 +24,11 @@
 <script src="<?php echo base_url('assets/js/bootstrap-datepicker.min.js')?>"></script>
 <!--script src="<?php //echo base_url('assets/js/gmaps.js')?>"></script-->
 <script src="<?php echo base_url('assets/js/jquery.smartmenus.min.js')?>"></script>
-<script src="<?php echo base_url('assets/js/menuselector.js')?>"></script>
+<script src="<?php echo base_url('assets/js/notifjaktrip.js')?>"></script>
 <script src="<?php echo base_url('assets/js/jsjaktrip.js')?>"></script>
+<script src="<?php echo base_url('assets/js/classie.js')?>"></script>
+<script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
+<script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
 
 	
 		<script>
@@ -355,6 +358,100 @@ function sortFunction(){
 			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
 			      })
 		    });
+
+ // --------------------- USER -----------------------------------
+
+ 			$("#wishlist").hide();
+	    	$("#achievement").hide();
+	    	$("#reviews").hide();
+		    $("#trips").show();
+
+		    $("#litrip > a").css("color", "#fff");
+			$("#litrip > a").css("background-color", "#db2719"); 
+
+		    $('.navprofile > li > a').click(function(e){
+		    	e.preventDefault();
+			    $('.navprofile > li > a').css("background-color", "");
+			    $('.navprofile > li > a').css("color", "");
+			    $(this).css("color", "#fff");
+			    $(this).css("background-color", "#db2719");  
+			});
+
+ 			$("#litrip").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").hide();
+		    	$("#reviews").hide();
+			    $("#trips").show();
+			});
+
+			$("#liwish").click(function(){
+		    	$("#wishlist").show();
+		    	$("#achievement").hide();
+		    	$("#reviews").hide();
+			    $("#trips").hide();
+			});
+
+			$("#liachi").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").show();
+		    	$("#reviews").hide();
+			    $("#trips").hide();
+			});
+
+			$("#lirevi").click(function(){
+		    	$("#wishlist").hide();
+		    	$("#achievement").hide();
+		    	$("#reviews").show();
+			    $("#trips").hide();
+			});
+
+ // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+ 			
+ 			$("span.iconcol").click(function(){
+ 				if($(this).hasClass("w-none")){
+ 					$(this).removeClass("w-none");
+ 					$(this).addClass("w");
+ 					notifAddWishlist();
+ 				}
+ 				else if($(this).hasClass("w")){
+ 					var c = confirm("Are you sure you want to remove this from your wishlist?");
+	 				if(c==true){
+	 					$(this).removeClass("w");
+	 					$(this).addClass("w-none");
+	 					notifDelWishlist();
+	 				}
+ 				}
+ 				else if($(this).hasClass("a-none")){
+ 					$(this).removeClass("a-none");
+ 					$(this).addClass("a");
+ 					notifAddAchievement();
+ 				}
+ 				else{
+ 					var c = confirm("Are you sure you want to remove this from your achievement?");
+	 				if(c==true){
+	 					$(this).removeClass("a");
+	 					$(this).addClass("a-none");
+	 					notifDelAchievement();
+	 				}
+ 				}
+ 				
+ 			});
+ 			
+ // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+
+ 			$("#formfeedback").show();
+		    $("#formsuggestion").hide();
+
+		  	$("input[name=jenis]:radio").on('change',function() {
+				if(this.value=='suggestion') {
+			            $("#formsuggestion").show();
+			            $("#formfeedback").hide();
+				} else {
+			            $('#formsuggestion').hide();
+			            $("#formfeedback").show();
+			    } 
+			}); 
+
 
 });
 

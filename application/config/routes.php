@@ -51,12 +51,17 @@ $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
+$route['flag/spam/(:any)'] = 'FlagCtr/spam/$1';
 $route['allpromo'] = 'allPromosCtr';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
+$route['contactus/send'] = 'feedbackCtr/sendSuggestion'; 
+
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
+$route['admin/places/edit/(:any)'] = 'manageTourAttrCtr/edit/$1';
+$route['admin/places/delete/(:any)'] = 'manageTourAttrCtr/del/$1';
 $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['admin/statistics'] = 'statisticCtr';
@@ -65,6 +70,10 @@ $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
 
+$route['user'] = 'UsersCtr';
+$route['user/edit'] = 'UsersCtr/edit';
+
+$route['register'] = 'registerCtr'; 
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr'; 
 

@@ -71,9 +71,9 @@
 							echo "<td>". $row->hits ."</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
-							echo anchor('manageTourAttrCtr/del/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							echo "<td>". anchor('manageTourAttrCtr/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
-							echo "<td><a href='http://localhost/Jaktrip/index.php/PlaceCtr/".$row->place_name."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
+							echo anchor('admin/places/delete/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
+							echo "<td>". anchor('admin/places/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+							echo "<td><a href='".base_url('place')."/".$row->place_name."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
 							echo "</tr>";
 						}
 					?>

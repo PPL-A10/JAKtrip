@@ -89,6 +89,7 @@ class TourAttrCtr extends CI_Controller {
 function myform()
 	{			
 		$this->load->library('form_validation');
+		$this->load->helper('cookie');
 		//$this->load->database();
 		$this->load->helper('form');
 		$this->load->helper('url');
@@ -190,7 +191,7 @@ function myform()
 							'halte_code' =>$this->TouristAttractionManager->gethaltekode($this->input->post('select_busstop')),
 							'transport_info' => $this->input->post('transport_info'),
 							'transport_price' => $this->input->post('transport_price'),	
-							'author' => $this->input->post('select_author'),
+							'author' => get_cookie("username"),
 							//'nearest_bus_stop' => $this->input->post('select_busstop'),
 							'hits' => 0,
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
@@ -241,7 +242,7 @@ function myform()
 	}
 	function success()
 	{
-		redirect('manageTourAttrCtr');	
+		redirect('admin/places');	
 	}
 
 }

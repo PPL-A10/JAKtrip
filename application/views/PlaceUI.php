@@ -43,8 +43,8 @@
 				 } ?>
 	             <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
 	            </span>
-			    <a href="#"><span class="fa fa-check-circle icondetail"></span></a>
-			   <a href="#"> <span class="fa fa-heart icondetail"></span></a>
+			    <span class="fa fa-check-circle icondetail iconcol a-none"></span>
+			    <span class="fa fa-heart icondetail iconcol w-none"></span>
 			    
 			</div><br><br>
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">

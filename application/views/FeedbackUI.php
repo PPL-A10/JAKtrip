@@ -16,20 +16,20 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  		<tr>
-				  			<td>2015-04-02 23:55</td>
-				  			<td>Ahmad Ibrahim</td>
-				  			<td>amad.ibra@gmail.com</td>
-				  			<td>Lorem ipsum</td>
-				  			<td>Amomwodmwe ckw qdwmw cneoiwcnw xwkxw dwjdiwmwocokcckm cwoco cwcj cwockwo qdw w dp wcokoem</td>
-				  		</tr>
-				  		<tr>
-				  			<td>2015-03-02 23:55m</td>
-				  			<td>Ahmad Ibrahim</td>
-				  			<td>amad.ibra@gmail.com</td>
-				  			<td>Lorem ipsum</td>
-				  			<td>Amomwodmwe ckw qdwmw cneoiwcnw xwkxw dwjdiwmwocokcckm cwoco cwcj cwockwo qdw w dp wcokoem</td>
-				  		</tr>
+				  		<?php
+							foreach($query as $row)
+							{
+							echo "<tr>";
+							//echo"<td><input type='checkbox' value=''></td>";
+							echo "<td></td>";
+							echo "<td>".$row->name."</td>";
+							echo "<td>".$row->email	."</td>";
+							echo "<td>".$row->subject."</td>";
+							echo "<td>".$row->message."</td>";
+							echo "</tr>";
+							}
+						?>
+				  		
 				  </tbody>
 				</table><br>
 			</span>

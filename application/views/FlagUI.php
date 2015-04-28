@@ -166,7 +166,7 @@
 								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 								if ($row->rate == 5)
 								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-						    echo	"<a href='#flag'><span class='close fa fa-flag' value=''></span></a>";	
+						    echo	"<a href='#flag' onclick=".base_url('flag/report')."><span class='close fa fa-flag' value=".$row->username."></span></a>";	
 							//echo 	"<a href='localhost/JAKtrip/ReviewCtr/del/".$row->place_name."/".$row->id_rate."'>tes delete</a>";
 							//echo "<a href='javascript:myFunction(".$row->id_rate.",'asasasasee')'>asasasasasasas</a>"
 							//echo	anchor('ReviewCtr/del/'.$row->place_name.'/'.$row->id_rate, '<span class="deleterev close fa fa-trash-o"></span>');
@@ -190,11 +190,11 @@
 					     	<div class="flagcontent">
 						        Reasons :<br>
 						        <form>
-							        <input type="checkbox" value="spam">&nbsp;&nbsp;Spam<br>
-							        <input type="checkbox" value="false_statement">&nbsp;&nbsp;False Statement<br>
-							        <input type="checkbox" value="unrelated_content">&nbsp;&nbsp;Unrelated Content<br>
-							        <input type="checkbox" value="profanity">&nbsp;&nbsp;Profanity<br>
-							        <input type="checkbox" value="nudity">&nbsp;&nbsp;Nudity<br><br>
+							        <input type="checkbox" id="spam" name="spam" value="spam">&nbsp;&nbsp;Spam<br>
+							        <input type="checkbox" id="false_statement" name="false_statement" value="false_statement">&nbsp;&nbsp;False Statement<br>
+							        <input type="checkbox" id="unrelated_content" name="unrelated_content" value="unrelated_content">&nbsp;&nbsp;Unrelated Content<br>
+							        <input type="checkbox" id="profanity" name="profanity" value="profanity">&nbsp;&nbsp;Profanity<br>
+							        <input type="checkbox" id="nudity" name="nudity" value="nudity">&nbsp;&nbsp;Nudity<br><br>
 							        <div class="row"><br>
 								        <a href="#close" class="btn btn-primary" style="margin-right: -60px; margin-left: 100px;">cancel</a>
 								        <button type="submit" class="pull-right btn btn-warning" style="margin-right: 20px;">send</button>

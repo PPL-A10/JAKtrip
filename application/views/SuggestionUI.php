@@ -20,16 +20,26 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  	<tr>
-				  		<td>Taman Bermain</td>
-				  		<td>Lorem ipsum allalsadowamo nojv wandaworw pakffawp fawjf rawpwa f9wfjp ak</td>
-				  		<td><a href="#">&nbsp;&nbsp;Add New Place?</a></td>
-				  	</tr>
-				  	<tr>
-				  		<td>Kebun Tetangga</td>
-				  		<td>Lorem ipsum allalsadowamo nojv wandaworw pakffawp fawjf rawpwa f9wfjp ak</td>
-				  		<td><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Added</td>
-				  	</tr>
+				  	<?php
+							foreach($query as $row)
+							{
+							$place=$row->place_name;
+							$check=mysql_query("SELECT place_name FROM tourist_attraction as ta WHERE ta.place_name='$place'");
+							echo "<tr>";
+							echo "<td>".$row->place_name."</td>";
+							echo "<td>".$row->description."</td>";
+							if(mysql_num_rows($check)>0){
+								echo "<td>Added</td>";
+							}
+							else{
+								echo "<td><a href=".base_url('admin/addnewplace')." target='_blank'>Add New Place?</a></td>";
+							}
+							
+							echo "</tr>";
+							}
+							//echo "</table>";
+	
+						?>
 				  </tbody>
 				</table>
 			</div>

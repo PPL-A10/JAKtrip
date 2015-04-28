@@ -14,6 +14,8 @@
   <link href="<?php echo base_url('assets/css/sm-core-css.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/sm-clean.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
+  <link href="<?php echo base_url('assets/css/ns-style-growl.css');?>" type="text/css" rel="stylesheet"/>
+  <link href="<?php echo base_url('assets/css/ns-default.css');?>" type="text/css" rel="stylesheet"/>
   <script src="<?php echo base_url('assets/js/gmaps.js')?>"></script>
   
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
@@ -631,7 +633,7 @@
             }
             else
             {
-              echo "<li><a href='#'>Sign Up</a></li>";
+              echo "<li><a href=".base_url('register').">Sign Up</a></li>";
               echo "<li><a href='#openLogin'>Log In</a></li>";
             }
             
@@ -672,7 +674,7 @@
                     <div class="col-lg-3"></div>
                   </div>
                   <br>
-                  <span class="col-lg-12">Don't have an account? <a href="" style="float:right; margin-top: -13px; margin-right: 30px; margin-left: -50px;">Sign Up.</a></span>
+                  <span class="col-lg-12">Don't have an account? <a href="<?php echo base_url('register');?>" style="float:right; margin-top: -13px; margin-right: 30px; margin-left: -50px;">Sign Up.</a></span>
                 </center></form>
           </div>
             </div>

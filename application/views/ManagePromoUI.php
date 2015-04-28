@@ -54,29 +54,28 @@
 				      <th>Place Name</th>
 				      <th>Promo Title</th>
 				      <th>Type</th>
-				      <th>Author</th>
+				      <th>Status</th>
 				      <th colspan="3">Action</th>
 				    </tr>
 				  </thead>
 				  <tbody>
-				   	<tr>
-				   		<td>Snowbay</td>
-				   		<td>Discount 35% for Students</td>
-				   		<td>discount</td>
-				   		<td>amadibra</td>
-				   		<td width="80px"><a href="#"><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></td>
-						<td width="60px"><a href="#"><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a></td>
-						<td width="80px"><a href="#"><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>	
-				   	</tr>
-				   	<tr>
-				   		<td>Kebun Binatang Ragunan</td>
-				   		<td>Buy 3 Tickets Get 1 Free</td>
-				   		<td>freebie</td>
-				   		<td>amadibra</td>
-				   		<td width="80px"><a href="#"><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></td>
-						<td width="60px"><a href="#"><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a></td>
-						<td width="80px"><a href="#"><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>	
-				   	</tr>
+				   	<?php
+							foreach($query as $row)
+							{
+							echo "<tr>";
+							//echo"<td><input type='checkbox' value=''></td>";
+							echo "<td>".$row->place_name."</td>";
+							echo "<td>".$row->title."</td>";
+							echo "<td>".$row->type."</td>";
+							echo "<td>On going / Expired</td>";
+							echo "<td>";
+							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->title."?')");
+							echo anchor(''.$row->title,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
+							echo "<td>". anchor('' .$row->title, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+							echo "<td><a href='".$row->title."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
+							echo "</tr>";
+							}
+						?>
 				  </tbody>
 				</table><br>
 

@@ -88,7 +88,7 @@ class PlaceCtr extends CI_Controller {
                     $this->ratingManager->insert_rating($data);
                     //Loading View
 					//$this->load->view('AllplacesUI');
-                   }
+        }
 	}
 
 }
