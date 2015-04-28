@@ -64,7 +64,7 @@
             var total_price = getCookie("totalPrice");
             var transport_info = getCookie("transportInfo");
             var place_info = getCookie("placeInfo");
-            tempdata = place_name1 + "-" +halte_name1+ "-"+busway_price1+ "-"+angkot_price1+ "-"+ticket_price1+ "-"+total_price1+ "-"+transport_info1+ "-"+ place_info1;
+            tempdata = place_name1 + "--" +halte_name1+ "--"+busway_price1+ "--"+angkot_price1+ "--"+ticket_price1+ "--"+total_price1+ "--"+transport_info1+ "--"+ place_info1;
       //      alert(getCookie("placeName"));
           
            
@@ -153,7 +153,7 @@
             var idx_last_trip = getCookie("idxLastTrip");
             
             var sisaBudget = parseInt(budget)-parseInt(total_price1);
-            tempdata = place_name1 + "-" +halte_name1+ "-"+busway_price1+ "-"+angkot_price1+ "-"+ticket_price1+ "-"+total_price1+ "-"+transport_info1+ "-"+ place_info1+"-"+sisaBudget;
+            tempdata = place_name1 + "--" +halte_name1+ "--"+busway_price1+ "--"+angkot_price1+ "--"+ticket_price1+ "--"+total_price1+ "--"+transport_info1+ "--"+ place_info1+"--"+sisaBudget;
       
           
      //      alert(budget);

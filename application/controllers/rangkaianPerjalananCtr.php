@@ -63,7 +63,7 @@
 			$dataInput = $_POST["datanya"];
 			$this->load->model('touristAttractionManager');
 			$dataInput = str_replace("%20", " ",$dataInput);
-			$arrayData = explode("-", $dataInput);
+			$arrayData = explode("--", $dataInput);
 			$data['place_name'] = get_cookie("placeName").$arrayData[0]."xx";
 			$data['halte_name'] = get_cookie("halteName").$arrayData[1]."xx";
 			$data['busway_price'] = get_cookie("buswayPrice").$arrayData[2]."xx";
@@ -129,7 +129,7 @@
 			$dataInput = $_POST["datanya"];
 			$this->load->model('touristAttractionManager');
 			$dataInput = str_replace("%20", " ",$dataInput);
-			$arrayData = explode("-", $dataInput);
+			$arrayData = explode("--", $dataInput);
 			$data['place_name'] = get_cookie("placeName").$arrayData[0]."xx";
 			$data['halte_name'] = get_cookie("halteName").$arrayData[1]."xx";
 			$data['busway_price'] = get_cookie("buswayPrice").$arrayData[2]."xx";

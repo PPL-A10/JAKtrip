@@ -77,7 +77,8 @@ $(function() {
           zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-        var map = new google.maps.Map(mapCanvas, mapOptions);
+        map = new google.maps.Map(mapCanvas, mapOptions);
+
         jQuery.ajax({
 			        type: "POST",
 			        url: "http://localhost/Jaktrip/index.php/tesController/getAll",
@@ -86,7 +87,7 @@ $(function() {
 			            {	
 			            	var obj = jQuery.parseJSON(res);
 			         		var hasilPemilihan = "";
-			         	
+			         		var infoWindow = new google.maps.InfoWindow();
 			            	for(var i = 0; i<obj.query.length; i++)
 			            	{
 			           		
@@ -98,8 +99,31 @@ $(function() {
 			         			var location = new google.maps.LatLng(parseFloat(templongitude),parseFloat(templattitude));
 			         	
 			           			var marker = new google.maps.Marker({
-								    position: location
+								    position: location,
+								    html: "<a>" + obj.query[i].place_name + "</a>"
+
 								  });
+
+			       //     			var infowindow = new google.maps.InfoWindow({
+								  // content:obj.query[i].place_name
+								  // });
+			       //     			google.maps.event.addListener(marker,'click',function() {
+								  // map.setZoom(9);
+								  // map.setCenter(marker.getPosition());
+								  // });			           			
+								// google.maps.event.addListener(marker, 'click', function() {
+								//     infowindow.setContent("hahaha");
+								//     infowindow.open(map, marker);
+								// });
+								
+
+					            google.maps.event.addListener(marker, 'click', function () {
+					               
+					               infoWindow.setContent(this.html);
+					               infoWindow.open(map, this);
+
+					            });
+
 			           			gmarkers.push(marker);
 			           			marker.setMap(map);
 
@@ -108,8 +132,50 @@ $(function() {
 	                }
 	            });
       }
+      function setMapLocationZoom(tourAttr)
+		{
+			var indexToZoom = searchIndexListTourAttr(tourAttr);
+			
+			map.setCenter(gmarkers[indexToZoom].position);
+			if(indexMarkerChoosen != -1)
+			{
+				gmarkers[indexMarkerChoosen].setAnimation(null);
+			}
+			gmarkers[indexToZoom].setAnimation(google.maps.Animation.BOUNCE);
+			indexMarkerChoosen = indexToZoom;
+		    map.setZoom(15);
+		}
+
+		function resetMaps()
+		{
+			var myCenter = new google.maps.LatLng(-6.195456, 106.822229);
+			map.setCenter(myCenter);
+		//	alert(indexMarkerChoosen);
+			if(indexMarkerChoosen != -1)
+			{
+				gmarkers[indexMarkerChoosen].setAnimation(null);
+			}
+			indexMarkerChoosen = -1;
+
+			map.setZoom(11);
+		}
+		function searchIndexListTourAttr(tourAttr)
+			{
+				
+				
+				for(var i = 0; i< AllTourAttr.length; i++)
+				{
+					
+					if(AllTourAttr[i]==tourAttr)
+					{
+						
+						return i;
+					}	
+				}
+				
+			}
       google.maps.event.addDomListener(window, 'load', initialize);
-   
+   	 	var map;
     	var arrayTripChoosen = [];
 		var arrayTripPriceChoosen =[];
 		var tripCost = 0;

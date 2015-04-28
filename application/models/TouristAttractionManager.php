@@ -290,7 +290,10 @@ function __construct(){
 		function getAllTour1($data)
 		{
 			$this->load->database();
+			
 			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+
+			$query = $this->db->join('photo', ' tourist_attraction.id_pic =  photo.id_pic ', 'left outer');
 			$query = $this->db->get();
 			$result['result'] = $query->result();
 			$counter = 0;

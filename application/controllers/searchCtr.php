@@ -158,15 +158,8 @@
 			$data['nama_halte'] = "Taman Mini Garuda";
 			
 			$data['query'] = $this->touristAttractionManager->getAllTour1($data);
-	//	print_r($data['query']['result']);
-			// foreach($data['query'] as $row)
-			// {
-			// 	echo $row->result->place_name;
-			// }
-			
-			// $data['query']= $this->tesModel->getDatabase();
-			// $this->load->view('FormSearchUI',$data);
-		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+	//		echo json_encode($data['query']);
+	
 			setcookie("counterTrip", 0, time()+3600, '/');
 			setcookie("placeName", "", time()+3600, '/');
 			setcookie("halteName", "", time()+3600, '/');
