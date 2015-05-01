@@ -68,7 +68,7 @@
 							echo "<td>". $row->author ."</td>";
 							echo "<td>". $cat[$i]."</td>";
 							echo "<td>". $row->last_modified ."</td>";
-							echo "<td>". $row->hits ."</td>";
+							echo "<td>". $row->visitors ."</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
 							echo anchor('admin/places/delete/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
