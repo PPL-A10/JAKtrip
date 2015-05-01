@@ -11,6 +11,7 @@ class SuggestionCtr extends CI_Controller {
 	function index(){
 		$this->load->model('suggestionManager');
 		$data['query'] = $this->suggestionManager->showAllSuggestion();
+		$data['query2'] = $this->suggestionManager->showAllPhotoSuggestion();
 
 		$this->load->view('header');
 		$this->load->view('menuadmin');

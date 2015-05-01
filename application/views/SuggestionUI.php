@@ -56,7 +56,20 @@
 				    </tr>
 				  </thead>
 				  <tbody>
-				  	<tr>
+				  <?php 
+				  foreach($query2 as $row)
+				  {
+					echo "<tr>";
+					echo "<td>".$row->place_name ."</td>";
+					echo "<td>".$row->pic ."</td>";
+					echo "<td>ahmadibrahim</td>";
+					if($row->is_publish == 0)
+				  	{echo"<td><a href='#'>&nbsp;&nbsp;Publish?</a></td>";}
+					else
+					{echo "<td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
+				  }
+				  ?>
+				  	<!--tr>
 				  		<td>Taman Bermain</td>
 				  		<td><a href="#">http://frontroll.com/foto_berita/46kebun-binatang.jpg<a></td>
 				  		<td>ahmadibrahim</td>
@@ -67,7 +80,7 @@
 				  		<td><a href="#">http://frontroll.com/foto_berita/46kebun-binatang.jpg</a></td>
 				  		<td>ahmadibrahim</td>
 				  		<td><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Published</td>
-				  	</tr>
+				  	</tr-->
 				  </tbody>
 				</table>
 			</div>
