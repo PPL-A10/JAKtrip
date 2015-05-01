@@ -92,6 +92,7 @@ $route['login/forgotpassword'] = 'forgotPassCtr';
 
 $route['admin/manageMemberCtr/del/(:any)'] = 'manageMemberCtr/del/$1'; 
 $route['index.php/ManageTourAttrCtr/searchtour/(:any)'] = 'ManageTourAttrCtr/searchtour/$1'; 
+$route['flag/FlagCtr/spamreport/(:num)'] = 'FlagCtr/spamreport/$1'; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
