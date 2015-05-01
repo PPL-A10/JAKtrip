@@ -70,9 +70,9 @@
 							echo "<td>On going / Expired</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->title."?')");
-							echo anchor(''.$row->title,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							echo "<td>". anchor('' .$row->title, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
-							echo "<td><a href='".$row->title."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
+							echo anchor('admin/promos/delete'.$row->title,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
+							echo "<td>". anchor('admin/promo/edit' .$row->title, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+							echo "<td><a href='".base_url('promo')."/".$row->title."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
 							echo "</tr>";
 							}
 						?>
