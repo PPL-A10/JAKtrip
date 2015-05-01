@@ -38,6 +38,34 @@
 	function setLokasi(city){
 		lokasi=city;
 	}
+	
+	function filterFunctionTour(input){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		//var y = document.getElementById("category_select").value;
+		//var z = document.getElementById("name_select").value;
+		//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+input);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageTourAttrCtr/searchtour/"+input,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.tourattr.length; i++){
+									resultQuery = resultQuery +  "<tr><td>"+ obj.tourattr[i].place_name +"</td><td>"+ obj.tourattr[i].author +"</td><td>"+ obj.cat[i] +"</td><td>"+ obj.tourattr[i].last_modified +"</td><td>"+ obj.tourattr[i].hits +"</td><td><a href='admin/places/delete/"+obj.tourattr[i].place_name+"' class='link-class'><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td><td><a href='admin/places/edit/"+obj.tourattr[i].place_name+"' class='link-class'><span class='fa fa-pencil'></span>&nbsp;&nbsp;Edit</a></td><td><a href=''><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td></tr>"	;
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
 	function filterFunctionFinal2(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
@@ -52,7 +80,7 @@
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td></tr>";
+									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='manageMemberCtr/del/"+obj.query[i].username+"' class='link-class'><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td></tr>";
 									//resultQuery = resultQuery + obj.query[i].username;
 								}
 								
@@ -474,6 +502,33 @@ function sortFunction(){
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
 									resultQuery = resultQuery +  "<tr><td><input type='checkbox' value=''></td><td>"+obj.query[i].username+"</td><td>"+obj.query[i].email+"</td><td></td><td>"+obj.query[i].join_date+"</td><td></td><td>"+obj.query[i].last_active+"</td><td><a href='localhost/JAKtrip/ManageMemberCtr/del/"+obj.query[i].username+"' class='link-class'><soan class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td></tr>";
+									//resultQuery = resultQuery + obj.query[i].username;
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
+		function filterFunctionFinalTour(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		
+		var z = document.getElementById("name_select").value;
+			//$("#output_field").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+ z);	
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/ManageTourAttrCtr/searchkeywordtour/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.tourattr.length; i++){
+									resultQuery = resultQuery +  "<tr><td>"+ obj.tourattr[i].place_name +"</td><td>"+ obj.tourattr[i].author +"</td><td>"+ obj.cat[i] +"</td><td>"+ obj.tourattr[i].last_modified +"</td><td>"+ obj.tourattr[i].hits +"</td><td><a href='admin/places/delete/"+obj.tourattr[i].place_name+"' class='link-class'><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Delete</a></td><td><a href='admin/places/edit/"+obj.tourattr[i].place_name+"' class='link-class'><span class='fa fa-pencil'></span>&nbsp;&nbsp;Edit</a></td><td><a href=''><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td></tr>"	;
 									//resultQuery = resultQuery + obj.query[i].username;
 								}
 								

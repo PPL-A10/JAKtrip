@@ -313,6 +313,95 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 	}
 	
+		public function searchtour($place_name=null)
+	{
+		$this->load->library('table');
+		$this->load->helper('html');
+		$this->load->model('TouristAttractionManager');
+		$query = $this->TouristAttractionManager->filterMod5($place_name);
+		//$place_name = $query->place_name;
+
+
+		//$data['place_name'] = $place_name;
+		//$data['author'] = $query->author;
+		//$data['last_modified'] = $query->last_modified;
+		//$data['hits'] = $query->hits;
+		//$data['category'] = '';
+		$category_list = array();
+		
+		foreach($query as $place){
+			$place_name = $place->place_name;
+			$query2 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+			$category='';
+			foreach($query2 as $row){
+				if($category==''){
+					$category=$category.$row->category_name;
+				}
+				else{
+					$category=$category.', '.$row->category_name;				
+				}
+
+			}
+			array_push($category_list, $category);
+		}
+		
+		$data['cat'] = $category_list;
+		$data['tourattr'] = $query;
+		
+		
+		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
+		//$data['query2'] = $this->touristattractionmanager->getCategory();
+		//$this->load->view('header');
+		//$this->load->view('menuadmin');
+		//$this->load->view('manageTourAttrUI', $data);
+		//$this->load->view('footer');    
+		echo json_encode($data);
+	}
+	
+		public function searchkeywordtour($place_name=null)
+	{
+		$this->load->library('table');
+		$this->load->helper('html');
+		$this->load->model('TouristAttractionManager');
+		$query = $this->TouristAttractionManager->filterMod3($place_name);
+		//$place_name = $query->place_name;
+
+
+		//$data['place_name'] = $place_name;
+		//$data['author'] = $query->author;
+		//$data['last_modified'] = $query->last_modified;
+		//$data['hits'] = $query->hits;
+		//$data['category'] = '';
+		$category_list = array();
+		
+		foreach($query as $place){
+			$place_name = $place->place_name;
+			$query2 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
+			$category='';
+			foreach($query2 as $row){
+				if($category==''){
+					$category=$category.$row->category_name;
+				}
+				else{
+					$category=$category.', '.$row->category_name;				
+				}
+
+			}
+			array_push($category_list, $category);
+		}
+		
+		$data['cat'] = $category_list;
+		$data['tourattr'] = $query;
+		
+		
+		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
+		//$data['query2'] = $this->touristattractionmanager->getCategory();
+		//$this->load->view('header');
+		//$this->load->view('menuadmin');
+		//$this->load->view('manageTourAttrUI', $data);
+		//$this->load->view('footer');    
+		echo json_encode($data);
+	}
 	
 	
 }
