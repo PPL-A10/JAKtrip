@@ -68,8 +68,8 @@
 				 } ?>
 	             <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
 	            </span>
-			    <a href="#"><span class="fa fa-check-circle icondetail"></span></a>
-			   <a href="#"> <span class="fa fa-heart icondetail"></span></a>
+			    <a href="#"><span class="fa fa-check-circle icondetail iconcol a-none"></span></a>
+			   <a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>
 			    
 			</div><br><br>
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">
@@ -207,6 +207,12 @@
 						$i=$i+1;
 						}}?>
 						</div>
+						<!--
+<<<<<<< HEAD
+					</section>
+					
+					<div id="flag" class="openModal2">
+======= -->
 						
 					<!--?php 
 					$i=2;
@@ -235,6 +241,7 @@
 						?-->
 
 					<!--div id="flag" class="openModal2">
+>>>>>>> 22b4d8edac5136455dd83932a69d7aa147a66417
 					    <div>
 					     <center><div class="tuffyh3a">I want to report this review!</div></center><br>
 					     	<br>
@@ -266,6 +273,9 @@
 						    	</form>
 						    </div>
 					  </div>
+<<<<<<< HEAD
+					</div>
+=======
 					</div-->
 						<!-- <div class="modal" id="modalreport">
 						  <div class="modal-dialog">
@@ -289,9 +299,10 @@
 						      </div>
 						    </div>
 						  </div>
-						</div> -->
+						</div> 
+>>>>>>> 22b4d8edac5136455dd83932a69d7aa147a66417-->
 
-				</section>
+				
 			</div>
 			<div class="col-lg-1"></div>
 		</div>

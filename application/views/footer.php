@@ -293,7 +293,7 @@ function sortFunction(){
 	</script>
 
 	<script>
-	    $(document).ready(function () {
+	    $(document).ready(function() {
 
  // --------------------- HOME -----------------------------------
 
@@ -376,6 +376,9 @@ function sortFunction(){
 				$("#sm-sta").css("padding-bottom", "15px"); 
 				$("#sm-sta").css("border-bottom", "solid 5px #db2719"); 
             }
+            else{
+            	;
+            }
 
 		
 
@@ -410,7 +413,7 @@ function sortFunction(){
 			    $("#addphoform").toggle();
 			    $(this).text(function(i, text){
 			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
-			      })
+			      });
 		    });
 
  // --------------------- USER -----------------------------------
@@ -491,7 +494,7 @@ function sortFunction(){
  				
  			});
  			
- // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+ // --------------------- CONTACT US -----------------------------------
 
  			$("#formfeedback").show();
 		    $("#formsuggestion").hide();
