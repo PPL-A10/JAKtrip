@@ -25,6 +25,16 @@ class AllPromosCtr extends CI_Controller {
 			echo json_encode($data);
 	}
 	
+	public function searchpromokey($city=NULL, $title=NULL)
+	{
+		$this->load->library('table');
+		$this->load->helper('html'); 
+		$this->load->model('PromoManager');
+		$data['query'] = $this->PromoManager->filterPromoFinal($city, $title);
+		//$this->load->view('searchView',$data);    
+		echo json_encode($data);
+	}
+	
 	public function searchwisataLoc($city=NULL)
 	{
 			$this->load->library('table');
