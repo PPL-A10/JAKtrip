@@ -19,6 +19,16 @@ class SuggestionManager extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	function showAllPhotoSuggestion()
+	{
+		$this->load->database();
+		$this->db->select('*');
+        $this->db->from('photo');
+        //$this->db->order_by('suggest_id desc'); 
+		$query = $this->db->get();
+		return $query->result();
+	}
 }
 
 ?>

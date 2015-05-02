@@ -68,15 +68,17 @@
 				<section id="photoscon" class="textdetail">
 					<div class="col-lg-9"><br>
 						<button id="addphobtn" class="field btn btn-warning col-lg-11" type="button">ADD NEW PHOTO(S)</button>
-						<form id="addphoform">
+						<!--form id="addphoform"-->
+						<?php foreach($query as $row){}
+						echo form_open_multipart('PlaceCtr/do_upload/'.$row->place_name,'id="addphoform"');?>
 							<div class="form-group">
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
-								<input type="file" multiple>
+								<input type="file" name="userfile" size="20" multiple>
 						      </div>
 						    </div>
 						    <div class="col-lg-12"><br><br>
-							<button class="field btn btn-warning" type="submit">SUBMIT</button>
+							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
 							</div>
 						</form>
 					</div>

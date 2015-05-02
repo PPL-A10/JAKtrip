@@ -146,6 +146,8 @@
 						<br><br><br><br>
 						<div id="isi_field" >
 						<?php
+						$i=1;
+						foreach($query as $row2){
 						foreach($query2 as $row){
 							echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";				
 							echo "<div class='reviewkiri col-lg-4'>";
@@ -166,7 +168,7 @@
 								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 								if ($row->rate == 5)
 								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-						    echo	"<a href='#flag' onclick=".base_url('flag/report')."><span class='close fa fa-flag' value=".$row->username."></span></a>";	
+						    echo	"<a href='#flag".$i ."' onclick=".base_url('flag/report')."><span class='close fa fa-flag' value=".$row->username."></span></a>";	
 							//echo 	"<a href='localhost/JAKtrip/ReviewCtr/del/".$row->place_name."/".$row->id_rate."'>tes delete</a>";
 							//echo "<a href='javascript:myFunction(".$row->id_rate.",'asasasasee')'>asasasasasasas</a>"
 							//echo	anchor('ReviewCtr/del/'.$row->place_name.'/'.$row->id_rate, '<span class="deleterev close fa fa-trash-o"></span>');
@@ -179,17 +181,85 @@
 						    echo	"</span>";
 							echo	"</div>";
 							echo	"</div>";
-						
-						}?>
+
+							
+							
+					echo 	"<div id='flag".$i ."' class='openModal2'>";
+					echo 	"<div>";
+					echo 	"<center><div class='tuffyh3a'>I want to report this review!</div></center><br>";
+					echo	"<br>";
+					echo 	"<div class='flagcontent'>";
+					echo 	"Reasons :<br>";
+					echo  	"<form name ='userinput' action='../FlagCtr/spamreport/".$row->id_rate ."/".$row2->place_name ."' method='post'>";
+					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='spam'>&nbsp;&nbsp;Spam<br>";
+					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='false_statement'>&nbsp;&nbsp;False Statement<br>";
+					echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
+					echo     	"<input type='checkbox' id='spamreason' name='spamreason[]' value='profanity'>&nbsp;&nbsp;Profanity<br>";
+					echo    	"<input type='checkbox' id='spamreason' name='spamreason[]' value='nudity'>&nbsp;&nbsp;Nudity<br><br>";
+					echo   	"<div class='row'><br>";
+					echo    "<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 100px;'>cancel</a>";
+					echo    "<button type='submit' class='pull-right btn btn-warning' style='margin-right: 20px;'>send</button>";
+					echo	"</div>";
+					echo	"</form>";
+					echo 	"</div>";
+					echo 	"</div>";
+					echo 	"</div>";
+						$i=$i+1;
+						}}?>
 						</div>
+						<!--
+<<<<<<< HEAD
 					</section>
 					
 					<div id="flag" class="openModal2">
+======= -->
+						
+					<!--?php 
+					$i=2;
+					foreach($query2 as $row){
+					echo 	"<div id='flag".$i ."' class='openModal2'>";
+					echo 	"<div>";
+					echo 	"<center><div class='tuffyh3a'>I want to report this review!</div></center><br>";
+					echo	"<br>";
+					echo 	"<div class='flagcontent'>";
+					echo 	"Reasons :<br>";
+					echo  	"<form name ='userinput' action='FlagCtr/spamreport' method='post'>";
+					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='spam'>&nbsp;&nbsp;Spam<br>";
+					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='false_statement'>&nbsp;&nbsp;False Statement<br>";
+					echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
+					echo     	"<input type='checkbox' id='spamreason' name='spamreason[]' value='profanity'>&nbsp;&nbsp;Profanity<br>";
+					echo    	"<input type='checkbox' id='spamreason' name='spamreason[]' value='nudity'>&nbsp;&nbsp;Nudity<br><br>";
+					echo   	"<div class='row'><br>";
+					echo    "<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 100px;'>cancel</a>";
+					echo    "<button type='submit' class='pull-right btn btn-warning' style='margin-right: 20px;'>send</button>";
+					echo	"</div>";
+					echo	"</form>";
+					echo 	"</div>";
+					echo 	"</div>";
+					echo 	"</div>";}
+					$i=$i+1;
+						?-->
+
+					<!--div id="flag" class="openModal2">
+>>>>>>> 22b4d8edac5136455dd83932a69d7aa147a66417
 					    <div>
 					     <center><div class="tuffyh3a">I want to report this review!</div></center><br>
 					     	<br>
 					     	<div class="flagcontent">
 						        Reasons :<br>
+								
+						        <form name ="userinput" action="FlagCtr/spamreport" method="post">
+							        <input type="checkbox" id="spamreason" name="spamreason[]" value="spam">&nbsp;&nbsp;Spam<br>
+							        <input type="checkbox" id="spamreason" name="spamreason[]" value="false_statement">&nbsp;&nbsp;False Statement<br>
+							        <input type="checkbox" id="spamreason" name="spamreason[]" value="unrelated_content">&nbsp;&nbsp;Unrelated Content<br>
+							        <input type="checkbox" id="spamreason" name="spamreason[]" value="profanity">&nbsp;&nbsp;Profanity<br>
+							        <input type="checkbox" id="spamreason" name="spamreason[]" value="nudity">&nbsp;&nbsp;Nudity<br><br>
+							        <div class="row"><br>
+								        <a href="#close" class="btn btn-primary" style="margin-right: -60px; margin-left: 100px;">cancel</a>
+								        <button type="submit" class="pull-right btn btn-warning" style="margin-right: 20px;">send</button>
+							    	</div>
+						    	</form>
+								
 						        <form>
 							        <input type="checkbox" id="spam" name="spam" value="spam">&nbsp;&nbsp;Spam<br>
 							        <input type="checkbox" id="false_statement" name="false_statement" value="false_statement">&nbsp;&nbsp;False Statement<br>
@@ -203,7 +273,34 @@
 						    	</form>
 						    </div>
 					  </div>
+<<<<<<< HEAD
 					</div>
+=======
+					</div-->
+						<!-- <div class="modal" id="modalreport">
+						  <div class="modal-dialog">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						        <h4 class="modal-title">Report Review as Inappropriate</h4>
+						      </div>
+						      <div class="modal-body">
+						      	<p>Reasons :
+							        <input type="checkbox" value="spam">Spam
+							        <input type="checkbox" value="false_statement">False Statement
+							        <input type="checkbox" value="unrelated_content">Unrelated Content
+							        <input type="checkbox" value="profanity">Profanity
+							        <input type="checkbox" value="nudity">Nudity
+						    	</p>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						        <button type="button" class="btn btn-primary">Save</button>
+						      </div>
+						    </div>
+						  </div>
+						</div> 
+>>>>>>> 22b4d8edac5136455dd83932a69d7aa147a66417-->
 
 				
 			</div>

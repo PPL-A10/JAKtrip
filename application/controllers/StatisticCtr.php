@@ -9,9 +9,14 @@ class StatisticCtr extends CI_Controller {
     }
     
 	function index(){
-		$this->load->view('header');
+		$this->load->model('StatisticManager');
+		$data['query']= $this->StatisticManager->getstatistic();
+		$data['query2']= $this->StatisticManager->getstatisticrating();
+		$data['query3']= $this->StatisticManager->getstatisticbudget();
+		$this->load->view('header',$data);
 		$this->load->view('menuadmin');
 		$this->load->view('StatisticUI');
 		$this->load->view('footer');
+		//echo json_encode($data);
 	}
 }
