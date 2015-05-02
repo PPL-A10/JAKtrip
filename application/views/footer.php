@@ -345,8 +345,9 @@ function filterFunctionpromo(){
 
 }
 google.maps.event.addDomListener(window, 'load', initialize2);
+</script>
 
-
+<script type="text/javascript">
 	    $(document).ready(function() {
 		
  // --------------------- HOME -----------------------------------
@@ -522,6 +523,9 @@ google.maps.event.addDomListener(window, 'load', initialize2);
  				if($(this).hasClass("w-none")){
  					$(this).removeClass("w-none");
  					$(this).addClass("w");
+ 					setTimeout(function () {
+ 						location.href='../FlagCtr/addWishlist/<?php echo $thisPlace; ?>';
+ 					}, 3500); 
  					notifAddWishlist();
  				}
  				else if($(this).hasClass("w")){
@@ -529,12 +533,18 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 	 				if(c==true){
 	 					$(this).removeClass("w");
 	 					$(this).addClass("w-none");
+	 					setTimeout(function () {
+	 						location.href='../FlagCtr/removeWishlist/<?php echo $thisPlace; ?>';
+	 					}, 3500); 
 	 					notifDelWishlist();
 	 				}
  				}
  				else if($(this).hasClass("a-none")){
  					$(this).removeClass("a-none");
  					$(this).addClass("a");
+ 					setTimeout(function () {
+ 						location.href='../FlagCtr/addVisited/<?php echo $thisPlace; ?>';
+ 					}, 3500); 
  					notifAddAchievement();
  				}
  				else{
@@ -542,6 +552,9 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 	 				if(c==true){
 	 					$(this).removeClass("a");
 	 					$(this).addClass("a-none");
+	 					setTimeout(function () {
+	 						location.href='../FlagCtr/removeVisited/<?php echo $thisPlace; ?>';
+	 					}, 3500); 
 	 					notifDelAchievement();
 	 				}
  				}
@@ -623,18 +636,6 @@ google.maps.event.addDomListener(window, 'load', initialize2);
                         }
                     );
 	}
-	</script>
-
-	<script>
-		function initialize() {
-		 	var mapProp = {
-				center:new google.maps.LatLng(51.508742,-0.120850),
-				zoom:5,
-				mapTypeId:google.maps.MapTypeId.ROADMAP
-			};
-				var map=new google.maps.Map(document.getElementById("infolocation"),mapProp);
-		}
-		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 
 </body>

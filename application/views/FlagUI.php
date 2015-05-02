@@ -8,31 +8,8 @@
 			<div class="col-lg-10" style="margin-top: -15px; margin-left: 8px;">
 				<span class="tuffyh2a" style="margin-top: 5px;"><?php foreach($query as $row){echo $row->place_name;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 				<span><?php foreach($query as $row){echo $row->city;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<!--span class="starRating" style="margin-bottom: 10px;"-->
-			        <!--input id="rating5" type="radio" name="rate" value="5">
-			        <label for="rating5">5</label>
-			        <input id="rating4" type="radio" name="rate" value="4">
-			        <label for="rating4">4</label>
-			        <input id="rating3" type="radio" name="rate" value="3" checked>
-			        <label for="rating3">3</label>
-			        <input id="rating2" type="radio" name="rate" value="2">
-			        <label for="rating2">2</label>
-			        <input id="rating1" type="radio" name="rate" value="1">
-			        <label for="rating1">1</label-->
-				<!--?php foreach($query as $row){
-					if ($row->rate_avg == 0)
-						{echo "<span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 1)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 2)
-						{echo"<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 3)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 4)
-						{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
-					if ($row->rate_avg == 5)
-					{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-				}?-->
+				
+
 				<?php 	$avgrate = 0; 
 						$total = 0;
 						foreach($query2 as $row)
@@ -68,9 +45,31 @@
 				 } ?>
 	             <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
 	            </span>
-			    <a href="#"><span class="fa fa-check-circle icondetail iconcol a-none"></span></a>
-			   <a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>
-			    
+	            <!-- <button type="submit" onclick="location.href='../FlagCtr/addWishlist/<?php //echo $thisPlace; ?>'">TES</button> -->
+	            <?php 
+		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."'");
+		            if(mysql_num_rows($res)==0){
+			    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
+			    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
+			    	}
+			    	else{
+		            	foreach($query3 as $row){ 
+					    	if($row->is_wishlist==1){
+					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w"></span></a>';
+					    	}
+					    	else if($row->is_wishlist==0){
+					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
+					    	}
+					    	if($row->is_visited==1){
+					    		echo '<a href="#"><span class="fa fa-check-circle icondetail iconcol a"></span></a>';
+					    	}
+					    	else if($row->is_visited==0){
+					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
+					    	}
+					    	else{} 	    	
+				    	}
+					}
+			    ?>
 			</div><br><br>
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

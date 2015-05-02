@@ -15,7 +15,7 @@ function notifAddWishlist() {
 			// show the notification
 			notification.show();
 
-		}, 1200 );
+		}, 200 );
 		
 		// disable the button (for demo purposes only)
 		this.disabled = true;
@@ -38,7 +38,7 @@ function notifAddAchievement() {
 			// show the notification
 			notification.show();
 
-		}, 1200 );
+		}, 200 );
 		
 		// disable the button (for demo purposes only)
 		this.disabled = true;
@@ -61,7 +61,7 @@ function notifDelWishlist() {
 			// show the notification
 			notification.show();
 
-		}, 1200 );
+		}, 200 );
 		
 		// disable the button (for demo purposes only)
 		this.disabled = true;
@@ -85,7 +85,7 @@ function notifDelAchievement() {
 			// show the notification
 			notification.show();
 
-		}, 1200 );
+		}, 200 );
 		
 		// disable the button (for demo purposes only)
 		this.disabled = true;
