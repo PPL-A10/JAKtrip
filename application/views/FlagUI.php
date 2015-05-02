@@ -147,6 +147,7 @@
 						<div id="isi_field" >
 						<?php
 						$i=1;
+						foreach($query as $row2){
 						foreach($query2 as $row){
 							echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";				
 							echo "<div class='reviewkiri col-lg-4'>";
@@ -189,7 +190,7 @@
 					echo	"<br>";
 					echo 	"<div class='flagcontent'>";
 					echo 	"Reasons :<br>";
-					echo  	"<form name ='userinput' action='../FlagCtr/spamreport/".$row->id_rate ."' method='post'>";
+					echo  	"<form name ='userinput' action='../FlagCtr/spamreport/".$row->id_rate ."/".$row2->place_name ."' method='post'>";
 					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='spam'>&nbsp;&nbsp;Spam<br>";
 					echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='false_statement'>&nbsp;&nbsp;False Statement<br>";
 					echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
@@ -204,7 +205,7 @@
 					echo 	"</div>";
 					echo 	"</div>";
 						$i=$i+1;
-						}?>
+						}}?>
 						</div>
 						
 					<!--?php 
