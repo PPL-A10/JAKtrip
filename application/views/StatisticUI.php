@@ -16,11 +16,13 @@
 			</div>
 
 			<div class="statcontent" id="rating">
-				<img src="<?php echo base_url('assets/img/statdummy2.png');?>" style="height: 230px; width: auto;">
+				<!--img src="<?php //echo base_url('assets/img/statdummy2.png');?>" style="height: 230px; width: auto;"-->
+				<div id="chartdiv2" style="width: 640px; height: 400px;"></div>
 			</div>
 
 			<div class="statcontent" id="budget">
-				<img src="<?php echo base_url('assets/img/statdummy3.png');?>" style="height: 230px; width: auto;">
+				<!--img src="<?php //echo base_url('assets/img/statdummy3.png');?>" style="height: 230px; width: auto;"-->
+				<div id="chartdiv3" style="width: 640px; height: 400px;"></div>
 		</div>
 		</div>
 
