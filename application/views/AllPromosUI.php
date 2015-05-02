@@ -9,11 +9,11 @@
 			<div class="row places" style="padding-top: 200px;">
 				<div class="col-lg-12 location">
 					<div class="btn btn-warning" onclick="window.location.reload()">ALL PLACES</div>
-					<div class="btn btn-warning" >Jakarta Timur</div>
-					<div class="btn btn-warning" >Jakarta Barat</div>
-					<div class="btn btn-warning" >Jakarta Pusat</div>
-					<div class="btn btn-warning" >Jakarta Utara</div>
-					<div class="btn btn-warning" >Jakarta Selatan</div>
+					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Timur')">Jakarta Timur</div>
+					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Barat')">Jakarta Barat</div>
+					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Pusat')">Jakarta Pusat</div>
+					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Utara')">Jakarta Utara</div>
+					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Selatan')">Jakarta Selatan</div>
 					
 				</div>
 
@@ -38,7 +38,7 @@
 	   					 <span class="input-group col-lg-3">
 	   					 	<input class="field form-control" type="text" id="name_select" placeholder="Enter keyword..." >
 	   					 	<span class="input-group-btn">
-	   					   	<button class="field btn btn-default" type="button" onclick="" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
+	   					   	<button class="field btn btn-default" type="button" onclick="filterFunctionpromo()" style="margin-left: -9px;"><span class="fa fa-search"></span></button>
 	   					 	</span>
 	   				 	</span>
 	  		 	
