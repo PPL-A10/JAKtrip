@@ -56,7 +56,7 @@
 						<?php
 						foreach($query as $row){
 							echo "<div class='col-lg-3 containerimg'>";
-							echo "<a href='place/".$row->title."'><div class='txtonimg'>".$row->title."</div>";
+							echo "<a href='promo/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
 							echo "<img class='img-responsive' src='".base_url('assets/img/image.png')."'></a>";
 							echo "</div>";
 						}

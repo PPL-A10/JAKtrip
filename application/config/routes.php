@@ -53,6 +53,7 @@ $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
 $route['flag/spam/(:any)'] = 'FlagCtr/spam/$1';
 $route['allpromo'] = 'allPromosCtr';
+$route['promo/(:any)'] = 'PromoCtr/index/$1';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 

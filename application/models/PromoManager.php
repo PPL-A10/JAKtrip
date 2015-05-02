@@ -20,6 +20,14 @@ class PromoManager extends CI_Model{
 		return $query->result();
 	}
 
+	function showPromo($title)
+	{
+		$this->load->database();
+		$name = str_replace("%20"," ",$name);
+        $query = $this->db->get_where('promo', array('title' => $title));
+		return $query->result();
+	}
+
     function showType()
     {
         $this->load->database();
