@@ -223,6 +223,30 @@ function sortFunction(){
                         }
                     );
 	}
+	
+	function filterpromo(city){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" +city ;
+		setLokasi(city);
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllPromosCtr/searchpromoloc/"+city,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].title+"'><div class='txtonimg'>"+obj.query[i].title+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
 
 	function filterFunctionFinal(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		

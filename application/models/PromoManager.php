@@ -30,6 +30,21 @@ class PromoManager extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
+	
+	function filterpromoloc($city)
+	{
+			
+		$this->load->database();
+		$this->db->select('*');
+		$this->db->from('promo');
+		$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+		$city= str_replace("%20", " ",$city);
+		if((string)$city != ""){
+			$this->db->where(array('tourist_attraction.city' => $city));
+		} 			
+		$query = $this->db->get(); 
+		return $query->result(); 
+		}
 }
 
 ?>
