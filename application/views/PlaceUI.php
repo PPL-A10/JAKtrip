@@ -60,7 +60,6 @@
 				<span id="info" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 				<section id="infocon" class="textdetail" >
 					<div class="col-lg-9">
-					<a href="javascript:tes()">sjjshd</a>
 					<?php foreach($query as $row){
 						$lat = $row->lattitude;
 						$long = $row->longitude;

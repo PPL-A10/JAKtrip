@@ -316,7 +316,7 @@ function filterFunctionpromo(){
 	</script>
 
 	<script>
-	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;} ?>
+	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;$place = $row->place_name;} ?>
 	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
 
 	function initialize2() {
@@ -328,11 +328,20 @@ function filterFunctionpromo(){
 
   var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
   
-    var marker=new google.maps.Marker({
+  var marker=new google.maps.Marker({
   position:myCenter,
+  animation:google.maps.Animation.BOUNCE
   });
-
-marker.setMap(map);
+	marker.setMap(map);
+	
+  var infowindow = new google.maps.InfoWindow({
+  content:"<?php echo $place; ?>"
+  });
+  infowindow.open(map,marker);
+  google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
+	
 
 }
 google.maps.event.addDomListener(window, 'load', initialize2);
