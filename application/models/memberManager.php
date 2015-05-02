@@ -26,15 +26,5 @@
 
 			return $query->row_array();
 		}
-
-		function addToWishlist($data){
-			$this->load->database();
-			$this->db->insert('collection', $data);
-		}
-
-		function delFromWishlist($data){
-			$this->load->database();
-			$this->db->delete('collection', $data);
-		}
 	}
 ?>
