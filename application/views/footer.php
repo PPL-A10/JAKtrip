@@ -30,9 +30,11 @@
 <script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
 <script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
 
+
 	
 		<script>
 
+		
 		var lokasi = "All";
 	
 	function setLokasi(city){

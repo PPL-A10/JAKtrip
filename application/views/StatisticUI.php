@@ -11,7 +11,8 @@
 			</ul>			
 			<br><br>
 			<div class="statcontent" id="visitors">
-				<img src="<?php echo base_url('assets/img/statdummy.jpg');?>">
+				<!--img src="<?php //echo base_url('assets/img/statdummy.jpg');?>"-->
+				 <div id="chartdiv" style="width: 640px; height: 400px;"></div>
 			</div>
 
 			<div class="statcontent" id="rating">

@@ -17,6 +17,8 @@
   <link href="<?php echo base_url('assets/css/ns-style-growl.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/ns-default.css');?>" type="text/css" rel="stylesheet"/>
   <script src="<?php echo base_url('assets/js/gmaps.js')?>"></script>
+    <script src="<?php echo base_url('assets/amcharts/amcharts.js')?>" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/amcharts/serial.js')?>" type="text/javascript"></script>
   
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
@@ -48,11 +50,96 @@
   </style>
 
 
+<script type="text/javascript">
 
+	var arrayOfPHPData = <?php echo json_encode($query) ?>;
+
+	var chartData = [{
+		"country": "USA",
+		"visits": 4252
+	}, {
+		"country": "China",
+		"visits": 1882
+	}, {
+		"country": "Japan",
+		"visits": 1809
+	}, {
+		"country": "Germany",
+		"visits": 1322
+	}, {
+		"country": "UK",
+		"visits": 1122
+	}, {
+		"country": "France",
+		"visits": 1114
+	}, {
+		"country": "India",
+		"visits": 984
+	}, {
+		"country": "Spain",
+		"visits": 711
+	}, {
+		"country": "Netherlands",
+		"visits": 665
+	}, {
+		"country": "Russia",
+		"visits": 580
+	}, {
+		"country": "South Korea",
+		"visits": 443
+	}, {
+		"country": "Canada",
+		"visits": 441
+	}, {
+		"country": "Brazil",
+		"visits": 395
+	}, {
+		"country": "Italy",
+		"visits": 386
+	}, {
+		"country": "Australia",
+		"visits": 384
+	}, {
+		"country": "Taiwan",
+		"visits": 338
+	}, {
+		"country": "Poland",
+		"visits": 328
+	}];
+
+</script>
 
 
   <script>
 
+  
+
+		
+		AmCharts.ready(function() {			
+		var chart = new AmCharts.AmSerialChart();
+		chart.dataProvider = arrayOfPHPData;
+		chart.categoryField = "place_name";
+		
+		var graph = new AmCharts.AmGraph();
+		graph.valueField = "visitors";
+		graph.type = "column";
+		chart.addGraph(graph);
+		
+		var categoryAxis = chart.categoryAxis;
+		categoryAxis.autoGridCount  = false;
+		categoryAxis.gridCount = arrayOfPHPData.length;
+		categoryAxis.gridPosition = "start";
+		categoryAxis.labelRotation = 90;
+		
+		graph.fillAlphas = 0.8;
+		chart.angle = 30;
+		chart.depth3D = 15;
+
+		chart.write('chartdiv');
+		});
+		
+  
+  
 
         function addTrip1(place_name1, halte_name1, busway_price1, angkot_price1, ticket_price1, total_price1, transport_info1, place_info1)
         {
