@@ -943,3 +943,28 @@ button, button:active, button:focus, button:hover{
 .boxinfo > a:hover{
   color: #db2719 !important;
 }
+
+.gallery{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.pic-thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  float: left;
+  margin: 5px 10px;
+}
+.pic-thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+ 

@@ -94,6 +94,20 @@
 							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
 							</div>
 						</form>
+						<div class="gallery col-lg-12">
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+						</div>
 					</div>
 				</section>
 				<span id="reviews" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
@@ -131,7 +145,7 @@
 						    </div>
 							<br>
 							<div class="formrating form-group">
-							  <div class="col-lg-9">
+							  <div class="col-lg-9"><br>
 								<label class="control-label">Review</label>
 		  						<textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
 						      </div>
