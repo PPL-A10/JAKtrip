@@ -68,8 +68,8 @@
 				 } ?>
 	             <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
 	            </span>
-			    <a href="#"><span class="fa fa-check-circle icondetail"></span></a>
-			   <a href="#"> <span class="fa fa-heart icondetail"></span></a>
+			    <a href="#"><span class="fa fa-check-circle icondetail iconcol a-none"></span></a>
+			   <a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>
 			    
 			</div><br><br>
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">
@@ -182,7 +182,8 @@
 						
 						}?>
 						</div>
-
+					</section>
+					
 					<div id="flag" class="openModal2">
 					    <div>
 					     <center><div class="tuffyh3a">I want to report this review!</div></center><br>
@@ -203,31 +204,8 @@
 						    </div>
 					  </div>
 					</div>
-						<!-- <div class="modal" id="modalreport">
-						  <div class="modal-dialog">
-						    <div class="modal-content">
-						      <div class="modal-header">
-						        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						        <h4 class="modal-title">Report Review as Inappropriate</h4>
-						      </div>
-						      <div class="modal-body">
-						      	<p>Reasons :
-							        <input type="checkbox" value="spam">Spam
-							        <input type="checkbox" value="false_statement">False Statement
-							        <input type="checkbox" value="unrelated_content">Unrelated Content
-							        <input type="checkbox" value="profanity">Profanity
-							        <input type="checkbox" value="nudity">Nudity
-						    	</p>
-						      </div>
-						      <div class="modal-footer">
-						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-						        <button type="button" class="btn btn-primary">Save</button>
-						      </div>
-						    </div>
-						  </div>
-						</div> -->
 
-				</section>
+				
 			</div>
 			<div class="col-lg-1"></div>
 		</div>
