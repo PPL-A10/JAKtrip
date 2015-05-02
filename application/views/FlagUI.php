@@ -207,10 +207,10 @@
 						$i=$i+1;
 						}}?>
 						</div>
-						<!--
-<<<<<<< HEAD
+						
+
 					</section>
-					
+				<!--	
 					<div id="flag" class="openModal2">
 ======= -->
 						

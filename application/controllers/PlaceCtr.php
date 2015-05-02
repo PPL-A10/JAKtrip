@@ -172,6 +172,17 @@ function do_upload($place_name)
 		}
 	}
 
+	function addWishlist($place_name, $username){
+		// $place_name = str_replace("%20", " ",$place_name);
+		// $username = get_cookie("username");
+		alert($place_name);
+		alert($username);
+
+		$this->load->view('header');
+		$this->load->view('PlaceUI',$data);
+		$this->load->view('footer');
+	}
+
 }
 
 ?>
