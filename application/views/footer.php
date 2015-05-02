@@ -36,11 +36,10 @@
 
 		
 		var lokasi = "All";
-	
 	function setLokasi(city){
 		lokasi=city;
 	}
-	
+		//function tes(){$("#descr").html(<?php echo $lat; ?>+"dan"+<?php echo $long; ?>);}
 	function filterFunctionTour(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
@@ -317,8 +316,30 @@ function filterFunctionpromo(){
 	</script>
 
 	<script>
-	    $(document).ready(function() {
+	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;} ?>
+	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
 
+	function initialize2() {
+  var mapProp = {
+    center:new google.maps.LatLng(-6.190035,106.838075),
+    zoom:11,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  
+    var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+
+marker.setMap(map);
+
+}
+google.maps.event.addDomListener(window, 'load', initialize2);
+
+
+	    $(document).ready(function() {
+		
  // --------------------- HOME -----------------------------------
 
 		    $("#showRec, #showOwntr").hide();

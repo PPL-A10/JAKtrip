@@ -377,6 +377,10 @@ a {
   height: 780px;
 }
 
+#basic_map{
+  height: 780px;
+}
+
 .searchbox{
   background-color: #e0e0e0;
   height: 280px;

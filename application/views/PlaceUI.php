@@ -60,10 +60,11 @@
 				<span id="info" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 				<section id="infocon" class="textdetail" >
 					<div class="col-lg-9">
+					<a href="javascript:tes()">sjjshd</a>
 					<?php foreach($query as $row){
 						$lat = $row->lattitude;
 						$long = $row->longitude;
-						echo "<div class='boxinfo'>".$row->description."</div>";
+						echo "<div id='descr' class='boxinfo'>".$row->description."</div>";
 						echo "<div class='boxinfo'> <h3><span class='fa fa-ticket'></span><b>&nbsp;&nbsp;&nbsp;Harga Tiket</b></h3>";
 						echo "Weekend: Rp ".$row->weekend_price."<br>Weekday: Rp ".$row->weekday_price."</div>";
 						echo "<div class='boxinfo'> <h3><span class='fa fa-link'></span><b>&nbsp;&nbsp;&nbsp;Tautan</b></h3>";
@@ -71,9 +72,13 @@
 						echo "</div>";
 						echo "<div class='boxinfo'> <h3><span class='fa fa-map-marker'></span><b>&nbsp;&nbsp;&nbsp;Lokasi Tempat Wisata</b></h3>";
 						echo "<div class='infolocation'>";
-						echo "</div></div>";
+						echo "<div id='googleMap' style='width:500px;height:380px;'></div>";
+						echo "</div>";
+						echo "</div>";
 					}
 					?>
+					
+    </div>
 					</div>
 					
 				</section>
