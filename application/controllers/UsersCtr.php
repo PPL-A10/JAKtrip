@@ -12,6 +12,7 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->helper('cookie');
 		$user = get_cookie("username");
+		$data['thisUser'] = $user;
 		$data['wishlist'] = $this->memberManager->showWishlist($user);
 		$data['visited'] = $this->memberManager->showVisited($user);
 		$this->load->view('header');

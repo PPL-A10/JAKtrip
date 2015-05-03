@@ -47,7 +47,7 @@
 	            </span>
 	            <!-- <button type="submit" onclick="location.href='../FlagCtr/addWishlist/<?php //echo $thisPlace; ?>'">TES</button> -->
 	            <?php 
-		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."'");
+		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."' AND username = '".$thisUser."'");
 		            if(mysql_num_rows($res)==0){
 			    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
 			    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';

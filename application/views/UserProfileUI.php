@@ -31,15 +31,24 @@
 
 			<div id="wishlist" class="usercontent">
 				<?php
-					foreach ($wishlist as $row) {
-						$thisPlace = $row->place_name;
-						echo '<div class="row coll"><a href="#">';
-						echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+					$res = mysql_query("SELECT is_wishlist FROM collection WHERE 'is_wishlist' = '1' AND 'username' = '".$thisUser."'");
+		            if(mysql_num_rows($res)==0){
+						echo '<div class="col-lg-2"></div>';
 						echo '<div class="col-lg-8">';
-						echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
-						echo $row->city;
-						echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
-						echo '</a></div>';
+						echo '<img src='.base_url("assets/img/nowishlist.png").'>';
+						echo '</div><div class="col-lg-2"></div>';
+			    	}
+			    	else{
+						foreach ($wishlist as $row) {
+							$thisPlace = $row->place_name;
+							echo '<div class="row coll"><a href="#">';
+							echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+							echo '<div class="col-lg-8">';
+							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
+							echo $row->city;
+							echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
+							echo '</a></div>';
+						}
 					}
 				?>
 				
@@ -57,14 +66,23 @@
 
 			<div id="achievement" class="usercontent">
 				<?php
-					foreach ($visited as $row) {
-						echo '<div class="row coll"><a href="#">';
-						echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+					$res = mysql_query("SELECT is_visited FROM collection WHERE 'is_visited' = '1' AND 'username' = '".$thisUser."'");
+		            if(mysql_num_rows($res)==0){
+						echo '<div class="col-lg-2"></div>';
 						echo '<div class="col-lg-8">';
-						echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
-						echo $row->city;
-						echo '</div><div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>';
-						echo '</a></div>';
+						echo '<img src='.base_url("assets/img/noachievement.png").'>';
+						echo '</div><div class="col-lg-2"></div>';
+			    	}
+			    	else{
+						foreach ($visited as $row) {
+							echo '<div class="row coll"><a href="#">';
+							echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+							echo '<div class="col-lg-8">';
+							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
+							echo $row->city;
+							echo '</div><div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>';
+							echo '</a></div>';
+						}
 					}
 				?>
 				<!-- <div class="row coll">
