@@ -962,6 +962,8 @@ button, button:active, button:focus, button:hover{
   margin: 5px 10px;
 }
 .pic-thumbnail img {
+  opacity: .8;
+  filter: alpha(opacity=80);
   position: absolute;
   left: 50%;
   top: 50%;
@@ -971,4 +973,8 @@ button, button:active, button:focus, button:hover{
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
 }
- 
+
+.pic-thumbnail img:hover{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}

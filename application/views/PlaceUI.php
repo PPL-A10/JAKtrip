@@ -86,7 +86,8 @@
 						<button id="addphobtn" class="field btn btn-warning col-lg-11" type="button">ADD NEW PHOTO(S)</button>
 						<!--form id="addphoform"-->
 						<?php foreach($query as $row){}
-						echo form_open_multipart('PlaceCtr/do_upload/'.$row->place_name,'id="addphoform"');?>
+						$attributes = array('id' => 'addrevform');
+						echo form_open_multipart('PlaceCtr/do_upload/'.$row->place_name, $attributes);?>
 							<div class="form-group">
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
@@ -102,9 +103,9 @@
 						foreach($query3 as $row3)
 						{
 							$location = $row3->pic;
-							echo "<div class='pic-thumbnail'>";
+							echo "<div class='pic-thumbnail white'>";
 							if($row3->is_publish == 1)
-							{echo "<a href='".base_url('assets/img/image.png')."'><img src='".base_url($location)."'></a>";}
+							{echo "<a href='".base_url($location)."'><img src='".base_url($location)."'></a>";}
 							echo "</div>";
 						}
 						?>
