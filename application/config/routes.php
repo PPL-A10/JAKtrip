@@ -43,8 +43,8 @@ $route['404_override'] = '';
 
 $route['home'] = 'homeCtr';
 $route['trip'] = 'SearchCtr';
-$route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
-$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
+$route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
+$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';
 $route['trip/view'] = 'viewTripCtr'; 
 $route['allplaces'] = 'allPlacesCtr';
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
