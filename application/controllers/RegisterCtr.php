@@ -29,7 +29,7 @@ class RegisterCtr extends CI_Controller {
 			'is_admin' => 0,
 			'join_date' => $currentTime,
 			'last_active' => $currentTime,
-			'password' => $password, //di-enkripsi? dulu
+			'password' => md5($password), //di-enkripsi? dulu
 			'is_active' => 1
 		);
 		

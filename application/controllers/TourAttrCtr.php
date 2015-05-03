@@ -107,7 +107,7 @@ class TourAttrCtr extends CI_Controller {
 		//$this->form_validation->set_rules('category_name', 'category_name', 'required|trim');
 		$this->form_validation->set_rules('pic', 'pic', 'trim');
 		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
-		$this->form_validation->set_rules('author', 'author', 'trim');
+		//$this->form_validation->set_rules('author', 'author', 'trim');
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
@@ -168,6 +168,7 @@ class TourAttrCtr extends CI_Controller {
 			$place_info=NULL;
 		}
 	 	// build array for the model
+			//echo $this->input->post('select_busstop');
 			
 		$form_data = array(
 	       	'place_name' => $this->input->post('place_name'),
@@ -185,8 +186,9 @@ class TourAttrCtr extends CI_Controller {
 			'transport_price' => $this->input->post('transport_price'),	
 			'author' => get_cookie("username"),
 			//'nearest_bus_stop' => $this->input->post('select_busstop'),
-			'hits' => 0,
-			'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
+			'visitors' => 0,
+			'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now()),
+			'link_web' => ""
 		);
 
 		$form_photo = array(
