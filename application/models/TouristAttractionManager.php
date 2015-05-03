@@ -18,10 +18,10 @@ class TouristAttractionManager extends CI_Model{
 		$this->db->insert('tourist_attraction', $form_data);
 		foreach($form_photo['pic'] as $row){
 			$photo = array(
-							'place_name' => $form_photo['place_name'],
-							'pic' => $row,
-							'pic_info' => $form_photo['pic_info']
-						);
+				'place_name' => $form_photo['place_name'],
+				'pic' => $row,
+				'pic_info' => $form_photo['pic_info']
+			);
 			$this->db->insert('photo', $photo);
 		}
 		
@@ -140,7 +140,7 @@ class TouristAttractionManager extends CI_Model{
 		
 		
 
-		//sif ($this->db->affected_rows() == '0')
+		//if ($this->db->affected_rows() == '0')
 		//{
 			return TRUE;
 		//}
@@ -155,7 +155,7 @@ class TouristAttractionManager extends CI_Model{
   		//$menu = new WebMenu;
 		//$data['base'] = $this->config->item('base_url');
 		//$data['css'] = $this->config->item('css');
-  		//$data['menu'] 		= $menu->show_menu();
+  		//$data['menu'] = $menu->show_menu();
 
 		return $data;					  		
  	}

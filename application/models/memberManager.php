@@ -26,5 +26,47 @@
 
 			return $query->row_array();
 		}
+
+		function addToWishlist($data){
+			$this->load->database();
+			$this->db->insert('collection', $data);
+		}
+
+		function updateWishlist($data){
+			$this->load->database();
+			$this->db->update('collection', $data);
+		}
+
+		function delFromWishlist($data){
+			$this->load->database();
+			$this->db->update('collection', $data);
+		}
+
+		function addToVisited($data){
+			$this->load->database();
+			$this->db->insert('collection', $data);
+		}
+
+		function updateVisited($data){
+			$this->load->database();
+			$this->db->update('collection', $data);
+		}
+
+		function delFromVisited($data){
+			$this->load->database();
+			$this->db->update('collection', $data);
+		}
+
+		function showCollection($place, $user){
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('collection');
+            $this->db->where('username', $user);
+            $this->db->where('place_name', $place);
+            $query = $this->db->get();
+            return $query->result();
+            // $this->db->where('place_name', $place);
+		}
+
 	}
 ?>
