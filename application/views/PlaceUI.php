@@ -86,7 +86,7 @@
 						<button id="addphobtn" class="field btn btn-warning col-lg-11" type="button">ADD NEW PHOTO(S)</button>
 						<!--form id="addphoform"-->
 						<?php foreach($query as $row){}
-						$attributes = array('id' => 'addrevform');
+						$attributes = array('id' => 'addphoform');
 						echo form_open_multipart('PlaceCtr/do_upload/'.$row->place_name, $attributes);?>
 							<div class="form-group">
 							  <div class="col-lg-9"><br><br>
