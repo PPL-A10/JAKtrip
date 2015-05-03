@@ -16,8 +16,9 @@
   <link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/ns-style-growl.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/ns-default.css');?>" type="text/css" rel="stylesheet"/>
+  <script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
   <script src="<?php echo base_url('assets/js/gmaps.js')?>"></script>
-    <script src="<?php echo base_url('assets/amcharts/amcharts.js')?>" type="text/javascript"></script>
+  <script src="<?php echo base_url('assets/amcharts/amcharts.js')?>" type="text/javascript"></script>
   <script src="<?php echo base_url('assets/amcharts/serial.js')?>" type="text/javascript"></script>
   
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
