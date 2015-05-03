@@ -18,7 +18,7 @@
 	</div>
 </footer>
 
-<script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
+
 <script src="<?php echo base_url('assets/js/ion.rangeSlider.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap-datepicker.min.js')?>"></script>
@@ -525,7 +525,8 @@ function filterFunctionpromo(){
 		});
 
  // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
- 	
+ 		
+
  // --------------------- CONTACT US -----------------------------------
 $(document).ready(function() {
  			$("#formfeedback").show();

@@ -30,49 +30,52 @@
 			</div>
 
 			<div id="wishlist" class="usercontent">
-				<div class="row coll">
+				<?php
+					foreach ($wishlist as $row) {
+						echo '<div class="row coll"><a href="#">';
+						echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+						echo '<div class="col-lg-8">';
+						echo '<div class="tuffyh3a" id="">'.$row->place_name.'</div>';
+						echo $row->city;
+						echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
+						echo '</a></div>';
+					}
+				?>
+				
+				<!-- <div class="row coll">
 					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
-						<div class="col-lg-8">
-							<div class="tuffyh3a">Kebun Binatang Ragunan</div>
-							Jakarta Selatan
-						</div>
-						<div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>
-					</a>
-				</div>
-				<div class="row coll">
-					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
+						<div class="col-lg-2"><img src="<?php // echo base_url('assets/img/50.jpg');?>"></div>
 						<div class="col-lg-8">
 							<div class="tuffyh3a">Planetarium</div>
 							Jakarta Barat
 						</div>
 						<div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 
 			<div id="achievement" class="usercontent">
-				<div class="row coll">
+				<?php
+					foreach ($visited as $row) {
+						echo '<div class="row coll"><a href="#">';
+						echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+						echo '<div class="col-lg-8">';
+						echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
+						echo $row->city;
+						echo '</div><div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>';
+						echo '</a></div>';
+					}
+				?>
+				<!-- <div class="row coll">
 					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
-						<div class="col-lg-8">
-							<div class="tuffyh3a">TMII</div>
-							Jakarta Timur
-						</div>
-						<div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>
-					</a>
-				</div>
-				<div class="row coll">
-					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
+						<div class="col-lg-2"><img src="<?php //echo base_url('assets/img/50.jpg');?>"></div>
 						<div class="col-lg-8">
 							<div class="tuffyh3a">Museum Nasional</div>
 							Jakarta Pusat
 						</div>
 						<div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 
 			<div id="reviews" class="usercontent">
@@ -111,3 +114,34 @@
 		<div class="col-lg-2"></div>
 
 </div>	
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("span.iconcol").click(function(){
+		if($(this).hasClass("w")){
+			var c = confirm("Are you sure you want to remove this from your wishlist?");
+			if(c==true){
+				$(this).removeClass("w");
+				$(this).addClass("w-none");
+				setTimeout(function () {
+					location.href='removeWishlist';
+				}, 3500); 
+				notifDelWishlist();
+			}
+		}
+		else if($(this).hasClass("a")){
+			var c = confirm("Are you sure you want to remove this from your achievement?");
+			if(c==true){
+				$(this).removeClass("a");
+				$(this).addClass("a-none");
+				setTimeout(function () {
+					location.href='removeVisited';
+				}, 3500); 
+				notifDelAchievement();
+			}
+		}				
+		else{}
+	});
+});
+</script>
