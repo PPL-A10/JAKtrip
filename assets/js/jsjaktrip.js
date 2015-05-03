@@ -539,9 +539,11 @@ $(function() {
 					$("#isireview").hide();
 				}
 
+$(document).ready(function() {
+
 //faq----------
 
-$("#gscon").show();
+			$("#gscon").show();
 		    $("#aapcon").hide();
 		    $("#plcon").hide();
 		    $("#revcon").hide();
@@ -659,6 +661,6 @@ $("#gscon").show();
 			          return text === "ADD NEW REVIEW" ? "CLOSE FORM" : "ADD NEW REVIEW";
 			      })
 		    });
-
+});
 		   
 //---------------

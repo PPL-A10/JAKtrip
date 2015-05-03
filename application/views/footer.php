@@ -320,34 +320,32 @@ function filterFunctionpromo(){
 	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
 
 	function initialize2() {
-  var mapProp = {
-    center:new google.maps.LatLng(-6.190035,106.838075),
-    zoom:11,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
+		  var mapProp = {
+		    center:new google.maps.LatLng(-6.190035,106.838075),
+		    zoom:11,
+		    mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
 
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  
-  var marker=new google.maps.Marker({
-  position:myCenter,
-  animation:google.maps.Animation.BOUNCE
-  });
-	marker.setMap(map);
-	
-  var infowindow = new google.maps.InfoWindow({
-  content:"<?php echo $place; ?>"
-  });
-  infowindow.open(map,marker);
-  google.maps.event.addListener(marker, 'click', function() {
-  infowindow.open(map,marker);
-  });
-	
-
-}
-google.maps.event.addDomListener(window, 'load', initialize2);
+		  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		  
+		  var marker=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+			marker.setMap(map);
+			
+		  var infowindow = new google.maps.InfoWindow({
+			  content:"<?php echo $place; ?>"
+			  });
+			  infowindow.open(map,marker);
+			  google.maps.event.addListener(marker, 'click', function() {
+			  infowindow.open(map,marker);
+			  });
+			}
+		google.maps.event.addDomListener(window, 'load', initialize2);
 </script>
 
-<script type="text/javascript">
+<script>
 	    $(document).ready(function() {
 		
  // --------------------- HOME -----------------------------------
@@ -362,11 +360,9 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		        $('#showRec').hide();
 		    });
 		});
-		</script>
-		<script>
-		 $(document).ready(function() {
- // --------------------- ADMIN/STATISTICS ------------------------------------
 
+ // --------------------- ADMIN/STATISTICS ------------------------------------
+ 		$(document).ready(function() {
 		    $("#livis > a").css("color", "#fff");
 			$("#livis > a").css("background-color", "#db2719"); 
 			$("#rating").hide();
@@ -396,9 +392,10 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		    	$("#visitors").hide();
 			    $("#budget").show();
 			});
+		});
 
  // --------------------- MENU ADMIN ------------------------------------
-
+ 		$(document).ready(function() {
 			if(window.location.pathname == '/JAKtrip/admin/places'){
 	            $("#sm-pla").css("color", "#db2719");
 				$("#sm-pla").css("padding-bottom", "15px"); 
@@ -437,10 +434,11 @@ google.maps.event.addDomListener(window, 'load', initialize2);
             else{
             	;
             }
-
+        });
 		
 
  // --------------------- ADMIN/SUGGESTIONS ------------------------------------
+ 		$(document).ready(function() {
 
 		    $("#liplac > a").css("color", "#fff");
 			$("#liplac > a").css("background-color", "#db2719"); 
@@ -463,8 +461,10 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		    	$("#places").hide();
 			    $("#photos").show();
 			});
+		});
 
  // --------------------- PLACE -----------------------------------
+ 		$(document).ready(function() {
 
 			$("#addphoform").hide();
 		    $("#addphobtn").click(function(){
@@ -473,9 +473,10 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
 			      });
 		    });
+		});
 
  // --------------------- USER -----------------------------------
-
+ 		$(document).ready(function() {
  			$("#wishlist").hide();
 	    	$("#achievement").hide();
 	    	$("#reviews").hide();
@@ -519,53 +520,12 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		    	$("#reviews").show();
 			    $("#trips").hide();
 			});
+		});
 
  // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
- 			
- 			$("span.iconcol").click(function(){
- 				if($(this).hasClass("w-none")){
- 					$(this).removeClass("w-none");
- 					$(this).addClass("w");
- 					setTimeout(function () {
- 						location.href='../FlagCtr/addWishlist/<?php echo $thisPlace; ?>';
- 					}, 3500); 
- 					notifAddWishlist();
- 				}
- 				else if($(this).hasClass("w")){
- 					var c = confirm("Are you sure you want to remove this from your wishlist?");
-	 				if(c==true){
-	 					$(this).removeClass("w");
-	 					$(this).addClass("w-none");
-	 					setTimeout(function () {
-	 						location.href='../FlagCtr/removeWishlist/<?php echo $thisPlace; ?>';
-	 					}, 3500); 
-	 					notifDelWishlist();
-	 				}
- 				}
- 				else if($(this).hasClass("a-none")){
- 					$(this).removeClass("a-none");
- 					$(this).addClass("a");
- 					setTimeout(function () {
- 						location.href='../FlagCtr/addVisited/<?php echo $thisPlace; ?>';
- 					}, 3500); 
- 					notifAddAchievement();
- 				}
- 				else{
- 					var c = confirm("Are you sure you want to remove this from your achievement?");
-	 				if(c==true){
-	 					$(this).removeClass("a");
-	 					$(this).addClass("a-none");
-	 					setTimeout(function () {
-	 						location.href='../FlagCtr/removeVisited/<?php echo $thisPlace; ?>';
-	 					}, 3500); 
-	 					notifDelAchievement();
-	 				}
- 				}
- 				
- 			});
- 			
+ 	
  // --------------------- CONTACT US -----------------------------------
-
+$(document).ready(function() {
  			$("#formfeedback").show();
 		    $("#formsuggestion").hide();
 
