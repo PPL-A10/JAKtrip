@@ -64,7 +64,7 @@
 							echo "<tr>";
 							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->title."</td>";
-							// echo "<td>".$row->$type_[$i]."</td>";
+							echo "<td>".$row->$type_[$i]."</td>";
 							$currentDate = date("Y-m-d");
 							$enddate = date($row->end_date);
 							if($enddate >= $currentDate){
