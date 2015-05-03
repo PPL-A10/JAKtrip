@@ -24,7 +24,7 @@
 							<div class="tuffyh3a">4 Places</div>
 							In <b>24 Feb '15</b> | Start from <b>Planetarium</b> | Total: <b>Rp 80000</b>
 						</div>
-						<div class="col-lg-2"><span class="fa fa-check-circle iconcol a-none"></span></div>
+						<div class="col-lg-2"><span class="fa fa-trash-o iconcol a-none"></span></div>
 					</a>
 				</div>
 			</div>
