@@ -96,6 +96,10 @@ $route['index.php/ManageTourAttrCtr/searchtour/(:any)'] = 'ManageTourAttrCtr/sea
 $route['flag/FlagCtr/spamreport/(:num)'] = 'FlagCtr/spamreport/$1'; 
 $route['flag/(:any)/addwishlist'] = 'FlagCtr/addWishlist/$1'; 
 $route['flag/(:any)/removewishlist'] = 'FlagCtr/removeWishlist/$1'; 
+$route['flag/(:any)/addvisited'] = 'FlagCtr/addVisited/$1'; 
+$route['flag/(:any)/removevisited'] = 'FlagCtr/removeVisited/$1'; 
+$route['user/addwishlist'] = 'UsersCtr/addWishlist/$1'; 
+$route['user/removewishlist'] = 'UsersCtr/removeWishlist/$1'; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -32,10 +32,11 @@
 			<div id="wishlist" class="usercontent">
 				<?php
 					foreach ($wishlist as $row) {
+						$thisPlace = $row->place_name;
 						echo '<div class="row coll"><a href="#">';
 						echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
 						echo '<div class="col-lg-8">';
-						echo '<div class="tuffyh3a" id="">'.$row->place_name.'</div>';
+						echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 						echo $row->city;
 						echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
 						echo '</a></div>';
@@ -125,7 +126,7 @@ $(document).ready(function() {
 				$(this).removeClass("w");
 				$(this).addClass("w-none");
 				setTimeout(function () {
-					location.href='removeWishlist';
+					location.href='UsersCtr/removeWishlist/<?php echo $thisPlace; ?>';
 				}, 3500); 
 				notifDelWishlist();
 			}
@@ -136,7 +137,7 @@ $(document).ready(function() {
 				$(this).removeClass("a");
 				$(this).addClass("a-none");
 				setTimeout(function () {
-					location.href='removeVisited';
+					location.href='UsersCtr/removeVisited/<?php echo $thisPlace; ?>';
 				}, 3500); 
 				notifDelAchievement();
 			}
