@@ -47,7 +47,7 @@
 	            </span>
 	            <!-- <button type="submit" onclick="location.href='../FlagCtr/addWishlist/<?php //echo $thisPlace; ?>'">TES</button> -->
 	            <?php 
-		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."'");
+		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."' AND username = '".$thisUser."'");
 		            if(mysql_num_rows($res)==0){
 			    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
 			    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
@@ -308,3 +308,49 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("span.iconcol").click(function(){
+		if($(this).hasClass("w-none")){
+			$(this).removeClass("w-none");
+			$(this).addClass("w");
+			setTimeout(function () {
+				location.href='../FlagCtr/addWishlist/<?php echo $thisPlace; ?>';
+			}, 3500); 
+			notifAddWishlist();
+		}
+		else if($(this).hasClass("w")){
+			var c = confirm("Are you sure you want to remove this from your wishlist?");
+			if(c==true){
+				$(this).removeClass("w");
+				$(this).addClass("w-none");
+				setTimeout(function () {
+					location.href='../FlagCtr/removeWishlist/<?php echo $thisPlace; ?>';
+				}, 3500); 
+				notifDelWishlist();
+			}
+		}
+		else if($(this).hasClass("a-none")){
+			$(this).removeClass("a-none");
+			$(this).addClass("a");
+			setTimeout(function () {
+				location.href='../FlagCtr/addVisited/<?php echo $thisPlace; ?>';
+			}, 3500); 
+			notifAddAchievement();
+		}
+		else if($(this).hasClass("a")){
+			var c = confirm("Are you sure you want to remove this from your achievement?");
+			if(c==true){
+				$(this).removeClass("a");
+				$(this).addClass("a-none");
+				setTimeout(function () {
+					location.href='../FlagCtr/removeVisited/<?php echo $thisPlace; ?>';
+				}, 3500); 
+				notifDelAchievement();
+			}
+		}			
+		else{}	
+	});
+});
+</script>

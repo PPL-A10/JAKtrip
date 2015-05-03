@@ -29,6 +29,12 @@ class SuggestionManager extends CI_Model{
 		$query = $this->db->get();
 		return $query->result();
 	}
+	
+	function publishphoto($id_pic){
+		$this->db->where('id_pic', $id_pic);
+		$this->db->set('is_publish', 1, FALSE);
+		$this->db->update('photo');
+	}
 }
 
 ?>

@@ -45,5 +45,14 @@
 			$query = $this->db->get(); 
             return $query->result(); 
 		}
+		
+		function create ($form_data){
+			$this->load->database();
+			$this->db->insert('member', $form_data);
+			if ($this->db->affected_rows() == '1'){
+				return TRUE;
+			}
+			return FALSE;
+		}
 	}
 ?>

@@ -48,6 +48,7 @@ class FlagCtr extends CI_Controller {
 		$user = get_cookie("username");
 		$data['query3'] = $this->memberManager->showCollection($place, $user);
 		$data['thisPlace'] = $place;
+		$data['thisUser'] = $user;
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
 
