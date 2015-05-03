@@ -70,6 +70,7 @@ $route['admin/suggestions'] = 'suggestionCtr';
 $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
+$route['admin/promos/delete/(:any)'] = 'ManagePromoCtr/del/$1';
 
 $route['user'] = 'UsersCtr';
 $route['user/edit'] = 'UsersCtr/edit';
