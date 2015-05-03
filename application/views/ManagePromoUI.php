@@ -66,7 +66,7 @@
 							//echo"<td><input type='checkbox' value=''></td>";
 							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->title."</td>";
-							echo "<td>".$row->type."</td>";
+							echo "<td>".$row->type_promo."</td>";
 							echo "<td>On going / Expired</td>";
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->title."?')");

@@ -4,8 +4,6 @@ class TourAttrCtr extends CI_Controller {
 	
 	function index(){
 		$this->load->helper('date');
-
-
 		$this->load->model('TouristAttractionManager');
 		$this->load->model('HalteManager');
 		$this->load->model('searchMod');
@@ -86,8 +84,7 @@ class TourAttrCtr extends CI_Controller {
  	}
 */
 
-function myform()
-	{			
+	function myform(){
 		$this->load->library('form_validation');
 		$this->load->helper('cookie');
 		//$this->load->database();
@@ -120,17 +117,15 @@ function myform()
 		$errors = array();
  
 		// first make sure that there is no error in uploading the files
-		for($i=0;$i<$number_of_files;$i++)
-		{
+		for($i=0;$i<$number_of_files;$i++){
 		  if($_FILES['pic']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['pic']['name'][$i];
 		}
-		if(sizeof($errors)==0)
-		{
-		  // now, taking into account that there can be more than one file, for each file we will have to do the upload
-		  // we first load the upload library
-		  //$this->load->library('upload');
-		  // next we pass the upload path for the images
-		  $image_path = realpath(APPPATH . '../assets/');
+		if(sizeof($errors)==0){
+		  	// now, taking into account that there can be more than one file, for each file we will have to do the upload
+		  	// we first load the upload library
+		  	//$this->load->library('upload');
+		  	// next we pass the upload path for the images
+		  	$image_path = realpath(APPPATH . '../assets/');
 			$config['upload_path'] = $image_path;
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']='1000';
@@ -141,7 +136,7 @@ function myform()
 		  
 			$file_name = array();
    
-			for ($i = 0; $i < $number_of_files; $i++) {
+			for ($i = 0; $i < $number_of_files; $i++){
 				$_FILES['apic']['name'] = $files['name'][$i];
 				$_FILES['apic']['type'] = $files['type'][$i];
 				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
@@ -150,14 +145,12 @@ function myform()
 				//now we initialize the upload library
 				$this->upload->initialize($config);
 				// we retrieve the number of files that were uploaded
-				if ($this->upload->do_upload('apic'))
-				{
-				  $data['upload_data'][$i] = $this->upload->data();
-				  $name = $data['upload_data'][$i]['file_name'];
-				  array_push($file_name, $name);
+				if ($this->upload->do_upload('apic')){
+					$data['upload_data'][$i] = $this->upload->data();
+					$name = $data['upload_data'][$i]['file_name'];
+					array_push($file_name, $name);
 				}
-				else
-				{
+				else{
 				  //$data['upload_errors'][$i] = $this->upload->display_errors();
 				}
 			}
@@ -170,61 +163,55 @@ function myform()
 		}
 		
 	
-			$place_info = $this->input->post('place_inform');
-			if($place_info=='0'){
-
-				$place_info=NULL;
-			}
-		 	// build array for the model
+		$place_info = $this->input->post('place_inform');
+		if($place_info=='0'){
+			$place_info=NULL;
+		}
+	 	// build array for the model
 			
-			$form_data = array(
-					       	'place_name' => $this->input->post('place_name'),
-					       	'weekday_price' => $this->input->post('weekday_price'),
-					       	'weekend_price' => $this->input->post('weekend_price'),
-							'longitude' => $this->input->post('longitude'),
-							'lattitude' => $this->input->post('lattitude'),
-							'city' => $this->input->post('select_location'),
-							'rate_avg' => 0,
-							'description' => $this->input->post('description'),
-							'place_info' => $place_info,
-							//'halte_code' => $this->input->post('halte_code'),
-							'halte_code' =>$this->TouristAttractionManager->gethaltekode($this->input->post('select_busstop')),
-							'transport_info' => $this->input->post('transport_info'),
-							'transport_price' => $this->input->post('transport_price'),	
-							'author' => get_cookie("username"),
-							//'nearest_bus_stop' => $this->input->post('select_busstop'),
-							'hits' => 0,
-							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
-						);
+		$form_data = array(
+	       	'place_name' => $this->input->post('place_name'),
+	       	'weekday_price' => $this->input->post('weekday_price'),
+	       	'weekend_price' => $this->input->post('weekend_price'),
+			'longitude' => $this->input->post('longitude'),
+			'lattitude' => $this->input->post('lattitude'),
+			'city' => $this->input->post('select_location'),
+			'rate_avg' => 0,
+			'description' => $this->input->post('description'),
+			'place_info' => $place_info,
+			//'halte_code' => $this->input->post('halte_code'),
+			'halte_code' =>$this->TouristAttractionManager->gethaltekode($this->input->post('select_busstop')),
+			'transport_info' => $this->input->post('transport_info'),
+			'transport_price' => $this->input->post('transport_price'),	
+			'author' => get_cookie("username"),
+			//'nearest_bus_stop' => $this->input->post('select_busstop'),
+			'hits' => 0,
+			'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
+		);
 
-			$form_photo = array(
-							'place_name' => set_value('place_name'),
-							//'pic' => set_value('pic'),
-							//'pic' => $image_path.'\\'.$file_name,
-							'pic' => $photo,
-							'pic_info' => set_value('pic_info')
-						);		
+		$form_photo = array(
+			'place_name' => set_value('place_name'),
+			//'pic' => set_value('pic'),
+			//'pic' => $image_path.'\\'.$file_name,
+			'pic' => $photo,
+			'pic_info' => set_value('pic_info')
+		);		
 							
-			$form_cat = array(
-							'place_name' => $this->input->post('place_name'),
-							'category_list' => $this->input->post('category_list'),
-							'category_new' => $this->input->post('category_new')
-						);							
+		$form_cat = array(
+			'place_name' => $this->input->post('place_name'),
+			'category_list' => $this->input->post('category_list'),
+			'category_new' => $this->input->post('category_new')
+		);							
 									
-			// run insert model to write data to db
+		// run insert model to write data to db
 		
-			if ($this->TouristAttractionManager->SaveForm($form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
-			{
-				redirect('tourAttrCtr/success');   // or whatever logic needs to occur
-			}
-			else
-			{
+		if ($this->TouristAttractionManager->SaveForm($form_data, $form_photo, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
+			redirect('tourAttrCtr/success');   // or whatever logic needs to occur
+		}
+		else{
 			echo 'An error occurred saving your information. Please try again later';
 			// Or whatever error handling is necessary
-			}
-		
-
-		
+		}
 	}
 	
 	# callback
