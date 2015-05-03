@@ -593,22 +593,63 @@ $("#gscon").show();
 		    $("#photoscon").hide();
 		    $("#reviewscon").hide();
 
+		    $("#inf > a").css("color", "#db2719");
+		    $("#inf > a").css("padding-bottom", "15px"); 
+		    $("#inf > a").css("border-bottom", "solid 5px #db2719"); 
+
 		    $("#inf").click(function(){
 		    	$("#photoscon").hide();
 		    	$("#reviewscon").hide();
 		    	$("#infocon").show();
+
+		    	$("#inf > a").css("color", "#db2719");
+			    $("#inf > a").css("padding-bottom", "15px"); 
+			    $("#inf > a").css("border-bottom", "solid 5px #db2719"); 
+
+			    $("#pho > a").css("color", "");
+			    $("#pho > a").css("padding-bottom", ""); 
+			    $("#pho > a").css("border-bottom", ""); 
+
+			    $("#revi > a").css("color", "");
+			    $("#revi > a").css("padding-bottom", ""); 
+			    $("#revi > a").css("border-bottom", ""); 
+
 		    });
 
 		    $("#pho").click(function(){
 			    $("#infocon").hide();
 			    $("#reviewscon").hide();
 		    	$("#photoscon").show();
+
+		    	$("#inf > a").css("color", "");
+			    $("#inf > a").css("padding-bottom", ""); 
+			    $("#inf > a").css("border-bottom", ""); 
+
+			    $("#pho > a").css("color", "#db2719");
+			    $("#pho > a").css("padding-bottom", "15px"); 
+			    $("#pho > a").css("border-bottom", "solid 5px #db2719"); 
+
+			    $("#revi > a").css("color", "");
+			    $("#revi > a").css("padding-bottom", ""); 
+			    $("#revi > a").css("border-bottom", ""); 
 		    });
 
 		    $("#revi").click(function(){
 			    $("#infocon").hide();
 			    $("#photoscon").hide();
 		    	$("#reviewscon").show();
+
+		    	$("#inf > a").css("color", "");
+			    $("#inf > a").css("padding-bottom", ""); 
+			    $("#inf > a").css("border-bottom", ""); 
+
+			    $("#pho > a").css("color", "");
+			    $("#pho > a").css("padding-bottom", ""); 
+			    $("#pho > a").css("border-bottom", ""); 
+
+			    $("#revi > a").css("color", "#db2719");
+			    $("#revi > a").css("padding-bottom", "15px"); 
+			    $("#revi > a").css("border-bottom", "solid 5px #db2719"); 
 		    });
 
 		    $("#addrevform").hide();

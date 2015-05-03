@@ -1,7 +1,7 @@
 <div class="row" style="margin:120px 0px;">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-3">
-			<div class="tuffyh2a">Ahmad Ibrahim <a href="<?php echo base_url('user/edit');?>"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>
+			<div class="tuffyh2a">Syifa Khairunnisa <a href="<?php echo base_url('user/edit');?>"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>
 			<div class="userphoto"><img src="<?php echo base_url('assets/img/150.jpg');?>"></div>
 			
 			<br><br>
@@ -21,10 +21,10 @@
 					<a href="<?php echo base_url('trip/view');?>">
 						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
 						<div class="col-lg-8">
-							<div class="tuffyh3a">4 Places</div>
-							In <b>24 Feb '15</b> | Start from <b>Planetarium</b> | Total: <b>Rp 80000</b>
+							<div class="tuffyh3a">2 Places</div>
+							In <b>24 Apr '15</b> | Start from <b>Dunia Fantasi</b> | Total: <b>Rp 157000</b>
 						</div>
-						<div class="col-lg-2"><span class="fa fa-check-circle iconcol a-none"></span></div>
+						<div class="col-lg-2"><span class="fa fa-trash-o iconcol a-none"></span></div>
 					</a>
 				</div>
 			</div>

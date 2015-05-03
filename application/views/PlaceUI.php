@@ -60,9 +60,25 @@
 				<span id="info" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 				<section id="infocon" class="textdetail" >
 					<div class="col-lg-9">
-					<?php foreach($query as $row){echo "<br>Harga<br>&nbsp&nbsp&nbsp&nbspWeekend: Rp ".$row->weekend_price."<br>&nbsp&nbsp&nbsp&nbspWeekday : Rp ".$row->weekday_price."<br><br> <p>".$row->description; } ?>
+					<?php foreach($query as $row){
+						$lat = $row->lattitude;
+						$long = $row->longitude;
+						echo "<div id='descr' class='boxinfo'>".$row->description."</div>";
+						echo "<div class='boxinfo'> <h3><span class='fa fa-ticket'></span><b>&nbsp;&nbsp;&nbsp;Harga Tiket</b></h3>";
+						echo "Weekend: Rp ".$row->weekend_price."<br>Weekday: Rp ".$row->weekday_price."</div>";
+						echo "<div class='boxinfo'> <h3><span class='fa fa-link'></span><b>&nbsp;&nbsp;&nbsp;Tautan</b></h3>";
+						echo "<a href=".$row->link_web.">".$row->link_web."</a>";
+						echo "</div>";
+						echo "<div class='boxinfo'> <h3><span class='fa fa-map-marker'></span><b>&nbsp;&nbsp;&nbsp;Lokasi Tempat Wisata</b></h3>";
+						echo "<div class='infolocation'>";
+						echo "<div id='googleMap' style='width:500px;height:380px;'></div>";
+						echo "</div>";
+						echo "</div>";
+					}
+					?>
 					
 					</div>
+					
 				</section>
 				<span id="photos" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
 				<section id="photoscon" class="textdetail">
@@ -81,6 +97,20 @@
 							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
 							</div>
 						</form>
+						<div class="gallery col-lg-12">
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+							<div class="pic-thumbnail">
+								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+							</div>
+						</div>
 					</div>
 				</section>
 				<span id="reviews" style="margin-top: -300px; height: 300px; display: block; visibility: hidden;"></span>
@@ -118,7 +148,7 @@
 						    </div>
 							<br>
 							<div class="formrating form-group">
-							  <div class="col-lg-9">
+							  <div class="col-lg-9"><br>
 								<label class="control-label">Review</label>
 		  						<textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea>
 						      </div>
@@ -172,6 +202,7 @@
 						</div>
 
 				</section>
+				 </div>
 			</div>
 			<div class="col-lg-1"></div>
 		</div>

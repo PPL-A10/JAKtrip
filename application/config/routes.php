@@ -53,6 +53,7 @@ $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
 $route['flag/spam/(:any)'] = 'FlagCtr/spam/$1';
 $route['allpromo'] = 'allPromosCtr';
+$route['promo/(:any)'] = 'PromoCtr/index/$1';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
@@ -93,6 +94,8 @@ $route['login/forgotpassword'] = 'forgotPassCtr';
 $route['admin/manageMemberCtr/del/(:any)'] = 'manageMemberCtr/del/$1'; 
 $route['index.php/ManageTourAttrCtr/searchtour/(:any)'] = 'ManageTourAttrCtr/searchtour/$1'; 
 $route['flag/FlagCtr/spamreport/(:num)'] = 'FlagCtr/spamreport/$1'; 
+$route['flag/(:any)/addwishlist'] = 'FlagCtr/addWishlist/$1'; 
+$route['flag/(:any)/removewishlist'] = 'FlagCtr/removeWishlist/$1'; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

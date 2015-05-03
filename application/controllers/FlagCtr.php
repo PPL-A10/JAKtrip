@@ -43,8 +43,14 @@ class FlagCtr extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->model('DetailMod');
 		$this->load->model('ReviewModel');
+		$this->load->model('memberManager');
+		$place = str_replace("%20", " ",$name);
+		$user = get_cookie("username");
+		$data['query3'] = $this->memberManager->showCollection($place, $user);
+		$data['thisPlace'] = $place;
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
+
 		$this->load->view('header');
 		$this->load->view('FlagUI',$data);
 		$this->load->view('footer');
@@ -148,6 +154,85 @@ class FlagCtr extends CI_Controller {
 		$this->load->view('FlagUI',$data);
 		$this->load->view('footer');
 	}
+
+	function addWishlist($place_name){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$place_name= str_replace("%20", " ",$place_name);
+		$check = mysql_query("SELECT is_wishlist FROM collection WHERE place_name = '".$place_name."'");
+
+		if(mysql_num_rows($check)==0){
+			$data = array(
+				       	'place_name' => $place_name,
+				       	'username' => get_cookie("username"),
+				       	'is_wishlist' => '1'
+					);
+			$this->memberManager->addToWishlist($data);
+		}
+		else{
+			$data = array(
+				       	'is_wishlist' => '1'
+					);
+			$this->db->where('place_name', $place_name);
+			$this->db->where('username', get_cookie("username"));
+			$this->memberManager->updateWishlist($data);			
+		}
+		
+		header("Location: ".base_url()."flag/".$place_name."");
+	}
+
+	function removeWishlist($place_name){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$place_name= str_replace("%20", " ",$place_name);
+		$data = array(
+				       	'is_wishlist' => '0'
+					);
+		$this->db->where('place_name', $place_name);
+		$this->db->where('username', get_cookie("username"));
+		$this->memberManager->delFromWishlist($data);
+		header("Location: ".base_url()."flag/".$place_name."");
+	}
+
+	function addVisited($place_name){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$place_name= str_replace("%20", " ",$place_name);
+		$check = mysql_query("SELECT is_visited FROM collection WHERE place_name = '".$place_name."'");
+
+		if(mysql_num_rows($check)==0){
+			$data = array(
+				       	'place_name' => $place_name,
+				       	'username' => get_cookie("username"),
+				       	'is_visited' => '1'
+					);
+			$this->memberManager->addToVisited($data);
+		}
+		else{
+			$data = array(
+				       	'is_visited' => '1'
+					);
+			$this->db->where('place_name', $place_name);
+			$this->db->where('username', get_cookie("username"));
+			$this->memberManager->updateVisited($data);			
+		}
+		
+		header("Location: ".base_url()."flag/".$place_name."");
+	}
+
+	function removeVisited($place_name){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$place_name= str_replace("%20", " ",$place_name);
+		$data = array(
+				       	'is_visited' => '0'
+					);
+		$this->db->where('place_name', $place_name);
+		$this->db->where('username', get_cookie("username"));
+		$this->memberManager->delFromVisited($data);
+		header("Location: ".base_url()."flag/".$place_name."");
+	}
+
 
 }
 

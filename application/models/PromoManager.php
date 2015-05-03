@@ -20,6 +20,14 @@ class PromoManager extends CI_Model{
 		return $query->result();
 	}
 
+	function showPromo($title)
+	{
+		$this->load->database();
+		$name = str_replace("%20"," ",$name);
+        $query = $this->db->get_where('promo', array('title' => $title));
+		return $query->result();
+	}
+
     function showType()
     {
         $this->load->database();
@@ -30,6 +38,7 @@ class PromoManager extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
+<<<<<<< HEAD
 
     function getTypes(){
         $this->load->database();
@@ -75,6 +84,42 @@ class PromoManager extends CI_Model{
         }
         return FALSE;
     }
+=======
+	
+	function filterpromoloc($city)
+	{
+			
+		$this->load->database();
+		$this->db->select('*');
+		$this->db->from('promo');
+		$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+		$city= str_replace("%20", " ",$city);
+		if((string)$city != ""){
+			$this->db->where(array('tourist_attraction.city' => $city));
+		} 			
+		$query = $this->db->get(); 
+		return $query->result(); 
+		}
+		
+	function filterPromoFinal($city, $title)
+		{
+			
+			$this->load->database();
+			$this->db->select('*');
+			$this->db->from('promo');
+			$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+			$city= str_replace("%20", " ",$city);
+			$title= str_replace("%20", " ",$title);
+			if((string)$city != ""and $city !="All"){
+				$this->db->where(array('tourist_attraction.city' => $city));
+			} 
+			if((string)$title != ""){
+				$this->db->like(array('promo.title' => $title));
+			} 			
+			$query = $this->db->get(); 
+            return $query->result_array(); 
+		}
+>>>>>>> 21a020b420b19dff2d6d11dbcc590299eb66aa35
 }
 
 ?>

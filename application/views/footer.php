@@ -30,15 +30,16 @@
 <script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
 <script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
 
+
 	
 		<script>
 
+		
 		var lokasi = "All";
-	
 	function setLokasi(city){
 		lokasi=city;
 	}
-	
+		//function tes(){$("#descr").html(<?php echo $lat; ?>+"dan"+<?php echo $long; ?>);}
 	function filterFunctionTour(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
@@ -221,6 +222,30 @@ function sortFunction(){
                         }
                     );
 	}
+	
+	function filterpromo(city){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfrgergregergwergwergwreggdfvbdfgbffvbfgbb" +city ;
+		setLokasi(city);
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllPromosCtr/searchpromoloc/"+city,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].title+"'><div class='txtonimg'>"+obj.query[i].title+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
 
 	function filterFunctionFinal(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
@@ -253,6 +278,30 @@ function sortFunction(){
                     );
 	}
 	
+function filterFunctionpromo(){		
+		var z = document.getElementById("name_select").value;
+		//$("#output_field").html("asasdslkdnjsdljknsdkjnsdkjnsdkjndsdsd"+z + "dsds"+lokasi);
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllPromosCtr/searchpromokey/"+lokasi+"/"+z,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].title+"'><div class='txtonimg'>"+obj.query[i].title+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'></a></div>";
+								}
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
 	
 
 
@@ -267,8 +316,40 @@ function sortFunction(){
 	</script>
 
 	<script>
-	    $(document).ready(function () {
+	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;$place = $row->place_name;} ?>
+	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
 
+	function initialize2() {
+  var mapProp = {
+    center:new google.maps.LatLng(-6.190035,106.838075),
+    zoom:11,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  
+  var marker=new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+	marker.setMap(map);
+	
+  var infowindow = new google.maps.InfoWindow({
+  content:"<?php echo $place; ?>"
+  });
+  infowindow.open(map,marker);
+  google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
+	
+
+}
+google.maps.event.addDomListener(window, 'load', initialize2);
+</script>
+
+<script type="text/javascript">
+	    $(document).ready(function() {
+		
  // --------------------- HOME -----------------------------------
 
 		    $("#showRec, #showOwntr").hide();
@@ -350,6 +431,9 @@ function sortFunction(){
 				$("#sm-sta").css("padding-bottom", "15px"); 
 				$("#sm-sta").css("border-bottom", "solid 5px #db2719"); 
             }
+            else{
+            	;
+            }
 
 		
 
@@ -384,7 +468,7 @@ function sortFunction(){
 			    $("#addphoform").toggle();
 			    $(this).text(function(i, text){
 			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
-			      })
+			      });
 		    });
 
  // --------------------- USER -----------------------------------
@@ -439,6 +523,9 @@ function sortFunction(){
  				if($(this).hasClass("w-none")){
  					$(this).removeClass("w-none");
  					$(this).addClass("w");
+ 					setTimeout(function () {
+ 						location.href='../FlagCtr/addWishlist/<?php echo $thisPlace; ?>';
+ 					}, 3500); 
  					notifAddWishlist();
  				}
  				else if($(this).hasClass("w")){
@@ -446,12 +533,18 @@ function sortFunction(){
 	 				if(c==true){
 	 					$(this).removeClass("w");
 	 					$(this).addClass("w-none");
+	 					setTimeout(function () {
+	 						location.href='../FlagCtr/removeWishlist/<?php echo $thisPlace; ?>';
+	 					}, 3500); 
 	 					notifDelWishlist();
 	 				}
  				}
  				else if($(this).hasClass("a-none")){
  					$(this).removeClass("a-none");
  					$(this).addClass("a");
+ 					setTimeout(function () {
+ 						location.href='../FlagCtr/addVisited/<?php echo $thisPlace; ?>';
+ 					}, 3500); 
  					notifAddAchievement();
  				}
  				else{
@@ -459,13 +552,16 @@ function sortFunction(){
 	 				if(c==true){
 	 					$(this).removeClass("a");
 	 					$(this).addClass("a-none");
+	 					setTimeout(function () {
+	 						location.href='../FlagCtr/removeVisited/<?php echo $thisPlace; ?>';
+	 					}, 3500); 
 	 					notifDelAchievement();
 	 				}
  				}
  				
  			});
  			
- // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
+ // --------------------- CONTACT US -----------------------------------
 
  			$("#formfeedback").show();
 		    $("#formsuggestion").hide();
