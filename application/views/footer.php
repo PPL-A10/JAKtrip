@@ -29,6 +29,7 @@
 <script src="<?php echo base_url('assets/js/classie.js')?>"></script>
 <script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
 <script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 
 	
@@ -334,31 +335,92 @@ function filterFunctionpromo(){
 	<script>
 	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;$place = $row->place_name;} ?>
 	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var chicago;
+	function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initialize2);
+    } else {
 
-	function initialize2() {
+    }
+}
+	function initialize2(position) {
+  /*directionsDisplay = new google.maps.DirectionsRenderer();
+ chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var mapOptions = {
+    zoom:7,
+    center: chicago
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  directionsDisplay.setMap(map);*/
+  lokasites = new google.maps.LatLng(position.coords.latitude,position.coords.longitude)
+ directionsDisplay = new google.maps.DirectionsRenderer();
 		  var mapProp = {
 		    center:new google.maps.LatLng(-6.190035,106.838075),
 		    zoom:11,
 		    mapTypeId:google.maps.MapTypeId.ROADMAP
 		  };
 
-		  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-		  
+		  map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		  directionsDisplay.setMap(map);
+		  var icon = {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillOpacity: 0.5,
+        fillColor: 'ff0000',
+        strokeOpacity: 1.0,
+        strokeColor: 'fff000',
+        strokeWeight: 3.0,
+        scale: 5
+};
 		  var marker=new google.maps.Marker({
-		  position:myCenter,
+		  position:new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+		  icon: icon,
 		  animation:google.maps.Animation.BOUNCE
 		  });
 			marker.setMap(map);
+		  var marker2=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+			marker2.setMap(map);
 			
 		  var infowindow = new google.maps.InfoWindow({
 			  content:"<?php echo $place; ?>"
 			  });
-			  infowindow.open(map,marker);
-			  google.maps.event.addListener(marker, 'click', function() {
-			  infowindow.open(map,marker);
+			  infowindow.open(map,marker2);
+			  google.maps.event.addListener(marker2, 'click', function() {
+			  infowindow.open(map,marker2);
 			  });
-			}
-		google.maps.event.addDomListener(window, 'load', initialize2);
+			var infowindow2 = new google.maps.InfoWindow({
+			  content:"Your Location"
+			  });
+			  infowindow2.open(map,marker);
+			  google.maps.event.addListener(marker, 'click', function() {
+			  infowindow2.open(map,marker);
+			  });
+			  
+			  
+	}
+	
+function calcRoute() {
+	//$("#infocon").html("fsdfsdfsdf   "+myCenter);
+  var start = new google.maps.LatLng(37.7699298, -122.4469157);
+  var end = new google.maps.LatLng(-6.190035,106.838075);
+  var request = {
+      origin:myCenter,
+      destination:lokasites,
+      travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+		google.maps.event.addDomListener(window, 'load', getLocation);
+		
 </script>
 
 <script>
