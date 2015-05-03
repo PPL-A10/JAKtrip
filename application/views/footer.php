@@ -36,10 +36,11 @@
 
 		
 		var lokasi = "All";
+	
 	function setLokasi(city){
 		lokasi=city;
 	}
-		//function tes(){$("#descr").html(<?php echo $lat; ?>+"dan"+<?php echo $long; ?>);}
+	
 	function filterFunctionTour(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
@@ -316,40 +317,8 @@ function filterFunctionpromo(){
 	</script>
 
 	<script>
-	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;$place = $row->place_name;} ?>
-	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
-
-	function initialize2() {
-  var mapProp = {
-    center:new google.maps.LatLng(-6.190035,106.838075),
-    zoom:11,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  
-  var marker=new google.maps.Marker({
-  position:myCenter,
-  animation:google.maps.Animation.BOUNCE
-  });
-	marker.setMap(map);
-	
-  var infowindow = new google.maps.InfoWindow({
-  content:"<?php echo $place; ?>"
-  });
-  infowindow.open(map,marker);
-  google.maps.event.addListener(marker, 'click', function() {
-  infowindow.open(map,marker);
-  });
-	
-
-}
-google.maps.event.addDomListener(window, 'load', initialize2);
-</script>
-
-<script type="text/javascript">
 	    $(document).ready(function() {
-		
+
  // --------------------- HOME -----------------------------------
 
 		    $("#showRec, #showOwntr").hide();
@@ -361,10 +330,7 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		        $('#showOwntr').toggle();
 		        $('#showRec').hide();
 		    });
-		});
-		</script>
-		<script>
-		 $(document).ready(function() {
+
  // --------------------- ADMIN/STATISTICS ------------------------------------
 
 		    $("#livis > a").css("color", "#fff");
@@ -526,9 +492,6 @@ google.maps.event.addDomListener(window, 'load', initialize2);
  				if($(this).hasClass("w-none")){
  					$(this).removeClass("w-none");
  					$(this).addClass("w");
- 					setTimeout(function () {
- 						location.href='../FlagCtr/addWishlist/<?php echo $thisPlace; ?>';
- 					}, 3500); 
  					notifAddWishlist();
  				}
  				else if($(this).hasClass("w")){
@@ -536,18 +499,12 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 	 				if(c==true){
 	 					$(this).removeClass("w");
 	 					$(this).addClass("w-none");
-	 					setTimeout(function () {
-	 						location.href='../FlagCtr/removeWishlist/<?php echo $thisPlace; ?>';
-	 					}, 3500); 
 	 					notifDelWishlist();
 	 				}
  				}
  				else if($(this).hasClass("a-none")){
  					$(this).removeClass("a-none");
  					$(this).addClass("a");
- 					setTimeout(function () {
- 						location.href='../FlagCtr/addVisited/<?php echo $thisPlace; ?>';
- 					}, 3500); 
  					notifAddAchievement();
  				}
  				else{
@@ -555,9 +512,6 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 	 				if(c==true){
 	 					$(this).removeClass("a");
 	 					$(this).addClass("a-none");
-	 					setTimeout(function () {
-	 						location.href='../FlagCtr/removeVisited/<?php echo $thisPlace; ?>';
-	 					}, 3500); 
 	 					notifDelAchievement();
 	 				}
  				}
