@@ -377,6 +377,10 @@ a {
   height: 780px;
 }
 
+#basic_map{
+  height: 780px;
+}
+
 .searchbox{
   background-color: #e0e0e0;
   height: 280px;
@@ -663,7 +667,7 @@ a {
 
 .reviewmember .btn{
   margin-right: 60px;
-  margin-top: -5px;
+  margin-top: -10px;
 }
 
 .deleterev{
@@ -782,7 +786,7 @@ a {
   margin-bottom: 30px;
 }
 
-#addrevform{
+#addrevform, #addphoform{
   margin-bottom: 30px;
 }
 
@@ -923,4 +927,54 @@ button, button:active, button:focus, button:hover{
 
 .collrev > a, .collrev > a:hover{
   color: #999 !important;
+}
+
+.boxinfo{
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+
+.infolocation{
+  width: 400px;
+  height: 400px;
+}
+
+.boxinfo > a{
+  color: #3E3F3A !important;
+  text-decoration: underline !important;
+}
+
+.boxinfo > a:hover{
+  color: #db2719 !important;
+}
+
+.gallery{
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.pic-thumbnail {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  float: left;
+  margin: 5px 10px;
+}
+.pic-thumbnail img {
+  opacity: .8;
+  filter: alpha(opacity=80);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.pic-thumbnail img:hover{
+  opacity: 1;
+  filter: alpha(opacity=100);
 }

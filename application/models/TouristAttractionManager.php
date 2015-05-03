@@ -1,7 +1,7 @@
 <?php
 class TouristAttractionManager extends CI_Model{
 
-function __construct(){
+	function __construct(){
   		parent::__construct();
   		$this->load->helper('url');		
   		$this->load->database();		
@@ -18,10 +18,10 @@ function __construct(){
 		$this->db->insert('tourist_attraction', $form_data);
 		foreach($form_photo['pic'] as $row){
 			$photo = array(
-							'place_name' => $form_photo['place_name'],
-							'pic' => $row,
-							'pic_info' => $form_photo['pic_info']
-						);
+				'place_name' => $form_photo['place_name'],
+				'pic' => $row,
+				'pic_info' => $form_photo['pic_info']
+			);
 			$this->db->insert('photo', $photo);
 		}
 		
@@ -140,7 +140,7 @@ function __construct(){
 		
 		
 
-		//sif ($this->db->affected_rows() == '0')
+		//if ($this->db->affected_rows() == '0')
 		//{
 			return TRUE;
 		//}
@@ -155,7 +155,7 @@ function __construct(){
   		//$menu = new WebMenu;
 		//$data['base'] = $this->config->item('base_url');
 		//$data['css'] = $this->config->item('css');
-  		//$data['menu'] 		= $menu->show_menu();
+  		//$data['menu'] = $menu->show_menu();
 
 		return $data;					  		
  	}
@@ -438,6 +438,34 @@ function __construct(){
 			$query="update budget SET input_num = input_num + 1 where lower_nom < '".$budget. "' and upper_nom >= '".$budget."';";
 			$this->db->query($query);
 			return ($this->db->affected_rows() > 0);
+		}
+		
+		function filterMod3($place_name)
+		{
+			
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$place_name != ""){
+				$this->db->like('place_name', $place_name);
+			} 			
+			$query = $this->db->get(); 
+            return $query->result(); 
+		}
+		
+		function filterMod5($place_name)
+		{
+			
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction'); 
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$place_name != ""){
+				$this->db->like('place_name', $place_name,'after');
+			} 			
+			$query = $this->db->get(); 
+            return $query->result(); 
 		}
 }
 ?>

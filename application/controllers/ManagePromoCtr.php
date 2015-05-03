@@ -10,5 +10,5 @@ class ManagePromoCtr extends CI_Controller {
 		$this->load->view('managePromoUI', $data);
 		$this->load->view('footer');
 	}
-
+	
 }
