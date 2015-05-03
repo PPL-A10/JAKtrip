@@ -98,18 +98,28 @@
 							</div>
 						</form>
 						<div class="gallery col-lg-12">
-							<div class="pic-thumbnail">
-								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+						<?php
+						foreach($query3 as $row3)
+						{
+							$location = $row3->pic;
+							echo "<div class='pic-thumbnail'>";
+							if($row3->is_publish == 1)
+							{echo "<a href='".base_url('assets/img/image.png')."'><img src='".base_url($location)."'></a>";}
+							echo "</div>";
+						}
+						?>
+							<!--div class="pic-thumbnail">
+								<a href="<?php //echo base_url('assets/img/hd.gif')?>"><img src="<?php //echo base_url('assets/img/hd.gif')?>"></a>
 							</div>
 							<div class="pic-thumbnail">
-								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+								<a href="<?php //echo base_url('assets/img/hd.gif')?>"><img src="<?php //echo base_url('assets/img/hd.gif')?>"></a>
 							</div>
 							<div class="pic-thumbnail">
-								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
+								<a href="<?php //echo base_url('assets/img/hd.gif')?>"><img src="<?php //echo base_url('assets/img/hd.gif')?>"></a>
 							</div>
 							<div class="pic-thumbnail">
-								<a href="<?php echo base_url('assets/img/hd.gif')?>"><img src="<?php echo base_url('assets/img/hd.gif')?>"></a>
-							</div>
+								<a href="<?php //echo base_url('assets/img/hd.gif')?>"><img src="<?php //echo base_url('assets/img/hd.gif')?>"></a>
+							</div-->
 						</div>
 					</div>
 				</section>

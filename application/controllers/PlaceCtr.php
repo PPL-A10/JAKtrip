@@ -45,6 +45,7 @@ class PlaceCtr extends CI_Controller {
 		$this->load->model('ReviewModel');
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
+		$data['query3']= $this->DetailMod->showphoto($name);
 		$this->load->view('header');
 		$this->load->view('PlaceUI',$data);
 		$this->load->view('footer',$data);
