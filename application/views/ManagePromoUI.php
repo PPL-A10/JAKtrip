@@ -67,10 +67,9 @@
 							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->title."</td>";
 							//echo "<td>".$row->type_name."</td>";
-							date_default_timezone_set('Asia/Jakarta');
-							$currentdate = date_default_timezone_get();
+							$currentDate = date("Y-m-d");
 							$enddate = date($row->end_date);
-							if($enddate <= $currentdate){
+							if($enddate >= $currentDate){
 								echo "<td>On going</td>";
 							}else{
 								echo "<td>Expired</td>";
