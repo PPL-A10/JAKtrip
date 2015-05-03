@@ -716,10 +716,7 @@ $(function() {
 				
 
 				
-<<<<<<< HEAD
-=======
 
-			}
 
 			function getDetail(place_name)
 				{
@@ -869,7 +866,7 @@ $(function() {
 
 $(document).ready(function() {
 
->>>>>>> 296cc11366fe0b50ef6363e14dae4fec34a32c59
+
 //faq----------
 
 			$("#gscon").show();
