@@ -43,10 +43,11 @@ $route['404_override'] = '';
 
 $route['home'] = 'homeCtr';
 $route['trip'] = 'SearchCtr';
-$route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
-$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
+$route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
+$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';
 $route['trip/view'] = 'viewTripCtr'; 
 $route['allplaces'] = 'allPlacesCtr';
+$route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
@@ -61,6 +62,7 @@ $route['contactus/send'] = 'feedbackCtr/sendSuggestion';
 
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
+
 $route['admin/places/edit/(:any)'] = 'manageTourAttrCtr/edit/$1';
 $route['admin/places/delete/(:any)'] = 'manageTourAttrCtr/del/$1';
 $route['admin/addnewplace'] = 'tourAttrCtr';
@@ -70,6 +72,8 @@ $route['admin/suggestions'] = 'suggestionCtr';
 $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
+$route['admin/promos/delete/(:any)'] = 'ManagePromoCtr/del/$1';
+$route['admin/promos/edit/(:any)'] = 'managePromoCtr/edit/$1';
 
 $route['user'] = 'UsersCtr';
 $route['user/edit'] = 'UsersCtr/edit';
@@ -96,6 +100,10 @@ $route['index.php/ManageTourAttrCtr/searchtour/(:any)'] = 'ManageTourAttrCtr/sea
 $route['flag/FlagCtr/spamreport/(:num)'] = 'FlagCtr/spamreport/$1'; 
 $route['flag/(:any)/addwishlist'] = 'FlagCtr/addWishlist/$1'; 
 $route['flag/(:any)/removewishlist'] = 'FlagCtr/removeWishlist/$1'; 
+$route['flag/(:any)/addvisited'] = 'FlagCtr/addVisited/$1'; 
+$route['flag/(:any)/removevisited'] = 'FlagCtr/removeVisited/$1'; 
+$route['user/addwishlist'] = 'UsersCtr/addWishlist/$1'; 
+$route['user/removewishlist'] = 'UsersCtr/removeWishlist/$1'; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

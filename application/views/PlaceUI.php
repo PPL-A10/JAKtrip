@@ -76,7 +76,7 @@
 						echo "</div>";
 					}
 					?>
-					
+					<button type="button" onclick="calcRoute();">See Route!</button>
 					</div>
 					
 				</section>

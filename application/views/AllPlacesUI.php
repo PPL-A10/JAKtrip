@@ -81,8 +81,36 @@
 						echo "</div>";
 					}
 					?>
+					
+
 					</div>
 					<div class="col-lg-1"></div>
+
+					<div class="col-lg-12 suggtxt">
+						<center>Can not find what you are looking for? <a href="#suggestion"><b> Send us a suggestion!</b></a></center>
+					</div>
+
+					 <div id="suggestion" class="openModal2">
+					 <div>
+		                <center><div class="tuffyh3a">I want to send a suggestion!</div></center><br>
+		                <div class="col-lg-12">
+		                <form id="formsuggestion" action="<?php echo base_url('allplaces/send')?>" method="post">
+								<!-- if member -->
+								<div class="form-group">
+									<label class="control-label">Place Name <span class="req">*</span></label>
+			  						<input class="form-control" type="text" id="place_name" name="place_name" required>
+							    </div>
+							    <div class="form-group">
+									<label class="control-label">Short Description <span class="req">*</span></label>
+			  						<textarea class="form-control" rows="2" id="textArea" id="description" name="description" required></textarea>
+							    </div>
+							    <a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 80px;'>cancel</a>
+							    <button class="btn btn-warning pull-right" type="submit">SEND</button>
+							    <div class="col-lg-12" style="height:20px"></div>
+						</form>
+						</div>
+		          	  </div>
+		            </div>
 				</div>
 			</div>
 	</div>

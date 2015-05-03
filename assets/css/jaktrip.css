@@ -978,3 +978,17 @@ button, button:active, button:focus, button:hover{
   opacity: 1;
   filter: alpha(opacity=100);
 }
+
+.suggtxt{
+  margin-top: 15px; 
+  margin-bottom: 80px; 
+  font-size: 16px;
+}
+
+.suggtxt a{
+  color: #1C1C1C !important;
+}
+
+.suggtxt a:hover{
+  color: #db2719 !important;
+}

@@ -55,7 +55,7 @@
 				      <th>Status</th>
 				    </tr>
 				  </thead>
-				  <tbody>
+				  <tbody id="output_field123" >
 				  <?php 
 				  foreach($query2 as $row)
 				  {
@@ -64,7 +64,7 @@
 					echo "<td>".$row->pic ."</td>";
 					echo "<td>ahmadibrahim</td>";
 					if($row->is_publish == 0)
-				  	{echo"<td><a href='#'>&nbsp;&nbsp;Publish?</a></td>";}
+				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic .")'>&nbsp;&nbsp;Publish?</a></td>";}
 					else
 					{echo "<td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
 				  }

@@ -65,7 +65,28 @@
             $this->db->where('place_name', $place);
             $query = $this->db->get();
             return $query->result();
-            // $this->db->where('place_name', $place);
+		}
+
+		function showWishlist($user){
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('collection');
+            $this->db->where('username', $user);
+            $this->db->where('is_wishlist', 1);
+            $this->db->join('tourist_attraction', 'tourist_attraction.place_name = collection.place_name');
+            $query = $this->db->get();
+            return $query->result();
+		}
+
+		function showVisited($user){
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('collection');
+            $this->db->where('username', $user);
+            $this->db->where('is_visited', 1);
+            $this->db->join('tourist_attraction', 'tourist_attraction.place_name = collection.place_name');
+            $query = $this->db->get();
+            return $query->result();
 		}
 
 	}

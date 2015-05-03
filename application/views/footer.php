@@ -18,7 +18,7 @@
 	</div>
 </footer>
 
-<script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
+
 <script src="<?php echo base_url('assets/js/ion.rangeSlider.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap.min.js')?>"></script>
 <script src="<?php echo base_url('assets/js/bootstrap-datepicker.min.js')?>"></script>
@@ -29,17 +29,45 @@
 <script src="<?php echo base_url('assets/js/classie.js')?>"></script>
 <script src="<?php echo base_url('assets/js/modernizr.custom.js')?>"></script>
 <script src="<?php echo base_url('assets/js/notificationFx.js')?>"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 
 	
-		<script>
-
-		
-		var lokasi = "All";
+		<script>	
+	var lokasi = "All";
 	function setLokasi(city){
 		lokasi=city;
 	}
-		//function tes(){$("#descr").html(<?php echo $lat; ?>+"dan"+<?php echo $long; ?>);}
+	function setphotopublish(id_pic){		
+		//document.getElementById("output_field123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+
+		
+				jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/SuggestionCtr/publish/"+id_pic,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+
+								for (var i=0 ; i<obj.query.length; i++){
+								//$("#output_field123").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+id_pic);	
+									if(obj.query[i].is_publish == 0)
+									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><a href='javascript:setphotopublish("+obj.query[i].id_pic+")'>&nbsp;&nbsp;Publish?</a></td>";}
+									else
+									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
+								}
+								
+							$("#output_field123").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
 	function filterFunctionTour(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
@@ -302,47 +330,97 @@ function filterFunctionpromo(){
                     );
 	}
 	
-	
-
-
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
 	</script>
 
 	<script>
 	<?php foreach($query as $row){$lat = $row->lattitude;$long = $row->longitude;$place = $row->place_name;} ?>
 	var myCenter=new google.maps.LatLng(<?php echo $long; ?>,<?php echo $lat; ?>);
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
+var chicago;
+	function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initialize2);
+    } else {
 
-	function initialize2() {
+    }
+}
+	function initialize2(position) {
+  /*directionsDisplay = new google.maps.DirectionsRenderer();
+ chicago = new google.maps.LatLng(41.850033, -87.6500523);
+  var mapOptions = {
+    zoom:7,
+    center: chicago
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  directionsDisplay.setMap(map);*/
+  lokasites = new google.maps.LatLng(position.coords.latitude,position.coords.longitude)
+ directionsDisplay = new google.maps.DirectionsRenderer();
 		  var mapProp = {
 		    center:new google.maps.LatLng(-6.190035,106.838075),
 		    zoom:11,
 		    mapTypeId:google.maps.MapTypeId.ROADMAP
 		  };
 
-		  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
-		  
+		  map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		  directionsDisplay.setMap(map);
+		  var icon = {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillOpacity: 0.5,
+        fillColor: 'ff0000',
+        strokeOpacity: 1.0,
+        strokeColor: 'fff000',
+        strokeWeight: 3.0,
+        scale: 5
+};
 		  var marker=new google.maps.Marker({
-		  position:myCenter,
+		  position:new google.maps.LatLng(position.coords.latitude,position.coords.longitude),
+		  icon: icon,
 		  animation:google.maps.Animation.BOUNCE
 		  });
 			marker.setMap(map);
+		  var marker2=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+			marker2.setMap(map);
 			
 		  var infowindow = new google.maps.InfoWindow({
 			  content:"<?php echo $place; ?>"
 			  });
-			  infowindow.open(map,marker);
-			  google.maps.event.addListener(marker, 'click', function() {
-			  infowindow.open(map,marker);
+			  infowindow.open(map,marker2);
+			  google.maps.event.addListener(marker2, 'click', function() {
+			  infowindow.open(map,marker2);
 			  });
-			}
-		google.maps.event.addDomListener(window, 'load', initialize2);
+			var infowindow2 = new google.maps.InfoWindow({
+			  content:"Your Location"
+			  });
+			  infowindow2.open(map,marker);
+			  google.maps.event.addListener(marker, 'click', function() {
+			  infowindow2.open(map,marker);
+			  });
+			  
+			  
+	}
+	
+function calcRoute() {
+	//$("#infocon").html("fsdfsdfsdf   "+myCenter);
+  var start = new google.maps.LatLng(37.7699298, -122.4469157);
+  var end = new google.maps.LatLng(-6.190035,106.838075);
+  var request = {
+      origin:myCenter,
+      destination:lokasites,
+      travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+		google.maps.event.addDomListener(window, 'load', getLocation);
+		
 </script>
 
 <script>
@@ -523,24 +601,25 @@ function filterFunctionpromo(){
 		});
 
  // --------------------- WISHLIST/ACHIEVEMENT -----------------------------------
- 	
+ 		
+
  // --------------------- CONTACT US -----------------------------------
-$(document).ready(function() {
- 			$("#formfeedback").show();
-		    $("#formsuggestion").hide();
+// $(document).ready(function() {
+//  			$("#formfeedback").show();
+// 		    $("#formsuggestion").hide();
 
-		  	$("input[name=jenis]:radio").on('change',function() {
-				if(this.value=='suggestion') {
-			            $("#formsuggestion").show();
-			            $("#formfeedback").hide();
-				} else {
-			            $('#formsuggestion').hide();
-			            $("#formfeedback").show();
-			    } 
-			}); 
+// 		  	$("input[name=jenis]:radio").on('change',function() {
+// 				if(this.value=='suggestion') {
+// 			            $("#formsuggestion").show();
+// 			            $("#formfeedback").hide();
+// 				} else {
+// 			            $('#formsuggestion').hide();
+// 			            $("#formfeedback").show();
+// 			    } 
+// 			}); 
 
 
-});
+// });
 
 
 	</script>

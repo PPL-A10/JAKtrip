@@ -143,7 +143,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Location <span class="req">*</span></label><br>
 						<?php echo form_error('city'); ?>
   						<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="margin-left: -10px;" required>    
+   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="background-color: #f0f0f0 !important; margin-left: -10px;" required>    
    					     	<option value="" selected disabled>All Location</option>
    					     	<?php
 			                  foreach($query2 as $row)
@@ -193,7 +193,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" style="background-color: #f0f0f0 !important;" required>    
+   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" style="background-color: #f0f0f0 !important; margin-left: -10px;" required>    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
    				    		foreach ($query as $row) {

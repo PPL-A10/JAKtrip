@@ -35,7 +35,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Start Date <span class="req">*</span></label>
-  						<input class="form-control" type="date" id="start_date" name="start_date" value="<?php echo set_value('start_date'); ?>" required>
+						<input class="form-control field datepicker" type="text" name="datepicker" id="start_date"  value="<?php echo set_value('start_date'); ?>" style="background-color: #f0f0f0 !important;" required>
 				      <br></div>
 				    </div>
 					<br>
@@ -43,7 +43,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">End Date <span class="req">*</span></label>
-  						<input class="form-control" type="date" id="end_date" name="end_date" value="<?php echo set_value('end_date'); ?>" required>
+  						<input class="form-control field datepicker" type="text" name="datepicker" id="end_date"  value="<?php echo set_value('end_date'); ?>" style="background-color: #f0f0f0 !important;" required>
 				      <br></div>
 				    </div>
 					<br>
