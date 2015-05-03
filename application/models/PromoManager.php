@@ -38,7 +38,6 @@ class PromoManager extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
-<<<<<<< HEAD
 
     function getTypes(){
         $this->load->database();
@@ -84,7 +83,6 @@ class PromoManager extends CI_Model{
         }
         return FALSE;
     }
-=======
 	
 	function filterpromoloc($city)
 	{
@@ -119,7 +117,6 @@ class PromoManager extends CI_Model{
 			$query = $this->db->get(); 
             return $query->result_array(); 
 		}
->>>>>>> 21a020b420b19dff2d6d11dbcc590299eb66aa35
 }
 
 ?>

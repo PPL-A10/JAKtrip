@@ -66,8 +66,15 @@
 							//echo"<td><input type='checkbox' value=''></td>";
 							echo "<td>".$row->place_name."</td>";
 							echo "<td>".$row->title."</td>";
-							echo "<td>".$row->type_promo."</td>";
-							echo "<td>On going / Expired</td>";
+							//echo "<td>".$row->type_name."</td>";
+							date_default_timezone_set('Asia/Jakarta');
+							$currentdate = date_default_timezone_get();
+							$enddate = date($row->end_date);
+							if($enddate <= $currentdate){
+								echo "<td>On going</td>";
+							}else{
+								echo "<td>Expired</td>";
+							}
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->title."?')");
 							echo anchor('admin/promos/delete'.$row->title,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
