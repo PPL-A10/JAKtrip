@@ -47,6 +47,7 @@ $route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
 $route['trip/view'] = 'viewTripCtr'; 
 $route['allplaces'] = 'allPlacesCtr';
+$route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
@@ -61,6 +62,7 @@ $route['contactus/send'] = 'feedbackCtr/sendSuggestion';
 
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
+
 $route['admin/places/edit/(:any)'] = 'manageTourAttrCtr/edit/$1';
 $route['admin/places/delete/(:any)'] = 'manageTourAttrCtr/del/$1';
 $route['admin/addnewplace'] = 'tourAttrCtr';

@@ -542,22 +542,22 @@ function filterFunctionpromo(){
  		
 
  // --------------------- CONTACT US -----------------------------------
-$(document).ready(function() {
- 			$("#formfeedback").show();
-		    $("#formsuggestion").hide();
+// $(document).ready(function() {
+//  			$("#formfeedback").show();
+// 		    $("#formsuggestion").hide();
 
-		  	$("input[name=jenis]:radio").on('change',function() {
-				if(this.value=='suggestion') {
-			            $("#formsuggestion").show();
-			            $("#formfeedback").hide();
-				} else {
-			            $('#formsuggestion').hide();
-			            $("#formfeedback").show();
-			    } 
-			}); 
+// 		  	$("input[name=jenis]:radio").on('change',function() {
+// 				if(this.value=='suggestion') {
+// 			            $("#formsuggestion").show();
+// 			            $("#formfeedback").hide();
+// 				} else {
+// 			            $('#formsuggestion').hide();
+// 			            $("#formfeedback").show();
+// 			    } 
+// 			}); 
 
 
-});
+// });
 
 
 	</script>
