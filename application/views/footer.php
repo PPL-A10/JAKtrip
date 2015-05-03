@@ -361,7 +361,10 @@ google.maps.event.addDomListener(window, 'load', initialize2);
 		        $('#showOwntr').toggle();
 		        $('#showRec').hide();
 		    });
-
+		});
+		</script>
+		<script>
+		 $(document).ready(function() {
  // --------------------- ADMIN/STATISTICS ------------------------------------
 
 		    $("#livis > a").css("color", "#fff");
