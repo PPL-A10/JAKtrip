@@ -37,9 +37,34 @@
 	function setLokasi(city){
 		lokasi=city;
 	}
-	function setphotopublish(){		
-		document.getElementById("output_field123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
-		$("#output_field123").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ");	
+	function setphotopublish(id_pic){		
+		//document.getElementById("output_field123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+
+		
+				jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/SuggestionCtr/publish/"+id_pic,
+				        success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "";
+
+								for (var i=0 ; i<obj.query.length; i++){
+								//$("#output_field123").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+id_pic);	
+									if(obj.query[i].is_publish == 0)
+									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><a href='javascript:setphotopublish("+obj.query[i].id_pic+")'>&nbsp;&nbsp;Publish?</a></td>";}
+									else
+									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
+								}
+								
+							$("#output_field123").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
 	}
 	
 	function filterFunctionTour(input){		
