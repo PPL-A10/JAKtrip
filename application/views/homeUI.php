@@ -23,7 +23,7 @@
 					<div class="col-lg-12" style="margin-top: 20px;">
 						<div class="col-lg-2"></div>
 							<div class="col-lg-8 box img-rounded ">
-								<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable11/" method="post">
+								<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariableRec/" method="post">
 								<span class="field custom-dropdown " id="ddcontainerh">
 								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
 								        <option value="" selected disabled>Your starting point?</option>
@@ -177,7 +177,7 @@
 					<div class="col-lg-12" style="margin-top: 20px;">
 						<div class="col-lg-3"></div>
 						<div class="col-lg-6 box img-rounded ">
-							<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable1/" method="post">
+							<form class="form-inline" action="http://localhost/Jaktrip/index.php/searchCtr/setInitialVariable/" method="post">
 								<span class="field custom-dropdown " id="ddcontainerh">
 								    <select id="ddbush" class="field form-control" title="Your starting point?" type="dropdown" name="mydropdown" required>    
 								        <option value="" selected disabled>Your starting point?</option>

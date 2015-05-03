@@ -5,7 +5,7 @@ class ViewTripCtr extends CI_Controller {
     function index()
 	{   
 			$this->load->helper('cookie');
-			
+			$this->load->helper('url');
 			$data['place_name'] = explode("xx",get_cookie("placeName"));
 			$data['halte_awal'] = explode("xx",get_cookie("halteAwal"));
 			$data['halte_name'] = explode("xx",get_cookie("halteName"));

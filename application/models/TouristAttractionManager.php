@@ -211,71 +211,84 @@ class TouristAttractionManager extends CI_Model{
 	}
 	
 
-	function getDatabaseWithinBudget($budget)
-		{
-			$budgetInt = intval($budget);
-			$this->load->database();
-			$query = $this->db->get_where('tourist_attraction', array('weekday_price <=' => $budgetInt));		
-			return $query->result();
-		}
 
-		function getDatabaseWithinBudgetandHalteWeekday($data)
-		{
-			$this->load->database();
-			$budgetInt = intval($data['budget']); 
-		//	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
-		//	return $query->row_array();
-		//	$hasil = $query->row_array();
-			$halte_name= $data['halte_name'];
-						
-			$condition = "(halte_name = '".$data['halte_name']."' AND weekday_price + transport_price <=  ".$budgetInt.") OR weekday_price + transport_price <=".($budgetInt-3500)."";
-			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
-			$query = $this->db->get();
-			return $query->result();	
-		}
+	//----di comment dulu... kayaknya ga penting ---------------
 
-		function getDatabaseWithinBudgetandHalteWeekend($data)
-		{
-			$this->load->database();
-			$budgetInt = intval($data['budget']); 
-		//	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
-		//	return $query->row_array();
-		//	$hasil = $query->row_array();
-			$halte_name= $data['halte_name'];
+	// function getDatabaseWithinBudget($budget)
+	// 	{
+	// 		$budgetInt = intval($budget);
+	// 		$this->load->database();
+	// 		$query = $this->db->get_where('tourist_attraction', array('weekday_price <=' => $budgetInt));		
+	// 		return $query->result();
+	// 	}
+
+		//----di comment dulu... kayaknya ga penting ---------------
+
+		// function getDatabaseWithinBudgetandHalteWeekday($data)
+		// {
+		// 	$this->load->database();
+		// 	$budgetInt = intval($data['budget']); 
+		// //	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
+		// //	return $query->row_array();
+		// //	$hasil = $query->row_array();
+		// 	$halte_name= $data['halte_name'];
 						
-			$condition = "(halte_name = '".$data['halte_name']."' AND weekend_price + transport_price <=  ".$budgetInt.") OR weekend_price + transport_price <=".($budgetInt-3500)."";
-			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
-			$query =$this->db->get();
-			return $query->result();
-		}
-		function getDatabaseWithinBudgetandHalteWeekday2($data)
-		{
-			$this->load->database();
-			$budgetInt = intval($data['budget']); 
-		//	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
-		//	return $query->row_array();
-		//	$hasil = $query->row_array();
+		// 	$condition = "(halte_name = '".$data['halte_name']."' AND weekday_price + transport_price <=  ".$budgetInt.") OR weekday_price + transport_price <=".($budgetInt-3500)."";
+		// 	$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
+		// 	$query = $this->db->get();
+		// 	return $query->result();	
+		// }
+
+		//----di comment dulu... kayaknya ga penting ---------------
+
+		// function getDatabaseWithinBudgetandHalteWeekend($data)
+		// {
+		// 	$this->load->database();
+		// 	$budgetInt = intval($data['budget']); 
+		// //	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
+		// //	return $query->row_array();
+		// //	$hasil = $query->row_array();
+		// 	$halte_name= $data['halte_name'];
+						
+		// 	$condition = "(halte_name = '".$data['halte_name']."' AND weekend_price + transport_price <=  ".$budgetInt.") OR weekend_price + transport_price <=".($budgetInt-3500)."";
+		// 	$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
+		// 	$query =$this->db->get();
+		// 	return $query->result();
+		// }
+
+		//----di comment dulu... kayaknya ga penting ---------------
+
+		// function getDatabaseWithinBudgetandHalteWeekday2($data)
+		// {
+		// 	$this->load->database();
+		// 	$budgetInt = intval($data['budget']); 
+		// //	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
+		// //	return $query->row_array();
+		// //	$hasil = $query->row_array();
 			
 						
-			$condition = "(weekday_price <=  ".$budgetInt.")";
-			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
-			$query = $this->db->get();
-			return $query->result();	
-		}
-		function getDatabaseWithinBudgetandHalteWeekend2($data)
-		{
-			$this->load->database();
-			$budgetInt = intval($data['budget']); 
-		//	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
-		//	return $query->row_array();
-		//	$hasil = $query->row_array();
+		// 	$condition = "(weekday_price <=  ".$budgetInt.")";
+		// 	$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+		// 	$query = $this->db->get();
+		// 	return $query->result();	
+		// }
+
+		//----di comment dulu... kayaknya ga penting ---------------
+		
+		// function getDatabaseWithinBudgetandHalteWeekend2($data)
+		// {
+		// 	$this->load->database();
+		// 	$budgetInt = intval($data['budget']); 
+		// //	$query = $this->db->get_where('halte', array('halte_name = ' => $data['halte']));
+		// //	return $query->row_array();
+		// //	$hasil = $query->row_array();
 			
 						
-			$condition = "(weekend_price <=  ".$budgetInt.")";
-			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
-			$query = $this->db->get();
-			return $query->result();
-		}
+		// 	$condition = "(weekend_price <=  ".$budgetInt.")";
+		// 	$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code')->where($condition);
+		// 	$query = $this->db->get();
+		// 	return $query->result();
+		// }
 
 		function getDetail($data)
 		{
@@ -287,13 +300,14 @@ class TouristAttractionManager extends CI_Model{
 			$query = $this->db->get();
 			return $query->result();
 		}
-		function getAllTour1($data)
+
+		function getAllTourInitial($data)
 		{
 			$this->load->database();
 			
 			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
 
-			$query = $this->db->join('photo', ' tourist_attraction.id_pic =  photo.id_pic ', 'left outer');
+		//	$query = $this->db->join('photo', ' tourist_attraction.id_pic =  photo.id_pic ', 'left outer');
 			$query = $this->db->get();
 			$result['result'] = $query->result();
 			$counter = 0;
@@ -321,7 +335,7 @@ class TouristAttractionManager extends CI_Model{
 			return $result;
 		}
 
-		function getAllTour2($data)
+		function getAllTourInAdd($data)
 		{
 			$this->load->database();
 			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
@@ -381,57 +395,57 @@ class TouristAttractionManager extends CI_Model{
 			return $result;
 		}
 
-		function showAfterDelete()
-		{
-			$this->load->database();
-			$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
-			$query = $this->db->get();
-			$result['result'] = $query->result();
-			$counter = 0;
-			$tempatWisataTerpilih = explode("xx",$data["place_name"]);
-			$dataHalteName = explode("xx",$data["place_name"])[$data['idx_last_trip']];
-			$dataPlaceInfo = explode("xx",$data['place_info'])[$data['idx_last_trip']];
+		// function showAfterDelete()
+		// {
+		// 	$this->load->database();
+		// 	$query = $this->db->select("*")->from('tourist_attraction')->join('halte', 'halte.halte_code = tourist_attraction.halte_code');
+		// 	$query = $this->db->get();
+		// 	$result['result'] = $query->result();
+		// 	$counter = 0;
+		// 	$tempatWisataTerpilih = explode("xx",$data["place_name"]);
+		// 	$dataHalteName = explode("xx",$data["place_name"])[$data['idx_last_trip']];
+		// 	$dataPlaceInfo = explode("xx",$data['place_info'])[$data['idx_last_trip']];
 
-			foreach ($result['result'] as $row) {
-				# code...
-				$hargaAngkotSebelum = intval(explode("xx",$data["angkot_price"])[$data['idx_last_trip']]);
-				$hargaAngkotSetelah = $row->transport_price;
-				$hargaTempatWisasta = $row->weekday_price;
-				$hargaBusway = 3500;
+		// 	foreach ($result['result'] as $row) {
+		// 		# code...
+		// 		$hargaAngkotSebelum = intval(explode("xx",$data["angkot_price"])[$data['idx_last_trip']]);
+		// 		$hargaAngkotSetelah = $row->transport_price;
+		// 		$hargaTempatWisasta = $row->weekday_price;
+		// 		$hargaBusway = 3500;
 				
-				if($dataHalteName== $row->halte_name)
-				{
+		// 		if($dataHalteName== $row->halte_name)
+		// 		{
 					
-					$hargaBusway = 0;
-				}
-				if($dataPlaceInfo==$row->place_info && $dataPlaceInfo!="")
-				{
-					// if($row->place_name == "Kota Tua")
-					// {
-					// 	return $row->halte_name;
-					// }
-					$hargaBusway = 0;
-					$hargaAngkotSebelum=0;
-					$hargaAngkotSetelah=0;
-				}
-				$result['hargaAngkotSebelum'][$counter]= $hargaAngkotSebelum;
-				$result['hargaAngkotSetelah'][$counter]= $hargaAngkotSetelah;
-				$result['hargaBusway'][$counter]= $hargaBusway;
-				$result['harga'][$counter]= $hargaAngkotSebelum + $hargaBusway+  $hargaAngkotSetelah + $hargaTempatWisasta;
-				$result['sudahDipilih'][$counter]= false;
-				for($i=0; $i<count($tempatWisataTerpilih); $i++)
-				{
-					if($tempatWisataTerpilih[$i]==$row->place_name)
-					{
-						$result['sudahDipilih'][$counter]= true;
-					}
-				}
-				$counter++;
+		// 			$hargaBusway = 0;
+		// 		}
+		// 		if($dataPlaceInfo==$row->place_info && $dataPlaceInfo!="")
+		// 		{
+		// 			// if($row->place_name == "Kota Tua")
+		// 			// {
+		// 			// 	return $row->halte_name;
+		// 			// }
+		// 			$hargaBusway = 0;
+		// 			$hargaAngkotSebelum=0;
+		// 			$hargaAngkotSetelah=0;
+		// 		}
+		// 		$result['hargaAngkotSebelum'][$counter]= $hargaAngkotSebelum;
+		// 		$result['hargaAngkotSetelah'][$counter]= $hargaAngkotSetelah;
+		// 		$result['hargaBusway'][$counter]= $hargaBusway;
+		// 		$result['harga'][$counter]= $hargaAngkotSebelum + $hargaBusway+  $hargaAngkotSetelah + $hargaTempatWisasta;
+		// 		$result['sudahDipilih'][$counter]= false;
+		// 		for($i=0; $i<count($tempatWisataTerpilih); $i++)
+		// 		{
+		// 			if($tempatWisataTerpilih[$i]==$row->place_name)
+		// 			{
+		// 				$result['sudahDipilih'][$counter]= true;
+		// 			}
+		// 		}
+		// 		$counter++;
 				
-			}
+		// 	}
 
-			return $result;
-		}
+		// 	return $result;
+		// }
 
 		function insertBudget($budget){
 			$this->load->database();
