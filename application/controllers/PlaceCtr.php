@@ -167,6 +167,7 @@ function do_upload($place_name)
 		$this->load->model('ReviewModel');
 		$data['query']= $this->DetailMod->showdetail($place_name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($place_name);
+		$data['query3']= $this->DetailMod->showphoto($name);
 		$this->load->view('header');
 		$this->load->view('PlaceUI',$data);
 		$this->load->view('footer');
