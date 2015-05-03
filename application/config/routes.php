@@ -43,8 +43,8 @@ $route['404_override'] = '';
 
 $route['home'] = 'homeCtr';
 $route['trip'] = 'SearchCtr';
-$route['trip/owntrip'] = 'SearchCtr/SearchWithinBudget1';
-$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudget11';
+$route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
+$route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';
 $route['trip/view'] = 'viewTripCtr'; 
 $route['allplaces'] = 'allPlacesCtr';
 $route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
@@ -72,6 +72,7 @@ $route['admin/suggestions'] = 'suggestionCtr';
 $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
+$route['admin/promos/delete/(:any)'] = 'ManagePromoCtr/del/$1';
 
 $route['user'] = 'UsersCtr';
 $route['user/edit'] = 'UsersCtr/edit';

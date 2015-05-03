@@ -99,24 +99,38 @@ class PromoManager extends CI_Model{
 		return $query->result(); 
 		}
 		
-	function filterPromoFinal($city, $title)
-		{
-			
-			$this->load->database();
-			$this->db->select('*');
-			$this->db->from('promo');
-			$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
-			$city= str_replace("%20", " ",$city);
-			$title= str_replace("%20", " ",$title);
-			if((string)$city != ""and $city !="All"){
-				$this->db->where(array('tourist_attraction.city' => $city));
-			} 
-			if((string)$title != ""){
-				$this->db->like(array('promo.title' => $title));
-			} 			
-			$query = $this->db->get(); 
-            return $query->result_array(); 
-		}
+	function filterPromoFinal($city, $title){
+		$this->load->database();
+		$this->db->select('*');
+		$this->db->from('promo');
+		$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+		$city= str_replace("%20", " ",$city);
+		$title= str_replace("%20", " ",$title);
+		if((string)$city != ""and $city !="All"){
+			$this->db->where(array('tourist_attraction.city' => $city));
+		} 
+		if((string)$title != ""){
+			$this->db->like(array('promo.title' => $title));
+		} 			
+		$query = $this->db->get(); 
+        return $query->result_array(); 
+	}
+
+    function promo_getall(){
+        $this->load->database();
+        $query = $this->db->get('promo');
+        return $query->result();
+    }
+
+    function promo_getType($id_promo){
+        $query = $this->db->get_where('type_promo', array('id_promo'=>$id_promo));
+        return $query->result();
+    }
+
+    function delete($id_promo){
+        $this->load->database();
+        $this->db->delete('promo', array('id_promo' => $id_promo));
+    }
 }
 
 ?>
