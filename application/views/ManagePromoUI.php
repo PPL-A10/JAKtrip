@@ -75,33 +75,11 @@
 							echo "<td>";
 							$onclick = array('onclick'=>"return confirm('Are you sure to delete promo ".$row->title." from ".$row->place_name."?')");
 							echo anchor('admin/promos/delete/'.$row->id_promo,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							echo "<td>". anchor('admin/promos/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+							echo "<td>". anchor('admin/promos/edit/' .$row->id_promo, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 							echo "<td><a href='".base_url('promo')."/".$row->id_promo."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
 							echo "</tr>";
 							}
 						?>
-				   		<!--<?php
-							// foreach($query as $row)
-							// {
-							// echo "<tr>";
-							// //echo"<td><input type='checkbox' value=''></td>";
-							// echo "<td>".$row->place_name."</td>";
-							// echo "<td>".$row->title."</td>";
-							// echo "<td>".$row->$type_[$i]."</td>";
-							// $currentDate = date("Y-m-d");
-							// $enddate = date($row->end_date);
-							// if($enddate >= $currentDate){
-							// 	echo "<td>On going</td>";
-							// }else{
-							// 	echo "<td>Expired</td>";
-							// }
-							// echo "<td>";
-							// $onclick = array('onclick'=>"return confirm('Are you sure to delete promo ".$row->title." from ".$row->place_name."?')");
-							// echo anchor('admin/promos/delete'.$row->id_promo,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							// echo "<td><a href='".base_url('promo')."/".$row->id_promo."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
-							// echo "</tr>";
-							// }
-						?>-->
 				  </tbody>
 				</table><br>
 

@@ -28,7 +28,7 @@ class AddPromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
 		$this->form_validation->set_rules('description', 'description', 'trim');
 		$this->form_validation->set_rules('type_promo', 'type_promo', '');
-		$this->form_validation->set_rules('photo', 'photo', 'trim');
+		$this->form_validation->set_rules('photo', 'photo', 'required|trim');
 
 		//$this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
 
