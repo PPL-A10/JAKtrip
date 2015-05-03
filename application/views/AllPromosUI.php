@@ -19,19 +19,15 @@
 
 				<div class="col-lg-12 location" style="margin-top: -20px;">
 					<div class="form-inline">
-	   					 <label class="control-label">Filter by :  </label>
-	   					 <span class="field custom-dropdown ">
-	   					 	 <select class="field form-control" onchange="" title="All Categories" id="category_select">    
+	   					<label class="control-label">Filter by :  </label>
+	   					<span class="field custom-dropdown ">
+	   					 	<select class="field form-control" onchange="" title="All Categories" id="category_select">    
 							        <option value='All' >All Types</option>
 									<?php
-										foreach($query1 as $row)
-										{
+										foreach($query1 as $row){
 											echo "<option value='".$row->type."'>".$row->type."</option>";
 										}
-									?><!--option value="">Sarinah</option>  
-							        <option value="">Gelora Bung Karno</option>
-							        <option value="">Atrium</option>
-							        <option value="">Bank Indonesia</option-->
+									?>
 							    </select>
 	   					 </span>
 

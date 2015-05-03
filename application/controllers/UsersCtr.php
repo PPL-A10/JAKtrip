@@ -12,6 +12,7 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->helper('cookie');
 		$user = get_cookie("username");
+		$data['thisUser'] = $user;
 		$data['wishlist'] = $this->memberManager->showWishlist($user);
 		$data['visited'] = $this->memberManager->showVisited($user);
 		$this->load->view('header');
@@ -35,7 +36,7 @@ class UsersCtr extends CI_Controller {
 		$this->db->where('place_name', $place_name);
 		$this->db->where('username', get_cookie("username"));
 		$this->memberManager->delFromWishlist($data);
-		header("Location: ".base_url()."flag/".$place_name."");
+		header("Location: ".base_url()."user");
 	}
 
 	function removeVisited($place_name){
@@ -48,7 +49,7 @@ class UsersCtr extends CI_Controller {
 		$this->db->where('place_name', $place_name);
 		$this->db->where('username', get_cookie("username"));
 		$this->memberManager->delFromVisited($data);
-		header("Location: ".base_url()."flag/".$place_name."");
+		header("Location: ".base_url()."user");
 	}
 	
 }
