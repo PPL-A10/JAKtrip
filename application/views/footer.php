@@ -32,14 +32,16 @@
 
 
 	
-		<script>
-
-		
-		var lokasi = "All";
+		<script>	
+	var lokasi = "All";
 	function setLokasi(city){
 		lokasi=city;
 	}
-		//function tes(){$("#descr").html(<?php echo $lat; ?>+"dan"+<?php echo $long; ?>);}
+	function setphotopublish(){		
+		document.getElementById("output_field123").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
+		$("#output_field123").html("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa ");	
+	}
+	
 	function filterFunctionTour(input){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;	
 		//var y = document.getElementById("category_select").value;
