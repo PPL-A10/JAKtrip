@@ -66,7 +66,7 @@
 					if($row->is_publish == 0)
 				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic .")'>&nbsp;&nbsp;Publish?</a></td>";}
 					else
-					{echo "<td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
+					{echo "<td>Published</td>";}
 				  }
 				  ?>
 				  	<!--tr>

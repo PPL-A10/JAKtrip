@@ -43,6 +43,8 @@ class PlaceCtr extends CI_Controller {
 		$this->load->helper('html');
 		$this->load->model('DetailMod');
 		$this->load->model('ReviewModel');
+		$name= str_replace("%20", " ",$name);
+		$data['thisPlace'] = $name;
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
 		$data['query3']= $this->DetailMod->showphoto($name);
@@ -168,9 +170,7 @@ function do_upload($place_name)
 		$data['query']= $this->DetailMod->showdetail($place_name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($place_name);
 		$data['query3']= $this->DetailMod->showphoto($place_name);
-		$this->load->view('header');
-		$this->load->view('PlaceUI',$data);
-		$this->load->view('footer');
+		header("Location: ".base_url()."place/".$place_name."");
 		}
 	}
 
