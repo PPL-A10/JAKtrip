@@ -1,8 +1,13 @@
 $(document).ready(function () {
         showTheItinerary1();
+        var nowDate = new Date();
+		var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate());
 
         $('.datepicker').datepicker({
-            format: "mm/dd/yyyy"
+            format: "mm/dd/yyyy",
+            startDate: "today",
+            todayBtn: true,
+            todayHighlight: true
         });  
 
     });
