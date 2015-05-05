@@ -13,6 +13,7 @@ class AllPlacesCtr extends CI_Controller {
 			$data['query']= $this->AllPlacesMod->showallplaces();
 			$this->load->helper('form');
 			$this->load->model('touristAttractionManager');
+
 			
 			$this->load->model('searchMod');
 			$data['query4']= $this->searchMod->showallwisata();
@@ -131,6 +132,33 @@ class AllPlacesCtr extends CI_Controller {
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
 		}
+
+	function sendSuggestion(){
+		$this->load->model('suggestionManager');
+		$this->load->helper('cookie');
+		$this->load->library('form_validation');
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+        $this->form_validation->set_rules('place_name', 'place_name', 'required');
+		$this->form_validation->set_rules('description', 'description', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			header("Location: ".base_url()."allplaces");
+		}
+		else
+		{
+			//Setting values for tabel columns
+			$data2 = array(
+						'username' => get_cookie("username"),
+                        'place_name' => $this->input->post('place_name'),
+                        'description' => $this->input->post('description')
+                    );
+			
+                $this->suggestionManager->insertSuggestion($data2);
+                
+                header("Location: ".base_url()."allplaces");
+        }
+	}
 }
 
 ?>

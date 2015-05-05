@@ -174,7 +174,7 @@
 							  </span>
 
 							  <span class="input-group col-lg-3">
-							 	 <input class="field datepicker" type="text" placeholder="Date" name="datepicker"  required>
+							 	 <input class="field datepicker" type="text" placeholder="Date" name="datepicker" required>
 							  </span>
 
 							  <button class="field btn btn-warning" type="submit">SEARCH</button>

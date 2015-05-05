@@ -131,6 +131,75 @@ class PromoManager extends CI_Model{
         $this->load->database();
         $this->db->delete('promo', array('id_promo' => $id_promo));
     }
+
+    function promo_get($id_promo){
+        $this->load->database();
+        
+        echo $id_promo;
+
+        $query = $this->db->get_where('promo', array('id_promo'=>$id_promo));
+        return $query->row_array();
+    }
+
+    function getPromo(){
+        $this->load->database();
+        $query = $this->db->select("*")->from('promo')->get();
+        return $query;
+    }
+
+    function edit($id_promo, $form_data, $form_type){
+        $this->load->database();
+        $this->db->where('id_promo',$id_promo);
+        $this->db->update('promo',$form_data);
+        //$this->db->where('place_name',$place_name);
+        //$this->db->update('tour_category',$x);
+        
+        
+        //foreach($form_cat['category_list'] as $selected){
+            //  echo $selected;
+            //}
+        //$old_cat = $this->tourAttr_getCat($place_name);
+        $old_type = $form_type['type_old'];
+        foreach($old_type as $old){
+            $is_exists=FALSE;
+            foreach($form_type['type_list'] as $selected){
+                if($old->type_name==$selected){
+                    $is_exists=TRUE;
+                }
+            }
+            if($is_exists==FALSE){
+                $this->db->delete('type_promo', array('id_promo'=>$id_promo, 'type_name'=>$old->type_name));
+            }
+        }
+        
+        $type_new = $form_type['type_new'];
+        //$place_name=$form_cat['place_name'];
+        foreach($form_type['type_list'] as $selected){
+            if($selected != ''){
+                $quer = $this->db->get_where('type_promo', array('id_promo'=>$id_promo, 'type_name'=>$selected));
+                //echo $quer;
+                //if not exists
+                if($quer->num_rows==0){
+                    $this->db->insert('type_promo', array('id_promo'=>$id_promo, 'type_name'=>$selected));
+                }
+                //$query="insert into TOUR_CATEGORY' where not exists (select * from TOUR_CATEGORY where place_name==$place_name"
+                
+                //$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+            }
+            else{
+                if($type_new != ''){
+                    $this->db->insert('types', array('type_name'=>$type_new));
+                    $this->db->insert('type_promo', array('id_promo'=>$id_promo, 'type_name'=>$type_new));
+                }   
+            }
+
+        }
+        //if ($this->db->affected_rows() == '0')
+        //{
+            return TRUE;
+        //}
+        //return FALSE;
+    }
 }
 
 ?>
