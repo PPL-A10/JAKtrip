@@ -8,6 +8,18 @@
 					<div class="tuffyh2">Explore fun places within your budget in Jakarta</div>
 				</div>
 
+				<!--testing facebook login -->
+				<!--div id="userDetails" style="display: none;">
+				<img id="userPic" src="">
+				  
+				 
+				<div id="userInfo">
+				</div>
+				</div>
+				<button id="loginBtn" onclick="logIn();" value="Login">Login</button>
+				<button id="logoutBtn" onclick="logOut();" value="Logout" style="display: none;">Logout</button-->
+				<!--end of testing facebook login -->
+
 				<div class="col-lg-12" style="margin-top: 240px;">
 					<div class="col-lg-3"></div>
 					<div class="col-lg-6 box img-rounded ">

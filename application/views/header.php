@@ -21,6 +21,10 @@
   <script src="<?php echo base_url('assets/amcharts/amcharts.js')?>" type="text/javascript"></script>
   <script src="<?php echo base_url('assets/amcharts/serial.js')?>" type="text/javascript"></script>
   
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/all.js"></script>
+  
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
   <style>
