@@ -48,7 +48,7 @@ class PlaceCtr extends CI_Controller {
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
 		$data['query3']= $this->DetailMod->showphoto($name);
-		
+		$data["thisUser"] = get_cookie("username");
 		
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -59,6 +59,7 @@ class PlaceCtr extends CI_Controller {
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
 			setcookie("username",$first_name, time()+3600, '/');
 			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			$data["thisUser"] = get_cookie("username");
 			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
 		}
 		else
@@ -74,6 +75,7 @@ class PlaceCtr extends CI_Controller {
 				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
 				setcookie("username",$first_name, time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				$data["thisUser"] = get_cookie("username");
 				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
 			}
 			else
@@ -87,6 +89,7 @@ class PlaceCtr extends CI_Controller {
 			// $this->load->view('PlaceUI',$data);
 			// $this->load->view('footer',$data);
 		}
+
 
 		
 		//echo json_encode($data);
