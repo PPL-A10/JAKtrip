@@ -42,6 +42,7 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
 $route['home'] = 'homeCtr';
+$route['home/(:any)'] = 'homeCtr/index/$1';
 $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';
@@ -81,6 +82,7 @@ $route['user/edit'] = 'UsersCtr/edit';
 $route['register'] = 'registerCtr'; 
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr'; 
+
 
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 // $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';

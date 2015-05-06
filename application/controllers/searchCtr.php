@@ -8,6 +8,7 @@
 			// $this->load->helper('form');
 			$this->load->helper('form');
 			$this->load->model('touristAttractionManager');
+			$this->load->helper('cookie');
 
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
@@ -21,9 +22,28 @@
 			$data['query2']= $this->searchMod->showalllocation();
 			$data['query3']= $this->searchMod->showallhalte();
 
-			$this->load->view('header');
-			$this->load->view('FormSearchUI', $data);
-			$this->load->view('footer');
+
+			$this->user = $this->facebook->getUser();
+			if($this->user)
+			{
+
+				$data['user_profile'] = $this->facebook->api('/me/');
+				$first_name = $data['user_profile']['first_name'];
+				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			}
+			else
+			{
+				$data['login_url'] = $this->facebook->getLoginUrl();
+				$this->load->view('header', $data);
+				$this->load->view('FormSearchUI', $data);
+				$this->load->view('footer');
+			}
+			// $this->load->view('header');
+			// $this->load->view('FormSearchUI', $data);
+			// $this->load->view('footer');
 		
 		}
 
@@ -177,9 +197,28 @@
 			$data['isRekomendasi'] = "false"; 
 			setcookie("isRekomendasi", $data['isRekomendasi'], time()+3600, '/');
 
-			$this->load->view('header');
-			$this->load->view('FormSearchUI', $data);
-			$this->load->view('footer');
+
+			$this->user = $this->facebook->getUser();
+			if($this->user)
+			{
+
+				$data['user_profile'] = $this->facebook->api('/me/');
+				$first_name = $data['user_profile']['first_name'];
+				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			}
+			else
+			{
+				$data['login_url'] = $this->facebook->getLoginUrl();
+				$this->load->view('header', $data);
+				$this->load->view('FormSearchUI', $data);
+				$this->load->view('footer');
+			}
+			// $this->load->view('header');
+			// $this->load->view('FormSearchUI', $data);
+			// $this->load->view('footer');
 
 		}
 		public function searchWithinBudgetRec()
@@ -258,9 +297,28 @@
 			// $data['query2']= $this->searchMod->showalllocation();
 			// $data['query3']= $this->searchMod->showallhalte();
 
-			$this->load->view('header');
-			$this->load->view('FormSearchUI', $data);
-			$this->load->view('footer');
+
+			$this->user = $this->facebook->getUser();
+			if($this->user)
+			{
+
+				$data['user_profile'] = $this->facebook->api('/me/');
+				$first_name = $data['user_profile']['first_name'];
+				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			}
+			else
+			{
+				$data['login_url'] = $this->facebook->getLoginUrl();
+				$this->load->view('header', $data);
+				$this->load->view('FormSearchUI', $data);
+				$this->load->view('footer');
+			}
+			// $this->load->view('header');
+			// $this->load->view('FormSearchUI', $data);
+			// $this->load->view('footer');
 
 		}
 
@@ -790,13 +848,34 @@
 		public function inputSalah()
 		{
 			$this->load->model('HalteManager');
+			$this->load->helper('cookie');
 			$data['query'] = $this->HalteManager->getAllHalte();
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
-			$this->load->view('header');
-			$this->load->view('homeUISalah',$data);
-			$this->load->view('footer');
+			
+
+			$this->user = $this->facebook->getUser();
+			if($this->user)
+			{
+
+				$data['user_profile'] = $this->facebook->api('/me/');
+				$first_name = $data['user_profile']['first_name'];
+				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			}
+			else
+			{
+				$data['login_url'] = $this->facebook->getLoginUrl();
+				$this->load->view('header', $data);
+				$this->load->view('homeUISalah',$data);
+				$this->load->view('footer');
+			}
+			// $this->load->view('header');
+			// $this->load->view('homeUISalah',$data);
+			// $this->load->view('footer');
 		}
 		public function setVariable($halte, $budget)
 		{
@@ -831,6 +910,8 @@
 				setcookie("counterTrip", 0, time()+3600, '/');
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
+				setcookie("photo_facebook",null,time()+3600, '/');
+				session_destroy();
 			}
 			header("Location:".base_url()."home");
 		}

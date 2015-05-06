@@ -19,7 +19,7 @@
 			<div id="trips" class="usercontent">
 				<div class="row coll">
 					<a href="<?php echo base_url('trip/view');?>">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
+						<div class="col-lg-2 pic-small"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
 						<div class="col-lg-8">
 							<div class="tuffyh3a">2 Places</div>
 							In <b>24 Apr '15</b> | Start from <b>Dunia Fantasi</b> | Total: <b>Rp 157000</b>
@@ -42,7 +42,7 @@
 						foreach ($wishlist as $row) {
 							$thisPlace = $row->place_name;
 							echo '<div class="row coll"><a href="#">';
-							echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+							echo '<div class="col-lg-2 pic-small"><img src='.base_url("assets/img/50.jpg").'></div>';
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
@@ -76,7 +76,7 @@
 			    	else{
 						foreach ($visited as $row) {
 							echo '<div class="row coll"><a href="#">';
-							echo '<div class="col-lg-2"><img src='.base_url("assets/img/50.jpg").'></div>';
+							echo '<div class="col-lg-2 pic-small"><img src='.base_url("assets/img/50.jpg").'></div>';
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
