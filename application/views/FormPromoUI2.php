@@ -76,7 +76,7 @@
   						<?php $i=0;
 							foreach ($type_nam as $row){
 								$type = $row->type_name;
-								echo form_checkbox('type_list[]',$type, $type_checked[$i]).($row->type_name)."<br>"; 
+								echo form_checkbox('type_list[]', $type, $type_checked[$i]).($row->type_name)."<br>"; 
 								$i++;
 							}
 							echo '<br>';

@@ -30,71 +30,73 @@ class AddPromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('type_promo', 'type_promo', '');
 		$this->form_validation->set_rules('photo', 'photo', 'required|trim');
 
-		//$this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
+		// $this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
 
-		// $number_of_files = sizeof($_FILES['photo']['tmp_name']);
-		// $files = $_FILES['photo'];
-		// $erors = array();
+		$number_of_files = sizeof($_FILES['photo']['tmp_name']);
+		$files = $_FILES['photo'];
+		$errors = array();
 
-		// for($i=0;$i<number_of_files;$i++){
-		// 	if($_FILES['photo']['error'][$i] != 0){
-		// 		$errors[$i][] = 'Couldn\'t upload file '.$_FILES['photo']['name'][$i];
-		// 	}
-		// }
-		// if(sizeof($errors)==0){
-		// 	// now, taking into account that there can be more than one file, for each file we will have to do the upload
-		//   	// we first load the upload library
-		//   	//$this->load->library('upload');
-		//   	// next we pass the upload path for the images
-		//   	$image_path = realpath(APPPATH . '../assets/');
-		// 	$config['upload_path'] = $image_path;
-		// 	$config['allowed_types'] = 'gif|jpg|png';
-		// 	$config['max_size']='1000';
-		// 	$config['max_width']='4096';
-		// 	$config['max_height']='4096';
-		// 	$this->load->library('upload',$config);
-		// 	//$this->upload->initialize($config);
+		for($i=0;$i<$number_of_files;$i++){
+		  if($_FILES['photo']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['photo']['name'][$i];
+		}
 
-		// 	$file_name = array();
+		if(sizeof($errors)==0){
+		  	// now, taking into account that there can be more than one file, for each file we will have to do the upload
+		  	// we first load the upload library
+		  	//$this->load->library('upload');
+		  	// next we pass the upload path for the images
+		  	$image_path = realpath(APPPATH . '../assets/');
+			$config['upload_path'] = $image_path;
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']='1000';
+			$config['max_width']='4096';
+			$config['max_height']='4096';
+			$this->load->library('upload',$config);
+			//$this->upload->initialize($config);
+		  
+			$file_name = array();
    
-		// 	for ($i = 0; $i < $number_of_files; $i++){
-		// 		$_FILES['apic']['name'] = $files['name'][$i];
-		// 		$_FILES['apic']['type'] = $files['type'][$i];
-		// 		$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
-		// 		$_FILES['apic']['error'] = $files['error'][$i];
-		// 		$_FILES['apic']['size'] = $files['size'][$i];
-		// 		//now we initialize the upload library
-		// 		$this->upload->initialize($config);
-		// 		// we retrieve the number of files that were uploaded
-		// 		if ($this->upload->do_upload('apic')){
-		// 		  	$data['upload_data'][$i] = $this->upload->data();
-		// 		  	$name = $data['upload_data'][$i]['file_name'];
-		// 		  	array_push($file_name, $name);
-		// 		}
-		// 		else{
-		// 		  //$data['upload_errors'][$i] = $this->upload->display_errors();
-		// 		}
-		// 	}
-		// }
-
-		// // $photo = array();
-		// foreach($file_name as $name){
-		// 	array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
-		// }
+			for ($i = 0; $i < $number_of_files; $i++){
+				$_FILES['apic']['name'] = $files['name'][$i];
+				$_FILES['apic']['type'] = $files['type'][$i];
+				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
+				$_FILES['apic']['error'] = $files['error'][$i];
+				$_FILES['apic']['size'] = $files['size'][$i];
+				//now we initialize the upload library
+				$this->upload->initialize($config);
+				// we retrieve the number of files that were uploaded
+				if ($this->upload->do_upload('apic')){
+					$data['upload_data'][$i] = $this->upload->data();
+					$name = $data['upload_data'][$i]['file_name'];
+					array_push($file_name, $name);
+				}
+				else{
+				  //$data['upload_errors'][$i] = $this->upload->display_errors();
+				}
+			}
+		}
+	  
+		$photo = array();
+		foreach($file_name as $name){
+		//echo $name;
+			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
+		}
 
 	// // $place_info = $this->input->post('place_inform');
 		// // if($place_info=='0'){
 		// // 	$place_info=NULL;	
 		// // }
 	 // 	// build array for the model
-		$photo = "belum ada";
+		// $files = $_FILES['photo'];
+
 		$form_data = array(
 	       	'title' => $this->input->post('title'),
 	       	'start_date' => $this->input->post('start_date'),
 	       	'end_date' => $this->input->post('end_date'),
 			'place_name' => $this->input->post('place_name'),
 			'photo' => $photo,
-			'description' => $this->input->post('description')
+			'description' => $this->input->post('description'),
+			'photo' => set_value('photo')
 		);
 
 		$form_type = array(

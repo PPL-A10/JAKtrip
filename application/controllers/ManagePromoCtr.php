@@ -1,7 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class ManagePromoCtr extends CI_Controller {
-	public function index() {
+	public function __construct(){
+        parent::__construct();
+    }
+
+	function index() {
 		$this->load->library('table');
 		$this->load->helper('html');
 		$this->load->model('PromoManager');
@@ -94,13 +98,19 @@ class ManagePromoCtr extends CI_Controller {
 		$data['place_name']['value'] = $query['place_name'];
 		// $data['photo']['value'] = $query['photo'];
 		$data['description']['value'] = $query['description'];
-				
+		if($query['photo'] != NULL){
+			$data['photo']['value'] = $query['photo'];
+		}
+		else{
+			$data['photo']['value'] = NULL;
+		}
+
 		$result = $this->PromoManager->getTypes();
 		
 		$type_checked=$this->isType($id_promo);
 		
 		
-		$data['type_nam']['value']=$result;
+		$data['type_nam']=$result;
 		$data['type_checked']['value']=$type_checked;
 		
 		//dropdown list place_info
