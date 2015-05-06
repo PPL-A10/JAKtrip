@@ -1099,13 +1099,12 @@ div.lightbox img{
 
 .pic-small {
   position: relative;
-  width: 25px;
-  height: 25px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
   float: left;
-  margin-top: -23px;
-  margin-right: -50px;
-  margin-left: 55px;
+  margin-top: 15px;
+  margin-left: 30px;
 }
 .pic-small img {
   opacity: 1;
