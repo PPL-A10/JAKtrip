@@ -336,6 +336,13 @@ a {
   padding-bottom: 15px;
 }
 
+li.active > a{
+  color: #db2719 !important;
+  border-bottom: solid 5px;
+  border-color: #db2719;
+  padding-bottom: 15px
+}
+
 .subsubmenu * {
   border-bottom: none !important;
   font-family: Lato !important;

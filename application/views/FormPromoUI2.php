@@ -10,7 +10,7 @@
 		$description = $description['value'];
 		$type_checked = $type_checked['value'];
 
-		// echo form_hidden('key', $id_promo); 
+		// echo form_hidden('key', $id_promo);
 	?>
 					
 					<div class="form-group">
@@ -64,7 +64,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Description <span class="req">*</span></label>
 						<?php echo form_error('description'); 
-						echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description, 'required' => 'required' ) )."<br>";
+						echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description) )."<br>";
 						?>
   						 <br></div>
 				    </div>
@@ -76,7 +76,7 @@
   						<?php $i=0;
 							foreach ($type_nam as $row){
 								$type = $row->type_name;
-								echo form_checkbox('type_list[]',$type, $type_checked[$i]).($row->type_name)."<br>"; 
+								echo form_checkbox('type_list[]', $type, $type_checked[$i]).($row->type_name)."<br>"; 
 								$i++;
 							}
 							echo '<br>';

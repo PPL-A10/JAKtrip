@@ -16,28 +16,28 @@ $(function() {
 		  $('#main-menu').smartmenus();
 		});
 
-				$('.navbar-nav > li > a').click(function(event){
-					//event.preventDefault();//stop browser to take action for clicked anchor	
+				// $('.navbar-nav > li > a').click(function(event){
+				// 	//event.preventDefault();//stop browser to take action for clicked anchor	
 					
-					//get displaying tab content jQuery selector
-					var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
+				// 	//get displaying tab content jQuery selector
+				// 	var active_tab_selector = $('.navbar-nav > li.active > a').attr('href');					
 					
-					//find actived navigation and remove 'active' css
-					var actived_nav = $('.navbar-nav > li.active');
-					actived_nav.removeClass('active');
+				// 	//find actived navigation and remove 'active' css
+				// 	var actived_nav = $('.navbar-nav > li.active');
+				// 	actived_nav.removeClass('active');
 
-					//add 'active' css into clicked navigation
-					$(this).parents('li').addClass('active');
+				// 	//add 'active' css into clicked navigation
+				// 	$(this).parents('li').addClass('active');
 					
-					//hide displaying tab content
-					$(active_tab_selector).removeClass('active');
-					$(active_tab_selector).addClass('hide');
+				// 	//hide displaying tab content
+				// 	$(active_tab_selector).removeClass('active');
+				// 	$(active_tab_selector).addClass('hide');
 					
-					//show target tab content
-					var target_tab_selector = $(this).attr('href');
-					$(target_tab_selector).removeClass('hide');
-					$(target_tab_selector).addClass('active');
-				});
+				// 	//show target tab content
+				// 	var target_tab_selector = $(this).attr('href');
+				// 	$(target_tab_selector).removeClass('hide');
+				// 	$(target_tab_selector).addClass('active');
+				// });
 		   $("#faqs dd").hide();
 		    $("#faqs dt").click(function () {
 		        $(this).next("#faqs dd").slideToggle(500);
@@ -868,8 +868,11 @@ $(document).ready(function() {
 
 
 //faq----------
+        $("li#gs > a").css("color", "#db2719");
+        $("li#gs > a").css("padding-bottom", "15px"); 
+        $("li#gs > a").css("border-bottom", "solid 5px #db2719");
 
-			$("#gscon").show();
+			  $("#gscon").show();
 		    $("#aapcon").hide();
 		    $("#plcon").hide();
 		    $("#revcon").hide();
@@ -881,6 +884,9 @@ $(document).ready(function() {
 			    $("#revcon").hide();
 			    $("#otcon").hide();
 		    	$("#gscon").show();
+          $("li#gs > a").css("color", "#db2719");
+        $("li#gs > a").css("padding-bottom", "15px"); 
+        $("li#gs > a").css("border-bottom", "solid 5px #db2719");
 		    });
 
 		    $("#aap").click(function(){
@@ -889,6 +895,9 @@ $(document).ready(function() {
 			    $("#revcon").hide();
 			    $("#otcon").hide();
 		    	$("#aapcon").show();
+          $("li#aap > a").css("color", "#db2719");
+        $("li#aap > a").css("padding-bottom", "15px"); 
+        $("li#aap > a").css("border-bottom", "solid 5px #db2719");
 		    });
 
 		    $("#pl").click(function(){

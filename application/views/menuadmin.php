@@ -1,7 +1,7 @@
 
 	<div class="container-fluid">
 		<div class="row">			
-			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 70px;">
+			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="padding-top: 50px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 				<li><a id="sm-pla" class="sm-cl" href="<?php echo base_url('admin/places');?>">Places</a>
 				<li><a id="sm-pro" class="sm-cl" href="<?php echo base_url('admin/promo');?>">Promo</a>
