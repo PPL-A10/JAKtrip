@@ -7,7 +7,6 @@
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 				echo form_open('RegisterCtr/addMember', $attributes); ?>
-				<!--<form class="newpost col-lg-8" method="post">-->
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
@@ -60,7 +59,6 @@
 
 				    <button class="btn btn-warning" type="submit">SUBMIT</button>
 				    <?php echo form_close(); ?>
-				<!--</form>-->
 			</div>
 		</div>
 </div>
