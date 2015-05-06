@@ -15,6 +15,7 @@ class UsersCtr extends CI_Controller {
 		$data['thisUser'] = $user;
 		$data['wishlist'] = $this->memberManager->showWishlist($user);
 		$data['visited'] = $this->memberManager->showVisited($user);
+		$data['query'] = $this->touristAttractionManager->getTouristAttraction();
 		$this->load->view('header');
 		$this->load->view('UserProfileUI', $data);
 		$this->load->view('footer');
