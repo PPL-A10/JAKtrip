@@ -4,6 +4,7 @@ class ManageTourAttrCtr extends CI_Controller {
 	public function index() {
 		$this->load->library('table');
 		$this->load->helper('html');
+		$this->load->helper('cookie');
 		$this->load->model('TouristAttractionManager');
 		$query = $this->TouristAttractionManager->tourAttr_getall();
 		//$place_name = $query->place_name;
@@ -38,15 +39,36 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
 		//$data['query2'] = $this->touristattractionmanager->getCategory();
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('manageTourAttrUI', $data);
-		$this->load->view('footer');
+
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('manageTourAttrUI', $data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('manageTourAttrUI', $data);
+		// $this->load->view('footer');
 	}
 
 	function del($place_name){
 		$this->load->library('table');
 		$this->load->helper('html');
+		$this->load->helper('cookie');
 		$this->load->model('TouristAttractionManager');
 		//$this->load->model('guest_model');
 		
@@ -80,10 +102,31 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['cat'] = $category_list;
 		$data['tourattr'] = $query;
 		$data['query'] = $this->touristAttractionManager->tourAttr_getall();
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('manageTourAttrUI', $data);
-		$this->load->view('footer');
+
+
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('manageTourAttrUI', $data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('manageTourAttrUI', $data);
+		// $this->load->view('footer');
 	}
 
 	function isCategory($place_name){
@@ -114,6 +157,7 @@ class ManageTourAttrCtr extends CI_Controller {
 	function edit($place_name){
 		$this->load->library('table');
 		$this->load->helper('html');
+		$this->load->helper('cookie');
 		$this->load->helper('form');
 		$this->load->model('TouristAttractionManager');
 		
@@ -190,10 +234,30 @@ class ManageTourAttrCtr extends CI_Controller {
 		}
 		$data['hlt_name']=$dd_halte;
 
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('formTourAttrUI2',$data);
-		$this->load->view('footer');
+
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('formTourAttrUI2',$data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('formTourAttrUI2',$data);
+		// $this->load->view('footer');
 	}
 	
 	function success()

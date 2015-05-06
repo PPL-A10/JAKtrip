@@ -30,9 +30,9 @@ public function index() {
 		setcookie("username",$first_name, time()+3600, '/');
 		setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 		header('Location: '.base_url('home'));
-		$this->load->view('header');
-		$this->load->view('homeUI',$data);
-		$this->load->view('footer');
+		// $this->load->view('header');
+		// $this->load->view('homeUI',$data);
+		// $this->load->view('footer');
 	}
 	else
 	{
