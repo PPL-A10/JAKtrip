@@ -5,6 +5,7 @@ class ManagePromoCtr extends CI_Controller {
 		$this->load->library('table');
 		$this->load->helper('html');
 		$this->load->model('PromoManager');
+		$this->load->helper('cookie');
 
 		$query = $this->PromoManager->promo_getall();
 		$type_list = array();
@@ -28,17 +29,37 @@ class ManagePromoCtr extends CI_Controller {
 		$data['type_'] = $type_list;
 		$data['promo'] = $query;
 
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('ManagePromoUI', $data);
-		$this->load->view('footer');
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('ManagePromoUI', $data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('ManagePromoUI', $data);
+		// $this->load->view('footer');
 	}
 
 	function del($id_promo){
 		$this->load->library('table');
 		$this->load->helper('html');
 		$this->load->model('PromoManager');
-		
+		$this->load->helper('cookie');
+
 		if($id_promo != NULL){
 			$this->PromoManager->delete($id_promo);
 		}
@@ -65,16 +86,38 @@ class ManagePromoCtr extends CI_Controller {
 		$data['type_'] = $type_list;
 		$data['promo'] = $query;
 		$data['query'] = $this->PromoManager->promo_getall();
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('managePromoUI', $data);
-		$this->load->view('footer');
+
+
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('managePromoUI', $data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('managePromoUI', $data);
+		// $this->load->view('footer');
 	}
 
 	function edit($id_promo){
 		$this->load->library('table');
 		$this->load->helper('html');
 		$this->load->helper('form');
+		$this->load->helper('cookie');
 		$this->load->model('PromoManager');
 		$this->load->model('TouristAttractionManager');
 		
@@ -115,10 +158,29 @@ class ManagePromoCtr extends CI_Controller {
 		
 		$data['place_inf']=$dd_place;
 
-		$this->load->view('header');
-		$this->load->view('menuadmin');
-		$this->load->view('formPromoUI2',$data);
-		$this->load->view('footer');
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('menuadmin');
+			$this->load->view('formPromoUI2',$data);
+			$this->load->view('footer');
+		}
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('formPromoUI2',$data);
+		// $this->load->view('footer');
 	}
 
 	function isType($id_promo){

@@ -42,6 +42,7 @@ $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
 $route['home'] = 'homeCtr';
+$route['home/(:any)'] = 'homeCtr/index/$1';
 $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';

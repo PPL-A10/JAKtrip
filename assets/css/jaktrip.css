@@ -1044,6 +1044,7 @@ div#output_field.col-lg-10 > div + div{
 }
 
 .userphoto {
+  
   position: relative;
   width: 200px;
   height: 200px;
@@ -1052,6 +1053,7 @@ div#output_field.col-lg-10 > div + div{
 
 }
 .userphoto img {
+  
   opacity: 1;
   filter: alpha(opacity=100);
   position: absolute;
@@ -1066,6 +1068,7 @@ div#output_field.col-lg-10 > div + div{
 }
 
 .userphoto-ava {
+
   position: relative;
   width: 25px;
   height: 25px;
@@ -1076,6 +1079,7 @@ div#output_field.col-lg-10 > div + div{
   margin-left: 55px;
 }
 .userphoto-ava img {
+  
   opacity: 1;
   filter: alpha(opacity=100);
   position: absolute;
@@ -1090,6 +1094,7 @@ div#output_field.col-lg-10 > div + div{
 }
 
 .usermenu{
+  
   margin-top: 250px;
 }
 
@@ -1098,6 +1103,7 @@ div.lightbox img{
 }
 
 .pic-small {
+
   position: relative;
   width: 25px;
   height: 25px;
@@ -1108,6 +1114,7 @@ div.lightbox img{
   margin-left: 55px;
 }
 .pic-small img {
+  
   opacity: 1;
   filter: alpha(opacity=100);
   position: absolute;

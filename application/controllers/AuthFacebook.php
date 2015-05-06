@@ -34,6 +34,7 @@ $this->load->view('profile', $data);
 
 // Store users facebook login url
 $data['login_url'] = $this->facebook->getLoginUrl();
+
 print_r($data['login_url']);
 }
 }

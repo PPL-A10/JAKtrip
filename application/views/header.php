@@ -779,7 +779,17 @@
                   <div class="iconsocial col-lg-12">
                     <div class="col-lg-3"></div>
                     <a class="col-lg-2" href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
-                    <a class="col-lg-2" href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
+                    <?php
+                    if($login_url != null)
+                    {
+                      $ref_facebook = $login_url;
+                    }
+                    else
+                    {
+                      $ref_facebook = "#";
+                    }
+                    ?>
+                    <a class="col-lg-2" href="<?php echo $ref_facebook;?>"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
                     <a class="col-lg-2" href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
                     <div class="col-lg-3"></div>
                   </div>
@@ -800,7 +810,7 @@
             {
                $foto = base_url('assets/img/25.png');
             }
-           
+
 
             if(isset($_COOKIE["username"]))
             {
