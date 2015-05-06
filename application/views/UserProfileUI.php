@@ -2,9 +2,9 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-3">
 			<div class="tuffyh2a">Syifa Khairunnisa <a href="<?php echo base_url('user/edit');?>"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>
-			<div class="userphoto"><img src="<?php echo base_url('assets/img/150.jpg');?>"></div>
+			<div class="userphoto"><img src="<?php echo base_url('assets/img/oor.jpg');?>"></div>
 			
-			<br><br>
+
 			<div class="usermenu">
 				<ul class="nav nav-pills nav-stacked navprofile">
 					<li id="litrip"><a href="#trips">Trips<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
@@ -31,7 +31,7 @@
 
 			<div id="wishlist" class="usercontent">
 				<?php
-					$res = mysql_query("SELECT is_wishlist FROM collection WHERE 'is_wishlist' = '1' AND 'username' = '".$thisUser."'");
+					$res = mysql_query("SELECT is_wishlist FROM collection WHERE is_wishlist = '1' AND username = '".$thisUser."'");
 		            if(mysql_num_rows($res)==0){
 						echo '<div class="col-lg-2"></div>';
 						echo '<div class="col-lg-8">';
@@ -66,7 +66,7 @@
 
 			<div id="achievement" class="usercontent">
 				<?php
-					$res = mysql_query("SELECT is_visited FROM collection WHERE 'is_visited' = '1' AND 'username' = '".$thisUser."'");
+					$res = mysql_query("SELECT is_visited FROM collection WHERE is_visited = '1' AND username = '".$thisUser."'");
 		            if(mysql_num_rows($res)==0){
 						echo '<div class="col-lg-2"></div>';
 						echo '<div class="col-lg-8">';

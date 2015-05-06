@@ -2,7 +2,20 @@
 	<div class="col-lg-12">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
-			<div class="headerdetail"><img src="<?php echo base_url('assets/img/header.jpg');?>"/></div>
+			<div class="headerdetail">
+				<?php
+					$res = mysql_query("SELECT * FROM tourist_attraction WHERE place_name = '".$thisPlace."' AND pic_thumbnail IS NOT NULL");
+		            if(mysql_num_rows($res)==0){
+		            	echo "<img src='".base_url('assets/img/headerplace.jpg')."' class='headerdetail'>";
+		            }
+		            else{
+		            	foreach($query as $row){
+							echo "<img src='".base_url($row->pic_thumbnail)."' class='headerdetail'>";
+						}
+		            }
+				 
+				?>
+			</div>
 		
 			<div class="col-lg-1"></div>
 			<div class="col-lg-10" style="margin-top: -15px; margin-left: 8px;">
@@ -105,7 +118,7 @@
 							$location = $row3->pic;
 							echo "<div class='pic-thumbnail white'>";
 							if($row3->is_publish == 1)
-							{echo "<a href='".base_url($location)."'><img src='".base_url($location)."'></a>";}
+							{echo "<a href='".base_url($location)."' target='_blank'><img src='".base_url($location)."'></a>";}
 							echo "</div>";
 						}
 						?>

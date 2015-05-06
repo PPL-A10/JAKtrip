@@ -790,7 +790,7 @@
             {
               
           //    echo "<li><a href='http://localhost/JAKtrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
-              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=".base_url('assets/img/25.png')." class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+              echo "<li><a href=\"#\">".$_COOKIE['username']."<div class='userphoto-ava'><img src=".base_url('assets/img/oor.jpg')." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
             }
             
           ?>
