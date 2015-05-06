@@ -16,10 +16,16 @@
   <link href="<?php echo base_url('assets/css/sm-clean2.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/ns-style-growl.css');?>" type="text/css" rel="stylesheet"/>
   <link href="<?php echo base_url('assets/css/ns-default.css');?>" type="text/css" rel="stylesheet"/>
+  <link href="<?php echo base_url('assets/css/lightbox.css');?>" type="text/css" rel="stylesheet"/>
   <script src="<?php echo base_url('assets/js/jquery-1.11.0.min.js')?>"></script>
+  <script src="<?php echo base_url('assets/js/lightbox.js')?>"></script>
   <script src="<?php echo base_url('assets/js/gmaps.js')?>"></script>
   <script src="<?php echo base_url('assets/amcharts/amcharts.js')?>" type="text/javascript"></script>
   <script src="<?php echo base_url('assets/amcharts/serial.js')?>" type="text/javascript"></script>
+  
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://connect.facebook.net/en_US/all.js"></script>
   
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
@@ -786,22 +792,26 @@
               data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
 
            <?php
+            if(isset($_COOKIE["photo_facebook"]))
+            {
+              $foto = $_COOKIE["photo_facebook"];
+            }
+            else
+            {
+               $foto = base_url('assets/img/25.png');
+            }
+           
+
             if(isset($_COOKIE["username"]))
             {
               
-          //    echo "<li><a href='http://localhost/JAKtrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
-              echo "<li><a href=\"#\">".$_COOKIE['username']."<div class='userphoto-ava'><img src=".base_url('assets/img/oor.jpg')." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+           
+              echo "<li><a href=\"#\">".$_COOKIE['username']."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+
             }
             
           ?>
-          <!-- if udah login <li><a href="#">Michelle <img src="../assets/img/25.png" class="ava-rounded" style="position: relative;"/></a>
-            <ul>
-              <li><a  href="#">Edit Profile</a></li>
-              <li><a  href="#">My Trips</a></li>
-              <li><a  href="#">Collection</a></li>
-              <li><a  href="#">Reviews</a></li>
-              <li><a  href="#">Logout</a></li>
-            </ul>-->
+         
           </li> 
         </ul>
       </div>
