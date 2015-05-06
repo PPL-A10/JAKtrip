@@ -78,7 +78,7 @@ class ManagePromoCtr extends CI_Controller {
 		$this->load->model('PromoManager');
 		$this->load->model('TouristAttractionManager');
 		
-		$query = $this->PromoManager->promo_get($id_promo);	
+		$query = $this->PromoManager->promo_get($id_promo);
 		//$query2 = $this->PromoManager->promo_getCat($id_promo);
 		// $query3 = $this->PromoManager->promo_getPic($id_promo); //ga perlu
 		$data['lala'] = $this->TouristAttractionManager->getTouristAttraction()->result();
@@ -88,11 +88,11 @@ class ManagePromoCtr extends CI_Controller {
 		// $data['query'] = $this->HalteManager->getAllHalte();
 		// $data['admin'] = $this->TouristAttractionManager->getAdmin();
 		
+		$data['title']['value'] = $query['title'];
 		$data['start_date']['value'] = $query['start_date'];
 		$data['end_date']['value'] = $query['end_date'];
 		$data['place_name']['value'] = $query['place_name'];
-		$data['photo']['value'] = $query['photo'];
-		$data['title']['value'] = $query['title'];
+		// $data['photo']['value'] = $query['photo'];
 		$data['description']['value'] = $query['description'];
 				
 		$result = $this->PromoManager->getTypes();
