@@ -790,11 +790,21 @@
               data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
 
            <?php
+            if(isset($_COOKIE["photo_facebook"]))
+            {
+              $foto = $_COOKIE["photo_facebook"];
+            }
+            else
+            {
+               $foto = base_url('assets/img/25.png');
+            }
+           
+
             if(isset($_COOKIE["username"]))
             {
               
           //    echo "<li><a href='http://localhost/JAKtrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
-              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=".base_url('assets/img/25.png')." class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+              echo "<li><a href=\"#\">".$_COOKIE['username']."<img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
             }
             
           ?>

@@ -831,6 +831,8 @@
 				setcookie("counterTrip", 0, time()+3600, '/');
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
+				setcookie("photo_facebook",null,time()+3600, '/');
+				session_destroy();
 			}
 			header("Location:".base_url()."home");
 		}

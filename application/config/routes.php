@@ -82,6 +82,7 @@ $route['register'] = 'registerCtr';
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr'; 
 
+
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
 // $route['ReviewCtr/del/(:any)/(:num)'] = 'ReviewCtr/del/$1/$2';
 // $route['PlaceCtr/rating/(:any)'] = 'PlaceCtr/rating/$1';
