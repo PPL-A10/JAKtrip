@@ -10,7 +10,7 @@
 			
 			<ul class="submenufaq nav navbar-nav">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
-				<li id="gs"><a href="#getting-started" class="submenua">Getting Started</a></li>
+				<li id="gs" class="active"><a href="#getting-started" class="submenua">Getting Started</a></li>
 				<li id="aap"><a href="#account-and-profile" class="submenua">Account and Profile</a></li>
 				<li id="pl"><a href="#places" class="submenua">Places</a></li>
 		        <li id="rev"><a href="#reviews" class="submenua">Reviews</a></li>

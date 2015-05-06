@@ -47,9 +47,19 @@ class ManageTourAttrCtr extends CI_Controller {
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			setcookie("username",$first_name, time()+3600, '/');
-			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			if(get_cookie('username')!=null)
+			{
+				$this->load->view('header', $data);
+				$this->load->view('menuadmin');
+				$this->load->view('manageTourAttrUI', $data);
+				$this->load->view('footer');
+			}
+			else
+			{
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('successLoginFB'));
+			}
 		}
 		else
 		{
@@ -111,9 +121,19 @@ class ManageTourAttrCtr extends CI_Controller {
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			setcookie("username",$first_name, time()+3600, '/');
-			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			if(get_cookie('username')!=null)
+			{
+				$this->load->view('header', $data);
+				$this->load->view('menuadmin');
+				$this->load->view('manageTourAttrUI', $data);
+				$this->load->view('footer');
+			}
+			else
+			{
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('successLoginFB'));
+			}
 		}
 		else
 		{
@@ -242,9 +262,19 @@ class ManageTourAttrCtr extends CI_Controller {
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			setcookie("username",$first_name, time()+3600, '/');
-			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			if(get_cookie('username')!=null)
+			{
+				$this->load->view('header', $data);
+				$this->load->view('menuadmin');
+				$this->load->view('formTourAttrUI2',$data);
+				$this->load->view('footer');
+			}
+			else
+			{
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('successLoginFB'));
+			}
 		}
 		else
 		{

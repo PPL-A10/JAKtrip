@@ -808,7 +808,7 @@
             }
             else
             {
-               $foto = base_url('assets/img/25.png');
+               $foto = base_url('assets/img/oor.jpg');
             }
 
 
