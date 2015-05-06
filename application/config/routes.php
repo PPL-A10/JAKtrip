@@ -81,7 +81,9 @@ $route['user/edit'] = 'UsersCtr/edit';
 
 $route['register'] = 'registerCtr'; 
 $route['login'] = 'loginCtr/checkLogin'; 
-$route['login/forgotpassword'] = 'forgotPassCtr'; 
+$route['login/forgotpassword'] = 'forgotPassCtr';
+
+$route['successLoginFB'] = 'homeCtr/successLoginFB';
 
 
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';
