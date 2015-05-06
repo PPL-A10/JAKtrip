@@ -95,7 +95,7 @@
 					<div class="col-lg-1"></div>
 
 					<div class="col-lg-12 suggtxt">
-						<center>Can not find what you are looking for? <a href="#suggestion"><b> Send us a suggestion!</b></a></center>
+						<center>Can not find what you are looking for? <a href="<?php if(isset($_COOKIE['username'])){echo '#suggestion';}else{echo '#openLogin';} ?>"><b> Send us a suggestion!</b></a></center>
 					</div>
 
 					 <div id="suggestion" class="openModal2">
