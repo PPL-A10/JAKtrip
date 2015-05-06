@@ -72,13 +72,21 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="col-lg-1"></div>
-					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px;">
+					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px; margin-left: 30px;">
 					<?php
 					foreach($query as $row){
-						echo "<div class='col-lg-3 containerimg'>";
-						echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-						echo "<img class='img-responsive' src='".base_url('assets/img/image.png')."'></a>";
-						echo "</div>";
+						if($row->pic_thumbnail==NULL){
+							echo "<div class='col-lg-3 containerimg'>";
+							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
+							echo "<img src='".base_url('assets/img/noimg.png')."'></a>";
+							echo "</div>";
+						}
+						else{
+							echo "<div class='col-lg-3 containerimg'>";
+							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
+							echo "<img src='".base_url($row->pic_thumbnail)."'></a>";
+							echo "</div>";
+						}						
 					}
 					?>
 					

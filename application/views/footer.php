@@ -56,7 +56,7 @@
 									if(obj.query[i].is_publish == 0)
 									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><a href='javascript:setphotopublish("+obj.query[i].id_pic+")'>&nbsp;&nbsp;Publish?</a></td>";}
 									else
-									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td><span class='fa fa-trash-o'></span>&nbsp;&nbsp;Published</td>";}
+									{resultQuery = resultQuery +  "<tr><td>"+obj.query[i].place_name+"</td><td>"+obj.query[i].pic+"</td><td>ahmadibrahim</td><td>Published</td>";}
 								}
 								
 							$("#output_field123").html(resultQuery);
@@ -188,7 +188,12 @@
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
+									if(obj.query[i].pic_thumbnail===null){
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('assets/img/noimg.png');?>'/></a></div>";
+									}
+									else{
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('"+obj.query[i].pic_thumbnail+"');?>'/></a></div>";
+									}
 								}
 								
 							$("#output_field").html(resultQuery);
@@ -215,7 +220,12 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
+									if(obj.query[i].pic_thumbnail===null){
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('assets/img/noimg.png');?>'/></a></div>";
+									}
+									else{
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('"+obj.query[i].pic_thumbnail+"');?>'/></a></div>";
+									}
 								}
 								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
 							$("#output_field").html(resultQuery);
@@ -239,8 +249,13 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
-								}
+									if(obj.query[i].pic_thumbnail===null){
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('assets/img/noimg.png');?>'/></a></div>";
+									}
+									else{
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('"+obj.query[i].pic_thumbnail+"');?>'/></a></div>";
+									}
+							}
 								
 							$("#output_field").html(resultQuery);
 //								$("#output_field").html(obj.query[0].place_name;
@@ -294,7 +309,12 @@ function sortFunction(){
 								var obj = jQuery.parseJSON(res);
 								var resultQuery = "";
 								for (var i=0 ; i<obj.query.length; i++){
-									resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img class='img-responsive' src='<?php echo base_url('assets/img/image.png');?>'/></a></div>";
+									if(obj.query[i].pic_thumbnail===null){
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('assets/img/noimg.png');?>'/></a></div>";
+									}
+									else{
+										resultQuery = resultQuery +"<div class='col-lg-3 containerimg'><a href='place/"+obj.query[i].place_name+"'><div class='txtonimg'>"+obj.query[i].place_name+"</div><img src='<?php echo base_url('"+obj.query[i].pic_thumbnail+"');?>'/></a></div>";
+									}
 								}
 								
 							$("#output_field").html(resultQuery);

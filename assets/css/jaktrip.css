@@ -564,10 +564,30 @@ a {
 .newpost a:hover{
   color: #a51811;
 }
-
+/*
 .headerdetail img{
   height: auto;
-  max-width: 100%;
+  max-width: 1095px;
+}
+*/
+.headerdetail {
+  position: relative;
+  width: 1095px !important;
+  height: 400px;
+  overflow: hidden;
+  float: left;
+}
+.headerdetail img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: auto;
+  width: 100%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 .textdetail {
@@ -687,16 +707,36 @@ a {
   font-size: 14px;
 }
 
-.containerimg{
+/*.containerimg{
   height: 200px;
   width: 260px;
   overflow: hidden;
   margin: 10px 0px;
 }
 
-
 .containerimg img{
   width: 100%;
+}*/
+
+.containerimg {
+  position: relative;
+  width: 230px !important;
+  height: 180px;
+  overflow: hidden;
+  float: left;
+}
+.containerimg img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  margin: 0px !important;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }
 
 .places{
@@ -715,7 +755,8 @@ a {
   height: 20%;
   text-transform: uppercase;
   top: 30%;
-  margin-left: 20px;
+  margin-left: 3px;
+  z-index: 10;
 }
 
 .ava-rounded{
@@ -861,10 +902,6 @@ ul.nav.nav-pills.fak > li > a:hover{
   font-size: 14px !important;
 }
 
-.userphoto > img{
-  margin-left: 0px;
-}
-
 .usercontent{
   margin: 70px 25px;
 }
@@ -991,4 +1028,67 @@ button, button:active, button:focus, button:hover{
 
 .suggtxt a:hover{
   color: #db2719 !important;
+  text-decoration: none;
+}
+
+div#output_field.col-lg-10 > div {
+  margin: 0px 10px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+div#output_field.col-lg-10 > div + div{
+   margin: 0px 10px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+.userphoto {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  float: left;
+
+}
+.userphoto img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+  margin: 0px !important;
+}
+
+.userphoto-ava {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  float: left;
+  margin-top: -23px;
+  margin-right: -50px;
+  margin-left: 55px;
+}
+.userphoto-ava img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+  margin: 0px !important;
+}
+
+.usermenu{
+  margin-top: 250px;
 }
