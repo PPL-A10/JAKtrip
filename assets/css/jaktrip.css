@@ -1092,3 +1092,31 @@ div#output_field.col-lg-10 > div + div{
 .usermenu{
   margin-top: 250px;
 }
+
+div.lightbox img{
+  margin: 0px !important;
+}
+
+.pic-small {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  float: left;
+  margin-top: -23px;
+  margin-right: -50px;
+  margin-left: 55px;
+}
+.pic-small img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+  margin: 0px !important;
+}
