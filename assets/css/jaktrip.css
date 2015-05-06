@@ -928,7 +928,7 @@ button, button:active, button:focus, button:hover{
 }
 
 .coll, .collrev{
-  padding-bottom: 7px;
+  padding-bottom: 15px;
   border-bottom: 1px solid #c4c4c4;
 }
 

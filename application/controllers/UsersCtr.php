@@ -10,11 +10,13 @@ class UsersCtr extends CI_Controller {
     
 	function index(){
 		$this->load->model('memberManager');
+		$this->load->model('ratingManager');
 		$this->load->helper('cookie');
 		$user = get_cookie("username");
 		$data['thisUser'] = $user;
 		$data['wishlist'] = $this->memberManager->showWishlist($user);
 		$data['visited'] = $this->memberManager->showVisited($user);
+		$data['review'] = $this->ratingManager->showReview($user);
 		$data['query'] = $this->touristAttractionManager->getTouristAttraction();
 
 

@@ -24,7 +24,7 @@
 							<div class="tuffyh3a">2 Places</div>
 							In <b>24 Apr '15</b> | Start from <b>Dunia Fantasi</b> | Total: <b>Rp 157000</b>
 						</div>
-						<div class="col-lg-2"><span class="fa fa-trash-o iconcol a-none"></span></div>
+						<div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div>
 					</a>
 				</div>
 			</div>
@@ -40,9 +40,15 @@
 			    	}
 			    	else{
 						foreach ($wishlist as $row) {
-							$thisPlace = $row->place_name;
+							$thisPlace = str_replace("%20", " ",$row->place_name);
+							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
 							echo '<div class="row coll"><a href="#">';
-							echo '<div class="col-lg-2 pic-small"><img src='.base_url("assets/img/50.jpg").'></div>';
+							if($pic["pic_thumbnail"]===null){
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url('assets/img/noimg.png').'"></div>';
+							}
+							else{
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
+							}	
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
@@ -75,8 +81,15 @@
 			    	}
 			    	else{
 						foreach ($visited as $row) {
+							$thisPlace = str_replace("%20", " ",$row->place_name);
+							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
 							echo '<div class="row coll"><a href="#">';
-							echo '<div class="col-lg-2 pic-small"><img src='.base_url("assets/img/50.jpg").'></div>';
+							if($pic["pic_thumbnail"]===null){
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url('assets/img/noimg.png').'"></div>';
+							}
+							else{
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
+							}	
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
@@ -98,23 +111,50 @@
 			</div>
 
 			<div id="reviews" class="usercontent">
-				<div class="row collrev">
+				<?php
+					$res = mysql_query("SELECT * FROM rating WHERE username = '".$thisUser."'");
+		            if(mysql_num_rows($res)==0){
+						echo '<div class="col-lg-2"></div>';
+						echo '<div class="col-lg-8">';
+						echo '<img src='.base_url("assets/img/noreview.png").'>';
+						echo '</div><div class="col-lg-2"></div>';
+			    	}
+			    	else{
+			    		foreach ($review as $row) {
+				    		$thisPlace = str_replace("%20", " ",$row->place_name);
+							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
+				    		echo '<div class="row collrev"><a href="'.base_url("place/".$row->place_name.'').'">';
+							if($pic["pic_thumbnail"]===null){
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url('assets/img/noimg.png').'"></div>';
+							}
+							else{
+								echo '<div class="col-lg-2 pic-small"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
+							}	;
+							echo '<div class="col-lg-8">';
+							echo '<div class="tuffyh3a">'.$thisPlace.'</div>';
+							if ($row->rate == 0)
+								{echo "<span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span>";}
+							elseif ($row->rate == 1)
+								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							elseif ($row->rate == 2)
+								{echo"<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							elseif ($row->rate == 3)
+								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span>";}
+							elseif ($row->rate == 4)
+								{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
+							elseif ($row->rate == 5)
+							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
+							else{}	
+							echo '<div>'.$row->review.'</div></div>';
+							echo '<div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div></a></div>';
+			    		}
+			    	}
+					
+
+				?>
+				<!-- <div class="row collrev">
 					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
-						<div class="col-lg-8">
-							<div class="tuffyh3a">Planetarium</div>
-							<span class='fa fa-star' style='color: #F7E51E'></span>
-							<span class='fa fa-star' style='color: #F7E51E'></span>
-							<span class='fa fa-star' style='color: #F7E51E'></span>
-							<span class='fa fa-star' style='color: #F7E51E'></span>
-							<span class='fa fa-star-o'></span>
-						</div>
-						<div class="col-lg-2"></div>
-					</a>
-				</div>
-				<div class="row collrev">
-					<a href="#">
-						<div class="col-lg-2"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
+						<div class="col-lg-2"><img src="<?php// echo base_url('assets/img/50.jpg');?>"></div>
 						<div class="col-lg-8">
 							<div class="tuffyh3a">Museum Wayang</div>
 							<span class='fa fa-star' style='color: #F7E51E'></span>
@@ -125,7 +165,7 @@
 						</div>
 						<div class="col-lg-2"></div>
 					</a>
-				</div>
+				</div> -->
 			</div>
 
 		</div>
