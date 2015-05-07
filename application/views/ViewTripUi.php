@@ -219,7 +219,7 @@
 			?>
 			
 			
-			<button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button>
+			<a href="<?php if(isset($_COOKIE['username'])){echo '#';}else{echo '#openLogin';} ?>"><button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button></a>
 		</div>
 
 		
