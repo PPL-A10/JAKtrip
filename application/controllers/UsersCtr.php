@@ -61,6 +61,7 @@ class UsersCtr extends CI_Controller {
 		$member = $this->memberManager->getMember($username);
 		$data['username'] = $username;
 		$data['email'] = $member['email'];
+		$data['password'] = $member['password'];
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
@@ -132,6 +133,7 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->helper('date');
 		
+		$old_password = $this->input->post('old_password'); 
 		$name = $this->input->post('name');
 	  	$username = $this->input->post('username');
 		$email = $this->input->post('email');
@@ -142,11 +144,14 @@ class UsersCtr extends CI_Controller {
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
 		
+		if($password==''){
+			$password=$old_password;
+		}
+		
 		//name, desc blm ada di kolom database
 		$form_data = array(
 			'username' => $username,
 			'email' => $email,
-			'is_admin' => 0,
 			'last_active' => $currentTime,
 			'password' => md5($password), //di-enkripsi? dulu
 			'is_active' => 1
