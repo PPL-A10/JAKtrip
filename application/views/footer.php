@@ -566,10 +566,17 @@ function calcRoute() {
 
 			$("#addphoform").hide();
 		    $("#addphobtn").click(function(){
-			    $("#addphoform").toggle();
-			    $(this).text(function(i, text){
-			          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
-			      });
+		    	if(getCookie("username")=="")
+				{
+					window.open('#openLogin', '_self');
+				}
+				else
+				{
+					$("#addphoform").toggle();
+				    $(this).text(function(i, text){
+				          return text === "ADD NEW PHOTO(S)" ? "CLOSE FORM" : "ADD NEW PHOTO(S)";
+				      });
+				}
 		    });
 		});
 
