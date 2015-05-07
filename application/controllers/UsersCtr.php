@@ -114,6 +114,17 @@ class UsersCtr extends CI_Controller {
 		header("Location: ".base_url()."user");
 	}
 
+	function remWishlist($id){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$data = array(
+				       	'is_wishlist' => '0'
+					);
+		$this->db->where('id_collect', $id);
+		$this->memberManager->delFromWishlist($data);
+		header("Location: ".base_url()."user");
+	}
+
 	function removeVisited($place_name){
 		$this->load->model('memberManager');
 		$this->load->helper('cookie');
@@ -127,6 +138,17 @@ class UsersCtr extends CI_Controller {
 		header("Location: ".base_url()."user");
 	}
 	
+	function remVisited($id){
+		$this->load->model('memberManager');
+		$this->load->helper('cookie');
+		$data = array(
+				       	'is_visited' => '0'
+					);
+		$this->db->where('id_collect', $id);
+		$this->memberManager->delFromVisited($data);
+		header("Location: ".base_url()."user");
+	}
+
 	function editMember(){
 		$this->load->helper('cookie');
 		$this->load->model('memberManager');

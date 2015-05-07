@@ -8,7 +8,7 @@
 
 			<div class="row places" style="padding-top: 200px;">
 				<div class="col-lg-12 location">
-					<div class="btn btn-warning" onclick="window.location.reload()">ALL PLACES</div>
+					<div class="btn btn-warning" onclick="window.location.reload()">ALL PROMO</div>
 					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Timur')">Jakarta Timur</div>
 					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Barat')">Jakarta Barat</div>
 					<div class="btn btn-warning" onclick="filterpromo('Jakarta%20Pusat')">Jakarta Pusat</div>
@@ -49,29 +49,27 @@
 				<div class="col-lg-12">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px;">
-						<div class='col-lg-3 containerimg-s'>";
-						<a href='place/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
-						<img src='".base_url('assets/img/noimg.png')."'></a>";
-						</div>";
-						
+						<div class="row boxpr">
 						<?php
-						// foreach($query as $row){
-						// 	if($row->photo==NULL){
-						// 		echo "<div class='col-lg-3 containerimg-s'>";
-						// 		echo "<a href='place/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
-						// 		echo "<img src='".base_url('assets/img/noimg.png')."'></a>";
-						// 		echo "</div>";
-						// 	}
-						// 	else{
-						// 		echo "<div class='col-lg-3 containerimg-s'>";
-						// 		echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-						// 		echo "<img src='".base_url($row->photo)."'></a>";
-						// 		echo "</div>";
-						// 	}						
-						// }
+						foreach($query as $row){
+							echo "<div class='col-lg-6 boxpromo'>";
+							if($row->photo==NULL){
+								echo "<a href='".base_url('assets/img/noimg.png')."' data-lightbox='".$row->id_promo."' data-title='".$row->description."'>";
+								echo "<div class='col-lg-5 containerimg-s'><img src='".base_url('assets/img/noimg.png')."'></div>";
+							}
+							else{
+								echo "<a href='".base_url($row->photo)."' data-lightbox='".$row->id_promo."' data-title='".$row->description."'>";
+								echo "<div class='col-lg-5 containerimg-s'><img src='".base_url($row->photo)."'></div>";
+							}
+							echo "<div class='col-lg-7'><div style='height: 10px'></div>";
+							echo "<span class='tuffyh3a'>".$row->title."</span> <br> <b>".$row->place_name."</b><br>".$row->description."";
+							echo "</div></a></div>";
+						}
+							
+								
 						?>
 					
-					</div>
+					</div></div>
 					<div class="col-lg-1"></div>
 				</div>
 			</div>

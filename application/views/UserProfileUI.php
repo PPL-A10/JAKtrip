@@ -57,7 +57,7 @@
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
-							echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
+							echo '</div><div class="col-lg-2"><span id="'.$row->id_collect.'" class="fa fa-heart iconcol w"></span></div>';
 							echo '</a></div>';
 						}
 					}
@@ -98,7 +98,7 @@
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
-							echo '</div><div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>';
+							echo '</div><div class="col-lg-2"><span id="'.$row->id_collect.'" class="fa fa-check-circle iconcol a"></span></div>';
 							echo '</a></div>';
 						}
 					}
@@ -126,7 +126,6 @@
 			    	}
 			    	else{
 			    		foreach ($review as $row) {
-				    		$thisPlace = str_replace("%20", " ",$row->place_name);
 							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
 				    		echo '<div class="row collrev"><a href="'.base_url("place/".$row->place_name.'').'">';
 							if($pic["pic_thumbnail"]===null){
@@ -183,13 +182,14 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("span.iconcol").click(function(){
+		var id = $(this).attr('id');
 		if($(this).hasClass("w")){
 			var c = confirm("Are you sure you want to remove this from your wishlist?");
 			if(c==true){
 				$(this).removeClass("w");
 				$(this).addClass("w-none");
 				setTimeout(function () {
-					location.href='UsersCtr/removeWishlist/<?php echo $thisPlace; ?>';
+					location.href='UsersCtr/remWishlist/'+id;
 				}, 3500); 
 				notifDelWishlist();
 			}
@@ -200,7 +200,7 @@ $(document).ready(function() {
 				$(this).removeClass("a");
 				$(this).addClass("a-none");
 				setTimeout(function () {
-					location.href='UsersCtr/removeVisited/<?php echo $thisPlace; ?>';
+					location.href='UsersCtr/remVisited/'+id;
 				}, 3500); 
 				notifDelAchievement();
 			}
