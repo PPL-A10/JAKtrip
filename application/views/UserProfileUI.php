@@ -1,10 +1,15 @@
 <div class="row" style="margin:120px 0px;">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-3">
-			<div class="tuffyh2a">Syifa Khairunnisa <a href="<?php echo base_url('user/edit');?>"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>
-			<div class="userphoto"><img src="<?php echo base_url('assets/img/oor.jpg');?>"></div>
+			<div class="tuffyh2a">
+				<?php foreach ($member as $row){
+					echo $row->name;
+					echo '<a href="'.base_url("user/edit").'"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>';
+					echo '<div class="userphoto"><img src="'.base_url($row->pic).'"></div>';
+					echo '<div class="col-lg-12 userbio">'.$row->bio.'</div><br>';
+				} 
+				?>
 			
-
 			<div class="usermenu">
 				<ul class="nav nav-pills nav-stacked navprofile">
 					<li id="litrip"><a href="#trips">Trips<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>

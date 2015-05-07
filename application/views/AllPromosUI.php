@@ -1,7 +1,7 @@
 
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-lg-12" style="background-color: #e0e0e0; height: 450px; ">
+			<div class="col-lg-12" style="background-color: #e0e0e0; height: 400px; ">
 				<div class="intro" style="margin-top:-30px;">
 					<div class="tuffyh1aa">All Promo</div>
 				</div>
@@ -49,13 +49,26 @@
 				<div class="col-lg-12">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-10" id="output_field" style="margin-bottom: 30px;">
+						<div class='col-lg-3 containerimg-s'>";
+						<a href='place/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
+						<img src='".base_url('assets/img/noimg.png')."'></a>";
+						</div>";
+						
 						<?php
-						foreach($query as $row){
-							echo "<div class='col-lg-3 containerimg'>";
-							echo "<a href='promo/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
-							echo "<img class='img-responsive' src='".base_url('assets/img/image.png')."'></a>";
-							echo "</div>";
-						}
+						// foreach($query as $row){
+						// 	if($row->photo==NULL){
+						// 		echo "<div class='col-lg-3 containerimg-s'>";
+						// 		echo "<a href='place/".$row->title."'><div class='txtonimg'>".$row->title." <br> ".$row->place_name."</div>";
+						// 		echo "<img src='".base_url('assets/img/noimg.png')."'></a>";
+						// 		echo "</div>";
+						// 	}
+						// 	else{
+						// 		echo "<div class='col-lg-3 containerimg-s'>";
+						// 		echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
+						// 		echo "<img src='".base_url($row->photo)."'></a>";
+						// 		echo "</div>";
+						// 	}						
+						// }
 						?>
 					
 					</div>

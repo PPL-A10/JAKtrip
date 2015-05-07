@@ -18,7 +18,7 @@ class UsersCtr extends CI_Controller {
 		$data['visited'] = $this->memberManager->showVisited($user);
 		$data['review'] = $this->ratingManager->showReview($user);
 		$data['query'] = $this->touristAttractionManager->getTouristAttraction();
-
+		$data['member'] = $this->memberManager->getMember($user);
 
 		$this->user = $this->facebook->getUser();
 		if($this->user)

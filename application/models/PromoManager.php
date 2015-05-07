@@ -62,21 +62,18 @@ class PromoManager extends CI_Model{
     function SaveFormType($form_type){
         $id_promo = $form_type['id_promo'];
         $type_new = $form_type['type_new'];
-        $idP = (int)implode("", $id_promo);
-
+        
         foreach($form_type['type_list'] as $selected){
             if($selected != ''){
-                $this->db->insert('type_promo', array('type_name'=>$selected, 'id_promo'=>$idP));
+                $this->db->insert('type_promo', array('type_name'=>$selected, 'id_promo'=>$id_promo));
             }
             else{
                 if($type_new != ''){
                     $this->db->insert('types', array('type_name'=>$type_new));
-                    $this->db->insert('type_promo', array('type_name'=>$type_new, 'id_promo'=>$idP));
+                    $this->db->insert('type_promo', array('type_name'=>$type_new, 'id_promo'=>$id_promo));
                 }
             }
         }
-
-        $this->db->insert('type_promo', $form_type);
         
         if ($this->db->affected_rows() == '1'){
             return TRUE;

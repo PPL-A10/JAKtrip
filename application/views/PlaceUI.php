@@ -116,10 +116,11 @@
 						foreach($query3 as $row3)
 						{
 							$location = $row3->pic;
-							echo "<div class='pic-thumbnail white'>";
+							
 							if($row3->is_publish == 1)
-							{echo "<a href='".base_url($location)."' data-lightbox='".$row3->place_name."' data-title='".$row3->pic_info."'><img src='".base_url($location)."'></a>";}
-							echo "</div>";
+							{echo "<div class='pic-thumbnail white'><a href='".base_url($location)."' data-lightbox='".$row3->place_name."' data-title='".$row3->pic_info."'><img src='".base_url($location)."'></a></div>";
+							}
+							
 						}
 						?>
 							<!--div class="pic-thumbnail">

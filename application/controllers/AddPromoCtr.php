@@ -126,24 +126,18 @@ class AddPromoCtr extends CI_Controller {
 			'photo' => set_value('photo')
 		);
 
+		$this->PromoManager->SaveForm($form_data);
+
+		$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
 		$form_type = array(
-			'id_promo' => $this->PromoManager->getLastIdPromo(),
+			'id_promo' => $fak["MAX(id_promo)"],
 			'type_list' => $this->input->post('type_list'),
 			'type_new' => $this->input->post('type_new')
 		);
 
-		if($this->PromoManager->SaveForm($form_data) == TRUE){ // the information has therefore been successfully saved in the db
-			if($this->PromoManager->SaveFormType($form_type) == TRUE){
-				redirect('AddPromoCtr/success');   // or whatever logic needs to occur
-			}
-			else{
-				echo 'An error occurred saving your information. Please try again later';
-			}
-		}
-		else{
-			echo 'An error occurred saving your information. Please try again later';
-			// Or whatever error handling is necessary
-		}
+		$this->PromoManager->SaveFormType($form_type);
+
+		redirect('AddPromoCtr/success');
 
 	}
 
