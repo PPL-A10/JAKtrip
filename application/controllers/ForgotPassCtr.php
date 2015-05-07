@@ -38,5 +38,44 @@
 			
 			
 		}
+
+		function sendMail()
+		{
+		    $config = Array(
+			  'protocol' => 'smtp',
+			  'smtp_host' => 'ssl://smtp.googlemail.com',
+			  'smtp_port' => 465,
+			  'smtp_user' => 'jaktrip.net@gmail.com', // change it to yours
+			  'smtp_pass' => 'ppla10fasilkom', // change it to yours
+			  'mailtype' => 'html',
+			  'charset' => 'iso-8859-1',
+			  'wordwrap' => TRUE
+			);
+
+	        $message = 'this is your new password';
+	        $this->load->library('email', $config);
+	      	$this->email->set_newline("\r\n");
+	      	$this->email->from('jaktrip.net@gmail.com'); // change it to yours
+	      	$this->email->to('mohammad.syahid.wildan@gmail.com');// change it to yours
+	      	$this->email->subject('Your New Password');
+	      	$this->email->message($message);
+		    
+		    if($this->email->send())
+		    {
+		      echo 'Email sent.';
+		    }
+		    else
+		    {
+		     show_error($this->email->print_debugger());
+		    }
+
+		}
+
+		function randomPassword() {
+		    $length = 8;
+		    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		    $password = substr( str_shuffle( $chars ), 0, $length );
+		   	print_r($password);
+		}
 	}	
 ?>
