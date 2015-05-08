@@ -53,7 +53,7 @@
 						<label class="control-label">Place <span class="req">*</span></label><br>
 						<?php echo form_error('place_name'); ?> 
    					 	<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;">    
+   					 	<select   class="field form-control" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;" required>    
    					     	<option value="" selected disabled>Choose a place..</option>
    					     	<?php
 			                  foreach($place as $row)

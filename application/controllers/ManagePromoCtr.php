@@ -155,6 +155,7 @@ class ManagePromoCtr extends CI_Controller {
 		// $data['query'] = $this->HalteManager->getAllHalte();
 		// $data['admin'] = $this->TouristAttractionManager->getAdmin();
 		
+		// $data['id_promo'] = $query['id_promo'];
 		$data['title']['value'] = $query['title'];
 		$data['start_date']['value'] = $query['start_date'];
 		$data['end_date']['value'] = $query['end_date'];
@@ -248,8 +249,8 @@ class ManagePromoCtr extends CI_Controller {
 	}
 
 	function myForm(){
-		$this->load->helper('form');
 		$this->load->library('form_validation');
+		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
@@ -283,7 +284,7 @@ class ManagePromoCtr extends CI_Controller {
 				'end_date' => $end_date,
 				'place_name' => $place_name,
 				'description' => $description,
-				'photo' => $this->input->post('photo')						
+				'photo' => $this->input->post('photo')
 			);
 
 			// $form_photo = array(

@@ -42,10 +42,10 @@ class AddPromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('title', 'title', 'required|trim');
 		$this->form_validation->set_rules('start_date', 'start_date', 'required|trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end_date', 'required|trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
+		$this->form_validation->set_rules('place_name', 'place_name', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('type_promo', 'type_promo', '');
 		$this->form_validation->set_rules('photo', 'photo', 'required|trim');
+		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
 
 		// $this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
 
@@ -105,11 +105,14 @@ class AddPromoCtr extends CI_Controller {
 		// // }
 	 // 	// build array for the model
 		// $files = $_FILES['photo'];
-
+		$old_startDate = $this->input->post('start_date');
+		$o_startDate = strtotime($old_startDate);
+		$old_endDate = $this->input->post('end_date');
+		$o_endDate = strtotime($old_endDate);
 		$form_data = array(
 	       	'title' => $this->input->post('title'),
-	       	'start_date' => $this->input->post('start_date'),
-	       	'end_date' => $this->input->post('end_date'),
+	       	'start_date' => date('m-d-Y', $o_startDate),
+	       	'end_date' => date('m-d-Y', $o_endDate),
 			'place_name' => $this->input->post('place_name'),
 			'photo' => $photo,
 			'description' => $this->input->post('description'),
@@ -145,6 +148,6 @@ class AddPromoCtr extends CI_Controller {
 
 	function success()
 	{
-		redirect('admin/promo');	
+		redirect('admin/promo');
 	}
 }
