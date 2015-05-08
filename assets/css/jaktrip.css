@@ -748,7 +748,7 @@ li.active > a{
 
 .containerimg-s {
   position: relative;
-  width: 180px !important;
+  width: 150px !important;
   height: 130px;
   overflow: hidden;
   float: left;
