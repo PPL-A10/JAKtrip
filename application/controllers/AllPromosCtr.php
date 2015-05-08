@@ -40,9 +40,6 @@ class AllPromosCtr extends CI_Controller {
 				$this->load->view('allPromosUI',$data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('allPromosUI',$data);
-			// $this->load->view('footer');
 	}
 	
 	public function searchpromoloc($city=NULL)

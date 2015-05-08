@@ -51,7 +51,7 @@
 				      <!-- th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th -->
 				      <th>Place Name</th>
 				      <th>Link</th>
-				      <th>Name</th>
+				      <th>Username</th>
 				      <th>Status</th>
 				    </tr>
 				  </thead>
@@ -60,11 +60,11 @@
 				  foreach($query2 as $row)
 				  {
 					echo "<tr>";
-					echo "<td>".$row->place_name ."</td>";
-					echo "<td>".$row->pic ."</td>";
-					echo "<td>ahmadibrahim</td>";
+					echo "<td>".$row->place_name."</td>";
+					echo "<td>".$row->pic."</td>";
+					echo "<td>".$row->username."</td>";
 					if($row->is_publish == 0)
-				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic .")'>&nbsp;&nbsp;Publish?</a></td>";}
+				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic.")'>&nbsp;&nbsp;Publish?</a></td>";}
 					else
 					{echo "<td>Published</td>";}
 				  }

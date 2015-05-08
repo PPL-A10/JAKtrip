@@ -25,7 +25,7 @@
 							        <option value='All' >All Types</option>
 									<?php
 										foreach($query1 as $row){
-											echo "<option value='".$row->type."'>".$row->type."</option>";
+											echo "<option value='".$row->type_name."'>".$row->type_name."</option>";
 										}
 									?>
 							    </select>
