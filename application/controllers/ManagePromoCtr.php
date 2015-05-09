@@ -333,7 +333,6 @@ class ManagePromoCtr extends CI_Controller {
 		{
 
 			$form_type = array(
-				// 'id_promo' => $fak["MAX(id_promo)"],
 				'id_promo' => $id_promo,
 				'type_list' => $this->input->post('type_list'),
 				'type_new' => $this->input->post('type_new')
@@ -355,7 +354,7 @@ class ManagePromoCtr extends CI_Controller {
 
 	function success()
 	{
-		redirect('ManagePromoCtr');	
+		redirect('ManagePromoCtr');
 	}
 	
 }
