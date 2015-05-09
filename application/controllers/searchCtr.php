@@ -38,7 +38,8 @@
 				}
 				else
 				{
-					setcookie("username",$first_name, time()+3600, '/');
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 					header('Location: '.base_url('successLoginFB'));
 				}
@@ -222,7 +223,8 @@
 				}
 				else
 				{
-					setcookie("username",$first_name, time()+3600, '/');
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 					header('Location: '.base_url('successLoginFB'));
 				}
@@ -331,7 +333,8 @@
 				}
 				else
 				{
-					setcookie("username",$first_name, time()+3600, '/');
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 					header('Location: '.base_url('successLoginFB'));
 				}
@@ -897,7 +900,8 @@
 				}
 				else
 				{
-					setcookie("username",$first_name, time()+3600, '/');
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 					header('Location: '.base_url('successLoginFB'));
 				}
