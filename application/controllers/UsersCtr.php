@@ -157,47 +157,70 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->helper('date');
 		
-		$old_password = $this->input->post('old_password'); 
-		$name = $this->input->post('name');
-	  	$username = $this->input->post('username');
-		$email = $this->input->post('email');
-		$password = $this->input->post('new_password');
-		$pass_confirm = $this->input->post('pass_confirm');
-		$description = $this->input->post('description');
-		$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
-		//validation: password=pass_confirm, special char, username alr exist
-		//if valid
-		 
-		if($password==''){
-			$password=$old_password;
+		if($this->input->post('form_profile')=='edit'){	
+			$username = $this->input->post('username');
+			$old_password = $this->input->post('old_password'); 
+			$name = $this->input->post('name');
+			$email = $this->input->post('email');
+			$password = $this->input->post('new_password');
+			$pass_confirm = $this->input->post('pass_confirm');
+			$description = $this->input->post('description');
+			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
+			//validation: password=pass_confirm, special char, username alr exist
+			//if valid
+			 
+			if($password==''){
+				$password=$old_password;
+			}
+			else{
+				$password=md5($password);
+			}
+			
+			//name, desc blm ada di kolom database
+			$form_data = array(
+				'name' => $name,
+				'username' => $username,
+				'email' => $email,
+				'last_active' => $currentTime,
+				'password' => $password,
+				'is_active' => 1,
+				'bio' => $description
+			);
+			
+			if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
+				redirect('UsersCtr/success/');   // or whatever logic needs to occur
+			}
+			else{
+				echo 'An error occurred saving your information. Please try again later';
+				// Or whatever error handling is necessary
+			}
 		}
 		else{
-			$password=md5($password);
+			redirect('UsersCtr/deleteMember/');
 		}
 		
-		//name, desc blm ada di kolom database
-		$form_data = array(
-			'name' => $name,
-			'username' => $username,
-			'email' => $email,
-			'last_active' => $currentTime,
-			'password' => $password,
-			'is_active' => 1,
-			'bio' => $description
-		);
-		
-		if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-			redirect('UsersCtr/success/');   // or whatever logic needs to occur
-		}
-		else{
-			echo 'An error occurred saving your information. Please try again later';
-			// Or whatever error handling is necessary
-		}
 	}
 	
 	function success()
 	{
 		redirect('user/');	//nanti redirect ke hlm profil dia
+	}
+	
+	public function deleteMember()
+	{
+		//kalau bukan akun facebook
+		$this->load->helper('cookie');
+		$this->load->model('memberMod');
+		$name=get_cookie("username");
+		if((string)$name != ""){
+			$this->memberMod->delete($name);
+		}
+		redirect('searchCtr/logout');
+		// $this->load->view('header');
+		// $this->load->view('menuadmin');
+		// $this->load->view('ManageMemberUI',$data);  
+		// $this->load->view('footer');  
+		//echo json_encode($data);
 	}
 	
 }
