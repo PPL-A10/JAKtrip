@@ -46,15 +46,20 @@
 			//	echo "haha";
 			// $this->load->helper('form');
 			$this->load->model('HalteManager');
+			$this->load->model('memberManager');
 			$data['query'] = $this->HalteManager->sorthalte();
 			$data['kodekoridor'] = $this->HalteManager->haltecode();
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+			$this->user = $this->facebook->getUser();
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$data['link_facebook'] = "https://www.facebook.com/".$data['user_profile']['id'];
 
-			$this->load->view('header',$data);
-			$this->load->view('homeUI',$data);
-			$this->load->view('footer');
+
+			// $this->load->view('header',$data);
+			// $this->load->view('homeUI',$data);
+			// $this->load->view('footer');
 		}
 
 	}	

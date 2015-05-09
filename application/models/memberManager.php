@@ -141,5 +141,30 @@
 			$this->db->where('email', $data['email']);
 			$this->db->update('member', $dataUpdate); 
 		}
+
+		function accountFacebookRegister($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "email = '".$data['link_facebook']."'";
+			$query = $this->db->select("*")->from('member')->where($condition)->get();
+
+			if($query->num_rows() == 0)
+			{
+				return $query->row_array();
+			}
+			
+
+			
+			$dataInsert = array(
+			   'title' => 'My title' ,
+			   'name' => 'My Name' ,
+			   'date' => 'My date'
+			);
+
+			$this->db->where('email', $data['email']);
+			$this->db->update('member', $dataUpdate); 
+		}
+
 	}
 ?>
