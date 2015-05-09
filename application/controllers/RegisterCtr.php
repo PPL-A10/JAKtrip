@@ -45,7 +45,6 @@ class RegisterCtr extends CI_Controller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$pass_confirm = $this->input->post('pass_confirm');
-		$description = $this->input->post('description');
 		$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
@@ -59,8 +58,7 @@ class RegisterCtr extends CI_Controller {
 			'join_date' => $currentTime,
 			'last_active' => $currentTime,
 			'password' => md5($password), //di-enkripsi? dulu
-			'is_active' => 1,
-			'bio' => $description,
+			'is_active' => 1
 		);
 		
 		if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db

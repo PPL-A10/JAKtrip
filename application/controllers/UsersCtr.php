@@ -161,15 +161,18 @@ class UsersCtr extends CI_Controller {
 		$name = $this->input->post('name');
 	  	$username = $this->input->post('username');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+		$password = $this->input->post('new_password');
 		$pass_confirm = $this->input->post('pass_confirm');
 		$description = $this->input->post('description');
 		$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
-		
-		if($password==""){
+		 
+		if($password==''){
 			$password=$old_password;
+		}
+		else{
+			$password=md5($password);
 		}
 		
 		//name, desc blm ada di kolom database
@@ -178,13 +181,13 @@ class UsersCtr extends CI_Controller {
 			'username' => $username,
 			'email' => $email,
 			'last_active' => $currentTime,
-			'password' => md5($password), //di-enkripsi? dulu
+			'password' => $password,
 			'is_active' => 1,
 			'bio' => $description
 		);
 		
 		if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-			redirect('UsersCtr/success');   // or whatever logic needs to occur
+			redirect('UsersCtr/success/');   // or whatever logic needs to occur
 		}
 		else{
 			echo 'An error occurred saving your information. Please try again later';
@@ -194,7 +197,7 @@ class UsersCtr extends CI_Controller {
 	
 	function success()
 	{
-		redirect('user');	//nanti redirect ke hlm profil dia
+		redirect('user/');	//nanti redirect ke hlm profil dia
 	}
 	
 }

@@ -46,14 +46,6 @@
 				      <br></div>
 				    </div>
 					<br>
-
-				    <div class="form-group">
-					  <div class="col-lg-11">
-						<label class="control-label">Description</label>
-  						<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value=""></textarea>
-				      <br></div>
-				    </div>
-				    <br>
 				  
 				    <br><br>
 
