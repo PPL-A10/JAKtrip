@@ -772,7 +772,7 @@
                   <input class="form-control form-group" type="password" placeholder="Password" name="password" required>
                   <div class="col-lg-12">
                     <span class="col-lg-6 pull-left" style="margin-left: -25px;"><input type="checkbox" name="remember">&nbsp; Remember me</span>
-                    <span class="col-lg-6" style="text-align: right;"><a href="#" style="margin-right: -60px; margin-top: -9px; text-align: right;">Forgot password?</a></span><br><br>
+                    <span class="col-lg-6" style="text-align: right;"><a href="<?php echo base_url('login/forgotpassword');?>" style="margin-right: -60px; margin-top: -9px; text-align: right;">Forgot password?</a></span><br><br>
                   </div>
                   <button class="login btn btn-warning" type="submit">LOG IN</button><br><br>
                   <center>Or login with your account below
