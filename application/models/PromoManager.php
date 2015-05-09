@@ -62,21 +62,18 @@ class PromoManager extends CI_Model{
     function SaveFormType($form_type){
         $id_promo = $form_type['id_promo'];
         $type_new = $form_type['type_new'];
-        $idP = (int)implode("", $id_promo);
-
+        
         foreach($form_type['type_list'] as $selected){
             if($selected != ''){
-                $this->db->insert('type_promo', array('type_name'=>$selected, 'id_promo'=>$idP));
+                $this->db->insert('type_promo', array('type_name'=>$selected, 'id_promo'=>$id_promo));
             }
             else{
                 if($type_new != ''){
                     $this->db->insert('types', array('type_name'=>$type_new));
-                    $this->db->insert('type_promo', array('type_name'=>$type_new, 'id_promo'=>$idP));
+                    $this->db->insert('type_promo', array('type_name'=>$type_new, 'id_promo'=>$id_promo));
                 }
             }
         }
-
-        $this->db->insert('type_promo', $form_type);
         
         if ($this->db->affected_rows() == '1'){
             return TRUE;
@@ -88,9 +85,9 @@ class PromoManager extends CI_Model{
 	{
 			
 		$this->load->database();
-		$this->db->select('*');
-		$this->db->from('promo');
-		$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+		$this->db->select('id_promo, start_date, end_date, p.place_name, photo, title, p.description, tourist_attraction.city');
+		$this->db->from('promo as p');
+		$this->db->join('tourist_attraction', 'p.place_name = tourist_attraction.place_name', 'left');
 		$city= str_replace("%20", " ",$city);
 		if((string)$city != ""){
 			$this->db->where(array('tourist_attraction.city' => $city));
@@ -101,16 +98,16 @@ class PromoManager extends CI_Model{
 		
 	function filterPromoFinal($city, $title){
 		$this->load->database();
-		$this->db->select('*');
-		$this->db->from('promo');
-		$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name', 'left');
+		$this->db->select('id_promo, start_date, end_date, p.place_name, photo, title, p.description, tourist_attraction.city');
+		$this->db->from('promo as p');
+		$this->db->join('tourist_attraction', 'p.place_name = tourist_attraction.place_name', 'left');
 		$city= str_replace("%20", " ",$city);
 		$title= str_replace("%20", " ",$title);
 		if((string)$city != ""and $city !="All"){
 			$this->db->where(array('tourist_attraction.city' => $city));
 		} 
 		if((string)$title != ""){
-			$this->db->like(array('promo.title' => $title));
+			$this->db->like(array('p.title' => $title));
 		} 			
 		$query = $this->db->get(); 
         return $query->result_array(); 

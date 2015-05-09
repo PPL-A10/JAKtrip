@@ -50,6 +50,8 @@ class PlaceCtr extends CI_Controller {
 		$data['query3']= $this->DetailMod->showphoto($name);
 		$data["thisUser"] = get_cookie("username");
 		
+
+		//------------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -57,40 +59,31 @@ class PlaceCtr extends CI_Controller {
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-
-			setcookie("username",$first_name, time()+3600, '/');
-			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-			$data["thisUser"] = get_cookie("username");
-			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
+			if(get_cookie('username')!=null)
+			{
+				$this->load->view('header', $data);
+				$this->load->view('PlaceUI',$data);
+				$this->load->view('footer',$data);
+			}
+			else
+			{
+				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('successLoginFB'));
+			}
 		}
 		else
 		{
-			$data['login_url'] = $this->facebook->getLoginUrl();
-			
-			$this->user = $this->facebook->getUser();
-			if($this->user)
-			{
-
-				$data['user_profile'] = $this->facebook->api('/me/');
-				$first_name = $data['user_profile']['first_name'];
-				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-				setcookie("username",$first_name, time()+3600, '/');
-				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-				$data["thisUser"] = get_cookie("username");
-				header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
-			}
-		else
-		{
-			
 			$data['login_url'] = $this->facebook->getLoginUrl();
 			$this->load->view('header', $data);
 			$this->load->view('PlaceUI',$data);
 			$this->load->view('footer',$data);
-			// $this->load->view('header', $data);
-			// $this->load->view('PlaceUI',$data);
-			// $this->load->view('footer',$data);
 		}
-}
+
+
+		//--------------
+		
+
 
 		
 		//echo json_encode($data);
@@ -140,8 +133,10 @@ function do_upload($place_name)
 	{
 		$place_name= str_replace("%20", " ",$place_name);
 		$this->load->model('PhotoManager');
+		$this->load->helper('cookie');
+		$user = get_cookie("username");
 		//$image_path1 = './assets/upload/'.$place_name;
-		$config['upload_path'] = './assets/upload/'.$place_name.'/';
+		$config['upload_path'] = './assets/img/place/'.$place_name.'/';
 		//$config['upload_path'] = './assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
@@ -152,9 +147,9 @@ function do_upload($place_name)
 		//$upload_data = $this->upload->data();
 		
 		 $dir_exist = true; // flag for checking the directory exist or not
-		if (!is_dir('./assets/upload/'.$place_name.'/'))
+		if (!is_dir('./assets/img/place/'.$place_name.'/'))
 		{
-			mkdir('./assets/upload/'.$place_name.'/', 0777, true);
+			mkdir('./assets/img/place/'.$place_name.'/', 0777, true);
 			$dir_exist = false; // dir not exist
 		}
 		else{
@@ -176,9 +171,10 @@ function do_upload($place_name)
 			//$this->load->view('upload_form');
 			$form_data = array(
 					       	'place_name' => $place_name,
-					       	'pic' => './assets/upload/'.$place_name.'/'.$file_name,
-					       	'pic_info' => './assets/upload/'.$place_name.'/',
+					       	'pic' => './assets/img/place/'.$place_name.'/'.$file_name,
+					       	'pic_info' => 'Uploaded by '.$user,
 							'is_publish' => 0,
+							'username' => $user
 							//'author' => get_cookie("username"),
 							//'nearest_bus_stop' => $this->input->post('select_busstop'),
 							//'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())

@@ -746,6 +746,27 @@ li.active > a{
           transform: translate(-50%,-50%);
 }
 
+.containerimg-s {
+  position: relative;
+  width: 150px !important;
+  height: 130px;
+  overflow: hidden;
+  float: left;
+}
+.containerimg-s img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  margin: 0px !important;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
 .places{
   height: auto;
   padding-bottom: 300px;
@@ -985,11 +1006,11 @@ button, button:active, button:focus, button:hover{
 
 .boxinfo > a{
   color: #3E3F3A !important;
-  text-decoration: underline !important;
 }
 
 .boxinfo > a:hover{
   color: #db2719 !important;
+  text-decoration: none !important;
 }
 
 .gallery{
@@ -1132,4 +1153,30 @@ div.lightbox img{
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
   margin: 0px !important;
+}
+
+.userbio{
+  margin-top: 10px;
+  margin-left: -15px;
+  margin-right: 5px;
+}
+
+.boxpr > div{
+  margin: 15px 0px;
+}
+
+.boxpr > div + div{
+  margin: 15px 0px;
+}
+
+div.col-lg-7 > span.tuffyh3a{
+  margin-top: 30px;
+}
+
+.boxpromo > a{
+  color: #999;
+}
+
+.boxpromo > a:hover{
+  color: #1c1c1c;
 }

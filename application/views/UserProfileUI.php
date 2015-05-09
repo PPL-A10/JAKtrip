@@ -1,10 +1,15 @@
 <div class="row" style="margin:120px 0px;">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-3">
-			<div class="tuffyh2a">Syifa Khairunnisa <a href="<?php echo base_url('user/edit');?>"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>
-			<div class="userphoto"><img src="<?php echo base_url('assets/img/oor.jpg');?>"></div>
+			<div class="tuffyh2a">
+				<?php foreach ($member as $row){
+					echo $row->name;
+					echo '<a href="'.base_url("user/edit").'"><span class="fa fa-pencil-square-o pull-right someicon" title="Edit profile"></span></a></div>';
+					echo '<div class="userphoto"><img src="'.base_url($row->pic).'"></div>';
+					echo '<div class="col-lg-12 userbio">'.$row->bio.'</div><br>';
+				} 
+				?>
 			
-
 			<div class="usermenu">
 				<ul class="nav nav-pills nav-stacked navprofile">
 					<li id="litrip"><a href="#trips">Trips<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
@@ -52,7 +57,7 @@
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
-							echo '</div><div class="col-lg-2"><span class="fa fa-heart iconcol w"></span></div>';
+							echo '</div><div class="col-lg-2"><span id="'.$row->id_collect.'" class="fa fa-heart iconcol w"></span></div>';
 							echo '</a></div>';
 						}
 					}
@@ -93,7 +98,7 @@
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							echo $row->city;
-							echo '</div><div class="col-lg-2"><span class="fa fa-check-circle iconcol a"></span></div>';
+							echo '</div><div class="col-lg-2"><span id="'.$row->id_collect.'" class="fa fa-check-circle iconcol a"></span></div>';
 							echo '</a></div>';
 						}
 					}
@@ -121,7 +126,6 @@
 			    	}
 			    	else{
 			    		foreach ($review as $row) {
-				    		$thisPlace = str_replace("%20", " ",$row->place_name);
 							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
 				    		echo '<div class="row collrev"><a href="'.base_url("place/".$row->place_name.'').'">';
 							if($pic["pic_thumbnail"]===null){
@@ -178,13 +182,14 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("span.iconcol").click(function(){
+		var id = $(this).attr('id');
 		if($(this).hasClass("w")){
 			var c = confirm("Are you sure you want to remove this from your wishlist?");
 			if(c==true){
 				$(this).removeClass("w");
 				$(this).addClass("w-none");
 				setTimeout(function () {
-					location.href='UsersCtr/removeWishlist/<?php echo $thisPlace; ?>';
+					location.href='UsersCtr/remWishlist/'+id;
 				}, 3500); 
 				notifDelWishlist();
 			}
@@ -195,7 +200,7 @@ $(document).ready(function() {
 				$(this).removeClass("a");
 				$(this).addClass("a-none");
 				setTimeout(function () {
-					location.href='UsersCtr/removeVisited/<?php echo $thisPlace; ?>';
+					location.href='UsersCtr/remVisited/'+id;
 				}, 3500); 
 				notifDelAchievement();
 			}

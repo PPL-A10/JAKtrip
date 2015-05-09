@@ -6,7 +6,6 @@ $(document).ready(function () {
         $('.datepicker').datepicker({
             format: "mm/dd/yyyy",
             startDate: "today",
-            todayBtn: true,
             todayHighlight: true
         });  
 
@@ -991,10 +990,18 @@ $(document).ready(function() {
 
 		    $("#addrevform").hide();
 		    $("#addrevbtn").click(function(){
-			    $("#addrevform").toggle();
-			    $(this).text(function(i, text){
-			          return text === "ADD NEW REVIEW" ? "CLOSE FORM" : "ADD NEW REVIEW";
-			      })
+          if(getCookie("username")=="")
+          {
+            window.open('#openLogin', '_self');
+          }
+          else
+          {
+            $("#addrevform").toggle();
+            $(this).text(function(i, text){
+                  return text === "ADD NEW REVIEW" ? "CLOSE FORM" : "ADD NEW REVIEW";
+              });
+          }
+			   
 		    });
 });
 		   

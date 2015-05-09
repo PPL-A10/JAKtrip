@@ -27,6 +27,15 @@
 			return $query->row_array();
 		}
 
+		function getMember($user){
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('member');
+            $this->db->where('username', $user);
+            $query = $this->db->get();
+            return $query->result();
+		}
+
 		function addToWishlist($data){
 			$this->load->database();
 			$this->db->insert('collection', $data);
@@ -89,11 +98,11 @@
             return $query->result();
 		}
 		
-		function getMember($username){
-			$this->load->database();
-			$query = $this->db->get_where('member', array('username'=>$username));
-			return $query->row_array();
-		}
+		// function getMember($username){
+		// 	$this->load->database();
+		// 	$query = $this->db->get_where('member', array('username'=>$username));
+		// 	return $query->row_array();
+		// }
 		
 		function editMember($username, $form_data){
 			$this->load->database();

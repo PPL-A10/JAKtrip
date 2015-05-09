@@ -2,7 +2,7 @@
 	<div class="col-lg-12">
 		<div class="col-lg-1"></div>
 		<div class="col-lg-10">
-			<div class="headerdetail"><img src="<?php echo base_url('assets/img/header.jpg');?>"/></div>
+			<div class="headerdetail"><img src="<?php echo base_url('assets/img/headerplace.jpg');?>"/></div>
 		
 			<div class="col-lg-1"></div>
 			<div class="col-lg-10" style="margin-top: -15px; margin-left: 8px;">
