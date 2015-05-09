@@ -261,9 +261,7 @@ class ManagePromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('end_date', 'end_date', 'required|trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('place_name', 'place_name', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('photo', 'photo', 'trim');
-		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
-		
+		$this->form_validation->set_rules('photo', 'photo', 'trim');		
 		$id_promo = $this->input->post('key');
 		
 		$config['upload_path'] = './assets/img/promo/';
@@ -347,7 +345,7 @@ class ManagePromoCtr extends CI_Controller {
 				'type_old' => $old_type
 			);
 
-			if($this->PromoManager->edit(id_promo, $form_data, $form_type)){
+			if($this->PromoManager->edit($id_promo, $form_data, $form_type)){
 				redirect('ManagePromoCtr/success');
 			}else{
 				echo 'An error occurred saving your information. Please try again later';

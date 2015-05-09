@@ -1,4 +1,5 @@
-<div class="tuffyh2a admintitle">Edit Promo</div>
+<div class="col-lg-12">
+	<div class="tuffyh2a admintitle">Edit Promo</div>
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open('ManagePromoCtr/myForm', $attributes); 
@@ -104,4 +105,4 @@
 			
 		</div>
 	</div>
-
+</div>
