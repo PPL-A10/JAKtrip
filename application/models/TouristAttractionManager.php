@@ -16,14 +16,16 @@ class TouristAttractionManager extends CI_Model{
 		$category_new=$form_cat['category_new'];
 		
 		$this->db->insert('tourist_attraction', $form_data);
-		foreach($form_photo['pic'] as $row){
-			$photo = array(
-				'place_name' => $form_photo['place_name'],
-				'pic' => $row,
-				'pic_info' => $form_photo['pic_info']
-			);
-			$this->db->insert('photo', $photo);
-		}
+		$this->db->insert('photo', $form_photo);
+
+		// foreach($form_photo['pic'] as $row){
+		// 	$photo = array(
+		// 		'place_name' => $form_photo['place_name'],
+		// 		'pic' => $row,
+		// 		'pic_info' => $form_photo['pic_info']
+		// 	);
+		// 	$this->db->insert('photo', $photo);
+		// }
 		
 		foreach($form_cat['category_list'] as $selected){
 			if($selected != ''){
