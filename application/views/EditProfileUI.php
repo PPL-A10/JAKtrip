@@ -11,7 +11,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
-  						<input class="form-control" type="text" value="" id="name" name="name" required>
+  						<input class="form-control" type="text" value="<?php echo $name; ?>" id="name" name="name" required>
 				      <br></div>
 				    </div>
 					<br>
@@ -35,7 +35,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Password</label>
-  						<input class="form-control" type="password" value="" id="password" name="password">
+  						<input class="form-control" type="password" value="" id="new_password" name="new_password">
 				      <br></div>
 				    </div>
 					<br>
@@ -50,12 +50,20 @@
 
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Description</label>
-  						<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value=""></textarea>
-				      <br></div>
+						<label class="control-label">Bio</label>
+						<?php echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description) );?>
+					  <br></div>
 				    </div>
 				    <br>
-				  
+					
+					<div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Photo</label>
+  						<input type="file" name="userfile" size="20">
+				      <br></div>
+				    </div>
+					<br>
+					
 				    <br><br>
 				    <button class="btn btn-warning" type="submit">SUBMIT</button>
 				    <button class="btn btn-primary" type="submit">DELETE THIS ACCOUNT</button>

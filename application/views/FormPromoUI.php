@@ -91,7 +91,7 @@
 				    <div class="form-group">
 					  <div class="col-lg-11"> <br>
 						<label class="control-label">Photos <span class="req">*</span></label>
-  						<input type="file" name="userfile" size="20">
+  						<input type="file" name="userfile" size="20" required>
 				      <br></div>
 				    </div>
 				    <br>

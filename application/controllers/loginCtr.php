@@ -8,6 +8,7 @@
 			$this->load->helper('security');
 			$this->load->helper('text');
 			$this->load->helper('cookie');
+
 			$str = do_hash(($this->input->post('password')),'md5');
 			$data = array(
 				'nameORemail' => $this->input->post('username'),

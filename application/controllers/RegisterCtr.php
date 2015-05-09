@@ -45,13 +45,13 @@ class RegisterCtr extends CI_Controller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$pass_confirm = $this->input->post('pass_confirm');
-		$description = $this->input->post('description');
 		$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
 		
 		//name, desc blm ada di kolom database
 		$form_data = array(
+			'name' => $name,
 			'username' => $username,
 			'email' => $email,
 			'is_admin' => 0,

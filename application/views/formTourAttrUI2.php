@@ -95,9 +95,10 @@ function addLocation(lng,lat){
 					$transport_price = $transport_price['value'];
 					$author = $author['value'];
 					
-					echo form_hidden('key', $place_name); 
+				echo form_hidden('key', $place_name); 
 				echo form_hidden('rate_avg', $rate_avg); 
 				echo form_hidden('hits', $hits);
+				echo form_hidden('author', $author);
 				?>
 					
 					<div class="form-group">
