@@ -20,7 +20,7 @@
 
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-				echo form_open_multipart('AddPromoCtr/myForm', $attributes); ?>
+				echo form_open('AddPromoCtr/myForm', $attributes); ?>
 
 				<!--<form class="newpost col-lg-8" method="post">-->
 					<div class="form-group">
