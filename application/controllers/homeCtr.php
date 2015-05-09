@@ -57,7 +57,7 @@
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$name = $data['user_profile']['first_name']." ".$data['user_profile']['last_name'];
-			$username = "fb".$data['user_profile']['first_name'];
+			$username = $data['user_profile']['first_name'];
 			$email = "https://www.facebook.com/".$data['user_profile']['id'];
 			$password = "facebook".$data['user_profile']['last_name'];
 			$pic = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
