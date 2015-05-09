@@ -728,7 +728,7 @@ function calcRoute() {
 		$("#end_date").change(function(){
 			var startDate = document.getElementById("start_date").value;
 			var endDate = document.getElementById("end_date").value;
-			if ((Date.parse(startDate) >= Date.parse(endDate))) {
+			if ((Date.parse(startDate) > Date.parse(endDate))) {
 				alert("End date should be greater than Start date: "+ startDate);
 				document.getElementById("end_date").value = "";
 			}

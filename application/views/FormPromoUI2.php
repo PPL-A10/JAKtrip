@@ -40,7 +40,7 @@
 						<label class="control-label">Place Name</label><br>
 						<?php echo form_error('place_name'); ?>
    					 	<span class="field custom-dropdown ">						
-   					 	<select class="field form-control" title="Inside Of" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;">
+   					 	<select class="field form-control" title="Inside Of" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;" required>
 							<option value="" selected disabled>Choose place</option>
    					     	<?php
 			                 foreach($lala as $row)

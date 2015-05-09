@@ -335,7 +335,6 @@ class ManagePromoCtr extends CI_Controller {
 		{
 
 			$form_type = array(
-				// 'id_promo' => $fak["MAX(id_promo)"],
 				'id_promo' => $id_promo,
 				'type_list' => $this->input->post('type_list'),
 				'type_new' => $this->input->post('type_new')
@@ -347,7 +346,7 @@ class ManagePromoCtr extends CI_Controller {
 				'type_old' => $old_type
 			);
 
-			if($this->PromoManager->edit(id_promo, $form_data, $form_type)){
+			if($this->PromoManager->edit($id_promo, $form_data, $form_type)){
 				redirect('ManagePromoCtr/success');
 			}else{
 				echo 'An error occurred saving your information. Please try again later';
@@ -357,7 +356,7 @@ class ManagePromoCtr extends CI_Controller {
 
 	function success()
 	{
-		redirect('ManagePromoCtr');	
+		redirect('ManagePromoCtr');
 	}
 	
 }
