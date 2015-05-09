@@ -140,45 +140,30 @@ class ManagePromoCtr extends CI_Controller {
 	function edit($id_promo){
 		$this->load->library('table');
 		$this->load->helper('html');
-		$this->load->helper('form');
 		$this->load->helper('cookie');
+		$this->load->helper('form');
 		$this->load->model('PromoManager');
 		$this->load->model('TouristAttractionManager');
 		
-		$query = $this->PromoManager->promo_get($id_promo);
-		//$query2 = $this->PromoManager->promo_getCat($id_promo);
-		// $query3 = $this->PromoManager->promo_getPic($id_promo); //ga perlu
+		$query = $this->PromoManager->promo_get($id_promo);	
 		$data['lala'] = $this->TouristAttractionManager->getTouristAttraction()->result();
-		// // $this->load->model('searchMod');
-		// $data['query2']= $this->searchMod->showalllocation();
-		// $this->load->model('HalteManager');
-		// $data['query'] = $this->HalteManager->getAllHalte();
-		// $data['admin'] = $this->TouristAttractionManager->getAdmin();
-		
-		$data['id_promo'] = $query['id_promo'];
-		$data['title'] = $query['title'];
-		$data['start_date'] = $query['start_date'];
-		$data['end_date'] = $query['end_date'];
-		$data['place_name'] = $query['place_name'];
-		// $data['photo']['value'] = $query['photo'];
-		$data['description'] = $query['description'];
-		if($query['photo'] != NULL){
-			$data['photo'] = $query['photo'];
-		}
-		else{
-			$data['photo'] = NULL;
-		}
+
+		$data['id_promo'] = $id_promo;
+		$data['title']['value'] = $query['title'];
+		$data['start_date']['value'] = $query['start_date'];
+		$data['end_date']['value'] = $query['end_date'];
+		$data['place_name']['value'] = $query['place_name'];
+		$data['description']['value'] = $query['description'];
+		$data['photoPromo'] = $query['photo'];
 
 		$result = $this->PromoManager->getTypes();
-		
+
 		$type_checked=$this->isType($id_promo);
-		
 		
 		$data['type_nam']=$result;
 		$data['type_checked']['value']=$type_checked;
 		
-		//dropdown list place_info
-		
+		//dropdown list place_name		
 		$dd_place = array();
 		array_push($dd_place, NULL);
 		$result2 = $this->TouristAttractionManager->getTouristAttraction();
@@ -188,7 +173,7 @@ class ManagePromoCtr extends CI_Controller {
 		}
 		
 		$data['place_inf']=$dd_place;
-
+		
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -220,7 +205,7 @@ class ManagePromoCtr extends CI_Controller {
 		}
 		// $this->load->view('header');
 		// $this->load->view('menuadmin');
-		// $this->load->view('formPromoUI2',$data);
+		// $this->load->view('formTourAttrUI2',$data);
 		// $this->load->view('footer');
 	}
 
@@ -248,10 +233,9 @@ class ManagePromoCtr extends CI_Controller {
 		return $type_checked;
 	}
 
-	function myForm(){
-		$this->load->helper('cookie');
-		$this->load->helper('form');
+	function myform(){
 		$this->load->library('form_validation');
+		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
@@ -263,11 +247,25 @@ class ManagePromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('description', 'description', 'trim');
 		$this->form_validation->set_rules('photo', 'photo', 'trim');
 		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
-		
+
 		$id_promo = $this->input->post('key');
 		
+	   	$title = $this->input->post('title');
+	   	$start_date = $this->input->post('start_date');
+		$end_date = $this->input->post('end_date');
+		$place_name = $this->input->post('place_name');
+		$description = $this->input->post('description');
+		$type_list = $this->input->post('type_list');
+		$type_new = $this->input->post('type_new');
+
+		$old_startDate = $this->input->post('start_date');
+		$o_startDate = strtotime($old_startDate);
+		$s_date = date('Y-m-d', $o_startDate);
+		$old_endDate = $this->input->post('end_date');
+		$o_endDate = strtotime($old_endDate);
+		$e_date = date('Y-m-d', $o_endDate);
+		
 		$config['upload_path'] = './assets/img/promo/';
-		//$config['upload_path'] = './assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
 		$config['max_width']  = '4096';
@@ -285,6 +283,7 @@ class ManagePromoCtr extends CI_Controller {
 		else{
 			//do nothing
 		}
+		
 		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
 			//$this->load->view('HomeUI');
@@ -307,51 +306,42 @@ class ManagePromoCtr extends CI_Controller {
 			//$this->load->view('upload_form');
 		}
 
-		$old_startDate = $this->input->post('start_date');
-		$o_startDate = strtotime($old_startDate);
-		$s_date = date('Y-m-d', $o_startDate);
-		$old_endDate = $this->input->post('end_date');
-		$o_endDate = strtotime($old_endDate);
-		$e_date = date('Y-m-d', $o_endDate);
-		$form_data = array(
-	       	'title' => $this->input->post('title'),
-	       	'start_date' => $s_date,
-	       	'end_date' => $e_date,
-			'place_name' => $this->input->post('place_name'),
-			'photo' => $full_file_name,
-			'description' => $this->input->post('description'),
-		);
+		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 
-		$category_list = $this->input->post('category_list');
-		$category_new = $this->input->post('category_new');
-		$old_cat = $this->PromoManager->promo_getType($id_promo);
-		// $this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
-	
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
 			redirect ('ManagePromoCtr/edit/'.$id_promo);
 		}
-		else // passed validation proceed to post success logic
-		{
-
-			$form_type = array(
-				'id_promo' => $id_promo,
-				'type_list' => $this->input->post('type_list'),
-				'type_new' => $this->input->post('type_new')
-			);
+		else{ // passed validation proceed to post success logic
+		 	// build array for the model
+			$form_data = array(
+				'title' => $title,
+			   	'start_date' => $s_date,
+			   	'end_date' => $e_date,
+				'place_name' => $place_name,
+				'description' => $description,
+				'photo' => $full_file_name							
+			);	
+			
+			$old_type = $this->PromoManager->promo_getType($id_promo);
+			
 			$form_type = array(
 				'id_promo' => $id_promo,
 				'type_list' => $type_list,
 				'type_new' => $type_new,
 				'type_old' => $old_type
-			);
-
-			if($this->PromoManager->edit($id_promo, $form_data, $form_type)){
-				redirect('ManagePromoCtr/success');
+			);							
+			
+			if ($this->PromoManager->edit($id_promo, $form_data, $form_photo, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
+				//$this->load->view('formTourAttrUI', $dat);
+				redirect('ManagePromoCtr/success');   // or whatever logic needs to occur
 			}else{
-				echo 'An error occurred saving your information. Please try again later';
+			echo 'An error occurred saving your information. Please try again later';
+			 //Or whatever error handling is necessary
 			}
 		}
+			
+		
 	}
 
 	function success()
