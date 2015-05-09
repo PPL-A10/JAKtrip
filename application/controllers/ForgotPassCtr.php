@@ -41,6 +41,18 @@
 
 		function sendMail()
 		{
+			//----------------set time---------------
+		    $this->load->helper('date');
+			date_default_timezone_set('Asia/Jakarta');
+			$format = 'DATE_RFC850';
+			$time = time();
+
+			$date = standard_date($format, $time);
+			$arrayDate = explode(" ", $date);
+			
+			//---------------end of set time---------------------
+
+			//-----------------set email--------------------------
 		    $config = Array(
 			  'protocol' => 'smtp',
 			  'smtp_host' => 'ssl://smtp.googlemail.com',
@@ -52,14 +64,34 @@
 			  'wordwrap' => TRUE
 			);
 
-	        $message = 'this is your new password';
-	        $this->load->library('email', $config);
+			//------------set password-----------
+		    	$length = 8;
+			    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			    $password = substr( str_shuffle( $chars ), 0, $length );
+
+			//------------end of set password-------------
+
+			$jam = intval($arrayDate[2]);
+			$message = "";
+			if($jam >= 18 || $jam < 6)
+				$message = $message."Good evening";
+			else if($jam >= 11)
+				$message = $message."Good afternoon";
+			else
+				$message = $message."Good morning";
+
+			$this->load->library('email', $config);
 	      	$this->email->set_newline("\r\n");
+	        $message = $message."\n\n Your password has been reset to ".$password;
+	        $message = $message."\n Please change your password to keep you remembering your password";
+	        $message = $message."\nThank you \n\nSincerelly, \n\n\n JAKtrip.net admin";
+	        $message=(nl2br($message));
 	      	$this->email->from('jaktrip.net@gmail.com'); // change it to yours
 	      	$this->email->to('mohammad.syahid.wildan@gmail.com');// change it to yours
 	      	$this->email->subject('Your New Password');
 	      	$this->email->message($message);
-		    
+		   
+		   
 		    if($this->email->send())
 		    {
 		      echo 'Email sent.';
@@ -68,6 +100,7 @@
 		    {
 		     show_error($this->email->print_debugger());
 		    }
+		    //-----------------end of set email-------------------
 
 		}
 
@@ -76,6 +109,29 @@
 		    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 		    $password = substr( str_shuffle( $chars ), 0, $length );
 		   	print_r($password);
+		}
+
+		function testGetTime()
+		{
+			$this->load->helper('date');
+			date_default_timezone_set('Asia/Jakarta');
+			$format = 'DATE_RFC850';
+			$time = time();
+
+			$date = standard_date($format, $time);
+			$arrayDate = explode(" ", $date);
+			
+			$jam = intval($arrayDate[2]);
+
+			if($jam >= 18 || $jam < 6)
+				echo "selamat malam";
+			else if($jam >= 15)
+				echo "selamat sore";
+			else if($jam >= 11)
+				echo "selamat siang";
+			else
+				echo "selamat pagi";
+
 		}
 	}	
 ?>
