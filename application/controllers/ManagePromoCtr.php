@@ -249,8 +249,9 @@ class ManagePromoCtr extends CI_Controller {
 	}
 
 	function myForm(){
-		$this->load->library('form_validation');
+		$this->load->helper('cookie');
 		$this->load->helper('form');
+		$this->load->library('form_validation');
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
@@ -258,7 +259,7 @@ class ManagePromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('title', 'title', 'required|trim');
 		$this->form_validation->set_rules('start_date', 'start_date', 'required|trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end_date', 'required|trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
+		$this->form_validation->set_rules('place_name', 'place_name', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim');
 		$this->form_validation->set_rules('photo', 'photo', 'trim');
 		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
@@ -293,6 +294,14 @@ class ManagePromoCtr extends CI_Controller {
 			//$data = array('upload_data' => $this->upload->data());
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
+
+			$queryPhoto = $this->PromoManager->promo_get($id_promo);
+			$temp = mysql_fetch_assoc($queryPhoto);
+			if($file_name==null || $file_name==''){
+				$full_file_name = $temp['photo'];
+			}else{
+				$full_file_name = './assets/img/promo/'.$file_name;
+			}
 			//echo $file_name;
 			//$this->load->view('upload_success');
 			//$this->load->view('upload_form');
@@ -309,52 +318,41 @@ class ManagePromoCtr extends CI_Controller {
 	       	'start_date' => $s_date,
 	       	'end_date' => $e_date,
 			'place_name' => $this->input->post('place_name'),
-			'photo' => './assets/img/promo/'.$file_name,
+			'photo' => $full_file_name,
 			'description' => $this->input->post('description'),
 		);
 
+		$category_list = $this->input->post('category_list');
+		$category_new = $this->input->post('category_new');
+		$old_cat = $this->PromoManager->promo_getType($id_promo);
 		// $this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 	
-		if ($this->form_validation->run() == FALSE){ // validation hasn't been passed
-			echo ""
+		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
+		{
 			redirect ('ManagePromoCtr/edit/'.$id_promo);
 		}
-		else{ // passed validation proceed to post success logic
-		 	// build array for the model
-			$form_data = array(
-				'title' => $title,
-				'start_date' => $start_date,
-				'end_date' => $end_date,
-				'place_name' => $place_name,
-				'description' => $description,
-				'photo' => $this->input->post('photo')
+		else // passed validation proceed to post success logic
+		{
+
+			$form_type = array(
+				// 'id_promo' => $fak["MAX(id_promo)"],
+				'id_promo' => $id_promo,
+				'type_list' => $this->input->post('type_list'),
+				'type_new' => $this->input->post('type_new')
 			);
-
-		$this->PromoManager->SaveForm($form_data);
-
-		// $fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
-		$form_type = array(
-			// 'id_promo' => $fak["MAX(id_promo)"],
-			'id_promo' => $id_promo,
-			'type_list' => $this->input->post('type_list'),
-			'type_new' => $this->input->post('type_new')
-		);
-
-		$this->PromoManager->SaveFormType($form_type);
-
-		redirect('AddPromoCtr/success');
-
-			$old_type = $this->PromoManager->promo_getType($id_promo);
-			
 			$form_type = array(
 				'id_promo' => $id_promo,
 				'type_list' => $type_list,
 				'type_new' => $type_new,
 				'type_old' => $old_type
 			);
+
+			if($this->PromoManager->edit(id_promo, $form_data, $form_type)){
+				redirect('ManagePromoCtr/success');
+			}else{
+				echo 'An error occurred saving your information. Please try again later';
+			}
 		}
-			
-		
 	}
 
 	function success()

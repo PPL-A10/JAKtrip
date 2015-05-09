@@ -1,4 +1,4 @@
-<div class="tuffyh2a admintitle">Add New Promo</div>
+<div class="tuffyh2a admintitle">Edit Promo</div>
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open('ManagePromoCtr/myForm', $attributes); 
@@ -86,10 +86,9 @@
 				    </div>
 				    <br>
 				    <div class="form-group">
-					  <div class="col-lg-11">
+					  <div class="col-lg-11"> <br>
 						<label class="control-label">Photos <span class="req">*</span></label>
-						<?php echo form_error('photo'); ?>
-  						<input class="" type="file" id="photo" name="photo" value="<?php echo set_value('photo'); ?>">
+  						<input type="file" name="userfile" size="20">
 				      <br></div>
 				    </div>
 				    <br>
