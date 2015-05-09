@@ -73,13 +73,13 @@ function addLocation(lng,lat){
 
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-				echo form_open('tourAttrCtr/myform', $attributes); ?>
+				echo form_open_multipart('tourAttrCtr/myform', $attributes); ?>
 		
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Title <span class="req">*</span></label>
 						<?php echo form_error('place_name'); ?>
-  						<input class="form-control" type="text" id="place_name" name="place_name" value="<?php echo set_value('place_name'); ?>" required>
+  						<input class="form-control" type="text" id="place_name" name="place_name" value="<?php echo set_value('place_name'); ?>" >
 				      <br></div>
 				    </div>
 					<br>
@@ -87,7 +87,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Description <span class="req">*</span></label>
 						<?php echo form_error('description'); ?>
-  						<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>" required></textarea>
+  						<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>" ></textarea>
 				      <br></div>
 				    </div>
 				    <br>
@@ -113,7 +113,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Weekday Price <span class="req">*</span></label>
 						<?php echo form_error('weekday_price'); ?>
-  						<input class="form-control" type="text" id="weekday_price" name="weekday_price" value="<?php echo set_value('weekday_price'); ?>" required>
+  						<input class="form-control" type="text" id="weekday_price" name="weekday_price" value="<?php echo set_value('weekday_price'); ?>" >
 				      <br></div>
 				    </div>
 				    <br>
@@ -121,7 +121,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Weekend Price <span class="req">*</span></label>
 						<?php echo form_error('weekend_price'); ?>
-  						<input class="form-control" type="text" id="weekend_price" name="weekend_price" value="<?php echo set_value('weekend_price'); ?>" required>
+  						<input class="form-control" type="text" id="weekend_price" name="weekend_price" value="<?php echo set_value('weekend_price'); ?>" >
 				      <br></div>
 				    </div>
 				    <br>
@@ -143,7 +143,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Location <span class="req">*</span></label><br>
 						<?php echo form_error('city'); ?>
   						<span class="field custom-dropdown ">
-   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="background-color: #f0f0f0 !important; margin-left: -10px;" required>    
+   					 	<select   class="field form-control" title="All Location" id="select_location" name="select_location" style="background-color: #f0f0f0 !important; margin-left: -10px;" >    
    					     	<option value="" selected disabled>All Location</option>
    					     	<?php
 			                  foreach($query2 as $row)
@@ -160,7 +160,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Photos <span class="req">*</span></label>
 						<?php echo form_error('city'); ?>
-  						<input class="" type="file" id="pic" name="pic" value="<?php echo set_value('pic'); ?>" multiple>
+  						<input type="file" name="userfile" size="20" multiple>
 				      <br></div>
 				    </div>
 				    <br>
@@ -175,7 +175,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Longitude <span class="req">*</span></label>
 						<?php echo form_error('longitude'); ?>
-  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo set_value('longitude'); ?>" readonly required>
+  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo set_value('longitude'); ?>" readonly >
 				      <br></div>
 				    </div>
 				    <br>
@@ -183,7 +183,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Lattitude <span class="req">*</span></label>
 						<?php echo form_error('lattitude'); ?>
-  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo set_value('lattitude'); ?>" readonly required>
+  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo set_value('lattitude'); ?>" readonly >
 				      <br></div>
 				    </div>
 				   
@@ -193,7 +193,7 @@ function addLocation(lng,lat){
 						<label class="control-label">Nearest Bus Stop <span class="req">*</span></label><br>
 						<?php echo form_error('halte_code'); ?>
   						 <span class="field custom-dropdown " >
-   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" style="background-color: #f0f0f0 !important; margin-left: -10px;" required>    
+   					 	<select class="field form-control" id="select_busstop" name="select_busstop"title="Nearest bus stop?" style="background-color: #f0f0f0 !important; margin-left: -10px;" >    
    							 <option value="" selected disabled>Nearest bus stop?</option>
    					      	<?php
    				    		foreach ($query as $row) {
@@ -209,7 +209,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Transportation Info <span class="req">*</span></label>
 						<?php echo form_error('transport_info'); ?>
-  						<input class="form-control" type="text" id="transport_info" name="transport_info" value="<?php echo set_value('transport_info'); ?>" required>
+  						<input class="form-control" type="text" id="transport_info" name="transport_info" value="<?php echo set_value('transport_info'); ?>" >
 				      <br></div>
 				    </div>
 				    <br>
@@ -217,7 +217,15 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Transportation Fee <span class="req">*</span></label>
 						<?php echo form_error('transport_price'); ?>
-  						<input class="form-control" type="text" id="transport_price" name="transport_price" value="<?php echo set_value('transport_price'); ?>" required>
+  						<input class="form-control" type="text" id="transport_price" name="transport_price" value="<?php echo set_value('transport_price'); ?>" >
+				      <br></div>
+				    </div>
+				    <br>
+				    <div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Source <span class="req">*</span></label>
+						<?php echo form_error('source'); ?>
+  						<input class="form-control" type="text" id="source" name="source" value="<?php echo set_value('source'); ?>" >
 				      <br></div>
 				    </div>
 				    <br>
