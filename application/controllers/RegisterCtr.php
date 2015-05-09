@@ -52,13 +52,15 @@ class RegisterCtr extends CI_Controller {
 		
 		//name, desc blm ada di kolom database
 		$form_data = array(
+			'name' => $name,
 			'username' => $username,
 			'email' => $email,
 			'is_admin' => 0,
 			'join_date' => $currentTime,
 			'last_active' => $currentTime,
 			'password' => md5($password), //di-enkripsi? dulu
-			'is_active' => 1
+			'is_active' => 1,
+			'bio' => $description,
 		);
 		
 		if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db

@@ -60,8 +60,10 @@ class UsersCtr extends CI_Controller {
 		$username = get_cookie("username");
 		$member = $this->memberManager->getMember($username);
 		$data['username'] = $username;
-		$data['email'] = $member['email'];
-		$data['password'] = $member['password'];
+		$data['name'] = $member[0]->name;
+		$data['email'] = $member[0]->email;
+		$data['password'] = $member[0]->password;
+		$data['description'] = $member[0]->bio;
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
@@ -166,17 +168,19 @@ class UsersCtr extends CI_Controller {
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
 		
-		if($password==''){
+		if($password==""){
 			$password=$old_password;
 		}
 		
 		//name, desc blm ada di kolom database
 		$form_data = array(
+			'name' => $name,
 			'username' => $username,
 			'email' => $email,
 			'last_active' => $currentTime,
 			'password' => md5($password), //di-enkripsi? dulu
-			'is_active' => 1
+			'is_active' => 1,
+			'bio' => $description
 		);
 		
 		if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db

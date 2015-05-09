@@ -8,7 +8,8 @@
 			$this->load->helper('security');
 			$this->load->helper('text');
 			$this->load->helper('cookie');
-			$str = substr(do_hash(($this->input->post('password')),'md5'),0,30);
+			//$str = substr(do_hash(($this->input->post('password')),'md5'),0,30);
+			$str = do_hash(($this->input->post('password')),'md5');
 			$data = array(
 				'nameORemail' => $this->input->post('username'),
 				'password' => $str
