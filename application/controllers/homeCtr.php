@@ -46,11 +46,34 @@
 			//	echo "haha";
 			// $this->load->helper('form');
 			$this->load->model('HalteManager');
+			$this->load->model('memberManager');
+			$this->load->helper('date');
 			$data['query'] = $this->HalteManager->sorthalte();
 			$data['kodekoridor'] = $this->HalteManager->haltecode();
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+			$this->user = $this->facebook->getUser();
+			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$name = $data['user_profile']['first_name']." ".$data['user_profile']['last_name'];
+			$username = "fb".$data['user_profile']['first_name'];
+			$email = "https://www.facebook.com/".$data['user_profile']['id'];
+			$password = "facebook".$data['user_profile']['last_name'];
+			$pic = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			$form_data = array(
+				'name' => $name,
+				'username' => $username,
+				'email' => $email,
+				'is_admin' => 0,
+				'join_date' => $currentTime,
+				'last_active' => $currentTime,
+				'password' => md5($password), //di-enkripsi? dulu
+				'is_active' => 1,
+				'pic' => $pic
+			);
+		
+			$this->memberManager->accountFacebookRegister($form_data);
 
 			$this->load->view('header',$data);
 			$this->load->view('homeUI',$data);
