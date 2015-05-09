@@ -146,24 +146,16 @@
 		{
 			/*@author wildan*/
 			$this->load->database();
-			$condition = "email = '".$data['link_facebook']."'";
+			$condition = "email = '".$data['email']."'";
 			$query = $this->db->select("*")->from('member')->where($condition)->get();
 
 			if($query->num_rows() == 0)
 			{
-				return $query->row_array();
+				$this->load->database();
+				$this->db->insert('member', $data);
+				
 			}
 			
-
-			
-			$dataInsert = array(
-			   'title' => 'My title' ,
-			   'name' => 'My Name' ,
-			   'date' => 'My date'
-			);
-
-			$this->db->where('email', $data['email']);
-			$this->db->update('member', $dataUpdate); 
 		}
 
 	}
