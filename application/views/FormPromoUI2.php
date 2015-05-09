@@ -1,16 +1,16 @@
-<div class="tuffyh2a admintitle">Add New Place</div>
+<div class="tuffyh2a admintitle">Add New Promo</div>
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open('ManagePromoCtr/myForm', $attributes); 
-		$start_date = $start_date['value'];
-		$end_date = $end_date['value'];
-		$place_name = $place_name['value'];
-		$photo = $photo['value'];
-		$title = $title['value'];
-		$description = $description['value'];
+		$start_date = $start_date;
+		$end_date = $end_date;
+		$place_name = $place_name;
+		$photo = $photo;
+		$title = $title;
+		$description = $description;
 		$type_checked = $type_checked['value'];
 
-		// echo form_hidden('key', $id_promo);
+		echo form_hidden('key', $id_promo);
 	?>
 					
 					<div class="form-group">
