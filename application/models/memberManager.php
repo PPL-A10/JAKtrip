@@ -111,5 +111,23 @@
 			return TRUE;
 		}
 
+
+		function checkForgotPassword($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "email = '".$data['email']."'";
+			$query = $this->db->select("*")->from('member')->where($condition)->get();
+
+			if($query->num_rows() == 1)
+			{
+				return $query->row_array();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 	}
 ?>
