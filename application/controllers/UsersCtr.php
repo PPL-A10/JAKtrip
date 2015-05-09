@@ -156,8 +156,11 @@ class UsersCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->model('memberManager');
 		$this->load->helper('date');
+		$this->load->library('form_validation');
 		
 		if($this->input->post('form_profile')=='edit'){	
+		
+			
 			$username = $this->input->post('username');
 			$old_password = $this->input->post('old_password'); 
 			$name = $this->input->post('name');
@@ -167,6 +170,12 @@ class UsersCtr extends CI_Controller {
 			$description = $this->input->post('description');
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			//validation: password=pass_confirm, special char, username alr exist
+			$this->form_validation->set_rules('pass_confirm', 'Password Confirmation', 'matches[password]');
+			if ($this->form_validation->run() == FALSE) // validation hasn't been passed
+			{
+				redirect ('UsersCtr/edit/');
+			}
+			else{
 			//if valid
 			 
 			if($password==''){
@@ -193,7 +202,7 @@ class UsersCtr extends CI_Controller {
 			else{
 				echo 'An error occurred saving your information. Please try again later';
 				// Or whatever error handling is necessary
-			}
+			} }
 		}
 		else{
 			redirect('UsersCtr/deleteMember/');
