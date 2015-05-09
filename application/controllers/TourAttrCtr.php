@@ -135,65 +135,51 @@ class TourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('halte_code', 'halte_code', 'required|trim');
 		$this->form_validation->set_rules('transport_info', 'transport_info', 'required|trim');
 		$this->form_validation->set_rules('transport_price', 'transport_price', 'required|trim');
-		//$this->form_validation->set_rules('category_name', 'category_name', 'required|trim');
+		$this->form_validation->set_rules('source', 'source', 'required|trim');
 		$this->form_validation->set_rules('pic', 'pic', 'trim');
 		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
 		//$this->form_validation->set_rules('author', 'author', 'trim');
 		
 		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
-	
-		$number_of_files= sizeof($_FILES['pic']['tmp_name']);
+		$this->load->helper('cookie');
+		$placename = $this->input->post('place_name');
+		$user = get_cookie("username");
 
-		$files = $_FILES['pic'];
-		$errors = array();
- 
-		// first make sure that there is no error in uploading the files
-		for($i=0;$i<$number_of_files;$i++){
-		  if($_FILES['pic']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['pic']['name'][$i];
-		}
-		if(sizeof($errors)==0){
-		  	// now, taking into account that there can be more than one file, for each file we will have to do the upload
-		  	// we first load the upload library
-		  	//$this->load->library('upload');
-		  	// next we pass the upload path for the images
-		  	$image_path = realpath(APPPATH . '../assets/');
-			$config['upload_path'] = $image_path;
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']='1000';
-			$config['max_width']='4096';
-			$config['max_height']='4096';
-			$this->load->library('upload',$config);
-			//$this->upload->initialize($config);
-		  
-			$file_name = array();
-   
-			for ($i = 0; $i < $number_of_files; $i++){
-				$_FILES['apic']['name'] = $files['name'][$i];
-				$_FILES['apic']['type'] = $files['type'][$i];
-				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
-				$_FILES['apic']['error'] = $files['error'][$i];
-				$_FILES['apic']['size'] = $files['size'][$i];
-				//now we initialize the upload library
-				$this->upload->initialize($config);
-				// we retrieve the number of files that were uploaded
-				if ($this->upload->do_upload('apic')){
-					$data['upload_data'][$i] = $this->upload->data();
-					$name = $data['upload_data'][$i]['file_name'];
-					array_push($file_name, $name);
-				}
-				else{
-				  //$data['upload_errors'][$i] = $this->upload->display_errors();
-				}
-			}
-		}
-	  
-		$photo = array();
-		foreach($file_name as $name){
-		//echo $name;
-			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
-		}
+		$config['upload_path'] = './assets/img/place/'.$placename;
+		//$config['upload_path'] = './assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '4096';
+		$config['max_height']  = '4096';
+		$this->load->library('upload', $config);
+		//$this->upload->initialize($config);
+		//$upload_data = $this->upload->data();
 		
-	
+		$dir_exist = true; // flag for checking the directory exist or not
+		if (!is_dir('./assets/img/place/'.$placename))
+		{
+			mkdir('./assets/img/place/'.$placename, 0777, true);
+			$dir_exist = false; // dir not exist
+		}
+		else{
+
+		}
+		if (!$this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			//$this->load->view('HomeUI');
+			$this->load->view('FormTourAttrUI', $error);
+		}
+		else
+		{
+			//$data = array('upload_data' => $this->upload->data());
+			$upload_data = $this->upload->data();
+			$file_name = $upload_data['file_name'];
+			//echo $file_name;
+			//$this->load->view('upload_success');
+			//$this->load->view('upload_form');
+		}
+
 		$place_info = $this->input->post('place_inform');
 		if($place_info=='0'){
 			$place_info=NULL;
@@ -219,15 +205,16 @@ class TourAttrCtr extends CI_Controller {
 			//'nearest_bus_stop' => $this->input->post('select_busstop'),
 			'visitors' => 0,
 			'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now()),
-			'link_web' => ""
+			'link_web' => $this->input->post('source'),
+			'pic_thumbnail' => './assets/img/place/'.$placename.'/'.$file_name
 		);
 
 		$form_photo = array(
-			'place_name' => set_value('place_name'),
-			//'pic' => set_value('pic'),
-			//'pic' => $image_path.'\\'.$file_name,
-			'pic' => $photo,
-			'pic_info' => set_value('pic_info')
+							'place_name' => $this->input->post('place_name'),
+					       	'pic' => './assets/img/place/'.$placename.'/'.$file_name,
+					       	'pic_info' => 'Uploaded by '.$user,
+							'is_publish' => 0,
+							'username' => $user
 		);		
 							
 		$form_cat = array(

@@ -111,5 +111,52 @@
 			return TRUE;
 		}
 
+
+		function checkForgotPassword($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "email = '".$data['email']."'";
+			$query = $this->db->select("*")->from('member')->where($condition)->get();
+
+			if($query->num_rows() == 1)
+			{
+				return $query->row_array();
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		function resetPassword($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$dataUpdate = array(
+               'password' => $data['new_password']
+            );
+
+
+			$this->db->where('email', $data['email']);
+			$this->db->update('member', $dataUpdate); 
+		}
+
+		function accountFacebookRegister($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "email = '".$data['email']."'";
+			$query = $this->db->select("*")->from('member')->where($condition)->get();
+
+			if($query->num_rows() == 0)
+			{
+				$this->load->database();
+				$this->db->insert('member', $data);
+				
+			}
+			
+		}
+
 	}
 ?>

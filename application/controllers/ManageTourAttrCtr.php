@@ -216,7 +216,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['transport_price']['value'] = $query['transport_price'];	
 		$data['author']['value'] = $query['author'];
 		$data['rate_avg']['value'] = $query['rate_avg'];
-		$data['hits']['value'] = $query['hits'];		
+		$data['hits']['value'] = $query['visitors'];		
 		
 		//dropdown list category
 		//$dd_cat = array();
@@ -336,6 +336,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$halte_name = $this->input->post('select_busstop');
 		$halte_code = $this->touristAttractionManager->getHalteCode($halte_name);
 		$place_info = $this->input->post('place_inform');
+		$author = $this->input->post('author');
 		
 		
 		
@@ -367,7 +368,7 @@ class ManageTourAttrCtr extends CI_Controller {
 							'halte_code' => $halte_code['halte_code'],
 							'transport_info' => $transport_info,
 							'transport_price' => $transport_price,
-							'author' => $this->input->post('select_author'),
+							'author' => $author,
 							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())							
 						);
 

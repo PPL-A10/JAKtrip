@@ -723,5 +723,54 @@ function calcRoute() {
 	}
 	</script>
 
+	<script>
+//versi 1
+		$("#end_date").change(function(){
+			var startDate = document.getElementById("start_date").value;
+			var endDate = document.getElementById("end_date").value;
+			if ((Date.parse(startDate) > Date.parse(endDate))) {
+				alert("End date should be greater than Start date: "+ startDate);
+				document.getElementById("end_date").value = "";
+			}
+		});
+//versi 2
+		// var startDate = document.getElementById("start_date").value;
+		// var date = new Date(startDate);
+		// date.setDate(date.getDate()-1);
+
+		// $('#end_date').datepicker({ 
+		// 	startDate: date
+		// });
+//versi 3
+	// 	$(function(){
+	// 		$('.form-control field datepicker').datePicker()
+	// 			$('#start_date').bind('dpClosed',
+	// 			function(e, selectedDates){
+	// 				var d = selectedDates[0];
+	// 				if (d) {
+	// 					d = new Date(d);
+	// 					$('#end_date').dpSetStartDate(d.addDays(1).asString());
+	// 				}
+	// 			}
+	// 		);
+	// 		$('#end_date').bind('dpClosed',
+	// 		function(e, selectedDates){
+	// 			var d = selectedDates[0];
+	// 			if (d) {
+	// 				d = new Date(d);
+	// 				$('#start_date').dpSetEndDate(d.addDays(-1).asString());
+	// 			}
+	// 		}
+	// 	);
+	// });
+//versi 4
+	// var selectedDate = Date.parse(document.getElementById("start_date").value);
+	// var start = new Date(selected.getFullYear(), selected.getMonth(), selected.getDate(), 0, 0, 0, 0);
+	
+	// $('#end_date').datepicker({ 
+	// 	startDate: start
+	// });
+	</script>
+
 </body>
 </html>

@@ -73,7 +73,7 @@ function addLocation(lng,lat){
 
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-				echo form_open('tourAttrCtr/myform', $attributes); ?>
+				echo form_open_multipart('tourAttrCtr/myform', $attributes); ?>
 		
 					<div class="form-group">
 					  <div class="col-lg-11">
@@ -158,9 +158,9 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Photos <span class="req">*</span></label>
+						<label class="control-label">Photos</label>
 						<?php echo form_error('city'); ?>
-  						<input class="" type="file" id="pic" name="pic" value="<?php echo set_value('pic'); ?>" multiple>
+  						<input type="file" name="userfile" size="20" multiple>
 				      <br></div>
 				    </div>
 				    <br>
@@ -218,6 +218,14 @@ function addLocation(lng,lat){
 						<label class="control-label">Transportation Fee <span class="req">*</span></label>
 						<?php echo form_error('transport_price'); ?>
   						<input class="form-control" type="text" id="transport_price" name="transport_price" value="<?php echo set_value('transport_price'); ?>" required>
+				      <br></div>
+				    </div>
+				    <br>
+				    <div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Source <span class="req">*</span></label>
+						<?php echo form_error('source'); ?>
+  						<input class="form-control" type="text" id="source" name="source" value="<?php echo set_value('source'); ?>" required>
 				      <br></div>
 				    </div>
 				    <br>

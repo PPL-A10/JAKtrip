@@ -1,11 +1,11 @@
-	<div class="container-fluid">
+<div class="container-fluid">
 
 		<div class="col-lg-4">
 		</div>		
 		
 		<div class="col-lg-4 formlogin">		
-				<center><div class="tuffyh2a">Enter Your E-mail</div></center>
-				We will reset your password and send it to your e-mail.<hr><br>
+				<center><div class="tuffyh2a">Your email has not been registered in our system</div></center>
+				<br>
 				<form role="form" class="form-group" method="POST" action="<?php echo base_url('login/forgotpassword/check');?>">
 					<input class="form-control form-group" type="text" name="email" placeholder="E-mail" required>
 				

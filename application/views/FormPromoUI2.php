@@ -1,16 +1,17 @@
-<div class="tuffyh2a admintitle">Add New Place</div>
+<div class="col-lg-12">
+	<div class="tuffyh2a admintitle">Edit Promo</div>
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open('ManagePromoCtr/myForm', $attributes); 
-		$start_date = $start_date['value'];
-		$end_date = $end_date['value'];
-		$place_name = $place_name['value'];
-		$photo = $photo['value'];
-		$title = $title['value'];
-		$description = $description['value'];
+		$start_date = $start_date;
+		$end_date = $end_date;
+		$place_name = $place_name;
+		$photo = $photo;
+		$title = $title;
+		$description = $description;
 		$type_checked = $type_checked['value'];
 
-		// echo form_hidden('key', $id_promo);
+		echo form_hidden('key', $id_promo);
 	?>
 					
 					<div class="form-group">
@@ -40,7 +41,7 @@
 						<label class="control-label">Place Name</label><br>
 						<?php echo form_error('place_name'); ?>
    					 	<span class="field custom-dropdown ">						
-   					 	<select class="field form-control" title="Inside Of" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;">
+   					 	<select class="field form-control" title="Inside Of" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;" required>
 							<option value="" selected disabled>Choose place</option>
    					     	<?php
 			                 foreach($lala as $row)
@@ -86,10 +87,9 @@
 				    </div>
 				    <br>
 				    <div class="form-group">
-					  <div class="col-lg-11">
+					  <div class="col-lg-11"> <br>
 						<label class="control-label">Photos <span class="req">*</span></label>
-						<?php echo form_error('photo'); ?>
-  						<input class="" type="file" id="photo" name="photo" value="<?php echo set_value('photo'); ?>">
+  						<input type="file" name="userfile" size="20">
 				      <br></div>
 				    </div>
 				    <br>
@@ -105,4 +105,4 @@
 			
 		</div>
 	</div>
-
+</div>

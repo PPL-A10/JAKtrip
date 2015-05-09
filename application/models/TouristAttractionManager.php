@@ -16,14 +16,16 @@ class TouristAttractionManager extends CI_Model{
 		$category_new=$form_cat['category_new'];
 		
 		$this->db->insert('tourist_attraction', $form_data);
-		foreach($form_photo['pic'] as $row){
-			$photo = array(
-				'place_name' => $form_photo['place_name'],
-				'pic' => $row,
-				'pic_info' => $form_photo['pic_info']
-			);
-			$this->db->insert('photo', $photo);
-		}
+		$this->db->insert('photo', $form_photo);
+
+		// foreach($form_photo['pic'] as $row){
+		// 	$photo = array(
+		// 		'place_name' => $form_photo['place_name'],
+		// 		'pic' => $row,
+		// 		'pic_info' => $form_photo['pic_info']
+		// 	);
+		// 	$this->db->insert('photo', $photo);
+		// }
 		
 		foreach($form_cat['category_list'] as $selected){
 			if($selected != ''){
@@ -118,11 +120,11 @@ class TouristAttractionManager extends CI_Model{
 		//$place_name=$form_cat['place_name'];
 		foreach($form_cat['category_list'] as $selected){
 			if($selected != ''){
-				$quer = $this->db->get_where('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+				$quer = $this->db->get_where('tour_category', array('place_name'=>$form_cat['place_name'], 'category_name'=>$selected));
 				//echo $quer;
 				//if not exists
 				if($quer->num_rows==0){
-					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$selected));
+					$this->db->insert('tour_category', array('place_name'=>$form_cat['place_name'], 'category_name'=>$selected));
 				}
 				//$query="insert into TOUR_CATEGORY' where not exists (select * from TOUR_CATEGORY where place_name==$place_name"
 				
@@ -131,7 +133,7 @@ class TouristAttractionManager extends CI_Model{
 			else{
 				if($category_new != ''){
 					$this->db->insert('category', array('category_name'=>$category_new));		
-					$this->db->insert('tour_category', array('place_name'=>$place_name, 'category_name'=>$category_new));
+					$this->db->insert('tour_category', array('place_name'=>$form_cat['place_name'], 'category_name'=>$category_new));
 				}	
 			}
 
