@@ -158,7 +158,7 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Photos <span class="req">*</span></label>
+						<label class="control-label">Photos</label>
 						<?php echo form_error('city'); ?>
   						<input type="file" name="userfile" size="20" multiple>
 				      <br></div>
