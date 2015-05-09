@@ -39,6 +39,18 @@
 			
 		}
 
+		function processForgotPassword()
+		{
+			/*@author wildan*/
+			$this->load->model('memberManager');
+			$this->load->helper('text');
+			$this->load->helper('cookie');
+			$data = array(
+				'email' => $this->input->post('email')
+			);
+			$hasil['query'] = $this->memberManager->checkForgotPassword($data);	
+			print_r(json_encode($hasil['query']));
+		}
 		function sendMail()
 		{
 			//----------------set time---------------

@@ -82,7 +82,7 @@ $route['user/edit'] = 'UsersCtr/edit';
 $route['register'] = 'registerCtr'; 
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr';
-
+$route['login/forgotpassword/check'] = 'forgotPassCtr/processForgotPassword';
 $route['successLoginFB'] = 'homeCtr/successLoginFB';
 
 
