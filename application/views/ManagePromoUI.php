@@ -66,10 +66,14 @@
 							echo "<td>".$row->title."</td>";
 							echo "<td>".$type_[$i]."</td>";
 							$currentDate = date("Y-m-d");
+							$startdate = date($row->start_date);
 							$enddate = date($row->end_date);
-							if($enddate >= $currentDate){
+							if($startdate <= $currentDate && $enddate >= $currentDate){
 								echo "<td>On going</td>";
-							}else{
+							}else if($startdate >= $currentDate && $enddate >= $currentDate){
+								echo "<td>Coming Soon</td>";
+							}
+							else if($enddate < $currentDate){
 								echo "<td>Expired</td>";
 							}
 							echo "<td>";
