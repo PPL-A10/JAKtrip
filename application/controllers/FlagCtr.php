@@ -172,7 +172,8 @@ class FlagCtr extends CI_Controller {
 					//$this->load->view('formRatingUI');
          }		//Including validation library
 		
-	
+		$data['thisPlace'] = $name;
+		$data['thisUser'] = get_cookie("username");
 		$this->load->helper('html');
 		$this->load->model('DetailMod');
 		$this->load->model('ReviewModel');

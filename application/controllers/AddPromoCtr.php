@@ -16,19 +16,9 @@ class AddPromoCtr extends CI_Controller {
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			if(get_cookie('username')!=null)
-			{
-				$this->load->view('header', $data);
-				$this->load->view('menuadmin');
-				$this->load->view('formPromoUI', $data);
-				$this->load->view('footer');
-			}
-			else
-			{
-				setcookie("username",$first_name, time()+3600, '/');
-				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-				header('Location: '.base_url('successLoginFB'));
-			}
+			setcookie("username",$first_name, time()+3600, '/');
+			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
 		}
 		else
 		{
@@ -52,98 +42,73 @@ class AddPromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('title', 'title', 'required|trim');
 		$this->form_validation->set_rules('start_date', 'start_date', 'required|trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end_date', 'required|trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
+		$this->form_validation->set_rules('place_name', 'place_name', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('type_promo', 'type_promo', '');
 		$this->form_validation->set_rules('photo', 'photo', 'required|trim');
+		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
 
-		// $this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
+		$config['upload_path'] = './assets/img/promo/';
+		//$config['upload_path'] = './assets/upload/';
+		$config['allowed_types'] = 'gif|jpg|png';
+		$config['max_size']	= '1000';
+		$config['max_width']  = '4096';
+		$config['max_height']  = '4096';
+		$this->load->library('upload', $config);
+		//$this->upload->initialize($config);
+		//$upload_data = $this->upload->data();
+		
+		$dir_exist = true; // flag for checking the directory exist or not
+		if (!is_dir('./assets/img/promo/'))
+		{
+			mkdir('./assets/img/promo/', 0777, true);
+			$dir_exist = false; // dir not exist
+		}
+		else{
 
-		$number_of_files = sizeof($_FILES['photo']['tmp_name']);
-		$files = $_FILES['photo'];
-		$errors = array();
-
-		for($i=0;$i<$number_of_files;$i++){
-		  if($_FILES['photo']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['photo']['name'][$i];
+		}
+		if (!$this->upload->do_upload())
+		{
+			$error = array('error' => $this->upload->display_errors());
+			//$this->load->view('HomeUI');
+			$this->load->view('FormPromoUI', $error);
+		}
+		else
+		{
+			//$data = array('upload_data' => $this->upload->data());
+			$upload_data = $this->upload->data();
+			$file_name = $upload_data['file_name'];
+			//echo $file_name;
+			//$this->load->view('upload_success');
+			//$this->load->view('upload_form');
 		}
 
-		if(sizeof($errors)==0){
-		  	// now, taking into account that there can be more than one file, for each file we will have to do the upload
-		  	// we first load the upload library
-		  	//$this->load->library('upload');
-		  	// next we pass the upload path for the images
-		  	$image_path = realpath(APPPATH . '../assets/');
-			$config['upload_path'] = $image_path;
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']='1000';
-			$config['max_width']='4096';
-			$config['max_height']='4096';
-			$this->load->library('upload',$config);
-			//$this->upload->initialize($config);
-		  
-			$file_name = array();
-   
-			for ($i = 0; $i < $number_of_files; $i++){
-				$_FILES['apic']['name'] = $files['name'][$i];
-				$_FILES['apic']['type'] = $files['type'][$i];
-				$_FILES['apic']['tmp_name'] = $files['tmp_name'][$i];
-				$_FILES['apic']['error'] = $files['error'][$i];
-				$_FILES['apic']['size'] = $files['size'][$i];
-				//now we initialize the upload library
-				$this->upload->initialize($config);
-				// we retrieve the number of files that were uploaded
-				if ($this->upload->do_upload('apic')){
-					$data['upload_data'][$i] = $this->upload->data();
-					$name = $data['upload_data'][$i]['file_name'];
-					array_push($file_name, $name);
-				}
-				else{
-				  //$data['upload_errors'][$i] = $this->upload->display_errors();
-				}
-			}
-		}
-	  
-		$photo = array();
-		foreach($file_name as $name){
-		//echo $name;
-			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
-		}
-
-	// // $place_info = $this->input->post('place_inform');
-		// // if($place_info=='0'){
-		// // 	$place_info=NULL;	
-		// // }
-	 // 	// build array for the model
-		// $files = $_FILES['photo'];
-
+		$old_startDate = $this->input->post('start_date');
+		$o_startDate = strtotime($old_startDate);
+		$s_date = date('Y-m-d', $o_startDate);
+		$old_endDate = $this->input->post('end_date');
+		$o_endDate = strtotime($old_endDate);
+		$e_date = date('Y-m-d', $o_endDate);
 		$form_data = array(
 	       	'title' => $this->input->post('title'),
-	       	'start_date' => $this->input->post('start_date'),
-	       	'end_date' => $this->input->post('end_date'),
+	       	'start_date' => $s_date,
+	       	'end_date' => $e_date,
 			'place_name' => $this->input->post('place_name'),
-			'photo' => $photo,
+			'photo' => './assets/img/promo/'.$file_name,
 			'description' => $this->input->post('description'),
-			'photo' => set_value('photo')
 		);
 
+		$this->PromoManager->SaveForm($form_data);
+
+		$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
 		$form_type = array(
-			'id_promo' => $this->PromoManager->getLastIdPromo(),
+			'id_promo' => $fak["MAX(id_promo)"],
 			'type_list' => $this->input->post('type_list'),
 			'type_new' => $this->input->post('type_new')
 		);
 
-		if($this->PromoManager->SaveForm($form_data) == TRUE){ // the information has therefore been successfully saved in the db
-			if($this->PromoManager->SaveFormType($form_type) == TRUE){
-				redirect('AddPromoCtr/success');   // or whatever logic needs to occur
-			}
-			else{
-				echo 'An error occurred saving your information. Please try again later';
-			}
-		}
-		else{
-			echo 'An error occurred saving your information. Please try again later';
-			// Or whatever error handling is necessary
-		}
+		$this->PromoManager->SaveFormType($form_type);
+
+		redirect('AddPromoCtr/success');
 
 	}
 
@@ -161,6 +126,6 @@ class AddPromoCtr extends CI_Controller {
 
 	function success()
 	{
-		redirect('admin/promo');	
+		redirect('admin/promo');
 	}
 }

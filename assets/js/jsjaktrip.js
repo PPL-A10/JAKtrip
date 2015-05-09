@@ -6,7 +6,6 @@ $(document).ready(function () {
         $('.datepicker').datepicker({
             format: "mm/dd/yyyy",
             startDate: "today",
-            todayBtn: true,
             todayHighlight: true
         });  
 

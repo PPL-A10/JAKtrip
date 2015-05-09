@@ -133,8 +133,10 @@ function do_upload($place_name)
 	{
 		$place_name= str_replace("%20", " ",$place_name);
 		$this->load->model('PhotoManager');
+		$this->load->helper('cookie');
+		$user = get_cookie("username");
 		//$image_path1 = './assets/upload/'.$place_name;
-		$config['upload_path'] = './assets/upload/'.$place_name.'/';
+		$config['upload_path'] = './assets/img/place/'.$place_name.'/';
 		//$config['upload_path'] = './assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
@@ -145,9 +147,9 @@ function do_upload($place_name)
 		//$upload_data = $this->upload->data();
 		
 		 $dir_exist = true; // flag for checking the directory exist or not
-		if (!is_dir('./assets/upload/'.$place_name.'/'))
+		if (!is_dir('./assets/img/place/'.$place_name.'/'))
 		{
-			mkdir('./assets/upload/'.$place_name.'/', 0777, true);
+			mkdir('./assets/img/place/'.$place_name.'/', 0777, true);
 			$dir_exist = false; // dir not exist
 		}
 		else{
@@ -169,9 +171,10 @@ function do_upload($place_name)
 			//$this->load->view('upload_form');
 			$form_data = array(
 					       	'place_name' => $place_name,
-					       	'pic' => './assets/upload/'.$place_name.'/'.$file_name,
-					       	'pic_info' => './assets/upload/'.$place_name.'/',
+					       	'pic' => './assets/img/place/'.$place_name.'/'.$file_name,
+					       	'pic_info' => 'Uploaded by '.$user,
 							'is_publish' => 0,
+							'username' => $user
 							//'author' => get_cookie("username"),
 							//'nearest_bus_stop' => $this->input->post('select_busstop'),
 							//'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())

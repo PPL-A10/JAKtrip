@@ -53,7 +53,7 @@ $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
-$route['flag/spam/(:any)'] = 'FlagCtr/spam/$1';
+$route['flag/spam/(:any)'] = 'FlagCtr/spamreport/$1/$2';
 $route['allpromo'] = 'allPromosCtr';
 $route['promo/(:any)'] = 'PromoCtr/index/$1';
 
