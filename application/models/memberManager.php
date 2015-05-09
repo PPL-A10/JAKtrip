@@ -129,5 +129,17 @@
 			}
 		}
 
+		function resetPassword($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$dataUpdate = array(
+               'password' => $data['new_password']
+            );
+
+
+			$this->db->where('email', $data['email']);
+			$this->db->update('member', $dataUpdate); 
+		}
 	}
 ?>

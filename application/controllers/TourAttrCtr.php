@@ -206,14 +206,15 @@ class TourAttrCtr extends CI_Controller {
 			'visitors' => 0,
 			'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now()),
 			'link_web' => $this->input->post('source'),
-			'pic_thumbnail' => './assets/img/place/'.$file_name
+			'pic_thumbnail' => './assets/img/place/'.$placename.'/'.$file_name
 		);
 
 		$form_photo = array(
-			'place_name' => $this->input->post('place_name'),
-			'pic' => $this->input->post('source'),
-			'pic_info' => "Uploaded by ".$user,
-			'username' => $user
+							'place_name' => $this->input->post('place_name'),
+					       	'pic' => './assets/img/place/'.$placename.'/'.$file_name,
+					       	'pic_info' => 'Uploaded by '.$user,
+							'is_publish' => 0,
+							'username' => $user
 		);		
 							
 		$form_cat = array(

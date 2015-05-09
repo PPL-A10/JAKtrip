@@ -60,8 +60,10 @@ class UsersCtr extends CI_Controller {
 		$username = get_cookie("username");
 		$member = $this->memberManager->getMember($username);
 		$data['username'] = $username;
-		$data['email'] = $member['email'];
-		$data['password'] = $member['password'];
+		$data['name'] = $member[0]->name;
+		$data['email'] = $member[0]->email;
+		$data['password'] = $member[0]->password;
+		$data['description'] = $member[0]->bio;
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
@@ -159,28 +161,33 @@ class UsersCtr extends CI_Controller {
 		$name = $this->input->post('name');
 	  	$username = $this->input->post('username');
 		$email = $this->input->post('email');
-		$password = $this->input->post('password');
+		$password = $this->input->post('new_password');
 		$pass_confirm = $this->input->post('pass_confirm');
 		$description = $this->input->post('description');
 		$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 		//validation: password=pass_confirm, special char, username alr exist
 		//if valid
-		
+		 
 		if($password==''){
 			$password=$old_password;
+		}
+		else{
+			$password=md5($password);
 		}
 		
 		//name, desc blm ada di kolom database
 		$form_data = array(
+			'name' => $name,
 			'username' => $username,
 			'email' => $email,
 			'last_active' => $currentTime,
-			'password' => md5($password), //di-enkripsi? dulu
-			'is_active' => 1
+			'password' => $password,
+			'is_active' => 1,
+			'bio' => $description
 		);
 		
 		if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-			redirect('UsersCtr/success');   // or whatever logic needs to occur
+			redirect('UsersCtr/success/');   // or whatever logic needs to occur
 		}
 		else{
 			echo 'An error occurred saving your information. Please try again later';
@@ -190,7 +197,7 @@ class UsersCtr extends CI_Controller {
 	
 	function success()
 	{
-		redirect('user');	//nanti redirect ke hlm profil dia
+		redirect('user/');	//nanti redirect ke hlm profil dia
 	}
 	
 }
