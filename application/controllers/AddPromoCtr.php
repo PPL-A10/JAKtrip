@@ -49,13 +49,13 @@ class AddPromoCtr extends CI_Controller {
 
 		// $this->form_validation->set_error_delimiter('<br /><span class="error">', '</span>');
 
-		$number_of_files = sizeof($_FILES['photo']['tmp_name']);
-		$files = $_FILES['photo'];
-		$errors = array();
+		/*$number_of_files = sizeof($_FILES['photo']['tmp_name']);
+		//$files = $_FILES['photo'];
+		//$errors = array();
 
-		for($i=0;$i<$number_of_files;$i++){
-		  if($_FILES['photo']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['photo']['name'][$i];
-		}
+		//for($i=0;$i<$number_of_files;$i++){
+		 // if($_FILES['photo']['error'][$i] != 0) $errors[$i][] = 'Couldn\'t upload file '.$_FILES['photo']['name'][$i];
+		//}
 
 		if(sizeof($errors)==0){
 		  	// now, taking into account that there can be more than one file, for each file we will have to do the upload
@@ -97,7 +97,31 @@ class AddPromoCtr extends CI_Controller {
 		foreach($file_name as $name){
 		//echo $name;
 			array_push($photo, 'http:\\\\localhost\\jaktrip\\assets\\'.$name);
-		}
+		}*/
+		
+		$files = $_FILES['photo'];
+		$image_path = './assets/upload/';
+			$config['upload_path'] = $image_path;
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']='1000';
+			$config['max_width']='4096';
+			$config['max_height']='4096';
+			$this->load->library('upload',$config);
+			$_FILES['apic']['name'] = $files['name'];
+				$_FILES['apic']['type'] = $files['type'];
+				$_FILES['apic']['tmp_name'] = $files['tmp_name'];
+				$_FILES['apic']['error'] = $files['error'];
+				$_FILES['apic']['size'] = $files['size'];
+				//now we initialize the upload library
+				$this->upload->initialize($config);
+				
+					if ($this->upload->do_upload('apic')){
+					$data['upload_data'] = $this->upload->data();
+					$name = $data['upload_data']['file_name'];
+				}
+				else{
+				  //$data['upload_errors'][$i] = $this->upload->display_errors();
+				}
 
 	// // $place_info = $this->input->post('place_inform');
 		// // if($place_info=='0'){
