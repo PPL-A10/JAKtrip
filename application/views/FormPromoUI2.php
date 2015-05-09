@@ -1,6 +1,10 @@
 <div class="col-lg-12">
 	<div class="tuffyh2a admintitle">Edit Promo</div>
+<<<<<<< HEAD
 		<?php
+=======
+	<?php
+>>>>>>> a60b50b2e4ddb71c9276f9cffab10f87fc088259
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open('ManagePromoCtr/myform', $attributes); 
 		$title = $title['value'];
