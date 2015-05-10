@@ -19,6 +19,7 @@ class TripManager extends CI_Model{
 
 	function getDetailTrip($data)
 	{
+		/*@author wildan*/
 		$this->load->database();
 		$condition = "username = '".$data."'";
 		$this->db->select('*');

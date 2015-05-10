@@ -56,6 +56,7 @@
 			$this->load->helper('cookie');
 			$this->load->helper('url');
 			$this->load->model('TripManager');
+			$this->load->model('CollectionManager');
 			$data['place_name'] = explode("xx",get_cookie("placeName"));
 			// print_r($data['place_name']);
 			// print_r(get_cookie("placeName"));
@@ -76,7 +77,10 @@
 						# code...
 						$data['id_place_name'] = $data['id_place_name'].$id['id']."xx";
 					}
-					$data['count_places_choosen'] = $data['count_places_choosen']  +1 ;
+					$dataCollection['place_name'] = $data['place_name'][$i];
+					$dataCollection['username']= get_cookie('username');
+					$query_collection = $this->CollectionManager->saveCollection($dataCollection);
+ 					$data['count_places_choosen'] = $data['count_places_choosen']  +1 ;
 					
 				}
 			}
@@ -98,7 +102,8 @@
 			);
 
 			$query = $this->TripManager->saveTrip($dataInsert);
-			echo json_encode($query);	
+			// echo json_encode($query);
+			header('Location: '.base_url('user'));	
 
 		}
 
