@@ -10,9 +10,7 @@ class AddPromoCtr extends CI_Controller {
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
-		if($this->user)
-		{
-
+		if($this->user){
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
@@ -20,16 +18,13 @@ class AddPromoCtr extends CI_Controller {
             setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
-		}
-		else
-		{
+		}else{
 			$data['login_url'] = $this->facebook->getLoginUrl();
 			$this->load->view('header', $data);
 			$this->load->view('menuadmin');
 			$this->load->view('formPromoUI', $data);
 			$this->load->view('footer');
 		}
-		
 	}
 
 	function myForm(){
@@ -49,38 +44,24 @@ class AddPromoCtr extends CI_Controller {
 		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
 
 		$config['upload_path'] = './assets/img/promo/';
-		//$config['upload_path'] = './assets/upload/';
 		$config['allowed_types'] = 'gif|jpg|png';
 		$config['max_size']	= '1000';
 		$config['max_width']  = '4096';
 		$config['max_height']  = '4096';
 		$this->load->library('upload', $config);
-		//$this->upload->initialize($config);
-		//$upload_data = $this->upload->data();
 		
 		$dir_exist = true; // flag for checking the directory exist or not
-		if (!is_dir('./assets/img/promo/'))
-		{
+		if (!is_dir('./assets/img/promo/')){
 			mkdir('./assets/img/promo/', 0777, true);
 			$dir_exist = false; // dir not exist
+		}else{
 		}
-		else{
-
-		}
-		if (!$this->upload->do_upload())
-		{
+		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
-			//$this->load->view('HomeUI');
 			$this->load->view('FormPromoUI', $error);
-		}
-		else
-		{
-			//$data = array('upload_data' => $this->upload->data());
+		}else{
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
-			//echo $file_name;
-			//$this->load->view('upload_success');
-			//$this->load->view('upload_form');
 		}
 
 		$old_startDate = $this->input->post('start_date');
