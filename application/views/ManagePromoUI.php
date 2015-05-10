@@ -1,4 +1,3 @@
-
 			<div class="col-lg-9">
 					
 				<div class="tuffyh2a admintitle">All Promo</div>
@@ -42,15 +41,9 @@
 			    </div>
 			    <br><br><br>
 
-				
-				<!-- <span id="openLogin" class="newpost"><a href=""><span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href=""><span class="fa fa-eye"></span>&nbsp;&nbsp;View</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-				<a href=""><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete</a></span><br><br> -->
-
 				<table id="tab1" class="newpost table table-striped table-hover">
 				  <thead style="text-align: center !important;">
 				    <tr>
-				      <!-- th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th -->
 				      <th>Place Name</th>
 				      <th>Promo Title</th>
 				      <th>Type</th>
@@ -87,10 +80,6 @@
 				  </tbody>
 				</table><br>
 
-			<!--	<ul class="pager">
-				  <li><a href="#">Previous</a></li>
-				  <li><a href="#">Next</a></li>
-				</ul><br>-->
 			</div>
 
 			<div class="col-lg-3">
