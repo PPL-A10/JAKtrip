@@ -377,9 +377,26 @@ var map;
 var chicago;
 	function getLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(initialize2);
+        navigator.geolocation.getCurrentPosition(initialize2 , showError);
     } else {
+		
+    }
+}
 
+function showError(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+            initialize3();
+            break;
+        case error.POSITION_UNAVAILABLE:
+            x.innerHTML = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            x.innerHTML = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            x.innerHTML = "An unknown error occurred."
+            break;
     }
 }
 	function initialize2(position) {
@@ -437,6 +454,39 @@ var chicago;
 			  infowindow2.open(map,marker);
 			  });
 			  
+			  
+	}
+	
+		function initialize3() {
+		  var mapProp = {
+		    center:new google.maps.LatLng(-6.190035,106.838075),
+		    zoom:11,
+		    mapTypeId:google.maps.MapTypeId.ROADMAP
+		  };
+
+		  map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+		  var icon = {
+        path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+        fillOpacity: 0.5,
+        fillColor: 'ff0000',
+        strokeOpacity: 1.0,
+        strokeColor: 'fff000',
+        strokeWeight: 3.0,
+        scale: 5
+};
+		  var marker2=new google.maps.Marker({
+		  position:myCenter,
+		  animation:google.maps.Animation.BOUNCE
+		  });
+			marker2.setMap(map);
+			
+		  var infowindow = new google.maps.InfoWindow({
+			  content:"<?php echo $place; ?>"
+			  });
+			  infowindow.open(map,marker2);
+			  google.maps.event.addListener(marker2, 'click', function() {
+			  infowindow.open(map,marker2);
+			  });			  
 			  
 	}
 	

@@ -7,8 +7,13 @@ class PlaceCtr extends CI_Controller {
         $this->load->model('ratingManager');
     }
 
-    function index($name=null)
+    function index($name)
 	{   
+	$this->load->helper('html');
+		$this->load->model('DetailMod');
+		$this->load->model('ReviewModel');
+	if($this->DetailMod->isValid($name) == true)
+	{
 		$this->load->library('form_validation');           
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		$this->form_validation->set_rules('rate', 'rate', 'required');
@@ -40,9 +45,7 @@ class PlaceCtr extends CI_Controller {
          }		//Including validation library
 		
 	
-		$this->load->helper('html');
-		$this->load->model('DetailMod');
-		$this->load->model('ReviewModel');
+		
 		$name= str_replace("%20", " ",$name);
 		$data['thisPlace'] = $name;
 		$data['query']= $this->DetailMod->showdetail($name);
@@ -80,7 +83,11 @@ class PlaceCtr extends CI_Controller {
 			$this->load->view('footer',$data);
 		}
 
-
+	}
+	else
+	{
+		show_404();
+	}
 		//--------------
 		
 
