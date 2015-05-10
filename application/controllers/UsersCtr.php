@@ -236,7 +236,7 @@ class UsersCtr extends CI_Controller {
 			else{
 			//if valid
 				//photo
-				$config['upload_path'] = './assets/img/user/'.$username;
+				$config['upload_path'] = './assets/img/user/';
 				//$config['upload_path'] = './assets/upload/';
 				$config['allowed_types'] = 'gif|jpg|png';
 				$config['max_size']	= '1000';
@@ -245,7 +245,7 @@ class UsersCtr extends CI_Controller {
 				$this->load->library('upload', $config);
 				//$this->upload->initialize($config);
 				//$upload_data = $this->upload->data();
-				
+				/*
 				$dir_exist = true; // flag for checking the directory exist or not
 				if (!is_dir('./assets/img/user/'.$username))
 				{
@@ -254,7 +254,7 @@ class UsersCtr extends CI_Controller {
 				}
 				else{
 
-				}
+				}*/
 				if (!$this->upload->do_upload())
 				{
 					$error = array('error' => $this->upload->display_errors());
@@ -264,9 +264,28 @@ class UsersCtr extends CI_Controller {
 				else
 				{
 					//$data = array('upload_data' => $this->upload->data());
-					$upload_data = $this->upload->data();
-					$file_name = $upload_data['file_name'];
-					$pic = './assets/img/user/'.$username.'/'.$file_name;
+					if($pic!=''){
+						if(unlink($pic)){
+							$upload_data = $this->upload->data();
+							$file_name = $upload_data['file_name'];
+							$path ='./assets/img/user/';
+							$ext = pathinfo($path.$file_name, PATHINFO_EXTENSION);
+							if(rename($path.$file_name, $path.$username.'.'.$ext)){
+								$pic = $path.$username.'.'.$ext;	
+							}			
+						}
+					}
+					else{
+						$upload_data = $this->upload->data();
+						$file_name = $upload_data['file_name'];
+						$path ='./assets/img/user/';
+						$ext = pathinfo($path.$file_name, PATHINFO_EXTENSION);
+						if(rename($path.$file_name, $path.$username.'.'.$ext)){
+							$pic = $path.$username.'.'.$ext;	
+						}			
+					}
+					
+					
 					//echo $file_name;
 					//$this->load->view('upload_success');
 					//$this->load->view('upload_form');

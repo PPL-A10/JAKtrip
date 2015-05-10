@@ -56,8 +56,30 @@
 				 } ?>
 	             <!--a href="#"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a-->&nbsp;
 	            </span>
-			    <span class="fa fa-check-circle icondetail iconcol a-none"></span>
-			    <span class="fa fa-heart icondetail iconcol w-none"></span>
+			     <?php 
+		            $res = mysql_query("SELECT place_name FROM collection WHERE place_name = '".$thisPlace."' AND username = '".$thisUser."'");
+		            if(mysql_num_rows($res)==0){
+			    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
+			    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
+			    	}
+			    	else{
+		            	foreach($query4 as $row){ 
+					    	if($row->is_wishlist==1){
+					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w"></span></a>';
+					    	}
+					    	else if($row->is_wishlist==0){
+					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
+					    	}
+					    	if($row->is_visited==1){
+					    		echo '<a href="#"><span class="fa fa-check-circle icondetail iconcol a"></span></a>';
+					    	}
+					    	else if($row->is_visited==0){
+					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
+					    	}
+					    	else{} 	    	
+				    	}
+					}
+			    ?>
 			    
 			</div><br><br>
 			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">
@@ -161,6 +183,8 @@
 		            		}
 		            		else{
 		            		}
+		            		$i=1;
+		            		foreach($query as $row2){
 		            			foreach($query2 as $row){
 									echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";				
 									echo "<div class='reviewkiri col-lg-4'>";
@@ -181,11 +205,36 @@
 										{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star-o'></span>";}
 										if ($row->rate == 5)
 										{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
-								    echo	"<a href='javascript:deleteFunction(".'"'.$row->id_rate.'","'.$row->place_name.'"'.")' onclick='return confirm(\"Are you sure?\")'><span class='deleterev close fa fa-trash-o' id='nilaiid' value=''></span></a>";	
-									//echo 	"<a href='localhost/JAKtrip/ReviewCtr/del/".$row->place_name."/".$row->id_rate."'>tes delete</a>";
-									//echo "<a href='javascript:myFunction(".$row->id_rate.",'asasasasee')'>asasasasasasas</a>"
-									//echo	anchor('ReviewCtr/del/'.$row->place_name.'/'.$row->id_rate, '<span class="deleterev close fa fa-trash-o"></span>');
-								    echo	"<br>";
+
+									$res2 = mysql_query("SELECT * FROM member WHERE username = '".$thisUser."' AND is_admin = 1");
+									if(mysql_num_rows($res2)==0){
+										echo	"<a href='#flag".$i ."' onclick=".base_url('place/report')."><span class='close fa fa-flag' value=".$row->username."></span></a>";	
+										echo 	"<div id='flag".$i ."' class='openModal2'>";
+										echo 	"<div>";
+										echo 	"<center><div class='tuffyh3a'>I want to report this review!</div></center><br>";
+										echo	"<br>";
+										echo 	"<div class='flagcontent'>";
+										echo 	"Reasons :<br>";
+										echo  	"<form name ='userinput' action='../PlaceCtr/spamreport/".$row->id_rate ."/".$row2->place_name ."' method='post'>";
+										echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='spam'>&nbsp;&nbsp;Spam<br>";
+										echo       	"<input type='checkbox' id='spamreason' name='spamreason[]' value='false_statement'>&nbsp;&nbsp;False Statement<br>";
+										echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
+										echo     	"<input type='checkbox' id='spamreason' name='spamreason[]' value='profanity'>&nbsp;&nbsp;Profanity<br>";
+										echo    	"<input type='checkbox' id='spamreason' name='spamreason[]' value='nudity'>&nbsp;&nbsp;Nudity<br><br>";
+										echo   	"<div class='row'><br>";
+										echo    "<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 100px;'>cancel</a>";
+										echo    "<button type='submit' class='pull-right btn btn-warning' style='margin-right: 20px;'>send</button>";
+										echo	"</div>";
+										echo	"</form>";
+										echo 	"</div>";
+										echo 	"</div>";
+										echo 	"</div>";
+										$i=$i+1;
+									}
+									else{
+										echo	"<a href='javascript:deleteFunction(".'"'.$row->id_rate.'","'.$row->place_name.'"'.")' onclick='return confirm(\"Are you sure?\")'><span class='deleterev close fa fa-trash-o' id='nilaiid' value=''></span></a>";	
+									}
+									echo	"<br>";
 								    echo	"<span class='judulreview tuffyh3a' id='judul'>"	;													
 									echo 	"<p>".$row->title."</p>" ;																
 									echo	"</span><br>";
@@ -194,7 +243,7 @@
 								    echo	"</span>";
 									echo	"</div>";
 									echo	"</div>";
-		            			
+		            			}
 							}
 						 ?>
 						
@@ -208,3 +257,49 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("span.iconcol").click(function(){
+		if($(this).hasClass("w-none")){
+			$(this).removeClass("w-none");
+			$(this).addClass("w");
+			setTimeout(function () {
+				location.href='../PlaceCtr/addWishlist/<?php echo $thisPlace; ?>';
+			}, 3500); 
+			notifAddWishlist();
+		}
+		else if($(this).hasClass("w")){
+			var c = confirm("Are you sure you want to remove this from your wishlist?");
+			if(c==true){
+				$(this).removeClass("w");
+				$(this).addClass("w-none");
+				setTimeout(function () {
+					location.href='../PlaceCtr/removeWishlist/<?php echo $thisPlace; ?>';
+				}, 3500); 
+				notifDelWishlist();
+			}
+		}
+		else if($(this).hasClass("a-none")){
+			$(this).removeClass("a-none");
+			$(this).addClass("a");
+			setTimeout(function () {
+				location.href='../PlaceCtr/addVisited/<?php echo $thisPlace; ?>';
+			}, 3500); 
+			notifAddAchievement();
+		}
+		else if($(this).hasClass("a")){
+			var c = confirm("Are you sure you want to remove this from your achievement?");
+			if(c==true){
+				$(this).removeClass("a");
+				$(this).addClass("a-none");
+				setTimeout(function () {
+					location.href='../PlaceCtr/removeVisited/<?php echo $thisPlace; ?>';
+				}, 3500); 
+				notifDelAchievement();
+			}
+		}			
+		else{}	
+	});
+});
+</script>
