@@ -56,7 +56,7 @@ class RegisterCtr extends CI_Controller {
 		
 		$this->form_validation->set_rules('username', 'username', 'alpha_dash|is_unique[member.username]|xss_clean');
 		$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'matches[password]');
-		$this->form_validation->set_message('is_unique', 'This %s already exists');
+		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
 		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed

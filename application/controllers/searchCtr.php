@@ -824,7 +824,7 @@
 				setcookie("counttrip",0,time()+3600, '/');
 				setcookie("datechoosen",$this->input->post('datepicker'),time()+3600, '/');
 				setcookie("halte_name",$this->input->post('mydropdown'),time()+3600, '/');
-				setcookie("budget","kosong",time()+3600, '/');
+				setcookie("budget","-",time()+3600, '/');
 				setcookie("harga_angkot",0,time()+3600, '/');
 				setcookie("list_angkot_before","",time()+3600, '/');
 				setcookie("list_halte_before","",time()+3600, '/');
