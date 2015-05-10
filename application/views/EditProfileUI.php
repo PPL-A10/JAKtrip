@@ -6,8 +6,9 @@
 				<div class="tuffyh2a admintitle">Edit Profile</div>
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-				echo form_open('UsersCtr/editMember', $attributes); 
-				echo form_hidden('old_password', $password); ?>
+				echo form_open_multipart('UsersCtr/editMember', $attributes); 
+				echo form_hidden('old_password', $password);
+				echo form_hidden('pic', $pic); ?>
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>

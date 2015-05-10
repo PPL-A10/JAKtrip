@@ -71,6 +71,7 @@ class UsersCtr extends CI_Controller {
 		$data['email'] = $member[0]->email;
 		$data['password'] = $member[0]->password;
 		$data['description'] = $member[0]->bio;
+		$data['pic'] = $member[0]->pic;
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
@@ -176,6 +177,7 @@ class UsersCtr extends CI_Controller {
 			$password = $this->input->post('new_password');
 			$pass_confirm = $this->input->post('pass_confirm');
 			$description = $this->input->post('description');
+			$pic = $this->input->post('pic');
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			//validation: password=pass_confirm, special char, username alr exist
 			$status = TRUE;
@@ -233,6 +235,42 @@ class UsersCtr extends CI_Controller {
 			}
 			else{
 			//if valid
+				//photo
+				$config['upload_path'] = './assets/img/user/'.$username;
+				//$config['upload_path'] = './assets/upload/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '1000';
+				$config['max_width']  = '4096';
+				$config['max_height']  = '4096';
+				$this->load->library('upload', $config);
+				//$this->upload->initialize($config);
+				//$upload_data = $this->upload->data();
+				
+				$dir_exist = true; // flag for checking the directory exist or not
+				if (!is_dir('./assets/img/user/'.$username))
+				{
+					mkdir('./assets/img/user/'.$username, 0777, true);
+					$dir_exist = false; // dir not exist
+				}
+				else{
+
+				}
+				if (!$this->upload->do_upload())
+				{
+					$error = array('error' => $this->upload->display_errors());
+					//$this->load->view('HomeUI');
+					//$this->load->view('HomeUI', $error);
+				}
+				else
+				{
+					//$data = array('upload_data' => $this->upload->data());
+					$upload_data = $this->upload->data();
+					$file_name = $upload_data['file_name'];
+					$pic = './assets/img/user/'.$username.'/'.$file_name;
+					//echo $file_name;
+					//$this->load->view('upload_success');
+					//$this->load->view('upload_form');
+				}
 
 				//name, desc blm ada di kolom database
 				$form_data = array(
@@ -242,7 +280,8 @@ class UsersCtr extends CI_Controller {
 					'last_active' => $currentTime,
 					'password' => $password,
 					'is_active' => 1,
-					'bio' => $description
+					'bio' => $description,
+					'pic' => $pic
 				);
 				
 				if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
