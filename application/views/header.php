@@ -824,7 +824,17 @@
               $update_cookie_username = $_COOKIE["username"];
               /*------biar cookienya ga mati------*/
               setcookie('username',$update_cookie_username,time()+3600,"/");
-              echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+
+              if($_COOKIE["is_admin"]==1)
+              {
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+              }
+              else
+              {
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+              }
+
+              echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li>".$halaman_user."<li><a>My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
 
             }
             

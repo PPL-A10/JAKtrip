@@ -43,6 +43,7 @@ class UsersCtr extends CI_Controller {
 				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
                 setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				setcookie("is_admin",0,time()+3600,'/');
 				header('Location: '.base_url('successLoginFB'));
 			}
 		}
@@ -90,6 +91,7 @@ class UsersCtr extends CI_Controller {
 				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
 				setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				setcookie("is_admin",0,time()+3600,'/');
 				header('Location: '.base_url('successLoginFB'));
 			}
 		}
@@ -288,14 +290,16 @@ class UsersCtr extends CI_Controller {
 		$query  = $this->TripManager->getTrip($id_trip);
 		$detail_trip =  explode("YYY",$query['detail_trip']);
 		$data['id_place_name'] = explode("xx", $detail_trip[1]);
-		// echo json_encode($query);
+		
 		
 		$data['place_name_search'] = "";
+		$data['is_visited_search'] = "";
 		for($i=0; $i<count($data['id_place_name'])-1; $i++)
 		{
 			if((strcmp($data['id_place_name'][$i], "-1") == 0))
 			{
 				$data['place_name_search'] = $data['place_name_search']."terhapusxx";
+				$data['is_visited_search'] = $data['is_visited_search']."terhapusxx";
 			}
 			else
 			{
@@ -304,16 +308,15 @@ class UsersCtr extends CI_Controller {
 				
 				$data['place_name_search'] = $data['place_name_search'].$queryGetPlaceName['place_name']."xx";
 				
-				// $dataCollection['place_name'] = $data['place_name'][$i];
-				// $dataCollection['username']= get_cookie('username');
-				// $query_collection = $this->CollectionManager->saveCollection($dataCollection);
-				// 	$data['count_places_choosen'] = $data['count_places_choosen']  +1 ;
-				
+				$dataGetIsVisited['place_name'] = $queryGetPlaceName['place_name'];
+				$dataGetIsVisited['username'] = get_cookie('username');
+				$this->load->model('CollectionManager');
+				$queryGetIsVisited = $this->CollectionManager->getIsVisited($dataGetIsVisited);
+				$data['is_visited_search'] = $data['is_visited_search'].$queryGetIsVisited['is_visited']."xx";
+
 			}
 		}
-		// echo $data['place_name_search'];
-
-
+		
 
 		$data['place_name'] = explode("xx",$data['place_name_search']);
 		$data['halte_awal'] = explode("xx",$detail_trip[2]);
@@ -321,6 +324,8 @@ class UsersCtr extends CI_Controller {
 		$data['total_price'] = explode("xx",$detail_trip[3]);
 		$data['transport_info'] = explode("xx",$detail_trip[4]);
 		$data['place_info'] = explode("xx",$detail_trip[5]);
+		$data['is_visited'] = explode("xx", $data['is_visited_search']);
+		$data['id_trip'] = $id_trip;
 
 		
 		$this->user = $this->facebook->getUser();
@@ -341,6 +346,7 @@ class UsersCtr extends CI_Controller {
 				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
             	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				setcookie("is_admin",0,time()+3600,'/');
 				header('Location: '.base_url('successLoginFB'));
 			}
 		}
@@ -355,5 +361,43 @@ class UsersCtr extends CI_Controller {
 		// // $this->load->view('viewTripUI',$data);
 		// // $this->load->view('footer');
 	}
+
+	public function setVisited($id_place, $id_trip)
+	{
+		/*@author wildan*/
+		$this->load->helper('cookie');
+		$this->load->model('touristAttractionManager');
+		$this->load->model('CollectionManager');
+		$queryGetPlaceName = $this->touristAttractionManager->getPlaceNameFromID($id_place);
+		$data['place_name'] = $queryGetPlaceName['place_name'];
+		$data['username'] = get_cookie('username');
+		$data['is_visited'] = 1;
+		$this->CollectionManager->setIsVisited($data);
+		header('Location: '.base_url('user/trip/viewsavedtrip/'.$id_trip));
+	}
+
+	public function deleteTrip($id_trip)
+	{
+		/*@author wildan*/
+		$this->load->model('TripManager');
+		$data['id_trip'] = $id_trip;
+		$this->TripManager->deleteTrip($data);
+		header('Location: '.base_url('user'));
+	}
+
+	public function unsetVisited($id_place, $id_trip)
+	{
+		/*@author wildan*/
+		$this->load->helper('cookie');
+		$this->load->model('touristAttractionManager');
+		$this->load->model('CollectionManager');
+		$queryGetPlaceName = $this->touristAttractionManager->getPlaceNameFromID($id_place);
+		$data['place_name'] = $queryGetPlaceName['place_name'];
+		$data['username'] = get_cookie('username');
+		$data['is_visited'] = 0;
+		$this->CollectionManager->setIsVisited($data);
+		header('Location: '.base_url('user/trip/viewsavedtrip/'.$id_trip));
+	}
+	
 	
 }
