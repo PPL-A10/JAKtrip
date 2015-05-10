@@ -504,7 +504,7 @@ class TouristAttractionManager extends CI_Model{
 			$this->db->select('place_name');
             $query = $this->db->from('tourist_attraction')->where($condition)->get();
 			
-			return $query->result();
+			return $query->row_array();
 		}
 }
 ?>
