@@ -483,5 +483,28 @@ class TouristAttractionManager extends CI_Model{
 			$query = $this->db->get(); 
             return $query->result(); 
 		}
+
+		function getID($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "place_name = '".$data."'";
+			$this->db->select('id');
+            $query = $this->db->from('tourist_attraction')->where($condition)->get();
+			
+			return $query->result_array();
+			
+
+		}
+		function getPlaceNameFromID($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "id = '".$data."'";
+			$this->db->select('place_name');
+            $query = $this->db->from('tourist_attraction')->where($condition)->get();
+			
+			return $query->result();
+		}
 }
 ?>

@@ -68,8 +68,10 @@
 			<div class="tuffyh2a viewbox">View Trip</div>
 			<div style="margin-left: 40px; margin-bottom: 80px;">
 				<?php
-			//	echo json_encode($place_name);
-			//	echo json_encode($place_info);
+				// echo json_encode($place_name);
+				// echo json_encode($place_info);
+				// echo json_encode($total_price);
+				// echo json_encode($transport_info);
 				$indexpertamaKali = -1;
 				for($k=0; $k<count($place_name)-1; $k++)
 				{
@@ -144,7 +146,7 @@
 								
 							}
 
-							if( (strcmp($place_info[$i], $place_info[($indexSebelum)])  == 0) && $indexSebelum != (-1))
+							if( (strcmp($place_info[$i], $place_info[($indexSebelum)])  == 0) && $indexSebelum != (-1) && (strcmp($place_info[$i], "null")  != 0))
 							{
 								echo "<br>1. Jalan kaki saja menuju ".$place_name[$i];
 							}
@@ -160,7 +162,7 @@
 							else if($indexSebelum != -1)
 							{
 								echo "<br>1. ".$transport_info[($indexSebelum)]." menuju halte ".$halte_name[($indexSebelum)];
-								echo "<br>2. Naik busway dari ".$halte_name[($indexSebelum)]." menuju ".$halte_name[$i];
+								echo "<br>2. Naik busway dari halte ".$halte_name[($indexSebelum)]." menuju halte ".$halte_name[$i];
 								echo "<br>3. ".$transport_info[$i]." menuju ".$place_name[$i];	
 							}
 							
@@ -219,7 +221,7 @@
 			?>
 			
 			
-			<a href="<?php if(isset($_COOKIE['username'])){echo '#';}else{echo '#openLogin';} ?>"><button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button></a>
+			<a href="<?php if(isset($_COOKIE['username'])){echo base_url('trip/savetrip');}else{echo '#openLogin';} ?>"><button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button></a>
 		</div>
 
 		
