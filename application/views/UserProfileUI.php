@@ -30,36 +30,43 @@
 			<div id="trips" class="usercontent">
 				<?php
 					$array_trip = json_encode($query_trip);
-					foreach ($query_trip as $trip) {
-						# code...
-						$data_trip = explode("YYY",$trip['detail_trip']);
-						$total_price = explode("xx",$data_trip[3]);
-						$place_id = explode("xx",$data_trip[1]);
-						$harga = 0;
-						for($i=0; $i<count($total_price)-1; $i++)
-						{
-							if((strcmp($place_id[$i], "-1")  != 0))	
+					$res = mysql_query("SELECT * FROM trips WHERE username = '".$thisUser."'");
+		            if(mysql_num_rows($res)==0){
+						echo '<div class="col-lg-2"></div>';
+						echo '<div class="col-lg-8">';
+						echo '<img src='.base_url("assets/img/notrip.png").'>';
+						echo '</div><div class="col-lg-2"></div>';
+			    	}
+			    	else{
+			    		foreach ($query_trip as $trip) {
+							$data_trip = explode("YYY",$trip['detail_trip']);
+							$total_price = explode("xx",$data_trip[3]);
+							$place_id = explode("xx",$data_trip[1]);
+							$harga = 0;
+							for($i=0; $i<count($total_price)-1; $i++)
 							{
-								$harga = $harga + intval($total_price[$i]);
+								if((strcmp($place_id[$i], "-1")  != 0))	
+								{
+									$harga = $harga + intval($total_price[$i]);
+								}
+								
 							}
-							
+							$viewTripUrl = 'user/trip/viewsavedtrip/'.$trip['id_trip'];
+							$deleteTripUrl = 'user/trip/deletetrip/'.$trip['id_trip'];
+							echo "<div class='row coll'>";
+								echo "<a href=".base_url($viewTripUrl).">";
+									echo "<div class='col-lg-2 pic-small'><img src='".base_url('assets/img/50.jpg')."'></div>";
+									echo "<div class='col-lg-8'>";
+										echo "<div class='tuffyh3a'>".$data_trip[0]." Places</div>";
+										echo "In <b>".date('d-M-Y', strtotime($trip['date_trip']))."</b> | Start from <b>Halte ".$data_trip[2]."</b> | Total: <b>Rp ".$harga."</b>";
+									echo "</div>";
+								echo "</a>";
+								echo "<a href= ".base_url($deleteTripUrl).">";
+									echo "<div class='col-lg-2'><span class='fa fa-trash-o iconcol'></span></div>";
+								echo "</a>";
+							echo "</div>"; 
 						}
-						$viewTripUrl = 'user/trip/viewsavedtrip/'.$trip['id_trip'];
-						$deleteTripUrl = 'user/trip/deletetrip/'.$trip['id_trip'];
-						echo "<div class='row coll'>";
-							echo "<a href=".base_url($viewTripUrl).">";
-								echo "<div class='col-lg-2 pic-small'><img src='".base_url('assets/img/50.jpg')."'></div>";
-								echo "<div class='col-lg-8'>";
-									echo "<div class='tuffyh3a'>".$data_trip[0]." Places</div>";
-									echo "In <b>".date('d-M-Y', strtotime($trip['date_trip']))."</b> | Start from <b>Halte ".$data_trip[2]."</b> | Total: <b>Rp ".$harga."</b>";
-								echo "</div>";
-							echo "</a>";
-							echo "<a href= ".base_url($deleteTripUrl).">";
-								echo "<div class='col-lg-2'><span class='fa fa-trash-o iconcol'></span></div>";
-							echo "</a>";
-						echo "</div>"; 
-					}
-					  // echo $array_trip;
+			    	}
 				?>
 			</div>
 
