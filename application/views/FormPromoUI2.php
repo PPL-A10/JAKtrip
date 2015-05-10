@@ -13,7 +13,7 @@
 		$photo = $photoPromo;
 	
 		echo form_hidden('key', $id_promo); 
-		// echo form_hidden('rate_avg', $rate_avg);
+		echo form_hidden('photoPromo', $photoPromo);
 		// echo form_hidden('hits', $hits);
 		// echo form_hidden('author', $author);
 		?>
@@ -29,17 +29,31 @@
 		<div class="form-group">
 		  <div class="col-lg-11">
 			<label class="control-label">Start Date <span class="req">*</span></label>
-			<input class="form-control field datepicker" type="text" name="datepicker" id="start_date"  value="<?php echo $start_date; ?>" style="background-color: #f0f0f0 !important;" required>
+			<input class="form-control field datepicker" type="text" name="datepicker[]" id="start_date"  value="<?php echo $start_date; ?>" style="background-color: #f0f0f0 !important;" required>
 			 <br></div>
 	    </div>
 		<br>
 		<div class="form-group">
 		  <div class="col-lg-11">
 			<label class="control-label">End Date <span class="req">*</span></label>
-			<input class="form-control field datepicker" type="text" name="datepicker" id="end_date"  value="<?php echo $end_date; ?>" style="background-color: #f0f0f0 !important;" required>
+			<input class="form-control field datepicker" type="text" name="datepicker[]" id="end_date"  value="<?php echo $end_date; ?>" style="background-color: #f0f0f0 !important;" required>
   			 <br></div>
 		   </div>
 	    <br>
+	   	<!--<div class="form-group">
+		  <div class="col-lg-11">
+			<label class="control-label">Start Date <span class="req">*</span></label>
+			<input class="form-control field datepicker" type="text" name="start_date" id="start_date"  value="<?php echo set_value('start_date'); ?>" style="background-color: #f0f0f0 !important;" required>
+	      <br></div>
+	    </div>
+		<br>
+		<div class="form-group">
+		  <div class="col-lg-11">
+			<label class="control-label">End Date <span class="req">*</span></label>
+			<input class="form-control field datepicker" type="text" name="end_date" id="end_date"  value="<?php echo set_value('end_date'); ?>" style="background-color: #f0f0f0 !important;" required>
+	      <br></div>
+	    </div>
+		<br> -->
 	    <div class="form-group">
 		  <div class="col-lg-11">
 			<label class="control-label">Place Name </label><br>
