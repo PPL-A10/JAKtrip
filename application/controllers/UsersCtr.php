@@ -20,6 +20,11 @@ class UsersCtr extends CI_Controller {
 		$data['query'] = $this->touristAttractionManager->getTouristAttraction();
 		$data['member'] = $this->memberManager->getMember($user);
 
+		$this->load->helper('url');
+		$this->load->model('touristAttractionManager');
+		$this->load->model('TripManager');
+		$data['query_trip'] = $this->TripManager->getDetailTrip($user);
+
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{

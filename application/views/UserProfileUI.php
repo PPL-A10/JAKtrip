@@ -28,16 +28,37 @@
 
 		<div class="col-lg-6">
 			<div id="trips" class="usercontent">
-				<div class="row coll">
-					<a href="<?php echo base_url('trip/view');?>">
-						<div class="col-lg-2 pic-small"><img src="<?php echo base_url('assets/img/50.jpg');?>"></div>
-						<div class="col-lg-8">
-							<div class="tuffyh3a">2 Places</div>
-							In <b>24 Apr '15</b> | Start from <b>Dunia Fantasi</b> | Total: <b>Rp 157000</b>
-						</div>
-						<div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div>
-					</a>
-				</div>
+				<?php
+					$array_trip = json_encode($query_trip);
+					foreach ($query_trip as $trip) {
+						# code...
+						$data_trip = explode("YYY",$trip['detail_trip']);
+						$total_price = explode("xx",$data_trip[3]);
+						$place_id = explode("xx",$data_trip[1]);
+						$harga = 0;
+						for($i=0; $i<count($total_price)-1; $i++)
+						{
+							if((strcmp($place_id[$i], "-1")  != 0))	
+							{
+								$harga = $harga + intval($total_price[$i]);
+							}
+							
+						}
+						echo "<div class='row coll'>";
+							echo "<a href=".base_url('trip/view')."'>";
+								echo "<div class='col-lg-2 pic-small'><img src='".base_url('assets/img/50.jpg')."'></div>";
+								echo "<div class='col-lg-8'>";
+									echo "<div class='tuffyh3a'>".$data_trip[0]." Places</div>";
+									echo "In <b>".date('d-M-Y', strtotime($trip['date_trip']))."</b> | Start from <b>Halte ".$data_trip[2]."</b> | Total: <b>Rp ".$harga."</b>";
+								echo "</div>";
+							echo "</a>";
+							echo "<a>";
+								echo "<div class='col-lg-2'><span class='fa fa-trash-o iconcol'></span></div>";
+							echo "</a>";
+						echo "</div>"; 
+					}
+					  // echo $array_trip;
+				?>
 			</div>
 
 			<div id="wishlist" class="usercontent">

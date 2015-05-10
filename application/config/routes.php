@@ -47,6 +47,7 @@ $route['trip'] = 'SearchCtr';
 $route['trip/owntrip'] = 'SearchCtr/SearchWithoutBudget';
 $route['trip/recommendation'] = 'SearchCtr/SearchWithinBudgetRec';
 $route['trip/view'] = 'viewTripCtr'; 
+$route['trip/savetrip'] = 'viewTripCtr/saveTrip'; 
 $route['allplaces'] = 'allPlacesCtr';
 $route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
