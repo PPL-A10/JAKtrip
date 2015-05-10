@@ -44,8 +44,9 @@
 							}
 							
 						}
+						$viewTripUrl = 'user/trip/'.$trip['id_trip'];
 						echo "<div class='row coll'>";
-							echo "<a href=".base_url('trip/view')."'>";
+							echo "<a href=".base_url($viewTripUrl).">";
 								echo "<div class='col-lg-2 pic-small'><img src='".base_url('assets/img/50.jpg')."'></div>";
 								echo "<div class='col-lg-8'>";
 									echo "<div class='tuffyh3a'>".$data_trip[0]." Places</div>";

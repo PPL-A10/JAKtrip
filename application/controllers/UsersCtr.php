@@ -238,5 +238,81 @@ class UsersCtr extends CI_Controller {
 		// $this->load->view('footer');  
 		//echo json_encode($data);
 	}
+
+	public function viewSavedTrip($id_trip)
+	{
+		/*@author wildan*/
+		$this->load->model('TripManager');
+		$this->load->helper('cookie');
+		$query  = $this->TripManager->getTrip($id_trip);
+		$detail_trip =  explode("YYY",$query['detail_trip']);
+		$data['id_place_name'] = explode("xx", $detail_trip[1]);
+		// echo json_encode($query);
+		
+		$data['place_name_search'] = "";
+		for($i=0; $i<count($data['id_place_name'])-1; $i++)
+		{
+			if((strcmp($data['id_place_name'][$i], "-1") == 0))
+			{
+				$data['place_name_search'] = $data['place_name_search']."terhapusxx";
+			}
+			else
+			{
+				$this->load->model('touristAttractionManager');
+				$queryGetPlaceName = $this->touristAttractionManager->getPlaceNameFromID($data['id_place_name'][$i]);
+				
+				$data['place_name_search'] = $data['place_name_search'].$queryGetPlaceName['place_name']."xx";
+				
+				// $dataCollection['place_name'] = $data['place_name'][$i];
+				// $dataCollection['username']= get_cookie('username');
+				// $query_collection = $this->CollectionManager->saveCollection($dataCollection);
+				// 	$data['count_places_choosen'] = $data['count_places_choosen']  +1 ;
+				
+			}
+		}
+		// echo $data['place_name_search'];
+
+
+
+		$data['place_name'] = explode("xx",$data['place_name_search']);
+		$data['halte_awal'] = explode("xx",$detail_trip[2]);
+		$data['halte_name'] = explode("xx",$detail_trip[5]);
+		$data['total_price'] = explode("xx",$detail_trip[3]);
+		$data['transport_info'] = explode("xx",$detail_trip[4]);
+		$data['place_info'] = explode("xx",$detail_trip[5]);
+
+		
+		$this->user = $this->facebook->getUser();
+		if($this->user)
+		{
+
+			$data['user_profile'] = $this->facebook->api('/me/');
+			$first_name = $data['user_profile']['first_name'];
+			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			if(get_cookie('username')!=null)
+			{
+				$this->load->view('header', $data);
+				$this->load->view('viewSavedTripUI',$data);
+				$this->load->view('footer');
+			}
+			else
+			{
+				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+            	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
+				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				header('Location: '.base_url('successLoginFB'));
+			}
+		}
+		else
+		{
+			$data['login_url'] = $this->facebook->getLoginUrl();
+			$this->load->view('header', $data);
+			$this->load->view('viewSavedTripUI',$data);
+			$this->load->view('footer');
+		}
+		// // $this->load->view('header');
+		// // $this->load->view('viewTripUI',$data);
+		// // $this->load->view('footer');
+	}
 	
 }

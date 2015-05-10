@@ -814,6 +814,7 @@
                 $username_header = $_COOKIE["username_facebook"];
                 /*------biar cookienya ga mati------*/
                  setcookie('photo_facebook',$foto,time()+3600,"/");
+                 setcookie('username_facebook',$username_header,time()+3600,"/");
               }
               else
               {

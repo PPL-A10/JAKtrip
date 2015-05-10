@@ -26,5 +26,14 @@ class TripManager extends CI_Model{
 		$query = $this->db->from('trips')->where($condition)->get();
 		return $query->result_array();
 	}
+
+	function getTrip($data)
+	{
+		$this->load->database();
+		$condition = "id_trip = ".$data;
+		$this->db->select('*');
+		$query = $this->db->from('trips')->where($condition)->get();
+		return $query->row_array();
+	}
 }
 ?>
