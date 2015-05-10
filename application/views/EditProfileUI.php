@@ -35,7 +35,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Password</label>
-  						<input class="form-control" type="password" value="" id="new_password" name="new_password">
+  						<input class="form-control" type="password" value="" id="new_password" name="new_password" placeholder="Fill in this field to change password">
 				      <br></div>
 				    </div>
 					<br>
@@ -44,6 +44,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Password Confirmation</label>
   						<input class="form-control" type="password" value="" id="pass_confirm" name="pass_confirm">
+						<?php echo form_error('pass_confirm'); ?>
 				      <br></div>
 				    </div>
 					<br>

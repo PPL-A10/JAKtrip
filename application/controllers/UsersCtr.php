@@ -164,10 +164,9 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->helper('date');
 		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		
 		if($this->input->post('form_profile')=='edit'){	
-		
-			
 			$username = $this->input->post('username');
 			$old_password = $this->input->post('old_password'); 
 			$name = $this->input->post('name');
@@ -177,39 +176,81 @@ class UsersCtr extends CI_Controller {
 			$description = $this->input->post('description');
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			//validation: password=pass_confirm, special char, username alr exist
-			$this->form_validation->set_rules('pass_confirm', 'Password Confirmation', 'matches[password]');
-			if ($this->form_validation->run() == FALSE) // validation hasn't been passed
-			{
-				redirect ('UsersCtr/edit/');
-			}
-			else{
-			//if valid
-			 
+			$status = TRUE;
 			if($password==''){
 				$password=$old_password;
 			}
 			else{
+				$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'required|matches[password]');
+				$this->form_validation->set_message('required', 'The password confirmation field does not match the password field.');
+				$status = $this->form_validation->run();
 				$password=md5($password);
 			}
-			
-			//name, desc blm ada di kolom database
-			$form_data = array(
-				'name' => $name,
-				'username' => $username,
-				'email' => $email,
-				'last_active' => $currentTime,
-				'password' => $password,
-				'is_active' => 1,
-				'bio' => $description
-			);
-			
-			if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-				redirect('UsersCtr/success/');   // or whatever logic needs to occur
+			if ($status == FALSE) // validation hasn't been passed
+			{
+				$this->load->model('memberManager');
+				$this->load->helper('cookie');
+				$this->load->helper('security');
+				$username = get_cookie("username");
+				$member = $this->memberManager->getMember($username);
+				$data['username'] = $username;
+				$data['name'] = $member[0]->name;
+				$data['email'] = $member[0]->email;
+				$data['password'] = $member[0]->password;
+				$data['description'] = $member[0]->bio;
+				
+				$this->load->helper('cookie');
+				$this->user = $this->facebook->getUser();
+				if($this->user)
+				{
+
+					$data['user_profile'] = $this->facebook->api('/me/');
+					$first_name = $data['user_profile']['first_name'];
+					$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+					if(get_cookie('username')!=null)
+					{
+						$this->load->view('header', $data);
+						$this->load->view('EditProfileUI');
+						$this->load->view('footer');
+					}
+					else
+					{
+						setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+						setcookie("username",$data['user_profile']['id'], time()+3600, '/');
+						setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+						header('Location: '.base_url('successLoginFB'));
+					}
+				}
+				else
+				{
+					$data['login_url'] = $this->facebook->getLoginUrl();
+					$this->load->view('header', $data);
+					$this->load->view('EditProfileUI');
+					$this->load->view('footer');
+				}
 			}
 			else{
-				echo 'An error occurred saving your information. Please try again later';
-				// Or whatever error handling is necessary
-			} }
+			//if valid
+
+				//name, desc blm ada di kolom database
+				$form_data = array(
+					'name' => $name,
+					'username' => $username,
+					'email' => $email,
+					'last_active' => $currentTime,
+					'password' => $password,
+					'is_active' => 1,
+					'bio' => $description
+				);
+				
+				if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
+					redirect('UsersCtr/success/');   // or whatever logic needs to occur
+				}
+				else{
+					echo 'An error occurred saving your information. Please try again later';
+					// Or whatever error handling is necessary
+				} 
+			}
 		}
 		else{
 			redirect('UsersCtr/deleteMember/');
