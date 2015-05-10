@@ -23,17 +23,25 @@ class TripManager extends CI_Model{
 		$this->load->database();
 		$condition = "username = '".$data."'";
 		$this->db->select('*');
-		$query = $this->db->from('trips')->where($condition)->get();
+		$query = $this->db->from('trips')->where($condition)->order_by("date_trip", "desc")->get();
 		return $query->result_array();
 	}
 
 	function getTrip($data)
 	{
+		/*@author wildan*/
 		$this->load->database();
 		$condition = "id_trip = ".$data;
 		$this->db->select('*');
 		$query = $this->db->from('trips')->where($condition)->get();
 		return $query->row_array();
+	}
+
+	function deleteTrip($data)
+	{
+		/*@author wildan*/
+		$this->load->database();
+		$this->db->delete('trips', $data); 
 	}
 }
 ?>
