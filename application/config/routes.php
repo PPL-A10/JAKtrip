@@ -111,6 +111,11 @@ $route['flag/(:any)/addwishlist'] = 'FlagCtr/addWishlist/$1';
 $route['flag/(:any)/removewishlist'] = 'FlagCtr/removeWishlist/$1'; 
 $route['flag/(:any)/addvisited'] = 'FlagCtr/addVisited/$1'; 
 $route['flag/(:any)/removevisited'] = 'FlagCtr/removeVisited/$1'; 
+$route['place/spamreport/(:num)'] = 'PlaceCtr/spamreport/$1'; 
+$route['place/(:any)/addwishlist'] = 'PlaceCtr/addWishlist/$1'; 
+$route['place/(:any)/removewishlist'] = 'PlaceCtr/removeWishlist/$1'; 
+$route['place/(:any)/addvisited'] = 'PlaceCtr/addVisited/$1'; 
+$route['place/(:any)/removevisited'] = 'PlaceCtr/removeVisited/$1'; 
 $route['user/addwishlist'] = 'UsersCtr/addWishlist/$1'; 
 $route['user/removewishlist'] = 'UsersCtr/removeWishlist/$1'; 
 
