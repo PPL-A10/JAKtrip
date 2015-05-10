@@ -1,3 +1,22 @@
+<script>
+function myFunction() {
+    var pass1 = document.getElementById("password").value;
+    var pass2 = document.getElementById("pass_confirm").value;
+    var ok = true;
+    if (pass1 != "") {
+        //alert("Passwords Do not match");
+        document.getElementById("password").style.borderColor = "#E34234";
+        document.getElementById("pass_confirm").style.borderColor = "#E34234";
+        ok = false;
+    }
+    else {
+        alert("Passwords Match!!!");
+    }
+    return ok;
+}
+
+</script>
+
 <div class="container">
 	<div class="row" style="margin-top: 100px;">
 
@@ -5,7 +24,7 @@
 
 				<div class="tuffyh2a admintitle">Register New Account</div>
 				<?php
-				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
+				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post', 'onsubmit' => 'return myFunction()');
 				echo form_open('RegisterCtr/addMember', $attributes); ?>
 					<div class="form-group">
 					  <div class="col-lg-11">
@@ -49,7 +68,7 @@
 				  
 				    <br><br>
 
-				    <button class="btn btn-warning" type="submit">SUBMIT</button>
+				    <input class="btn btn-warning" type="submit"></input>
 				    <?php echo form_close(); ?>
 			</div>
 		</div>
