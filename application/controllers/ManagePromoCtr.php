@@ -312,6 +312,6 @@ class ManagePromoCtr extends CI_Controller{
 
 	function success()
 	{
-		redirect('ManagePromoCtr');
+		redirect('admin/promo');
 	}
 }
