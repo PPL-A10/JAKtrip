@@ -50,6 +50,7 @@ class FeedbackCtr extends CI_Controller {
 					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
                 	setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+					setcookie("is_admin",0,time()+3600,'/');
 					header('Location: '.base_url('successLoginFB'));
 				}
 			}
@@ -96,6 +97,7 @@ class FeedbackCtr extends CI_Controller {
 						setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
                 		setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 						setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+						setcookie("is_admin",0,time()+3600,'/');
 						header('Location: '.base_url('successLoginFB'));
 					}
 				}
