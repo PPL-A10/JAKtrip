@@ -65,8 +65,9 @@
 				      <br></div>
 				    </div>
 					<br>
-					
-				    <br><br>
+					<button name="form_profile" value="remove_photo">Remove Photo</button>
+				    
+					<br><br>
 				    <button class="btn btn-warning" type="submit" name="form_profile" value="edit">SUBMIT</button>
 				    <button class="btn btn-primary" type="submit" name="form_profile" value="delete" onclick ="return confirm('Are you sure you want to delete your account?')">DELETE THIS ACCOUNT</button>
 				<?php echo form_close(); ?>
