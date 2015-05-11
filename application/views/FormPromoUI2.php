@@ -11,9 +11,10 @@
 		$type_name = $type_nam;
 		$type_checked = $type_checked['value'];
 		$photo = $photoPromo;
-	
+		$key1 = $id_promo;
+
 		echo form_hidden('key', $id_promo); 
-		echo form_hidden('photoPromo', $photoPromo);
+		// echo form_hidden('photoPromo', $photoPromo);
 		?>
 		
 		<div class="form-group">
@@ -88,7 +89,9 @@
 		  <div class="col-lg-11"> <br>
 			<label class="control-label">Photos <span class="req">*</span></label>
   			<input type="file" name="userfile" size="20">
-  			<?php echo "<img src='".base_url($photo)."'></a>"; ?>
+  			<?php echo "<a href='".base_url($photo)."' data-lightbox='".$key1."'>";
+			echo "<div class='pic-thumbnail white'><img src='".base_url($photo)."'></div></a>";
+			?>
 	      <br></div>
 	    </div>
 	    <br>

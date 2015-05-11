@@ -23,8 +23,8 @@
 		function getstatisticbudget()
 		{
 			$this->load->database();
-			$this->db->select('place_name,weekday_price');
-            $this->db->from('tourist_attraction');
+			$this->db->select('lower_nom,upper_nom,input_num');
+            $this->db->from('budget');
 			$query = $this->db->get(); 
 			return $query->result();
 		}

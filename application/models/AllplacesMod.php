@@ -236,12 +236,16 @@
         return $query->result();
     }
 	
-	function filterSliderMod($min, $max)
+	function filterSliderMod($min, $max,$category_name,$city,$place_name)
 		{
 			
 			$this->load->database();
 			$this->db->select('*');
             $this->db->from('tourist_attraction'); 
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$city= str_replace("%20", " ",$city);
+			$place_name= str_replace("%20", " ",$place_name);
 	
 			if((int)$min > 0){
 				$this->db->where('weekend_price >',$min);
@@ -250,6 +254,15 @@
 			if((int)$max > 0){
 			$this->db->where('weekend_price <' ,$max);
 			}
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			} 
+			if((string)$city != ""and $city !="All"){
+				$this->db->where('city', $city);
+			} 
+			if((string)$place_name != ""){
+				$this->db->like('tourist_attraction.place_name', $place_name);
+			} 		
 			
 			$query = $this->db->get(); 
             return $query->result(); 

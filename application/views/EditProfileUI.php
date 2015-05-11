@@ -28,7 +28,17 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">E-mail <span class="req">*</span></label>
-  						<input class="form-control" type="email"  value="<?php echo $email; ?>" id="email" name="email" required>
+						<?php  
+						if(isset($_COOKIE["photo_facebook"]))
+              			{
+              				$type = "text";
+              			}
+              			else
+              			{
+              				$type = "email";
+              			}
+              			?>
+  						<input class="form-control" type="<?php echo $type;?>"  value="<?php echo $email; ?>" id="email" name="email" required>
 				      <br></div>
 				    </div>
 					<br>

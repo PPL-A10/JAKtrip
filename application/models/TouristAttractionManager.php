@@ -161,7 +161,19 @@ class TouristAttractionManager extends CI_Model{
 
 		return $data;					  		
  	}
-	
+
+ 	function addVisitor($data){
+ 		$this->load->database();
+		$this->db->update('tourist_attraction', $data);
+ 	}
+	function getVisitors($data){
+		$this->load->database();
+		$this->db->select('visitors');
+        $this->db->from('tourist_attraction');
+        $this->db->where('place_name', $data);
+        $query = $this->db->get();
+        return $query->result();
+	}
 	function getCategory(){
 		$this->load->database();
 		$query = $this->db->get('category');
@@ -505,6 +517,12 @@ class TouristAttractionManager extends CI_Model{
             $query = $this->db->from('tourist_attraction')->where($condition)->get();
 			
 			return $query->row_array();
+		}
+
+		function mostPopular(){
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->order_by("visitors", "desc")->limit('3')->get();
+	   		return $query->result();
 		}
 }
 ?>

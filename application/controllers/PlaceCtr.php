@@ -7,8 +7,13 @@ class PlaceCtr extends CI_Controller {
         $this->load->model('ratingManager');
     }
 
-    function index($name=null)
+    function index($name)
 	{   
+	$this->load->helper('html');
+		$this->load->model('DetailMod');
+		$this->load->model('ReviewModel');
+	if($this->DetailMod->isValid($name) == true)
+	{
 		$this->load->library('form_validation');           
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		$this->form_validation->set_rules('rate', 'rate', 'required');
@@ -39,7 +44,6 @@ class PlaceCtr extends CI_Controller {
 					//$this->load->view('formRatingUI');
          }		//Including validation library
 		
-	
 		$this->load->helper('html');
 		$this->load->model('DetailMod');
 		$this->load->model('ReviewModel');
@@ -85,7 +89,11 @@ class PlaceCtr extends CI_Controller {
 			$this->load->view('footer',$data);
 		}
 
-
+	}
+	else
+	{
+		show_404();
+	}
 		//--------------
 		
 
@@ -160,7 +168,66 @@ function do_upload($place_name)
 		else{
 
 		}
-		if ( ! $this->upload->do_upload())
+		
+	$files = $_FILES;
+    $cpt = count($_FILES['userfile']['name']);
+    for($i=0; $i<$cpt; $i++)
+    {
+
+        $_FILES['userfile']['name']= $files['userfile']['name'][$i];
+        $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+        $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+        $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+        $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+
+
+
+    $this->upload->initialize($config);
+    $this->upload->do_upload();
+	$upload_data = $this->upload->data();
+	$file_name = $upload_data['file_name'];
+					$form_data = array(
+					       	'place_name' => $place_name,
+					       	'pic' => './assets/img/place/'.$place_name.'/'.$file_name,
+					       	'pic_info' => 'Uploaded by '.$user,
+							'is_publish' => 0,
+							'username' => $user
+							//'author' => get_cookie("username"),
+							//'nearest_bus_stop' => $this->input->post('select_busstop'),
+							//'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
+						);
+			$this->PhotoManager->SaveForm($form_data);
+    }
+			$this->load->library('form_validation');           
+        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+		$this->form_validation->set_rules('rate', 'rate', 'required');
+		$this->form_validation->set_rules('review', 'review');
+		$this->load->helper('cookie');
+		if ($this->form_validation->run() == FALSE)
+		{
+			//$this->load->view('formRatingUI');
+		}
+		else
+		{
+			$data = array(
+						'username' => get_cookie("username"),
+						'place_name' => $place_name,
+                        'rate' => $this->input->post('rate'),
+                        'title' => $this->input->post('title'),
+                        'review' => $this->input->post('review')
+            );
+                    $this->ratingManager->insert_rating($data);
+        }
+		$this->load->helper('html');
+		$this->load->model('DetailMod');
+		$this->load->model('ReviewModel');
+		$data['query']= $this->DetailMod->showdetail($place_name);
+		$data['query2']= $this->ReviewModel->showreviewtempat($place_name);
+		$data['query3']= $this->DetailMod->showphoto($place_name);
+		header("Location: ".base_url()."place/".$place_name."");
+		}
+	
+		/*if ( ! $this->upload->do_upload())
 		{
 			$error = array('error' => $this->upload->display_errors());
 			//$this->load->view('HomeUI');
@@ -184,6 +251,7 @@ function do_upload($place_name)
 							//'nearest_bus_stop' => $this->input->post('select_busstop'),
 							//'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())
 						);
+	}
 			$this->PhotoManager->SaveForm($form_data);
 			
 			
@@ -214,8 +282,7 @@ function do_upload($place_name)
 		$data['query2']= $this->ReviewModel->showreviewtempat($place_name);
 		$data['query3']= $this->DetailMod->showphoto($place_name);
 		header("Location: ".base_url()."place/".$place_name."");
-		}
-	}
+		}*/
 
 	function spamreport($id,$name=null)
 	{
@@ -304,6 +371,7 @@ function do_upload($place_name)
 
 	function addWishlist($place_name){
 		$this->load->model('memberManager');
+		$this->load->model('touristAttractionManager');
 		$this->load->helper('cookie');
 		$place_name= str_replace("%20", " ",$place_name);
 		$user=get_cookie("username");
@@ -344,8 +412,12 @@ function do_upload($place_name)
 
 	function addVisited($place_name){
 		$this->load->model('memberManager');
-		$this->load->helper('cookie');
+		$this->load->model('touristAttractionManager');
 		$place_name= str_replace("%20", " ",$place_name);
+		$temp = $this->touristAttractionManager->getVisitors($place_name);
+		$dv = mysql_fetch_assoc($temp);
+		$this->load->helper('cookie');
+		
 		$user=get_cookie("username");
 		$check = mysql_query("SELECT is_visited FROM collection WHERE place_name = '".$place_name."' AND username = '".$user."'");
 
@@ -355,15 +427,23 @@ function do_upload($place_name)
 				       	'username' => get_cookie("username"),
 				       	'is_visited' => '1'
 					);
+			$data2 = array(
+						'visitors' => $dv['visitors']+1
+					);
 			$this->memberManager->addToVisited($data);
+			$this->touristAttractionManager->addVisitor($data2);
 		}
 		else{
 			$data = array(
 				       	'is_visited' => '1'
 					);
+			$data2 = array(
+						'visitors' => $dv['visitors']+1
+					);
 			$this->db->where('place_name', $place_name);
 			$this->db->where('username', get_cookie("username"));
 			$this->memberManager->updateVisited($data);			
+			$this->touristAttractionManager->addVisitor($data2);
 		}
 		
 		header("Location: ".base_url()."place/".$place_name."");
