@@ -168,10 +168,10 @@
 		//chart ketiga
 		var chart3 = new AmCharts.AmSerialChart();
 		chart3.dataProvider = arrayOfPHPData3;
-		chart3.categoryField = "place_name";
+		chart3.categoryField = "lower_nom";
 		
 		var graph3 = new AmCharts.AmGraph();
-		graph3.valueField = "weekday_price";
+		graph3.valueField = "input_num";
 		graph3.type = "column";
 		chart3.addGraph(graph3);
 		
@@ -181,9 +181,9 @@
 		categoryAxis3.gridPosition = "start";
 		categoryAxis3.labelRotation = 90;
 		
-		graph3.fillAlphas = 0.8;
-		chart3.angle = 30;
-		chart3.depth3D = 15;
+		graph3.fillAlphas = 0; // or delete this line, as 0 is default
+		graph3.bullet = "round";
+		graph3.lineColor = "#8d1cc6";
 		
 		chart.write('chartdiv');
 		chart2.write('chartdiv2');
@@ -818,7 +818,7 @@
               }
               else
               {
-                 $foto = base_url('assets/img/oor.jpg');
+                 $foto = $_COOKIE["foto_profil"];
                  $username_header = $_COOKIE["username"];
               }
               $update_cookie_username = $_COOKIE["username"];

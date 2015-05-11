@@ -316,6 +316,7 @@ class UsersCtr extends CI_Controller {
 				);
 				
 				if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
+					setcookie("foto_profil",$pic,time()+3600,'/');
 					redirect('UsersCtr/success/');   // or whatever logic needs to occur
 				}
 				else{

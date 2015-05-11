@@ -106,6 +106,30 @@ class PromoManager extends CI_Model{
 		$query = $this->db->get(); 
         return $query->result_array(); 
 	}
+	
+	function filterPromotype($category_name, $city, $place_name){
+			
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('promo'); 
+			$this->db->join('type_promo', 'type_promo.id_promo = promo.id_promo');
+			$this->db->join('tourist_attraction', 'promo.place_name = tourist_attraction.place_name');
+            //$this->db->join('photo', 'photo.place_name = tour_category.place_name');
+			$category_name = str_replace("%20", " ",$category_name);
+			$city= str_replace("%20", " ",$city);
+			$place_name= str_replace("%20", " ",$place_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('type_name', $category_name);
+			} 
+			if((string)$city != ""and $city !="All"){
+				$this->db->where('city', $city);
+			} 
+			if((string)$place_name != ""){
+				$this->db->like('title', $place_name);
+			} 			
+			$query = $this->db->get(); 
+            return $query->result_array(); 
+	}
 
     function promo_getall(){
         $this->load->database();
