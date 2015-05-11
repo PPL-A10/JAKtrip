@@ -4,12 +4,12 @@
 	{
 		public function index()
 		{
-		
-			
-
 			$this->load->model('HalteManager');
+			$this->load->model('TouristAttractionManager');
+			
 			$data['query'] = $this->HalteManager->sorthalte();
 			$data['kodekoridor'] = $this->HalteManager->haltecode();
+			$data['mostPopular'] = $this->TouristAttractionManager->mostPopular();
 
 			$this->load->helper('cookie');
 			$this->user = $this->facebook->getUser();

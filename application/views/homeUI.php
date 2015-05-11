@@ -341,9 +341,23 @@
 				<div class="tuffyh1b">MOST POPULAR</div>	
 				<div class="col-lg-1"></div>
 				<div class="col-lg-10">
-					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>	
-					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>
-					<div class="col-lg-4 homeimg"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image.png"/></div>
+					<?php
+					foreach($mostPopular as $row){
+						if($row->pic_thumbnail==NULL){
+							echo "<div class='col-lg-4 homeimg'>";
+							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
+							echo "<img class='.img-responsive img-rounded' src='".base_url('assets/img/noimg.png')."'/></a>";
+
+							echo "</div>";
+						}
+						else{
+							echo "<div class='col-lg-4 homeimg'>";
+							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
+							echo "<img class='.img-responsive img-rounded' src='".base_url($row->pic_thumbnail)."'/></a>";
+							echo "</div>";
+						}						
+					}
+					?>
 				</div>
 				<div class="col-lg-1"></div>
 			</div>
@@ -374,7 +388,8 @@
 					
 					<div class="col-lg-12" style="margin-top: 20px;">
 						<div class="col-lg-5"></div>
-							<a href="http://localhost/Jaktrip/index.php/allPlacesCtr"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a>
+							<!-- <a href="http://localhost/Jaktrip/index.php/allPlacesCtr"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a> -->
+							<a href="<?php echo base_url('/allplaces') ?>"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a>
 						<div class="col-lg-5"></div>
 					</div>
 					
