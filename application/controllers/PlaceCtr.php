@@ -371,6 +371,7 @@ function do_upload($place_name)
 
 	function addWishlist($place_name){
 		$this->load->model('memberManager');
+		$this->load->model('touristAttractionManager');
 		$this->load->helper('cookie');
 		$place_name= str_replace("%20", " ",$place_name);
 		$user=get_cookie("username");
@@ -411,8 +412,12 @@ function do_upload($place_name)
 
 	function addVisited($place_name){
 		$this->load->model('memberManager');
-		$this->load->helper('cookie');
+		$this->load->model('touristAttractionManager');
 		$place_name= str_replace("%20", " ",$place_name);
+		$temp = $this->touristAttractionManager->getVisitors($place_name);
+		$dv = mysql_fetch_assoc($temp);
+		$this->load->helper('cookie');
+		
 		$user=get_cookie("username");
 		$check = mysql_query("SELECT is_visited FROM collection WHERE place_name = '".$place_name."' AND username = '".$user."'");
 
@@ -422,15 +427,23 @@ function do_upload($place_name)
 				       	'username' => get_cookie("username"),
 				       	'is_visited' => '1'
 					);
+			$data2 = array(
+						'visitors' => $dv['visitors']+1
+					);
 			$this->memberManager->addToVisited($data);
+			$this->touristAttractionManager->addVisitor($data2);
 		}
 		else{
 			$data = array(
 				       	'is_visited' => '1'
 					);
+			$data2 = array(
+						'visitors' => $dv['visitors']+1
+					);
 			$this->db->where('place_name', $place_name);
 			$this->db->where('username', get_cookie("username"));
 			$this->memberManager->updateVisited($data);			
+			$this->touristAttractionManager->addVisitor($data2);
 		}
 		
 		header("Location: ".base_url()."place/".$place_name."");
