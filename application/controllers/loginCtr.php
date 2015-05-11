@@ -68,7 +68,15 @@
 				setcookie("idxLastTrip", -1, time()+3600, '/');
 				setcookie("is_admin",$hasil['query']['is_admin'],time()+3600,'/');
 				// echo $hasil['query']['is_admin'];
-		
+				if($hasil['query']['pic'] == null)
+				{
+					$foto = base_url('assets/img/oor.jpg');
+				}
+				else
+				{
+					$foto = $hasil['query']['pic'];
+				}
+				setcookie("foto_profil",$foto,time()+3600,'/');
 				header("Location:".base_url('home')."");
 			}
 			

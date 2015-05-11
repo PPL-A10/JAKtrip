@@ -818,7 +818,7 @@
               }
               else
               {
-                 $foto = base_url('assets/img/oor.jpg');
+                 $foto = $_COOKIE["foto_profil"];
                  $username_header = $_COOKIE["username"];
               }
               $update_cookie_username = $_COOKIE["username"];
