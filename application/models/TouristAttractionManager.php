@@ -506,5 +506,11 @@ class TouristAttractionManager extends CI_Model{
 			
 			return $query->row_array();
 		}
+
+		function mostPopular(){
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->order_by("visitors", "desc")->limit('3')->get();
+	   		return $query->result();
+		}
 }
 ?>
