@@ -169,15 +169,28 @@ class UsersCtr extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 		
-		if($this->input->post('form_profile')=='edit'){	
-			$username = $this->input->post('username');
+		$username = $this->input->post('username');
+		$pic = $this->input->post('pic');
+		if($pic!='' & $this->input->post('form_profile')=='remove_photo'){
+			if(unlink($pic)){
+				$pic = NULL;			
+				$form_data = array(
+					'pic' => $pic
+				);			
+				if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
+					//notif?
+				}
+			}
+			redirect('user/edit');
+		}
+		
+		else if($this->input->post('form_profile')=='edit'){	
 			$old_password = $this->input->post('old_password'); 
 			$name = $this->input->post('name');
 			$email = $this->input->post('email');
 			$password = $this->input->post('new_password');
 			$pass_confirm = $this->input->post('pass_confirm');
 			$description = $this->input->post('description');
-			$pic = $this->input->post('pic');
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			//validation: password=pass_confirm, special char, username alr exist
 			$status = TRUE;
@@ -290,7 +303,6 @@ class UsersCtr extends CI_Controller {
 					//$this->load->view('upload_success');
 					//$this->load->view('upload_form');
 				}
-
 				//name, desc blm ada di kolom database
 				$form_data = array(
 					'name' => $name,
