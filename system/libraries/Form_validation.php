@@ -1129,7 +1129,14 @@ class CI_Form_validation {
 	{
 		return ( ! preg_match("/^([-a-z0-9_-])+$/i", $str)) ? FALSE : TRUE;
 	}
-
+	
+	// --------------------------------------------------------------------	
+	
+	public function alpha_numeric_dash_spaces($str)
+	{
+		return ( ! preg_match("/^([-a-z0-9_ ])+$/i", $str)) ? FALSE : TRUE;
+	}
+	
 	// --------------------------------------------------------------------
 
 	/**
