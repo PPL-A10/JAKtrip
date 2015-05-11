@@ -162,8 +162,9 @@ class TouristAttractionManager extends CI_Model{
 		return $data;					  		
  	}
 
- 	function addVisitor($data){
+ 	function updateVisitor($place_name, $data){
  		$this->load->database();
+ 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction', $data);
  	}
 	function getVisitors($data){
@@ -174,6 +175,16 @@ class TouristAttractionManager extends CI_Model{
         $query = $this->db->get();
         return $query->result();
 	}
+	function getVisitorsFromCollection($place_name){
+		$this->load->database();
+		$condition = "place_name ='".$place_name."' AND is_visited=1";
+		$this->db->select('*');
+		$this->db->from('collection');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function getCategory(){
 		$this->load->database();
 		$query = $this->db->get('category');
