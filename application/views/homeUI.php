@@ -388,7 +388,8 @@
 					
 					<div class="col-lg-12" style="margin-top: 20px;">
 						<div class="col-lg-5"></div>
-							<a href="http://localhost/Jaktrip/index.php/allPlacesCtr"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a>
+							<!-- <a href="http://localhost/Jaktrip/index.php/allPlacesCtr"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a> -->
+							<a href="<?php echo base_url('/allplaces') ?>"><button class="col-lg-2 field btn btn-warning" type="button">BROWSE ALL</button></a>
 						<div class="col-lg-5"></div>
 					</div>
 					
