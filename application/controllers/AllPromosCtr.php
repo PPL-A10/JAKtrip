@@ -77,6 +77,15 @@ class AllPromosCtr extends CI_Controller {
 			//$this->load->view('footer');
 	}
 	
+	public function searchpromotype($category_name=NULL, $city=NULL, $place_name=NULL)
+	{
+		$this->load->library('table');
+		$this->load->helper('html'); 
+		$this->load->model('PromoManager');
+		$data['query'] = $this->PromoManager->filterPromotype($category_name, $city, $place_name);
+		//$this->load->view('searchView',$data);    
+		echo json_encode($data);
+	}
 	public function searchwisataCatNam($category_name=NULL, $place_name=NULL)
 	{
 			$this->load->library('table');

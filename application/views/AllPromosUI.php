@@ -21,7 +21,7 @@
 					<div class="form-inline">
 	   					<label class="control-label">Filter by :  </label>
 	   					<span class="field custom-dropdown ">
-	   					 	<select class="field form-control" onchange="" title="All Categories" id="category_select">    
+	   					 	<select class="field form-control" onchange="promotypefunction()" title="All Categories" id="category_select">    
 							        <option value='All' >All Types</option>
 									<?php
 										foreach($query1 as $row){

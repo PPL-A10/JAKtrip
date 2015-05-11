@@ -154,12 +154,12 @@ class AllPlacesCtr extends CI_Controller {
 		echo json_encode($data4);
     }
 	
-	public function searchwisataprice($min, $max)
+	public function searchwisataprice($min, $max,$category_name=null, $city=null, $place_name=null)
 		{
 			$this->load->library('table');
 			$this->load->helper('html'); 
 			$this->load->model('AllPlacesMod');
-			$data['query'] = $this->AllPlacesMod->filterSliderMod($min, $max);
+			$data['query'] = $this->AllPlacesMod->filterSliderMod($min, $max,$category_name, $city,$place_name);
 			//$this->load->view('searchView',$data);    
 			echo json_encode($data);
 		}

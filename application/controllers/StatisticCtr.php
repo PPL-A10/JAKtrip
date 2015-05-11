@@ -51,5 +51,11 @@ class StatisticCtr extends CI_Controller {
 		// $this->load->view('StatisticUI');
 		// $this->load->view('footer');
 		//echo json_encode($data);
+		function tes()
+		{
+			$this->load->model('StatisticManager');
+		$data['query3']= $this->StatisticManager->getstatisticbudget();
+		echo json_encode($data);
+		}
 	}
 }

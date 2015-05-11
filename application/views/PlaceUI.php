@@ -126,7 +126,7 @@
 							<div class="form-group">
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
-								<input type="file" name="userfile" size="20" multiple>
+								<input type="file" name="userfile[]" size="20" multiple>
 						      </div>
 						    </div>
 						    <div class="col-lg-12"><br><br>

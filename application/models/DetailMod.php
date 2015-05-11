@@ -20,5 +20,21 @@
 			return $query->result();
 		}
 		
+		function isValid($name)
+		{
+			$this->load->database();
+			$name = str_replace("%20"," ",$name);
+			$query = $this->db->get_where('tourist_attraction', array('place_name' => $name));
+			if($query->num_rows() > 0)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
+		}
+		
 	}
 ?>
