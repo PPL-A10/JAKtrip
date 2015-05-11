@@ -390,7 +390,7 @@ li.active > a{
 
 .searchbox{
   background-color: #e0e0e0;
-  height: 280px;
+  height: 160px;
   padding-top: 80px;
 }
 
@@ -1181,4 +1181,22 @@ div.col-lg-7 > span.tuffyh3a{
   color: #1c1c1c;
 }
 
-.zz{}
+a > span.fa.fa-map-marker{
+  color: #999 !important;
+}
+
+a:hover > span.fa.fa-map-marker{
+  color: #db2719 !important;
+}
+
+a:active > span.fa.fa-map-marker, a:visited > span.fa.fa-map-marker {
+  color: #999 !important;
+}
+
+.gm-style a, .gm-style a:active, .gm-style a:visited{
+  color: #999 !important;
+}
+
+.gm-style a:hover{
+  color: #db2719 !important;
+}

@@ -6,8 +6,9 @@
 				<div class="tuffyh2a admintitle">Edit Profile</div>
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-				echo form_open('UsersCtr/editMember', $attributes); 
-				echo form_hidden('old_password', $password); ?>
+				echo form_open_multipart('UsersCtr/editMember', $attributes); 
+				echo form_hidden('old_password', $password);
+				echo form_hidden('pic', $pic); ?>
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
@@ -35,7 +36,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Password</label>
-  						<input class="form-control" type="password" value="" id="new_password" name="new_password">
+  						<input class="form-control" type="password" value="" id="new_password" name="new_password" placeholder="Fill in this field to change password">
 				      <br></div>
 				    </div>
 					<br>
@@ -44,6 +45,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Password Confirmation</label>
   						<input class="form-control" type="password" value="" id="pass_confirm" name="pass_confirm">
+						<?php echo form_error('pass_confirm'); ?>
 				      <br></div>
 				    </div>
 					<br>

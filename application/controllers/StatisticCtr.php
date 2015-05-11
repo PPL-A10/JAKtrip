@@ -31,8 +31,10 @@ class StatisticCtr extends CI_Controller {
 			}
 			else
 			{
-				setcookie("username",$first_name, time()+3600, '/');
+				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+				setcookie("is_admin",0,time()+3600,'/');
 				header('Location: '.base_url('successLoginFB'));
 			}
 		}
@@ -49,5 +51,11 @@ class StatisticCtr extends CI_Controller {
 		// $this->load->view('StatisticUI');
 		// $this->load->view('footer');
 		//echo json_encode($data);
+		function tes()
+		{
+			$this->load->model('StatisticManager');
+		$data['query3']= $this->StatisticManager->getstatisticbudget();
+		echo json_encode($data);
+		}
 	}
 }

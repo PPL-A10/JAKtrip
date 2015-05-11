@@ -10,7 +10,7 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
-  						<input class="form-control" type="text" value="" id="name" name="name" required>
+  						<input class="form-control" type="text" value="<?php echo $name;?>" id="name" name="name" required>
 				      <br></div>
 				    </div>
 					<br>
@@ -18,7 +18,8 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Username <span class="req">*</span></label>
-  						<input class="form-control" type="text"value="" id="username" name="username" required>
+  						<input class="form-control" type="text"value="<?php echo $username;?>" id="username" name="username" required>
+						<?php echo form_error('username'); ?>
 				      <br></div>
 				    </div>
 					<br>
@@ -26,7 +27,8 @@
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">E-mail <span class="req">*</span></label>
-  						<input class="form-control" type="email"  value="" id="email" name="email" required>
+  						<input class="form-control" type="email"  value="<?php echo $email;?>" id="email" name="email" required>
+						<?php echo form_error('email'); ?>
 				      <br></div>
 				    </div>
 					<br>
@@ -43,6 +45,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Password Confirmation <span class="req">*</span></label>
   						<input class="form-control" type="password" value="" id="pass_confirm" name="pass_confirm" required>
+						<?php echo form_error('pass_confirm'); ?>
 				      <br></div>
 				    </div>
 					<br>

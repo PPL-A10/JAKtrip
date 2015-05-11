@@ -27,8 +27,10 @@
 				}
 				else
 				{
-					setcookie("username",$first_name, time()+3600, '/');
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+					setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+					setcookie("is_admin",0,time()+3600,'/');
 					header('Location: '.base_url('successLoginFB'));
 				}
 			}
@@ -39,6 +41,10 @@
 				$this->load->view('homeUI',$data);
 				$this->load->view('footer');
 			}
+
+				// $this->load->view('header', $data);
+				// $this->load->view('homeUI',$data);
+				// $this->load->view('footer');
 		}
 
 		public function successLoginFB()
@@ -48,6 +54,7 @@
 			$this->load->model('HalteManager');
 			$this->load->model('memberManager');
 			$this->load->helper('date');
+			$this->load->helper('cookie');
 			$data['query'] = $this->HalteManager->sorthalte();
 			$data['kodekoridor'] = $this->HalteManager->haltecode();
 			// $data['query']= $this->tesModel->getDatabase();
@@ -57,10 +64,10 @@
 			$currentTime = mdate("%Y-%m-%d %H:%i:%s", now());
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$name = $data['user_profile']['first_name']." ".$data['user_profile']['last_name'];
-			$username = $data['user_profile']['first_name'];
+			$username = $data['user_profile']['id'];
 			$email = "https://www.facebook.com/".$data['user_profile']['id'];
 			$password = "facebook".$data['user_profile']['last_name'];
-			$pic = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+			$pic = "https://graph.facebook.com/".$data['user_profile']['id']."/picture?type=large";
 			$form_data = array(
 				'name' => $name,
 				'username' => $username,
@@ -72,9 +79,8 @@
 				'is_active' => 1,
 				'pic' => $pic
 			);
-		
+			
 			$this->memberManager->accountFacebookRegister($form_data);
-
 			$this->load->view('header',$data);
 			$this->load->view('homeUI',$data);
 			$this->load->view('footer');

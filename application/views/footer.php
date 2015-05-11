@@ -177,11 +177,13 @@
 	var res = currentVal.split(";");
 	var min = res[0];
 	var max = res[1];
+	var y = document.getElementById("category_select").value;
+	var z = document.getElementById("name_select").value;
 //$("#output_field").html(min+ "   fsdfsdfmsdkplfmsdfmsdokf  "+max);
 	
 			jQuery.ajax({
 				        type: "POST",
-				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataprice/"+min+"/"+max,
+				        url: "http://localhost/JAKtrip/index.php/AllplacesCtr/searchwisataprice/"+min+"/"+max+"/"+y+"/"+lokasi+"/"+z,
 				        success: function(res) {
 				            if (res)
 				            {
@@ -298,6 +300,45 @@ function sortFunction(){
                     );
 	}
 
+		function promotypefunction(){		
+		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
+		//var x = document.getElementById("category_select").value;
+		//var y = "Jakarta%20Timur";
+		//var z = document.getElementById("name_select").value;
+		//$("#output_field").html("asasdslkdnjsdljknsdkjnsdkjnsdkjn");
+		var y = document.getElementById("category_select").value;
+		var z = document.getElementById("name_select").value;
+		
+				//$("#output_field").html("asasdslkdnjsdljknsdkjnsdkjnsdkjn"+y+"dsdsd"+z + "dsds"+lokasi);
+		jQuery.ajax({
+				        type: "POST",
+				        url: "http://localhost/JAKtrip/index.php/AllPromosCtr/searchpromotype/"+y+"/"+lokasi+"/"+z,
+				       success: function(res) {
+				            if (res)
+				            {
+								var obj = jQuery.parseJSON(res);
+								var resultQuery = "<div class='row boxpr'>";
+								for (var i=0 ; i<obj.query.length; i++){
+									resultQuery = resultQuery+"<div class='col-lg-6 boxpromo'>";
+									if(obj.query[i].photo==="" || obj.query[i].photo===null){
+										resultQuery = resultQuery+"<a href='<?php echo base_url('assets/img/noimg.png');?>' data-lightbox='"+obj.query[i].id_promo+"' data-title='"+obj.query[i].description+"'><div class='col-lg-5 containerimg-s'><img src='<?php echo base_url('assets/img/noimg.png');?>'/></div>";
+									}
+									else{
+										resultQuery = resultQuery+"<a href='"+obj.query[i].photo+"' data-lightbox='"+obj.query[i].id_promo+"' data-title='"+obj.query[i].description+"'><div class='col-lg-5 containerimg-s'><img src='"+obj.query[i].photo+"'></div>";
+									}
+									resultQuery = resultQuery+"<div class='col-lg-7'><div style='height: 10px'></div><span class='tuffyh3a'>"+obj.query[i].title+"</span> <br> <b>"+obj.query[i].place_name+"</b><br>"+obj.query[i].description+"</div></a></div>";
+								}
+								resultQuery = resultQuery+"<div>";
+								
+							$("#output_field").html(resultQuery);
+//								$("#output_field").html(obj.query[0].place_name;
+	}
+							
+				            }
+                        }
+                    );
+	}
+	
 	function filterFunctionFinal(){		
 		//document.getElementById("output_field").innerHTML = "You selected: 1dfsdsdfgdfgdfgdfvbdfgbffvbfgbb" ;		
 		//var x = document.getElementById("category_select").value;

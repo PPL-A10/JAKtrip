@@ -168,10 +168,10 @@
 		//chart ketiga
 		var chart3 = new AmCharts.AmSerialChart();
 		chart3.dataProvider = arrayOfPHPData3;
-		chart3.categoryField = "place_name";
+		chart3.categoryField = "lower_nom";
 		
 		var graph3 = new AmCharts.AmGraph();
-		graph3.valueField = "weekday_price";
+		graph3.valueField = "input_num";
 		graph3.type = "column";
 		chart3.addGraph(graph3);
 		
@@ -181,9 +181,9 @@
 		categoryAxis3.gridPosition = "start";
 		categoryAxis3.labelRotation = 90;
 		
-		graph3.fillAlphas = 0.8;
-		chart3.angle = 30;
-		chart3.depth3D = 15;
+		graph3.fillAlphas = 0; // or delete this line, as 0 is default
+		graph3.bullet = "round";
+		graph3.lineColor = "#8d1cc6";
 		
 		chart.write('chartdiv');
 		chart2.write('chartdiv2');
@@ -802,21 +802,39 @@
               data-toggle="popover">Trip (0)  <span class="fa fa-bus"></span></a>
 
            <?php
-            if(isset($_COOKIE["photo_facebook"]))
-            {
-              $foto = $_COOKIE["photo_facebook"];
-            }
-            else
-            {
-               $foto = base_url('assets/img/oor.jpg');
-            }
+            
 
 
             if(isset($_COOKIE["username"]))
             {
               
-           
-              echo "<li><a href=\"#\">".$_COOKIE['username']."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li><li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a><a  >My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+              if(isset($_COOKIE["photo_facebook"]))
+              {
+                $foto = $_COOKIE["photo_facebook"];
+                $username_header = $_COOKIE["username_facebook"];
+                /*------biar cookienya ga mati------*/
+                 setcookie('photo_facebook',$foto,time()+3600,"/");
+                 setcookie('username_facebook',$username_header,time()+3600,"/");
+              }
+              else
+              {
+                 $foto = base_url('assets/img/oor.jpg');
+                 $username_header = $_COOKIE["username"];
+              }
+              $update_cookie_username = $_COOKIE["username"];
+              /*------biar cookienya ga mati------*/
+              setcookie('username',$update_cookie_username,time()+3600,"/");
+
+              if($_COOKIE["is_admin"]==1)
+              {
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+              }
+              else
+              {
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+              }
+
+              echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul><li><a  href=\"#\">Edit Profile</a></li>".$halaman_user."<li><a>My Trips</a></li><li><a  href=\"#\">Collection</a></li><li><a  href=\"#\">Reviews</a></li><li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
 
             }
             

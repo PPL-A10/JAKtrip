@@ -33,8 +33,10 @@
 					}
 					else
 					{
-						setcookie("username",$first_name, time()+3600, '/');
+						setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+                		setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 						setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+						setcookie("is_admin",0,time()+3600,'/');
 						header('Location: '.base_url('successLoginFB'));
 					}
 				}
@@ -64,10 +66,9 @@
 				setcookie("counterTrip", 0, time()+3600, '/');
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
-		//	setcookie("username",null,time()+3600);
-		//	echo $hasil['query']['username'];
-		//	header("Location:http://google.com");
-		//	echo get_cookie("username");
+				setcookie("is_admin",$hasil['query']['is_admin'],time()+3600,'/');
+				// echo $hasil['query']['is_admin'];
+		
 				header("Location:".base_url('home')."");
 			}
 			

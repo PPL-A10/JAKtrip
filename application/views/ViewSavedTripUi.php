@@ -90,7 +90,7 @@
 					echo "<table style='margin-bottom: 10px;'>";
 					echo "<tr>";
 					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-					echo "<td rowspan='5'><img src='../assets/img/150.jpg'/></td>";
+					echo "<td rowspan='5'><img src='".base_url('assets/img/150.jpg')."'/></td>";
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td>";
 					echo "</tr>";
 					echo "<tr>";
@@ -107,7 +107,18 @@
 					{
 						echo " naik busway ke halte ".$halte_name[$indexpertamaKali].", lalu ".$transport_info[$indexpertamaKali]." menuju ".$place_name[$indexpertamaKali];
 					}
-					echo "</td></tr>";
+					if((strcmp($is_visited[$indexpertamaKali], "1")  == 0))
+					{
+						$hasvisited = "has visited";
+						$linkSetVisited = base_url("user/trip/unsetvisited/".$id_place_name[$indexpertamaKali]."/".$id_trip);
+					}
+					else
+					{
+						$hasvisited ="not yet visited";
+						$linkSetVisited = base_url("user/trip/setvisited/".$id_place_name[$indexpertamaKali]."/".$id_trip);
+					}
+					
+					echo "</td><a href=".$linkSetVisited."><button>".$hasvisited."</button></a></tr>";
 					echo "</table>";
 
 					for($i=$indexpertamaKali+1; $i<(count($place_name)-1); $i++)
@@ -122,7 +133,7 @@
 							echo "<table style='margin-bottom: 10px;'>";
 							echo "<tr>";
 							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-							echo "<td rowspan='5'><img src='../assets/img/150.jpg'/></td>";
+							echo "<td rowspan='5'><img src='".base_url('assets/img/150.jpg')."'/></td>";
 							echo "<td height='30px' class='tuffyh3a'>".$place_name[$i]."</td>";
 							echo "</tr>";
 							echo "<tr>";
@@ -167,7 +178,16 @@
 							}
 							
 						//	echo "<td valign='top' rowspan='3' height='90px'>1. Naik busway dmwdmwd odwdijwqodj <br>2. Jalan kaki 0.4 km ke arah barat</td>";
-							echo "</td></tr>";
+							if((strcmp($is_visited[$i], "1")  == 0))
+							{	$hasvisited = "has visited"; 
+								$linkSetVisited = base_url("user/trip/unsetvisited/".$id_place_name[$i]."/".$id_trip); 
+							}
+							else
+							{
+								$hasvisited ="not yet visited";
+								$linkSetVisited = base_url("user/trip/setvisited/".$id_place_name[$i]."/".$id_trip); 
+							}
+							echo "</td><a href=".$linkSetVisited."><button>".$hasvisited."</button></a></tr>";
 							echo "</table>";
 						}
 					
@@ -221,7 +241,7 @@
 			?>
 			
 			
-			<a href="<?php if(isset($_COOKIE['username'])){echo base_url('trip/savetrip');}else{echo '#openLogin';} ?>"><button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">SAVE TO MY TRIPS</button></a>
+			<a href="<?php if(isset($_COOKIE['username'])){echo base_url('user');}else{echo '#openLogin';} ?>"><button class="btn btn-warning" type="submit" style="font-size: 14px; margin-bottom: 80px; float: right; margin-right: 40px;">BACK TO USER PAGE</button></a>
 		</div>
 
 		

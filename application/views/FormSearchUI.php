@@ -35,48 +35,6 @@
               </span>
           </div>
 
-          <div class="form-inline">
-             <label class="col-lg-2 control-label">Filter by </label>
-             <span id="ddcontainer" class="fieldsml custom-dropdown ">
-              <select  id="ddbus" class="fieldsml form-control" onchange="filterFunctionFinal()" title="All Categories">    
-                  <option value="" selected disabled>All Categories</option>
-                  <?php
-                  foreach($query1 as $row)
-                  {
-                    echo "<option value='".$row->category_name."'>".$row->category_name."</option>";
-                  }
-                ?>
-              </select>
-             </span>
-
-             <span id="ddcontainer" class="fieldsml custom-dropdown ">
-              <select  id="ddbus" onchange="filterFunctionFinal()" class="fieldsml form-control" title="All Location" style="margin-left: -10px;">    
-                  <option value="" selected disabled>All Location</option>
-                  <?php
-                  foreach($query2 as $row)
-                  {
-                    echo "<option value='".$row->city."'>".$row->city."</option>";
-                  }
-                ?>
-              </select>
-             </span>
-
-            <span class="input-group col-lg-3">
-              <input class="fieldsml form-control" type="text" placeholder="Enter keyword..." style="width:134%;">
-              <span class="input-group-btn">
-                <button class="fieldsml btn btn-default" type="button" style="width:40%; margin-left: 45%; margin-right: 5px; padding-left: 20px; padding-right: 20px;"><span class="fa fa-search"></span></button>
-              </span>
-            </span>
-          </div>
-
-          <div class="form-inline" style="margin-top: 10px;">
-             <label class="col-lg-2 control-label">Price range </label>
-             <div style="position: relative; padding-right: 27px; padding-left: 122px;">
-               <input type="text" class="col-lg-9 range" name="range" value="" />
-               <div class="col-lg-3"></div>
-             </div>
-           </div>
-
          </form>
          <!--button type="button" class="btn btn-primary" data-toggle="collapse" data-parent="#accordion" data-target="#rating" onclick="collapseMap()">
   Horizontal Collapsible
@@ -125,11 +83,20 @@
                     {
                       $ticketprice = $row->weekday_price;
                     }
+                    $place_info = "";
+                    if($row->place_info==null)
+                    {
+                      $place_info = "null";
+                    }
+                    else
+                    {
+                      $place_info = $row->place_info;
+                    }
                     if($budget>=$query['harga'][$counter])
                     {
                       echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
                        echo "<td><img src=".base_url('assets/img/150.jpg')."></td>";
-                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:setMapLocationZoom('".$row->place_name."')\">see location</a></td>";
+                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('".$row->place_name."')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$place_info."')\">ADD TO TRIP</button><br></td>";
                       echo "</tr>";  
                     }
                       
@@ -155,10 +122,20 @@
                       {
                         $ticketprice = $row->weekday_price;
                       }
-                   
+
+                      $place_info = "";
+                      if($row->place_info==null)
+                      {
+                        $place_info = "null";
+                      }
+                      else
+                      {
+                        $place_info = $row->place_info;
+                      }
+
                    echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
                        echo "<td><img src=".base_url('assets/img/150.jpg')."></td>";
-                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$row->place_info."')\">ADD TO TRIP</button><br><a href=\"javascript:setMapLocationZoom('".$row->place_name."')\">see location</a></td>";
+                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('".$row->place_name."')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$place_info."')\">ADD TO TRIP</button><br></td>";
                       echo "</tr>"; 
                        
                     // echo "<tr>";
