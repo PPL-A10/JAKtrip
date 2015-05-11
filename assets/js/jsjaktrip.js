@@ -205,6 +205,7 @@ $(function() {
             var total_price = getCookie("totalPrice");
             var transport_info = getCookie("transportInfo");
             var place_info = getCookie("placeInfo");
+            var baseurl = 'http://localhost/JAKtrip/';
             tempdata = place_name1 + "--" +halte_name1+ "--"+busway_price1+ "--"+angkot_price1+ "--"+ticket_price1+ "--"+total_price1+ "--"+transport_info1+ "--"+ place_info1;
             
           
@@ -246,7 +247,12 @@ $(function() {
                         if(obj.query.sudahDipilih[i] == true)
                         {
                           output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                        if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                         output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
                           output = output + "<button class='btn btn-warning disabled' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br>";
                           // <a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\">see details</a></td>";
@@ -255,7 +261,12 @@ $(function() {
                         else
                         {
                            output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                        if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                         output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
                           output = output + "<button class='btn btn-warning' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br>";
                           // <a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\">see details</a></td>";
@@ -288,7 +299,7 @@ $(function() {
             var place_info = getCookie("placeInfo");
             var budget = getCookie("budget");
             var idx_last_trip = getCookie("idxLastTrip");
-            
+            var baseurl = 'http://localhost/JAKtrip/';
             var sisaBudget = parseInt(budget)-parseInt(total_price1);
             tempdata = place_name1 + "--" +halte_name1+ "--"+busway_price1+ "--"+angkot_price1+ "--"+ticket_price1+ "--"+total_price1+ "--"+transport_info1+ "--"+ place_info1+"--"+sisaBudget;
       
@@ -333,7 +344,12 @@ $(function() {
                               // output = output +  "<tr><td style='width:100px;'><img src='http://localhost/JAKtrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
 
                             output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                            output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                            if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                             output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br></td>";
                             output = output + "</tr>";
                             
@@ -362,6 +378,7 @@ $(function() {
         function showTheItinerary1()
         {
          // alert("ayayaya");
+         var baseurl = 'http://localhost/JAKtrip/';
           var itineraryPlace = getCookie("placeName").replace(/\+/gi, " ");
           var itineraryPlaceArray = itineraryPlace.split("xx");
           var itineraryTotalPrice = getCookie("totalPrice").replace(/\+/gi, " ");
@@ -436,7 +453,7 @@ $(function() {
         }
         function deleteTrip(place_name1)
         {
-
+          var baseurl = 'http://localhost/JAKtrip/';
           var countTrip = parseInt(getCookie("counterTrip"));
           if(countTrip==1)
           {
@@ -473,7 +490,12 @@ $(function() {
 
 
                       output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                    output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                    if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                     
                     output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+pbj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br></td>";
                   //    output = output + "<tr><td style='width:100px;'><img src='http://localhost/JAKtrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga : "+obj.query.hargaBusway[i]+" (harga Busway) + "+obj.query.result[i].transport_price+" (harga Angkot) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
@@ -531,12 +553,22 @@ $(function() {
                         // output = output +  "<tr><td style='width:100px;'><img src='http://localhost/JAKtrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
 
                         // output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        // output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                        // if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                         // output = output + "<td height='20px' class='tuffyh3a'>"+obj.query.result[i].place_name+"<br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
                         if(obj.query.sudahDipilih[i] == true)
                         {
                            output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                        if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                         output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
                           output = output + "<button class='btn btn-warning disabled' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br>>";
                           // <a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\">see details</a></td>";
@@ -545,7 +577,12 @@ $(function() {
                         else
                         {
                            output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                        if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                         output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
                           output = output + "<button class='btn btn-warning' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br>";
                           // <a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\">see details</a></td>";
@@ -568,7 +605,7 @@ $(function() {
         {
 
           var countTrip = parseInt(getCookie("counterTrip"));
-
+          var baseurl = 'http://localhost/JAKtrip/';
           if(countTrip==1)
           {
 
@@ -604,7 +641,12 @@ $(function() {
                       if(budget >= obj.query.harga[i])
                       {
                       	output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-	                    output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+	                    if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
 	                    
 	                    output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br>/td>";
                       }
@@ -650,6 +692,7 @@ $(function() {
               //      alert(total_price_array.length);
                     var semuaHarga = 0;
                     var place_name_array = place_name.split("xx");
+                    
 
                     //------------kayaknya ga penting-----------------
                     // for(var i=0; i<total_price_array.length-1; i++)
@@ -691,7 +734,12 @@ $(function() {
                               // output = output +  "<tr><td style='width:100px;'><img src='http://localhost/JAKtrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
 
                             output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                            output = output + "<td><img src='http://localhost/JAKtrip/assets/img/150.jpg'/></td>";
+                            if(obj.query.result[i].pic_thumbnail==NULL || obj.query.result[i].pic_thumbnail==""){
+  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+}
+else{
+  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+}
                             output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">ADD TO TRIP</button><br></td>";
                             output = output + "</tr>";
                             
