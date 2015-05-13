@@ -198,44 +198,38 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['query'] = $this->HalteManager->getAllHalte();
 		$data['admin'] = $this->TouristAttractionManager->getAdmin();
 		
-		$data['place_name']['value'] = $query['place_name'];
-		$data['description']['value'] = $query['description'];
-		$data['place_info']['value'] = $query['place_info'];
-		$data['weekday_price']['value'] = $query['weekday_price'];	
-		$data['weekend_price']['value'] = $query['weekend_price'];	
-		//$data['cat_name']['value'] = $query2['category_name'];	
-		$data['city']['value'] = $query['city'];
+		$data['place_name'] = $query['place_name'];
+		$data['description'] = $query['description'];
+		$data['place_info'] = $query['place_info'];
+		$data['weekday_price'] = $query['weekday_price'];	
+		$data['weekend_price'] = $query['weekend_price'];
+		$data['pic'] = $query['pic_thumbnail'];		
+		//$data['cat_name'] = $query2['category_name'];	
+		$data['city'] = $query['city'];
 		if($query3 != NULL){
-			$data['pic']['value'] = $query3['pic'];
-			$data['pic_info']['value'] = $query3['pic_info'];
+			$data['pic'] = $query3['pic'];
+			$data['pic_info'] = $query3['pic_info'];
 		}
 		else{
-			$data['pic']['value'] = NULL;
-			$data['pic_info']['value'] = NULL;
+			$data['pic'] = NULL;
+			$data['pic_info'] = NULL;
 		}
-		$data['longitude']['value'] = $query['longitude'];
-		$data['lattitude']['value'] = $query['lattitude'];	
-		$data['halte_name']['value'] = $query4['halte_name'];	
-		$data['transport_info']['value'] = $query['transport_info'];	
-		$data['transport_price']['value'] = $query['transport_price'];	
-		$data['author']['value'] = $query['author'];
-		$data['rate_avg']['value'] = $query['rate_avg'];
-		$data['hits']['value'] = $query['visitors'];		
+		$data['longitude'] = $query['longitude'];
+		$data['lattitude'] = $query['lattitude'];	
+		$data['halte_name'] = $query4['halte_name'];	
+		$data['transport_info'] = $query['transport_info'];	
+		$data['transport_price'] = $query['transport_price'];	
+		$data['author'] = $query['author'];
+		$data['rate_avg'] = $query['rate_avg'];
+		$data['hits'] = $query['visitors'];		
 		
-		//dropdown list category
-		//$dd_cat = array();
 		$result = $this->TouristAttractionManager->getCategory();
-		//$result4 = $this->TouristAttractionManager->tourAttr_getCat($place_name);
-		//foreach($result->result_array() as $cat){
-		//	$dd_cat[$cat['category_name']] = $cat['category_name'];
-		//}
-		
 		
 		$cat_checked=$this->isCategory($place_name);
 		
 		
-		$data['cat_name']['value']=$result;
-		$data['cat_checked']['value']=$cat_checked;
+		$data['cat_name']=$result;
+		$data['cat_checked']=$cat_checked;
 		
 		//dropdown list place_info
 		
@@ -302,115 +296,149 @@ class ManageTourAttrCtr extends CI_Controller {
 	}
 	
 	function myform(){
-		$this->load->library('form_validation');
+		$this->load->helper('cookie');
 		$this->load->helper('form');
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('TouristAttractionManager');
+		$this->load->model('HalteManager');
+		$this->load->model('searchMod');
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim|callback_check');			
-		$this->form_validation->set_rules('weekday_price', 'weekday_price', 'trim');			
-		$this->form_validation->set_rules('weekend_price', 'weekend_price', 'trim');
-		$this->form_validation->set_rules('longitude', 'longitude', 'trim');
-		$this->form_validation->set_rules('lattitude', 'lattitude', 'trim');
-		$this->form_validation->set_rules('city', 'city', 'trim');
-		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('place_info', 'place_info', 'trim');
-		$this->form_validation->set_rules('halte_name', 'halte_name', 'trim');
-		$this->form_validation->set_rules('transport_info', 'transport_info', 'trim');
-		$this->form_validation->set_rules('transport_price', 'transport_price', 'trim');
-		$this->form_validation->set_rules('category_name', 'category_name', 'trim');
-		$this->form_validation->set_rules('pic', 'pic', 'trim');
-		$this->form_validation->set_rules('pic_info', 'pic_info', 'trim');
-		$this->form_validation->set_rules('author', 'author', 'trim');
-
+		$place_name = $this->input->post('place_name');
 		$key = $this->input->post('key');
+		if($place_name!=$key){
+			$this->form_validation->set_rules('place_name', 'place', 'trim|xss_clean|alpha_numeric_dash_spaces|is_unique[tourist_attraction.place_name]');		
+		}
+				
+		$this->form_validation->set_rules('weekday_price', 'weekday price', 'integer');			
+		$this->form_validation->set_rules('weekend_price', 'weekend price', 'integer');
+		$this->form_validation->set_rules('transport_price', 'transportation fee', 'integer');
+		$this->form_validation->set_rules('source', 'link web', 'valid_url');
+		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
-	   $place_name = $this->input->post('place_name');
-	   $weekday_price = $this->input->post('weekday_price');
+
+		$weekday_price = $this->input->post('weekday_price');
 		$weekend_price = $this->input->post('weekend_price');
 		$longitude = $this->input->post('longitude');
 		$lattitude = $this->input->post('lattitude');
 		$city = $this->input->post('select_location');
-		//'rate_avg' => 0,
 		$description = $this->input->post('description');
-		//'place_info' => $this->input->post('place_info'),
+		$place_info = $this->input->post('place_inform');
+		$select_busstop = $this->input->post('select_busstop');
 		$transport_info = $this->input->post('transport_info');
-		$transport_price = $this->input->post('transport_price');
+		$transport_price = $this->input->post('transport_price');	
+		$link_web = $this->input->post('source');
+		
 		$category_list = $this->input->post('category_list');
 		$category_new = $this->input->post('category_new');
-		$halte_name = $this->input->post('select_busstop');
-		$halte_code = $this->touristAttractionManager->getHalteCode($halte_name);
-		$place_info = $this->input->post('place_inform');
-		$author = $this->input->post('author');
+		
+		$pic = $this->input->post('pic');
 		
 		
-		
-		
-		if($place_info == '0'){
-			$place_info = NULL;
-		}	
-		 
-		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
-		
-	
+		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
 			redirect ('manageTourAttrCtr/edit/'.$key);
 		}
-		else // passed validation proceed to post success logic
-		{
-		 	// build array for the model
-			$form_data = array(
-					       'place_name' => $place_name,
-					       	'weekday_price' => $weekday_price,
-					       	'weekend_price' => $weekend_price,
-							'longitude' => $longitude,
-							'lattitude' => $lattitude,
-							'city' => $city,
-							//'rate_avg' => 0,
-							'description' => $description,
-							'place_info' => $place_info,
-							'halte_code' => $halte_code['halte_code'],
-							'transport_info' => $transport_info,
-							'transport_price' => $transport_price,
-							'author' => $author,
-							'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now())							
-						);
+		//if valid
+		else{
+			$this->load->helper('cookie');
+			$user = get_cookie("username");
 
-			$form_photo = array(
-							'place_name' => $place_name,
-							'pic' => $this->input->post('pic'),
-							'pic_info' =>$this->input->post('pic_info')
-						);		
+			$config['upload_path'] = './assets/img/place/'.$place_name;
+			//$config['upload_path'] = './assets/upload/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size']	= '1000';
+			$config['max_width']  = '4096';
+			$config['max_height']  = '4096';
+			$this->load->library('upload', $config);
+			//$this->upload->initialize($config);
+			//$upload_data = $this->upload->data();
 			
-			$old_cat = $this->TouristAttractionManager->tourAttr_getCat($place_name);
-			
-			$form_cat = array(
-							'place_name' => $place_name,
-							'category_list' => $category_list,
-							'category_new' => $category_new,
-							'category_old' => $old_cat
-						);							
+			$dir_exist = true; // flag for checking the directory exist or not
+			if (!is_dir('./assets/img/place/'.$place_name))
+			{
+				mkdir('./assets/img/place/'.$place_name, 0777, true);
+				$dir_exist = false; // dir not exist
+			}
+			else{
+
+			}
+			$upload_status = false;
+			if (!$this->upload->do_upload())
+			{
+				$error = array('error' => $this->upload->display_errors());
+				//$this->load->view('HomeUI');
+				$this->load->view('FormTourAttrUI', $error);
+			}
+			else
+			{
+				$upload_data = $this->upload->data();
+				$file_name = $upload_data['file_name'];
+				$pic = './assets/img/place/'.$place_name.'/'.$file_name;
+				$upload_status = true;
+			}
+
+			if($place_info=='0'){
+				$place_info=NULL;
+			}
+			if($pic==''){
+				$pic=NULL;
+			}
+			// build array for the model
+				//echo $this->input->post('select_busstop');
+				
+			$form_data = array(
+				'place_name' => $place_name,
+				'weekday_price' => $weekday_price,
+				'weekend_price' => $weekend_price,
+				'longitude' => $longitude,
+				'lattitude' => $lattitude,
+				'city' => $city,
+				'description' => $description,
+				'place_info' => $place_info,
+				//'halte_code' => $this->input->post('halte_code'),
+				'halte_code' =>$this->TouristAttractionManager->gethaltekode($select_busstop),
+				'transport_info' => $transport_info,
+				'transport_price' => $transport_price,	
+				//'nearest_bus_stop' => $this->input->post('select_busstop'),
+				'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now()),
+				'link_web' => $link_web,
+				'pic_thumbnail' => $pic
+			);
+
+			if($upload_status==TRUE){
+				$form_photo = array(
+									'place_name' => $place_name,
+									'pic' => $pic,
+									'pic_info' => 'Uploaded by '.$user,
+									'is_publish' => 1,
+									'username' => $user
+				);
+			}
+			else{
+				$form_photo = NULL;			
+			}
+					
 								
-			//$dat['category_list']=$category_list;
-			
+			$form_cat = array(
+				'place_name' => $place_name,
+				'category_list' => $category_list,
+				'category_new' => $category_new
+			);							
+										
 			// run insert model to write data to db
 			
-			//echo "TEST ".$category_new;
-			
-			if ($this->TouristAttractionManager->edit($key, $form_data, $form_photo, $form_cat) == TRUE) // the information has therefore been successfully saved in the db
-				{
-					//$this->load->view('formTourAttrUI', $dat);
-					redirect('manageTourAttrCtr/success');   // or whatever logic needs to occur
-				}
-				else
-				{
-				echo 'An error occurred saving your information. Please try again later';
-				 //Or whatever error handling is necessary
-				}
+			if ($this->TouristAttractionManager->edit($key, $form_data, $form_photo, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
+				redirect('ManageTourAttrCtr/success');   // or whatever logic needs to occur
 			}
-			
+			else{
+				echo 'An error occurred saving your information. Please try again later';
+				// Or whatever error handling is necessary
+			}
+		}
 		
 	}
 	

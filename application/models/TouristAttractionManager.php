@@ -93,8 +93,10 @@ class TouristAttractionManager extends CI_Model{
 
 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data);
-		$this->db->where('place_name',$place_name);
-		$this->db->update('photo',$form_photo);	
+		if($form_photo!=NULL){
+			$this->db->insert('photo', $form_photo);			
+		}
+
 		//$this->db->where('place_name',$place_name);
 		//$this->db->update('tour_category',$x);
 		
