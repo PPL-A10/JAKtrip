@@ -93,8 +93,10 @@ class TouristAttractionManager extends CI_Model{
 
 		$this->db->where('place_name',$place_name);
 		$this->db->update('tourist_attraction',$form_data);
-		$this->db->where('place_name',$place_name);
-		$this->db->update('photo',$form_photo);	
+		if($form_photo!=NULL){
+			$this->db->insert('photo', $form_photo);			
+		}
+
 		//$this->db->where('place_name',$place_name);
 		//$this->db->update('tour_category',$x);
 		
@@ -161,7 +163,30 @@ class TouristAttractionManager extends CI_Model{
 
 		return $data;					  		
  	}
-	
+
+ 	function updateVisitor($place_name, $data){
+ 		$this->load->database();
+ 		$this->db->where('place_name',$place_name);
+		$this->db->update('tourist_attraction', $data);
+ 	}
+	function getVisitors($data){
+		$this->load->database();
+		$this->db->select('visitors');
+        $this->db->from('tourist_attraction');
+        $this->db->where('place_name', $data);
+        $query = $this->db->get();
+        return $query->result();
+	}
+	function getVisitorsFromCollection($place_name){
+		$this->load->database();
+		$condition = "place_name ='".$place_name."' AND is_visited=1";
+		$this->db->select('*');
+		$this->db->from('collection');
+		$this->db->where($condition);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	function getCategory(){
 		$this->load->database();
 		$query = $this->db->get('category');
@@ -505,6 +530,12 @@ class TouristAttractionManager extends CI_Model{
             $query = $this->db->from('tourist_attraction')->where($condition)->get();
 			
 			return $query->row_array();
+		}
+
+		function mostPopular(){
+			$this->load->database();
+			$query = $this->db->select("*")->from('tourist_attraction')->order_by("visitors", "desc")->limit('3')->get();
+	   		return $query->result();
 		}
 }
 ?>

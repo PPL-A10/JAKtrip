@@ -11,16 +11,17 @@
 		$type_name = $type_nam;
 		$type_checked = $type_checked['value'];
 		$photo = $photoPromo;
-	
+		$key1 = $id_promo;
+
 		echo form_hidden('key', $id_promo); 
-		echo form_hidden('photoPromo', $photoPromo);
+		// echo form_hidden('photoPromo', $photoPromo);
 		?>
 		
 		<div class="form-group">
 		  <div class="col-lg-11">
 			<label class="control-label">Title <span class="req">*</span></label>
 			<?php echo form_error('title'); ?>
-  				<input class="form-control" type="text" id="title" name="title" value="<?php echo $title; ?>" required>
+  				<input class="form-control" type="text" id="title" name="title" value="<?php echo $title; ?>" required pattern="[a-zA-Z0-9\s]+">
 		      <br></div>
 		    </div>
 			<br>
@@ -88,7 +89,9 @@
 		  <div class="col-lg-11"> <br>
 			<label class="control-label">Photos <span class="req">*</span></label>
   			<input type="file" name="userfile" size="20">
-  			<?php echo "<img src='".base_url($photo)."'></a>"; ?>
+  			<?php echo "<a href='".base_url($photo)."' data-lightbox='".$key1."'>";
+			echo "<div class='pic-thumbnail white'><img src='".base_url($photo)."'></div></a>";
+			?>
 	      <br></div>
 	    </div>
 	    <br>

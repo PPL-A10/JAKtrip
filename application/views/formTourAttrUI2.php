@@ -77,8 +77,8 @@ function addLocation(lng,lat){
 
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
-					echo form_open('manageTourAttrCtr/myform', $attributes); 
-					$place_name = $place_name['value'];
+					echo form_open_multipart('manageTourAttrCtr/myform', $attributes); 
+					/*$place_name = $place_name['value'];
 					$description = $description['value'];
 					$place_info = $place_info['value'];
 					$weekday_price = $weekday_price['value'];
@@ -93,13 +93,14 @@ function addLocation(lng,lat){
 					$halte_name = $halte_name['value'];
 					$transport_info = $transport_info['value'];
 					$transport_price = $transport_price['value'];
-					$author = $author['value'];
+					$author = $author['value'];*/
 					
 				echo form_hidden('key', $place_name); 
 				echo form_hidden('rate_avg', $rate_avg); 
 				echo form_hidden('hits', $hits);
 				echo form_hidden('author', $author);
-				?>
+				echo form_hidden('pic', $pic); ?>
+				
 					
 					<div class="form-group">
 					  <div class="col-lg-11">
@@ -203,9 +204,8 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Photos <span class="req">*</span></label>
-						<?php echo form_error('city'); ?>
-  						<input class="" type="file" id="pic" name="pic" value="<?php echo set_value('pic'); ?>" multiple>
+						<label class="control-label">Photos</label>
+  						<input type="file" name="userfile" size="20" multiple>
 				      <br></div>
 				    </div>
 				    <br>
@@ -274,6 +274,14 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
+					<div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Source <span class="req">*</span></label>
+						<?php echo form_error('source'); ?>
+  						<input class="form-control" type="text" id="source" name="source" value="<?php echo $link_web; ?>" required>
+				      <br></div>
+				    </div>
+					<br>
 				  
 				    <br><br>
 
