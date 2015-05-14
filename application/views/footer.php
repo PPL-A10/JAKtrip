@@ -60,6 +60,10 @@
 								}
 								
 							$("#output_field123").html(resultQuery);
+							setTimeout(function () {
+								location.href="http://localhost/JAKtrip/admin/suggestions#photos";
+							}, 3500); 
+							notif("<center>You successfully published a photo.</center>");
 //								$("#output_field").html(obj.query[0].place_name;
 	}
 							
@@ -160,7 +164,7 @@
 							setTimeout(function () {
 								location.href="http://localhost/JAKtrip/place/"+tempat;
 							}, 3500); 
-							notif("<center>You successfully deleted the review</center>");
+							notif("<center>You successfully deleted a review.</center>");
 //								$("#output_field").html(obj.query[0].place_name;
 //$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
 							//location.reload();
@@ -824,7 +828,15 @@ function calcRoute() {
 			var startDate = document.getElementById("start_date").value;
 			var endDate = document.getElementById("end_date").value;
 			if ((Date.parse(startDate) > Date.parse(endDate))) {
-				alert("End date should be greater than Start date: "+ startDate);
+				alert("End Date should be greater than Start Date.");
+				document.getElementById("end_date").value = "";
+			}
+		});
+		$("#start_date").change(function(){
+			var startDate = document.getElementById("start_date").value;
+			var endDate = document.getElementById("end_date").value;
+			if ((Date.parse(startDate) > Date.parse(endDate))) {
+				alert("End Date should be greater than Start Date.");
 				document.getElementById("end_date").value = "";
 			}
 		});

@@ -79,8 +79,8 @@ Menampilkan list promo di menu admin page
 				}
 				echo "<td>";
 				$onclick = array('onclick'=>"return confirm('Are you sure to delete promo ".$row->title." from ".$row->place_name."?')");
-				echo anchor('admin/promos/delete/'.$row->id_promo,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-				echo "<td>". anchor('admin/promos/edit/' .$row->id_promo, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+				echo anchor('admin/promo/delete/'.$row->id_promo,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
+				echo "<td>". anchor('admin/promo/edit/' .$row->id_promo, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 				echo "<td><a href='".base_url('promo')."/".$row->id_promo."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
 				echo "</tr>";
 			}
@@ -98,3 +98,11 @@ Menampilkan list promo di menu admin page
 <!--close header-->
 </div>
 </div>
+
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>

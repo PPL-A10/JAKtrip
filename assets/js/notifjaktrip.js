@@ -73,7 +73,7 @@ function notifDelAchievement() {
 			
 			// create the notification
 			var notification = new NotificationFx({
-				message : '</center>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#visited">your visited</a>.</center>',
+				message : '<center>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#visited">your visited</a>.</center>',
 				layout : 'growl',
 				effect : 'genie',
 				type : 'notice', // notice, warning or error

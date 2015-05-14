@@ -224,7 +224,7 @@
 										echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
 										echo     	"<input type='checkbox' id='spamreason' name='spamreason[]' value='profanity'>&nbsp;&nbsp;Profanity<br>";
 										echo    	"<input type='checkbox' id='spamreason' name='spamreason[]' value='nudity'>&nbsp;&nbsp;Nudity<br><br>";
-										echo   	"<div class='row'><br>";
+										echo   	"<div class='row'><br><br><br>";
 										echo    "<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 100px;'>cancel</a>";
 										echo    "<button type='submit' class='pull-right btn btn-warning' style='margin-right: 20px;'>send</button>";
 										echo	"</div>";
@@ -261,7 +261,6 @@
 	</div>
 </div>
 <?php
-
 	if($this->session->flashdata('form')) {
 	  $msg = $this->session->flashdata('form');
 	  $message = $msg['message'];

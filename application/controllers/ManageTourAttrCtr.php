@@ -88,6 +88,8 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		if($place_name != NULL){
 			$this->TouristAttractionManager->delete($place_name);
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a place.</center>'));
+			redirect('admin/places');
 		}
 		//$data = $this->guest_model->general();
 		//$data['query'] = $this->guest_model->guest_getall();

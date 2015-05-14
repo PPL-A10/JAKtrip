@@ -269,83 +269,26 @@ function do_upload($place_name)
 		$this->load->helper('html'); 
 		$this->load->model('SpamManager');
 		$reason = $_POST['spamreason'];
+		if($reason==0){
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You did not state any reasons.</center>'));
+			redirect('place/'.$name);
+		}
 		foreach ($reason as $spamreason){
-		if((int)$id != null){
-			$this->SpamManager->updatespam($id,$spamreason);
+			if((int)$id != null){
+				$this->SpamManager->updatespam($id,$spamreason);
+				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully flagged a review.</center>'));
+				redirect('place/'.$name);
+			}
+			else{
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			}
 		}
 		/*if($spamreason == 'spam'){$this->SpamManager->updatespam($id);}
 		if($spamreason == 'false_statement'){$this->SpamManager->updatespam($id);}
 		if($spamreason == 'unrelated_content'){$this->SpamManager->updatespam($id);}
 		if($spamreason == 'profanity'){$this->SpamManager->updatespam($id);}
 		if($spamreason == 'nudity'){$this->SpamManager->updatespam($id);}*/
-		}
 		
-		$this->load->library('form_validation');           
-        $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-		$this->form_validation->set_rules('rate', 'rate', 'required');
-		$this->form_validation->set_rules('review', 'review');
-		$this->load->helper('cookie');
-		if ($this->form_validation->run() == FALSE)
-		{
-			//$this->load->view('formRatingUI');
-		}
-		else
-		{
-			$name= str_replace("%20", " ",$name);
-			$data = array(
-						'username' => get_cookie("username"),
-						'place_name' => $name,
-                        'rate' => $this->input->post('rate'),
-                        'title' => $this->input->post('title'),
-                        'review' => $this->input->post('review')
-//						'is_nudity' => $this->input->false,
-//						'is_spam' => $this->input->false,
-//						'is_FalseStatement' => $this->input->false,
-//						'is_unrelatedStatement' => $this->input->false,
-//						'is_profanity' => $this->input->false;
-            );
-					//Transfering data to Model
-                    $this->ratingManager->insert_rating($data);
-                    //Loading View
-					//$this->load->view('formRatingUI');
-         }		//Including validation library
-		
-		$data['thisPlace'] = $name;
-		$data['thisUser'] = get_cookie("username");
-		$this->load->helper('html');
-		$this->load->model('DetailMod');
-		$this->load->model('ReviewModel');
-		$data['query']= $this->DetailMod->showdetail($name);
-		$data['query2']= $this->ReviewModel->showreviewtempat($name);
-		
-		$this->user = $this->facebook->getUser();
-		if($this->user)
-		{
-
-			$data['user_profile'] = $this->facebook->api('/me/');
-			$first_name = $data['user_profile']['first_name'];
-			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			if(get_cookie('username')!=null)
-			{
-				header("Location: ".base_url()."place/".$name."");
-			}
-			else
-			{
-				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
-                setcookie("username",$data['user_profile']['id'], time()+3600, '/');
-				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
-				setcookie("is_admin",0,time()+3600,'/');
-				header('Location: '.base_url('successLoginFB'));
-			}
-		}
-		else
-		{
-			$data['login_url'] = $this->facebook->getLoginUrl();
-			header("Location: ".base_url()."place/".$name."");
-		}
-		// $this->load->view('header');
-		// $this->load->view('FlagUI',$data);
-		// $this->load->view('footer');
 	}
 
 	function addWishlist($place_name){

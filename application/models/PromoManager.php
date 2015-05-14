@@ -234,6 +234,7 @@ class PromoManager extends CI_Model{
         }
         
         $type_new = $form_type['type_new'];
+        
         foreach($form_type['type_list'] as $selected){
             if($selected != ''){
                 $quer = $this->db->get_where('type_promo', array('id_promo'=>$id_promo, 'type_name'=>$selected));

@@ -101,8 +101,8 @@
 			);
 
 			$query = $this->TripManager->saveTrip($dataInsert);
-			// echo json_encode($query);
-			header('Location: '.base_url('user'));	
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully saved it to your trips.</center>'));
+			redirect('user');
 
 		}
 

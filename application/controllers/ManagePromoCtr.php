@@ -81,6 +81,8 @@ class ManagePromoCtr extends CI_Controller{
 
 		if($id_promo != NULL){
 			$this->PromoManager->delete($id_promo);
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a promo.</center>'));
+			redirect('admin/promo');
 		}
 
 		$query = $this->PromoManager->promo_getall();
@@ -250,12 +252,13 @@ class ManagePromoCtr extends CI_Controller{
 		$this->load->model('PromoManager');
 
 		$this->form_validation->set_rules('title', 'title', 'trim|alpha_numeric_dash_spaces');
-		$this->form_validation->set_rules('start_date', 'start_date', 'trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('end_date', 'end_date', 'trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
-		$this->form_validation->set_rules('description', 'description', 'trim');
+		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('end_date', 'end date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('place_name', 'place name', 'trim');
+		$this->form_validation->set_rules('description', 'description', 'trim|required');
 		$this->form_validation->set_rules('photo', 'photo', 'trim');
-		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
+		$this->form_validation->set_rules('type_name', 'type', 'trim');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		$id_promo = $this->input->post('key');
 		
@@ -282,15 +285,16 @@ class ManagePromoCtr extends CI_Controller{
 		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('FormPromoUI2', $error);
+			// $this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			// redirect('admin/promo/edit/'.$id_promo);
 		}else{
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
 		}
-		
-		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 
 		if ($this->form_validation->run() == FALSE){ // validation hasn't been passed
-			redirect ('ManagePromoCtr/edit/'.$id_promo);
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			redirect('admin/promo/edit/'.$id_promo);
 		}else{
 			$queryPhoto = $this->PromoManager->promo_get($id_promo);
 			$temp = mysql_fetch_assoc($queryPhoto);
@@ -325,6 +329,11 @@ class ManagePromoCtr extends CI_Controller{
 			
 			$old_type = $this->PromoManager->promo_getType($id_promo);
 			
+			if(!isset($_POST['type_list'])) {
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+				redirect('admin/promo/edit/'.$id_promo);
+			}
+
 			$form_type = array(
 				'id_promo' => $id_promo,
 				'type_list' => $type_list,
@@ -333,9 +342,11 @@ class ManagePromoCtr extends CI_Controller{
 			);
 			
 			if ($this->PromoManager->edit($id_promo, $form_data, $form_type) == TRUE){ // the information has therefore been successfully saved in the db
-				redirect('ManagePromoCtr/success');
+				$this->session->set_flashdata('form', array('message' => '<center>You successfully edited a promo.</center>'));
+				redirect('admin/promo');
 			}else{
-				echo 'An error occurred saving your information. Please try again later';
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+				redirect('admin/promo/edit/'.$id_promo);
 			}
 		}
 	}

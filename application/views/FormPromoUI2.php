@@ -69,7 +69,7 @@ Menampilkan form isian mengubah promo di halaman admin
 		  <div class="col-lg-11">
 			<label class="control-label">Description <span class="req">*</span></label>
 			<?php echo form_error('description'); 
-			echo form_textarea(array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description) )."<br>";
+			echo form_textarea(array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description, 'required' => 'required') )."<br>";
 			?>
   		  <br></div>
 	    </div>

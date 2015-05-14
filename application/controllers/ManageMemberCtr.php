@@ -59,7 +59,9 @@ class ManageMemberCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->model('memberMod');
 		if((string)$name != ""){
-		$this->memberMod->delete($name);
+			$this->memberMod->delete($name);
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a member.</center>'));
+			redirect('admin/members');
 		}
 		$data['query'] = $this->memberMod->showallmember();
 

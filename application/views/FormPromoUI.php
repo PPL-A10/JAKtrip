@@ -58,7 +58,8 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<div class="form-group">
 	  <div class="col-lg-11">
 		<label class="control-label">Description <span class="req">*</span></label>
-		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>"></textarea>
+		<?php echo form_error('description'); ?>
+		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>" required></textarea>
       <br></div>
     </div>
     <br>
@@ -96,3 +97,11 @@ Menampilkan form isian membuat promo baru di halaman admin
 <!--close header-->		
 </div>
 </div>
+
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>
