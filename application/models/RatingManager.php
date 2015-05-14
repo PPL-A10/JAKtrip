@@ -5,12 +5,20 @@ class RatingManager extends CI_Model{
         parent::__construct();
     }
     
-	 function insert_rating($data){
-	 //Inserting in Table(rating) of Database(jaktrip) 
- 		$this->load->database();
-       $this->db->insert('rating', $data);
+    /*
+    author: Khusna Nadia
+    Insert rating ke database tabel rating
+    */
+	function insert_rating($data){
+	//Inserting in Table(rating) of Database(jaktrip) 
+        $this->load->database();
+        $this->db->insert('rating', $data);
     }
 
+    /*
+    author: 
+    Menampilkan rating dan review masing-masing member
+    */
     function showReview($user){
     	$this->load->database();
     	$this->db->select('*');

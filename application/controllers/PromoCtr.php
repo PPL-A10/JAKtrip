@@ -1,24 +1,22 @@
 <?php
-
 class PromoCtr extends CI_Controller {
-
-    function __construct() {
+    function __construct(){
         parent::__construct();
         $this->load->model('promoManager');
     }
 
-    function index($title=null)
-	{   
+    /*
+    author: 
+    editor: Mohammad Syahid Wildan-facebook
+    Menampilkan list promo untuk user
+    */
+    function index($title=null){
 		$this->load->helper('cookie');
-		$data['query'] = $this->promoManager->showAllPromo($title);
-	
 		$this->load->helper('html');
-
-
+		$data['query'] = $this->promoManager->showAllPromo($title);
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
-
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
