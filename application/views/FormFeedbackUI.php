@@ -11,7 +11,6 @@ Menampilkan form isian membuat feedback di halaman Contact Us
 			<div class="title">
 				<div class="tuffyh1a">Contact Us</div>
 			</div>
-
 		</header>
 
 		<ul class="subtitle nav navbar-nav">
