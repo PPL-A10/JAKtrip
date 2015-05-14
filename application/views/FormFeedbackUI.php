@@ -20,58 +20,71 @@
 				<div class="contactus col-lg-5">
 				<?php 
 				$attributes = array('id' => 'formfeedback');
-				echo form_open('feedbackCtr', $attributes); ?>
+				echo form_open('contactus/send', $attributes); ?>
 					<div class="contact form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
 						<?php echo form_error('name'); ?>
-  						<input class="form-control" type="text" id="name" name="name" required>
+						<?php echo form_input(array('id' => 'name', 'name' => 'name', 'class' => 'form-control')); ?>
+  						<!-- <input class="form-control" type="text" id="name" name="name" required> -->
 				      </div>
 				    </div>
-					<br>
+					<br><br>
 				    <div class="contact form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Email <span class="req">*</span></label>
 						<?php echo form_error('email'); ?>
-  						<input class="form-control" type="email" id="email" name="email" required>
+						<?php echo form_input(array('id' => 'email', 'name' => 'email', 'class' => 'form-control')); ?>
+  						<!-- <input class="form-control" type="email" id="email" name="email" required> -->
 				      </div>
 				    </div>
-				    <br>
+				    <br><br>
 				    <div class="contact form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Subject</label>
-						 <?php echo form_error('dname'); ?>
-  						<input class="form-control" type="text" id="subject" name="subject">
+						 <?php echo form_error('subject'); ?>
+						 <?php echo form_input(array('id' => 'subject', 'name' => 'subject', 'class' => 'form-control')); ?>
+  						<!-- <input class="form-control" type="text" id="subject" name="subject"> -->
 				      </div>
 				    </div>
-				    <br>
+				    <br><br>
 				    <div class="contact form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Message <span class="req">*</span></label>
 						<?php echo form_error('message'); ?>
-  						<textarea class="form-control" rows="3" id="textArea" id="message" name="message" required></textarea>
+						<?php echo form_textarea(array('id' => 'message', 'name' => 'message', 'class' => 'form-control', 'rows' => '3')); ?>
+  						<!-- <textarea class="form-control" rows="3" id="message" name="message" required></textarea> -->
 				      </div>
 				    </div>
 				    <br>
 				    <button class="btn btn-warning" type="submit">SEND</button>
 				    <?php echo form_close(); ?>
 				</div>
+				<div class="contactus col-lg-5">
+					<div class="contactinfo">
+					<b>JAKTrip: Explore fun places within your budget in Jakarta</b><br>
+					Crafted by A10<br>
+					Faculty of Computer Science, University of Indonesia<br><br>
+					
+					<a href="mailto:amad.ibra@gmail.com">Ahmad Ibrahim</a> as Project Manager<br>
+					<a href="mailto:fakhirah.dg@gmail.com">Fakhirah Dianah G.</a> as System Analyst<br>
+					<a href="mailto:khusnanadia@gmail.com">Khusna Nadia</a> as Database Designer<br>
+					<a href="mailto:mohammad.syahid.wildan@gmail.com">M. Syahid Wildan</a> as Lead Programmer<br>
+					<a href="mailto:syifa.kha@gmail.com">Syifa Khairunnisa</a> as Front-End Developer
+					</div>
+				</div>
+				<div class="contactus col-lg-1"></div>
 			</div>
 			
 		</div>
 	</div>
-
-	// <script>
-	// $(document).ready(function(){
-	// 	notifSuccess("tesss");
-	// });
-	// </script>
 	
 <?php
 
 	if($this->session->flashdata('form')) {
 	  $msg = $this->session->flashdata('form');
 	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
 	  echo "<script>$(document).ready(function(){notifSuccess('".$message."');});</script>";
 	}
 ?>
