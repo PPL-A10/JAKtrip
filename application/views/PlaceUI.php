@@ -71,7 +71,7 @@
 					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
 					    	}
 					    	if($row->is_visited==1){
-					    		echo '<a href="#"><span class="fa fa-check-circle icondetail iconcol a"></span></a>';
+					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a"></span></a>';
 					    	}
 					    	else if($row->is_visited==0){
 					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';

@@ -5,11 +5,17 @@ class PromoManager extends CI_Model{
         parent::__construct();
     }
     
+    /*
+    author: 
+    */
  	function insertPromo($data){
 	 	$this->load->database();
        	$this->db->insert('promo', $data);
     } 
 
+    /*
+    author: 
+    */
     function showAllPromo(){
 		$this->load->database();
 		$this->db->select('*');
@@ -19,6 +25,9 @@ class PromoManager extends CI_Model{
 		return $query->result();
 	}
 
+    /*
+    author: 
+    */
 	function showPromo($title){
 		$this->load->database();
 		$name = str_replace("%20"," ",$name);
@@ -26,6 +35,10 @@ class PromoManager extends CI_Model{
 		return $query->result();
 	}
 
+    /*
+    author: Khusna Nadia
+    Mendapatkan atribut type_name pada tabel types
+    */
     function showType(){
         $this->load->database();
         $this->db->select('type_name');
@@ -36,18 +49,29 @@ class PromoManager extends CI_Model{
         return $query->result();
     }
 
+    /*
+    author: Khusna Nadia
+    Mendapatkan type yang ada di tabel types
+    */
     function getTypes(){
         $this->load->database();
         $query = $this->db->get('types');
         return $query->result();
     }
 
+    /*
+    author: Khusna Nadia
+    Mendapatkan id_promo terakhir
+    */
     function getLastIdPromo(){
         $this->db->select_max('id_promo');
         $query = $this->db->get('promo');
         return $query->result();
     }
 
+    /*
+    author: 
+    */
     function SaveForm($form_data){
         $this->db->insert('promo', $form_data);
         if ($this->db->affected_rows() == '1'){
@@ -56,6 +80,9 @@ class PromoManager extends CI_Model{
         return FALSE;
     }
 
+    /*
+    author: 
+    */
     function SaveFormType($form_type){
         $id_promo = $form_type['id_promo'];
         $type_new = $form_type['type_new'];
@@ -77,6 +104,9 @@ class PromoManager extends CI_Model{
         return FALSE;
     }
 	
+    /*
+    author: 
+    */
 	function filterpromoloc($city){
 		$this->load->database();
 		$this->db->select('id_promo, start_date, end_date, p.place_name, photo, title, p.description, tourist_attraction.city');
@@ -89,7 +119,10 @@ class PromoManager extends CI_Model{
 		$query = $this->db->get(); 
 		return $query->result(); 
 	}
-		
+	
+    /*
+    author: 
+    */	
 	function filterPromoFinal($city, $title){
 		$this->load->database();
 		$this->db->select('id_promo, start_date, end_date, p.place_name, photo, title, p.description, tourist_attraction.city');
@@ -107,6 +140,9 @@ class PromoManager extends CI_Model{
         return $query->result_array(); 
 	}
 	
+    /*
+    author: 
+    */
 	function filterPromotype($category_name, $city, $place_name){
 			
 			$this->load->database();
@@ -131,37 +167,55 @@ class PromoManager extends CI_Model{
             return $query->result_array(); 
 	}
 
+    /*
+    author: 
+    */
     function promo_getall(){
         $this->load->database();
         $query = $this->db->get('promo');
         return $query->result();
     }
 
+    /*
+    author: 
+    */
     function promo_getType($id_promo){
         $query = $this->db->get_where('type_promo', array('id_promo'=>$id_promo));
         return $query->result();
     }
 
+    /*
+    author: Khusna Nadia
+    Menghapus id_promo
+    */
     function delete($id_promo){
         $this->load->database();
         $this->db->delete('promo', array('id_promo' => $id_promo));
     }
 
+    /*
+    author: 
+    */
     function promo_get($id_promo){
         $this->load->database();
-        
         echo $id_promo;
-
         $query = $this->db->get_where('promo', array('id_promo'=>$id_promo));
         return $query->row_array();
     }
 
+    /*
+    author: 
+    */
     function getPromo(){
         $this->load->database();
         $query = $this->db->select("*")->from('promo')->get();
         return $query;
     }
 
+    /*
+    author: Khusna Nadia
+    Update database tabel promo, types, dan type_promo
+    */
     function edit($id_promo, $form_data, $form_type){
         $this->load->database();
         $this->db->where('id_promo',$id_promo);

@@ -1,7 +1,12 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class AddPromoCtr extends CI_Controller {
-	
+	/*
+	author: Khusna Nadia
+	editor: Mohammad Syahid Wildan-facebook
+	Menampilkan form isian membuat promo baru pada menu admin page
+	*/
 	function index(){
 		$this->load->model('TouristAttractionManager');
 		$this->load->model('PromoManager');
@@ -10,7 +15,8 @@ class AddPromoCtr extends CI_Controller {
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
-		if($this->user){
+		if($this->user)
+		{
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
@@ -19,7 +25,9 @@ class AddPromoCtr extends CI_Controller {
 			setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 			setcookie("is_admin",0,time()+3600,'/');
 			header('Location: '.base_url('index.php/homeCtr/successLoginFB'));
-		}else{
+		}
+		else
+		{
 			$data['login_url'] = $this->facebook->getLoginUrl();
 			$this->load->view('header', $data);
 			$this->load->view('menuadmin');
@@ -28,6 +36,10 @@ class AddPromoCtr extends CI_Controller {
 		}
 	}
 
+	/*
+	author: Khusna Nadia
+	Men-submit form isian membuat promo baru
+	*/
 	function myForm(){
 		$this->load->helper('cookie');
 		$this->load->helper('form');
@@ -51,11 +63,12 @@ class AddPromoCtr extends CI_Controller {
 		$config['max_height']  = '4096';
 		$this->load->library('upload', $config);
 		
-		$dir_exist = true; // flag for checking the directory exist or not
+		$dir_exist = true;
 		if (!is_dir('./assets/img/promo/')){
 			mkdir('./assets/img/promo/', 0777, true);
 			$dir_exist = false; // dir not exist
-		}else{
+		}
+		else{
 		}
 		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
@@ -95,6 +108,10 @@ class AddPromoCtr extends CI_Controller {
 
 	}
 
+	/*
+	author: 
+	Memvalidasi tanggal
+	*/
 	#callback
 	function checkDateFormat($date){
 		if (preg_match("/[0-31]{2}\/[0-12]{2}\/[0-9]{4}/", $date)) {
@@ -107,6 +124,10 @@ class AddPromoCtr extends CI_Controller {
 		}
 	}
 
+	/*
+	author: Khusna Nadia
+	Menandakan sukses men-submit form
+	*/
 	function success()
 	{
 		redirect('admin/promo');

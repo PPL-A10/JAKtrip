@@ -1,15 +1,15 @@
 <?php
-
 class RatingCtr extends CI_Controller {
-
-    function __construct() {
+    function __construct(){
         parent::__construct();
         $this->load->model('ratingManager');
-       
     }
 
-    function index()
-	{   
+    /*
+    author: Khusna Nadia
+    Menampilkan form isian rating dan review
+    */
+    function index(){
 		//Including validation library
 		$this->load->library('form_validation');
                 
@@ -21,12 +21,9 @@ class RatingCtr extends CI_Controller {
 		//Validating Review Field
 		$this->form_validation->set_rules('review', 'review');
 
-		if ($this->form_validation->run() == FALSE)
-		{
+		if ($this->form_validation->run() == FALSE){
 			$this->load->view('formRatingUI');
-		}
-		else
-		{
+		}else{
 			//Setting values for tabel columns
 			$data = array(
 						'username' => 'memberNo1',
@@ -34,17 +31,12 @@ class RatingCtr extends CI_Controller {
                         'rate' => $this->input->post('rate'),
                         'title' => $this->input->post('title'),
                         'review' => $this->input->post('review')
-//						'is_nudity' => $this->input->false,
-//						'is_spam' => $this->input->false,
-//						'is_FalseStatement' => $this->input->false,
-//						'is_unrelatedStatement' => $this->input->false,
-//						'is_profanity' => $this->input->false;
             );
-					//Transfering data to Model
-                    $this->ratingManager->insert_rating($data);
-                    //Loading View
-					$this->load->view('formRatingUI');
-                   }
+			//Transfering data to Model
+			$this->ratingManager->insert_rating($data);
+			//Loading View
+			$this->load->view('formRatingUI');
+		}
 	}
 }
 
