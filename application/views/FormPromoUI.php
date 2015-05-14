@@ -11,7 +11,7 @@
 					  <div class="col-lg-11">
 						<label class="control-label">Title <span class="req">*</span></label>
 						<?php echo form_error('title'); ?>
-  						<input class="form-control" type="text" id="title" name="title" value="<?php echo set_value('title'); ?>" required pattern="[a-zA-Z0-9\s]+" title="Title can't contain any of the following characters : &#8217; ! @ # $ % ^ & * &quot; &apos; ">
+  						<input class="form-control" type="text" id="title" name="title" value="<?php echo set_value('title'); ?>" required pattern="[a-zA-Z0-9\s]+" title="Title can't contain any of the following characters : ! @ # $ % ^ & * &quot; &apos; ">
 				      <br></div>
 				    </div>
 					<br>
