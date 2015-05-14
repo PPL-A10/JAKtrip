@@ -90,3 +90,26 @@ function notifDelAchievement() {
 		// disable the button (for demo purposes only)
 		this.disabled = true;
 };
+
+function notifSuccess(msg) {
+		setTimeout( function() {
+			
+			// create the notification
+			var notification = new NotificationFx({
+				message : msg,
+				layout : 'growl',
+				effect : 'genie',
+				type : 'notice', // notice, warning or error
+				onClose : function() {
+					bttn.disabled = false;
+				}
+			});
+
+			// show the notification
+			notification.show();
+
+		}, 200 );
+		
+		// disable the button (for demo purposes only)
+		this.disabled = true;
+};
