@@ -157,6 +157,10 @@
 								}
 								//$("#output_field").html("http://localhost/JAKtrip/index.php/AllplacesCtr/"+x);
 							$("#isi_field").html(resultQuery);
+							setTimeout(function () {
+								location.href="http://localhost/JAKtrip/place/"+tempat;
+							}, 3500); 
+							notif("<center>You successfully deleted the review</center>");
 //								$("#output_field").html(obj.query[0].place_name;
 //$("#isi_field").html(id+"asakslndskjbddsbcsdkbckdsbskdvjnsdkjvnsdkjvn"+tempat);
 							//location.reload();
@@ -690,7 +694,7 @@ function calcRoute() {
  // --------------------- USER -----------------------------------
  		$(document).ready(function() {
  			$("#wishlist").hide();
-	    	$("#achievement").hide();
+	    	$("#visited").hide();
 	    	$("#reviews").hide();
 		    $("#trips").show();
 
@@ -707,28 +711,28 @@ function calcRoute() {
 
  			$("#litrip").click(function(){
 		    	$("#wishlist").hide();
-		    	$("#achievement").hide();
+		    	$("#visited").hide();
 		    	$("#reviews").hide();
 			    $("#trips").show();
 			});
 
 			$("#liwish").click(function(){
 		    	$("#wishlist").show();
-		    	$("#achievement").hide();
+		    	$("#visited").hide();
 		    	$("#reviews").hide();
 			    $("#trips").hide();
 			});
 
 			$("#liachi").click(function(){
 		    	$("#wishlist").hide();
-		    	$("#achievement").show();
+		    	$("#visited").show();
 		    	$("#reviews").hide();
 			    $("#trips").hide();
 			});
 
 			$("#lirevi").click(function(){
 		    	$("#wishlist").hide();
-		    	$("#achievement").hide();
+		    	$("#visited").hide();
 		    	$("#reviews").show();
 			    $("#trips").hide();
 			});

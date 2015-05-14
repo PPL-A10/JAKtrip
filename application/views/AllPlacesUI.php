@@ -102,23 +102,39 @@
 					 <div>
 		                <center><div class="tuffyh3a">I want to send a suggestion!</div></center><br>
 		                <div class="col-lg-12">
-		                <form id="formsuggestion" action="<?php echo base_url('allplaces/send')?>" method="post">
-								<!-- if member -->
+		                <?php 
+						$attributes = array('id' => 'formsuggestion');
+						echo form_open('allplaces/send', $attributes); ?>
 								<div class="form-group">
 									<label class="control-label">Place Name <span class="req">*</span></label>
-			  						<input class="form-control" type="text" id="place_name" name="place_name" required>
+									<?php echo form_error('place_name'); ?>
+									<?php echo form_input(array('id' => 'place_name', 'name' => 'place_name', 'class' => 'form-control')); ?>
+			  						<!-- <input class="form-control" type="text" id="place_name" name="place_name" required> -->
 							    </div>
 							    <div class="form-group">
 									<label class="control-label">Short Description <span class="req">*</span></label>
-			  						<textarea class="form-control" rows="2" id="textArea" id="description" name="description" required></textarea>
+									<?php echo form_error('description'); ?>
+			  						<?php echo form_textarea(array('id' => 'description', 'name' => 'description', 'class' => 'form-control', 'rows' => '2')); ?>
+			  						<!-- <textarea class="form-control" rows="2" id="textArea" id="description" name="description" required></textarea> -->
 							    </div>
-							    <a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 80px;'>cancel</a>
-							    <button class="btn btn-warning pull-right" type="submit">SEND</button>
-							    <div class="col-lg-12" style="height:20px"></div>
-						</form>
+							    <div style="margin-top: 25px;">
+							   		<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 80px;'>cancel</a>
+								    <button class="btn btn-warning pull-right" type="submit">SEND</button>
+								</div>
+						 <?php echo form_close(); ?>
 						</div>
 		          	  </div>
 		            </div>
 				</div>
 			</div>
 	</div>
+
+<?php
+
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>

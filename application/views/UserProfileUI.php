@@ -19,7 +19,7 @@
 			<div class="usermenu">
 				<ul class="nav nav-pills nav-stacked navprofile">
 					<li id="litrip"><a href="#trips">Trips<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
-					<li id="liachi"><a href="#achievement">Achievement<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
+					<li id="liachi"><a href="#visited">Achievement<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 					<li id="liwish"><a href="#wishlist">Wishlist<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 					<li id="lirevi"><a href="#reviews">Reviews<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 				</ul>
@@ -111,7 +111,7 @@
 				</div> -->
 			</div>
 
-			<div id="achievement" class="usercontent">
+			<div id="visited" class="usercontent">
 				<?php
 					$res = mysql_query("SELECT is_visited FROM collection WHERE is_visited = '1' AND username = '".$thisUser."'");
 		            if(mysql_num_rows($res)==0){
@@ -231,7 +231,7 @@ $(document).ready(function() {
 			}
 		}
 		else if($(this).hasClass("a")){
-			var c = confirm("Are you sure you want to remove this from your achievement?");
+			var c = confirm("Are you sure you want to remove this from your visited?");
 			if(c==true){
 				$(this).removeClass("a");
 				$(this).addClass("a-none");

@@ -920,7 +920,7 @@ ul.nav.nav-pills.fak > li > a:hover{
   bottom: 0;
   left: 0;
   background-color: rgba(0,0,0,0.8);
-  z-index: 99999;
+  z-index: 9999;
   opacity:0;
   -webkit-transition: opacity 400ms ease-in;
   -moz-transition: opacity 400ms ease-in;
@@ -935,7 +935,7 @@ ul.nav.nav-pills.fak > li > a:hover{
 
 .openModal2 > div {
   width: 350px;
-  height: 350px;
+  height: 400px;
   position: relative;
   margin: 7% auto;
   padding: 10px 20px 10px 20px;
