@@ -735,7 +735,7 @@
 
         <ul class="nav navbar-nav navbar-right sm sm-clean2" id="main-menu">
          <?php
-            if(isset($_COOKIE["username"]))
+            if(isset($_COOKIE["username"]) && (isset($_COOKIE["photo_facebook"])|| isset($_COOKIE["foto_profil"]) ))
             {
               
           //    echo "<li><a href='http://localhost/JAKtrip/index.php/searchCtr/logout'>Selamat datang ".$_COOKIE['username']."</a></li>";
