@@ -31,7 +31,7 @@ class FeedbackCtr extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-
+			$this->session->set_flashdata('form', array('message' => '<b>Oops!</b> Something went wrong. Please try again.'));
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -77,7 +77,10 @@ class FeedbackCtr extends CI_Controller {
 			
 
 					//Transfering data to Model
-                   $this->feedbackManager->insert_feedback($data);
+                $this->feedbackManager->insert_feedback($data);
+				$this->session->set_flashdata('form', array('message' => '<b>Thank you!</b> You successfully submitted your form.'));
+        
+
                     //Loading View
                 $this->user = $this->facebook->getUser();
 				if($this->user)
@@ -111,6 +114,7 @@ class FeedbackCtr extends CI_Controller {
     //             $this->load->view('header');
 				// $this->load->view('formFeedbackUI');
 				// $this->load->view('footer');
+
         }
 	}
 

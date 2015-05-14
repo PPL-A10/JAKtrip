@@ -8,8 +8,6 @@
 				</div>
 				
 			</header>
-
-			
 			
 			<ul class="subtitle nav navbar-nav">
 				<li><p>Send Us a Message</p></li>
@@ -62,4 +60,18 @@
 			
 		</div>
 	</div>
+
+	// <script>
+	// $(document).ready(function(){
+	// 	notifSuccess("tesss");
+	// });
+	// </script>
 	
+<?php
+
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  echo "<script>$(document).ready(function(){notifSuccess('".$message."');});</script>";
+	}
+?>

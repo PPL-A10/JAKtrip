@@ -8,8 +8,8 @@ class FeedbackManager extends CI_Model{
  	function insert_feedback($data){
  		//Inserting in Table(feedback) of Database(jaktrip) 
 	 	$this->load->database();
-       	$this->db->insert('feedback', $data);
-    } 
+       	$this->db->insert('feedback', $data);        
+   } 
 
     function showAllFeedback()
 	{
