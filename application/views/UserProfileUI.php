@@ -10,7 +10,7 @@
 						echo '<div class="userphoto"><img src="'.$row->pic.'"></div>';	
 					}
 					else{
-						echo '<div class="userphoto"><img src="'.base_url($row->pic).'"></div>';
+						echo '<div class="userphoto"><img src="'.$row->pic.'"></div>';
 					}
 					echo '<div class="col-lg-12 userbio">'.$row->bio.'</div><br>';
 				} 

@@ -820,11 +820,14 @@
               {
                  $foto = $_COOKIE["foto_profil"];
                  $username_header = $_COOKIE["username"];
+                  /*------biar cookienya ga mati------*/
+                  setcookie('foto_profil',$foto,time()+3600,"/");
               }
               $update_cookie_username = $_COOKIE["username"];
               /*------biar cookienya ga mati------*/
               setcookie('username',$update_cookie_username,time()+3600,"/");
-
+              $update_is_admin = $_COOKIE["is_admin"];
+              setcookie('is_admin',$update_is_admin,time()+3600,"/");
               if($_COOKIE["is_admin"]==1)
               {
                 $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
