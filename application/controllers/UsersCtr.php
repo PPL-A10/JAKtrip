@@ -155,32 +155,30 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('memberManager');
 		$this->load->model('TouristAttractionManager');
 		$this->load->helper('cookie');
-		$temp = $this->memberManager->getPlaceName($id);
+		
 		$data = array(
 				       	'is_visited' => '0'
 					);
 
 		$this->db->where('id_collect', $id);
 		$this->memberManager->delFromVisited($data);
+		
 
-		foreach($temp as $row){
-			$place_name = $this->TouristAttractionManager->getVisitorsFromCollection($row->place_name);
-			
+		$tempPlace = $this->memberManager->getPlaceName($id);
+		foreach($tempPlace as $rowPlace){
+			$temp = $this->TouristAttractionManager->getVisitorsFromCollection($rowPlace->place_name);
+		
 			$banyakVisitor = 0;
 			foreach($temp as $row){
 				$banyakVisitor = $banyakVisitor+1;
 			}
-
 			$data2 = array(
 				// 'visitors' => $dv['visitors']+1
 				'visitors' => $banyakVisitor
-				);
+			);
 						
-			$this->touristAttractionManager->updateVisitor($place_name, $data2);
+			$this->touristAttractionManager->updateVisitor($rowPlace->place_name, $data2);
 		}
-
-		
-
 		header("Location: ".base_url()."user");
 	}
 

@@ -68,7 +68,7 @@
 
 		function getPlaceName($id){
 			$this->load->database();
-			$this->db->select('place_name');
+			$this->db->select('*');
 			$this->db->from('collection');
 			$this->db->where('id_collect', $id);
 			$query = $this->db->get();
