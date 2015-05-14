@@ -60,7 +60,7 @@ $route['promo/(:any)'] = 'PromoCtr/index/$1';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
-$route['contactus/send'] = 'feedbackCtr/sendSuggestion'; 
+$route['contactus/send'] = 'feedbackCtr/submitForm';
 
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';

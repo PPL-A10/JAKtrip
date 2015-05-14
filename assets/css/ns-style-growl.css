@@ -1,8 +1,9 @@
 /* Growl-style notifications */
 .ns-growl {
-	top: 30px;
-	right: 30px;
-	max-width: 300px;
+	top: 0;
+	right: 50%;
+	/*left: -500px;*/
+	max-width: 500px;
 	border-radius: 5px;
 }
 
@@ -396,6 +397,9 @@
 .ns-effect-genie {
 	top: auto;
 	bottom: 30px;
+	margin-right: -200px;
+	/*min-width: 280px;*/
+	width: 400px;
 	background: #1c2e2d;
 	box-shadow: 0 7px 6px rgba(0,0,0,0.2), 2px 4px 6px rgba(0,0,0,0.5);
 }

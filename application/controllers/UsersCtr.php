@@ -298,13 +298,14 @@ class UsersCtr extends CI_Controller {
 				{
 					//$data = array('upload_data' => $this->upload->data());
 					if($pic!=''){
+						$pic = str_replace(base_url(),"./",$pic);
 						if(unlink($pic)){
 							$upload_data = $this->upload->data();
 							$file_name = $upload_data['file_name'];
 							$path ='./assets/img/user/';
 							$ext = pathinfo($path.$file_name, PATHINFO_EXTENSION);
 							if(rename($path.$file_name, $path.$username.'.'.$ext)){
-								$pic = $path.$username.'.'.$ext;	
+								$pic = base_url('assets/img/user')."/".$username.'.'.$ext;	
 							}			
 						}
 					}
@@ -314,7 +315,7 @@ class UsersCtr extends CI_Controller {
 						$path ='./assets/img/user/';
 						$ext = pathinfo($path.$file_name, PATHINFO_EXTENSION);
 						if(rename($path.$file_name, $path.$username.'.'.$ext)){
-							$pic = $path.$username.'.'.$ext;	
+							$pic = base_url('assets/img/user')."/".$username.'.'.$ext;	
 						}			
 					}
 					
