@@ -1,3 +1,9 @@
+<!--
+author: Khusna Nadia
+
+Menampilkan form isian mengubah promo di halaman admin
+-->
+
 <div class="col-lg-12">
 	<div class="tuffyh2a admintitle">Edit Promo</div>
 		<?php
@@ -13,8 +19,7 @@
 		$photo = $photoPromo;
 		$key1 = $id_promo;
 
-		echo form_hidden('key', $id_promo); 
-		// echo form_hidden('photoPromo', $photoPromo);
+		echo form_hidden('key', $id_promo);
 		?>
 		
 		<div class="form-group">
