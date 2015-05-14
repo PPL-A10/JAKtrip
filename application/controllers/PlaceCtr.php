@@ -456,7 +456,6 @@ function do_upload($place_name)
 			$temp = $this->TouristAttractionManager->getVisitorsFromCollection($place_name);
 			
 			// $banyakVisitor = mysql_num_rows(mysql_fetch_assoc($temp));
-			$temp2 = mysql_fetch_assoc($temp);
 			$banyakVisitor = 0;
 			foreach($temp as $row){
 				$banyakVisitor = $banyakVisitor+1;
@@ -488,7 +487,6 @@ function do_upload($place_name)
 		$temp = $this->TouristAttractionManager->getVisitorsFromCollection($place_name);
 		// $banyakVisitor = mysql_num_rows(mysql_fetch_assoc($temp));
 
-		$temp2 = mysql_fetch_assoc($temp);
 		$banyakVisitor = 0;
 		foreach($temp as $row){
 			$banyakVisitor = $banyakVisitor+1;

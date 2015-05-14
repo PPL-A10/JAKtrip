@@ -66,6 +66,15 @@
 			$this->db->update('collection', $data);
 		}
 
+		function getPlaceName($id){
+			$this->load->database();
+			$this->db->select('place_name');
+			$this->db->from('collection');
+			$this->db->where('id_collect', $id);
+			$query = $this->db->get();
+            return $query->result();
+		}
+
 		function showCollection($place, $user){
 			$this->load->database();
 			$this->db->select('*');

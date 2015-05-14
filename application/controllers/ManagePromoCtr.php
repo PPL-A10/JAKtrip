@@ -219,7 +219,7 @@ class ManagePromoCtr extends CI_Controller{
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
 
-		$this->form_validation->set_rules('title', 'title', 'trim');
+		$this->form_validation->set_rules('title', 'title', 'trim|alpha_numeric_dash_spaces');
 		$this->form_validation->set_rules('start_date', 'start_date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end_date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
