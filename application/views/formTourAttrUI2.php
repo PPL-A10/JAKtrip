@@ -274,6 +274,14 @@ function addLocation(lng,lat){
 				      <br></div>
 				    </div>
 				    <br>
+					<div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Source <span class="req">*</span></label>
+						<?php echo form_error('source'); ?>
+  						<input class="form-control" type="text" id="source" name="source" value="<?php echo $link_web; ?>" required>
+				      <br></div>
+				    </div>
+					<br>
 				  
 				    <br><br>
 
