@@ -251,7 +251,7 @@ class ManagePromoCtr extends CI_Controller{
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
 
-		$this->form_validation->set_rules('title', 'title', 'trim|alpha_numeric_dash_spaces');
+		$this->form_validation->set_rules('title', 'title', 'trim');
 		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('place_name', 'place name', 'trim');
@@ -304,7 +304,6 @@ class ManagePromoCtr extends CI_Controller{
 			$e_date = date('Y-m-d', $o_endDate);
 			
 			$queryPhoto = $this->PromoManager->promo_get($id_promo);
-			//$temp = mysql_fetch_assoc($queryPhoto);
 			if($file_name!=null || $file_name!=''){
 				unlink($queryPhoto['photo']); //hapus foto di folder assets/promo/--> belum bisa
 				$form_data = array(
