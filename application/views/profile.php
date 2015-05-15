@@ -1,5 +1,15 @@
 <html>
 <head>
+<script>
+	window._alert = window.alert;
+	window.alert = function (msg, showItNow) {    
+	    if (showItNow) {
+	        window._alert(msg);
+	    }
+	};
+	window.alert("BOOOO!");  //I will not show up
+	window.alert("hi", true); //I will show up
+</script>
 <title>CodeIgniter : Login Facebook via Oauth 2.0</title>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css">
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
@@ -21,6 +31,8 @@ echo "<p>Facebook Email : ".$user_profile['email']."</p>";
 echo "<p>Facebook username : ".$user_profile['username']."</p>";
 ?>
 </div>
+
+
 </div>
 </body>
 </html>
