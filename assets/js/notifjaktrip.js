@@ -110,6 +110,4 @@ function notif(msg) {
 
 		}, 200 );
 		
-		// disable the button (for demo purposes only)
-		this.disabled = true;
 };

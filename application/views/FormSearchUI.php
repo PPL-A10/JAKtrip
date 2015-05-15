@@ -46,19 +46,7 @@
            <div class="col-lg-5 result">Show all places in Jakarta</div>
            <div class="col-lg-2"></div>
          
-           <div class="col-lg-5 form-inline" style="margin-right: -150px;">
-             <label class="control-label">Sort by </label>
-             <span class="fieldsml custom-dropdown">
-              <select class="fieldsml form-control" title="Popularity" style="background-color: #f0f0f0 !important;">    
-                  <option value="" selected>Popularity</option>  
-                  <option value="">Highest Rating</option>
-                  <option value="">Name: A-Z</option>
-                  <option value="">Name: Z-A</option>
-                  <option value="">Price: Low to High</option>
-                  <option value="">Price: High to Low</option>
-              </select>
-             </span>
-           </div>
+          
            <div class="col-lg-11" id="blogMain">
               <?php
 

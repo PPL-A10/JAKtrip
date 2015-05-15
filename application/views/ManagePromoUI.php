@@ -71,14 +71,14 @@ Menampilkan list promo di menu admin page
 				$enddate = date($row->end_date);
 				if($startdate <= $currentDate && $enddate >= $currentDate){
 					echo "<td>On going</td>";
-				}else if($startdate >= $currentDate && $enddate >= $currentDate){
+				}else if($startdate > $currentDate && $enddate > $currentDate){
 					echo "<td>Coming Soon</td>";
 				}
 				else if($enddate < $currentDate){
 					echo "<td>Expired</td>";
 				}
 				echo "<td>";
-				$onclick = array('onclick'=>"return confirm('Are you sure to delete promo ".$row->title." from ".$row->place_name."?')");
+				$onclick = array('onclick'=>"return confirm('Are you sure you want to delete promo ".$row->title." from ".$row->place_name."?')");
 				echo anchor('admin/promo/delete/'.$row->id_promo,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
 				echo "<td>". anchor('admin/promo/edit/' .$row->id_promo, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
 				echo "<td><a href='".base_url('promo')."/".$row->id_promo."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
