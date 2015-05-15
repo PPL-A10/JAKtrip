@@ -231,13 +231,15 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper('form');
 		$this->load->model('TouristAttractionManager');
+		$this->load->model('photoManager');
 		
 		$place_name = str_replace("%20", " ", $place_name);
 		
 		$query = $this->touristAttractionManager->tourAttr_get($place_name);	
 		//$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
 		$query3 = $this->touristAttractionManager->tourAttr_getPic($place_name);
-		$query4 = $this->touristAttractionManager->tourAttr_getHalte($place_name);		
+		$query4 = $this->touristAttractionManager->tourAttr_getHalte($place_name);
+		$query5 = $this->photoManager->getPhoto($place_name);		
 		$data['lala'] = $this->TouristAttractionManager->getTouristAttraction()->result();
 		$this->load->model('searchMod');
 		$data['query2']= $this->searchMod->showalllocation();
@@ -248,6 +250,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['place_name'] = $query['place_name'];
 		$data['description'] = $query['description'];
 		$data['place_info'] = $query['place_info'];
+		$data['credit'] = $query5['pic_info'];
 		$data['weekday_price'] = $query['weekday_price'];	
 		$data['weekend_price'] = $query['weekend_price'];
 		$data['pic'] = $query['pic_thumbnail'];		

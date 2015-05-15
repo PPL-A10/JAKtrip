@@ -39,6 +39,7 @@ class TourAttrCtr extends CI_Controller {
 		$data['city']='';
 		$data['description']='';
 		$data['place_info']='';
+		$data['credit']='';
 		$data['select_busstop']='';
 		$data['transport_info']='';
 		$data['transport_price']='';
@@ -110,6 +111,7 @@ class TourAttrCtr extends CI_Controller {
 		$city = $this->input->post('select_location');
 		$description = $this->input->post('description');
 		$place_info = $this->input->post('place_inform');
+		$credit = $this->input->post('credit');
 		$select_busstop = $this->input->post('select_busstop');
 		$transport_info = $this->input->post('transport_info');
 		$transport_price = $this->input->post('transport_price');	
@@ -130,6 +132,7 @@ class TourAttrCtr extends CI_Controller {
 			$data['city']=$city;
 			$data['description']=$description;
 			$data['place_info']=$place_info;
+			$data['credit']=$credit;
 			$data['select_busstop']=$select_busstop;
 			$data['transport_info']=$transport_info;
 			$data['transport_price']=$transport_price;
@@ -253,6 +256,7 @@ class TourAttrCtr extends CI_Controller {
 				'rate_avg' => 0,
 				'description' => $description,
 				'place_info' => $place_info,
+				'credit' => $credit,
 				//'halte_code' => $this->input->post('halte_code'),
 				'halte_code' =>$this->TouristAttractionManager->gethaltekode($select_busstop),
 				'transport_info' => $transport_info,
@@ -265,10 +269,14 @@ class TourAttrCtr extends CI_Controller {
 				'pic_thumbnail' => './assets/img/place/'.$placename.'/'.$file_name
 			);
 
+			if($credit==null || $credit==''){
+				$credit = "Uploaded by ".$user;
+			}
+
 			$form_photo = array(
 								'place_name' => $place_name,
 								'pic' => './assets/img/place/'.$placename.'/'.$file_name,
-								'pic_info' => 'Uploaded by '.$user,
+								'pic_info' => $credit,
 								'is_publish' => 0,
 								'username' => $user
 			);		
