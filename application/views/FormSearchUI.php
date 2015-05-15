@@ -164,7 +164,12 @@
 
     </div>
      
-    <div class="alert alert-success hide" role="alert">...</div>
+    <div id="successAddNotify" class="openModalNotify">
+        <div class="alert alert-success" role="alert"><a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a> <p>You success adding your trip</p> </div>
+    </div>
+    <div id="successDeleteNotify" class="openModalNotify">
+        <div class="alert alert-danger" role="alert"><a href="#close" title="Close" class="close"><span class="fa fa-times"></span></a><p>You success delete your trip</p> </div>
+    </div>
 
      <div class="col-lg-6 collapse in width"  id="mapcanvas">
     </div>
