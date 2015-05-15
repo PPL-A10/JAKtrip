@@ -7,25 +7,14 @@ class TouristAttractionManager extends CI_Model{
   		$this->load->database();		
  	}
  	
-	function SaveForm($form_data, $form_photo, $form_cat)
+	function SaveForm($form_data, $form_cat)
 	{
-		//$myQueryString = "set search_path to '1206277520'";
-		//$this->db->query($myQueryString);
 		
 		$place_name=$form_cat['place_name'];
 		$category_new=$form_cat['category_new'];
 		
 		$this->db->insert('tourist_attraction', $form_data);
-		$this->db->insert('photo', $form_photo);
-
-		// foreach($form_photo['pic'] as $row){
-		// 	$photo = array(
-		// 		'place_name' => $form_photo['place_name'],
-		// 		'pic' => $row,
-		// 		'pic_info' => $form_photo['pic_info']
-		// 	);
-		// 	$this->db->insert('photo', $photo);
-		// }
+		
 		
 		foreach($form_cat['category_list'] as $selected){
 			if($selected != ''){
@@ -47,7 +36,20 @@ class TouristAttractionManager extends CI_Model{
 		}
 		return FALSE;
 	}
+	
+	function save_pic_thumbnail($id, $form_photo){
+		$pic_thumb = array('pic_thumbnail'=>$form_photo['pic']);
+		$this->db->where('id',$id);
+		$this->db->update('tourist_attraction',$pic_thumb);
+		if($this->db->affected_rows()=='1'){
+			$this->db->insert('photo', $form_photo);		
+			if($this->db->affected_rows()=='1'){
+				return true;
+			}
+		}
 
+	}
+	
 	function tourAttr_getall(){
 		$this->load->database();
 		//$myQueryString = "set search_path to '1206277520'";
