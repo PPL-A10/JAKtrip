@@ -57,9 +57,9 @@ Menampilkan form isian membuat promo baru di halaman admin
 
 	<div class="form-group">
 	  <div class="col-lg-11">
-		<label class="control-label">Description <span class="req">*</span></label>
+		<label class="control-label">Description</label>
 		<?php echo form_error('description'); ?>
-		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>" required></textarea>
+		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>"></textarea>
       <br></div>
     </div>
     <br>
@@ -67,7 +67,7 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<div class="form-group">
 	  <div class="col-lg-11">
 		<label class="control-label">Type of Promo <span class="req">*</span></label><br>
-		<?php echo form_error('type_name'); ?>
+		<?php echo form_error('type_list'); ?>
 		<?php
 			foreach ($typepromo_name as $row){
 				echo form_checkbox('type_list[]',$row->type_name).($row->type_name)."<br>"; 
@@ -82,7 +82,8 @@ Menampilkan form isian membuat promo baru di halaman admin
     <div class="form-group">
 	  <div class="col-lg-11"> <br>
 		<label class="control-label">Photos <span class="req">*</span></label>
-		<input type="file" name="userfile" size="20" required>
+		<?php echo form_error('userfile'); ?>
+		<input type="file" name="userfile" size="20" enctype="multipart/form-data" required>
       <br></div>
     </div>
     <br>

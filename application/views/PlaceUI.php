@@ -127,7 +127,7 @@
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
 							  	<?php echo form_error('userfile'); ?>
-								<input type="file" name="userfile[]" size="20" multiple>
+								<input type="file" name="userfile[]" size="20" multiple required>
 						      </div>
 						    </div>
 						    <div class="col-lg-12"><br><br>

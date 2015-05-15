@@ -255,9 +255,9 @@ class ManagePromoCtr extends CI_Controller{
 		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('end_date', 'end date', 'trim|callback_checkDateFormat');
 		$this->form_validation->set_rules('place_name', 'place name', 'trim');
-		$this->form_validation->set_rules('description', 'description', 'trim|required');
-		$this->form_validation->set_rules('photo', 'photo', 'trim');
-		$this->form_validation->set_rules('type_name', 'type', 'trim');
+		$this->form_validation->set_rules('description', 'description', 'trim');
+		$this->form_validation->set_rules('userfile', 'photo', 'trim');
+		$this->form_validation->set_rules('type_list', 'type', 'trim');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		$id_promo = $this->input->post('key');
@@ -270,7 +270,7 @@ class ManagePromoCtr extends CI_Controller{
 		
 		$config['upload_path'] = './assets/img/promo/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
+		$config['max_size']	= '2048';
 		$config['max_width']  = '4096';
 		$config['max_height']  = '4096';
 		$this->load->library('upload', $config);
