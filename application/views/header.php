@@ -830,11 +830,11 @@
               setcookie('is_admin',$update_is_admin,time()+3600,"/");
               if($_COOKIE["is_admin"]==1)
               {
-                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">My profile</a></li>";
               }
               else
               {
-                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/user\">User Page</a></li>";
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/user\">My Profile</a></li>";
               }
 
               echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul>".$halaman_user."<li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
