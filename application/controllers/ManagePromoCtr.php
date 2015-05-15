@@ -304,9 +304,9 @@ class ManagePromoCtr extends CI_Controller{
 			$e_date = date('Y-m-d', $o_endDate);
 			
 			$queryPhoto = $this->PromoManager->promo_get($id_promo);
-			$temp = mysql_fetch_assoc($queryPhoto);
+			//$temp = mysql_fetch_assoc($queryPhoto);
 			if($file_name!=null || $file_name!=''){
-				// unlink($temp['photo']); //hapus foto di folder assets/promo/--> belum bisa
+				unlink($queryPhoto['photo']); //hapus foto di folder assets/promo/--> belum bisa
 				$form_data = array(
 					'title' => $title,
 				   	'start_date' => $s_date,

@@ -250,7 +250,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['place_name'] = $query['place_name'];
 		$data['description'] = $query['description'];
 		$data['place_info'] = $query['place_info'];
-		$data['credit'] = $query5['pic_info'];
+		//$data['credit'] = $query5['pic_info'];
 		$data['weekday_price'] = $query['weekday_price'];	
 		$data['weekend_price'] = $query['weekend_price'];
 		$data['pic'] = $query['pic_thumbnail'];		
@@ -273,6 +273,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['author'] = $query['author'];
 		$data['rate_avg'] = $query['rate_avg'];
 		$data['hits'] = $query['visitors'];		
+		$data['id'] = $query['id'];	
 		
 		$result = $this->TouristAttractionManager->getCategory();
 		
@@ -332,7 +333,6 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('weekday_price', 'weekday price', 'integer');			
 		$this->form_validation->set_rules('weekend_price', 'weekend price', 'integer');
 		$this->form_validation->set_rules('transport_price', 'transportation fee', 'integer');
-		$this->form_validation->set_rules('source', 'source', 'valid_url');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
 
@@ -353,7 +353,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$category_new = $this->input->post('category_new');
 		
 		$pic = $this->input->post('pic');
-		
+		$id = $this->input->post('id');
 		
 		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
@@ -398,7 +398,7 @@ class ManageTourAttrCtr extends CI_Controller {
 			$this->load->helper('cookie');
 			$user = get_cookie("username");
 
-			$config['upload_path'] = './assets/img/place/'.$place_name;
+			$config['upload_path'] = './assets/img/place/'.$id;
 			//$config['upload_path'] = './assets/upload/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size']	= '1000';
@@ -409,9 +409,9 @@ class ManageTourAttrCtr extends CI_Controller {
 			//$upload_data = $this->upload->data();
 			
 			$dir_exist = true; // flag for checking the directory exist or not
-			if (!is_dir('./assets/img/place/'.$place_name))
+			if (!is_dir('./assets/img/place/'.$id))
 			{
-				mkdir('./assets/img/place/'.$place_name, 0777, true);
+				mkdir('./assets/img/place/'.$id, 0777, true);
 				$dir_exist = false; // dir not exist
 			}
 			else{
@@ -428,7 +428,7 @@ class ManageTourAttrCtr extends CI_Controller {
 			{
 				$upload_data = $this->upload->data();
 				$file_name = $upload_data['file_name'];
-				$pic = './assets/img/place/'.$place_name.'/'.$file_name;
+				$pic = './assets/img/place/'.$id.'/'.$file_name;
 				$upload_status = true;
 			}
 

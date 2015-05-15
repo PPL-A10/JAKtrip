@@ -97,8 +97,10 @@ function addLocation(lng,lat){
 				echo form_hidden('key', $place_name); 
 				echo form_hidden('rate_avg', $rate_avg); 
 				echo form_hidden('hits', $hits);
-				echo form_hidden('author', $author);
-				echo form_hidden('pic', $pic); ?>
+				//echo form_hidden('author', $author);
+				echo form_hidden('pic', $pic); 
+				echo form_hidden('id', $id);
+				echo form_hidden('key', $place_name); ?>
 				
 					
 					<div class="form-group">
@@ -213,7 +215,7 @@ function addLocation(lng,lat){
 					  <div class="col-lg-11">
 						<label class="control-label">Photo Credit</label>
 						<?php echo form_error('credit'); ?>
-  						<input class="form-control" type="text" id="credit" name="credit" value="<?php echo $credit; ?>">
+  						<input class="form-control" type="text" id="credit" name="credit" value="">
 				      <br></div>
 				    </div><br>
 				    <div class="form-group">
