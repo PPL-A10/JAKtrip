@@ -67,9 +67,9 @@ Menampilkan form isian mengubah promo di halaman admin
 	    <br><br>
 	    <div class="form-group">
 		  <div class="col-lg-11">
-			<label class="control-label">Description <span class="req">*</span></label>
+			<label class="control-label">Description</label>
 			<?php echo form_error('description'); 
-			echo form_textarea(array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description, 'required' => 'required') )."<br>";
+			echo form_textarea(array('name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description) )."<br>";
 			?>
   		  <br></div>
 	    </div>
@@ -77,7 +77,7 @@ Menampilkan form isian mengubah promo di halaman admin
 	    <div class="form-group">
 		  <div class="col-lg-11">
 			<label class="control-label">Type of Promo <span class="req">*</span></label><br>
-			<?php echo form_error('type_name'); ?>
+			<?php echo form_error('type_list'); ?>
  			<?php $i=0;
 				foreach ($type_nam as $row){
 					$type = $row->type_name;
@@ -93,7 +93,8 @@ Menampilkan form isian mengubah promo di halaman admin
 	    <div class="form-group">
 		  <div class="col-lg-11"> <br>
 			<label class="control-label">Photos <span class="req">*</span></label>
-  			<input type="file" name="userfile" size="20">
+			<?php echo form_error('userfile'); ?>
+  			<input type="file" name="userfile" size="20" enctype="multipart/form-data">
   			<?php echo "<a href='".base_url($photo)."' data-lightbox='".$key1."'>";
 			echo "<div class='pic-thumbnail white'><img src='".base_url($photo)."'></div></a>";
 			?>

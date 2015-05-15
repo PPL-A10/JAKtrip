@@ -11,7 +11,7 @@ class AddPromoCtr extends CI_Controller {
 		$this->load->model('TouristAttractionManager');
 		$this->load->model('PromoManager');
 		$data['place'] = $this->TouristAttractionManager->getTouristAttraction()->result();
-		$data['typepromo_name'] = $this->PromoManager->getTypes();;
+		$data['typepromo_name'] = $this->PromoManager->getTypes();
 		
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
@@ -48,18 +48,18 @@ class AddPromoCtr extends CI_Controller {
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
 
-		$this->form_validation->set_rules('title', 'title', 'required|trim');
-		$this->form_validation->set_rules('start_date', 'start date', 'required|trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('end_date', 'end date', 'required|trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place name', 'trim|required');
+		$this->form_validation->set_rules('title', 'title', 'trim|alpha_numeric_dash_spaces');
+		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('end_date', 'end date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('place_name', 'place name', 'trim');
 		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('photo', 'photo', 'required|trim');
-		$this->form_validation->set_rules('type_name', 'type name', 'trim');
+		$this->form_validation->set_rules('userfile', 'photo', 'trim');
+		$this->form_validation->set_rules('type_list', 'type', 'trim');
 		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		$config['upload_path'] = './assets/img/promo/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
+		$config['max_size']	= '2048';
 		$config['max_width']  = '4096';
 		$config['max_height']  = '4096';
 		$this->load->library('upload', $config);
@@ -79,35 +79,36 @@ class AddPromoCtr extends CI_Controller {
 			$file_name = $upload_data['file_name'];
 		}
 
-		if ($this->form_validation->run() == FALSE){ // validation hasn't been passed
-			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
-			redirect('admin/addnewpromo');
-		}else{
+	
+		$old_startDate = $this->input->post('start_date');
+		$o_startDate = strtotime($old_startDate);
+		$s_date = date('Y-m-d', $o_startDate);
+		$old_endDate = $this->input->post('end_date');
+		$o_endDate = strtotime($old_endDate);
+		$e_date = date('Y-m-d', $o_endDate);
+		$form_data = array(
+	       	'title' => $this->input->post('title'),
+	       	'start_date' => $s_date,
+	       	'end_date' => $e_date,
+			'place_name' => $this->input->post('place_name'),
+			'photo' => './assets/img/promo/'.$file_name,
+			'description' => $this->input->post('description'),
+		);
 
-			$old_startDate = $this->input->post('start_date');
-			$o_startDate = strtotime($old_startDate);
-			$s_date = date('Y-m-d', $o_startDate);
-			$old_endDate = $this->input->post('end_date');
-			$o_endDate = strtotime($old_endDate);
-			$e_date = date('Y-m-d', $o_endDate);
-			$form_data = array(
-		       	'title' => $this->input->post('title'),
-		       	'start_date' => $s_date,
-		       	'end_date' => $e_date,
-				'place_name' => $this->input->post('place_name'),
-				'photo' => './assets/img/promo/'.$file_name,
-				'description' => $this->input->post('description'),
+		if($this->PromoManager->SaveForm($form_data)){
+			if(!isset($_POST['type_list'])) {
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
+				redirect('admin/addnewpromo');
+			}
+
+			$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
+			$form_type = array(
+				'id_promo' => $fak["MAX(id_promo)"],
+				'type_list' => $this->input->post('type_list'),
+				'type_new' => $this->input->post('type_new')
 			);
 
-			if($this->PromoManager->SaveForm($form_data)){
-				$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
-				$form_type = array(
-					'id_promo' => $fak["MAX(id_promo)"],
-					'type_list' => $this->input->post('type_list'),
-					'type_new' => $this->input->post('type_new')
-				);
-
-				$this->PromoManager->SaveFormType($form_type);
+			if($this->PromoManager->SaveFormType($form_type)){
 				$this->session->set_flashdata('form', array('message' => '<center>You successfully added a new promo.</center>'));
 				redirect('admin/promo');
 			}
@@ -115,7 +116,14 @@ class AddPromoCtr extends CI_Controller {
 				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 				redirect('admin/addnewpromo');
 			}
+			
 		}
+		else{
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			redirect('admin/addnewpromo');
+		}
+	
+		
 
 		
 
