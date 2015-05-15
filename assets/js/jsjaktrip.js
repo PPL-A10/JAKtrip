@@ -699,18 +699,7 @@ $(function() {
                     var place_name_array = place_name.split("xx");
                     var baseurl = 'http://localhost/JAKtrip';
 
-                    //------------kayaknya ga penting-----------------
-                    // for(var i=0; i<total_price_array.length-1; i++)
-                    // {
-       
-                    //     if(place_name_array[i]!="terhapus")
-                    //     {
-                    //       semuaHarga = semuaHarga + parseInt(total_price_array[i]);
-                    //     }
-                        
-                    // }
-                    // var firstBudget = parseInt(getCookie("firstBudget"));
-                    // var sisaBudget = firstBudget-semuaHarga;
+                  
                     var output = getCookie("placeName").replace(/\+/gi, " ");
            //         alert(semuaHarga);
                    var obj = jQuery.parseJSON(res);
@@ -736,7 +725,7 @@ $(function() {
                             {
                  
                               sudahHabis = false;
-                              // output = output +  "<tr><td style='width:100px;'><img src='http://localhost/JAKtrip/assets/bootstrap/img/superman.jpg' class='img-rounded' width='100' height='100'></td><td>"+obj.query.result[i].place_name+"<br>halte "+obj.query.result[i].halte_name+"<br>harga  : "+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga Busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga Angkot ke Tempat Wisata) + "+obj.query.result[i].weekday_price+" (harga tiket) = "+obj.query.harga[i]+" "+obj.query.sudahDipilih[i]+"<br><button onclick=\"addTrip1('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+obj.query.result[i].weekday_price+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"')\">add to trip</button></td></tr>";
+                             
 
                             output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                             

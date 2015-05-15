@@ -8,6 +8,7 @@
   js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.3";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
     <div class="col-lg-6">
      
      <div class="row">
@@ -162,9 +163,8 @@
      </div>
 
     </div>
-
-
-    
+     
+    <div class="alert alert-success hide" role="alert">...</div>
 
      <div class="col-lg-6 collapse in width"  id="mapcanvas">
     </div>
