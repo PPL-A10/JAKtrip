@@ -191,17 +191,23 @@ class UsersCtr extends CI_Controller {
 		
 		$username = $this->input->post('username');
 		$pic = $this->input->post('pic');
-		if($pic!='' & $this->input->post('form_profile')=='remove_photo'){
-			if(unlink($pic)){
-				$pic = NULL;			
-				$form_data = array(
-					'pic' => $pic
-				);			
-				if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-					//notif?
+		if($this->input->post('form_profile')=='remove_photo'){
+			if($pic!=''){
+				$pic = str_replace(base_url(),"./",$pic);
+				if(unlink($pic)){
+					$pic = NULL;			
+					$form_data = array(
+						'pic' => $pic
+					);			
+					if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
+						//notif?
+					}
 				}
+				
 			}
-			redirect('user/edit');
+			redirect('user/');
+			
+			
 		}
 		
 		else if($this->input->post('form_profile')=='edit'){	

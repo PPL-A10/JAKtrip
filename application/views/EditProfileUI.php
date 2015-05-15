@@ -9,6 +9,13 @@
 				echo form_open_multipart('UsersCtr/editMember', $attributes); 
 				echo form_hidden('old_password', $password);
 				echo form_hidden('pic', $pic); ?>
+				<?php if($pic!=NULL){
+					echo "<div class='userphoto'><img src=".$pic."></div>
+				<br><br>
+				<button class='btn btn-warning' name='form_profile' value='remove_photo'>Remove Photo</button>";
+				}
+				?>
+				
 					<div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Name <span class="req">*</span></label>
@@ -75,7 +82,7 @@
 				      <br></div>
 				    </div>
 					<br>
-					<button name="form_profile" value="remove_photo">Remove Photo</button>
+					
 				    
 					<br><br>
 				    <button class="btn btn-warning" type="submit" name="form_profile" value="edit">SUBMIT</button>
