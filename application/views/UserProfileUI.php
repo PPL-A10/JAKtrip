@@ -19,7 +19,7 @@
 			<div class="usermenu">
 				<ul class="nav nav-pills nav-stacked navprofile">
 					<li id="litrip"><a href="#trips">Trips<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
-					<li id="liachi"><a href="#visited">Achievement<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
+					<li id="liachi"><a href="#visited">Visited<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 					<li id="liwish"><a href="#wishlist">Wishlist<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 					<li id="lirevi"><a href="#reviews">Reviews<span class="fa fa-angle-right pull-right" style="font-size: 18px;"></span></a></li>
 				</ul>
@@ -61,9 +61,9 @@
 										echo "In <b>".date('d-M-Y', strtotime($trip['date_trip']))."</b> | Start from <b>Halte ".$data_trip[2]."</b> | Total: <b>Rp ".$harga."</b>";
 									echo "</div>";
 								echo "</a>";
-								echo "<a href= ".base_url($deleteTripUrl).">";
-									echo "<div class='col-lg-2'><span class='fa fa-trash-o iconcol'></span></div>";
-								echo "</a>";
+								$onclick = array('onclick'=>"return confirm('Are you sure you want to delete this trip?')");
+								echo anchor(base_url($deleteTripUrl),'<span class="fa fa-trash-o iconcol"></span>', $onclick)."";
+							
 							echo "</div>"; 
 						}
 			    	}
@@ -166,10 +166,10 @@
 							$delRevUrl = 'user/review/delete/'.$row->id_rate;
 				    		echo '<div class="row collrev"><a href="'.base_url("place/".$row->place_name.'').'">';
 							if($pic["pic_thumbnail"]===null){
-								echo '<div class="col-lg-2 pic-small"><img src="'.base_url('assets/img/noimg.png').'"></div>';
+								echo '<div class="col-lg-2 pic-small" style="margin-top: 20px;"><img src="'.base_url('assets/img/noimg.png').'"></div>';
 							}
 							else{
-								echo '<div class="col-lg-2 pic-small"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
+								echo '<div class="col-lg-2 pic-small" style="margin-top: 20px;"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
 							}	;
 							echo '<div class="col-lg-8">';
 							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
@@ -187,8 +187,9 @@
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
 							else{}	
 							echo '<div>'.$row->review.'</div></div>';
-							echo '<a href="'.base_url($delRevUrl).'"><div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div></a></div>';
-			    		}
+							$onclick2 = array('onclick'=>"return confirm('Are you sure you want to delete this review?')");
+							echo anchor(base_url($delRevUrl),'<span class="fa fa-trash-o iconcol"></span>', $onclick2)."</div>";
+						}
 			    	}
 					
 

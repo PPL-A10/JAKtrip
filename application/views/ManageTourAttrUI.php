@@ -69,11 +69,11 @@
 							echo "<td>". $cat[$i]."</td>";
 							echo "<td>". $row->last_modified ."</td>";
 							echo "<td>". $row->visitors ."</td>";
-							echo "<td>";
-							$onclick = array('onclick'=>"return confirm('Are you sure to delete ".$row->place_name."?')");
+							echo "<td width='80px;'>";
+							$onclick = array('onclick'=>"return confirm('Are you sure you want to delete ".$row->place_name."?')");
 							echo anchor('admin/places/delete/'.$row->place_name,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
-							echo "<td>". anchor('admin/places/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
-							echo "<td><a href='".base_url('place')."/".$row->place_name."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
+							echo "<td width='80px;'>". anchor('admin/places/edit/' .$row->place_name, '<span class="fa fa-pencil"></span>&nbsp;&nbsp;Edit') ."</td>";
+							echo "<td width='80px;'><a href='".base_url('place')."/".$row->place_name."'><span class='fa fa-eye'></span>&nbsp;&nbsp;View</a></td>";
 							echo "</tr>";
 						}
 					?>

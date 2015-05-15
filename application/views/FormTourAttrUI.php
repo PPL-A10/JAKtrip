@@ -24,7 +24,7 @@ var mapProp = {
     if(counter!=0)
        gmarkers[counter-1].setMap(null);
     counter++;
-    placeMarker(event.LatLng);
+    placeMarker(event.latLng);
   });
 }
 
@@ -175,14 +175,14 @@ function addLocation(lng,lat){
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Longitude <span class="req">*</span></label>
-  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo $longitude; ?>" required>
+  						<input class="form-control" type="text" id="longitude" name="longitude" value="<?php echo $longitude; ?>" readonly quired>
 				      <br></div>
 				    </div>
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Lattitude <span class="req">*</span></label>
-  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo $lattitude; ?>" required>
+  						<input class="form-control" type="text" id="lattitude" name="lattitude" value="<?php echo $lattitude; ?>" readonly required>
 				      <br></div>
 				    </div>
 				   

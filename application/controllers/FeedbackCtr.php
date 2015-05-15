@@ -67,7 +67,10 @@ class FeedbackCtr extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 
-			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			if (isset($_POST['submitmsg'])) {
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			}
+			else{}
 
 			$this->user = $this->facebook->getUser();
 			if($this->user)

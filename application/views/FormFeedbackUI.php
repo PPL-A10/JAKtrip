@@ -56,7 +56,7 @@ Menampilkan form isian membuat feedback di halaman Contact Us
  				  </div>
 			    </div>
 			    <br>
-			    <button class="btn btn-warning" type="submit">SEND</button>
+			    <button class="btn btn-warning" id="submitmsg" name="submitmsg" type="submit">SEND</button>
 			    <?php echo form_close(); ?>
 			</div>
 			<div class="contactus col-lg-5">

@@ -23,7 +23,10 @@ class PlaceCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			if (isset($_POST['submitrev'])) {
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			}
+			else{}
 
 		}
 		else

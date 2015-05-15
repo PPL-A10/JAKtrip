@@ -186,7 +186,7 @@
 									echo '<label class="control-label">Review <span class="req">*</span></label>';
 									echo form_error('review');
 									echo '<textarea class="form-control" rows="3" id="review" name="review" required></textarea></div></div><br><br><div class="formrating form-group"><div class="col-lg-9"><br>';
-									echo '<button class="field btn btn-warning" type="submit">SUBMIT</button></div></div><br><br><br><br><br><hr></form>';
+									echo '<button class="field btn btn-warning" id="submitrev" name="submitrev" type="submit">SUBMIT</button></div></div><br><br><br><br><br><hr></form>';
 									echo '<br><br><br><div id="isi_field" >';
 		            			}
 		            		}
@@ -195,11 +195,14 @@
 		            		$i=1;
 		            		foreach($query as $row2){
 		            			foreach($query2 as $row){
+		            				$cek = mysql_query("SELECT * FROM rating WHERE username = '".$row->username."'");
+		            				$foto = mysql_fetch_array(mysql_query("SELECT pic FROM member WHERE username = '".$row->username."'"));
+		            				$numreview = mysql_num_rows($cek);
 									echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";				
 									echo "<div class='reviewkiri col-lg-4'>";
-									echo "<div class='ava'><img src='/JAKtrip/assets/img/50.jpg'/></div>";
-									echo "<div class='author' ><b>".$row->username."</b></div>";
-									echo "<div class='hasreviewed'>Reviewed 7 places</div>";
+									echo "<div class='col-lg-12'><div class='pic-small' style='margin-left:65px; margin-bottom: 10px; margin-top: 10px;'><img src='".$foto['pic']."'/></div></div>";
+									echo "<div class='col-lg-12'><div class='author' ><b>".$row->username."</b></div>";
+									echo "<div class='hasreviewed'>Reviewed ".$numreview." places</div></div>";
 									echo "</div>";
 									echo "<div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'>";
 										if ($row->rate == 0)
@@ -246,7 +249,7 @@
 									echo	"<br>";
 								    echo	"<span class='judulreview tuffyh3a' id='judul'>"	;													
 									echo 	"<p>".$row->title."</p>" ;																
-									echo	"</span><br>";
+									echo	"</span>";
 								    echo	"<span class='isireview' id='isireview'>";
 									echo 	"<p>".$row->review."</p>" ;		
 								    echo	"</span>";

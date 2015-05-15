@@ -72,7 +72,7 @@ function addLocation(lng,lat){
 				<div class="col-lg-3"></div><br><br><br><br>
 			-->
 
-				<div class="tuffyh2a admintitle">Add New Place</div>
+				<div class="tuffyh2a admintitle">Edit Place</div>
 
 				<?php
 				$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
