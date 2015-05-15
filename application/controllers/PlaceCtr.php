@@ -190,6 +190,11 @@ function do_upload($place_name)
 			else{
 
 			}
+
+			$credit = $this->input->post('credit');
+	        if($credit==null || $credit==''){
+				$credit = "Uploaded by ".$user;
+			}
 			
 			$files = $_FILES;
 		    $cpt = count($_FILES['userfile']['name']);
@@ -208,6 +213,8 @@ function do_upload($place_name)
 			        $_FILES['userfile']['error']= $files['userfile']['error'][$i];
 			        $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
 
+
+
 				    $this->upload->initialize($config);
 				    $this->upload->do_upload();
 					$upload_data = $this->upload->data();
@@ -215,7 +222,7 @@ function do_upload($place_name)
 									$form_data = array(
 									       	'place_name' => $place_name,
 									       	'pic' => './assets/img/place/'.$place_name.'/'.$file_name,
-									       	'pic_info' => 'Uploaded by '.$user,
+									       	'pic_info' => $credit,
 											'is_publish' => 0,
 											'username' => $user
 											//'author' => get_cookie("username"),
