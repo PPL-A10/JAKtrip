@@ -492,5 +492,10 @@ class UsersCtr extends CI_Controller {
 		header('Location: '.base_url('user/trip/viewsavedtrip/'.$id_trip));
 	}
 	
+	function deleteReview($id_rate){
+		$this->load->model('ratingManager');
+		$this->ratingManager->deleteReview($id_rate);
+		header("Location: ".base_url()."user");
+	}
 	
 }
