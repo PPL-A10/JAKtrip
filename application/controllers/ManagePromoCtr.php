@@ -296,9 +296,6 @@ class ManagePromoCtr extends CI_Controller{
 			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			redirect('admin/promo/edit/'.$id_promo);
 		}else{
-			$queryPhoto = $this->PromoManager->promo_get($id_promo);
-			$temp = mysql_fetch_assoc($queryPhoto);
-
 			$old_startDate = $_POST['datepicker'][0];
 			$o_startDate = strtotime($old_startDate);
 			$s_date = date('Y-m-d', $o_startDate);
@@ -306,8 +303,13 @@ class ManagePromoCtr extends CI_Controller{
 			$o_endDate = strtotime($old_endDate);
 			$e_date = date('Y-m-d', $o_endDate);
 
+			$queryPhoto = $this->PromoManager->promo_get($id_promo);
+			$temp = mysql_fetch_assoc($queryPhoto);
+
 			if($file_name!=null || $file_name!=''){
 				// unlink(APPPATH.'../'.$temp['photo']); //hapus foto di folder assets/promo/
+				$pic = str_replace(base_url(),"./",$temp['photo']);
+				unlink($pic);
 				$form_data = array(
 					'title' => $title,
 				   	'start_date' => $s_date,
