@@ -474,7 +474,8 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('TripManager');
 		$data['id_trip'] = $id_trip;
 		$this->TripManager->deleteTrip($data);
-		header('Location: '.base_url('user'));
+		$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted it from your trips.</center>'));
+		redirect('user');
 	}
 
 	public function unsetVisited($id_place, $id_trip)
@@ -491,5 +492,10 @@ class UsersCtr extends CI_Controller {
 		header('Location: '.base_url('user/trip/viewsavedtrip/'.$id_trip));
 	}
 	
+	function deleteReview($id_rate){
+		$this->load->model('ratingManager');
+		$this->ratingManager->deleteReview($id_rate);
+		header("Location: ".base_url()."user");
+	}
 	
 }

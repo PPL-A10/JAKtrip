@@ -60,7 +60,7 @@ $route['promo/(:any)'] = 'PromoCtr/index/$1';
 
 $route['faq'] = 'faqCtr';
 $route['contactus'] = 'feedbackCtr'; 
-$route['contactus/send'] = 'feedbackCtr/sendSuggestion'; 
+$route['contactus/send'] = 'feedbackCtr/submitForm';
 
 $route['admin/members'] = 'manageMemberCtr';
 $route['admin/places'] = 'manageTourAttrCtr';
@@ -74,11 +74,12 @@ $route['admin/suggestions'] = 'suggestionCtr';
 $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';
-$route['admin/promos/delete/(:any)'] = 'ManagePromoCtr/del/$1';
-$route['admin/promos/edit/(:any)'] = 'ManagePromoCtr/edit/$1';
+$route['admin/promo/delete/(:any)'] = 'ManagePromoCtr/del/$1';
+$route['admin/promo/edit/(:any)'] = 'ManagePromoCtr/edit/$1';
 
 $route['user'] = 'UsersCtr';
 $route['user/edit'] = 'UsersCtr/edit';
+$route['user/review/delete/(:num)'] = 'UsersCtr/deleteReview/$1';
 $route['user/trip/setvisited/(:any)'] = 'UsersCtr/setVisited/$1/$2';
 $route['user/trip/unsetvisited/(:any)'] = 'UsersCtr/unsetVisited/$1/$2';
 $route['user/trip/viewsavedtrip/(:any)'] = 'UsersCtr/viewSavedTrip/$1';
@@ -111,7 +112,7 @@ $route['flag/(:any)/addwishlist'] = 'FlagCtr/addWishlist/$1';
 $route['flag/(:any)/removewishlist'] = 'FlagCtr/removeWishlist/$1'; 
 $route['flag/(:any)/addvisited'] = 'FlagCtr/addVisited/$1'; 
 $route['flag/(:any)/removevisited'] = 'FlagCtr/removeVisited/$1'; 
-$route['place/spamreport/(:num)'] = 'PlaceCtr/spamreport/$1'; 
+$route['place/report/(:num)'] = 'PlaceCtr/spamreport/$1'; 
 $route['place/(:any)/addwishlist'] = 'PlaceCtr/addWishlist/$1'; 
 $route['place/(:any)/removewishlist'] = 'PlaceCtr/removeWishlist/$1'; 
 $route['place/(:any)/addvisited'] = 'PlaceCtr/addVisited/$1'; 

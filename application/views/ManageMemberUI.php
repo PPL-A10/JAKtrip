@@ -55,7 +55,7 @@
 				      <th>Joined Date</th>
 				      <th>Reviews</th>
 				      <th>Last Active</th>
-				       <th>Action</th>
+				       <th width="100px;">Action</th>
 				    </tr>
 				  </thead>
 				  
@@ -84,13 +84,21 @@
 				  </tbody>
 				</table><br>
 
-				<ul class="pager">
+				<!-- <ul class="pager">
 				  <li><a href="#">Previous</a></li>
 				  <li><a href="#">Next</a></li>
-				</ul><br>
+				</ul><br> -->
 			</div>
 
 
 			
 		</div>
 	</div>
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>

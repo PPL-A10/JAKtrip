@@ -167,14 +167,60 @@ class AllPlacesCtr extends CI_Controller {
 	function sendSuggestion(){
 		$this->load->model('suggestionManager');
 		$this->load->helper('cookie');
+		$this->load->helper('form');
 		$this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-        $this->form_validation->set_rules('place_name', 'place_name', 'required');
+        $this->form_validation->set_rules('place_name', 'place name', 'required');
 		$this->form_validation->set_rules('description', 'description', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header("Location: ".base_url()."allplaces");
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			
+			$this->load->helper('form');
+			$this->load->model('AllPlacesMod');
+			$this->load->helper('cookie');
+			$data['query']= $this->AllPlacesMod->showallplaces();
+			$this->load->helper('form');
+			$this->load->model('touristAttractionManager');
+
+			
+			$this->load->model('searchMod');
+			$data['query4']= $this->searchMod->showallwisata();
+			$data['query1']= $this->searchMod->showallcategory();
+			$data['query2']= $this->searchMod->showalllocation();
+			$data['query3']= $this->searchMod->showallhalte();
+
+			$this->user = $this->facebook->getUser();
+			if($this->user)
+			{
+
+				$data['user_profile'] = $this->facebook->api('/me/');
+				$first_name = $data['user_profile']['first_name'];
+				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+				if(get_cookie('username')!=null)
+				{
+					$this->load->view('header', $data);
+					$this->load->view('allPlacesUI',$data);
+					$this->load->view('footer');
+				}
+				else
+				{
+					setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+            		setcookie("username",$data['user_profile']['id'], time()+3600, '/');
+					setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+					setcookie("is_admin",0,time()+3600,'/');
+					header('Location: '.base_url('successLoginFB'));
+				}
+			}
+			else
+			{
+				$data['login_url'] = $this->facebook->getLoginUrl();
+				$this->load->view('header', $data);
+				$this->load->view('allPlacesUI',$data);
+				$this->load->view('footer');
+			}
+			//redirect("allplaces#suggestion");
 		}
 		else
 		{
@@ -186,8 +232,8 @@ class AllPlacesCtr extends CI_Controller {
                     );
 			
                 $this->suggestionManager->insertSuggestion($data2);
-                
-                header("Location: ".base_url()."allplaces");
+                $this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully submitted your form.</center>'));
+                redirect("allplaces");
         }
 	}
 }

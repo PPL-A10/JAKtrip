@@ -3,7 +3,7 @@ function notifAddWishlist() {
 			
 			// create the notification
 			var notification = new NotificationFx({
-				message : '<p>You successfully added this place to <a href="http://localhost/JAKtrip/user#wishlist">your wishlist</a>.</p>',
+				message : '<center>You successfully added this place to <a href="http://localhost/JAKtrip/user#wishlist">your wishlist</a>.</center>',
 				layout : 'growl',
 				effect : 'genie',
 				type : 'notice', // notice, warning or error
@@ -26,7 +26,7 @@ function notifAddAchievement() {
 			
 			// create the notification
 			var notification = new NotificationFx({
-				message : '<p>You successfully added this place to <a href="http://localhost/JAKtrip/user#achievement">your achievement</a>.</p>',
+				message : '<center>You successfully added this place to <a href="http://localhost/JAKtrip/user#visited">your visited</a>.</center>',
 				layout : 'growl',
 				effect : 'genie',
 				type : 'notice', // notice, warning or error
@@ -49,7 +49,7 @@ function notifDelWishlist() {
 			
 			// create the notification
 			var notification = new NotificationFx({
-				message : '<p>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#wishlist">your wishlist</a>.</p>',
+				message : '<center>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#wishlist">your wishlist</a>.</center>',
 				layout : 'growl',
 				effect : 'genie',
 				type : 'notice', // notice, warning or error
@@ -73,7 +73,7 @@ function notifDelAchievement() {
 			
 			// create the notification
 			var notification = new NotificationFx({
-				message : '<p>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#achievement">your achievement</a>.</p>',
+				message : '<center>You successfully deleted this place from <a href="http://localhost/JAKtrip/user#visited">your visited</a>.</center>',
 				layout : 'growl',
 				effect : 'genie',
 				type : 'notice', // notice, warning or error
@@ -91,7 +91,7 @@ function notifDelAchievement() {
 		this.disabled = true;
 };
 
-function notifSuccess(msg) {
+function notif(msg) {
 		setTimeout( function() {
 			
 			// create the notification

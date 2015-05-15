@@ -58,7 +58,9 @@ class SpamCtr extends CI_Controller {
 			$this->load->helper('cookie');
 			$this->load->model('SpamMod');
 			if((int)$id != null){
-			$this->SpamMod->delete($id);
+				$this->SpamMod->delete($id);
+				$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a review.</center>'));
+				redirect('admin/spam');
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
 

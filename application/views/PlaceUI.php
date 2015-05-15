@@ -18,7 +18,7 @@
 			</div>
 		
 			<div class="col-lg-1"></div>
-			<div class="col-lg-10" style="margin-top: -15px; margin-left: 8px;">
+			<div class="col-lg-10" style="margin-top: -10px; margin-left: 8px;">
 				<span class="tuffyh2a" style="margin-top: 5px;"><?php foreach($query as $row){echo $row->place_name;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;
 				<span><?php foreach($query as $row){echo $row->city;}?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<?php 	$avgrate = 0; 
@@ -71,7 +71,7 @@
 					    		echo '<a href="#"> <span class="fa fa-heart icondetail iconcol w-none"></span></a>';
 					    	}
 					    	if($row->is_visited==1){
-					    		echo '<a href="#"><span class="fa fa-check-circle icondetail iconcol a"></span></a>';
+					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a"></span></a>';
 					    	}
 					    	else if($row->is_visited==0){
 					    		echo '<a href="#"> <span class="fa fa-check-circle icondetail iconcol a-none"></span></a>';
@@ -82,7 +82,7 @@
 			    ?>
 			    
 			</div><br><br>
-			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav detail" style="border-top: 1px solid #c4c4c4; margin-left: 15px;">
+			<ul id="main-menu" class="sm sm-clean submenu nav navbar-nav" style="border-top: 1px solid #c4c4c4; margin-left: 15px; width: 1080px;">
 				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;</li>
 				<li id="inf"><a href="#info" class="submenua" >Information</a></li>
@@ -126,12 +126,13 @@
 							<div class="form-group">
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
-								<input type="file" name="userfile[]" size="20" multiple>
+							  	<?php echo form_error('userfile'); ?>
+								<input type="file" name="userfile[]" size="20" multiple required>
 						      </div>
 						    </div>
 						    <div class="col-lg-12"><br><br>
 							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
-							</div>
+							<hr></div>
 						</form>
 						<div class="gallery col-lg-12">
 						<?php
@@ -172,13 +173,15 @@
 									$attributes = array('id' => 'addrevform');
 									echo form_open('place/'.$row->place_name, $attributes);
 									echo '<br><br><div class="formrating form-group"><div class="col-lg-9">';
-									echo '<label class="control-label">Rating</label><br><span class="starRating">';
+									echo '<label class="control-label">Rating  <span class="req">*</span></label><br><span class="starRating">';
 									echo '<input id="rating5" type="radio" name="rate" value="5"><label for="rating5">5</label><input id="rating4" type="radio" name="rate" value="4"><label for="rating4">4</label><input id="rating3" type="radio" name="rate" value="3"><label for="rating3">3</label><input id="rating2" type="radio" name="rate" value="2"><label for="rating2">2</label><input id="rating1" type="radio" name="rate" value="1"><label for="rating1">1</label></span>';
 									echo '</div></div><br><div class="formrating form-group"><div class="col-lg-9">';
 									echo '<label class="control-label">Title</label><input class="form-control" type="text" id="title" name="title"></div></div><br><div class="formrating form-group"><div class="col-lg-9"><br>';
-									echo '<label class="control-label">Review</label><textarea class="form-control" rows="3" id="textArea" id="review" name="review"></textarea></div></div><br><br><div class="formrating form-group"><div class="col-lg-9"><br>';
-									echo '<button class="field btn btn-warning" type="submit">SUBMIT</button></div></div></form>';
-									echo '<br><br><br><br><div id="isi_field" >';
+									echo '<label class="control-label">Review <span class="req">*</span></label>';
+									echo form_error('review');
+									echo '<textarea class="form-control" rows="3" id="review" name="review" required></textarea></div></div><br><br><div class="formrating form-group"><div class="col-lg-9"><br>';
+									echo '<button class="field btn btn-warning" type="submit">SUBMIT</button></div></div><br><br><br><br><br><hr></form>';
+									echo '<br><br><br><div id="isi_field" >';
 		            			}
 		            		}
 		            		else{
@@ -221,7 +224,7 @@
 										echo      	"<input type='checkbox' id='spamreason' name='spamreason[]' value='unrelated_content'>&nbsp;&nbsp;Unrelated Content<br>";
 										echo     	"<input type='checkbox' id='spamreason' name='spamreason[]' value='profanity'>&nbsp;&nbsp;Profanity<br>";
 										echo    	"<input type='checkbox' id='spamreason' name='spamreason[]' value='nudity'>&nbsp;&nbsp;Nudity<br><br>";
-										echo   	"<div class='row'><br>";
+										echo   	"<div class='row'><br><br><br>";
 										echo    "<a href='#close' class='btn btn-primary' style='margin-right: -60px; margin-left: 100px;'>cancel</a>";
 										echo    "<button type='submit' class='pull-right btn btn-warning' style='margin-right: 20px;'>send</button>";
 										echo	"</div>";
@@ -257,6 +260,14 @@
 		</div>
 	</div>
 </div>
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -289,7 +300,7 @@ $(document).ready(function() {
 			notifAddAchievement();
 		}
 		else if($(this).hasClass("a")){
-			var c = confirm("Are you sure you want to remove this from your achievement?");
+			var c = confirm("Are you sure you want to remove this from your visited?");
 			if(c==true){
 				$(this).removeClass("a");
 				$(this).addClass("a-none");

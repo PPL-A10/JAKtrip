@@ -360,7 +360,7 @@ li.active > a{
 .subtitle p{
   line-height: 20px;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
   padding-right: 220px;
   padding-left: 20px;
   margin-left: 100px;
@@ -920,7 +920,7 @@ ul.nav.nav-pills.fak > li > a:hover{
   bottom: 0;
   left: 0;
   background-color: rgba(0,0,0,0.8);
-  z-index: 99999;
+  z-index: 9999;
   opacity:0;
   -webkit-transition: opacity 400ms ease-in;
   -moz-transition: opacity 400ms ease-in;
@@ -935,7 +935,7 @@ ul.nav.nav-pills.fak > li > a:hover{
 
 .openModal2 > div {
   width: 350px;
-  height: 350px;
+  height: 400px;
   position: relative;
   margin: 7% auto;
   padding: 10px 20px 10px 20px;
@@ -1236,4 +1236,23 @@ a:active > span.fa.fa-map-marker, a:visited > span.fa.fa-map-marker {
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
+}
+
+.error{
+  color: #db2719 !important;
+}
+
+.contactinfo{
+  margin-left: 85px;
+  margin-top: 25px;
+}
+
+.contactinfo a{
+  font-weight: bold;
+  color: #3E3F3A !important;
+}
+
+.contactinfo a:hover{
+  color: #db2719 !important;
+  text-decoration: none;
 }

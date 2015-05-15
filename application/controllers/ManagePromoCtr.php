@@ -1,10 +1,17 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class ManagePromoCtr extends CI_Controller{
 	public function __construct(){
         parent::__construct();
     }
 
+    /*
+	author: Syifa Khairunnisa
+	editor: Khusna Nadia-menampilkan list promo
+			Mohammad Syahid Wildan-facebook
+	Menampilkan list promo di menu admin page
+    */
 	function index(){
 		$this->load->library('table');
 		$this->load->helper('html');
@@ -61,6 +68,11 @@ class ManagePromoCtr extends CI_Controller{
 		// $this->load->view('footer');
 	}
 
+	/*
+	author: Khusna Nadia
+	editor: Mohammad Syahid Wildan-facebook
+	Menghapus promo dari database
+	*/
 	function del($id_promo){
 		$this->load->library('table');
 		$this->load->helper('html');
@@ -69,6 +81,8 @@ class ManagePromoCtr extends CI_Controller{
 
 		if($id_promo != NULL){
 			$this->PromoManager->delete($id_promo);
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a promo.</center>'));
+			redirect('admin/promo');
 		}
 
 		$query = $this->PromoManager->promo_getall();
@@ -97,19 +111,24 @@ class ManagePromoCtr extends CI_Controller{
 			$data['user_profile'] = $this->facebook->api('/me/');
 			$first_name = $data['user_profile']['first_name'];
 			$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
-			if(get_cookie('username')!=null){
+			if(get_cookie('username')!=null)
+			{
 				$this->load->view('header', $data);
 				$this->load->view('menuadmin');
 				$this->load->view('managePromoUI', $data);
 				$this->load->view('footer');
-			}else{
+			}
+			else
+			{
 				setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
                 setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 				setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
 				setcookie("is_admin",0,time()+3600,'/');
 				header('Location: '.base_url('successLoginFB'));
 			}
-		}else{
+		}
+		else
+		{
 			$data['login_url'] = $this->facebook->getLoginUrl();
 			$this->load->view('header', $data);
 			$this->load->view('menuadmin');
@@ -122,6 +141,11 @@ class ManagePromoCtr extends CI_Controller{
 		// $this->load->view('footer');
 	}
 
+	/*
+	author: Khusna Nadia
+	editor: Mohammad Syahid Wildan-facebook
+	Mengubah promo di database
+	*/
 	function edit($id_promo){
 		$this->load->library('table');
 		$this->load->helper('html');
@@ -189,6 +213,10 @@ class ManagePromoCtr extends CI_Controller{
 		// $this->load->view('footer');
 	}
 
+	/*
+	author: Khusna Nadia
+	Mengecek tipe dari promo
+	*/
 	function isType($id_promo){
 		$result = $this->PromoManager->getTypes();
 		$result1 = $this->PromoManager->promo_getType($id_promo);
@@ -212,6 +240,10 @@ class ManagePromoCtr extends CI_Controller{
 		return $type_checked;
 	}
 
+	/*
+	author: Khusna Nadia
+	Men-submit form edit promo
+	*/
 	function myform(){
 		$this->load->library('form_validation');
 		$this->load->helper('form');
@@ -220,12 +252,13 @@ class ManagePromoCtr extends CI_Controller{
 		$this->load->model('PromoManager');
 
 		$this->form_validation->set_rules('title', 'title', 'trim|alpha_numeric_dash_spaces');
-		$this->form_validation->set_rules('start_date', 'start_date', 'trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('end_date', 'end_date', 'trim|callback_checkDateFormat');
-		$this->form_validation->set_rules('place_name', 'place_name', 'trim');
+		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('end_date', 'end date', 'trim|callback_checkDateFormat');
+		$this->form_validation->set_rules('place_name', 'place name', 'trim');
 		$this->form_validation->set_rules('description', 'description', 'trim');
-		$this->form_validation->set_rules('photo', 'photo', 'trim');
-		$this->form_validation->set_rules('type_name', 'type_name', 'trim');
+		$this->form_validation->set_rules('userfile', 'photo', 'trim');
+		$this->form_validation->set_rules('type_list', 'type', 'trim');
+		$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 
 		$id_promo = $this->input->post('key');
 		
@@ -237,12 +270,13 @@ class ManagePromoCtr extends CI_Controller{
 		
 		$config['upload_path'] = './assets/img/promo/';
 		$config['allowed_types'] = 'gif|jpg|png';
-		$config['max_size']	= '1000';
+		$config['max_size']	= '2048';
 		$config['max_width']  = '4096';
 		$config['max_height']  = '4096';
 		$this->load->library('upload', $config);
 		
-		$dir_exist = true; // flag for checking the directory exist or not
+		// flag for checking the directory exist or not
+		$dir_exist = true;
 		if (!is_dir('./assets/img/promo/')){
 			mkdir('./assets/img/promo/', 0777, true);
 			$dir_exist = false; // dir not exist
@@ -251,20 +285,17 @@ class ManagePromoCtr extends CI_Controller{
 		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
 			$this->load->view('FormPromoUI2', $error);
+			// $this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			// redirect('admin/promo/edit/'.$id_promo);
 		}else{
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
 		}
-		
-		$this->form_validation->set_error_delimiters('<br /><span class="error">', '</span>');
 
 		if ($this->form_validation->run() == FALSE){ // validation hasn't been passed
-			redirect ('ManagePromoCtr/edit/'.$id_promo);
-		}else{ // passed validation proceed to post success logic
-		 	// build array for the model
-			$queryPhoto = $this->PromoManager->promo_get($id_promo);
-			$temp = mysql_fetch_assoc($queryPhoto);
-
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+			redirect('admin/promo/edit/'.$id_promo);
+		}else{
 			$old_startDate = $_POST['datepicker'][0];
 			$o_startDate = strtotime($old_startDate);
 			$s_date = date('Y-m-d', $o_startDate);
@@ -272,8 +303,13 @@ class ManagePromoCtr extends CI_Controller{
 			$o_endDate = strtotime($old_endDate);
 			$e_date = date('Y-m-d', $o_endDate);
 
+			$queryPhoto = $this->PromoManager->promo_get($id_promo);
+			$temp = mysql_fetch_assoc($queryPhoto);
+
 			if($file_name!=null || $file_name!=''){
 				// unlink(APPPATH.'../'.$temp['photo']); //hapus foto di folder assets/promo/
+				$pic = str_replace(base_url(),"./",$temp['photo']);
+				unlink($pic);
 				$form_data = array(
 					'title' => $title,
 				   	'start_date' => $s_date,
@@ -288,14 +324,18 @@ class ManagePromoCtr extends CI_Controller{
 				   	'start_date' => $s_date,
 				   	'end_date' => $e_date,
 					'place_name' => $place_name,
-					'description' => $description//,
-					// 'photo' => $temp['photo']
+					'description' => $description
 				);
 			}
 			
 			
 			$old_type = $this->PromoManager->promo_getType($id_promo);
 			
+			if(!isset($_POST['type_list'])) {
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+				redirect('admin/promo/edit/'.$id_promo);
+			}
+
 			$form_type = array(
 				'id_promo' => $id_promo,
 				'type_list' => $type_list,
@@ -304,15 +344,19 @@ class ManagePromoCtr extends CI_Controller{
 			);
 			
 			if ($this->PromoManager->edit($id_promo, $form_data, $form_type) == TRUE){ // the information has therefore been successfully saved in the db
-				//$this->load->view('formTourAttrUI', $dat);
-				redirect('ManagePromoCtr/success');   // or whatever logic needs to occur
+				$this->session->set_flashdata('form', array('message' => '<center>You successfully edited a promo.</center>'));
+				redirect('admin/promo');
 			}else{
-				echo 'An error occurred saving your information. Please try again later';
-				//Or whatever error handling is necessary
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+				redirect('admin/promo/edit/'.$id_promo);
 			}
 		}
 	}
 
+	/*
+	author: Khusna Nadia
+	Menandakan sukses men-submit form
+	*/
 	function success()
 	{
 		redirect('admin/promo');
