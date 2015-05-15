@@ -162,7 +162,8 @@
 			    	}
 			    	else{
 			    		foreach ($review as $row) {
-							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$thisPlace."'"));
+							$pic = mysql_fetch_assoc(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE place_name = '".$row->place_name."'"));
+							$delRevUrl = 'user/review/delete/'.$row->id_rate;
 				    		echo '<div class="row collrev"><a href="'.base_url("place/".$row->place_name.'').'">';
 							if($pic["pic_thumbnail"]===null){
 								echo '<div class="col-lg-2 pic-small"><img src="'.base_url('assets/img/noimg.png').'"></div>';
@@ -171,7 +172,7 @@
 								echo '<div class="col-lg-2 pic-small"><img src="'.base_url($pic["pic_thumbnail"]).'"></div>';
 							}	;
 							echo '<div class="col-lg-8">';
-							echo '<div class="tuffyh3a">'.$thisPlace.'</div>';
+							echo '<div class="tuffyh3a">'.$row->place_name.'</div>';
 							if ($row->rate == 0)
 								{echo "<span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o'></span><span class='fa fa-star-o' ></span><span class='fa fa-star-o'></span>";}
 							elseif ($row->rate == 1)
@@ -186,7 +187,7 @@
 							{echo "<span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span><span class='fa fa-star' style='color: #F7E51E'></span>";}
 							else{}	
 							echo '<div>'.$row->review.'</div></div>';
-							echo '<div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div></a></div>';
+							echo '<a href="'.base_url($delRevUrl).'"><div class="col-lg-2"><span class="fa fa-trash-o iconcol"></span></div></a></div>';
 			    		}
 			    	}
 					

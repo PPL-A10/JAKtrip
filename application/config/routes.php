@@ -79,6 +79,7 @@ $route['admin/promo/edit/(:any)'] = 'ManagePromoCtr/edit/$1';
 
 $route['user'] = 'UsersCtr';
 $route['user/edit'] = 'UsersCtr/edit';
+$route['user/review/delete/(:num)'] = 'UsersCtr/deleteReview/$1';
 $route['user/trip/setvisited/(:any)'] = 'UsersCtr/setVisited/$1/$2';
 $route['user/trip/unsetvisited/(:any)'] = 'UsersCtr/unsetVisited/$1/$2';
 $route['user/trip/viewsavedtrip/(:any)'] = 'UsersCtr/viewSavedTrip/$1';

@@ -28,6 +28,11 @@ class RatingManager extends CI_Model{
         $query = $this->db->get();
         return $query->result();
     }
+
+    function deleteReview($id_rate){
+        $this->load->database();
+        $this->db->delete('rating', array('id_rate' => $id_rate)); 
+    }
    
 }
 
