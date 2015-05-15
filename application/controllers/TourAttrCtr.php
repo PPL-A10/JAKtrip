@@ -202,43 +202,10 @@ class TourAttrCtr extends CI_Controller {
 		//if valid
 		else{
 			$this->load->helper('cookie');
-			$placename = $this->input->post('place_name');
+			//$placename = $this->input->post('place_name');
 			$user = get_cookie("username");
 
-			$config['upload_path'] = './assets/img/place/'.$placename;
-			//$config['upload_path'] = './assets/upload/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '1000';
-			$config['max_width']  = '4096';
-			$config['max_height']  = '4096';
-			$this->load->library('upload', $config);
-			//$this->upload->initialize($config);
-			//$upload_data = $this->upload->data();
 			
-			$dir_exist = true; // flag for checking the directory exist or not
-			if (!is_dir('./assets/img/place/'.$placename))
-			{
-				mkdir('./assets/img/place/'.$placename, 0777, true);
-				$dir_exist = false; // dir not exist
-			}
-			else{
-
-			}
-			if (!$this->upload->do_upload())
-			{
-				$error = array('error' => $this->upload->display_errors());
-				//$this->load->view('HomeUI');
-				$this->load->view('FormTourAttrUI', $error);
-			}
-			else
-			{
-				//$data = array('upload_data' => $this->upload->data());
-				$upload_data = $this->upload->data();
-				$file_name = $upload_data['file_name'];
-				//echo $file_name;
-				//$this->load->view('upload_success');
-				//$this->load->view('upload_form');
-			}
 
 			if($place_info=='0'){
 				$place_info=NULL;
@@ -265,21 +232,9 @@ class TourAttrCtr extends CI_Controller {
 				'visitors' => 0,
 				'last_modified' => mdate("%Y-%m-%d %H:%i:%s", now()),
 				'link_web' => $link_web,
-				'pic_thumbnail' => './assets/img/place/'.$placename.'/'.$file_name
+				//'pic_thumbnail' => './assets/img/place/'.$place_name.'/'.$file_name
 			);
 
-			if($credit==null || $credit==''){
-				$credit = "Uploaded by ".$user;
-			}
-
-			$form_photo = array(
-								'place_name' => $place_name,
-								'pic' => './assets/img/place/'.$placename.'/'.$file_name,
-								'pic_info' => $credit,
-								'is_publish' => 0,
-								'username' => $user
-			);		
-								
 			$form_cat = array(
 				'place_name' => $place_name,
 				'category_list' => $category_list,
@@ -288,27 +243,74 @@ class TourAttrCtr extends CI_Controller {
 										
 			// run insert model to write data to db
 			
-			if ($this->TouristAttractionManager->SaveForm($form_data, $form_photo, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
-				redirect('tourAttrCtr/success');   // or whatever logic needs to occur
+			if ($this->TouristAttractionManager->SaveForm($form_data, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
+				$query = $this->TouristAttractionManager->tourAttr_get($place_name);
+				$id = $query['id'];
+				//upload foto
+			
+				$config['upload_path'] = './assets/img/place/'.$id;
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '1000';
+				$config['max_width']  = '4096';
+				$config['max_height']  = '4096';
+				$this->load->library('upload', $config);
+				//$this->upload->initialize($config);
+				
+				$dir_exist = true; // flag for checking the directory exist or not
+				if (!is_dir('./assets/img/place/'.$id))
+				{
+					mkdir('./assets/img/place/'.$id, 0777, true);
+					$dir_exist = false; // dir not exist
+				}
+				else{
+
+				}
+				if (!$this->upload->do_upload())
+				{
+					$error = array('error' => $this->upload->display_errors());
+					//$this->load->view('HomeUI');
+					$pic=NULL;
+					$this->load->view('FormTourAttrUI', $error);
+				}
+				else
+				{
+					//$data = array('upload_data' => $this->upload->data());
+					$upload_data = $this->upload->data();
+					$file_name = $upload_data['file_name'];
+					$pic = './assets/img/place/'.$id.'/'.$file_name;
+					//echo $file_name;
+					//$this->load->view('upload_success');
+					//$this->load->view('upload_form');
+				}
+				
+				if($credit==null || $credit==''){
+					$credit = "Uploaded by ".$user;
+				}
+				
+				$form_photo = array(
+									'place_name' => $place_name,
+									'pic' => $pic,
+									'pic_info' => $credit,
+									'is_publish' => 0,
+									'username' => $user
+				);
+				
+				if($this->TouristAttractionManager->save_pic_thumbnail($id, $form_photo) == TRUE){
+					redirect('tourAttrCtr/success');   // or whatever logic needs to occur
+				}
+				else{
+					echo 'An error occurred saving your information. Please try again later';
+				}
+					
 			}
 			else{
 				echo 'An error occurred saving your information. Please try again later';
 				// Or whatever error handling is necessary
 			}
+			
+			
 		}
 		
-	}
-	
-	# callback
-	function check($str)
-	{
-		if(ctype_alpha(str_replace(' ','',$str))){
-			return true;
-		}
-		else{
-					$this->form_validation->set_message('check', 'This field may only contains alphabethical characters and whitespace');
-					return FALSE;
-		}
 	}
 	
 	function success()
