@@ -85,7 +85,7 @@ $(function() {
 
         jQuery.ajax({
               type: "POST",
-              url: "http://localhost/Jaktrip/index.php/tesController/getAll",
+              url: "http://localhost/JAKtrip/index.php/tesController/getAll",
               success: function(res) {
                   if (res)
                   { 
@@ -471,7 +471,7 @@ $(function() {
               success: function(res) {
                   if (res)
                   {
-                    
+                    var baseurl = 'http://localhost/JAKtrip/';
                     var output = getCookie("placeName").replace(/\+/gi, " ");
                //     alert(res);
                     var halte_awal = getCookie("halteAwal");
@@ -529,6 +529,7 @@ $(function() {
               success: function(res) {
                   if (res)
                   {
+                    var baseurl = 'http://localhost/JAKtrip/';
                     var output = getCookie("placeName").replace(/\+/gi, " ");
              //       alert(res);
                    var obj = jQuery.parseJSON(res);
@@ -621,6 +622,7 @@ $(function() {
               success: function(res) {
                   if (res)
                   {
+                    var baseurl = 'http://localhost/JAKtrip/';
         //            alert(res);
                     var output = getCookie("placeName").replace(/\+/gi, " ");
                //     alert(res);
@@ -697,7 +699,7 @@ $(function() {
               //      alert(total_price_array.length);
                     var semuaHarga = 0;
                     var place_name_array = place_name.split("xx");
-                    var baseurl = 'http://localhost/JAKtrip';
+                    var baseurl = 'http://localhost/JAKtrip/';
 
                     //------------kayaknya ga penting-----------------
                     // for(var i=0; i<total_price_array.length-1; i++)
