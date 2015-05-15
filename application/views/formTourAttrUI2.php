@@ -5,12 +5,11 @@
 var gmarkers = [];
 var counter = 0;
 var map;
-var myCenter=new google.maps.LatLng(-6.190035, 106.838075);
 
 function initialize()
 {
 var mapProp = {
-  center:myCenter,
+  center:new google.maps.LatLng(-6.190035, 106.838075),
   zoom:11,
   mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -210,6 +209,13 @@ function addLocation(lng,lat){
 				    </div>
 				    <br>
 					 <br>
+					 <div class="form-group">
+					  <div class="col-lg-11">
+						<label class="control-label">Photo Credit</label>
+						<?php echo form_error('credit'); ?>
+  						<input class="form-control" type="text" id="credit" name="credit" value="<?php echo $credit; ?>">
+				      <br></div>
+				    </div><br>
 				    <div class="form-group">
 					  <div class="col-lg-11" >
 					  	<label class="control-label">Longitude & Lattitude</label>

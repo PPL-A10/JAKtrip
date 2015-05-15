@@ -130,7 +130,13 @@
 								<input type="file" name="userfile[]" size="20" multiple required>
 						      </div>
 						    </div>
-						    <div class="col-lg-12"><br><br>
+						    <br><br>
+						    <div class="form-group">
+					 			 <div class="col-lg-10"><br><label class="control-label">Photo Credit</label>
+						   		 <input class="form-control" type="text" id="credit" name="credit" title="Leave it blank if the picture you want to upload is originally yours."><br><br>
+						   		</div>
+						   	</div>
+						   	 <div class="col-lg-12">
 							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
 							<hr></div>
 						</form>

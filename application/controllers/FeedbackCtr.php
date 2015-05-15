@@ -115,7 +115,7 @@ class FeedbackCtr extends CI_Controller {
 					//Transfering data to Model
                 $this->feedbackManager->insert_feedback($data);
 				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully submitted your form.</center>'));
-
+				redirect('contactus');
         	
             $this->user = $this->facebook->getUser();
 			if($this->user)
