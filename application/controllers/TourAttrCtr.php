@@ -100,7 +100,7 @@ class TourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('weekday_price', 'weekday price', 'integer');			
 		$this->form_validation->set_rules('weekend_price', 'weekend price', 'integer');
 		$this->form_validation->set_rules('transport_price', 'transportation fee', 'integer');
-		$this->form_validation->set_rules('source', 'source', 'valid_url');
+		//$this->form_validation->set_rules('source', 'source', 'valid_url');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
 		$place_name = $this->input->post('place_name');
@@ -256,7 +256,6 @@ class TourAttrCtr extends CI_Controller {
 				'rate_avg' => 0,
 				'description' => $description,
 				'place_info' => $place_info,
-				'credit' => $credit,
 				//'halte_code' => $this->input->post('halte_code'),
 				'halte_code' =>$this->TouristAttractionManager->gethaltekode($select_busstop),
 				'transport_info' => $transport_info,

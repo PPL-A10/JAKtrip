@@ -332,7 +332,6 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('weekday_price', 'weekday price', 'integer');			
 		$this->form_validation->set_rules('weekend_price', 'weekend price', 'integer');
 		$this->form_validation->set_rules('transport_price', 'transportation fee', 'integer');
-		$this->form_validation->set_rules('source', 'source', 'valid_url');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
 

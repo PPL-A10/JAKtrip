@@ -10,7 +10,7 @@
 				echo form_hidden('old_password', $password);
 				echo form_hidden('pic', $pic); ?>
 				<?php if($pic!=NULL){
-					echo "<div class='userphoto'><img src=".$pic."></div>
+					echo "<div class='pic-thumbnail white'><img src=".$pic."></div>
 				<br><br>
 				<button class='btn btn-warning' name='form_profile' value='remove_photo'>Remove Photo</button>";
 				}
