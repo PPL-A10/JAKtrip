@@ -343,6 +343,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$city = $this->input->post('select_location');
 		$description = $this->input->post('description');
 		$place_info = $this->input->post('place_inform');
+		$credit = $this->input->post('credit');
 		$select_busstop = $this->input->post('select_busstop');
 		$transport_info = $this->input->post('transport_info');
 		$transport_price = $this->input->post('transport_price');	
@@ -459,11 +460,15 @@ class ManageTourAttrCtr extends CI_Controller {
 				'pic_thumbnail' => $pic
 			);
 
+			if($credit==null || $credit==''){
+				$credit = "Uploaded by ".$user;
+			}
+
 			if($upload_status==TRUE){
 				$form_photo = array(
 									'place_name' => $place_name,
 									'pic' => $pic,
-									'pic_info' => 'Uploaded by '.$user,
+									'pic_info' => $credit,
 									'is_publish' => 1,
 									'username' => $user
 				);
