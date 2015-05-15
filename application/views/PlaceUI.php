@@ -179,7 +179,7 @@
 									echo '<label class="control-label">Title</label><input class="form-control" type="text" id="title" name="title"></div></div><br><div class="formrating form-group"><div class="col-lg-9"><br>';
 									echo '<label class="control-label">Review <span class="req">*</span></label>';
 									echo form_error('review');
-									echo '<textarea class="form-control" rows="3" id="review" name="review"></textarea></div></div><br><br><div class="formrating form-group"><div class="col-lg-9"><br>';
+									echo '<textarea class="form-control" rows="3" id="review" name="review" required></textarea></div></div><br><br><div class="formrating form-group"><div class="col-lg-9"><br>';
 									echo '<button class="field btn btn-warning" type="submit">SUBMIT</button></div></div><br><br><br><br><br><hr></form>';
 									echo '<br><br><br><div id="isi_field" >';
 		            			}
@@ -300,7 +300,7 @@ $(document).ready(function() {
 			notifAddAchievement();
 		}
 		else if($(this).hasClass("a")){
-			var c = confirm("Are you sure you want to remove this from your achievement?");
+			var c = confirm("Are you sure you want to remove this from your visited?");
 			if(c==true){
 				$(this).removeClass("a");
 				$(this).addClass("a-none");

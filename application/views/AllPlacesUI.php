@@ -108,13 +108,13 @@
 								<div class="form-group">
 									<label class="control-label">Place Name <span class="req">*</span></label>
 									<?php echo form_error('place_name'); ?>
-									<?php echo form_input(array('id' => 'place_name', 'name' => 'place_name', 'class' => 'form-control')); ?>
+									<?php echo form_input(array('id' => 'place_name', 'name' => 'place_name', 'class' => 'form-control', 'required' => 'required')); ?>
 			  						<!-- <input class="form-control" type="text" id="place_name" name="place_name" required> -->
 							    </div>
 							    <div class="form-group">
 									<label class="control-label">Short Description <span class="req">*</span></label>
 									<?php echo form_error('description'); ?>
-			  						<?php echo form_textarea(array('id' => 'description', 'name' => 'description', 'class' => 'form-control', 'rows' => '2')); ?>
+			  						<?php echo form_textarea(array('id' => 'description', 'name' => 'description', 'class' => 'form-control', 'rows' => '2', 'required' => 'required')); ?>
 			  						<!-- <textarea class="form-control" rows="2" id="textArea" id="description" name="description" required></textarea> -->
 							    </div>
 							    <div style="margin-top: 25px;">
@@ -130,7 +130,6 @@
 	</div>
 
 <?php
-
 	if($this->session->flashdata('form')) {
 	  $msg = $this->session->flashdata('form');
 	  $message = $msg['message'];

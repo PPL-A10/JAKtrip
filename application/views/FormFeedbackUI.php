@@ -28,7 +28,7 @@ Menampilkan form isian membuat feedback di halaman Contact Us
 				  <div class="col-lg-11">
 					<label class="control-label">Name <span class="req">*</span></label>
 					<?php echo form_error('name'); ?>
-					<?php echo form_input(array('id' => 'name', 'name' => 'name', 'class' => 'form-control')); ?>
+					<?php echo form_input(array('id' => 'name', 'name' => 'name', 'class' => 'form-control', 'required' => 'required')); ?>
 			      </div>
 			    </div>
 				<br><br>
@@ -36,7 +36,7 @@ Menampilkan form isian membuat feedback di halaman Contact Us
 				  <div class="col-lg-11">
 					<label class="control-label">Email <span class="req">*</span></label>
 					<?php echo form_error('email'); ?>
-					<?php echo form_input(array('id' => 'email', 'name' => 'email', 'class' => 'form-control')); ?>
+					<?php echo form_input(array('id' => 'email', 'name' => 'email', 'class' => 'form-control', 'required' => 'required', 'type' => 'email')); ?>
 			      </div>
 			    </div>
 			    <br><br>
@@ -52,7 +52,7 @@ Menampilkan form isian membuat feedback di halaman Contact Us
 				  <div class="col-lg-11">
 					<label class="control-label">Message <span class="req">*</span></label>
 					<?php echo form_error('message'); ?>
-					<?php echo form_textarea(array('id' => 'message', 'name' => 'message', 'class' => 'form-control', 'rows' => '3')); ?>
+					<?php echo form_textarea(array('id' => 'message', 'name' => 'message', 'class' => 'form-control', 'rows' => '3', 'required' => 'required')); ?>
  				  </div>
 			    </div>
 			    <br>
