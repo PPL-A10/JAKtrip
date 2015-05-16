@@ -62,7 +62,7 @@
 								echo "<div class='col-lg-5 containerimg-s'><img src='".base_url($row->photo)."'></div>";
 							}
 							echo "<div class='col-lg-7'><div style='height: 10px'></div>";
-							echo "<span class='tuffyh3a'>".$row->title."</span> <br> <b>".$row->place_name."</b><br>".$row->description."";
+							echo "<span class='tuffyh3a'>".$row->title."</span> <br> <b>".$row->place_name."</b><br>".$row->description." <br>Berlaku sampai: <b>".$row->end_date."</b>";
 							echo "</div></a></div>";
 						}
 							
