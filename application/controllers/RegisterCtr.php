@@ -111,7 +111,7 @@ class RegisterCtr extends CI_Controller {
 			);
 			
 			if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db
-				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b><br> You successfully made an account here. Please check your email for validation.</center>'));	
+				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b><br> You successfully made an account here. You can log in now.</center>'));	
 				redirect('home');   // or whatever logic needs to occur
 			}
 			else{
