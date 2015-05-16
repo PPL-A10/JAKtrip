@@ -71,7 +71,40 @@
 .alert-block p + p {
   margin-top: 5px;
 }
+.openModalPreviewPic {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.8);
+  z-index: 99999;
+  opacity:0;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  pointer-events: none;
+}
+.openModalPreviewPic:target {
+  opacity:1;
+  pointer-events: auto;
+}
+.openModalPreviewPic > div {
+  width: 700px;
+  height: 500px;
+  position: relative;
+  margin: 7% auto;
+  padding: 10px 30px 10px 20px;
+  border-radius: 5px;
+  /*background-color: #fff;*/
+  font-size: 14px;
+  color: #1c1c1c;
+}
 
+.parentPic img{
+  height: 100%;
+   width: 100%;
+}
 .openModalNotify {
   position: fixed;
   top: 0;
