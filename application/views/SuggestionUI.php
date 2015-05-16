@@ -53,28 +53,28 @@
 				      <th>Link</th>
 				      <th>Username</th>
 				      <th>Status</th>
-				      <th>Preview Picture</th>
+				      <!-- <th>Preview Picture</th> -->
 				    </tr>
 				  </thead>
 				  <tbody id="output_field123" >
 				  <?php 
-				  foreach ($query3 as $row) {
-				  	# code...
-				  	$link_pic = str_replace("./",base_url(),$row->pic);
-				  	echo "<div id='previewPicture".$row->id_pic."' class='openModalPreviewPic'><div class=\"parentPic\"><img src='".$link_pic."'><a href='#close' title='Close' class='close'><span class='fa fa-times' style=\"color:white\"></span></a></div></div>";
-				  }
+				  // foreach ($query3 as $row) {
+				  // 	# code...
+				  // 	$link_pic = str_replace("./",base_url(),$row->pic);
+				  // 	echo "<div id='previewPicture".$row->id_pic."' class='openModalPreviewPic'><div class=\"parentPic\"><img src='".$link_pic."'><a href='#close' title='Close' class='close'><span class='fa fa-times' style=\"color:white\"></span></a></div></div>";
+				  // }
 				  foreach($query2 as $row)
 				  {
 				  	$link_pic = str_replace("./",base_url(),$row->pic);
 					echo "<tr>";
 					echo "<td>".$row->place_name."</td>";
-					echo "<td><a href='".$link_pic."'>".$row->pic."</a></td>";
+					echo "<td><a href='".$link_pic."'  data-lightbox='".$row->place_name."' data-title='".$row->pic_info."'>".$row->pic."</a></td>";
 					echo "<td>".$row->username."</td>";
 					if($row->is_publish == 0)
 				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic.")'>&nbsp;&nbsp;Publish?</a></td>";}
 					else
 					{echo "<td>Published</td>";}
-					echo "<td><a href='#previewPicture".$row->id_pic."'><span class='fa fa-eye'></span>&nbsp;&nbsp;preview<a></td>";
+					// echo "<td><a href='#previewPicture".$row->id_pic."'><span class='fa fa-eye'></span>&nbsp;&nbsp;Preview<a></td>";
 					
 					echo "</tr>";
 					
