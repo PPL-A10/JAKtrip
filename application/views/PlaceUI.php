@@ -127,7 +127,7 @@
 							  <div class="col-lg-9"><br><br>
 							  	<label class="control-label">Photos</label>
 							  	<?php echo form_error('userfile'); ?>
-								<input type="file" name="userfile[]" size="20" multiple required>
+								<input id="suggestionPhotoFile" type="file" name="userfile[]" size="20" multiple required>
 						      </div>
 						    </div>
 						    <br><br>
@@ -137,7 +137,7 @@
 						   		</div>
 						   	</div>
 						   	 <div class="col-lg-12">
-							<button class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
+							<button id="submitPhoto" class="field btn btn-warning" type="submit" value="upload" />SUBMIT</button>
 							<hr></div>
 						</form>
 						<div class="gallery col-lg-12">
@@ -279,6 +279,31 @@
 ?>
 
 <script type="text/javascript">
+
+$('#suggestionPhotoFile').bind('change', function() {
+
+  //this.files[0].size gets the size of your file.
+  var ukuran = bytesToSize(this.files[0].size).split(" ");
+  if((parseInt(ukuran[1])==2 && parseFloat(ukuran[0])>=2.0) || parseInt(ukuran[1])>2)
+  {
+  	alert("Your photo must less than 2 MB");
+  	document.getElementById("submitPhoto").disabled = true;
+  }
+  else
+  {
+  	document.getElementById("submitPhoto").disabled = false;
+  }
+  
+
+});
+
+function bytesToSize(bytes) {
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    if (i == 0) return bytes + ' ' + sizes[i]; 
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + i;
+};
 $(document).ready(function() {
 	$("span.iconcol").click(function(){
 		if($(this).hasClass("w-none")){
