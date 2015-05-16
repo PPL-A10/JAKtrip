@@ -783,8 +783,8 @@ li.active > a{
   width: 370px;
 }
 
-.homeimg img:hover{
-  margin-top: -5px;
+.homeimg:hover{
+  margin-top: 0px;
 }
 
 .homeimg {
@@ -793,7 +793,7 @@ li.active > a{
   height: 350px;
   overflow: hidden;
   float: left;
-  margin: 5px 10px;
+  margin: 5px 28px;
 }
 .homeimg img {
   position: absolute;
@@ -804,6 +804,10 @@ li.active > a{
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
+}
+
+.homecat img:hover{
+  margin-top: 10px;
 }
 
 .viewbox{

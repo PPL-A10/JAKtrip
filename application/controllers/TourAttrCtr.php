@@ -124,6 +124,8 @@ class TourAttrCtr extends CI_Controller {
 		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+		    	
 			$data['place_name']=$place_name;
 			$data['weekday_price']=$weekday_price;
 			$data['weekend_price']=$weekend_price;
@@ -296,15 +298,16 @@ class TourAttrCtr extends CI_Controller {
 				);
 				
 				if($this->TouristAttractionManager->save_pic_thumbnail($id, $form_photo) == TRUE){
-					redirect('tourAttrCtr/success');   // or whatever logic needs to occur
+					$this->session->set_flashdata('form', array('message' => '<center>You successfully added a new place.</center>'));	
+					redirect('admin/places');   // or whatever logic needs to occur
 				}
 				else{
-					echo 'An error occurred saving your information. Please try again later';
+					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 				}
 					
 			}
 			else{
-				echo 'An error occurred saving your information. Please try again later';
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 				// Or whatever error handling is necessary
 			}
 			
@@ -313,9 +316,5 @@ class TourAttrCtr extends CI_Controller {
 		
 	}
 	
-	function success()
-	{
-		redirect('admin/places');	
-	}
 
 }

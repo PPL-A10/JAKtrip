@@ -76,13 +76,13 @@
 					<?php
 					foreach($query as $row){
 						if($row->pic_thumbnail==NULL){
-							echo "<div class='col-lg-3 containerimg'>";
+							echo "<div class='col-lg-4 containerimg'>";
 							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
 							echo "<img src='".base_url('assets/img/noimg.png')."'></a>";
 							echo "</div>";
 						}
 						else{
-							echo "<div class='col-lg-3 containerimg'>";
+							echo "<div class='col-lg-4 containerimg'>";
 							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
 							echo "<img src='".base_url($row->pic_thumbnail)."'></a>";
 							echo "</div>";
