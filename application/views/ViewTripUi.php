@@ -28,7 +28,7 @@
 					echo "<table style='margin-bottom: 10px;'>";
 					echo "<tr>";
 					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-					echo "<td rowspan='5'><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img src='".$list_pic_thumbnail[$indexpertamaKali]."'/></div></a></td>";
+					echo "<td rowspan='5'><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img src='".$list_pic_thumbnail[$indexpertamaKali]."' style='margin: 0px;'/></div></a></td>";
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td>";
 					echo "</tr>";
 					echo "<tr>";
@@ -60,7 +60,7 @@
 							echo "<table style='margin-bottom: 10px;'>";
 							echo "<tr>";
 							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-							echo "<td rowspan='5' ><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img class='setPhotoViewTrip' src='".$list_pic_thumbnail[$i]."'/></div></a></td>";
+							echo "<td rowspan='5' ><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img src='".$list_pic_thumbnail[$i]."' style='margin: 0px;'/></div></a></td>";
 							echo "<td height='30px' class='tuffyh3a'>".$place_name[$i]."</td>";
 							echo "</tr>";
 							echo "<tr>";
