@@ -55,6 +55,7 @@ class RegisterCtr extends CI_Controller {
 		//validation: password=pass_confirm, special char, username alr exist
 		
 		$this->form_validation->set_rules('username', 'username', 'alpha_dash|is_unique[member.username]|xss_clean');
+		$this->form_validation->set_rules('email', 'e-mail', 'is_unique[member.email]|xss_clean');
 		$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'matches[password]');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
@@ -106,7 +107,8 @@ class RegisterCtr extends CI_Controller {
 				'last_active' => $currentTime,
 				'password' => md5($password), //di-enkripsi? dulu
 				'is_active' => 1,
-				'pic' => 'http://localhost/JAKtrip/assets/img/avadefault.png'
+				//'pic' => 'http://localhost/JAKtrip/assets/img/avadefault.png'
+				'pic' => base_url('assets/img/avadefault.png')
 			);
 			
 			if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db

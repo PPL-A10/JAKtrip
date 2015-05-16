@@ -80,7 +80,9 @@ class ManagePromoCtr extends CI_Controller{
 		$this->load->helper('cookie');
 
 		if($id_promo != NULL){
+			$queryPhoto = $this->PromoManager->promo_get($id_promo);
 			$this->PromoManager->delete($id_promo);
+			unlink($queryPhoto['photo']);
 			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a promo.</center>'));
 			redirect('admin/promo');
 		}

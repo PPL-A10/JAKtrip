@@ -20,7 +20,7 @@ class PromoManager extends CI_Model{
 		$this->load->database();
 		$this->db->select('*');
         $this->db->from('promo');
-        $this->db->order_by('end_date desc'); 
+        $this->db->order_by('end_date desc');
 		$query = $this->db->get();
 		return $query->result();
 	}

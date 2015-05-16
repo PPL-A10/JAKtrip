@@ -9,7 +9,7 @@
 				echo form_open_multipart('UsersCtr/editMember', $attributes); 
 				echo form_hidden('old_password', $password);
 				echo form_hidden('pic', $pic); ?>
-				<?php if($pic!=NULL){
+				<?php if($pic!=base_url('assets/img/avadefault.png')){
 					echo "<div class='pic-thumbnail'><img src=".$pic." style='margin: 0px;'></div>
 				<br><br>
 				<button class='btn btn-warning' name='form_profile' value='remove_photo'>Remove Photo</button>";
@@ -45,7 +45,7 @@
               				$type = "email";
               			}
               			?>
-  						<input class="form-control" type="<?php echo $type;?>"  value="<?php echo $email; ?>" id="email" name="email" required>
+  						<input class="form-control" type="<?php echo $type;?>"  value="<?php echo $email; ?>" id="email" name="email" readonly required>
 				      <br></div>
 				    </div>
 					<br>

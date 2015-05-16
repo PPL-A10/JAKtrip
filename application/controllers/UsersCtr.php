@@ -195,7 +195,7 @@ class UsersCtr extends CI_Controller {
 			if($pic!=''){
 				$pic = str_replace(base_url(),"./",$pic);
 				if(unlink($pic)){
-					$pic = NULL;			
+					$pic = base_url('assets/img/avadefault.png');			
 					$form_data = array(
 						'pic' => $pic
 					);		
@@ -246,6 +246,7 @@ class UsersCtr extends CI_Controller {
 				$data['email'] = $member[0]->email;
 				$data['password'] = $member[0]->password;
 				$data['description'] = $member[0]->bio;
+				$data['pic'] = $member[0]->pic;
 				
 				$this->load->helper('cookie');
 				$this->user = $this->facebook->getUser();
@@ -266,6 +267,7 @@ class UsersCtr extends CI_Controller {
 						setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
 						setcookie("username",$data['user_profile']['id'], time()+3600, '/');
 						setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+						setcookie("is_admin",0,time()+3600,'/');
 						header('Location: '.base_url('successLoginFB'));
 					}
 				}
@@ -276,6 +278,15 @@ class UsersCtr extends CI_Controller {
 					$this->load->view('EditProfileUI');
 					$this->load->view('footer');
 				}
+				// $this->load->view('header');
+				// $this->load->view('EditProfileUI');
+				// $this->load->view('footer');
+
+				
+				// $this->load->view('header');
+				// $this->load->view('EditProfileUI', $data);
+				// $this->load->view('footer');
+			
 			}
 			else{
 			//if valid
@@ -308,7 +319,7 @@ class UsersCtr extends CI_Controller {
 				else
 				{
 					//$data = array('upload_data' => $this->upload->data());
-					if($pic!=''){
+					if($pic!=base_url('assets/img/avadefault.png')){
 						$pic = str_replace(base_url(),"./",$pic);
 						if(unlink($pic)){
 							$upload_data = $this->upload->data();
