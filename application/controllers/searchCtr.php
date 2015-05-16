@@ -204,7 +204,8 @@
 			setcookie("counterTrip", 0, time()+3600, '/');
 			setcookie("idxFirstTrip", -1, time()+3600, '/');
 			setcookie("idxLastTrip", -1, time()+3600, '/');
-			
+			setcookie("list_pic_thumbnail","",time()+3600, '/');
+
 			$data['isRekomendasi'] = "false"; 
 			setcookie("isRekomendasi", $data['isRekomendasi'], time()+3600, '/');
 
@@ -309,6 +310,7 @@
 			setcookie("counterTrip", 0, time()+3600, '/');
 			setcookie("idxFirstTrip", -1, time()+3600, '/');
 			setcookie("idxLastTrip", -1, time()+3600, '/');
+			setcookie("list_pic_thumbnail","",time()+3600, '/');
 			$data['isRekomendasi'] = "true";
 			setcookie("isRekomendasi", $data['isRekomendasi'], time()+3600, '/');
 			// $this->load->model('HalteManager');
@@ -370,6 +372,7 @@
 			$data['total_price'] = get_cookie("totalPrice").$arrayData[5]."xx";
 			$data['transport_info'] = get_cookie("transportInfo").$arrayData[6]."xx";
 			$data['place_info'] = get_cookie("placeInfo").$arrayData[7]."xx";
+			$data['pic_thumbnail'] = get_cookie("list_pic_thumbnail").$arrayData[8]."xx";
 			$arrayPlaceName = explode("xx",$data['place_name']);
 			$data['counterTrip'] = intval((get_cookie("counterTrip")));
 			$counterTrip = $data['counterTrip']+1;
@@ -414,6 +417,7 @@
 			setcookie("placeInfo", $data['place_info'], time()+3600, '/');
 			setcookie("counterTrip", $counterTrip, time()+3600, '/');
 			setcookie("idxLastTrip", $data['idx_last_trip'], time()+3600, '/');
+			setcookie("list_pic_thumbnail", $data['pic_thumbnail'], time()+3600, '/');
 
 			$data['query'] = $this->touristAttractionManager->getAllTourInAdd($data);
 
@@ -437,6 +441,7 @@
 			$data['transport_info'] = get_cookie("transportInfo").$arrayData[6]."xx";
 			$data['place_info'] = get_cookie("placeInfo").$arrayData[7]."xx";
 			$data['budget'] = $arrayData[8];
+			$data['pic_thumbnail'] = get_cookie("list_pic_thumbnail").$arrayData[9]."xx";
 			$data['counterTrip'] = intval((get_cookie("counterTrip")));
 			$counterTrip = $data['counterTrip']+1;
 			
@@ -480,6 +485,7 @@
 			setcookie("counterTrip", $counterTrip, time()+3600, '/');
 			setcookie("idxLastTrip", $data['idx_last_trip'], time()+3600, '/');
 			setcookie("budget", $data['budget'], time()+3600, '/');
+			setcookie("list_pic_thumbnail", $data['pic_thumbnail'], time()+3600, '/');
 			$data['query'] = $this->touristAttractionManager->getAllTourInAdd($data);
 
 			echo json_encode($data);
@@ -554,6 +560,7 @@
 				setcookie("counterTrip", 0, time()+3600, '/');
 				setcookie("idxFirstTrip", -1, time()+3600, '/');
 				setcookie("idxLastTrip", -1, time()+3600, '/');
+				setcookie("list_pic_thumbnail", "", time()+3600, '/');
 				if (strcmp(get_cookie("isRekomendasi"), "true")  == 0)
 				{
 					// echo "haha";
@@ -831,6 +838,7 @@
 				setcookie("list_halte_after","",time()+3600, '/');
 				setcookie("list_angkot_after","",time()+3600, '/');
 				setcookie("list_tour_attr","",time()+3600, '/');
+				setcookie("list_pic_thumbnail","",time()+3600, '/');
 				setcookie("halteAwal",$this->input->post('mydropdown'),time()+3600, '/');
 			//	echo get_cookie("halteAwal");
 			//	echo get_cookie("datechoosen");
@@ -864,6 +872,7 @@
 				setcookie("list_halte_after","",time()+3600, '/');
 				setcookie("list_angkot_after","",time()+3600, '/');
 				setcookie("list_tour_attr","",time()+3600, '/');
+				setcookie("list_pic_thumbnail","",time()+3600, '/');
 				setcookie("halteAwal",$this->input->post('mydropdown'),time()+3600, '/');
 				header("Location:".base_url()."trip/recommendation");
 			}
