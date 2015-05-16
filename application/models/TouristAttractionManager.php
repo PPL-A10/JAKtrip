@@ -528,7 +528,7 @@ class TouristAttractionManager extends CI_Model{
 			/*@author wildan*/
 			$this->load->database();
 			$condition = "id = '".$data."'";
-			$this->db->select('place_name');
+			$this->db->select('*');
             $query = $this->db->from('tourist_attraction')->where($condition)->get();
 			
 			return $query->row_array();

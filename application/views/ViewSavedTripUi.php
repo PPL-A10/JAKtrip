@@ -39,7 +39,7 @@
 					echo "<table style='margin-bottom: 10px;'>";
 					echo "<tr>";
 					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-					echo "<td rowspan='5'><img src='".base_url('assets/img/150.jpg')."'/></td>";
+					echo "<td rowspan='5'><img class='setPhotoViewTrip' src='".$pic_thumbnail[$indexpertamaKali]."'/></td>";
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td><td><a href=".$linkSetVisited.">".$hasvisited."</a></td>";
 					echo "</tr>";
 					echo "<tr>";
@@ -82,7 +82,7 @@
 							echo "<table style='margin-bottom: 10px;'>";
 							echo "<tr>";
 							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-							echo "<td rowspan='5'><img src='".base_url('assets/img/150.jpg')."'/></td>";
+							echo "<td rowspan='5'><img class='setPhotoViewTrip' src='".$pic_thumbnail[$i]."'/></td>";
 							echo "<td height='30px' class='tuffyh3a'>".$place_name[$i]."</td><td><a href=".$linkSetVisited.">".$hasvisited."</a></td>";
 							echo "</tr>";
 							echo "<tr>";
