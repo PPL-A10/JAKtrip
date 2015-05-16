@@ -136,6 +136,10 @@
   font-size: 14px;
   color: #1c1c1c;
 }
+.setPhotoViewTrip{
+  height: 150px;
+   width: 150px;
+}
 
 /*--- end of titipan css wildan-----*/
 a.removeTrip{

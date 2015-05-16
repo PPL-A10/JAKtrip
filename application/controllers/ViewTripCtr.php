@@ -15,6 +15,7 @@
 				$data['total_price'] = explode("xx",get_cookie("totalPrice"));
 				$data['transport_info'] = explode("xx",get_cookie("transportInfo"));
 				$data['place_info'] = explode("xx",get_cookie("placeInfo"));
+				$data['list_pic_thumbnail']= explode("xx", get_cookie("list_pic_thumbnail"));
 
 				//$place_name = explode("xx",get_cookie("place_name"));
 
