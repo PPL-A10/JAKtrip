@@ -282,7 +282,7 @@
 
 $('#suggestionPhotoFile').bind('change', function() {
 
-  //this.files[0].size gets the size of your file.
+  /*author wildan*/
   var ukuran = bytesToSize(this.files[0].size).split(" ");
   if((parseInt(ukuran[1])==2 && parseFloat(ukuran[0])>=2.0) || parseInt(ukuran[1])>2)
   {
@@ -298,6 +298,7 @@ $('#suggestionPhotoFile').bind('change', function() {
 });
 
 function bytesToSize(bytes) {
+	/*author wildan ambil dari internet*/
     var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
     if (bytes == 0) return 'n/a';
     var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
