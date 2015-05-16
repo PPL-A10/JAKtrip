@@ -45,7 +45,7 @@
 			</div>
 
 			<div id="photos" style="margin: 0px 150px 100px -200px;" >
-				<table class="newpost table table-striped table-hover">
+				<table id="tableSuggestionPhoto" class="newpost table table-striped table-hover">
 				  <thead >
 				    <tr style="text-align: center;">
 				      <!-- th><input type="checkbox" value="" name="checkAll" id="checkAll"/></th -->
@@ -53,28 +53,35 @@
 				      <th>Link</th>
 				      <th>Username</th>
 				      <th>Status</th>
-				      <th>Preview Picture</th>
+				      <!-- <th>Preview Picture</th> -->
 				    </tr>
 				  </thead>
 				  <tbody id="output_field123" >
 				  <?php 
+				  // foreach ($query3 as $row) {
+				  // 	# code...
+				  // 	$link_pic = str_replace("./",base_url(),$row->pic);
+				  // 	echo "<div id='previewPicture".$row->id_pic."' class='openModalPreviewPic'><div class=\"parentPic\"><img src='".$link_pic."'><a href='#close' title='Close' class='close'><span class='fa fa-times' style=\"color:white\"></span></a></div></div>";
+				  // }
 				  foreach($query2 as $row)
 				  {
 				  	$link_pic = str_replace("./",base_url(),$row->pic);
 					echo "<tr>";
 					echo "<td>".$row->place_name."</td>";
-					echo "<td><a href='".$link_pic."'>".$row->pic."</a></td>";
+					echo "<td><a href='".$link_pic."'  data-lightbox='".$row->place_name."' data-title='".$row->pic_info."'>".$row->pic."</a></td>";
 					echo "<td>".$row->username."</td>";
 					if($row->is_publish == 0)
 				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic.")'>&nbsp;&nbsp;Publish?</a></td>";}
 					else
 					{echo "<td>Published</td>";}
-					echo "<td><a href='#previewPicture".$row->id_pic."'><span class='fa fa-eye'></span>&nbsp;&nbsp;preview<a></td>";
+					// echo "<td><a href='#previewPicture".$row->id_pic."'><span class='fa fa-eye'></span>&nbsp;&nbsp;Preview<a></td>";
 					
 					echo "</tr>";
-					echo "<div id='previewPicture".$row->id_pic."' class='openModalPreviewPic'><div class=\"parentPic\"><img src='".$link_pic."'><a href='#close' title='Close' class='close'><span class='fa fa-times'></span></a></div></div>";
+					
 				  }
+
 				  ?>
+
 				  	<!--tr>
 				  		<td>Taman Bermain</td>
 				  		<td><a href="#">http://frontroll.com/foto_berita/46kebun-binatang.jpg<a></td>
@@ -89,6 +96,18 @@
 				  	</tr-->
 				  </tbody>
 				</table>
+				<?php
+					echo "<p>";
+				  	for($i=0; $i<$count_all/10; $i++)
+					{
+					  	echo "<a href='javascript:goToPageSuggestion(".($i+1).")'>".($i+1)."</a> ";
+					}
+					echo "</p>";
+				  	// foreach ($count_all as $row) {
+				  	// 	# code...
+				  	// 	echo "<p>".$row."<p>";
+				  	// }
+				?>
 			</div>
 
 		
