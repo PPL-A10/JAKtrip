@@ -66,7 +66,7 @@ class SuggestionManager extends CI_Model{
 		$this->load->database();
 		$this->db->limit(10,$data['offset']*10);
 		$this->db->select('*');
-        $this->db->from('photo')->order_by("is_publish", "asc");
+        $this->db->from('photo')->order_by("id_pic", "desc");
         //$this->db->order_by('suggest_id desc'); 
  //       $count = $this->db->count_all_results();
 		$query = $this->db->get();
