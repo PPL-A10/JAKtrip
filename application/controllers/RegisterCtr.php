@@ -55,6 +55,7 @@ class RegisterCtr extends CI_Controller {
 		//validation: password=pass_confirm, special char, username alr exist
 		
 		$this->form_validation->set_rules('username', 'username', 'alpha_dash|is_unique[member.username]|xss_clean');
+		$this->form_validation->set_rules('email', 'e-mail', 'is_unique[member.email]|xss_clean');
 		$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'matches[password]');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		

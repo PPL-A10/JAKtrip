@@ -45,7 +45,7 @@
               				$type = "email";
               			}
               			?>
-  						<input class="form-control" type="<?php echo $type;?>"  value="<?php echo $email; ?>" id="email" name="email" required>
+  						<input class="form-control" type="<?php echo $type;?>"  value="<?php echo $email; ?>" id="email" name="email" readonly required>
 				      <br></div>
 				    </div>
 					<br>
