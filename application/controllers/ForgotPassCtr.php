@@ -122,21 +122,21 @@
 				$jam = intval($arrayDate[2]);
 				$message = "";
 				if($jam >= 18 || $jam < 6)
-					$message = $message."Good evening";
+					$message = $message."Good evening,";
 				else if($jam >= 11)
-					$message = $message."Good afternoon";
+					$message = $message."Good afternoon,";
 				else
-					$message = $message."Good morning";
+					$message = $message."Good morning,";
 
 				$this->load->library('email', $config);
 		      	$this->email->set_newline("\r\n");
-		        $message = $message."\n\n Your password has been reset to ".$password;
-		        $message = $message."\n Please change your password to keep you remembering your password";
-		        $message = $message."\nThank you \n\nSincerelly, \n\n\n JAKtrip.net admin";
+		        $message = $message."\n\n Your password has been reset to ".$password.".";
+		        $message = $message."\n Please <a href='http://JAKtrip.net/home#openLogin'>login</a> and change your password to easily remember your password.";
+		        $message = $message."\nThank you. \n\n\nSincerely, \n\nJAKtrip.net";
 		        $message=(nl2br($message));
 		      	$this->email->from('jaktrip.net@gmail.com'); // change it to yours
 		      	$this->email->to($data['email']);// change it to yours
-		      	$this->email->subject('Your New Password');
+		      	$this->email->subject('[JAKtrip.net] Your New Password');
 		      	$this->email->message($message);
 		   
 		   

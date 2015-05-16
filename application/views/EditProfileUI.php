@@ -10,7 +10,7 @@
 				echo form_hidden('old_password', $password);
 				echo form_hidden('pic', $pic); ?>
 				<?php if($pic!=NULL){
-					echo "<div class='pic-thumbnail white'><img src=".$pic."></div>
+					echo "<div class='pic-thumbnail'><img src=".$pic." style='margin: 0px;'></div>
 				<br><br>
 				<button class='btn btn-warning' name='form_profile' value='remove_photo'>Remove Photo</button>";
 				}
@@ -70,7 +70,7 @@
 				    <div class="form-group">
 					  <div class="col-lg-11">
 						<label class="control-label">Bio</label>
-						<?php echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'class' => 'form-control', 'value' => $description) );?>
+						<?php echo form_textarea( array( 'name' => 'description', 'rows' => '3', 'maxlength' => '140', 'title' => 'Maximum length is 140 characters.', 'class' => 'form-control', 'value' => $description) );?>
 					  <br></div>
 				    </div>
 				    <br>
@@ -91,3 +91,11 @@
 			</div>
 		</div>
 </div>
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>
