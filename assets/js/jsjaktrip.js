@@ -432,7 +432,7 @@ $(function() {
           {
             if(itineraryPlaceArray[i]!='terhapus' && itineraryPlaceArray[i]!="")
               {
-                yangDipilih  = yangDipilih + "<tr><td><a href='"+baseurl+"place/"+itineraryPlaceArray[i]+"'><img src='"+pic_thumbnail_array[i]+"' class='img-rounded' width='50' height='50' style='margin-top: 3px;'></a></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a href=\"javascript:setMapLocationZoom('"+itineraryPlaceArray[i]+"')\"><span class='fa fa-map-marker'></span></a></td><td><a class ='removeTrip'";
+                yangDipilih  = yangDipilih + "<tr><td><a href='"+baseurl+"place/"+itineraryPlaceArray[i]+"'><div class='pic-small'><img src='"+pic_thumbnail_array[i]+"' style='margin-top: 3px;'></div></a></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a href=\"javascript:setMapLocationZoom('"+itineraryPlaceArray[i]+"')\"><span class='fa fa-map-marker'></span></a></td><td><a class ='removeTrip'";
                   if(isRekomendasi=="true")
                   {
                     yangDipilih = yangDipilih + "onclick='return deleteTripRec (\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
