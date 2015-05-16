@@ -12,8 +12,10 @@ class SuggestionCtr extends CI_Controller {
 		$this->load->model('suggestionManager');
 		$this->load->helper('cookie');
 		$data['query'] = $this->suggestionManager->showAllSuggestion();
-		$data['query2'] = $this->suggestionManager->showAllPhotoSuggestion();
-
+		$tempQueryPhotoSuggestion = $this->suggestionManager->showAllPhotoSuggestion();
+		$data['query2'] = $tempQueryPhotoSuggestion['dataResult'];
+		$data['count_all'] = $tempQueryPhotoSuggestion['count'];
+		$data['query3'] = $this->suggestionManager->getAllId();
 
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -64,5 +66,17 @@ class SuggestionCtr extends CI_Controller {
 		//$this->load->view('SuggestionUI', $data);
 		//$this->load->view('footer');
 		
+	}
+
+	function suggestionPhotoPage($page)
+	{
+		$this->load->model('suggestionManager');
+		$this->load->helper('cookie');
+		$data['offset'] = ($page-1);
+		$tempQueryPhotoSuggestion = $this->suggestionManager->showPhotoSuggestionPage($data);
+		$data['query2'] = $tempQueryPhotoSuggestion['dataResult'];
+		$data['count_all'] = $tempQueryPhotoSuggestion['count'];
+
+		echo json_encode($data);
 	}
 }
