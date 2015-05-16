@@ -35,11 +35,12 @@
 						$hasvisited = '<span class="fa fa-check-circle icondetail iconcol a-none"></span>';
 						$linkSetVisited = base_url("user/trip/setvisited/".$id_place_name[$indexpertamaKali]."/".$id_trip);
 					}
+					$link_place = "place/".$place_name[$indexpertamaKali];
 
 					echo "<table style='margin-bottom: 10px;'>";
 					echo "<tr>";
 					echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-					echo "<td rowspan='5'><img class='setPhotoViewTrip' src='".$pic_thumbnail[$indexpertamaKali]."'/></td>";
+					echo "<td rowspan='5'><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img src='".$pic_thumbnail[$indexpertamaKali]."'/></div></a></td>";
 					echo "<td height='30px' class='tuffyh3a'>".$place_name[$indexpertamaKali]."</td><td><a href=".$linkSetVisited.">".$hasvisited."</a></td>";
 					echo "</tr>";
 					echo "<tr>";
@@ -78,11 +79,11 @@
 								$hasvisited = '<span class="fa fa-check-circle icondetail iconcol a-none"></span>';
 								$linkSetVisited = base_url("user/trip/setvisited/".$id_place_name[$i]."/".$id_trip); 
 							}
-
+							$link_place = "place/".$place_name[$i];
 							echo "<table style='margin-bottom: 10px;'>";
 							echo "<tr>";
 							echo "<td rowspan='5' style='background-color:#db2719; width: 30px; color: #fff; text-align: center; margin-top: 10px'></td>";
-							echo "<td rowspan='5'><img class='setPhotoViewTrip' src='".$pic_thumbnail[$i]."'/></td>";
+							echo "<td rowspan='5'><a href='".base_url($link_place)."'><div class='pic150' style=\"margin-left: 20px;\"><img class='setPhotoViewTrip' src='".$pic_thumbnail[$i]."'/></div></a></td>";
 							echo "<td height='30px' class='tuffyh3a'>".$place_name[$i]."</td><td><a href=".$linkSetVisited.">".$hasvisited."</a></td>";
 							echo "</tr>";
 							echo "<tr>";
