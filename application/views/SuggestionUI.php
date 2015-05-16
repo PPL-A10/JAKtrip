@@ -100,7 +100,7 @@
 					echo "<p>";
 				  	for($i=0; $i<$count_all/10; $i++)
 					{
-					  	echo "<a href='javascript:goToPageSuggestion(".($i+1).")'>".($i+1)."</a>";
+					  	echo "<a href='javascript:goToPageSuggestion(".($i+1).")'>".($i+1)."</a> ";
 					}
 					echo "</p>";
 				  	// foreach ($count_all as $row) {
