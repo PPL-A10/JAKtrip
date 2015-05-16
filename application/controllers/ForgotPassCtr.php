@@ -135,7 +135,7 @@
 		        $message = $message."\nThank you \n\nSincerelly, \n\n\n JAKtrip.net admin";
 		        $message=(nl2br($message));
 		      	$this->email->from('jaktrip.net@gmail.com'); // change it to yours
-		      	$this->email->to('mohammad.syahid.wildan@gmail.com');// change it to yours
+		      	$this->email->to($data['email']);// change it to yours
 		      	$this->email->subject('Your New Password');
 		      	$this->email->message($message);
 		   
@@ -166,10 +166,8 @@
 					}
 					else
 					{
-						$data['login_url'] = $this->facebook->getLoginUrl();
-						$this->load->view('header',$data);
-						$this->load->view('ForgotPassSuccessUI');
-						$this->load->view('footer');
+						$this->session->set_flashdata('form', array('message' => '<center><b>You successfully reset your password.</b><br>Please check your e-mail.</center>'));	
+						redirect('home');
 					}
 			    }
 			    else

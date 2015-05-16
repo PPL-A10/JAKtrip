@@ -392,6 +392,7 @@ class UsersCtr extends CI_Controller {
 		
 		$data['place_name_search'] = "";
 		$data['is_visited_search'] = "";
+		$data['pic_thumbnail_search'] = "";
 		for($i=0; $i<count($data['id_place_name'])-1; $i++)
 		{
 			if((strcmp($data['id_place_name'][$i], "-1") == 0))
@@ -405,7 +406,8 @@ class UsersCtr extends CI_Controller {
 				$queryGetPlaceName = $this->touristAttractionManager->getPlaceNameFromID($data['id_place_name'][$i]);
 				
 				$data['place_name_search'] = $data['place_name_search'].$queryGetPlaceName['place_name']."xx";
-				
+				$tempPicThumbnail= str_replace("./",base_url(),$queryGetPlaceName['pic_thumbnail']);
+				$data['pic_thumbnail_search'] = $data['pic_thumbnail_search'].$tempPicThumbnail."xx";
 				$dataGetIsVisited['place_name'] = $queryGetPlaceName['place_name'];
 				$dataGetIsVisited['username'] = get_cookie('username');
 				$this->load->model('CollectionManager');
@@ -424,6 +426,7 @@ class UsersCtr extends CI_Controller {
 		$data['place_info'] = explode("xx",$detail_trip[5]);
 		$data['is_visited'] = explode("xx", $data['is_visited_search']);
 		$data['id_trip'] = $id_trip;
+		$data['pic_thumbnail'] = explode("xx", $data['pic_thumbnail_search']);
 
 		
 		$this->user = $this->facebook->getUser();

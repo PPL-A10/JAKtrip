@@ -24,7 +24,7 @@ class SuggestionManager extends CI_Model{
 	{
 		$this->load->database();
 		$this->db->select('*');
-        $this->db->from('photo');
+        $this->db->from('photo')->order_by("is_publish", "asc");
         //$this->db->order_by('suggest_id desc'); 
 		$query = $this->db->get();
 		return $query->result();

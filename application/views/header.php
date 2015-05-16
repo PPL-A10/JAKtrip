@@ -830,7 +830,7 @@
               setcookie('is_admin',$update_is_admin,time()+3600,"/");
               if($_COOKIE["is_admin"]==1)
               {
-                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">My profile</a></li>";
+                $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/admin/places\">Admin Page</a></li><li><a  href=\"http://localhost/JAKtrip/user\">My Profile</a></li>";
               }
               else
               {

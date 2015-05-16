@@ -906,9 +906,8 @@
 				$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
 				if(get_cookie('username')!=null)
 				{
-					$this->load->view('header', $data);
-					$this->load->view('homeUISalah',$data);
-					$this->load->view('footer');
+					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Wrong input. Please try again.</center>'));
+					redirect('home');
 				}
 				else
 				{
@@ -922,9 +921,8 @@
 			else
 			{
 				$data['login_url'] = $this->facebook->getLoginUrl();
-				$this->load->view('header', $data);
-				$this->load->view('homeUISalah',$data);
-				$this->load->view('footer');
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Wrong input. Please try again.</center>'));
+				redirect('home');
 			}
 			// $this->load->view('header');
 			// $this->load->view('homeUISalah',$data);

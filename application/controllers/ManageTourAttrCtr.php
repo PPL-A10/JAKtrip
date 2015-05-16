@@ -308,11 +308,6 @@ class ManageTourAttrCtr extends CI_Controller {
 	
 	}
 	
-	function success()
-	{
-		redirect('manageTourAttrCtr');	
-	}
-	
 	function myform(){
 		$this->load->helper('cookie');
 		$this->load->helper('form');
@@ -358,6 +353,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			$data = $this->getData($key);
 			//load
 			$this->user = $this->facebook->getUser();
@@ -401,7 +397,7 @@ class ManageTourAttrCtr extends CI_Controller {
 			$config['upload_path'] = './assets/img/place/'.$id;
 			//$config['upload_path'] = './assets/upload/';
 			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '1000';
+			$config['max_size']	= '2048';
 			$config['max_width']  = '4096';
 			$config['max_height']  = '4096';
 			$this->load->library('upload', $config);
@@ -487,10 +483,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			// run insert model to write data to db
 			
 			if ($this->TouristAttractionManager->edit($key, $form_data, $form_photo, $form_cat) == TRUE){ // the information has therefore been successfully saved in the db
-				redirect('ManageTourAttrCtr/success');   // or whatever logic needs to occur
+				$this->session->set_flashdata('form', array('message' => '<center>You successfully edited place.</center>'));	
+					redirect('admin/places');
 			}
 			else{
-				echo 'An error occurred saving your information. Please try again later';
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 				// Or whatever error handling is necessary
 			}
 		}

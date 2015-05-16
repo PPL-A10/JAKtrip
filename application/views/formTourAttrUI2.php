@@ -303,3 +303,11 @@ function addLocation(lng,lat){
 		</div>
 	</div>
 
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>
