@@ -198,14 +198,20 @@ class UsersCtr extends CI_Controller {
 					$pic = NULL;			
 					$form_data = array(
 						'pic' => $pic
-					);			
+					);		
 					if ($this->memberManager->editMember($username, $form_data) == TRUE){ // the information has therefore been successfully saved in the db
-						//notif?
+						echo "<script>alert('DOR');</script>";
+						$this->session->set_flashdata('form', array('message' => '<center>You successfully edited your profile.</center>'));	
+		    			redirect('user');
+					}
+					else{
+						$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b><br> Something went wrong. Please try again.</center>'));	
+		    			
 					}
 				}
 				
 			}
-			redirect('user/');
+			
 			
 			
 		}
