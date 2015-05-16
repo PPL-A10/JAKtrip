@@ -53,9 +53,10 @@
 							}
 							$viewTripUrl = 'user/trip/viewsavedtrip/'.$trip['id_trip'];
 							$deleteTripUrl = 'user/trip/deletetrip/'.$trip['id_trip'];
+							$pic = mysql_fetch_array(mysql_query("SELECT pic_thumbnail FROM tourist_attraction WHERE id = ".$place_id[0].""));
 							echo "<div class='row coll'>";
 								echo "<a href=".base_url($viewTripUrl).">";
-									echo "<div class='col-lg-2 pic-small'><img src='".base_url('assets/img/50.jpg')."'></div>";
+									echo "<div class='col-lg-2 pic-small'><img src='".base_url($pic['pic_thumbnail'])."'></div>";
 									echo "<div class='col-lg-8'>";
 										echo "<div class='tuffyh3a'>".$data_trip[0]." Places</div>";
 										echo "In <b>".date('d-M-Y', strtotime($trip['date_trip']))."</b> | Start from <b>Halte ".$data_trip[2]."</b> | Total: <b>Rp ".$harga."</b>";
