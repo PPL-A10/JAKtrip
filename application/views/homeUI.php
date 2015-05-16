@@ -170,7 +170,7 @@
 								
 							  <span class="input-group col-lg-3">
 							    <span class="field input-group-addon">Rp</span>
-							    <input class="field form-control" type="text" placeholder="Budget" name="budget" required>
+							    <input class="field form-control" type="text" placeholder="Budget" name="budget" title="Example: 25000, 100000" required>
 							  </span>
 
 							  <span class="input-group col-lg-3">
@@ -323,7 +323,7 @@
 								</span>
 
 						  <span class="input-group col-lg-3">
-						 	 <input class="field datepicker" type="text" placeholder="Date" name="datepicker" required>
+						 	 <input class="field datepicker" type="text" title="Example: 25000, 100000" placeholder="Date" name="datepicker" required>
 						  </span>
 						  &nbsp;&nbsp;&nbsp;&nbsp;
 						  <button class="field btn btn-warning" type="submit">SEARCH</button>
