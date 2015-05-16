@@ -128,6 +128,7 @@ $(function() {
       }
       function setMapLocationZoom(tourAttr)
     {
+      $('[data-toggle="popover"]').popover('hide');
       var indexToZoom = searchIndexListTourAttr(tourAttr);
       
       map.setCenter(gmarkers[indexToZoom].position);
@@ -427,7 +428,7 @@ $(function() {
           {
             if(itineraryPlaceArray[i]!='terhapus' && itineraryPlaceArray[i]!="")
               {
-                yangDipilih  = yangDipilih + "<tr><td><img src='"+pic_thumbnail_array[i]+"' class='img-rounded' width='50' height='50' style='margin-top: 3px;'></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a class ='removeTrip'";
+                yangDipilih  = yangDipilih + "<tr><td><img src='"+pic_thumbnail_array[i]+"' class='img-rounded' width='50' height='50' style='margin-top: 3px;'></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a href=\"javascript:setMapLocationZoom('"+itineraryPlaceArray[i]+"')\"><span class='fa fa-map-marker'></span></a></td><td><a class ='removeTrip'";
                 if(isRekomendasi=="true")
                 {
                   yangDipilih = yangDipilih + "onclick='return deleteTripRec (\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
@@ -705,7 +706,7 @@ $(function() {
                           pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                         }
                      
-                        output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br>/td>";
+                        output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
                       }
                         
                   
