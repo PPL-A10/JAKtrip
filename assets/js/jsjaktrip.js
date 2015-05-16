@@ -250,13 +250,14 @@ $(function() {
                         if(obj.query.sudahDipilih[i] == true)
                         {
                           var pic_thumbnail_show = ""; 
+                          var link_place = "place/"+obj.query.result[i].place_name; 
                           output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                           if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                            output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                             pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                           }
                           else{
-                            output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                             pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                           }
 
@@ -272,13 +273,14 @@ $(function() {
                         else
                         {
                             var pic_thumbnail_show = "";
+                            var link_place = "place/"+obj.query.result[i].place_name;
                            output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                             if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                              output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                              output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                               pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                             }
                             else{
-                              output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                              output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                               pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                             }
                         output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
@@ -367,12 +369,14 @@ $(function() {
 
                               output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                                var pic_thumbnail_show = ""; 
+                               var link_place = "place/"+obj.query.result[i].place_name;
+
                               if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                                 pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                               }
                               else{
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                                 pic_thumbnail_show = baseurl+ obj.query.result[i].pic_thumbnail;
                               }
                               output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
@@ -410,16 +414,16 @@ $(function() {
 
         function showTheItinerary1()
         {
-         // alert("ayayaya");
           var itineraryPlace = getCookie("placeName").replace(/\+/gi, " ");
           var itineraryPlaceArray = itineraryPlace.split("xx");
           var itineraryTotalPrice = getCookie("totalPrice").replace(/\+/gi, " ");
           var itineraryTotalPriceArray = itineraryTotalPrice.split("xx");
           var pic_thumbnail =  decodeURIComponent(getCookie("list_pic_thumbnail"));
-          var pic_thumbnail_array = pic_thumbnail.split("xx");
-          // alert(pic_thumbnail_array);
+          var pic_thumbnail_array = pic_thumbnail.split("xx"); 
           var LastCounterTrip = parseInt(getCookie("counterTrip"));
-           var yangDipilih = "";
+          var yangDipilih = "";
+          var baseurl = 'http://localhost/JAKtrip/';
+          
           yangDipilih = yangDipilih + "<table class='table' style='color: #1c1c1c !important;'><tr><th style='font-size: 16px;'>Daftar Tempat Wisata</th></tr></table>";
             yangDipilih = yangDipilih + "<div class='canScroll'><table class='table table-hover'>";
           tripCost = 0;
@@ -428,16 +432,16 @@ $(function() {
           {
             if(itineraryPlaceArray[i]!='terhapus' && itineraryPlaceArray[i]!="")
               {
-                yangDipilih  = yangDipilih + "<tr><td><img src='"+pic_thumbnail_array[i]+"' class='img-rounded' width='50' height='50' style='margin-top: 3px;'></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a href=\"javascript:setMapLocationZoom('"+itineraryPlaceArray[i]+"')\"><span class='fa fa-map-marker'></span></a></td><td><a class ='removeTrip'";
-                if(isRekomendasi=="true")
-                {
-                  yangDipilih = yangDipilih + "onclick='return deleteTripRec (\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
-                 
-                }
-                else
-                {
-                  yangDipilih = yangDipilih + "onclick='return deleteTrip(\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
-                }
+                yangDipilih  = yangDipilih + "<tr><td><a href='"+baseurl+"place/"+itineraryPlaceArray[i]+"'><img src='"+pic_thumbnail_array[i]+"' class='img-rounded' width='50' height='50' style='margin-top: 3px;'></a></td><td style='color: #1c1c1c !important;'>"+itineraryPlaceArray[i]+"<br>Rp "+itineraryTotalPriceArray[i]+"<br> <!--a class='toZoom' onclick='return setMapLocationZoom(\""+itineraryPlaceArray[i]+"\")'>see location in map<a--></td><td><a href=\"javascript:setMapLocationZoom('"+itineraryPlaceArray[i]+"')\"><span class='fa fa-map-marker'></span></a></td><td><a class ='removeTrip'";
+                  if(isRekomendasi=="true")
+                  {
+                    yangDipilih = yangDipilih + "onclick='return deleteTripRec (\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
+                   
+                  }
+                  else
+                  {
+                    yangDipilih = yangDipilih + "onclick='return deleteTrip(\""+itineraryPlaceArray[i]+"\")' ><span class='fa fa-trash-o'></span></a></td></tr>";
+                  }
                 
                   tripCost = tripCost + parseInt(itineraryTotalPriceArray[i]);
               }
@@ -531,12 +535,13 @@ $(function() {
                           output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                         
                           var pic_thumbnail_show = ""; 
+                          var link_place = "place/"+obj.query.result[i].place_name;
                           if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                            output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                             pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                           }
                           else{
-                            output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                             pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                           }
                        
@@ -600,30 +605,33 @@ $(function() {
                           {
                              output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                               var pic_thumbnail_show = ""; 
+                              var link_place = "place/"+obj.query.result[i].place_name;
 
                               if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                                  pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                               }
                               else{
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                                 pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                               }
 
                               output = output + "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - Indoor Play - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><br>";
-                              output = output + "<button class='btn btn-warning disabled' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br>>";
+                              output = output + "<button class='btn btn-warning disabled' onclick=\"addTrip('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br>";
                               output = output + "</tr>";
                           }
                           else
                           {
                                output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                                 var pic_thumbnail_show = "";
+                                var link_place = "place/"+obj.query.result[i].place_name;
+
                                 if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                                  output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                                  output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                                   pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                                 }
                                 else{
-                                  output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                                  output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                                    pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                                 }
 
@@ -697,12 +705,14 @@ $(function() {
                       {
                         output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                         var pic_thumbnail_show = "";
+                        var link_place = "place/"+obj.query.result[i].place_name;
+
                         if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                          output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                          output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                           pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                         }
                         else{
-                          output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                          output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                           pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                         }
                      
@@ -789,12 +799,14 @@ $(function() {
 
                               output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
                               var pic_thumbnail_show = "";
+                              var link_place = "place/"+obj.query.result[i].place_name;
+
                               if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
                                 pic_thumbnail_show = baseurl+"assets/img/noimg.png";
                               }
                               else{
-                                output = output + "<td><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></td>";
+                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
                                 pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
                               }
 
