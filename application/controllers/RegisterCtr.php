@@ -61,6 +61,8 @@ class RegisterCtr extends CI_Controller {
 		//if not valid
 		if ($this->form_validation->run() == FALSE) // validation hasn't been passed
 		{
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b><br> Something went wrong. Please try again.</center>'));	
+			
 			$this->load->helper('cookie');
 			$reg_data['name']=$name;
 			$reg_data['username']=$username;
@@ -103,21 +105,18 @@ class RegisterCtr extends CI_Controller {
 				'join_date' => $currentTime,
 				'last_active' => $currentTime,
 				'password' => md5($password), //di-enkripsi? dulu
-				'is_active' => 1
+				'is_active' => 1,
+				'pic' => 'http://localhost/JAKtrip/assets/img/avadefault.png'
 			);
 			
 			if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db
-				redirect('RegisterCtr/success');   // or whatever logic needs to occur
+				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b><br> You successfully made an account here. Please check your email for validation.</center>'));	
+				redirect('home');   // or whatever logic needs to occur
 			}
 			else{
-				echo 'An error occurred saving your information. Please try again later';
-				// Or whatever error handling is necessary
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b><br> Something went wrong. Please try again.</center>'));	
 			}
 		}
 	}
 	
-	function success()
-	{
-		redirect('register');	//nanti redirect ke hlm profil dia
-	}
 }

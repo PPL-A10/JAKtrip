@@ -166,10 +166,8 @@
 					}
 					else
 					{
-						$data['login_url'] = $this->facebook->getLoginUrl();
-						$this->load->view('header',$data);
-						$this->load->view('ForgotPassSuccessUI');
-						$this->load->view('footer');
+						$this->session->set_flashdata('form', array('message' => '<center><b>You successfully reset your password.</b><br>Please check your e-mail.</center>'));	
+						redirect('home');
 					}
 			    }
 			    else

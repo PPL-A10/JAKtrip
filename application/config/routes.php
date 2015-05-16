@@ -86,6 +86,7 @@ $route['user/trip/viewsavedtrip/(:any)'] = 'UsersCtr/viewSavedTrip/$1';
 $route['user/trip/deletetrip/(:any)'] = 'UsersCtr/deleteTrip/$1';
 
 $route['register'] = 'registerCtr'; 
+$route['register/send'] = 'registerCtr/addMember'; 
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr';
 $route['login/forgotpassword/check'] = 'forgotPassCtr/processForgotPassword';

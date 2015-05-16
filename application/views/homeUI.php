@@ -346,14 +346,14 @@
 						if($row->pic_thumbnail==NULL){
 							echo "<div class='col-lg-4 homeimg'>";
 							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-							echo "<img class='.img-responsive img-rounded' src='".base_url('assets/img/noimg.png')."'/></a>";
+							echo "<img src='".base_url('assets/img/noimg.png')."'/></a>";
 
 							echo "</div>";
 						}
 						else{
 							echo "<div class='col-lg-4 homeimg'>";
 							echo "<a href='place/".$row->place_name."'><div class='txtonimg'>".$row->place_name."</div>";
-							echo "<img class='.img-responsive img-rounded' src='".base_url($row->pic_thumbnail)."'/></a>";
+							echo "<img src='".base_url($row->pic_thumbnail)."'/></a>";
 							echo "</div>";
 						}						
 					}
@@ -368,9 +368,10 @@
 					<div class="col-lg-12">
 						<div class="col-lg-1"></div>
 						<div class="col-lg-10">
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>	
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_education.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_outdoorplay.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_museum.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_zoo.png');?>"/></div>	
 						</div>
 						<div class="col-lg-1"></div>
 					</div>
@@ -378,9 +379,10 @@
 					<div class="col-lg-12">
 						<div class="col-lg-1"></div>
 						<div class="col-lg-10">
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>	
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
-							<div class="col-lg-4"><img class=".img-responsive img-rounded" src="http://localhost/Jaktrip/assets/img/image2.png"/></div>
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_indoorplay.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_waterpark.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_themepark.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_scenery.png');?>"/></div>
 						</div>
 						<div class="col-lg-1"></div>
 					</div>
@@ -397,3 +399,11 @@
 			</div>
 		</div>
 	</div>
+<?php
+	if($this->session->flashdata('form')) {
+	  $msg = $this->session->flashdata('form');
+	  $message = $msg['message'];
+	  //echo "<script>alert('".$message."');</script>";
+	  echo "<script>$(document).ready(function(){notif('".$message."');});</script>";
+	}
+?>
