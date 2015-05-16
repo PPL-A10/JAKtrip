@@ -107,7 +107,8 @@ class RegisterCtr extends CI_Controller {
 				'last_active' => $currentTime,
 				'password' => md5($password), //di-enkripsi? dulu
 				'is_active' => 1,
-				'pic' => 'http://localhost/JAKtrip/assets/img/avadefault.png'
+				//'pic' => 'http://localhost/JAKtrip/assets/img/avadefault.png'
+				'pic' => base_url('assets/img/avadefault.png')
 			);
 			
 			if ($this->memberMod->create($form_data) == TRUE){ // the information has therefore been successfully saved in the db
