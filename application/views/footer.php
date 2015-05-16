@@ -61,7 +61,7 @@
 								
 							$("#output_field123").html(resultQuery);
 							setTimeout(function () {
-								location.href="http://localhost/JAKtrip/admin/suggestions#photos";
+								location.href="http://localhost/JAKtrip/admin/suggestions";
 							}, 3500); 
 							notif("<center>You successfully published a photo.</center>");
 //								$("#output_field").html(obj.query[0].place_name;

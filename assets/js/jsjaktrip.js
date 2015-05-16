@@ -1027,3 +1027,62 @@ $(document).ready(function() {
 
 /*---------end of buat notifikasi search---------------*/
 
+/*---------------buat paging di suggestion-------------*/
+
+  function goToPageSuggestion(page)
+  {
+
+    jQuery.ajax({
+        type: "POST",
+        url: "http://localhost/JAKtrip/index.php/SuggestionCtr/suggestionPhotoPage/"+page,
+        success: function(res) {
+            if (res)
+            { 
+
+              var resultQuery = "";
+
+              //--------------
+
+                resultQuery = resultQuery +  "<thead >";
+                resultQuery = resultQuery + "<tr style='text-align: center;'>";
+                resultQuery = resultQuery + "<tr style='text-align: center;'>";
+                resultQuery = resultQuery +  "<th>Place Name</th><th>Link</th><th>Username</th><th>Status</th><th>Preview Picture</th>";
+                resultQuery = resultQuery + "</tr></thead>";      
+                resultQuery = resultQuery + "<tbody id='output_field123' >";      
+                
+                var obj = jQuery.parseJSON(res);
+                var baseurl = 'http://localhost/JAKtrip/';
+                for (var i=0 ; i<obj.query2.length; i++){
+                    var link_pic = (obj.query2[i].pic).replace("./", baseurl);
+
+                    resultQuery = resultQuery + "<tr>";
+                    resultQuery = resultQuery + "<td>"+obj.query2[i].place_name+"</td>";
+                    resultQuery = resultQuery + "<td><a href='"+link_pic+"'>"+obj.query2[i].pic+"</a></td>";
+                    resultQuery = resultQuery + "<td>"+obj.query2[i].username+"</td>";
+                    if(obj.query2[i].is_publish == 0)
+                    {
+                        resultQuery = resultQuery + "<td><a href='javascript:setphotopublish("+obj.query2[i].id_pic+")'>&nbsp;&nbsp;Publish?</a></td>";
+                    }
+                    else
+                    {
+                        resultQuery = resultQuery + "<td>Published</td>";
+                    }
+                  //  alert(resultQuery);
+                    resultQuery = resultQuery + "<td><a href='#previewPicture"+obj.query2[i].id_pic+"'><span class='fa fa-eye'></span>&nbsp;&nbsp;preview<a></td>";
+                    resultQuery = resultQuery + "</tr>";
+                    resultQuery = resultQuery + "<div id='previewPicture"+obj.query2[i].id_pic+"' class='openModalPreviewPic'><div class=\"parentPic\"><img src='"+link_pic+"'><a href='#close' title='Close' class='close'><span class='fa fa-times' style=\"color:white\"></span></a></div></div>";
+                    resultQuery = resultQuery + obj.query2[i].place_name+"<br>";
+
+                } 
+
+                resultQuery = resultQuery + "</tbody>";     
+                 
+              //------------
+              $("#tableSuggestionPhoto").html(resultQuery);
+            }
+        }
+    });
+  }
+/*---------------end of buat paging di suggestion-------------*/
+
+
