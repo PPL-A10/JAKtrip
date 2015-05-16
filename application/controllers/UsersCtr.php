@@ -192,7 +192,7 @@ class UsersCtr extends CI_Controller {
 		$username = $this->input->post('username');
 		$pic = $this->input->post('pic');
 		if($this->input->post('form_profile')=='remove_photo'){
-			//if($pic!=''){
+			if($pic!=''){
 				$pic = str_replace(base_url(),"./",$pic);
 				if(unlink($pic)){
 					$pic = base_url('assets/img/avadefault.png');			
@@ -209,7 +209,7 @@ class UsersCtr extends CI_Controller {
 					}
 				}
 				
-			//}
+			}
 			
 			
 			
