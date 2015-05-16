@@ -84,64 +84,88 @@ class AddPromoCtr extends CI_Controller {
 	        $_FILES['userfile']['error']= $files['userfile']['error'];
 	        $_FILES['userfile']['size']= $files['userfile']['size'];    
 
-			
-			$config['upload_path'] = './assets/img/promo/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '2048';
-			$config['max_width']  = '4096';
-			$config['max_height']  = '4096';
-			$this->load->library('upload', $config);
-		
-			if (!$this->upload->do_upload()){
-				$error = array('error' => $this->upload->display_errors());
-				$this->load->view('FormPromoUI', $error);
-			}else{
-				$upload_data = $this->upload->data();
-				$file_name = $upload_data['file_name'];
+			$pixel=getimagesize($_FILES['userfile']['tmp_name']);
+			$width=$pixel[0];
+			$height=$pixel[1];
+			if($width*$height>2048){
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Max image size is 2048px.</center>'));
+				redirect('admin/addnewpromo');
 			}
-
-		
-			$old_startDate = $this->input->post('start_date');
-			$o_startDate = strtotime($old_startDate);
-			$s_date = date('Y-m-d', $o_startDate);
-			$old_endDate = $this->input->post('end_date');
-			$o_endDate = strtotime($old_endDate);
-			$e_date = date('Y-m-d', $o_endDate);
-			$form_data = array(
-				'title' => $this->input->post('title'),
-				'start_date' => $s_date,
-				'end_date' => $e_date,
-				'place_name' => $this->input->post('place_name'),
-				'photo' => './assets/img/promo/'.$file_name,
-				'description' => $this->input->post('description'),
-			);
-
-			if($this->PromoManager->SaveForm($form_data)){
-				if(!isset($_POST['type_list'])) {
-					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
-					redirect('admin/addnewpromo');
-				}
-
-				$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
-				$form_type = array(
-					'id_promo' => $fak["MAX(id_promo)"],
-					'type_list' => $this->input->post('type_list'),
-					'type_new' => $this->input->post('type_new')
-				);
-
-				if($this->PromoManager->SaveFormType($form_type)){
-					$this->session->set_flashdata('form', array('message' => '<center>You successfully added a new promo.</center>'));
-					redirect('admin/promo');
-				}
-				else{
-					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
-					redirect('admin/addnewpromo');
-				}
-				
+			else if($width>4096){
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Max image width is 4096px.</center>'));
+				redirect('admin/addnewpromo');
+			}
+			else if($height>4096){
+				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Max image height is 4096px.</center>'));
+				redirect('admin/addnewpromo');			
 			}
 			else{
-				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
-				redirect('admin/addnewpromo');
+				$config['upload_path'] = './assets/img/promo/';
+				$config['allowed_types'] = 'gif|jpg|png';
+				$config['max_size']	= '2048';
+				$config['max_width']  = '4096';
+				$config['max_height']  = '4096';
+				$this->load->library('upload', $config);
+			
+				if (!$this->upload->do_upload()){
+					//$error = array('error' => $this->upload->display_errors());
+					//$this->load->view('FormPromoUI', $error);
+					//redirect("a ".$width);
+					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Failed to upload photo. Please try again. </center>'));
+					redirect('admin/addnewpromo');
+				}
+				else{
+					$upload_data = $this->upload->data();
+					$file_name = $upload_data['file_name'];
+					
+					$old_startDate = $this->input->post('start_date');
+					$o_startDate = strtotime($old_startDate);
+					$s_date = date('Y-m-d', $o_startDate);
+					$old_endDate = $this->input->post('end_date');
+					$o_endDate = strtotime($old_endDate);
+					$e_date = date('Y-m-d', $o_endDate);
+					$form_data = array(
+						'title' => $this->input->post('title'),
+						'start_date' => $s_date,
+						'end_date' => $e_date,
+						'place_name' => $this->input->post('place_name'),
+						'photo' => './assets/img/promo/'.$file_name,
+						'description' => $this->input->post('description'),
+					);
+
+					if($this->PromoManager->SaveForm($form_data)){
+						if(!isset($_POST['type_list'])) {
+							$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
+							redirect('admin/addnewpromo');
+						}
+
+						$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
+						$form_type = array(
+							'id_promo' => $fak["MAX(id_promo)"],
+							'type_list' => $this->input->post('type_list'),
+							'type_new' => $this->input->post('type_new')
+						);
+
+						if($this->PromoManager->SaveFormType($form_type)){
+							$this->session->set_flashdata('form', array('message' => '<center>You successfully added a new promo.</center>'));
+							redirect('admin/promo');
+						}
+						else{
+							$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+							redirect('admin/addnewpromo');
+						}
+						
+					}
+					else{
+						$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+						redirect('admin/addnewpromo');
+					}
+						
+				}
+
+			
+				
+			
 			}
 
 	   	}
