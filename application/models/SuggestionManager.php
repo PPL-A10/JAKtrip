@@ -26,7 +26,7 @@ class SuggestionManager extends CI_Model{
 		$this->load->database();
 		$this->db->limit(10,0);
 		$this->db->select('*');
-        $this->db->from('photo')->order_by("is_publish", "asc");
+        $this->db->from('photo')->order_by("id_pic", "desc");
         //$this->db->order_by('suggest_id desc'); 
  //       $count = $this->db->count_all_results();
 		$query = $this->db->get();
@@ -42,7 +42,7 @@ class SuggestionManager extends CI_Model{
 		/*edited by wildan*/
 		$this->load->database();
 		$this->db->select('*');
-        $this->db->from('photo')->order_by("is_publish", "asc");
+        $this->db->from('photo')->order_by("id_pic", "desc");
         //$this->db->order_by('suggest_id desc'); 
  //       $count = $this->db->count_all_results();
 		$query = $this->db->get();
@@ -54,7 +54,7 @@ class SuggestionManager extends CI_Model{
 		/*author wildan*/
 		$this->load->database();
 		$this->db->select('*');
-        $this->db->from('photo')->order_by("is_publish", "asc");
+        $this->db->from('photo')->order_by("id_pic", "desc");
         $query = $this->db->get();
         $count = $query->num_rows;
         return $count;
