@@ -1046,7 +1046,7 @@ $(document).ready(function() {
                 resultQuery = resultQuery +  "<thead >";
                 resultQuery = resultQuery + "<tr style='text-align: center;'>";
                 resultQuery = resultQuery + "<tr style='text-align: center;'>";
-                resultQuery = resultQuery +  "<th>Place Name</th><th>Link</th><th>Username</th><th>Status</th><th>Preview Picture</th>";
+                resultQuery = resultQuery +  "<th>Place Name</th><th>Link</th><th>Username</th><th>Status</th>";
                 resultQuery = resultQuery + "</tr></thead>";      
                 resultQuery = resultQuery + "<tbody id='output_field123' >";      
                 
@@ -1057,7 +1057,7 @@ $(document).ready(function() {
 
                     resultQuery = resultQuery + "<tr>";
                     resultQuery = resultQuery + "<td>"+obj.query2[i].place_name+"</td>";
-                    resultQuery = resultQuery + "<td><a href='"+link_pic+"'>"+obj.query2[i].pic+"</a></td>";
+                    resultQuery = resultQuery + "<td><a href='"+link_pic+"' data-lightbox='"+obj.query2[i].place_name+"' data-title='"+obj.query2[i].pic_info+"'>"+obj.query2[i].pic+"</a></td>";
                     resultQuery = resultQuery + "<td>"+obj.query2[i].username+"</td>";
                     if(obj.query2[i].is_publish == 0)
                     {
@@ -1068,10 +1068,7 @@ $(document).ready(function() {
                         resultQuery = resultQuery + "<td>Published</td>";
                     }
                   //  alert(resultQuery);
-                    resultQuery = resultQuery + "<td><a href='#previewPicture"+obj.query2[i].id_pic+"'><span class='fa fa-eye'></span>&nbsp;&nbsp;preview<a></td>";
                     resultQuery = resultQuery + "</tr>";
-                    resultQuery = resultQuery + "<div id='previewPicture"+obj.query2[i].id_pic+"' class='openModalPreviewPic'><div class=\"parentPic\"><img src='"+link_pic+"'><a href='#close' title='Close' class='close'><span class='fa fa-times' style=\"color:white\"></span></a></div></div>";
-                    resultQuery = resultQuery + obj.query2[i].place_name+"<br>";
 
                 } 
 

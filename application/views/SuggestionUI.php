@@ -97,16 +97,73 @@
 				  </tbody>
 				</table>
 				<?php
-					echo "<p>";
+					echo "<div class='row'><div class='col-lg-2'></div>";
+					echo "<div class='col-lg-8'>";
+					echo '<ul class="pagination">';
 				  	for($i=0; $i<$count_all/10; $i++)
 					{
-					  	echo "<a href='javascript:goToPageSuggestion(".($i+1).")'>".($i+1)."</a> ";
+					  	echo "<li><a href='javascript:goToPageSuggestion(".($i+1).")'>".($i+1)."</a></li>";
 					}
-					echo "</p>";
-				  	// foreach ($count_all as $row) {
-				  	// 	# code...
-				  	// 	echo "<p>".$row."<p>";
-				  	// }
+					echo '</ul></div>';
+					echo "<div class='col-lg-2'></div></div>";
+
+					// function get_paging_info($tot_rows,$pp,$curr_page)
+					// {
+					//     $pages = ceil($tot_rows / $pp); // calc pages
+
+					//     $data = array(); // start out array
+					//     $data['si']        = ($curr_page * $pp) - $pp; // what row to start at
+					//     $data['pages']     = $pages;                   // add the pages
+					//     $data['curr_page'] = $curr_page;               // Whats the current page
+
+					//     return $data; //return the paging data
+
+					// }
+
+					// //echo '<ul class="pagination">';
+					// $paging_info = get_paging_info($count_all,15,1); 
+
+					// if($paging_info['curr_page'] > 1){
+					// 	echo "<a href='' title='Page 1'>First</a>";
+			  //       	echo "<a href='' title='Page '".($paging_info['curr_page'] - 1)."'>Prev</a>";
+					// }
+
+					// //$max is equal to number of links shown
+					// $max = 5;
+			  //       if($paging_info['curr_page'] < $max){
+			  //           $sp = 1;
+			  //       }elseif($paging_info['curr_page'] >= ($paging_info['pages'] - floor($max / 2)) ){
+			  //           $sp = $paging_info['pages'] - $max + 1;
+			  //       }elseif($paging_info['curr_page'] >= $max){
+			  //           $sp = $paging_info['curr_page']  - floor($max/2);
+			  //       }
+
+			  //       if($paging_info['curr_page'] >= $max){
+			  //       	echo "<a href='' title='Page 1'>1</a>";
+			  //       }
+
+			  //       for($i = $sp; $i <= ($sp + $max -1);$i++){
+			  //       	if($i > $paging_info['pages']){
+     //            			continue;
+     //            		}
+     //            		if($paging_info['curr_page'] == $i){
+     //            			echo "<span class='bold'>".$i."</span>";
+     //            		}else{
+     //            			echo "<a href='' title='Page ".$i."'>".$i."</a>";
+     //            		}
+			  //       }
+
+			  //       if($paging_info['curr_page'] < ($paging_info['pages'] - floor($max / 2))){
+			  //       	echo "<a href='' title='Page ".$paging_info['pages']."'>".$paging_info['pages']."></a>";
+			  //       }
+
+			  //       if($paging_info['curr_page'] < $paging_info['pages']){
+			  //       	echo "<a href='".str_replace('/page'.$paging_info['curr_page'], '', $paging_info['curr_url']) . '/page'.($paging_info['curr_page'] + 1)."' title='Page ".($paging_info['curr_page'] + 1)."'>Next</a>";
+			  //       	echo "<a href='".str_replace('/page'.$paging_info['curr_page'], '', $paging_info['curr_url']) . '/page'.$paging_info['pages']."' title='Page ".$paging_info['pages']."'>Last</a>";
+			  //       }
+			       
+
+					
 				?>
 			</div>
 
