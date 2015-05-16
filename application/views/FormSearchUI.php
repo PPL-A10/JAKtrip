@@ -80,18 +80,18 @@
                     if($budget>=$query['harga'][$counter])
                     {
                       echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
-                      
-                    if($row->pic_thumbnail==NULL || $row->pic_thumbnail==""){
-                      echo "<td><div class='pic150'><img src='".base_url('assets/img/noimg.png')."'></div></td>";
-                      $pic_thumbnail_show = base_url('assets/img/noimg.png');
-                     }
-                     else{
-                        echo "<td><div class='pic150'><img src='".base_url($row->pic_thumbnail)."'></div></td>";
-                        $pic_thumbnail_show = base_url($row->pic_thumbnail);
-                     }
-                        echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('".$row->place_name."')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$place_info."','".$pic_thumbnail_show."')\">ADD TO TRIP</button><br></td>";
-                      echo "</tr>";  
-                    }
+                      $link_place = "place/".$row->place_name;
+                      if($row->pic_thumbnail==NULL || $row->pic_thumbnail==""){
+                        echo "<td><a href='".base_url($link_place)."'><div class='pic150'><img src='".base_url('assets/img/noimg.png')."'></div></a></td>";
+                        $pic_thumbnail_show = base_url('assets/img/noimg.png');
+                       }
+                       else{
+                          echo "<td><a href='".base_url($link_place)."'><div class='pic150'><img src='".base_url($row->pic_thumbnail)."'></div></a></td>";
+                          $pic_thumbnail_show = base_url($row->pic_thumbnail);
+                       }
+                          echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('".$row->place_name."')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTripRec('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$place_info."','".$pic_thumbnail_show."')\">ADD TO TRIP</button><br></td>";
+                        echo "</tr>";  
+                      }
                       
                      $counter++;
                   
@@ -125,15 +125,15 @@
                       {
                         $place_info = $row->place_info;
                       }
-
+                   $link_place = "place/".$row->place_name;
                    echo "<tr onclick='javascript:showRating(".$row->place_name.")'>";
                    if($row->pic_thumbnail==NULL || $row->pic_thumbnail==""){
                       $pic_thumbnail_show = base_url('assets/img/noimg.png');
-                      echo "<td><div class='pic150'><img src='".base_url('assets/img/noimg.png')."'></div></td>";
+                      echo "<td><a href='".base_url($link_place)."'><div class='pic150'><img src='".base_url('assets/img/noimg.png')."'></div></a></td>";
                    }
                    else{
                       $pic_thumbnail_show = base_url($row->pic_thumbnail);
-                      echo "<td><div class='pic150'><img src='".base_url($row->pic_thumbnail)."'></div></td>";
+                      echo "<td><a href='".base_url($link_place)."'><div class='pic150'><img src='".base_url($row->pic_thumbnail)."'></div></a></td>";
                    }
                        
                         echo "<td height='20px' class='tuffyh3a'><a href=\"http://localhost/JAKtrip/place/".$row->place_name."\" style='color: #1c1c1c;'>".$row->place_name."</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('".$row->place_name."')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp ".$query['harga'][$counter]." - Indoor Play - ".$row->city."</span><br>".$query['hargaBusway'][$counter]." (harga busway) + ".$row->transport_price." (harga angkot) + ".$ticketprice." (harga tiket)<br><br><button class='btn btn-warning' onclick=\"addTrip('".$row->place_name."','".$row->halte_name."','".$query['hargaBusway'][$counter]."','".$row->transport_price."','".$ticketprice."','".$query['harga'][$counter]."','".$row->transport_info."','".$place_info."','". $pic_thumbnail_show."')\">ADD TO TRIP</button><br></td>";
