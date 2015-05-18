@@ -237,7 +237,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		$query = $this->touristAttractionManager->tourAttr_get($place_name);	
 		//$query2 = $this->touristattractionmanager->tourAttr_getCat($place_name);
-		$query3 = $this->touristAttractionManager->tourAttr_getPic($place_name);
+		//$query3 = $this->touristAttractionManager->tourAttr_getPic($place_name);
 		$query4 = $this->touristAttractionManager->tourAttr_getHalte($place_name);
 		$query5 = $this->photoManager->getPhoto($place_name);		
 		$data['lala'] = $this->TouristAttractionManager->getTouristAttraction()->result();
@@ -257,14 +257,14 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['link_web'] = $query['link_web'];
 		//$data['cat_name'] = $query2['category_name'];	
 		$data['city'] = $query['city'];
-		if($query3 != NULL){
+		/*if($query3 != NULL){
 			$data['pic'] = $query3['pic'];
 			$data['pic_info'] = $query3['pic_info'];
 		}
 		else{
 			$data['pic'] = NULL;
 			$data['pic_info'] = NULL;
-		}
+		}*/
 		$data['longitude'] = $query['longitude'];
 		$data['lattitude'] = $query['lattitude'];	
 		$data['halte_name'] = $query4['halte_name'];	
