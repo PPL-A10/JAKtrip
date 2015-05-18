@@ -26,10 +26,10 @@
 						  <dd>JAKtrip adalah sebuah sistem rekomendasi tempat wisata di Jakarta berdasarkan anggaran yang dimiliki oleh pengguna.</dd>
 						 
 						  <dt>Apakah kami dapat mengatur rencana perjalanan sendiri?</dt>
-						  <dd>Ya, untuk membuat suatu rangkaian perjalanan sendiri, pengguna dapat menyusun rangkaiannya di <a href="">sini</a>.</dd>
+						  <dd>Ya, untuk membuat suatu rangkaian perjalanan sendiri, pengguna dapat menyusun rangkaiannya di <a href="<?php echo base_url('home'); ?>">sini</a>.</dd>
 						 
 						  <dt>Apakah pada saat membuat rangkaian perjalanan, harga yang dihitung oleh sistem bergantung pada hari yang dipilih?</dt>
-						  <dd>Ya, harga yang dihitung berdasarkan hari yang dipilih oleh pengguna, apakah hari biasa atau hari libur.</dd>
+						  <dd>Ya, harga yang dihitung berdasarkan hari yang dipilih oleh pengguna, apakah hari biasa atau hari libur akhir pekan.</dd>
 
 						  <dt>Bagaimana dengan ketetapan harga tiket masuk ke suatu tempat wisata dan harga transportasi yang tercantum pada JAKtrip?</dt>
 						  <dd>Harga tiket masuk tempat wisata dan harga transportasi yang tercantum pada situs JAKtrip merupakan estimasi harga yang mendekati dan terkini pada situs resminya.</dd>				
@@ -42,13 +42,17 @@
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Bagaimana cara mengubah profil akun?</dt>
-						  <dd>Lalalala.</dd>
+						  <dd>Profil akun dapat diubah pada menu My Profile di icon username yang terletak di sebelah kanan atas.</dd>
 						 
 						  <dt>Bagaimana cara saya melihat tempat wisata yang sudah pernah dikunjungi atau tempat wisata yang ingin dikunjungi?</dt>
 						  <dd>Member dapat melihat tempat wisata yang telah dikunjungi dengan cara:<br>
-							1. Mengarahkan mouse pada nama Anda di sebelah kanan atas <br>
-							2. Pilih menu Collection<br>
-							Akan ditampilkan daftar tempat wisata yang sudah dikunjungi dan tempat wisata yang ingin dikunjungi.</dd>
+							1. Mengarahkan mouse pada icon username di sebelah kanan atas <br>
+							2. Pilih menu My Profile<br><br>
+							Di dalam menu My Profile terdapat menu:<br>
+							Trips, yaitu daftar tempat wisata yang sudah dirancang di dalam rencana perjalanan<br>
+							Visited, yaitu tempat wisata yang sudah dikunjungi<br>
+							Wishlist, yaitu daftar tempat wisata yang ingin dikunjungi
+							</dd>
 						 
 						</dl>
 					</div>
@@ -58,7 +62,7 @@
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Adakah tempat wisata yang memiliki promo tertentu?</dt>
-						  <dd>Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka JAKtrip akan menampilkan promo tersebut pada <a href="">halaman ini</a> atau pada detail informasi tempat wisata terkait.</dd>
+						  <dd>Ya, jika suatu tempat wisata sedang memiliki promo pada periode tertentu, maka JAKtrip akan menampilkan promo tersebut pada <a href="<?php echo base_url('allpromo'); ?>">halaman ini</a>.</dd>
 						 
 						  <dt>Apakah pengguna dapat mengupload foto tempat wisata?</dt>
 						  <dd>Yang dapat mengupload foto tempat wisata adalah member atau pengguna yang memiliki akun JAKtrip. 
@@ -76,11 +80,11 @@
 				<section id="revcon" >
 					<div class="faq">
 						<dl id="faqs">
-						  <dt>Pertanyaan 1</dt>
-						  <dd>Lalalala.</dd>
+						  <dt>Apakah semua user dapat memberikan review pada suatu tempat wisata?</dt>
+						  <dd>Hanya member yang mempunyai akun JAKtrip yang dapat memberikan review pada suatu tempat wisata.</dd>
 						 
-						  <dt>Pertanyaan 2</dt>
-						  <dd>Lalalala.</dd>
+						  <dt>Apakah semua user dapat melaporkan suatu review sebagai spam?</dt>
+						  <dd>Ya, semua user dapat melaporkan review yang tidak sesuai atau dinilai tidak berkaitan dengan suatu tempat wisata.</dd>
 
 						</dl>
 					</div>
@@ -90,12 +94,12 @@
 					<div class="faq">
 						<dl id="faqs">
 						  <dt>Dapatkah kami memberikan kontribusi pada JAKtrip, apa yang dapat kami lakukan?</dt>
-						  <dd>1. Kamu dapat bantu menyebarkan informasi mengenai JAKtrip dengan berbagi informasi kepada teman atau kerabat lainnya.
-						  	<br>2. Member atau pengguna yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata yang belum ada di JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Namun sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
+						  <dd>1. Kamu dapat bantu menyebarkan informasi mengenai JAKtrip dengan berbagi informasi kepada teman atau kerabat lainnya.<br>
+							  2. Member atau pengguna yang mempunyai akun dapat memberikan kontribusi dengan cara menambahkan saran tempat wisata yang belum ada di JAKtrip dan juga dapat memberikan foto suatu tempat wisata. Namun sebelum tempat wisata baru dan foto ditampilkan, admin akan memberikan persetujuan.
 						  </dd>
 						 
 						  <dt>Pertanyaan lain?</dt>
-						  <dd>Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan melalui <a href="">halaman ini</a>. </dd>
+						  <dd>Pertanyaan lain yang belum dijelaskan pada halaman ini dapat dikirimkan melalui <a href="<?php echo base_url('contactus'); ?>">halaman ini</a>. </dd>
 
 						</dl>
 				</section>
