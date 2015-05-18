@@ -5,7 +5,7 @@
 				<div class="row">
 					<span class="tuffyh3 col-md-6">Explore fun places within your budget in Jakarta</span>
 					<ul class="linkfooter nav navbar-nav navbar-left col-md-6">
-						<li><a class="linkfooter" href="about.html">About</a></li>
+						<li><a class="linkfooter" href="#">About</a></li>
 						<li><a href="<?php echo base_url('contactus');?>">Contact Us</a></li>
 						<li><a href="<?php echo base_url('faq');?>">F.A.Q</a></li>
 						<li><a href="#">Terms</a></li>
