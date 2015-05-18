@@ -174,10 +174,10 @@
 					<div class="col-lg-12">
 						<div class="col-lg-1"></div>
 						<div class="col-lg-10">
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_education.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_outdoorplay.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_museum.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_zoo.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/education"><img src="<?php echo base_url('assets/img/cat_education.png');?>"/></a></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Outdoor%20Play"><img src="<?php echo base_url('assets/img/cat_outdoorplay.png');?>"/></a></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Museum"><img src="<?php echo base_url('assets/img/cat_museum.png');?>"/></a></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Zoo"><img src="<?php echo base_url('assets/img/cat_zoo.png');?>"/></a></div>	
 						</div>
 						<div class="col-lg-1"></div>
 					</div>
@@ -185,10 +185,10 @@
 					<div class="col-lg-12">
 						<div class="col-lg-1"></div>
 						<div class="col-lg-10">
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_indoorplay.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_waterpark.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_themepark.png');?>"/></div>	
-							<div class="col-lg-3 homecat"><img src="<?php echo base_url('assets/img/cat_scenery.png');?>"/></div>
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Indoor%20Play"><img src="<?php echo base_url('assets/img/cat_indoorplay.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Water%20Park"><img src="<?php echo base_url('assets/img/cat_waterpark.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/Theme%20Park"><img src="<?php echo base_url('assets/img/cat_themepark.png');?>"/></div>	
+							<div class="col-lg-3 homecat"><a href="AllPlacesCtr/category/View"><img src="<?php echo base_url('assets/img/cat_scenery.png');?>"/></div>
 						</div>
 						<div class="col-lg-1"></div>
 					</div>

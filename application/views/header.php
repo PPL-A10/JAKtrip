@@ -27,6 +27,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://connect.facebook.net/en_US/all.js"></script>
   
+  <script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/radar.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/none.js"></script>
+
   <title> JAKtrip: Explore fun places within your budget in Jakarta</title>
 
   <style>
@@ -126,7 +130,7 @@
 		
 		AmCharts.ready(function() {		
 		//chart Pertama
-		var chart = new AmCharts.AmSerialChart();
+		chart = new AmCharts.AmSerialChart();
 		chart.dataProvider = arrayOfPHPData;
 		chart.categoryField = "place_name";
 		
@@ -146,7 +150,7 @@
 		chart.depth3D = 15;
 		
 		//chart kedua
-		var chart2 = new AmCharts.AmSerialChart();
+		/*chart2 = new AmCharts.AmSerialChart();
 		chart2.dataProvider = arrayOfPHPData2;
 		chart2.categoryField = "place_name";
 		
@@ -163,16 +167,36 @@
 		
 		graph2.fillAlphas = 0.8;
 		chart2.angle = 30;
-		chart2.depth3D = 15;
+		chart2.depth3D = 15;*/
+		
+		
+		var chart2 = AmCharts.makeChart("chartdiv2",{
+  "type": "radar",
+  "categoryField": "place_name",
+  "graphs": [
+    {
+      "valueField": "rate_avg"
+    }
+  ],
+  "valueAxes": [
+    {
+      "axisTitleOffset": 20,
+      "minimum": 0,
+      "axisAlpha": 0.15,
+      "dashLength": 3
+    }
+  ],
+  "dataProvider": arrayOfPHPData2
+});
 		
 		//chart ketiga
-		var chart3 = new AmCharts.AmSerialChart();
+		chart3 = new AmCharts.AmSerialChart();
 		chart3.dataProvider = arrayOfPHPData3;
 		chart3.categoryField = "lower_nom";
 		
 		var graph3 = new AmCharts.AmGraph();
 		graph3.valueField = "input_num";
-		graph3.type = "column";
+		graph3.type = "line";
 		chart3.addGraph(graph3);
 		
 		var categoryAxis3 = chart3.categoryAxis;
@@ -182,12 +206,12 @@
 		categoryAxis3.labelRotation = 90;
 		
 		graph3.fillAlphas = 0; // or delete this line, as 0 is default
-		graph3.bullet = "round";
-		graph3.lineColor = "#8d1cc6";
+		//graph3.bullet = "round";
+		//graph3.lineColor = "#8d1cc6";
 		
 		chart.write('chartdiv');
-		chart2.write('chartdiv2');
-		chart3.write('chartdiv3');
+		//chart2.write('chartdiv2');
+		//chart3.write('chartdiv3');
 		});
 		
   
