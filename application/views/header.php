@@ -172,10 +172,10 @@
 		
 		var chart2 = AmCharts.makeChart("chartdiv2",{
   "type": "radar",
-  "categoryField": "place_name",
+  "categoryField": "rate_avg",
   "graphs": [
     {
-      "valueField": "rate_avg"
+      "valueField": "count(rate_avg)"
     }
   ],
   "valueAxes": [
