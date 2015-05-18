@@ -594,16 +594,19 @@ function calcRoute() {
 		    	$("#rating").hide();
 		    	$("#budget").hide();
 			    $("#visitors").show();
+				chart.write('chartdiv');
 			});
 			$("#lirat").click(function(){
 		    	$("#visitors").hide();
 		    	$("#budget").hide();
 			    $("#rating").show();
+				chart2.write('chartdiv2');
 			});
 			$("#libud").click(function(){
 		    	$("#rating").hide();
 		    	$("#visitors").hide();
 			    $("#budget").show();
+				chart3.write('chartdiv3');
 			});
 		});
 
