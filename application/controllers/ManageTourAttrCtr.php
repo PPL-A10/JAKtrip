@@ -40,6 +40,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		//$data['query'] = $this->touristattractionmanager->tourAttr_getall();
 		//$data['query2'] = $this->touristattractionmanager->getCategory();
 
+		/*------------editan wildan-----------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -71,10 +72,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			$this->load->view('manageTourAttrUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('manageTourAttrUI', $data);
-		// $this->load->view('footer');
+		----------end of editan wildan---------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('manageTourAttrUI', $data);
+		$this->load->view('footer');
 	}
 
 	function del($place_name){
@@ -117,7 +119,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		$data['tourattr'] = $query;
 		$data['query'] = $this->touristAttractionManager->tourAttr_getall();
 
-
+		/*------------editan wildan--------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -149,10 +151,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			$this->load->view('manageTourAttrUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('manageTourAttrUI', $data);
-		// $this->load->view('footer');
+		----------end of editan wildan-----------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('manageTourAttrUI', $data);
+		$this->load->view('footer');
 	}
 
 	function isCategory($place_name){
@@ -188,6 +191,7 @@ class ManageTourAttrCtr extends CI_Controller {
 				
 		$data = $this->getData($place_name);
 
+		/*---------------editan wildan--------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -219,10 +223,11 @@ class ManageTourAttrCtr extends CI_Controller {
 			$this->load->view('formTourAttrUI2',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('formTourAttrUI2',$data);
-		// $this->load->view('footer');
+		--------end of editan wildan----------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('formTourAttrUI2',$data);
+		$this->load->view('footer');
 	}
 	
 	function getData($place_name){
@@ -356,6 +361,8 @@ class ManageTourAttrCtr extends CI_Controller {
 			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			$data = $this->getData($key);
 			//load
+
+			/*------------editan wildan------------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -387,6 +394,11 @@ class ManageTourAttrCtr extends CI_Controller {
 				$this->load->view('formTourAttrUI2',$data);
 				$this->load->view('footer');
 			}
+			-------end of editan wildan---------*/
+			$this->load->view('header');
+			$this->load->view('menuadmin');
+			$this->load->view('formTourAttrUI2',$data);
+			$this->load->view('footer');
 			
 		}
 		//if valid

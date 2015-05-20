@@ -14,7 +14,7 @@ class FeedbackAdmCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$data['query']= $this->feedbackManager->showAllFeedback();
 
-
+		/*---------------editan wildan------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -46,7 +46,11 @@ class FeedbackAdmCtr extends CI_Controller {
 			$this->load->view('FeedbackUI', $data);
 			$this->load->view('footer');
 		}
-		
+		----------editan wildan------------------*/
+		$this->load->view('header', $data);
+		$this->load->view('menuadmin');
+		$this->load->view('FeedbackUI', $data);
+		$this->load->view('footer');
 	}
 
 }

@@ -14,6 +14,8 @@ class PromoCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$this->load->helper('html');
 		$data['query'] = $this->promoManager->showAllPromo($title);
+
+		/*-------editan wildan----------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -42,9 +44,10 @@ class PromoCtr extends CI_Controller {
 			$this->load->view('PromoUI',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('PromoUI',$data);
-		// $this->load->view('footer');
+		---------end of editan wildan----------*/
+		$this->load->view('header');
+		$this->load->view('PromoUI',$data);
+		$this->load->view('footer');
 		//echo json_encode($data);
 	}
 }

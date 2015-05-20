@@ -12,6 +12,7 @@
 			$data['mostPopular'] = $this->TouristAttractionManager->mostPopular();
 
 			$this->load->helper('cookie');
+			/*-----------editan wildan---------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -41,12 +42,13 @@
 				$this->load->view('homeUI',$data);
 				$this->load->view('footer');
 			}
-
-				// $this->load->view('header', $data);
-				// $this->load->view('homeUI',$data);
-				// $this->load->view('footer');
+			------------end of editan wildan------*/
+			$this->load->view('header');
+			$this->load->view('homeUI',$data);
+			$this->load->view('footer');
 		}
 
+		/*---------dipindah di loginCtr by wildan----------
 		public function successLoginFB()
 		{
 			//	echo "haha";
@@ -87,6 +89,6 @@
 			$this->load->view('homeUI',$data);
 			$this->load->view('footer');
 		}
-
+		-----------end of dipindah di loginCtr by wildan-------- */
 	}	
 ?>

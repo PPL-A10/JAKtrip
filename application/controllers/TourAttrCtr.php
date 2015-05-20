@@ -47,7 +47,7 @@ class TourAttrCtr extends CI_Controller {
 		$data['category_list']='';
 		$data['category_new']='';
 		
-		
+		/*----------editan wildan---------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -79,10 +79,11 @@ class TourAttrCtr extends CI_Controller {
 			$this->load->view('formTourAttrUI',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('formTourAttrUI',$data);
-		// $this->load->view('footer');
+		----------end of editan wildan--------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('formTourAttrUI',$data);
+		$this->load->view('footer');
 	}
 
 	function myform(){
@@ -163,7 +164,7 @@ class TourAttrCtr extends CI_Controller {
 			}
 			$data['halte_name']=$dd_halte;
 
-			
+			/*--------editan wildan-----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -195,10 +196,11 @@ class TourAttrCtr extends CI_Controller {
 				$this->load->view('formTourAttrUI',$data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('menuadmin');
-			// $this->load->view('formTourAttrUI',$data);
-			// $this->load->view('footer');
+			-------end of editan wildan-----*/
+			$this->load->view('header');
+			$this->load->view('menuadmin');
+			$this->load->view('formTourAttrUI',$data);
+			$this->load->view('footer');
 		
 		}
 		//if valid

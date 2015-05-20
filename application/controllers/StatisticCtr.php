@@ -15,6 +15,7 @@ class StatisticCtr extends CI_Controller {
 		$data['query2']= $this->StatisticManager->getstatisticrating();
 		$data['query3']= $this->StatisticManager->getstatisticbudget();
 
+		/*---------editan wildan-------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -46,10 +47,11 @@ class StatisticCtr extends CI_Controller {
 			$this->load->view('StatisticUI');
 			$this->load->view('footer');
 		}
-		// $this->load->view('header',$data);
-		// $this->load->view('menuadmin');
-		// $this->load->view('StatisticUI');
-		// $this->load->view('footer');
+		-------end of editan wildan-----------*/
+		$this->load->view('header',$data);
+		$this->load->view('menuadmin');
+		$this->load->view('StatisticUI');
+		$this->load->view('footer');
 		//echo json_encode($data);
 		
 	}

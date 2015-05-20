@@ -804,14 +804,24 @@
                     <div class="col-lg-3"></div>
                     <a class="col-lg-2" href="#"><span class="fa fa-google-plus-square" style="color: #E03F3F;"></span></a>
                     <?php
-                    if($login_url != null)
+                    if(isset($_COOKIE["username"]))
                     {
-                      $ref_facebook = $login_url;
+                      $ref_facebook = "#";  
                     }
                     else
                     {
-                      $ref_facebook = "#";
+                      $ref_facebook = base_url('loginCtr/loginFB');
                     }
+
+                    // if($login_url != null)
+                    // {
+                    //   $ref_facebook = $login_url;
+                    // }
+                    // else
+                    // {
+                    //   $ref_facebook = "#";
+                    // }
+
                     ?>
                     <a class="col-lg-2" href="<?php echo $ref_facebook;?>"><span class="fa fa-facebook-square" style="color: #43468C;"></span></a>
                     <a class="col-lg-2" href="#"><span class="fa fa-twitter-square" style="color: #2EA0F2;"></span></a>
@@ -861,7 +871,7 @@
                 $halaman_user = "<li><a  href=\"http://localhost/JAKtrip/user\">My Profile</a></li>";
               }
 
-              echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul>".$halaman_user."<li><a  href=\"http://localhost/JAKtrip/index.php/searchCtr/logout\">Logout</a></li></ul>";  
+              echo "<li><a href=\"#\">".$username_header."<div class='userphoto-ava'><img src=".$foto." class=\"ava-rounded\" style=\"position: relative;\"/></div></a><ul>".$halaman_user."<li><a  href=\"".base_url('logout')."\">Logout</a></li></ul>";  
 
             }
             

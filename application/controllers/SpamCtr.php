@@ -14,6 +14,7 @@ class SpamCtr extends CI_Controller {
 		$data['query']= $this->SpamMod->showspamreview();
 		$this->load->helper('cookie');
 
+		/*-------editan wildan------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -45,10 +46,11 @@ class SpamCtr extends CI_Controller {
 			$this->load->view('spamUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('spamUI', $data);
-		// $this->load->view('footer');
+		--------end of editan wildan----------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('spamUI', $data);
+		$this->load->view('footer');
 	}
 
 	public function del($id)
@@ -64,6 +66,7 @@ class SpamCtr extends CI_Controller {
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
 
+			/*------editan wildan-------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -95,10 +98,11 @@ class SpamCtr extends CI_Controller {
 				$this->load->view('SpamUI',$data);    
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('menuadmin');
-			// $this->load->view('SpamUI',$data);    
-			// $this->load->view('footer');
+			--------end of editan wildan-------*/
+			$this->load->view('header');
+			$this->load->view('menuadmin');
+			$this->load->view('SpamUI',$data);    
+			$this->load->view('footer');
 		}
 		
 		public function coba()
@@ -117,6 +121,7 @@ class SpamCtr extends CI_Controller {
 			}
 			$data['query'] = $this->SpamMod->showspamreview();
 
+			/*------------editan wildan-----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -148,10 +153,11 @@ class SpamCtr extends CI_Controller {
 				$this->load->view('SpamUI',$data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('menuadmin');
-			// $this->load->view('SpamUI',$data);
-			// $this->load->view('footer');
+			-----end of editan wildan----------*/
+			$this->load->view('header');
+			$this->load->view('menuadmin');
+			$this->load->view('SpamUI',$data);
+			$this->load->view('footer');
 		}
 
 }

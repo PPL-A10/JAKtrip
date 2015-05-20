@@ -13,6 +13,7 @@ class AddPromoCtr extends CI_Controller {
 		$data['place'] = $this->TouristAttractionManager->getTouristAttraction()->result();
 		$data['typepromo_name'] = $this->PromoManager->getTypes();
 		
+		/*----nyoba ga pakai ini (wildan)------------
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -34,6 +35,12 @@ class AddPromoCtr extends CI_Controller {
 			$this->load->view('formPromoUI', $data);
 			$this->load->view('footer');
 		}
+		------------end of nyoba ga pakai ini (wildan)--------*/
+		
+		$this->load->view('header', $data);
+		$this->load->view('menuadmin');
+		$this->load->view('formPromoUI', $data);
+		$this->load->view('footer');
 	}
 
 	/*

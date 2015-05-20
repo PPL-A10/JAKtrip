@@ -15,6 +15,7 @@ class ManageMemberCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$data['query']= $this->memberMod->showallmember();
 
+		/*---------editan wildan-------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -46,10 +47,11 @@ class ManageMemberCtr extends CI_Controller {
 			$this->load->view('ManageMemberUI',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('ManageMemberUI',$data);
-		// $this->load->view('footer');
+		----------end of editan wildan-------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('ManageMemberUI',$data);
+		$this->load->view('footer');
 	}
 
 	public function del($name)
@@ -65,6 +67,7 @@ class ManageMemberCtr extends CI_Controller {
 		}
 		$data['query'] = $this->memberMod->showallmember();
 
+		/*-------------editan wildan------------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -96,10 +99,11 @@ class ManageMemberCtr extends CI_Controller {
 			$this->load->view('ManageMemberUI',$data);  
 			$this->load->view('footer');  
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('ManageMemberUI',$data);  
-		// $this->load->view('footer');  
+		-------------end of editan wildan-------------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('ManageMemberUI',$data);  
+		$this->load->view('footer');  
 		//echo json_encode($data);
 	}
 

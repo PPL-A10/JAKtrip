@@ -4,6 +4,7 @@ class FaqCtr extends CI_Controller {
 
     function index()
 	{   
+		/*---------editan wildan--------------
 		$this->load->helper('cookie');
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -34,6 +35,10 @@ class FaqCtr extends CI_Controller {
 			$this->load->view('faqUI');
 			$this->load->view('footer');
 		}
+		--------------editan wildan--------------*/
+		$this->load->view('header', $data);
+		$this->load->view('faqUI');
+		$this->load->view('footer');
 		
 	}
 }

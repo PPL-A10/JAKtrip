@@ -17,7 +17,8 @@ $this->user = $this->facebook->getUser();
 
 // Store user information and send to profile page
 public function index() {
-	
+	/*----------------------tak comment disik-------------------------
+
 	if ($this->user) {
 
 	$data['user_profile'] = $this->facebook->api('/me/');
@@ -36,16 +37,66 @@ public function index() {
 	$data['login_url'] = $this->facebook->getLoginUrl(array('scope' => 'email'));
 	$this->load->view('login', $data);
 	}
+
+	----------------------end of tak comment disik----------*/
+	$this->load->view('profile');
 }
 
+public function loginFB()
+{
+	$this->user = $this->facebook->getUser();
+	if($this->user)
+	{
+		
+		$data['user_profile'] = $this->facebook->api('/me/');
+		$first_name = $data['user_profile']['first_name'];
+		$foto_facebook = "https://graph.facebook.com/".$data['user_profile']['id']."/picture";
+		// if(get_cookie('username')!=null)
+		// {
+		// 	$this->load->view('header', $data);
+		// 	$this->load->view('homeUI',$data);
+		// 	$this->load->view('footer');
+		// }
+		// else
+		// {
+		setcookie("username_facebook", $data['user_profile']['first_name'], time()+3600, '/');
+		setcookie("username",$data['user_profile']['id'], time()+3600, '/');
+		setcookie("photo_facebook",$foto_facebook,time()+3600, '/');
+		setcookie("is_admin",0,time()+3600,'/');
+		header('Location: http://localhost/JAKtrip/index.php/oauth_login/successLoginFB');
+		// }
+	}
+	else
+	{
+		$data['login_url'] = $this->facebook->getLoginUrl(array('scope' => 'email'));
+		//echo $data['login_url'];
+		redirect($data['login_url']);
+		// $data['login_url'] = $this->facebook->getLoginUrl();
+		// $this->load->view('header', $data);
+		// $this->load->view('homeUI',$data);
+		// $this->load->view('footer');
+	}
+}
+
+public function successLoginFB()
+{
+	$this->load->view('profile');
+}
 // Logout from facebook
 public function logout() {
 
 // Destroy session
-session_destroy();
+	
+	if(isset($_COOKIE["username"]))
+	{
+		setcookie("username",null,time()+3600, '/');
+		setcookie("photo_facebook",null,time()+3600, '/');
+		setcookie("foto_profil",null,time()+3600,'/');
+		session_destroy();
+	}
 
 // Redirect to baseurl
-redirect(base_url('index.php/oauth_login'));
+	redirect('http://localhost/JAKtrip/index.php/oauth_login');
 }
 
 }

@@ -1,18 +1,14 @@
 <?php 
-
+	/*@author wildan*/
 	class searchCtr extends CI_Controller
 	{
+
 		public function index()
 		{
-		//	echo "haha";
-			// $this->load->helper('form');
+		
 			$this->load->helper('form');
 			$this->load->model('touristAttractionManager');
 			$this->load->helper('cookie');
-
-			// $data['query']= $this->tesModel->getDatabase();
-			// $this->load->view('FormSearchUI',$data);
-		// 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
 			
 			$this->load->model('HalteManager');
 			$data['query'] = $this->HalteManager->getAllHalte();
@@ -22,7 +18,7 @@
 			$data['query2']= $this->searchMod->showalllocation();
 			$data['query3']= $this->searchMod->showallhalte();
 
-
+			/*-------editan wildan---------------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -52,145 +48,49 @@
 				$this->load->view('FormSearchUI', $data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('FormSearchUI', $data);
-			// $this->load->view('footer');
+			------------end of editan wildan------*/
+			$this->load->view('header');
+			$this->load->view('FormSearchUI', $data);
+			$this->load->view('footer');
 		
 		}
 
-	// 	public function searchWithinBudget($budget)
-	// 	{
-	// 	//	echo "haha";
-	// 		// $this->load->helper('form');
-	// 		 $this->load->model('touristAttractionManager');
-	// 		 $this->load->model('HalteManager');
-	// 		 $this->load->helper('cookie');
-	// 		 $this->load->helper('form');
-	// 	//	echo "hahaha";
-	// 		// $data['query']= $this->tesModel->getDatabase();
-	// 		// $this->load->view('FormSearchUI',$data);
-	// 		// echo $datechoosen;
-			
-	// 		$datechoosen = get_cookie('datechoosen');
-	// 		$data = array(
-	// 			'budget' => $budget,
-	// 		);
-			
-			 
-	// //		 $data['halte_code'] = $this->HalteManager->getHalteCode($data);
-			
-	// 		 $day = date('l', strtotime($datechoosen));
-			
-			
-			
-			
-	// 		// $halte_choosen =  $this->input->post('halte');
-	// 		 if($day == "Saturday" OR $day == "Sunday")
-	// 		 {
-	// 		 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend2($data);
-	// 		 	$data['isWeekend'] = true;
-	// 		 }
-	// 		 else
-	// 		 {
-	// 		 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday2($data);	
-	// 		 	$data['isWeekend'] = false;
-	// 		 }
-			 
-	// 		 echo json_encode($data);
-	// 		// foreach ($data['query'] as $row) {
-	// 		// 	# code...
-	// 		// 	if($row->halte_code == $data['halte_code'])
-	// 		// 	echo "<p>".$row->place_name." ".$row->weekday_price." ".$row->halte_code;
-	// 		// }
-			
-	// 	//	echo $weekday;
-	// 	//	echo "<br>";
-	// 	//	echo $halte_choosen;
-	// 	//	echo "<br>";
-	// 	//	echo $data['query']['halte_name'];
-
-	// 	//	$budget = (int) $this->input->post('budget');
-	// 	//	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
-
-			
-	// 	}
+	
 
 		public function searchWithoutBudget()
 		{
-		//	echo "haha";
-			// $this->load->helper('form');
-		// 	;
 			$this->load->model('touristAttractionManager');
 			$this->load->model('HalteManager');
 			$this->load->helper('cookie');
 			$this->load->helper('form');
-			//	echo "hahaha";
-			// $data['query']= $this->tesModel->getDatabase();
-			// $this->load->view('FormSearchUI',$data);
-			// echo $datechoosen;
 			
-				$datechoosen = get_cookie('datechoosen');
-				$data = array(
-				'halte_name' => get_cookie('halte_name')
-				);
+			$datechoosen = get_cookie('datechoosen');
+			$data = array(
+			'halte_name' => get_cookie('halte_name')
+			);
 
 						
-		 	 $day = date('l', strtotime($datechoosen));
-		// 	//echo $day;
-		// 	// $halte_choosen =  $this->input->post('halte');
+		 	$day = date('l', strtotime($datechoosen));
+		
 			 
-			 if($day == "Saturday" OR $day == "Sunday")
-			 {
-			 //	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekend($data);
+			if($day == "Saturday" OR $day == "Sunday")
+			{
 			 	setcookie('isWeekend',"true", time()+3600, '/');
 			 	$data['isWeekend'] = "true";
-			 }
-			 else
-			 {
-			// 	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudgetandHalteWeekday($data);	
+			}
+			else
+			{
 			 	setcookie('isWeekend',"false", time()+3600, '/');
 			 	$data['isWeekend'] = "false";
-			 }
+			}
 
-		// //	 echo get_cookie('halte_name');
-		// 	//echo $this->input->post('halte');
-		// 	// foreach ($data['query'] as $row) {
-		// 	// 	# code...
-		// 	// //	if($row->halte_code == $data['halte_code'])
-		// 	// 	if(get_cookie('isWeekend')==true)
-		// 	// 	{
-		// 	// 		echo "<p>".$row->place_name." ".$row->weekend_price." ".$row->halte_name." ".$row->transport_price." ".$row->transport_info;
-		// 	// 	}
-		// 	// 	else
-		// 	// 	{
-		// 	// 		echo "<p>".$row->place_name." ".$row->weekday_price." ".$row->halte_name." ".$row->transport_price." ".$row->transport_info;
-		// 	// 	}
-		// 	// }
-			
-		// //	echo $weekday;
-		// //	echo "<br>";
-		// //	echo $halte_choosen;
-		// //	echo "<br>";
-		// //	echo $data['query']['halte_name'];
-
-		// //	$budget = (int) $this->input->post('budget');
-		// //	$data['query'] = $this->touristAttractionManager->getDatabaseWithinBudget($budget);
-			// if(get_cookie('isWeekend') == "true")
-			// {
-			// 	$data['isWeekend'] = "true";
-			// }
-			// else
-			// {
-			// 	$data['isWeekend'] = "false";
-			// }
-		//	$data['isWeekend']=get_cookie('isWeekend');
+		
 			
 			$this->load->model('touristAttractionManager');
 			$this->load->helper('cookie');
 			$data['nama_halte'] = "Taman Mini Garuda";
 			
 			$data['query'] = $this->touristAttractionManager->getAllTourInitial($data);
-	//		echo json_encode($data['query']);
 	
 			setcookie("counterTrip", 0, time()+3600, '/');
 			setcookie("placeName", "", time()+3600, '/');
@@ -209,7 +109,7 @@
 			$data['isRekomendasi'] = "false"; 
 			setcookie("isRekomendasi", $data['isRekomendasi'], time()+3600, '/');
 
-
+			/*------editan wildan-----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -239,9 +139,11 @@
 				$this->load->view('FormSearchUI', $data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('FormSearchUI', $data);
-			// $this->load->view('footer');
+			---------end of editan wildan------------*/
+
+			$this->load->view('header');
+			$this->load->view('FormSearchUI', $data);
+			$this->load->view('footer');
 
 		}
 		public function searchWithinBudgetRec()
@@ -288,16 +190,7 @@
 			$data['nama_halte'] = "Taman Mini Garuda";
 			
 			$data['query'] = $this->touristAttractionManager->getAllTourInitial($data);
-		//	echo get_cookie("isWeekend");
-	//	print_r($data['query']['result']);
-			// foreach($data['query'] as $row)
-			// {
-			// 	echo $row->result->place_name;
-			// }
-			
-			// $data['query']= $this->tesModel->getDatabase();
-			// $this->load->view('FormSearchUI',$data);
-		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
+		
 			setcookie("counterTrip", 0, time()+3600, '/');
 			setcookie("placeName", "", time()+3600, '/');
 			setcookie("halteName", "", time()+3600, '/');
@@ -321,7 +214,7 @@
 			// $data['query2']= $this->searchMod->showalllocation();
 			// $data['query3']= $this->searchMod->showallhalte();
 
-
+			/*----------editan wildan-----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -351,9 +244,10 @@
 				$this->load->view('FormSearchUI', $data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('FormSearchUI', $data);
-			// $this->load->view('footer');
+			----end of editan wildan-------*/
+			$this->load->view('header');
+			$this->load->view('FormSearchUI', $data);
+			$this->load->view('footer');
 
 		}
 
@@ -892,11 +786,9 @@
 			$this->load->model('HalteManager');
 			$this->load->helper('cookie');
 			$data['query'] = $this->HalteManager->getAllHalte();
-			// $data['query']= $this->tesModel->getDatabase();
-			// $this->load->view('FormSearchUI',$data);
-		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
 			
-
+			
+			/*----------editan wildan----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -924,6 +816,9 @@
 				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Wrong input. Please try again.</center>'));
 				redirect('home');
 			}
+			-----------end of editan wildan-------*/
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Wrong input. Please try again.</center>'));
+			redirect('home');
 			// $this->load->view('header');
 			// $this->load->view('homeUISalah',$data);
 			// $this->load->view('footer');

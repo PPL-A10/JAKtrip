@@ -52,6 +52,7 @@ class FlagCtr extends CI_Controller {
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
 
+		/*--------editan wildan---------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -81,9 +82,10 @@ class FlagCtr extends CI_Controller {
 			$this->load->view('FlagUI',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('FlagUI',$data);
-		// $this->load->view('footer');
+		----------end of editan wildan------------*/
+		$this->load->view('header');
+		$this->load->view('FlagUI',$data);
+		$this->load->view('footer');
 		//echo json_encode($data);
 	}
 	
@@ -181,7 +183,7 @@ class FlagCtr extends CI_Controller {
 		$this->load->model('ReviewModel');
 		$data['query']= $this->DetailMod->showdetail($name);
 		$data['query2']= $this->ReviewModel->showreviewtempat($name);
-		
+		/*-------------editan wildan--------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -211,9 +213,10 @@ class FlagCtr extends CI_Controller {
 			$this->load->view('FlagUI',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('FlagUI',$data);
-		// $this->load->view('footer');
+		------------end of editan wildan----------*/
+		$this->load->view('header');
+		$this->load->view('FlagUI',$data);
+		$this->load->view('footer');
 	}
 
 	function addWishlist($place_name){

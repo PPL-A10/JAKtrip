@@ -7,6 +7,8 @@ class RegisterCtr extends CI_Controller {
 		$reg_data['name']='';
 		$reg_data['username']='';
 		$reg_data['email']='';
+
+		/*--------------editan wildan------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -35,9 +37,10 @@ class RegisterCtr extends CI_Controller {
 			$this->load->view('registerUI', $reg_data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('registerUI');
-		// $this->load->view('footer');
+		----end of editan wildan--------*/
+		$this->load->view('header');
+		$this->load->view('registerUI', $reg_data);
+		$this->load->view('footer');
 	}
 	
 	function addMember(){
@@ -68,6 +71,8 @@ class RegisterCtr extends CI_Controller {
 			$reg_data['name']=$name;
 			$reg_data['username']=$username;
 			$reg_data['email']=$email;
+
+			/*---------editan wildan-----------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -96,6 +101,10 @@ class RegisterCtr extends CI_Controller {
 				$this->load->view('registerUI', $reg_data);
 				$this->load->view('footer');
 			}
+			-----------end of editan wildan---------------*/
+			$this->load->view('header');
+			$this->load->view('registerUI', $reg_data);
+			$this->load->view('footer');
 		}
 		else{
 			$form_data = array(

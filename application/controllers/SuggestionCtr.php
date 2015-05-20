@@ -17,6 +17,7 @@ class SuggestionCtr extends CI_Controller {
 		$data['count_all'] = $tempQueryPhotoSuggestion['count'];
 		$data['query3'] = $this->suggestionManager->getAllId();
 
+		/*-------editan wildan---------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -48,10 +49,11 @@ class SuggestionCtr extends CI_Controller {
 			$this->load->view('SuggestionUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('SuggestionUI', $data);
-		// $this->load->view('footer');
+		------------end of editan wildan--------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('SuggestionUI', $data);
+		$this->load->view('footer');
 
 	}
 

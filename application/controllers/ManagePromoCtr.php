@@ -37,7 +37,7 @@ class ManagePromoCtr extends CI_Controller{
 
 		$data['type_'] = $type_list;
 		$data['promo'] = $query;
-
+		/*-----------editan wildan------------
 		$this->user = $this->facebook->getUser();
 		if($this->user){
 			$data['user_profile'] = $this->facebook->api('/me/');
@@ -62,10 +62,11 @@ class ManagePromoCtr extends CI_Controller{
 			$this->load->view('ManagePromoUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('ManagePromoUI', $data);
-		// $this->load->view('footer');
+		-------------editan wildan-----------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('ManagePromoUI', $data);
+		$this->load->view('footer');
 	}
 
 	/*
@@ -107,7 +108,7 @@ class ManagePromoCtr extends CI_Controller{
 		$data['type_'] = $type_list;
 		$data['promo'] = $query;
 		$data['query'] = $this->PromoManager->promo_getall();
-
+		/*-----------editan wildan-----------
 		$this->user = $this->facebook->getUser();
 		if($this->user){
 			$data['user_profile'] = $this->facebook->api('/me/');
@@ -137,10 +138,11 @@ class ManagePromoCtr extends CI_Controller{
 			$this->load->view('managePromoUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('managePromoUI', $data);
-		// $this->load->view('footer');
+		-----end of editan wildan-------------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('managePromoUI', $data);
+		$this->load->view('footer');
 	}
 
 	/*
@@ -185,6 +187,7 @@ class ManagePromoCtr extends CI_Controller{
 		
 		$data['place_inf']=$dd_place;
 		
+		/*---------editan wildan-------------
 		$this->user = $this->facebook->getUser();
 		if($this->user){
 			$data['user_profile'] = $this->facebook->api('/me/');
@@ -209,10 +212,11 @@ class ManagePromoCtr extends CI_Controller{
 			$this->load->view('formPromoUI2',$data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('menuadmin');
-		// $this->load->view('formTourAttrUI2',$data);
-		// $this->load->view('footer');
+		----------end of editan wildan-------*/
+		$this->load->view('header');
+		$this->load->view('menuadmin');
+		$this->load->view('formTourAttrUI2',$data);
+		$this->load->view('footer');
 	}
 
 	/*

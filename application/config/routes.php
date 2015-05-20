@@ -90,7 +90,9 @@ $route['register/send'] = 'registerCtr/addMember';
 $route['login'] = 'loginCtr/checkLogin'; 
 $route['login/forgotpassword'] = 'forgotPassCtr';
 $route['login/forgotpassword/check'] = 'forgotPassCtr/processForgotPassword';
-$route['successLoginFB'] = 'homeCtr/successLoginFB';
+$route['successLoginFB'] = 'loginCtr/successLoginFB';
+
+$route['logout'] = 'loginCtr/logout';
 
 
 // $route['PlaceCtr/(:any)'] = 'PlaceCtr/index/$1';

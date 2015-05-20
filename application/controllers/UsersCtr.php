@@ -25,6 +25,7 @@ class UsersCtr extends CI_Controller {
 		$this->load->model('TripManager');
 		$data['query_trip'] = $this->TripManager->getDetailTrip($user);
 
+		/*--------editan wildan-----------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -54,9 +55,10 @@ class UsersCtr extends CI_Controller {
 			$this->load->view('UserProfileUI', $data);
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('UserProfileUI', $data);
-		// $this->load->view('footer');
+		---------end of editan wildan-----------*/
+		$this->load->view('header');
+		$this->load->view('UserProfileUI', $data);
+		$this->load->view('footer');
 	}
 
 	function edit(){
@@ -74,6 +76,7 @@ class UsersCtr extends CI_Controller {
 		$data['pic'] = $member[0]->pic;
 		
 		$this->load->helper('cookie');
+		/*---------editan wildan--------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -103,9 +106,10 @@ class UsersCtr extends CI_Controller {
 			$this->load->view('EditProfileUI');
 			$this->load->view('footer');
 		}
-		// $this->load->view('header');
-		// $this->load->view('EditProfileUI');
-		// $this->load->view('footer');
+		------end of editan wildan---------*/
+		$this->load->view('header');
+		$this->load->view('EditProfileUI');
+		$this->load->view('footer');
 
 		
 		// $this->load->view('header');
@@ -249,6 +253,7 @@ class UsersCtr extends CI_Controller {
 				$data['pic'] = $member[0]->pic;
 				
 				$this->load->helper('cookie');
+				/*------------editan wildan-----------
 				$this->user = $this->facebook->getUser();
 				if($this->user)
 				{
@@ -278,9 +283,10 @@ class UsersCtr extends CI_Controller {
 					$this->load->view('EditProfileUI');
 					$this->load->view('footer');
 				}
-				// $this->load->view('header');
-				// $this->load->view('EditProfileUI');
-				// $this->load->view('footer');
+				--------end of editan wildan----------*/
+				$this->load->view('header');
+				$this->load->view('EditProfileUI');
+				$this->load->view('footer');
 
 				
 				// $this->load->view('header');
@@ -388,7 +394,7 @@ class UsersCtr extends CI_Controller {
 		if((string)$name != ""){
 			$this->memberMod->delete($name);
 		}
-		redirect('searchCtr/logout');
+		redirect('logout');
 		// $this->load->view('header');
 		// $this->load->view('menuadmin');
 		// $this->load->view('ManageMemberUI',$data);  
@@ -444,7 +450,7 @@ class UsersCtr extends CI_Controller {
 		$data['id_trip'] = $id_trip;
 		$data['pic_thumbnail'] = explode("xx", $data['pic_thumbnail_search']);
 
-		
+		/*------editan wildan-----------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -474,9 +480,10 @@ class UsersCtr extends CI_Controller {
 			$this->load->view('viewSavedTripUI',$data);
 			$this->load->view('footer');
 		}
-		// // $this->load->view('header');
-		// // $this->load->view('viewTripUI',$data);
-		// // $this->load->view('footer');
+		------end of editan wildan*/
+		$this->load->view('header');
+		$this->load->view('viewSavedTripUI',$data);
+		$this->load->view('footer');
 	}
 
 	public function setVisited($id_place, $id_trip)

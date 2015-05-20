@@ -12,7 +12,7 @@ class AllPromosCtr extends CI_Controller {
 		$this->load->helper('cookie');
 		$data['query']= $this->PromoManager->showAllPromo();
 		$data['query1']= $this->PromoManager->showType();
-
+		/*-------nyoba ga pakai ini (wildan)------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -41,6 +41,11 @@ class AllPromosCtr extends CI_Controller {
 			$this->load->view('allPromosUI',$data);
 			$this->load->view('footer');
 		}
+		----------end of nyoba ga pakai ini (wildan)*/
+
+		$this->load->view('header',$data);
+		$this->load->view('allPromosUI',$data);
+		$this->load->view('footer');
 	}
 	
 	public function searchpromoloc($city=NULL){

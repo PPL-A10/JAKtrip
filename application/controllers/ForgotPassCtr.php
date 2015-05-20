@@ -2,8 +2,10 @@
 	class ForgotPassCtr extends CI_Controller
 	{
 		
+		/*@author wildan*/
 		public function index()
 		{
+			/*-------------editan wildan---------------
 			$this->load->helper('cookie');
 			$this->user = $this->facebook->getUser();
 			if($this->user)
@@ -34,16 +36,19 @@
 				$this->load->view('ForgotPassUI');
 				$this->load->view('footer');
 			}
-				// $this->load->view('header');
-				// $this->load->view('ForgotPassUI');
-				// $this->load->view('footer');
+			---------------end of editan wildan-----------*/
+			$this->load->view('header');
+			$this->load->view('ForgotPassUI');
+			$this->load->view('footer');
 			
 			
 		}
 
 		function processForgotPassword()
 		{
-			/*@author wildan*/
+			/*@author wildan
+			  edited by : syifa 
+			*/
 			$this->load->model('memberManager');
 			$this->load->helper('security');
 			$this->load->helper('text');
@@ -54,6 +59,7 @@
 			$hasil['query'] = $this->memberManager->checkForgotPassword($data);	
 			if($hasil['query']==false)
 			{
+				/*-------editan wildan-------------
 				$this->user = $this->facebook->getUser();
 				if($this->user)
 				{
@@ -83,6 +89,10 @@
 					$this->load->view('ForgotPassFailUI');
 					$this->load->view('footer');
 				}
+				-------end of editan wildan*/
+				$this->load->view('header');
+				$this->load->view('ForgotPassFailUI');
+				$this->load->view('footer');
 			}
 			else
 			{
@@ -142,6 +152,7 @@
 		   
 			    if($this->email->send())
 			    {
+			    	/*--------editan wildan--------------
 			      	$this->user = $this->facebook->getUser();
 					if($this->user)
 					{
@@ -169,6 +180,9 @@
 						$this->session->set_flashdata('form', array('message' => '<center><b>You successfully reset your password.</b><br>Please check your e-mail.</center>'));	
 						redirect('home');
 					}
+					-----------end of editan wildan*/
+					$this->session->set_flashdata('form', array('message' => '<center><b>You successfully reset your password.</b><br>Please check your e-mail.</center>'));	
+					redirect('home');
 			    }
 			    else
 			    {

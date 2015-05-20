@@ -65,6 +65,7 @@ class PlaceCtr extends CI_Controller {
 		
 
 		//------------------
+		/*-------------editan wildan-------------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -94,7 +95,10 @@ class PlaceCtr extends CI_Controller {
 			$this->load->view('PlaceUI',$data);
 			$this->load->view('footer',$data);
 		}
-
+		---------------end of editan wildan----------*/
+		$this->load->view('header');
+		$this->load->view('PlaceUI',$data);
+		$this->load->view('footer',$data);
 	}
 	else
 	{

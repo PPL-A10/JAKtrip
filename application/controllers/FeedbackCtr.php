@@ -12,8 +12,8 @@ class FeedbackCtr extends CI_Controller {
 	Menampilkan form isian feedback pada halaman Contact Us
 	*/
     function index(){
+    	/*---------------editan wildan--------
     	$this->load->helper('cookie');
-
 		$this->user = $this->facebook->getUser();
 		if($this->user)
 		{
@@ -43,6 +43,10 @@ class FeedbackCtr extends CI_Controller {
 			$this->load->view('formFeedbackUI');
 			$this->load->view('footer');
 		}
+		-------------end of editan wildan-------------*/
+		$this->load->view('header');
+		$this->load->view('formFeedbackUI');
+		$this->load->view('footer');
     }
 
     /*
@@ -71,7 +75,7 @@ class FeedbackCtr extends CI_Controller {
 				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			}
 			else{}
-
+			/*-----------editan wildan---------------	
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -101,10 +105,10 @@ class FeedbackCtr extends CI_Controller {
 				$this->load->view('formFeedbackUI');
 				$this->load->view('footer');
 			}
-
-			// $this->load->view('header');
-			// $this->load->view('formFeedbackUI');
-			// $this->load->view('footer');
+			---------end of editan wildan--------*/
+			$this->load->view('header');
+			$this->load->view('formFeedbackUI');
+			$this->load->view('footer');
 		}
 		else
 		{
@@ -115,11 +119,12 @@ class FeedbackCtr extends CI_Controller {
                         'message' => $this->input->post('message')
                     );
 
-					//Transfering data to Model
-                $this->feedbackManager->insert_feedback($data);
-				$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully submitted your form.</center>'));
-				redirect('contactus');
-        	
+				//Transfering data to Model
+            $this->feedbackManager->insert_feedback($data);
+			$this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully submitted your form.</center>'));
+			redirect('contactus');
+
+        	/*--------editan wildan----------
             $this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -144,6 +149,7 @@ class FeedbackCtr extends CI_Controller {
 				$data['login_url'] = $this->facebook->getLoginUrl();
 				header("Location: ".base_url()."contactus");
 			}
+			-----------end of editan wildan-------------*/
 			// $this->load->view('header');
 			// $this->load->view('formFeedbackUI');
 			// $this->load->view('footer');

@@ -19,6 +19,7 @@
 
 				//$place_name = explode("xx",get_cookie("place_name"));
 
+				/*------------editan wildan--------------
 				$this->user = $this->facebook->getUser();
 				if($this->user)
 				{
@@ -48,9 +49,10 @@
 					$this->load->view('viewTripUI',$data);
 					$this->load->view('footer');
 				}
-				// $this->load->view('header');
-				// $this->load->view('viewTripUI',$data);
-				// $this->load->view('footer');
+				----end of editan wildan---------*/
+				$this->load->view('header');
+				$this->load->view('viewTripUI',$data);
+				$this->load->view('footer');
 		}
 
 		function saveTrip()

@@ -21,7 +21,8 @@ class AllPlacesCtr extends CI_Controller {
 			$data['query1']= $this->searchMod->showallcategory();
 			$data['query2']= $this->searchMod->showalllocation();
 			$data['query3']= $this->searchMod->showallhalte();
-
+			
+			/*---------nyoba ga pakai ini (wildan)-------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -51,9 +52,10 @@ class AllPlacesCtr extends CI_Controller {
 				$this->load->view('allPlacesUI',$data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('allPlacesUI',$data);
-			// $this->load->view('footer');
+			------end of nyoba ga pakai ini (wildan)-------*/
+			$this->load->view('header');
+			$this->load->view('allPlacesUI',$data);
+			$this->load->view('footer');
 	}
 	
 	
@@ -73,6 +75,7 @@ class AllPlacesCtr extends CI_Controller {
 			$data['query2']= $this->searchMod->showalllocation();
 			$data['query3']= $this->searchMod->showallhalte();
 
+			/*---------nyoba ga pakai ini (wildan)-------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -102,9 +105,10 @@ class AllPlacesCtr extends CI_Controller {
 				$this->load->view('allPlacesUI',$data);
 				$this->load->view('footer');
 			}
-			// $this->load->view('header');
-			// $this->load->view('allPlacesUI',$data);
-			// $this->load->view('footer');
+			---------end of nyoba ga pakai ini (wildan)-------*/
+			$this->load->view('header');
+			$this->load->view('allPlacesUI',$data);
+			$this->load->view('footer');
 	}
 	
 	public function searchwisataLoc($city=NULL)
@@ -242,6 +246,7 @@ class AllPlacesCtr extends CI_Controller {
 			$data['query2']= $this->searchMod->showalllocation();
 			$data['query3']= $this->searchMod->showallhalte();
 
+			/*---------nyoba ga pakai ini (wildan)-------
 			$this->user = $this->facebook->getUser();
 			if($this->user)
 			{
@@ -271,7 +276,11 @@ class AllPlacesCtr extends CI_Controller {
 				$this->load->view('allPlacesUI',$data);
 				$this->load->view('footer');
 			}
+			---------end of nyoba ga pakai ini (wildan)-------*/
 			//redirect("allplaces#suggestion");
+			$this->load->view('header', $data);
+			$this->load->view('allPlacesUI',$data);
+			$this->load->view('footer');
 		}
 		else
 		{
