@@ -53,10 +53,12 @@
 			// $this->load->helper('form');
 			$this->load->model('HalteManager');
 			$this->load->model('memberManager');
+			$this->load->model('TouristAttractionManager');
 			$this->load->helper('date');
 			$this->load->helper('cookie');
 			$data['query'] = $this->HalteManager->sorthalte();
 			$data['kodekoridor'] = $this->HalteManager->haltecode();
+			$data['mostPopular'] = $this->TouristAttractionManager->mostPopular();
 			// $data['query']= $this->tesModel->getDatabase();
 			// $this->load->view('FormSearchUI',$data);
 		// 	$data['query'] = $this->touristAttrManager->getDatabaseWithinBudget($budget);
