@@ -14,8 +14,10 @@
 		function getstatisticrating()
 		{
 			$this->load->database();
-			$this->db->select('place_name,rate_avg');
+			$this->db->select('rate_avg, count(rate_avg)');
             $this->db->from('tourist_attraction');
+			$this->db->group_by("rate_avg");
+			$this->db->order_by("rate_avg", "ASC");
 			$query = $this->db->get(); 
 			return $query->result();
 		}

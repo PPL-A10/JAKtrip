@@ -11,6 +11,21 @@
 			$query = $this->db->get();
 			return $query->result();
 		}
+		
+		function showallplacescategory($category_name)
+		{
+			$this->load->database();
+			$this->db->select('*');
+            $this->db->from('tourist_attraction');
+			$this->db->join('tour_category', 'tour_category.place_name = tourist_attraction.place_name');
+			//$this->db->join('rating', 'member.username = rating.username');
+			$category_name = str_replace("%20", " ",$category_name);
+			if((string)$category_name != "" and $category_name !="All"){
+				$this->db->where('category_name', $category_name);
+			}
+			$query = $this->db->get();
+			return $query->result();
+		}
 
 		function filterMod2($city)
 		{

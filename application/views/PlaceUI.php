@@ -98,7 +98,7 @@
 					<?php foreach($query as $row){
 						$lat = $row->lattitude;
 						$long = $row->longitude;
-						echo "<div id='descr' class='boxinfo'>".$row->description."</div>";
+						echo "<div id='descr' class='boxinfo'>".nl2br($row->description)."</div>";
 						echo "<div class='boxinfo'> <h3><span class='fa fa-ticket'></span><b>&nbsp;&nbsp;&nbsp;Harga Tiket</b></h3>";
 						echo "Weekend: Rp ".$row->weekend_price."<br>Weekday: Rp ".$row->weekday_price."</div>";
 						echo "<div class='boxinfo'> <h3><span class='fa fa-link'></span><b>&nbsp;&nbsp;&nbsp;Tautan</b></h3>";
