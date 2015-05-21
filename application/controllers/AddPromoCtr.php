@@ -102,11 +102,16 @@ class AddPromoCtr extends CI_Controller {
 			'description' => $this->input->post('description'),
 		);
 
-		if($this->PromoManager->SaveForm($form_data)){
-			if(!isset($_POST['type_list'])) {
-				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
-				redirect('admin/addnewpromo');
-			}
+		if(!isset($_POST['type_list'])){
+			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
+			redirect('admin/addnewpromo');
+		}
+
+		else if($this->PromoManager->SaveForm($form_data)){
+			// if(!isset($_POST['type_list'])) {
+			// 	$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
+			// 	redirect('admin/addnewpromo');
+			// }
 
 			$fak = mysql_fetch_assoc(mysql_query("SELECT MAX(id_promo) FROM promo"));
 			$form_type = array(

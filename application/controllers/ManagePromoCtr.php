@@ -215,7 +215,7 @@ class ManagePromoCtr extends CI_Controller{
 		----------end of editan wildan-------*/
 		$this->load->view('header');
 		$this->load->view('menuadmin');
-		$this->load->view('formTourAttrUI2',$data);
+		$this->load->view('formPromoUI2',$data);
 		$this->load->view('footer');
 	}
 
