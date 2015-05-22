@@ -272,9 +272,9 @@ class TourAttrCtr extends CI_Controller {
 				if (!$this->upload->do_upload())
 				{
 					$error = array('error' => $this->upload->display_errors());
-					//$this->load->view('HomeUI');
 					$pic=NULL;
-					$this->load->view('FormTourAttrUI', $error);
+					//$this->load->view('FormTourAttrUI', $error);
+					$this->load->view('FormTourAttrUI', $data);
 				}
 				else
 				{
