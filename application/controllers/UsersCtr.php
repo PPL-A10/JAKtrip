@@ -75,7 +75,6 @@ class UsersCtr extends CI_Controller {
 		$data['description'] = $member[0]->bio;
 		$data['pic'] = $member[0]->pic;
 		
-		$this->load->helper('cookie');
 		/*---------editan wildan--------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -108,7 +107,7 @@ class UsersCtr extends CI_Controller {
 		}
 		------end of editan wildan---------*/
 		$this->load->view('header');
-		$this->load->view('EditProfileUI');
+		$this->load->view('EditProfileUI', $data);
 		$this->load->view('footer');
 
 		
@@ -252,7 +251,6 @@ class UsersCtr extends CI_Controller {
 				$data['description'] = $member[0]->bio;
 				$data['pic'] = $member[0]->pic;
 				
-				$this->load->helper('cookie');
 				/*------------editan wildan-----------
 				$this->user = $this->facebook->getUser();
 				if($this->user)
@@ -285,7 +283,7 @@ class UsersCtr extends CI_Controller {
 				}
 				--------end of editan wildan----------*/
 				$this->load->view('header');
-				$this->load->view('EditProfileUI');
+				$this->load->view('EditProfileUI', $data);
 				$this->load->view('footer');
 
 				
