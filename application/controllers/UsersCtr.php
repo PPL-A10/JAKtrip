@@ -75,7 +75,6 @@ class UsersCtr extends CI_Controller {
 		$data['description'] = $member[0]->bio;
 		$data['pic'] = $member[0]->pic;
 		
-		$this->load->helper('cookie');
 		/*---------editan wildan--------
 		$this->user = $this->facebook->getUser();
 		if($this->user)
@@ -233,7 +232,8 @@ class UsersCtr extends CI_Controller {
 				$password=$old_password;
 			}
 			else{
-				$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'required|matches[password]');
+				$this->form_validation->set_rules('pass_confirm', 'password confirmation', 'required|matches[new_password]');
+				$this->form_validation->set_message('matches', 'The password confirmation field does not match the password field.');
 				$this->form_validation->set_message('required', 'The password confirmation field does not match the password field.');
 				$status = $this->form_validation->run();
 				$password=md5($password);
@@ -252,7 +252,6 @@ class UsersCtr extends CI_Controller {
 				$data['description'] = $member[0]->bio;
 				$data['pic'] = $member[0]->pic;
 				
-				$this->load->helper('cookie');
 				/*------------editan wildan-----------
 				$this->user = $this->facebook->getUser();
 				if($this->user)

@@ -70,7 +70,7 @@ Menampilkan form isian membuat promo baru di halaman admin
 		<?php echo form_error('type_list'); ?>
 		<?php
 			foreach ($typepromo_name as $row){
-				echo form_checkbox('type_list[]',$row->type_name).($row->type_name)."<br>"; 
+				echo form_checkbox('type_list[]',$row->type_name).($row->type_name)."<br>";
 			}
 			echo '<br>';
 			echo form_checkbox('type_list[]','')."Other ".form_input('type_new',set_value('type_new'))."<br>";
