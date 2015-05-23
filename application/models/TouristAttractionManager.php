@@ -108,6 +108,7 @@ class TouristAttractionManager extends CI_Model{
 			//}
 		//$old_cat = $this->tourAttr_getCat($place_name);
 		$old_cat = $form_cat['category_old'];
+		// die($old_cat);
 		foreach($old_cat as $old){
 			$is_exists=FALSE;
 			foreach($form_cat['category_list'] as $selected){

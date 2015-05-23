@@ -108,7 +108,7 @@ class UsersCtr extends CI_Controller {
 		}
 		------end of editan wildan---------*/
 		$this->load->view('header');
-		$this->load->view('EditProfileUI');
+		$this->load->view('EditProfileUI',$data);
 		$this->load->view('footer');
 
 		
@@ -285,7 +285,7 @@ class UsersCtr extends CI_Controller {
 				}
 				--------end of editan wildan----------*/
 				$this->load->view('header');
-				$this->load->view('EditProfileUI');
+				$this->load->view('EditProfileUI', $data);
 				$this->load->view('footer');
 
 				

@@ -1,5 +1,6 @@
 $(document).ready(function () {
         showTheItinerary1();
+        alert("hahai");
         var nowDate = new Date();
     var today = new Date(nowDate.getFullYear(), nowDate.getMonth(), nowDate.getDate());
 
@@ -10,7 +11,7 @@ $(document).ready(function () {
         });  
 
     });
-var baseurl = "http://localhost/JAKtrip/";
+var baseurl = "http://jaktrip.net/JAKtrip/";
 $(function() {
       $('#main-menu').smartmenus();
     });
