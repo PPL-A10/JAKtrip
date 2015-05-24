@@ -198,10 +198,12 @@
 		            				$cek = mysql_query("SELECT * FROM rating WHERE username = '".$row->username."'");
 		            				$foto = mysql_fetch_array(mysql_query("SELECT pic FROM member WHERE username = '".$row->username."'"));
 		            				$numreview = mysql_num_rows($cek);
-									echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";				
+									echo "<div class='reviewmember col-lg-12' style='margin-left: -30px;'>";		
+									echo "<a href='".base_url()."profile/".$row->username."'>";	
 									echo "<div class='reviewkiri col-lg-4'>";
 									echo "<div class='col-lg-12'><div class='pic-small' style='margin-left:65px; margin-bottom: 10px; margin-top: 10px;'><img src='".$foto['pic']."'/></div></div>";
 									echo "<div class='col-lg-12'><div class='author' ><b>".$row->username."</b></div>";
+									echo "</a>";
 									echo "<div class='hasreviewed'>Reviewed ".$numreview." places</div></div>";
 									echo "</div>";
 									echo "<div class='reviewkanan col-lg-8' style='margin-left:-20px; padding-top: 10px;'>";

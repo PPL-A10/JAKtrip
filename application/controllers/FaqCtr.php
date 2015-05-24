@@ -36,7 +36,7 @@ class FaqCtr extends CI_Controller {
 			$this->load->view('footer');
 		}
 		--------------editan wildan--------------*/
-		$this->load->view('header', $data);
+		$this->load->view('header');
 		$this->load->view('faqUI');
 		$this->load->view('footer');
 		

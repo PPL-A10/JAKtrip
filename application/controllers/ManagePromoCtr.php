@@ -290,14 +290,16 @@ class ManagePromoCtr extends CI_Controller{
 		}
 		if (!$this->upload->do_upload()){
 			$error = array('error' => $this->upload->display_errors());
+			
 			$this->load->view('FormPromoUI2', $error);
 			// $this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			// redirect('admin/promo/edit/'.$id_promo);
+
 		}else{
 			$upload_data = $this->upload->data();
 			$file_name = $upload_data['file_name'];
 		}
-
+		// die($error);
 		if ($this->form_validation->run() == FALSE){ // validation hasn't been passed
 			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 			redirect('admin/promo/edit/'.$id_promo);

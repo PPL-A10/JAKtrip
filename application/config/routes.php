@@ -123,5 +123,10 @@ $route['place/(:any)/removevisited'] = 'PlaceCtr/removeVisited/$1';
 $route['user/addwishlist'] = 'UsersCtr/addWishlist/$1'; 
 $route['user/removewishlist'] = 'UsersCtr/removeWishlist/$1'; 
 
+$route['profile/viewtrip/(:any)'] = 'UsersCtr/viewSavedTripOther/$1/$2';
+$route['profile/(:any)'] = 'UsersCtr/viewOtherUser/$1';
+
+
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
