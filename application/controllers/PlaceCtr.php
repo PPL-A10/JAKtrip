@@ -46,6 +46,7 @@ class PlaceCtr extends CI_Controller {
             );
 					//Transfering data to Model
                     $this->ratingManager->insert_rating($data);
+					$this->ReviewModel->updaterateavg($name);
                     $this->session->set_flashdata('form', array('message' => '<center><b>Thank you!</b> You successfully submitted your review.</center>'));
                     redirect('place/'.$name);
          }		
@@ -436,6 +437,11 @@ function do_upload($place_name)
 		$this->touristAttractionManager->updateVisitor($place_name, $data2);
 
 		header("Location: ".base_url()."place/".$place_name."");
+	}
+	function tes123($nama)
+	{
+		 $this->load->model('ReviewModel');
+		 $this->ReviewModel->updaterateavg($nama);
 	}
 
 }

@@ -52,6 +52,7 @@ $route['allplaces'] = 'allPlacesCtr';
 $route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
+$route['AllPlacesCtr/category/place/(:any)'] = 'PlaceCtr/index/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
 $route['flag/spam/(:any)'] = 'FlagCtr/spamreport/$1/$2';
@@ -122,6 +123,11 @@ $route['place/(:any)/addvisited'] = 'PlaceCtr/addVisited/$1';
 $route['place/(:any)/removevisited'] = 'PlaceCtr/removeVisited/$1'; 
 $route['user/addwishlist'] = 'UsersCtr/addWishlist/$1'; 
 $route['user/removewishlist'] = 'UsersCtr/removeWishlist/$1'; 
+
+$route['profile/viewtrip/(:any)'] = 'UsersCtr/viewSavedTripOther/$1/$2';
+$route['profile/(:any)'] = 'UsersCtr/viewOtherUser/$1';
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

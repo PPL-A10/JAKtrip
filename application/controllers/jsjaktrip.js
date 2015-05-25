@@ -10,7 +10,7 @@ $(document).ready(function () {
         });  
 
     });
-var baseurl = "http://localhost/JAKtrip/";
+var baseurl = "http://jaktrip.net/JAKtrip/";
 $(function() {
       $('#main-menu').smartmenus();
     });
@@ -668,177 +668,182 @@ $(function() {
 
          function deleteTripRec(place_name1)
         {
-
-          var countTrip = parseInt(getCookie("counterTrip"));
-          // var baseurl = 'http://localhost/JAKtrip/';
-          if(countTrip==1)
+          var r = confirm("Are you sure to delete " + place_name1 + " from your itinerary?");
+          if (r == true) 
           {
+            //--------------------start-------------------
+            var countTrip = parseInt(getCookie("counterTrip"));
+            if(countTrip==1)
+            {
 
-            jQuery.ajax({
-              type: "POST",
-              data : {
-                'datanya' :  place_name1},
-              url: baseurl+"index.php/searchCtr/deleteTrip/"+ place_name1,
-              success: function(res) {
-                  if (res)
-                  {
-                    // var baseurl = 'http://localhost/JAKtrip/';
-        //            alert(res);
-                    var output = getCookie("placeName").replace(/\+/gi, " ");
-               //     alert(res);
-                   var obj = jQuery.parseJSON(res);
-             //       alert(obj.query.result[0].place_name);
-                     output = "<table class='table-hover'  style='margin-bottom: 20px; margin-left: 20px;'>";
-                     var isWeekend = getCookie("isWeekend");
-                     var halte_awal = getCookie("halteAwal");
-                     var ticketprice = 0;
-                     var budget = getCookie("budget");
-                     for(var i = 0; i<obj.query.result.length; i++)
-                     {
-                      if(isWeekend == "true")
-                      {
-                        ticketprice = obj.query.result[i].weekend_price;    
-                      }
-                      else
-                      {
-                        ticketprice = obj.query.result[i].weekday_price;
-                      }
-
-                      if(budget >= obj.query.harga[i])
-                      {
-                        output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                        var pic_thumbnail_show = "";
-                        var link_place = "place/"+obj.query.result[i].place_name;
-
-                        if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                          output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
-                          pic_thumbnail_show = baseurl+"assets/img/noimg.png";
-                        }
-                        else{
-                          output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
-                          pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
-                        }
-                     
-                        output = output + "<td height='20px' class='tuffyh3a'><a href=\""+baseurl+"place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
-                      }
-                        
-                  
-                        
-                    }
-                 
-                    output = output+ "</table>";
-                 //   alert(output);
-
-                   $("#blogMain").html(output);
-                    $("#goingFrom").html("Halte " + halte_awal);
-                   $("#input_price").val(getCookie("budget"));
-                   showTheItinerary1();
-                   /*---buat nampilin notif------*/
-                    window.open('#successDeleteNotify', '_self');
-                    setTimeout(function(){
-                      window.open('#close', '_self');
-                      $('[data-toggle="popover"]').popover('show');
-                      }, 1500);
-                    /*---end of buat nampilin notif------*/
-                  }
-                  }
-                });
-          }
-          else
-          {
               jQuery.ajax({
-              type: "POST",
-              data : {
-                'datanya' :  place_name1},
-              url: baseurl+"index.php/searchCtr/deleteTrip/"+ place_name1,
-              success: function(res) {
-                  if (res)
-                  {
-         //           alert(res);
-                    var place_name = getCookie("placeName").replace(/\+/gi, " ");;
-                    var halte_name = getCookie("halteName");
-                    var busway_price = getCookie("buswayPrice");
-                    var angkot_price = getCookie("angkotPrice");
-                    var ticket_price = getCookie("ticketPrice");
-                    var total_price = getCookie("totalPrice");
-                    var transport_info = getCookie("transportInfo");
-                    var place_info = getCookie("placeInfo");
-                    var budget = getCookie("budget");
-                    var idx_last_trip = getCookie("idxLastTrip");
-                    var total_price_array = total_price.split("xx");
-                    var halte_name_array = halte_name.split("xx");
-              //      alert(total_price_array.length);
-                    var semuaHarga = 0;
-                    var place_name_array = place_name.split("xx");
-                    // var baseurl = 'http://localhost/JAKtrip/';
-
-                  
-                    var output = getCookie("placeName").replace(/\+/gi, " ");
-           //         alert(semuaHarga);
-                   var obj = jQuery.parseJSON(res);
-             //       alert(obj.query.result[0].place_name);
-                     output = "<table class='table-hover'  style='margin-bottom: 20px; margin-left: 20px;'>";
-                    
-                     for(var i = 0; i<obj.query.result.length; i++)
+                type: "POST",
+                data : {
+                  'datanya' :  place_name1},
+                url: baseurl+"index.php/searchCtr/deleteTrip/"+ place_name1,
+                success: function(res) {
+                    if (res)
                     {
-                      var ticketPrice = 0; 
-                            var isWeekend = getCookie("isWeekend");
-                            // alert(isWeekend);
-                            if(isWeekend == "true")
-                            {
+                      // var baseurl = 'http://localhost/JAKtrip/';
+          //            alert(res);
+                      var output = getCookie("placeName").replace(/\+/gi, " ");
+                 //     alert(res);
+                     var obj = jQuery.parseJSON(res);
+               //       alert(obj.query.result[0].place_name);
+                       output = "<table class='table-hover'  style='margin-bottom: 20px; margin-left: 20px;'>";
+                       var isWeekend = getCookie("isWeekend");
+                       var halte_awal = getCookie("halteAwal");
+                       var ticketprice = 0;
+                       var budget = getCookie("budget");
+                       for(var i = 0; i<obj.query.result.length; i++)
+                       {
+                        if(isWeekend == "true")
+                        {
+                          ticketprice = obj.query.result[i].weekend_price;    
+                        }
+                        else
+                        {
+                          ticketprice = obj.query.result[i].weekday_price;
+                        }
 
-                              ticketPrice = obj.query.result[i].weekend_price;
-                              
-                            }
-                            else
-                            {
-                              ticketPrice = obj.query.result[i].weekday_price;
-                            }
-                            if(obj.query.sudahDipilih[i] != true && budget >= obj.query.harga[i])
-                            {
-                 
-                              sudahHabis = false;
-                             
+                        if(budget >= obj.query.harga[i])
+                        {
+                          output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
+                          var pic_thumbnail_show = "";
+                          var link_place = "place/"+obj.query.result[i].place_name;
 
-                              output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
-                              var pic_thumbnail_show = "";
-                              var link_place = "place/"+obj.query.result[i].place_name;
+                          if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
+                            pic_thumbnail_show = baseurl+"assets/img/noimg.png";
+                          }
+                          else{
+                            output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
+                            pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
+                          }
+                       
+                          output = output + "<td height='20px' class='tuffyh3a'><a href=\""+baseurl+"place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaBusway[i]+" (harga busway) + "+obj.query.result[i].transport_price+" (harga angkot) + "+ticketprice+" (harga tiket)<br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketprice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
+                        }
+                          
+                    
+                          
+                      }
+                   
+                      output = output+ "</table>";
+                   //   alert(output);
 
-                              if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
-                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
-                                pic_thumbnail_show = baseurl+"assets/img/noimg.png";
-                              }
-                              else{
-                                output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
-                                pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
-                              }
-
-                              output = output + "<td height='20px' class='tuffyh3a'><a href=\""+baseurl+"place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
-                            output = output + "</tr>";
-                            
-                            }
-                            else
-                            {
-                              
-                            }
+                     $("#blogMain").html(output);
+                      $("#goingFrom").html("Halte " + halte_awal);
+                     $("#input_price").val(getCookie("budget"));
+                     showTheItinerary1();
+                     /*---buat nampilin notif------*/
+                      window.open('#successDeleteNotify', '_self');
+                      setTimeout(function(){
+                        window.open('#close', '_self');
+                        $('[data-toggle="popover"]').popover('show');
+                        }, 1500);
+                      /*---end of buat nampilin notif------*/
                     }
-                    output = output+ "</table>";
-                 //   alert(output);
-                   $("#blogMain").html(output);
-                    $("#goingFrom").html(halte_name_array[idx_last_trip]);
-                    $("#input_price").val(getCookie("budget"));
-                   showTheItinerary1();
-                   /*---buat nampilin notif------*/
-                    window.open('#successDeleteNotify', '_self');
-                    setTimeout(function(){
-                      window.open('#close', '_self');
-                      $('[data-toggle="popover"]').popover('show');
-                      }, 1500);
-                    /*---end of buat nampilin notif------*/
-                  }
-                  }
-                });
+                    }
+                  });
+            }
+            else
+            {
+                jQuery.ajax({
+                type: "POST",
+                data : {
+                  'datanya' :  place_name1},
+                url: baseurl+"index.php/searchCtr/deleteTrip/"+ place_name1,
+                success: function(res) {
+                    if (res)
+                    {
+           //           alert(res);
+                      var place_name = getCookie("placeName").replace(/\+/gi, " ");;
+                      var halte_name = getCookie("halteName");
+                      var busway_price = getCookie("buswayPrice");
+                      var angkot_price = getCookie("angkotPrice");
+                      var ticket_price = getCookie("ticketPrice");
+                      var total_price = getCookie("totalPrice");
+                      var transport_info = getCookie("transportInfo");
+                      var place_info = getCookie("placeInfo");
+                      var budget = getCookie("budget");
+                      var idx_last_trip = getCookie("idxLastTrip");
+                      var total_price_array = total_price.split("xx");
+                      var halte_name_array = halte_name.split("xx");
+                //      alert(total_price_array.length);
+                      var semuaHarga = 0;
+                      var place_name_array = place_name.split("xx");
+                      // var baseurl = 'http://localhost/JAKtrip/';
+
+                    
+                      var output = getCookie("placeName").replace(/\+/gi, " ");
+             //         alert(semuaHarga);
+                     var obj = jQuery.parseJSON(res);
+               //       alert(obj.query.result[0].place_name);
+                       output = "<table class='table-hover'  style='margin-bottom: 20px; margin-left: 20px;'>";
+                      
+                       for(var i = 0; i<obj.query.result.length; i++)
+                      {
+                        var ticketPrice = 0; 
+                              var isWeekend = getCookie("isWeekend");
+                              // alert(isWeekend);
+                              if(isWeekend == "true")
+                              {
+
+                                ticketPrice = obj.query.result[i].weekend_price;
+                                
+                              }
+                              else
+                              {
+                                ticketPrice = obj.query.result[i].weekday_price;
+                              }
+                              if(obj.query.sudahDipilih[i] != true && budget >= obj.query.harga[i])
+                              {
+                   
+                                sudahHabis = false;
+                               
+
+                                output = output + "<tr onclick='javascript:showRating("+obj.query.result[i].place_name+")'>";
+                                var pic_thumbnail_show = "";
+                                var link_place = "place/"+obj.query.result[i].place_name;
+
+                                if(obj.query.result[i].pic_thumbnail==null || obj.query.result[i].pic_thumbnail==""){
+                                  output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+"assets/img/noimg.png'></div></a></td>";
+                                  pic_thumbnail_show = baseurl+"assets/img/noimg.png";
+                                }
+                                else{
+                                  output = output + "<td><a href='"+baseurl+link_place+"'><div class='pic150'><img src='"+baseurl+obj.query.result[i].pic_thumbnail+"'></div></a></td>";
+                                  pic_thumbnail_show = baseurl+obj.query.result[i].pic_thumbnail;
+                                }
+
+                                output = output + "<td height='20px' class='tuffyh3a'><a href=\""+baseurl+"place/"+obj.query.result[i].place_name+"\" style='color: #1c1c1c;'>"+obj.query.result[i].place_name+"</a>&nbsp;&nbsp;&nbsp;<a href=\"javascript:setMapLocationZoom('"+obj.query.result[i].place_name+"')\"><span class='fa fa-map-marker'></span></a><br><div style='font-family:Lato; font-size:14px;'>Rp "+obj.query.harga[i]+" - "+obj.query.result[i].city+"</span><br>"+obj.query.hargaAngkotSebelum[i]+" (harga angkot ke halte) + "+obj.query.hargaBusway[i]+" (harga busway) + " +obj.query.hargaAngkotSetelah[i]+" (harga angkot ke tempat wisata) + "+ticketPrice+" (harga tiket)<br><button class='btn btn-warning' onclick=\"addTripRec('"+obj.query.result[i].place_name+"','"+obj.query.result[i].halte_name+"','"+obj.query.hargaBusway[i]+"','"+obj.query.result[i].transport_price+"','"+ticketPrice+"','"+obj.query.harga[i]+"','"+obj.query.result[i].transport_info+"','"+obj.query.result[i].place_info+"','"+pic_thumbnail_show+"')\">ADD TO TRIP</button><br></td>";
+                              output = output + "</tr>";
+                              
+                              }
+                              else
+                              {
+                                
+                              }
+                      }
+                      output = output+ "</table>";
+                   //   alert(output);
+                     $("#blogMain").html(output);
+                      $("#goingFrom").html(halte_name_array[idx_last_trip]);
+                      $("#input_price").val(getCookie("budget"));
+                     showTheItinerary1();
+                     /*---buat nampilin notif------*/
+                      window.open('#successDeleteNotify', '_self');
+                      setTimeout(function(){
+                        window.open('#close', '_self');
+                        $('[data-toggle="popover"]').popover('show');
+                        }, 1500);
+                      /*---end of buat nampilin notif------*/
+                    }
+                    }
+                  });
+            }
+            //---------------------end-------------------
           }
+          
           
          }  
       

@@ -67,7 +67,7 @@
 							{
 							echo "<tr>";
 							//echo"<td><input type='checkbox' value=''></td>";
-							echo "<td>".$row->username."</td>";
+							echo "<td><a href='".base_url()."profile/".$row->username."'>".$row->username."</td></a>";
 							echo "<td>".$row->email	."</td>";
 							echo "<td></td>";
 							echo "<td>".$row->join_date."</td>";
