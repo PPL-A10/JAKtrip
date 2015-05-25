@@ -52,6 +52,7 @@ $route['allplaces'] = 'allPlacesCtr';
 $route['allplaces/send'] = 'allPlacesCtr/sendSuggestion'; 
 $route['place/(:any)'] = 'PlaceCtr/index/$1';
 $route['place/review/(:any)'] = 'PlaceCtr/rating/$1';
+$route['AllPlacesCtr/category/place/(:any)'] = 'PlaceCtr/index/$1';
 $route['flag/(:any)'] = 'FlagCtr/index/$1';
 $route['flag/review/(:any)'] = 'FlagCtr/rating/$1';
 $route['flag/spam/(:any)'] = 'FlagCtr/spamreport/$1/$2';

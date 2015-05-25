@@ -19,6 +19,40 @@
 			return $query->result();
 		}
 		
+		function updaterateavg($nama)
+		{
+			$this->load->database();
+			$nama= str_replace("%20", " ",$nama);
+			
+			 $this->db->select_sum('rate');
+
+			$this->db->from('rating');
+	
+			$this->db->where('place_name', $nama);
+
+			$query = $this->db->get();
+
+			$avgrate = $query->row()->rate;
+			$total = $this->db->count_all_results();
+
+			$avgrate = round($avgrate/ $total);
+			$data = array(
+               'rate_avg' => $avgrate
+            );
+			$this->updaterateavg2($nama,$avgrate);
+			echo $total;
+		}
+		
+		function updaterateavg2($nama,$avgrate)
+		{
+			$this->load->database();
+			$nama= str_replace("%20", " ",$nama);
+			$data = array(
+               'rate_avg' => $avgrate
+            );
+			$this->db->where('place_name', $nama);
+			$this->db->update('tourist_attraction', $data);
+		}
 		function showjudul($nama)
 		{
 			$this->load->database();
