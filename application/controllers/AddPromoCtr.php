@@ -12,6 +12,12 @@ class AddPromoCtr extends CI_Controller {
 		$this->load->model('PromoManager');
 		$data['place'] = $this->TouristAttractionManager->getTouristAttraction()->result();
 		$data['typepromo_name'] = $this->PromoManager->getTypes();
+
+		$data['title']='';
+		$data['start_date']='';
+		$data['end_date']='';
+		$data['description']='';
+		$data['place_name']='';
 		
 		/*----nyoba ga pakai ini (wildan)------------
 		$this->load->helper('cookie');
@@ -39,7 +45,7 @@ class AddPromoCtr extends CI_Controller {
 		
 		$this->load->view('header', $data);
 		$this->load->view('menuadmin');
-		$this->load->view('formPromoUI', $data);
+		$this->load->view('FormPromoUI', $data);
 		$this->load->view('footer');
 	}
 
@@ -54,6 +60,7 @@ class AddPromoCtr extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('PromoManager');
+		$this->load->model('TouristAttractionManager');
 
 		$this->form_validation->set_rules('title', 'title', 'trim');
 		$this->form_validation->set_rules('start_date', 'start date', 'trim|callback_checkDateFormat');
@@ -107,13 +114,21 @@ class AddPromoCtr extends CI_Controller {
 
 		if(!isset($_POST['type_list'])){
 			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
-			$data['title']['value'] = $posttitle;
-			$data['start_date']['value'] = $old_startDate;
-			$data['end_date']['value'] = $old_endDate;
-			$data['place_name']['value'] = $postplace_name;
-			$data['description']['value'] = $postdescription;
-			$data['photoPromo'] = $query['photo'];
-			redirect('admin/addnewpromo', $data);
+			$data['title']=$posttitle;
+			$data['start_date']=$old_startDate;
+			$data['end_date']=$old_endDate;
+			$data['place_name']=$postplace_name;
+			$data['description']=$postdescription;
+
+			$data['place'] = $this->TouristAttractionManager->getTouristAttraction()->result();
+			$data['typepromo_name'] = $this->PromoManager->getTypes();
+
+			$this->load->view('header');
+			$this->load->view('menuadmin');
+			$this->load->view('FormPromoUI',$data);
+			$this->load->view('footer');
+
+			// redirect('admin/addnewpromo', $data);
 		}
 
 		else if($this->PromoManager->SaveForm($form_data)){

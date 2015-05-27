@@ -10,21 +10,13 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open_multipart('AddPromoCtr/myForm', $attributes);
-
-		// $title = $title['value'];
-		// $start_date = $start_date['value'];
-		// $end_date = $end_date['value'];
-		// $place_name = $place_name['value'];
-		// $description = $description['value'];
-		// $type_name = $type_nam;
-		// $type_checked = $type_checked['value'];
 	?>
 
 	<div class="form-group">
 	  <div class="col-lg-11">
 		<label class="control-label">Title <span class="req">*</span></label>
 		<?php echo form_error('title'); ?>
-		<input class="form-control" type="text" id="title" name="title" value="<?php echo set_value('title'); ?>" required pattern="[a-zA-Z0-9%.-\s]+" maxlength=160 title="Title can't contain any of the following characters : ! @ # $ % ^ & * &quot; &apos; ">
+		<input class="form-control" type="text" id="title" name="title" value="<?php echo $title; ?>" required pattern="[a-zA-Z0-9%.-\s]+" maxlength=160 title="Title can't contain any of the following characters : ! @ # $ % ^ & * &quot; &apos; ">
 	  <br></div>
 	</div>
 	<br>
@@ -32,7 +24,7 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<div class="form-group">
 	  <div class="col-lg-11">
 		<label class="control-label">Start Date <span class="req">*</span></label>
-		<input class="form-control field datepicker" type="text" name="start_date" id="start_date"  value="<?php echo set_value('start_date'); ?>" style="background-color: #f0f0f0 !important;" required>
+		<input class="form-control field datepicker" type="text" name="start_date" id="start_date"  value="<?php echo $start_date; ?>" style="background-color: #f0f0f0 !important;" required>
       <br></div>
     </div>
 	<br>
@@ -40,7 +32,7 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<div class="form-group">
 	  <div class="col-lg-11">
 		<label class="control-label">End Date <span class="req">*</span></label>
-		<input class="form-control field datepicker" type="text" name="end_date" id="end_date"  value="<?php echo set_value('end_date'); ?>" style="background-color: #f0f0f0 !important;" required>
+		<input class="form-control field datepicker" type="text" name="end_date" id="end_date"  value="<?php echo $end_date; ?>" style="background-color: #f0f0f0 !important;" required>
       <br></div>
     </div>
 	<br>
@@ -51,10 +43,19 @@ Menampilkan form isian membuat promo baru di halaman admin
 		<?php echo form_error('place_name'); ?> 
 	 	<span class="field custom-dropdown ">
 		 	<select class="field form-control" id="place_name" name="place_name" style="margin-left: -10px; background-color: #f0f0f0 !important;" required>    
-		     	<option value="" selected disabled>Choose a place..</option>
+		     	<!-- <option value="" selected disabled>Choose a place..</option> -->
 		     	<?php
-                  foreach($place as $row){
-                    echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
+                  for($index=-1; $index<count($place); $index++){
+                  	$row = $place[$index];
+                  	if($place_name=='' && $index==-1){
+                  		echo "<option value='' selected disabled>Choose a place..</option>";
+                  	}
+                  	else if($row->place_name==$place_name){
+                  		echo "<option value='".$row->place_name."' selected>".$row->place_name."</option>";
+                  	}
+                  	else{
+                    	echo "<option value='".$row->place_name."'>".$row->place_name."</option>";
+                    }
                   }
                 ?>
 		 	</select>
@@ -67,7 +68,7 @@ Menampilkan form isian membuat promo baru di halaman admin
 	  <div class="col-lg-11">
 		<label class="control-label">Description</label>
 		<?php echo form_error('description'); ?>
-		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value="<?php echo set_value('description'); ?>"></textarea>
+		<textarea class="form-control" rows="3" id="textArea" id="description" name="description" value=""><?php echo $description; ?></textarea>
       <br></div>
     </div>
     <br>
