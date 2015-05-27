@@ -100,7 +100,7 @@ function addLocation(lng,lat){
 				//echo form_hidden('author', $author);
 				echo form_hidden('pic', $pic); 
 				echo form_hidden('id', $id);
-				echo form_hidden('key', $place_name); ?>
+				echo form_hidden('key', $place_name);			?>
 				
 					
 					<div class="form-group">

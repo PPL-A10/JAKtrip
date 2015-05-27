@@ -108,6 +108,7 @@ class TouristAttractionManager extends CI_Model{
 			//}
 		//$old_cat = $this->tourAttr_getCat($place_name);
 		$old_cat = $form_cat['category_old'];
+		// die($old_cat);
 		foreach($old_cat as $old){
 			$is_exists=FALSE;
 			foreach($form_cat['category_list'] as $selected){
@@ -539,5 +540,26 @@ class TouristAttractionManager extends CI_Model{
 			$query = $this->db->select("*")->from('tourist_attraction')->order_by("visitors", "desc")->limit('3')->get();
 	   		return $query->result();
 		}
+
+		function incrementVisitor($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "id = '".$data."'";
+			$this->db->where($condition);
+			$this->db->set('visitors', 'visitors+1', FALSE);
+			$this->db->update('tourist_attraction');
+		}
+
+		function decrementVisitor($data)
+		{
+			/*@author wildan*/
+			$this->load->database();
+			$condition = "id = '".$data."'";
+			$this->db->where($condition);
+			$this->db->set('visitors', 'visitors-1', FALSE);
+			$this->db->update('tourist_attraction');
+		}
+
 }
 ?>

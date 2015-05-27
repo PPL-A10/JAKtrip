@@ -153,17 +153,17 @@ function addLocation(lng,lat){
 				    <br>
 				    <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Photos</label>
-  						<input type="file" name="userfile" size="20" multiple>
+						<label class="control-label">Photos <span class="req">*</span></label>
+  						<input type="file" name="userfile" size="20" multiple required>
 				      <br></div>
 				    </div>
 				    <br>
 				     <br>
 				      <div class="form-group">
 					  <div class="col-lg-11">
-						<label class="control-label">Photo Credit</label>
+						<label class="control-label">Photo Credit <span class="req">*</span></label>
 						<?php echo form_error('credit'); ?>
-  						<input class="form-control" type="text" id="credit" name="credit" value="<?php echo $credit; ?>">
+  						<input class="form-control" type="text" id="credit" name="credit" value="<?php echo $credit; ?>" required>
 				      <br></div>
 				    </div><br>
 				    <div class="form-group">
