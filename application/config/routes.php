@@ -71,6 +71,7 @@ $route['admin/addnewplace'] = 'tourAttrCtr';
 $route['admin/spam'] = 'spamCtr';
 $route['admin/statistics'] = 'statisticCtr';
 $route['admin/suggestions'] = 'suggestionCtr';
+$route['admin/suggestions/delete/(:any)'] = 'suggestionCtr/del/$1';
 $route['admin/feedback'] = 'FeedbackAdmCtr';
 $route['admin/promo'] = 'ManagePromoCtr';
 $route['admin/addnewpromo'] = 'addPromoCtr';

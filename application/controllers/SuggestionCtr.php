@@ -70,6 +70,19 @@ class SuggestionCtr extends CI_Controller {
 		
 	}
 
+	function unpublish($id_pic){
+		$this->load->model('suggestionManager');
+		$this->suggestionManager->unpublishphoto($id_pic);
+		//$data['query'] = $this->suggestionManager->showAllSuggestion();
+		$data['query'] = $this->suggestionManager->showAllPhotoSuggestion();
+		echo json_encode($data);
+		//$this->load->view('header');
+		//$this->load->view('menuadmin');
+		//$this->load->view('SuggestionUI', $data);
+		//$this->load->view('footer');
+		
+	}
+
 	function suggestionPhotoPage($page)
 	{
 		$this->load->model('suggestionManager');
@@ -79,6 +92,25 @@ class SuggestionCtr extends CI_Controller {
 		$data['query2'] = $tempQueryPhotoSuggestion['dataResult'];
 		$data['count_all'] = $tempQueryPhotoSuggestion['count'];
 
+		echo json_encode($data);
+	}
+
+	function del($id_pic){
+		$this->load->library('table');
+		$this->load->helper('html');
+		$this->load->model('SuggestionManager');
+		$this->load->helper('cookie');
+
+		$tempQueryPhotoSuggestion = $this->SuggestionManager->showAllPhotoSuggestion();
+		$data['query2'] = $tempQueryPhotoSuggestion['dataResult'];
+
+		if($id_pic != NULL){
+			$queryPhoto = $this->SuggestionManager->photo_get($id_pic);
+			$this->SuggestionManager->delete($id_pic);
+			unlink($queryPhoto['pic']);
+			$this->session->set_flashdata('form', array('message' => '<center>You successfully deleted a photo.</center>'));
+			redirect('admin/suggestions');
+		}
 		echo json_encode($data);
 	}
 }

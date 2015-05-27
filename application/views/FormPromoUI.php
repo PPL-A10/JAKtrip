@@ -10,6 +10,14 @@ Menampilkan form isian membuat promo baru di halaman admin
 	<?php
 		$attributes = array('class' => 'newpost col-lg-8', 'method' => 'post');
 		echo form_open_multipart('AddPromoCtr/myForm', $attributes);
+
+		// $title = $title['value'];
+		// $start_date = $start_date['value'];
+		// $end_date = $end_date['value'];
+		// $place_name = $place_name['value'];
+		// $description = $description['value'];
+		// $type_name = $type_nam;
+		// $type_checked = $type_checked['value'];
 	?>
 
 	<div class="form-group">

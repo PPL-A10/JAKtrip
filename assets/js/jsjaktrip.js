@@ -1065,7 +1065,7 @@ $(document).ready(function() {
                     }
                     else
                     {
-                        resultQuery = resultQuery + "<td>Published</td>";
+                        resultQuery = resultQuery + "<td><a href='javascript:setphotounpublish("+obj.query2[i].id_pic+")'>&nbsp;&nbsp;Unpublish?</a></td>";
                     }
                   //  alert(resultQuery);
                     resultQuery = resultQuery + "</tr>";

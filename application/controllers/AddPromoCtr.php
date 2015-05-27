@@ -86,7 +86,10 @@ class AddPromoCtr extends CI_Controller {
 			$file_name = $upload_data['file_name'];
 		}
 
-	
+		$posttitle = $this->input->post('title');
+		$postplace_name = $this->input->post('place_name');
+		$postdescription = $this->input->post('description');
+
 		$old_startDate = $this->input->post('start_date');
 		$o_startDate = strtotime($old_startDate);
 		$s_date = date('Y-m-d', $o_startDate);
@@ -94,17 +97,23 @@ class AddPromoCtr extends CI_Controller {
 		$o_endDate = strtotime($old_endDate);
 		$e_date = date('Y-m-d', $o_endDate);
 		$form_data = array(
-	       	'title' => $this->input->post('title'),
+	       	'title' => $posttitle,
 	       	'start_date' => $s_date,
 	       	'end_date' => $e_date,
-			'place_name' => $this->input->post('place_name'),
+			'place_name' => $postplace_name,
 			'photo' => './assets/img/promo/'.$file_name,
-			'description' => $this->input->post('description'),
+			'description' => $postdescription
 		);
 
 		if(!isset($_POST['type_list'])){
 			$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> You have to select at least one type.</center>'));
-			redirect('admin/addnewpromo');
+			$data['title']['value'] = $posttitle;
+			$data['start_date']['value'] = $old_startDate;
+			$data['end_date']['value'] = $old_endDate;
+			$data['place_name']['value'] = $postplace_name;
+			$data['description']['value'] = $postdescription;
+			$data['photoPromo'] = $query['photo'];
+			redirect('admin/addnewpromo', $data);
 		}
 
 		else if($this->PromoManager->SaveForm($form_data)){

@@ -311,7 +311,7 @@ class ManagePromoCtr extends CI_Controller{
 			
 			$queryPhoto = $this->PromoManager->promo_get($id_promo);
 			if($file_name!=null || $file_name!=''){
-				unlink($queryPhoto['photo']); //hapus foto di folder assets/promo/--> belum bisa
+				unlink($queryPhoto['photo']);
 				$form_data = array(
 					'title' => $title,
 				   	'start_date' => $s_date,
@@ -336,21 +336,21 @@ class ManagePromoCtr extends CI_Controller{
 			if(!isset($_POST['type_list'])) {
 				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
 				redirect('admin/promo/edit/'.$id_promo);
-			}
-
-			$form_type = array(
-				'id_promo' => $id_promo,
-				'type_list' => $type_list,
-				'type_new' => $type_new,
-				'type_old' => $old_type
-			);
-			
-			if ($this->PromoManager->edit($id_promo, $form_data, $form_type) == TRUE){ // the information has therefore been successfully saved in the db
-				$this->session->set_flashdata('form', array('message' => '<center>You successfully edited a promo.</center>'));
-				redirect('admin/promo');
 			}else{
-				$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
-				redirect('admin/promo/edit/'.$id_promo);
+				$form_type = array(
+					'id_promo' => $id_promo,
+					'type_list' => $type_list,
+					'type_new' => $type_new,
+					'type_old' => $old_type
+				);
+				
+				if ($this->PromoManager->edit($id_promo, $form_data, $form_type) == TRUE){ // the information has therefore been successfully saved in the db
+					$this->session->set_flashdata('form', array('message' => '<center>You successfully edited a promo.</center>'));
+					redirect('admin/promo');
+				}else{
+					$this->session->set_flashdata('form', array('message' => '<center><b>Oops!</b> Something went wrong. Please try again.</center>'));
+					redirect('admin/promo/edit/'.$id_promo);
+				}
 			}
 		}
 	}
