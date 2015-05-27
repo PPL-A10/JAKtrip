@@ -70,11 +70,13 @@
 					echo "<td>".$row->place_name."</td>";
 					echo "<td><a href='".$link_pic."'  data-lightbox='".$row->place_name."' data-title='".$row->pic_info."'>".$row->pic."</a></td>";
 					echo "<td>".$row->username."</td>";
-					if($row->is_publish == 0)
-				  	{echo"<td><a href='javascript:setphotopublish(".$row->id_pic.")'>&nbsp;&nbsp;Publish?</a></td>";}
-					else
-					{echo "<td>Published</td>";}
-					// echo "<td><a href='#previewPicture".$row->id_pic."'><span class='fa fa-eye'></span>&nbsp;&nbsp;Preview<a></td>";
+					if($row->is_publish == 0){
+				  		echo "<td><a href='javascript:setphotopublish(".$row->id_pic.")'>&nbsp;&nbsp;Publish?</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+				  	}else{
+						echo "<td><a href='javascript:setphotounpublish(".$row->id_pic.")'>&nbsp;&nbsp;Unpublish?</a>&nbsp;&nbsp;&nbsp;&nbsp;";
+					}
+					$onclick = array('onclick'=>"return confirm('Are you sure you want to delete this photo from ".$row->place_name."?')");
+					echo anchor('admin/suggestions/delete/'.$row->id_pic,'<span class="fa fa-trash-o"></span>&nbsp;&nbsp;Delete', $onclick)."</td>";
 					
 					echo "</tr>";
 					
@@ -82,18 +84,6 @@
 
 				  ?>
 
-				  	<!--tr>
-				  		<td>Taman Bermain</td>
-				  		<td><a href="#">http://frontroll.com/foto_berita/46kebun-binatang.jpg<a></td>
-				  		<td>ahmadibrahim</td>
-				  		<td><a href="#">&nbsp;&nbsp;Publish?</a></td>
-				  	</tr>
-				  	<tr>
-				  		<td>Kebun Tetangga</td>
-				  		<td><a href="#">http://frontroll.com/foto_berita/46kebun-binatang.jpg</a></td>
-				  		<td>ahmadibrahim</td>
-				  		<td><span class="fa fa-trash-o"></span>&nbsp;&nbsp;Published</td>
-				  	</tr-->
 				  </tbody>
 				</table>
 				<?php

@@ -335,7 +335,8 @@ class ManageTourAttrCtr extends CI_Controller {
 		$this->form_validation->set_rules('transport_price', 'transportation fee', 'integer');
 		$this->form_validation->set_message('is_unique', 'This %s already exists.');
 		
-
+		$data = $this->getData($key);
+		
 		$weekday_price = $this->input->post('weekday_price');
 		$weekend_price = $this->input->post('weekend_price');
 		$longitude = $this->input->post('longitude');
@@ -351,6 +352,7 @@ class ManageTourAttrCtr extends CI_Controller {
 		
 		$category_list = $this->input->post('category_list');
 		$category_new = $this->input->post('category_new');
+		$category_old = $data['cat_name'];
 		
 		$pic = $this->input->post('pic');
 		$id = $this->input->post('id');
@@ -489,7 +491,8 @@ class ManageTourAttrCtr extends CI_Controller {
 			$form_cat = array(
 				'place_name' => $place_name,
 				'category_list' => $category_list,
-				'category_new' => $category_new
+				'category_new' => $category_new,
+				'category_old' => $category_old
 			);							
 										
 			// run insert model to write data to db

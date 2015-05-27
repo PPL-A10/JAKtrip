@@ -82,6 +82,23 @@ class SuggestionManager extends CI_Model{
 		$this->db->set('is_publish', 1, FALSE);
 		$this->db->update('photo');
 	}
+
+	function unpublishphoto($id_pic){
+		$this->db->where('id_pic', $id_pic);
+		$this->db->set('is_publish', 0, FALSE);
+		$this->db->update('photo');
+	}
+
+	function delete($id_pic){
+        $this->load->database();
+        $this->db->delete('photo', array('id_pic' => $id_pic));
+    }
+
+    function photo_get($id_pic){
+        $this->load->database();
+        $query = $this->db->get_where('photo', array('id_pic'=>$id_pic));
+        return $query->row_array();
+    }
 }
 
 ?>
