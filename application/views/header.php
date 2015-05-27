@@ -138,12 +138,17 @@
 		graph.valueField = "visitors";
 		graph.type = "column";
 		chart.addGraph(graph);
+		var legend2 = new AmCharts.AmLegend();
+        legend2.data = [{title:"Visitors", color:"orange"}]
+		chart.addTitle("Total Visitors", 12, "Red", "alpha", "bold");
+		 chart.addLegend(legend2);
 		
 		var categoryAxis = chart.categoryAxis;
 		categoryAxis.autoGridCount  = false;
 		categoryAxis.gridCount = arrayOfPHPData.length;
 		categoryAxis.gridPosition = "start";
 		categoryAxis.labelRotation = 90;
+		categoryAxis.title = 'Tourist Attraction';
 		
 		graph.fillAlphas = 0.8;
 		chart.angle = 30;
@@ -182,8 +187,8 @@
     {
       "axisTitleOffset": 20,
       "minimum": 0,
-      "axisAlpha": 0.15,
-      "dashLength": 3
+      "axisAlpha": 0.35,
+      "dashLength": 5
     }
   ],
   "dataProvider": arrayOfPHPData2
@@ -195,15 +200,22 @@
 		chart3.categoryField = "lower_nom";
 		
 		var graph3 = new AmCharts.AmGraph();
+		graph3.title= "Total";
 		graph3.valueField = "input_num";
 		graph3.type = "line";
 		chart3.addGraph(graph3);
+		var legend = new AmCharts.AmLegend();
+        legend.data = [{title:"total", color:"orange"}]
+		chart3.addTitle("Total Input Budget By User", 12, "Red", "alpha", "bold");
+		 chart3.addLegend(legend);
 		
 		var categoryAxis3 = chart3.categoryAxis;
 		categoryAxis3.autoGridCount  = false;
 		categoryAxis3.gridCount = arrayOfPHPData3.length;
 		categoryAxis3.gridPosition = "start";
 		categoryAxis3.labelRotation = 90;
+		categoryAxis3.title = 'Budget';
+
 		
 		graph3.fillAlphas = 0; // or delete this line, as 0 is default
 		//graph3.bullet = "round";

@@ -7,6 +7,7 @@
 			$this->load->database();
 			$this->db->select('place_name,visitors');
             $this->db->from('tourist_attraction');
+			$this->db->order_by("place_name", "asc");
 			$query = $this->db->get(); 
 			return $query->result();
 		}
