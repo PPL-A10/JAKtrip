@@ -65,8 +65,6 @@
 							echo "<span class='tuffyh3a'>".$row->title."</span> <br> <b>".$row->place_name."</b><br>".nl2br($row->description)." <br>Berlaku sampai: <b>".$row->end_date."</b>";
 							echo "</div></a></div>";
 						}
-							
-								
 						?>
 					
 					</div></div>
